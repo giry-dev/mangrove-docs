@@ -145,7 +145,7 @@ We are now ready to post the offers using Ghost and take one of the offers. Post
 
 When posting offers using ghost, we need to fund it, in order to cover gas and provision, giving 1 ether is more than enough to cover the gas. For the pivot ids, we just give 0, since we know that there are no other offers on those markets.
 
-When taking an offer, we need to know what offer to take. Because of this we need the inbound token, in order to snipe the correct offer. We again use a cheatcode by Foundry
+When taking an offer, we need to know what offer to take. Because of this we need the inbound token, in order to snipe the correct offer. We again use a cheatcode by Foundry `prank(address)`, this works like `startPrank`but only for the next call, where `startPrank` works for all calls, until `stopPrank` is called. When using `prank`one should be aware of nested calls, e.g. had we used a call to figure out the pivot1 and just called it inline like this `pivot1: strat.getPivot1()` then it would be that called that gets pranked and not the snipe call.
 
 ```solidity
   function postAndFundOffers(uint makerGivesAmount, uint makerWantsAmountDAI, uint makerWantsAmountUSDC)
@@ -173,5 +173,65 @@ When taking an offer, we need to know what offer to take. Because of this we nee
       targets: wrap_dynamic([offerId, makerGivesAmount, makerWantsAmount, type(uint).max]),
       fillWants: true
     });
+  }
+```
+
+After having posted and taken one of the offers, we can now check whether everything happen as excepted. We use `assertEq` and ´assertTrue´ which are Foundry methods for asserting. The first thing we want to check, is whether the taker got the expected amount of WETH minus the fees taken by Mangrove. MangroveTest has a function ´minusFee(address_outbound,address_inbound, price)´, that will calculate the fee for a given market and price. The next thing is if the taker gave the correct amount of DAI.
+
+Having tested that the taker got and gave the correct amounts, we then want to check whether the offers are no longer live on Mangrove. To do this we use Mangrove to get the packed offers and then using Mangroves `isLive` function to check if an offer is live. In this case we except that both offers are inactive.
+
+```solidity
+...
+    (uint offerId1, uint offerId2) = postAndFundOffers(makerGivesAmount, makerWantsAmountDAI, makerWantsAmountUSDC);
+
+    (uint takerGot, uint takerGave,) = takeOffer(makerGivesAmount, makerWantsAmountDAI, dai, offerId1);
+
+    // assert that
+    assertEq(takerGot, minusFee($(dai), $(weth), makerGivesAmount), "taker got wrong amount");
+    assertEq(takerGave, makerWantsAmountDAI, "taker gave wrong amount");
+
+    // assert that neither offer posted by Ghost are live (= have been retracted)
+    MgvStructs.OfferPacked offer_on_dai = mgv.offers($(weth), $(dai), offerId1);
+    MgvStructs.OfferPacked offer_on_usdc = mgv.offers($(weth), $(usdc), offerId2);
+    assertTrue(!mgv.isLive(offer_on_dai), "weth->dai offer should have been retracted");
+    assertTrue(!mgv.isLive(offer_on_usdc), "weth->usdc offer should have been retracted");
+...
+```
+
+We have now written our first test. In Foundry you can run all your tests by running `forge test`, if you want to run only for one specific contract you can add `--match-contract <name_of_contract>` and if you only want to run one test on that contract, you can add `--match-test <name_of_test>`. In our case we would run `forge test --match-contract GhostTest --match-test test_success_fill`. You can get full stacktraces by uses `-vvv`, you can read more about how `--verbose` works on [Foundry](https://book.getfoundry.sh/)'s own website.
+
+Writing your next test is now a lot easier since have create all the helper functions. E.g. writing a test for a on only being partially taken, would look like this:
+
+```solidity
+  function test_success_partialFill() public {
+    deployStrat();
+
+    execTraderStratWithPartialFillSuccess();
+  }
+
+  function execTraderStratWithPartialFillSuccess() public {
+    uint makerGivesAmount = 0.15 ether;
+    uint makerWantsAmountDAI = cash(dai, 300);
+    uint makerWantsAmountUSDC = cash(usdc, 300);
+
+    weth.approve($(strat.router()), type(uint).max);
+
+    deal($(weth), $(this), cash(weth, 5));
+
+    // post offers with Ghost liquidity
+    (uint offerId1, uint offerId2) = postAndFundOffers(makerGivesAmount, makerWantsAmountDAI, makerWantsAmountUSDC);
+
+    //only take half of the offer
+    (uint takerGot, uint takerGave,) = takeOffer(makerGivesAmount / 2, makerWantsAmountDAI / 2, dai, offerId1);
+
+    // assert that
+    assertEq(takerGot, minusFee($(dai), $(weth), makerGivesAmount / 2), "taker got wrong amount");
+    assertEq(takerGave, makerWantsAmountDAI / 2, "taker gave wrong amount");
+
+    // assert that neither offer posted by Ghost are live (= have been retracted)
+    MgvStructs.OfferPacked offer_on_dai = mgv.offers($(weth), $(dai), offerId1);
+    MgvStructs.OfferPacked offer_on_usdc = mgv.offers($(weth), $(usdc), offerId2);
+    assertTrue(mgv.isLive(offer_on_dai), "weth->dai offer should not have been retracted");
+    assertTrue(mgv.isLive(offer_on_usdc), "weth->usdc offer should not have been retracted");
   }
 ```
