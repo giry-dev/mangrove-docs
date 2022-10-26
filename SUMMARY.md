@@ -44,3 +44,4 @@
   * [Posting bids and asks](mangrove-js/posting-bids-and-asks.md)
   * Technical references
     * [Mangrove.js API reference](mangrove-js/technical-references/api.md)
+    * [Bots](mangrove-js/technical-references/bots.md)
