@@ -1,0 +1,41 @@
+graph TD 
+    subgraph Mangrove 
+        Taker(Taker)
+        Mangrove
+    end 
+
+    subgraph makerExecute 
+        MgvOffer(MangroveOffer contract)
+        lastlook(Signals 'mgvOffer/proceed')
+        put(No Implementation)
+        get(No Implementation)
+    end
+
+    subgraph makerPosthook 
+        Success
+        beforeFallback(Logs failed transfer)
+        posthookFallback(Does nothing)
+        ResidualGives(Get residual gives)
+        ResidualWants(Get residual wants)
+        lastPosthookSuccess(Repost offer)
+    end
+
+    subgraph Approvals
+        Checklist(Check all approvals for WETH and USDC)
+        Activate(Approve WETH and USDC for MGV and/or Router)
+        CheckReserveApproval(No implementation)
+    end
+
+    Mangrove --> Taker 
+    Taker --> Mangrove 
+    Mangrove --> MgvOffer
+    MgvOffer --> Mangrove
+    MgvOffer --> lastlook
+    lastlook --> put
+    put --> get
+    Taker --> Success
+    Success --> beforeFallback
+    beforeFallback --> posthookFallback
+    Success --> ResidualGives
+    ResidualGives --> ResidualWants
+    ResidualWants --> lastPosthookSuccess

@@ -1,0 +1,69 @@
+@startuml
+!include <archimate/Archimate>
+skinparam nodesep 35
+skinparam ranksep 60
+
+package "Mangrove" {
+ Business_Object(Taker, "Taker")
+ Business_Object(Mangrove, "Mangrove")
+}
+
+package makerExecute {
+Business_Object(MgvOffer, "MangroveOffer contract")
+package lastlook {
+ Business_Service(lastlook, "Signals 'mgvOffer/proceed'")
+}
+package put {
+ Business_Service(put, "No Implementation")
+}
+package get {
+ Business_Service(get, "No Implementation")
+}
+}
+
+package makerPosthook {
+hexagon Success
+ Business_Service(beforeFallback, "Logs failed transfer")
+ package posthookFallback {
+  Business_Service(posthookFallback, "Does nothing")
+ }
+ package posthookSucces {
+  package ResidualGives {
+   Business_Service(ResidualGives, "Get residual gives")
+  }
+  package ResidualWants {
+   Business_Service(ResidualWants, "Get residual wants")
+  }
+  Business_Service(lastPosthookSuccess, "Repost offer")
+ }
+}
+
+package Approvals {
+  package Checklist {
+   Business_Service(Checklist, "Check all \napprovals for \nWETH and \nUSDC")
+  }
+  package Activate {
+   Business_Service(Activate, "Approve \nWETH and \n USDC for \nMGV and/or \n Router")
+  }
+  package CheckReserveApproval {
+   Business_Service(CheckReserveApproval, "No implementation")
+  }
+}
+
+Mangrove -down-> Taker : (7) Taransfer WETH
+Taker -down-> Mangrove : (1) Transfer USDC
+Mangrove -down-> MgvOffer : (2) Transfer USDC
+MgvOffer -down-> Mangrove : (6) Transfer WETH
+MgvOffer -down-> lastlook : (3)
+lastlook -down-> put : (4)
+put -down-> get : (5)
+Taker -right-> Success
+Success -left-> beforeFallback : No
+beforeFallback -down-> posthookFallback
+Success -right-> ResidualGives : Yes
+ResidualGives -down-> ResidualWants
+ResidualWants -down-> lastPosthookSuccess
+lastPosthookSuccess -[hidden]d-> Checklist
+
+
+@enduml
