@@ -30,7 +30,7 @@ contract OfferMaker is Direct {
 
 Technically Direct does not require anything else. But since the newOffer function of Direct is an internal function, deploying the contract as-is, would not allow anyone to post an offer. Because of this we want to add one thing. We want to implement the IMakerLogic, which only says that the contract has to have a newOffer function with the correct parameters. You could choose to not use this interface, but it is a nice help, that enforces that the offer maker gives all the relevant information for posting a new offer. Since we only want the admin of the contract to be able to post offers, we add the modifier `onlyAdmin` to the function. This is a modifier Direct can use, because it is a `AccessControlled` contract.
 
-When this is added, then the contract is ready to be [deployed](#deploy-your-contract).<!-- FIXME: link to "how to deploy" --> The contract can now post new offers, update offers and retract offers, using all the default behavior from a Direct contract. <!-- FIXME: maybe a how to test, section would be nice -->
+When this is added, then the contract is ready to be [deployed](HowToDeploy.md). The contract can now post new offers, update offers and retract offers, using all the default behavior from a Direct contract.
 
 ```solidity
 pragma solidity ^0.8.10;
