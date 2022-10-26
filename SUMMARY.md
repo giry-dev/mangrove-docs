@@ -17,6 +17,7 @@
       * [Local variables](mangrove-core/technical-references/governance-parameters/local-variables.md)
       * [Data structures and views](mangrove-core/technical-references/governance-parameters/mangrove-configuration.md)
     * [Contract addresses](mangrove-core/technical-references/contract-addresses.md)
+    * [Protocol](mangrove-core/technical-references/protocol.md)
   * [How-to guides](mangrove-core/how-to-guides/README.md)
     * [Cleaning offers](mangrove-core/how-to-guides/cleaning-an-offer.md)
     * [On-the-fly offer](mangrove-core/how-to-guides/basic-offer.md)
@@ -41,3 +42,5 @@
   * [API classes overview](mangrove-js/api-classes-overview.md)
   * [Sell and buy orders](mangrove-js/sell-and-buy-orders.md)
   * [Posting bids and asks](mangrove-js/posting-bids-and-asks.md)
+  * Technical references
+    * [Mangrove.js API reference](mangrove-js/technical-references/api.md)
