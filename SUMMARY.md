@@ -37,7 +37,7 @@
         * [😎 Oracle](mangrove-core/explanations/around-the-mangrove/mangroves-ecosystem/monitor.md)
         * [👾 Cleaner](mangrove-core/explanations/around-the-mangrove/mangroves-ecosystem/cleaner.md)
       * [Mangrove API](mangrove-core/explanations/around-the-mangrove/mangrove-api.md)
-* [Mangrove.js](mangrove.js/README.md)
+* [Mangrove.js](mangrove-js/README.md)
   * [mangrove.js documentation](mangrove-js/README.md)
   * [API classes overview](mangrove-js/api-classes-overview.md)
   * [Sell and buy orders](mangrove-js/sell-and-buy-orders.md)
