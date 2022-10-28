@@ -80,8 +80,8 @@ pragma solidity ^0.8.10;
 
 pragma abicoder v2;
 
-import "src/strategies/offer_maker/abstract/Direct.sol";
-import "src/strategies/routers/SimpleRouter.sol";
+import {Direct, IMangrove, IERC20 } from "src/strategies/offer_maker/abstract/Direct.sol";
+import {SimpleRouter, AbstractRouter} from "src/strategies/routers/SimpleRouter.sol";
 import {MgvLib, MgvStructs} from "src/MgvLib.sol";
 
 contract Ghost is Direct {
@@ -285,6 +285,8 @@ The contract is almost done. One last thing that we should offer to the offer ma
 Since we know everything about the two offers, retracting them is simple calling Directs own retractOffer function on both offers. The offer maker might just want to retract the offers, without deprovisioning them, because of this we add a parameter to the function, that tells if the offers should be deprovisioned.
 
 The offer maker can now post new offer, where all posthooks are handled and they can retract their offers again. The contract is now done. The next thing would be to test that the contract works as planned. This can be found in this [section](HowToTest.md).
+
+The full code for the contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/master/src/toy_strategies/offer_maker/Ghost.sol)
 
 ```solidity
   function retractOffers(bool deprovision) public {

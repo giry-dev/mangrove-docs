@@ -23,12 +23,13 @@ The Ghost contract is using two markets, it is there for necessary to setup the 
 The setup is done, at we are now ready to write the first test.
 
 ```solidity showLineNumbers
-import "mgv_test/lib/MangroveTest.sol";
-import "mgv_test/lib/forks/Polygon.sol";
-import "src/toy_strategies/offer_maker/Ghost.sol";
+import {MangroveTest} from "mgv_test/lib/MangroveTest.sol";
+import {PolygonFork, PinnedPolygonFork} from "mgv_test/lib/forks/Polygon.sol";
+import {Ghost, IMangrove, IERC20} from "src/toy_strategies/offer_maker/Ghost.sol";
 import {MgvStructs} from "src/MgvLib.sol";
+import {MgvReader} from "src/periphery/MgvReader.sol";
 
-import {console} from "forge-std/console.sol";
+import {console} from "lib/forge-std-vendored/src/console.sol";
 
 contract GhostTest is MangroveTest {
   IERC20 weth;
@@ -235,5 +236,7 @@ Writing your next test is now a lot easier since have create all the helper func
     assertTrue(mgv.isLive(offer_on_usdc), "weth->usdc offer should not have been retracted");
   }
 ```
+
+A full test of the contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/master/test/toy_strategies/Ghost.t.sol).
 
 When you have create all your tests, you may want to deploy your contract to a real chain. Read more about how to deploy [here](HowToDeploy.md).
