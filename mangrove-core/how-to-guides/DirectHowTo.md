@@ -13,8 +13,8 @@ pragma solidity ^0.8.10;
 
 pragma abicoder v2;
 
-import "mgv_src/strategies/offer_maker/abstract/Direct.sol";
-import "mgv_src/strategies/routers/AbstractRouter.sol";
+import {Direct, AbstractRouter, IMangrove, IERC20} from "src/strategies/offer_maker/abstract/Direct.sol";
+import {IMakerLogic} from "src/strategies/interfaces/IMakerLogic.sol";
 
 contract OfferMaker is Direct {
 
@@ -25,31 +25,18 @@ contract OfferMaker is Direct {
       setAdmin(deployer);
     }
   }
-}
+...
 ```
 
-Technically Direct does not require anything else. But since the newOffer function of Direct is an internal function, deploying the contract as-is, would not allow anyone to post an offer. Because of this we want to add one thing. We want to implement the IMakerLogic, which only says that the contract has to have a newOffer function with the correct parameters. You could choose to not use this interface, but it is a nice help, that enforces that the offer maker gives all the relevant information for posting a new offer. Since we only want the admin of the contract to be able to post offers, we add the modifier `onlyAdmin` to the function. This is a modifier Direct can use, because it is a `AccessControlled` contract.
+Technically Direct does not require anything else. But since the `_newOffer` function of Direct is an internal function, deploying the contract as-is, would not allow anyone to post an offer. Because of this we want to add one thing. We want to implement the `IMakerLogic`, which only says that the contract has to have a `newOffer` function with the correct parameters. You could choose to not use this interface, but it is a nice help, that enforces that the offer maker gives all the relevant information for posting a new offer. Using `IMakerLogic` also makes it compatible with the Mangrove SDK, which expects the `IMakerLogic` ABI.
+Since we only want the admin of the contract to be able to post offers, we add the modifier `onlyAdmin` to the function. This is a modifier Direct can use, because it is a `AccessControlled` contract.
 
 When this is added, then the contract is ready to be [deployed](HowToDeploy.md). The contract can now post new offers, update offers and retract offers, using all the default behavior from a Direct contract.
 
+The full code can be found in [here](https://github.com/mangrovedao/mangrove-core/blob/master/src/strategies/offer_maker/OfferMaker.sol).
+
 ```solidity
-pragma solidity ^0.8.10;
-
-pragma abicoder v2;
-
-import "mgv_src/strategies/offer_maker/abstract/Direct.sol";
-import "mgv_src/strategies/routers/AbstractRouter.sol";
-import "mgv_src/strategies/interfaces/IMakerLogic.sol";
-
-contract OfferMaker is IMakerLogic, Direct {
-
-  constructor(IMangrove mgv, AbstractRouter router_, address deployer) Direct(mgv, router_, 30_000) {
-    // stores total gas requirement of this strat (depends on router gas requirements)
-    // if contract is deployed with static address, then one must set admin to something else than msg.sender
-    if (deployer != msg.sender) {
-      setAdmin(deployer);
-    }
-  }
+...
 
   function newOffer(
     IERC20 outbound_tkn,
