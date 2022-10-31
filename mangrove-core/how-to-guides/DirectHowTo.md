@@ -1,6 +1,6 @@
 # How to create a Direct contract
 
-This section will go through a few different ways of how a Direct contract could be implemented. If you don't know what a Direct contract is, we recommend reading both [MangroveOffer](../../mangrove-core/mangrover-offer.md) and [Direct](../../mangrove-core/Direct.md) before continuing.
+This section will go through a few different ways of how a Direct contract could be implemented. If you don't know what a Direct contract is, we recommend reading both [MangroveOffer](../mangrover-offer.md) and [Direct](../Direct.md) before continuing.
 
 ## Simple Direct implementation
 
@@ -30,7 +30,7 @@ contract OfferMaker is Direct {
 
 Technically Direct does not require anything else. But since the `_newOffer` function of Direct is an internal function, deploying the contract as-is, would not allow anyone to post an offer. Because of this we want to add one thing. We want to implement the `IMakerLogic`, which only says that the contract has to have a `newOffer` function with the correct parameters. You could choose to not use this interface, but it is a nice help, that enforces that the offer maker gives all the relevant information for posting a new offer. Using `IMakerLogic` also makes it compatible with the Mangrove SDK, which expects the `IMakerLogic` ABI. Since we only want the admin of the contract to be able to post offers, we add the modifier `onlyAdmin` to the function. This is a modifier Direct can use, because it is a `AccessControlled` contract.
 
-When this is added, then the contract is ready to be [deployed](howtodeploy.md). The contract can now post new offers, update offers and retract offers, using all the default behavior from a Direct contract.
+When this is added, then the contract is ready to be [deployed](HowToDeploy.md). The contract can now post new offers, update offers and retract offers, using all the default behavior from a Direct contract.
 
 The full code can be found in [here](https://github.com/mangrovedao/mangrove-core/blob/master/src/strategies/offer\_maker/OfferMaker.sol).
 
@@ -281,7 +281,7 @@ The contract is almost done. One last thing that we should offer to the offer ma
 
 Since we know everything about the two offers, retracting them is simple calling Directs own retractOffer function on both offers. The offer maker might just want to retract the offers, without deprovisioning them, because of this we add a parameter to the function, that tells if the offers should be deprovisioned.
 
-The offer maker can now post new offer, where all posthooks are handled and they can retract their offers again. The contract is now done. The next thing would be to test that the contract works as planned. This can be found in this [section](howtotest.md).
+The offer maker can now post new offer, where all posthooks are handled and they can retract their offers again. The contract is now done. The next thing would be to test that the contract works as planned. This can be found in this [section](HowToTest.md).
 
 The full code for the contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/master/src/toy\_strategies/offer\_maker/Ghost.sol)
 

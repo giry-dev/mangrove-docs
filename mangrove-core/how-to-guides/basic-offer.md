@@ -50,4 +50,3 @@ let prov = await directLP.computeAskProvision();
 const { id: ofrId } = await directLP.newAsk({ wants: 105, gives: 104, fund:prov });
 ```
 {% endcode %}
-

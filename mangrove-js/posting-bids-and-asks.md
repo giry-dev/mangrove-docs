@@ -4,7 +4,7 @@ description: Using the API to post Maker orders on a Mangrove Market.
 
 # Posting bids and asks
 
-With a [`LiquidityProvider`](../technical-references/api-classes-overview.md#liquidityprovider) `mgvLP` on a [Market](../technical-references/api-classes-overview.md#market) instance, it is possible to post Bids and Asks with the following commands:
+With a [`LiquidityProvider`](api-classes-overview.md#liquidityprovider) `mgvLP` on a [Market](api-classes-overview.md#market) instance, it is possible to post Bids and Asks with the following commands:
 
 ```javascript
 // gives unlimited approval to Mangrove to transfer Base token from liquidity provider's logic/EOA

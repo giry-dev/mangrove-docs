@@ -1,9 +1,10 @@
 ---
-description: mangrove.js is a JavaScript API for the Mangrove exchange, the on-chain orderbook where offers are code.
+description: >-
+  mangrove.js is a JavaScript API for the Mangrove exchange, the on-chain
+  orderbook where offers are code.
 ---
 
-# mangrove.js documentation
-
+# SDK
 
 {% hint style="info" %}
 Wraps around [ethers.js](https://github.com/ethers-io/ethers.js). Works in the **web browser** and [Node.js](https://nodejs.org/en/).

@@ -16,7 +16,7 @@ Mangrove has been designed such that keeping offer lists clean of failing offers
 2. Locally runs offers at regular intervals.
 3. Detects failing offers and sends a transaction to make the offer fail on-chain, with a gas price set such that the offer's bounty compensates for the spent gas.
 
-Mangrove provides a [cleaner contract ](../../mangrove-core/how-to-guides/broken-reference/)to help you. This contract provides the same interface as [snipes](../technical-references/taking-and-making-offers/taker-order/#offer-sniping) but will revert if any offer in the `targets` array successfully executes.
+Mangrove provides a [cleaner contract ](broken-reference/)to help you. This contract provides the same interface as [snipes](../technical-references/taking-and-making-offers/taker-order/#offer-sniping) but will revert if any offer in the `targets` array successfully executes.
 
 {% hint style="info" %}
 **Example scenario**
@@ -29,7 +29,7 @@ Mangrove provides a [cleaner contract ](../../mangrove-core/how-to-guides/broken
 
 ### Delegation
 
-Cleaning can also use Mangrove's [delegation mechanism](../technical-references/taking-and-making-offers/taker-order/delegate-takers.md), which means you only need Mangrove to have an allowance on any address that that has enough _inbound_ tokens of the [offer list](../../mangrove-core/how-to-guides/broken-reference/) you are targeting. The cleaner contract will use those funds to execute the cleaning.
+Cleaning can also use Mangrove's [delegation mechanism](../technical-references/taking-and-making-offers/taker-order/delegate-takers.md), which means you only need Mangrove to have an allowance on any address that that has enough _inbound_ tokens of the [offer list](broken-reference/) you are targeting. The cleaner contract will use those funds to execute the cleaning.
 
 {% hint style="info" %}
 **Example scenario**

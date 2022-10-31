@@ -4,7 +4,7 @@ You have now created your contract and would like to test it. Mangrove offers a 
 
 When we write test we are going to be using the framework [Foundry](https://book.getfoundry.sh/). Foundry is a smart contract development toolchain.
 
-When explaining "how to test" we are going to use the Ghost contract, created in [How to create a Direct contract](directhowto.md).
+When explaining "how to test" we are going to use the Ghost contract, created in [How to create a Direct contract](DirectHowTo.md).
 
 When creating your test, remember to use the naming convention `<name>.t.sol`, this way Foundry knows what files are test. The first thing to do is to import the relevant contracts. We are going to use `MangroveTest` which is a helper to setup the Mangrove protocol. This way you do not need to fork a existing chain, it can just deploy the Mangrove protocol for you before running your tests. It has many other helpers. We import `Polygon` which is a helper to fork the polygon chain, we do this because we want to use the real address for WETH, USDC and DAI. This is not necessary, one could just create some test tokens an use them. We import the Ghost contract, because that is the contract we want to test. The last thing is `MgvStructs`, this helps with getting information about offers, which we need later in the test.
 
@@ -239,4 +239,4 @@ Writing your next test is now a lot easier since have create all the helper func
 
 A full test of the contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/master/test/toy\_strategies/Ghost.t.sol).
 
-When you have create all your tests, you may want to deploy your contract to a real chain. Read more about how to deploy [here](howtodeploy.md).
+When you have create all your tests, you may want to deploy your contract to a real chain. Read more about how to deploy [here](HowToDeploy.md).
