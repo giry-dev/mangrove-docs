@@ -1,21 +1,21 @@
-# API  classes overview
+# API classes overview
 
 {% hint style="info" %}
-#### Numbers
+**Numbers**
 
-* Numbers returned by functions are either plain javascript [`number`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global\_Objects/Number) or [`big.js`](https://github.com/MikeMcl/big.js/)instances. Some functions with names ending in `Raw` may return`ethers.BigNumbers`.&#x20;
+* Numbers returned by functions are either plain javascript [`number`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global\_Objects/Number) or [`big.js`](https://github.com/MikeMcl/big.js/)instances. Some functions with names ending in `Raw` may return`ethers.BigNumbers`.
 * As input, numbers can be as plain javascript `numbers`, `big.js` instances, but also a`string`.
 
 The precision used when dividing is 20 decimal places.
 
-#### Overrides
+**Overrides**
 
-All API functions that produce a signed transaction can be equipped with the usual `ethers.js` overrides as optional parameters.&#x20;
+All API functions that produce a signed transaction can be equipped with the usual `ethers.js` overrides as optional parameters.
 {% endhint %}
 
 ## Mangrove
 
-The root class of the API. Use `Mangrove.connect` to get an instance of it.  Here are a few possibilities:
+The root class of the API. Use `Mangrove.connect` to get an instance of it. Here are a few possibilities:
 
 ```typescript
 mgv = await Mangrove.connect(window.ethereum); // web browser
@@ -38,7 +38,7 @@ You can test you are indeed connected to the deployed Mangrove by asking for the
 
 `config = await mgv.config()`
 
-The above `mgv`  object gives you access to the `MgvToken`, `Market` and `OfferLogic` (allowing one to connect to an onchain offer logic) and `LiquidityProvider`(an abstraction layer to pass [bids](https://www.investopedia.com/terms/b/bid.asp) and [asks](https://www.investopedia.com/terms/a/ask.asp) on Mangrove) objects. &#x20;
+The above `mgv` object gives you access to the `MgvToken`, `Market` and `OfferLogic` (allowing one to connect to an onchain offer logic) and `LiquidityProvider`(an abstraction layer to pass [bids](https://www.investopedia.com/terms/b/bid.asp) and [asks](https://www.investopedia.com/terms/a/ask.asp) on Mangrove) objects.
 
 {% hint style="info" %}
 `mgv.contract`gives access to the standard `ethers.js` contract and allows one to interact with the deployed `Mangrove` using low-level `ethers.js` calls. Hence, `await mgv.contract.f(...)` will produce the ethers.js call to Mangrove (signed when needed by the `signer` provided to the `connect` function).
@@ -68,7 +68,7 @@ Note that Mangrove's API deals with token decimals automatically (see definition
 
 ## Market
 
-The `Market` class is an abstraction layer to interact with Mangrove as a liquidity taker, using standard market [buy and sell orders](sell-and-buy-orders.md). To obtain one instance use:
+The `Market` class is an abstraction layer to interact with Mangrove as a liquidity taker, using standard market [buy and sell orders](../how-to-guides/sell-and-buy-orders.md). To obtain one instance use:
 
 ```typescript
 //connect to a (base,quote) market with default options
@@ -76,7 +76,6 @@ mgvMarket = await mgv.connect({base:"<base_symbol>", quote:"<quote_symbol>"});
 
 // connect to the market, caching the first 50 best bids and asks
 mgvMarket = await mgv.connect({base:"<base_symbol>", quote:"<quote_symbol>", maxOffers: 50});
-
 ```
 
 {% hint style="info" %}
@@ -101,9 +100,9 @@ To unsubscribe `f` from market events simply use `mgvMarket.unsubscribe(f)`.
 
 Market events are records of the following kinds:
 
-* `{type: 'OfferRetract', ba:'asks'|'bids', offer:Market.Offer}` when an ask or a bid  `offer` is removed from the book
-* &#x20;`{type: 'OfferWrite', ba:'asks'|'bids', offer:Market.Offer}` when a bid or ask `offer` is added to the book (or updated)
-* &#x20;`{type:'OfferFail', ba:'asks'|'bids', taker:string, 'takerWants':Big, takerGives:Big, mgvData:string, offer:Market.Offer}` when `offer` failed to deliver. Note that `mgvData` is a bytes32 string encoding of the fail reason (according to Mangrove).
+* `{type: 'OfferRetract', ba:'asks'|'bids', offer:Market.Offer}` when an ask or a bid `offer` is removed from the book
+* `{type: 'OfferWrite', ba:'asks'|'bids', offer:Market.Offer}` when a bid or ask `offer` is added to the book (or updated)
+* `{type:'OfferFail', ba:'asks'|'bids', taker:string, 'takerWants':Big, takerGives:Big, mgvData:string, offer:Market.Offer}` when `offer` failed to deliver. Note that `mgvData` is a bytes32 string encoding of the fail reason (according to Mangrove).
 * `{type: 'OfferSuccess', ba: 'asks'|'bids', taker: string, takerWants:Big, takerGives:Big, offer:Market.Offer}` when `offer` was successfully executed (possibly on a partial fill whenever `offer.gives`>`takerWants`).
 
 and where `Market.Offer` has the following main fields:
@@ -137,12 +136,12 @@ await mgvLogic.setDefaultGasreq(200000); // default gasreq setter
 ```
 
 {% hint style="danger" %}
-When using an offer logic that inherits from the  [`MultiUser.sol`](https://github.com/mangrovedao/mangrove/blob/master/packages/mangrove-solidity/contracts/Strategies/OfferLogics/MultiUsers/MultiUser.sol) solidity class, one should always use the above `depositToken` (and `tokenBalance`) instead of sending tokens (or querying balance) directly to the contract which might result in the tokens being burnt (as only `depositToken` will increase user balance on the contract).
+When using an offer logic that inherits from the [`MultiUser.sol`](https://github.com/mangrovedao/mangrove/blob/master/packages/mangrove-solidity/contracts/Strategies/OfferLogics/MultiUsers/MultiUser.sol) solidity class, one should always use the above `depositToken` (and `tokenBalance`) instead of sending tokens (or querying balance) directly to the contract which might result in the tokens being burnt (as only `depositToken` will increase user balance on the contract).
 {% endhint %}
 
 ## LiquidityProvider
 
-A `LiquidityProvider` instance is the object one needs to [post Bids and Asks](posting-bids-and-asks.md) on a Mangrove market. There are two means to obtain an LiquidityProvider: either to post a [direct Offer](https://docs.mangrove.exchange/offer-making-strategies/basic-offer) or to post an Offer relying on some onchain [logic](api-classes-overview.md#offerlogic).
+A `LiquidityProvider` instance is the object one needs to [post Bids and Asks](../how-to-guides/posting-bids-and-asks.md) on a Mangrove market. There are two means to obtain an LiquidityProvider: either to post a [direct Offer](https://docs.mangrove.exchange/offer-making-strategies/basic-offer) or to post an Offer relying on some onchain [logic](api-classes-overview.md#offerlogic).
 
 To act as a direct liquidity provider on a some [`mgvMarket`](api-classes-overview.md#market) you must obtain a `LiquidityProvider` instance from an [`mgv`](api-classes-overview.md#mangrove) object using:
 

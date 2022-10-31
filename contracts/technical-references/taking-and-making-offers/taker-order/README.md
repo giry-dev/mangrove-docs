@@ -217,7 +217,7 @@ await tx.wait();
 * `takerGot` is the net amount of _outbound_ tokens the taker has received (i.e after applying the offer list [fee](../../governance-parameters/local-variables.md#taker-fees) if any).
 * `takerGave` is the amount of _inbound_ tokens the taker has sent.
 * `bounty` is the amount of native tokens (in units of wei) the taker received in compensation for cleaning failing offers
-* `fee` is the amount of `outbound_tkn` that was sent to Mangrove's vault in payment of the potential [fee](broken-reference/) associated to the `(outbound_tkn, inbound_tkn)`[offer list](../market.md#general-structure).&#x20;
+* `fee` is the amount of `outbound_tkn` that was sent to Mangrove's vault in payment of the potential [fee](../../../../mangrove-core/technical-references/taking-and-making-offers/taker-order/broken-reference/) associated to the `(outbound_tkn, inbound_tkn)`[offer list](../market.md#general-structure).&#x20;
 
 {% hint style="success" %}
 **Specification**
@@ -275,7 +275,7 @@ In Mangrove, a "market order" with the same parameters will however consume offe
 
 ## Offer sniping
 
-It is also possible to target specific offer IDs in the [offer list](broken-reference/). This is called **Offer Sniping**.
+It is also possible to target specific offer IDs in the [offer list](../../../../mangrove-core/technical-references/taking-and-making-offers/taker-order/broken-reference/). This is called **Offer Sniping**.
 
 {% hint style="info" %}
 Offer sniping can be used by off-chain bots and price aggregators to build their own optimized market order, targeting for instance offers with a higher volume or less gas requirements in order to optimize the gas cost of filling the order.

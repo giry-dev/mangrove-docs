@@ -4,9 +4,9 @@ You have now created your contract and would like to test it. Mangrove offers a 
 
 When we write test we are going to be using the framework [Foundry](https://book.getfoundry.sh/). Foundry is a smart contract development toolchain.
 
-When explaining "how to test" we are going to use the Ghost contract, created in [How to create a Direct contract](DirectHowTo.md).
+When explaining "how to test" we are going to use the Ghost contract, created in [How to create a Direct contract](directhowto.md).
 
-When creating your test, remember to use the naming convention `<name>.t.sol`, this way Foundry knows what files are test. The first thing to do is to import the relevant contracts. We are going to use `MangroveTest` which is a helper to setup the Mangrove protocol. This way you do not need to fork a existing chain, it can just deploy the Mangrove protocol for you before running your tests. It has many other helpers.<!-- FIXME: read about them here --> We import `Polygon` which is a helper to fork the polygon chain, we do this because we want to use the real address for WETH, USDC and DAI. This is not necessary, one could just create some test tokens an use them.<!-- FIXME: Maybe link to have to create a test token? --> We import the Ghost contract, because that is the contract we want to test. The last thing is `MgvStructs`, this helps with getting information about offers, which we need later in the test.
+When creating your test, remember to use the naming convention `<name>.t.sol`, this way Foundry knows what files are test. The first thing to do is to import the relevant contracts. We are going to use `MangroveTest` which is a helper to setup the Mangrove protocol. This way you do not need to fork a existing chain, it can just deploy the Mangrove protocol for you before running your tests. It has many other helpers. We import `Polygon` which is a helper to fork the polygon chain, we do this because we want to use the real address for WETH, USDC and DAI. This is not necessary, one could just create some test tokens an use them. We import the Ghost contract, because that is the contract we want to test. The last thing is `MgvStructs`, this helps with getting information about offers, which we need later in the test.
 
 The console import is not needed, but can be very useful, if you want to log something during your test. Debugging solidity code is not that easy, so using console logs is sometimes faster.
 
@@ -22,7 +22,7 @@ The Ghost contract is using two markets, it is there for necessary to setup the 
 
 The setup is done, at we are now ready to write the first test.
 
-```solidity showLineNumbers
+```solidity
 import {MangroveTest} from "mgv_test/lib/MangroveTest.sol";
 import {PolygonFork, PinnedPolygonFork} from "mgv_test/lib/forks/Polygon.sol";
 import {Ghost, IMangrove, IERC20} from "src/toy_strategies/offer_maker/Ghost.sol";
@@ -75,7 +75,7 @@ contract GhostTest is MangroveTest {
 ...
 ```
 
-When creating  test using Foundry, you have to name the function that runs the test `test<the name>`. This way Foundry knows what functions are tests. I our first test we want to test that when the offer is fully taken, we therefore call the test `test_success_fill`.
+When creating test using Foundry, you have to name the function that runs the test `test<the name>`. This way Foundry knows what functions are tests. I our first test we want to test that when the offer is fully taken, we therefore call the test `test_success_fill`.
 
 The first thing we need to do in our test is to deploy the Ghost contract on our local chain. Since we know that this is going to be necessary for all the test, we write how to deploy the test on the local chain in its own function.
 
@@ -177,7 +177,7 @@ When taking an offer, we need to know what offer to take. Because of this we nee
   }
 ```
 
-After having posted and taken one of the offers, we can now check whether everything happen as excepted. We use `assertEq` and ´assertTrue´ which are Foundry methods for asserting. The first thing we want to check, is whether the taker got the expected amount of WETH minus the fees taken by Mangrove. MangroveTest has a function ´minusFee(address_outbound,address_inbound, price)´, that will calculate the fee for a given market and price. The next thing is if the taker gave the correct amount of DAI.
+After having posted and taken one of the offers, we can now check whether everything happen as excepted. We use `assertEq` and ´assertTrue´ which are Foundry methods for asserting. The first thing we want to check, is whether the taker got the expected amount of WETH minus the fees taken by Mangrove. MangroveTest has a function ´minusFee(address\_outbound,address\_inbound, price)´, that will calculate the fee for a given market and price. The next thing is if the taker gave the correct amount of DAI.
 
 Having tested that the taker got and gave the correct amounts, we then want to check whether the offers are no longer live on Mangrove. To do this we use Mangrove to get the packed offers and then using Mangroves `isLive` function to check if an offer is live. In this case we except that both offers are inactive.
 
@@ -237,6 +237,6 @@ Writing your next test is now a lot easier since have create all the helper func
   }
 ```
 
-A full test of the contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/master/test/toy_strategies/Ghost.t.sol).
+A full test of the contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/master/test/toy\_strategies/Ghost.t.sol).
 
-When you have create all your tests, you may want to deploy your contract to a real chain. Read more about how to deploy [here](HowToDeploy.md).
+When you have create all your tests, you may want to deploy your contract to a real chain. Read more about how to deploy [here](howtodeploy.md).
