@@ -19,6 +19,6 @@ description: The Mangrove is an on-chain, orderbook-based exchange where offers 
 
 There are 3 types of actors in play:
 
-* Offer makers add [liquidity promises](mangrove-core/explanations/offer-maker/) to Mangrove. They own offers in [offer lists](data-structures/market.md) and must manage contracts that react to [offer execution](data-structures/offer-data-structures.md).
+* Offer makers add [liquidity promises](mangrove-core/explanations/offer-maker/) to Mangrove. They own offers in [offer lists](mangrove-core/technical-references/taking-and-making-offers/market.md) and must manage contracts that react to [offer execution](mangrove-core/technical-references/taking-and-making-offers/reactive-offer/offer-data-structures.md).
 * Takers go to Mangrove to [find liquidity](mangrove-core/explanations/offer-taker.md) by executing offers already in Mangrove.
-* [Governance](meta-topics/governance.md) adjusts Mangrove parameters, opens new pairs, sets fees, etc.
+* [Governance](mangrove-core/technical-references/governance-parameters/README.md) adjusts Mangrove parameters, opens new pairs, sets fees, etc.

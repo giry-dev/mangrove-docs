@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Mangrove developer documentation](README.md)
-* [Mangrove core](mangrove-core/README.md)
+* [Contracts](mangrove-core/README.md)
   * [Technical references](mangrove-core/technical-references/README.md)
     * [Taking and making offers](mangrove-core/technical-references/taking-and-making-offers/README.md)
       * [Offer Lists](mangrove-core/technical-references/taking-and-making-offers/market.md)
