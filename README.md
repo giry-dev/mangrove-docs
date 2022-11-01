@@ -13,7 +13,7 @@ description: The Mangrove is an on-chain, orderbook-based exchange where offers 
 * If you want to modify and improve the core of Mangrove, [read the annotated code](https://code.mangrove.exchange/MgvDoc.html) and head to the [GitHub repository](https://github.com/mangrovedao/mangrove-core).
 * All GitHub repositories can be found in the [mangrovedao](https://github.com/mangrovedao).
 
-![A bird's-eye view of the Mangrove ecosystem.](<.gitbook/assets/ContactMap (1) (1) (1) (1).png>)
+![A bird's-eye view of the Mangrove ecosystem.](<.gitbook/assets/ContactMap (1) (1) (1) (2).png>)
 
 ## Who interacts with Mangrove
 
