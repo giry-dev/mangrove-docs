@@ -2,8 +2,7 @@
 
 * [Mangrove developer documentation](README.md)
 * [Contracts](mangrove-core/README.md)
-  * [Getting started](mangrove-core/tutorials/README.md)
-    * [Demos](mangrove-core/tutorials/demos.md)
+  * [Getting started](mangrove-core/tutorials.md)
   * [How-to guides](mangrove-core/how-to-guides/README.md)
     * [Cleaning offers](mangrove-core/how-to-guides/cleaning-an-offer.md)
     * [How to create a Direct contract](mangrove-core/how-to-guides/DirectHowTo.md)
