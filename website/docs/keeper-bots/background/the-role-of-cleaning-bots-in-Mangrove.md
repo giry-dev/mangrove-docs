@@ -17,4 +17,6 @@ On the surface, this might seem skewed in favor of makers. However, by having ac
 In other words, the possibility of offers failing is a necessity for the power of smart offers.
 
 # Why and how cleaning bots keep the order books clean
-While we have to accept that offers may fail, we don't have to accept that they accumulate and degrade the order book. Mangrove therefore has built-in incentives and mechanisms for removing failing offers.
+While we have to accept that offers may fail, we don't have to accept that they accumulate and degrade the order book. Mangrove therefore has a built-in incentive for removing failing offers: %%Bounties|bounty%%.
+
+When an offer fails, the taker receives a bounty in native token. The bounty is bigger than the gas used to make the offer fail and thus the taker is compensated for the wasted gas. But more importantly, it can be profitable to identify offers that will fail and snipe those offers.

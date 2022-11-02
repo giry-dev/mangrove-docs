@@ -100,9 +100,9 @@ const config = {
             label: 'Keeper bots',
           },
           {
-            to: '/docs/glossary',
-            position: 'left',
-            label: 'Terminology',
+            href: '/docs/glossary',
+            label: 'Glossary',
+            position: 'right',
           },
           {
             href: 'https://github.com/mangrovedao',

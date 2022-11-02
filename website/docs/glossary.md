@@ -1,6 +1,6 @@
 ---
 id: glossary
-title: Terminology
+title: Glossary
 ---
 
 ### [Allowance](/docs/terms/Allowance) 
@@ -23,8 +23,8 @@ Describe bae
 Describe bids
 
 
-### [Bounty](/docs/terms/Bounty) 
-Describe bounty
+### [Bounty](/docs/terms/bounty) 
+An amount of native token paid to the taker when an offer fails
 
 
 ### [Density](/docs/terms/Density) 
