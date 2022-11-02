@@ -19,28 +19,35 @@ When an offer fails, the caller has wasted some gas. To compensate the caller, M
 
 There are three ways an offer logic can credit its balance on Mangrove. (1) The logic may either call the `fund` function, or (2) make a call to the fallback function with some value, or (3) pay on the fly when a [new offer is posted](./#posting-a-new-offer).&#x20;
 
-{% tabs %}
-{% tab title="Signature" %}
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="signature" label="Signature" default>
+
 ```solidity
 function fund(address maker) public payable;
 ```
-{% endtab %}
 
-{% tab title="Events" %}
+</TabItem>
+
+<TabItem value="events" label="Events">
+
 ```solidity
 // Offer Maker at address `maker` has been credited of `amount` wei
 event Credit(address maker, uint amount);
 ```
-{% endtab %}
 
-{% tab title="Revert string" %}
+</TabItem>
+<TabItem value="revertStrings" label="Revert strings">
+
 ```solidity
 "mgv/dead" // Mangrove contract is no longer live
 ```
-{% endtab %}
 
-{% tab title="Solidity" %}
-{% code title="fund.sol" %}
+</TabItem>
+<TabItem value="solidity" label="Solidity">
+
 ```solidity
 import "src/IMangrove.sol";
 //context 
@@ -57,11 +64,10 @@ mgv.fund{value: 0.1 ether}();
 (bool noRevert,) = address(mgv).call{value: amount}("");
 require(noRevert, "transfer failed");
 ```
-{% endcode %}
-{% endtab %}
 
-{% tab title="ethers.js" %}
-{% code title="fund.js" %}
+</TabItem>
+<TabItem value="ethersjs" label="ethers.js">
+
 ```javascript
 const { ethers } = require("ethers");
 //context
@@ -79,19 +85,20 @@ let overrides = { value: ethers.parseUnits("0.1", 18) };
 // provisioning Mangrove on behalf of MakerContract
 await Mangrove["fund(address)"](maker_contract_address, overrides);
 ```
-{% endcode %}
-{% endtab %}
-{% endtabs %}
+
+</TabItem>
+</Tabs>
 
 #### Inputs
 
 * `maker` the offer logic's balance on Mangrove to credit
 
-{% hint style="danger" %}
+:::danger 
 **Do not use `send` or `transfer` to credit Mangrove**&#x20;
 
 Upon receiving funds, Mangrove will credit the amount sent to `maker` (or `msg.sender` if the `receive` function was called). This involves writing to storage, which consumes more gas than the amount given by `send` and `transfer`.
-{% endhint %}
+
+:::
 
 ### Checking an account balance
 
@@ -111,27 +118,31 @@ function balanceOf(address who) external view returns (uint balance);
 
 At any time, your available balance can be withdrawn. It may be less than what you deposited: your balance adjusts every time you create/update an offer.
 
-{% tabs %}
-{% tab title="Signature" %}
+<Tabs>
+<TabItem value="signature" label="Signature" default>
+
 ```solidity
 function withdraw(uint amount) external returns (bool noRevert);
 ```
-{% endtab %}
 
-{% tab title="Events" %}
+</TabItem>
+<TabItem value="events" label="Events">
+
 ```solidity
 event Debit(address maker, uint amount);
 ```
-{% endtab %}
 
-{% tab title="Revert strings" %}
+</TabItem>
+<TabItem value="revertStrings" label="Revert strings">
+
 ```solidity
 // Trying to withdraw unavailable funds
 "mgv/insufficientProvision"
 ```
-{% endtab %}
 
-{% tab title="Solidity" %}
+</TabItem>
+<TabItem value="solidity" label="Solidity">
+
 ```solidity
 import "src/IMangrove.sol";
 //context 
@@ -140,8 +151,9 @@ IMangrove mgv; // Mangrove contract
 uint wei_balance = mgv.balanceOf(address(this));
 require(mgv.withdraw(wei_balance), "Mangrove failed to transfer funds");
 ```
-{% endtab %}
-{% endtabs %}
+
+</TabItem>
+</Tabs>
 
 #### Inputs
 
@@ -151,12 +163,12 @@ require(mgv.withdraw(wei_balance), "Mangrove failed to transfer funds");
 
 * `noRevert` whether the ether transfer was successful.
 
-{% hint style="danger" %}
-**Important points**
+:::danger **Important points**
 
 * The account credited will be `msg.sender`.
 * `amount` must be $$\leq$$ your available balance (available with `balanceOf`)
-{% endhint %}
+
+:::
 
 ## Balance adjustment when creating/updating offers
 
@@ -171,23 +183,23 @@ $$\textrm{provision} = \max(\textrm{gasprice}_{\textrm{mgv}},\textrm{gasprice}_{
 
 Mangrove will adjust the balance of the caller to ensure that $$\textrm{provision}$$ wei are available as bounty if the offer fails. If the offer was _already_ provisioned, the adjustment may be small, and the balance may actually increase -- for instance, if the `gasprice` dropped recently.
 
-{% hint style="info" %}
-**Incentivized book cleaning**
+:::info **Incentivized book cleaning**
 
 Provisions are calculated so that, within reasonable gas estimates, taking a failing offer should be profitable for the taker.
-{% endhint %}
 
-{% hint style="success" %}
-**Gas optimization**
+:::
+
+:::tip **Gas optimization**
 
 If you frequently update your offers, we recommend using a consistent, high `gasprice` argument, above the actual expected gas prices. Not changing `gasprice` when you call `updateOffer` will make the call cheaper (you save one `SSTORE`).
-{% endhint %}
+
+:::
 
 ## Provision and offer bounty
 
-{% tabs %}
-{% tab title="Solidity snippet" %}
-{% code title="getProvision.sol" %}
+<Tabs>
+<TabItem value="soliditiy" label="Solidity" default>
+
 ```solidity
 import "src/IMangrove.sol";
 import {MgvStructs} from "src/MgvLib.sol";
@@ -201,11 +213,11 @@ uint offer_gasreq;
 // computing minimal provision to cover an offer requiring `offer_gasreq` gas units 
 uint provision = (offer_gasreq + local32.offer_gasbase()) * global32.gasprice() * 10 ** 9;
 ```
-{% endcode %}
-{% endtab %}
 
-{% tab title="with ethers.js" %}
-{% code title="getProvision.js" %}
+
+</TabItem>
+<TabItem value="ethersjs" label="ethers.js">
+
 ```javascript
 const { ethers } = require("ethers");
 let outTkn; // address of outbound token ERC20
@@ -222,12 +234,12 @@ const MangroveReader = new ethers.Contract(
 const ofr_gasreq = ethers.parseUnits("1",5); //100,000 gas units
 const bounty = await MangroveReader.getProvision(outTkn, inbTkn, ofr_gasreq,0);
 ```
-{% endcode %}
-{% endtab %}
-{% endtabs %}
 
-{% hint style="warning" %}
-**Applied bounty**
+</TabItem>
+</Tabs>
+
+:::caution **Applied bounty**
 
 Suppose an offer requires $$g_{\mathsf{ofr}}$$​ gas units to execute. As explained above, Mangrove will require the logic posting the offer to provision $$\beta$$ WEI. Suppo se the offer is executed during a Taker Order and fails after $$g_{\mathsf{used}}$$gas units ($$g_\mathsf{used}<g_\mathsf{ofr}$$). The portion of the bounty that will be transferred to the Offer Taker's account is $$\dot G*(\dot g_0/n+\dot g_1+g_\mathsf{used})$$ where $$\dot G$$​, $$\dot g_0$$, $$n$$ and $$\dot g_1$$are respectively the [`global.gasprice`](broken-reference), [`local.overhead_gasbase`](broken-reference), the number of offers executed during the take order, and the [`local.offer_gasbase`](broken-reference) values _at the time the offer is taken_ (which may differ from their values at the time the offer was posted, as a consequence of some parameter changes by the governance).
-{% endhint %}
+
+:::

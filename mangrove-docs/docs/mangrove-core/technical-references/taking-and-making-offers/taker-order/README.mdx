@@ -29,8 +29,12 @@ When an order is processed by Mangrove's matching engine, it consumes the offers
 
 Any failed [offer](../reactive-offer/) execution results in a [bounty](../reactive-offer/offer-provision.md#computing-the-provision-and-offer-bounty) being sent to the caller as compensation for the wasted gas.
 
-{% tabs %}
-{% tab title="Signature" %}
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="signature" label="Signature" default>
+
 ```solidity
 function marketOrder(
     address outbound_tkn,
@@ -40,9 +44,10 @@ function marketOrder(
     bool fillWants
   ) external returns (uint takerGot, uint takerGave, uint bounty, uint fee);
 ```
-{% endtab %}
 
-{% tab title="Events" %}
+  </TabItem>
+  <TabItem value="events" label="Events">
+
 ```solidity
 // Since the contracts that are called during the order may be partly reentrant, more logs could be emitted by Mangrove.
 // we list here only the main expected logs.
@@ -97,9 +102,10 @@ event OrderComplete(
     uint feePaid // the fee paid by the taker
  );
 ```
-{% endtab %}
 
-{% tab title="Revert strings" %}
+  </TabItem>
+  <TabItem value="revertStrings" label="Revert strings">
+
 ```solidity
 // Gatekeeping
 "mgv/dead" // Trying to take offers on a terminated Mangrove
@@ -114,10 +120,10 @@ event OrderComplete(
 "mgv/feeTransferFail" // Mangrove could not collect fees from the taker
 "mgv/MgvFailToPayTaker" // Mangrove was unable to transfer outbound_tkn to taker (Taker blacklisted?)
 ```
-{% endtab %}
 
-{% tab title="Solidity" %}
-{% code title="marketOrder.sol" %}
+  </TabItem>
+  <TabItem value="solidity" label="Solidity">
+
 ```solidity
 import "src/IMangrove.sol";
 import {IERC20} from "src/MgvLib.sol";
@@ -143,11 +149,10 @@ IERC20(inbTkn).approve(MGV, type(uint).max);
     true
 });
 ```
-{% endcode %}
-{% endtab %}
 
-{% tab title="ethers.js" %}
-{% code title="marketOrder.js" %}
+  </TabItem>
+  <TabItem value="ethersjs" label="ethers.js">
+
 ```javascript
 const { ethers } = require("ethers");
 // context
@@ -197,9 +202,9 @@ const tx = await Mangrove.connect(signer).marketOrder(
     );
 await tx.wait();
 ```
-{% endcode %}
-{% endtab %}
-{% endtabs %}
+
+  </TabItem>
+</Tabs>
 
 ### Inputs
 
@@ -219,22 +224,21 @@ await tx.wait();
 * `bounty` is the amount of native tokens (in units of wei) the taker received in compensation for cleaning failing offers
 * `fee` is the amount of `outbound_tkn` that was sent to Mangrove's vault in payment of the potential [fee](broken-reference/) associated to the `(outbound_tkn, inbound_tkn)`[offer list](../market.md#general-structure).&#x20;
 
-{% hint style="success" %}
-**Specification**
+:::tip **Specification**
 
 At the end of a Market Order the following is guaranteed to hold:
 
 * The taker will not spend more than `takerGives`.
 * The average price paid `takerGave/(`takerGot + fee`)` will be maximally close to `takerGives/takerWants:`for each offer taken, the amount paid will be $$\leq$$ the expected amount + 1.
-{% endhint %}
+
+:::
 
 | ID | wants (USDC) | gives (DAI) |
 | -- | ------------ | ----------- |
 | 2  | 0.98         | 1           |
 | 1  | 9.9          | 10          |
 
-{% hint style="info" %}
-**Example**
+:::info **Example**
 
 Consider the DAI-USDC offer list (with no fee) above. If a taker calls `marketOrder`on this offer list with`takerWants=2` and `takerGives = 2.2` she is ready to give away up to 2.2 USDC in order to get 2 DAI.
 
@@ -244,7 +248,8 @@ Consider the DAI-USDC offer list (with no fee) above. If a taker calls `marketOr
 * If `fillWants` is `false` the market order will provide 2.2078 DAI for 2 USDC.
   1. 1 DAI for 0.98 USDC from offer #1
   2. 1.2078 DAI for the remaining 1.22 USDC from offer #2
-{% endhint %}
+
+:::
 
 ### More on market order behaviour
 
@@ -253,11 +258,11 @@ Mangrove's market orders are configurable using the three parameters `takerWants
 * **Market buy:** A limit **buy** order for x tokens B, corresponds to a `marketOrder` on the (`B`,`Q`) offer list with `takerWants=x` (the volume one wishes to buy) and with `takerGives` such that `takerGives/x` is the limit price cap, and setting `fillWants` to `true`.
 * **Market sell:** A limit **sell** order for x tokens B, corresponds to a `marketOrder` on the (`Q`, `B`) offer list with `takerGives=x` (the volume one wishes to sell) and with `takerWants` such that `takerGives/x` is the limit price cap, and setting `fillWants` to `false`.
 
-{% hint style="warning" %}
-**On order residuals**
+:::caution **On order residuals**
 
 Contrary to [GTC orders](https://www.investopedia.com/terms/g/gtc.asp) on regular [orderbook](https://www.investopedia.com/terms/o/order-book.asp) based exchanges, the residual of your order (i.e. the volume you were not able to buy/sell due to hitting your price limit) will _not_ be put on the market as an offer. Instead, the market order will simply end partially filled.
-{% endhint %}
+
+:::
 
 ### Market order prices are volume-weighted
 
@@ -277,12 +282,15 @@ In Mangrove, a "market order" with the same parameters will however consume offe
 
 It is also possible to target specific offer IDs in the [offer list](broken-reference/). This is called **Offer Sniping**.
 
-{% hint style="info" %}
-Offer sniping can be used by off-chain bots and price aggregators to build their own optimized market order, targeting for instance offers with a higher volume or less gas requirements in order to optimize the gas cost of filling the order.
-{% endhint %}
+:::info 
 
-{% tabs %}
-{% tab title="Signature" %}
+Offer sniping can be used by off-chain bots and price aggregators to build their own optimized market order, targeting for instance offers with a higher volume or less gas requirements in order to optimize the gas cost of filling the order.
+
+:::
+
+<Tabs>
+  <TabItem value="signature" label="Signature" default>
+
 ```solidity
 function snipes(
     address outbound_tkn,
@@ -299,9 +307,10 @@ function snipes(
       uint fee
     );
 ```
-{% endtab %}
 
-{% tab title="Events" %}
+</TabItem>
+  <TabItem value="events" label="Events">
+
 ```solidity
 // Since the contracts that are called during the order may be partly reentrant, more logs could be emitted by Mangrove.
 // we list here only the main expected logs.
@@ -350,9 +359,10 @@ event OrderComplete(
     uint takerGave // total amount of inbound tokens sent by taker
  );
 ```
-{% endtab %}
 
-{% tab title="Revert strings" %}
+</TabItem>
+<TabItem value="revert" label="Revert strings">
+
 ```javascript
 // Gatekeeping
 "mgv/dead" // Trying to take offers on a terminated Mangrove
@@ -367,10 +377,11 @@ event OrderComplete(
 "mgv/feeTransferFail" // Mangrove could not collect fees from the taker
 "mgv/MgvFailToPayTaker" // Mangrove was unable to transfer outbound_tkn to taker (Taker blacklisted?)
 ```
-{% endtab %}
 
-{% tab title="Solidity" %}
-{% code title="snipes.sol" %}
+</TabItem>
+
+<TabItem value="solidity" label="Solidity">
+
 ```solidity
 import "src/IMangrove.sol";
 import {IERC20} from "src/MgvLib.sol";
@@ -397,11 +408,11 @@ IERC20(inbTkn).approve(MGV, type(uint).max);
 );
 //we have: `successes < 2 <=> bounty > 0`
 ```
-{% endcode %}
-{% endtab %}
 
-{% tab title="ethers.js" %}
-<pre class="language-javascript" data-title="snipes.js"><code class="lang-javascript">const { ethers } = require("ethers");
+</TabItem>
+<TabItem value="ethersjs" label="ethers.js">
+
+```javascript
 // context
 <strong>// outTkn: address of outbound token ERC20
 </strong>// inbTkn: address of inbound token ERC20
@@ -455,9 +466,12 @@ await Mangrove.connect(signer).snipes(
     inbTkn,
     [snipe1, snipe2],
     true // fillwants
-    );</code></pre>
-{% endtab %}
-{% endtabs %}
+    );
+```
+
+  </TabItem>
+</Tabs>
+
 
 ### Inputs
 
@@ -470,8 +484,7 @@ await Mangrove.connect(signer).snipes(
   * `gasreq_permitted` is the maximum `gasreq` the taker will tolerate for that [offer](../reactive-offer/). If the offer's `gasreq` is higher than `gasreq_permitted`, the offer will not be sniped.
 * `fillWants` specifies whether you are acting as a buyer of **outbound tokens**, in which case you will buy at most `takerWants`, or a seller of **inbound tokens**, in which case you will buy as many tokens as possible as long as you don't spend more than `takerGives`.&#x20;
 
-{% hint style="warning" %}
-**Protection against malicious offer updates**
+:::caution **Protection against malicious offer updates**
 
 Offers can be updated, so if `targets` was just an array of `offerId`s, there would be no way to protect against a malicious offer update mined right before a snipe. The offer could suddenly have a worse price, or require a lot more gas.
 
@@ -481,7 +494,8 @@ If you only want to take offers without any checks on the offer contents, you ca
 * Set `takerGives` to `type(uint96).max`,
 * Set `gasreq_permitted` to `type(uint).max`, and
 * Set `fillWants` to `false`.
-{% endhint %}
+
+:::
 
 ### Outputs
 

@@ -20,16 +20,16 @@ Here is the offer lifecycle, with the parts addressed in this section bolded:
 7. **Mangrove calls the function **[**`makerPosthook`**](maker-contract.md#offer-post-hook)** of `maker.eth`**.
 8. The offer is now out of its offer list, but may be updated at a later time by `maker.eth`.
 
-{% hint style="info" %}
-**Multiple offers per address**
+:::info **Multiple offers per address**
 
 An account can post more than one offer. When it gets called through `makerExecute`, it will receive the id of the offer being executed as well as additional information.
-{% endhint %}
 
-{% hint style="info" %}
-**Example scenario** Suppose that an [offer](reactive-offer.md) managed by a contract promises 100,000 DAI in exchange for 100,000 USDC.
+:::
+
+:::info **Example scenario** Suppose that an [offer](reactive-offer.md) managed by a contract promises 100,000 DAI in exchange for 100,000 USDC.
 
 Upon being called, the contract has 100,000 USDC available (just given to it by Mangrove) and may source DAI from anywhere on the chain. It needs to end execution with 100,000 DAI available and ready to be transferred by Mangrove through `transferFrom`.
-{% endhint %}
+
+:::
 
 ![Example of a the execution of two offers during a market order. Offer #1 has the best price and is called first. Notice the posthook of Offer #2 is called first at the end of the maker order.](../../../../static/img/assets/execution.png)

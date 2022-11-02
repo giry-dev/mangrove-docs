@@ -8,12 +8,18 @@ description: How to write Mangrovian offers
 
 New offers should mostly be posted by [contracts](maker-contract.md) able to source liquidity when asked by Mangrove.&#x20;
 
-{% hint style="info" %}
-`newOffer` is payable and can be used to credit the Offer Logic's balance on Mangrove on the fly. A non zero `msg.value` will allow Mangrove to credit Offer Logic's balance prior to locking the [provision](offer-provision.md) of the newly posted offer.
-{% endhint %}
+:::info 
 
-{% tabs %}
-{% tab title="Signature" %}
+`newOffer` is payable and can be used to credit the Offer Logic's balance on Mangrove on the fly. A non zero `msg.value` will allow Mangrove to credit Offer Logic's balance prior to locking the [provision](offer-provision.md) of the newly posted offer.
+
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="signature" label="Signature" default>
+
 ```solidity
 function newOffer(
     address outboundTkn,
@@ -25,9 +31,10 @@ function newOffer(
     uint pivotId
 ) external payable returns (uint offerId);
 ```
-{% endtab %}
 
-{% tab title="Events" %}
+</TabItem>
+<TabItem value="events" label="Events">
+
 ```solidity
 // logging new offer's data 
 event OfferWrite(
@@ -46,9 +53,10 @@ event OfferWrite(
  // `maker` balance on Mangrove is credited of `amount` WEIs if `msg.value > 0`.
  event CreditWei(address maker, uint amount); 
 ```
-{% endtab %}
 
-{% tab title="Revert strings" %}
+</TabItem>
+<TabItem value="revertStrings" label="Revert strings">
+
 ```javascript
 // Gatekeeping
 "mgv/dead" // Mangrove contract is terminated
@@ -70,10 +78,10 @@ event OfferWrite(
 // Insufficient provision
 "mgv/insufficientProvision" // provision of `msg.sender` should cover offer bounty
 ```
-{% endtab %}
 
-{% tab title="Solidity" %}
-{% code title="newOffer.sol" %}
+</TabItem>
+<TabItem value="solidity" label="Solidity">
+
 ```solidity
 import "src/IMangrove.sol";
 import {IERC20, MgvStructs} "src/MgvLib.sol";
@@ -112,10 +120,10 @@ IMangrove(MGV).newOffer{value: provision}(
         pivotId // heuristic: tries to insert this offer after pivotId
 );  
 ```
-{% endcode %}
-{% endtab %}
 
-{% tab title="ethers.js" %}
+</TabItem>
+<TabItem value="ethersjs" label="ethers.js">
+
 ```typescript
 const {ethers} = require("ethers");
 // context 
@@ -170,8 +178,9 @@ tx = await Mangrove.connect(signer).newOffer(
 await tx.wait();
 
 ```
-{% endtab %}
-{% endtabs %}
+
+</TabItem>
+</Tabs>
 
 **Inputs**
 
@@ -316,11 +325,10 @@ None.
 An offer can only be updated if `msg.sender` is the [account](maker-contract.md) that created the offer.
 {% endhint %}
 
-{% hint style="warning" %}
-**Reusing offers**
+:::caution **Reusing offers**
 
 After being executed or [retracted](./#retracting-an-offer), an offer is moved out of the offer list. It can still be updated and reinserted in the offer list. We recommend updating offers instead of creating new ones, as it costs much less gas.
-{% endhint %}
+:::
 
 ### Retracting an offer
 

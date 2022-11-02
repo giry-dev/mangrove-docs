@@ -8,16 +8,21 @@ description: How to write offer execution logic
 
 The logic associated with an offer **must** be implemented through a `makerExecute` callback function. (See [data structures](offer-data-structures.md#mgvlib.singleorder) for `SingleOrder` type).
 
-{% tabs %}
-{% tab title="Signature" %}
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="signature" label="Signature" default>
+
 ```solidity
 function makerExecute(MgvLib.SingleOrder calldata order)
 external returns (bytes32 makerData);
 ```
-{% endtab %}
 
-{% tab title="Offer logic" %}
-{% code title="MakerContract-0.sol" %}
+</TabItem>
+
+<TabItem value="offerLogic" label="Offer logic">
+
 ```solidity
 import {IERC20, IMaker, SingleOrder} "src/MgvLib.sol";
 
@@ -43,12 +48,10 @@ contract MyOffer is IMaker {
         return "MyOffer/tradeSuccess";
     }
 }
-    
-    
 ```
-{% endcode %}
-{% endtab %}
-{% endtabs %}
+
+</TabItem>
+</Tabs>
 
 #### Inputs
 
@@ -58,50 +61,51 @@ contract MyOffer is IMaker {
 
 * `makerData` is an arbitrary `bytes32` that will be passed to `makerPosthoook` in the `makerData` field.
 
-{% hint style="danger" %}
-**Security concerns**
+:::danger **Security concerns**
 
 Your contract should ensure that only Mangrove can call `makerExecute` to avoid unwanted state change.&#x20;
-{% endhint %}
 
-{% hint style="success" %}
-**How to succeed**
+:::
+
+:::tip **How to succeed**
 
 To successfully execute, the logic **must** not revert during the call to `makerExecute` and have at least `wants` _outbound_ tokens available for Mangrove to transfer by the end of the function's execution.
 
 **How to renege on trade**
 
 The proper way to renege on an offer is to make the execution of `makerExecute` throw with a reason that can be cast to a `bytes32`. Having a balance of _outbound_ tokens that is lower than `order.wants` will also make trade fail, but with a higher incurred gas cost and thus a higher [bounty](offer-provision.md#provision-and-offer-bounty).
-{% endhint %}
 
-{% hint style="warning" %}
-**Better fail early!**
+:::
+
+:::caution **Better fail early!**
 
 The [bounty](offer-provision.md#computing-the-provision-and-offer-bounty) taken from the offer maker's provision is [proportional](offer-provision.md#computing-the-provision-and-offer-bounty) to the gas consumed by `makerExecute`. To minimize costs, try to fail as early as possible.
-{% endhint %}
 
-{% hint style="danger" %}
-**Mangrove is guarded against reentrancy during `makerExecute`**
+:::
+
+:::danger **Mangrove is guarded against reentrancy during `makerExecute`**
 
 The offer list for the _outbound_ / _inbound_ token pair is temporarily locked during calls to `makerExecute`. Its offers cannot be modified in any way. The offer logic must use `makerPosthook` to repost/update its offers, since the offer list will unlocked by then.
-{% endhint %}
+
+:::
 
 ### Offer post-hook
 
 The logic associated with an offer may include a `makerPosthook` callback function. Its intended use is to update offers in the [offer list](../market.md) containing the [offer](./) that was just executed.
 
-{% tabs %}
-{% tab title="Signature" %}
+<Tabs>
+<TabItem value="signature" label="Signature" default>
+
 ```solidity
 function makerPosthook(
     MgvLib.SingleOrder calldata order,
     MgvLib.OrderResult calldata result
   ) external;
 ```
-{% endtab %}
 
-{% tab title="Offer logic" %}
-{% code title="MakerContract-1.sol" %}
+</TabItem>
+<TabItem value="offerLogic" label="Offer logic">
+
 ```solidity
 import {IERC20, IMaker, SingleOrder, OrderResult, MgvStructs} from "src/MgvLib.sol";
 
@@ -133,10 +137,11 @@ abstract contract MakerContract is IMaker {
             );
         }
     }
+}
 ```
-{% endcode %}
-{% endtab %}
-{% endtabs %}
+
+</TabItem>
+</Tabs>
 
 #### Inputs
 
@@ -149,24 +154,24 @@ abstract contract MakerContract is IMaker {
 
 None.
 
-{% hint style="danger" %}
-**Security concerns**
+:::danger **Security concerns**
 
 Your contract should ensure that only Mangrove can call `makerPosthook` to avoid unwanted state change.
-{% endhint %}
 
-{% hint style="warning" %}
-**Gas management**
+:::
+
+:::caution **Gas management**
 
 `MakerPosthook` is given the executed offer's `gasreq` minus the gas used by `makerExecute`.&#x20;
 
 **Updating offers during posthook**
 
 During the execution of a posthook, the executed offer's list is unlocked. This feature can be used to repost an [offer](./) (even the one that was just executed), possibly at a different price.
-{% endhint %}
 
-{% hint style="warning" %}
-**Reverting**
+:::
+
+:::caution **Reverting**
 
 Reverting during `makerPosthook` does not renege on trade, which is settled at the end of `makerExecute`.
-{% endhint %}
+
+:::

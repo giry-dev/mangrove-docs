@@ -6,9 +6,11 @@ description: >-
 
 # SDK
 
-{% hint style="info" %}
+:::info
+
 Wraps around [ethers.js](https://github.com/ethers-io/ethers.js). Works in the **web browser** and [Node.js](https://nodejs.org/en/).
-{% endhint %}
+
+:::
 
 ## Getting started
 
@@ -20,7 +22,6 @@ sandbox_folder$> npm install @mangrovedao/mangrove.js
 
 and you may readily connect to Mangrove with [Node.js](https://nodejs.org/en/), for instance:
 
-{% code title="demo.node.terminal" %}
 ```bash
 sandbox_folder$> node
 Welcome to Node.js v_xxx
@@ -49,4 +50,3 @@ Type ".help" for more information.
 │    2    │ 1  │ '0xcBb37575320FF499E9F69d0090b6944bc0aD7585' │ 0.23559598787030558 │ 4244.55445544554446426917 │
 └─────────┴────┴──────────────────────────────────────────────┴─────────────────────┴───────────────────────────┘
 ```
-{% endcode %}

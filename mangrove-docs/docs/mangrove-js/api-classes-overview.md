@@ -1,7 +1,6 @@
 # API classes overview
 
-{% hint style="info" %}
-**Numbers**
+:::info **Numbers**
 
 * Numbers returned by functions are either plain javascript [`number`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global\_Objects/Number) or [`big.js`](https://github.com/MikeMcl/big.js/)instances. Some functions with names ending in `Raw` may return`ethers.BigNumbers`.
 * As input, numbers can be as plain javascript `numbers`, `big.js` instances, but also a`string`.
@@ -11,7 +10,8 @@ The precision used when dividing is 20 decimal places.
 **Overrides**
 
 All API functions that produce a signed transaction can be equipped with the usual `ethers.js` overrides as optional parameters.
-{% endhint %}
+
+:::
 
 ## Mangrove
 
@@ -40,9 +40,11 @@ You can test you are indeed connected to the deployed Mangrove by asking for the
 
 The above `mgv` object gives you access to the `MgvToken`, `Market` and `OfferLogic` (allowing one to connect to an onchain offer logic) and `LiquidityProvider`(an abstraction layer to pass [bids](https://www.investopedia.com/terms/b/bid.asp) and [asks](https://www.investopedia.com/terms/a/ask.asp) on Mangrove) objects.
 
-{% hint style="info" %}
+:::info
+
 `mgv.contract`gives access to the standard `ethers.js` contract and allows one to interact with the deployed `Mangrove` using low-level `ethers.js` calls. Hence, `await mgv.contract.f(...)` will produce the ethers.js call to Mangrove (signed when needed by the `signer` provided to the `connect` function).
-{% endhint %}
+
+:::
 
 ## MgvToken
 
@@ -62,9 +64,11 @@ await mgvTkn.contract.approve("<spender>", mgvTkn.mgv.toUnits(0.5)); // ethers.j
 
 Note that Mangrove's API deals with token decimals automatically (see definitions in [`constants.ts`](https://github.com/mangrovedao/mangrove/blob/master/packages/mangrove.js/src/constants.ts)).
 
-{% hint style="info" %}
+:::info
+
 `MgvToken.contract` gives access to the `ethers.js` contract allowing one to interact with the deployed contract using low level calls (for instance if the token has functions that are do not belong to the ERC20 standard).
-{% endhint %}
+
+:::
 
 ## Market
 
@@ -78,9 +82,11 @@ mgvMarket = await mgv.connect({base:"<base_symbol>", quote:"<quote_symbol>"});
 mgvMarket = await mgv.connect({base:"<base_symbol>", quote:"<quote_symbol>", maxOffers: 50});
 ```
 
-{% hint style="info" %}
+:::info
+
 Upon connection to a market, the API subscribes to events emanating from Mangrove in order to maintain a local cache of the order book. One may increase the size of the cache by using `mgv.connect({..., maxOffers:<size of the book>})`.
-{% endhint %}
+
+:::
 
 For debugging purpose, the class provides a console of the current state of bids and asks posted on Mangrove. For instance to display the bid offers on Mangrove on this market:
 
@@ -135,9 +141,11 @@ cosnt gasreq = await mgvLogic.getDefaultGasreq(); // returns the gas required (b
 await mgvLogic.setDefaultGasreq(200000); // default gasreq setter
 ```
 
-{% hint style="danger" %}
+:::danger
+
 When using an offer logic that inherits from the [`MultiUser.sol`](https://github.com/mangrovedao/mangrove/blob/master/packages/mangrove-solidity/contracts/Strategies/OfferLogics/MultiUsers/MultiUser.sol) solidity class, one should always use the above `depositToken` (and `tokenBalance`) instead of sending tokens (or querying balance) directly to the contract which might result in the tokens being burnt (as only `depositToken` will increase user balance on the contract).
-{% endhint %}
+
+:::
 
 ## LiquidityProvider
 
@@ -149,9 +157,11 @@ To act as a direct liquidity provider on a some [`mgvMarket`](api-classes-overvi
 const mgvDirectLP = await mgv.liquidityProvider(mgvMarket);
 ```
 
-{% hint style="info" %}
+:::info
+
 The EOA providing the liquidity for ask and bid offers emanating from a direct liquidity provider is the address of the [`mgv`](api-classes-overview.md#mangrove)'s signer provided at the creation of the Mangrove instance.
-{% endhint %}
+
+:::
 
 For more complete experience of the Mangrove capabilities, on may rather post bids and asks via an offer logic `mgvLogic`. To do so, one does:
 

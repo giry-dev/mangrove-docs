@@ -8,17 +8,22 @@ description: Mangrove getters for offers and offer lists.
 
 ### `best(address outbound, address inbound)`
 
-{% hint style="info" %}
+:::info
+
 Returns the offer identifier that occupies the best [rank](market.md#offer-rank) in the `(outbound, inbound)`[offer list](market.md).
 
 * highest outbound volume
 * least gas required
 * oldest time of insertion on the list
-{% endhint %}
 
-{% tabs %}
-{% tab title="Solidity" %}
-{% code title="bestOffer.sol" %}
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="solidity" label="Solidity" default>
+
 ```solidity
 import "src/IMangrove.sol";
 
@@ -29,11 +34,10 @@ address inbound_tkn;
 
 uint best = mgv.best(outbound_tkn, inbound_tkn); 
 ```
-{% endcode %}
-{% endtab %}
 
-{% tab title="ethers.js" %}
-{% code title="bestOffer.js" %}
+</TabItem>
+<TabItem value="ethersjs" label="ethers.js">
+
 ```javascript
 const { ethers } = require("ethers");
 // context
@@ -51,19 +55,21 @@ const mgv = new ethers.Contract(
 // getting best offer of the (outTkn,inbTk) market
 const best = await mgv.best(outboundTkn, inboundTkn); 
 ```
-{% endcode %}
-{% endtab %}
-{% endtabs %}
+
+</TabItem>
+</Tabs>
 
 ### `offers(address, address) / offerDetails(address, address, uint)`
 
-{% hint style="info" %}
-The data pertaining to a particular offer is contained in the `OfferUnpacked` and `OfferDetailUnpacked` structs, which are stored as packed custom types called, respectively, `OfferPacked` and `OfferDetailUnpacked.` For on-chain calls, Mangrove provides unpacking functions to extract a particular field out of a packed structure. For off-chain calls, Mangrove also provide direct getter for the unpacked structures.&#x20;
-{% endhint %}
+:::info
 
-{% tabs %}
-{% tab title="Solidity" %}
-{% code title="getOfferData.sol" %}
+The data pertaining to a particular offer is contained in the `OfferUnpacked` and `OfferDetailUnpacked` structs, which are stored as packed custom types called, respectively, `OfferPacked` and `OfferDetailUnpacked.` For on-chain calls, Mangrove provides unpacking functions to extract a particular field out of a packed structure. For off-chain calls, Mangrove also provide direct getter for the unpacked structures.&#x20;
+
+:::
+
+<Tabs>
+<TabItem value="solidity" label="Solidity">
+
 ```solidity
 import "src/IMangrove.sol";
 import {MgvStructs} "src/MgvLib.sol";
@@ -91,11 +97,10 @@ MgvStructs.OfferDetailPacked memory offerDetail32 = Mangrove(MGV)
 // offerDetail.f == offerDetail32.f()
 
 ```
-{% endcode %}
-{% endtab %}
 
-{% tab title="ethers.js" %}
-{% code title="getOfferData.js" %}
+</TabItem>
+<TabItem value="ethersjs" label="ethers.js">
+
 ```javascript
 const { ethers } = require("ethers");
 // context
@@ -118,19 +123,21 @@ const wants = offer.wants;
 const gives = offer.gives;
 const gasreq = offerDetail.gasreq;
 ```
-{% endcode %}
-{% endtab %}
-{% endtabs %}
+
+</TabItem>
+</Tabs>
 
 ### `isLive(address, address, uint)`
 
-{% hint style="info" %}
-An offer is **live** in a given [Offer Lists](market.md) if it can be matched during a [market order](taker-order/). One can  verify whether `offerId` identifies a **live** offer in a (`outboundToken`,`inboundToken`) Offer List of Mangrove using this view function.
-{% endhint %}
+:::info
 
-{% tabs %}
-{% tab title="Solidity" %}
-{% code title="isLive.sol" %}
+An offer is **live** in a given [Offer Lists](market.md) if it can be matched during a [market order](taker-order/). One can  verify whether `offerId` identifies a **live** offer in a (`outboundToken`,`inboundToken`) Offer List of Mangrove using this view function.
+
+:::
+
+<Tabs>
+<TabItem value="solidity" label="Solidity">
+
 ```solidity
 import "src/IMangrove.sol";
 
@@ -143,11 +150,11 @@ address offerId;
 // checking whether offerId is live in the (outTkn, inbTkn) order book.
 bool isLive = mgv.isLive(outTkn,inbTkn,offerId);
 ```
-{% endcode %}
-{% endtab %}
 
-{% tab title="ethers.js" %}
-{% code title="isLive.js" %}
+</TabItem>
+
+<TabItem value="ethersjs" label="ethers.js">
+
 ```javascript
 const { ethers } = require("ethers");
 // context
@@ -166,15 +173,17 @@ const Mangrove = new ethers.Contract(
 // checking whether offerId is live on (outTkn, inbTkn) Offer List.
 const isLive = await Mangrove.isLive(outTkn,outTkn,offerId);
 ```
-{% endcode %}
-{% endtab %}
-{% endtabs %}
+
+</TabItem>
+</Tabs>
 
 ## Custom types
 
-{% hint style="info" %}
+:::info 
+
 Offer data is split between `OfferUnpacked` and `OfferDetailedUnPacked` for  storage read/write optimisation (as both structs can be efficiently packed on storage).
-{% endhint %}
+
+:::
 
 ### `MgvLib.MgvStructs.OfferUnpacked`
 

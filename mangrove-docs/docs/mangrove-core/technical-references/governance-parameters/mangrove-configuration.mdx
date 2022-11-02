@@ -33,17 +33,24 @@ For every pair of addresses, there is a set of local parameters. Note that the p
 
 ## Views
 
-{% hint style="info" %}
+:::info
+
 The data structures containing Mangrove's global and local [configuration parameters](mangrove-configuration.md) are accessible via the public view function `configInfo(address outbound, address inbound)` function.
-{% endhint %}
 
-{% hint style="info" %}
+:::
+
+:::info
+
 For read/write efficiency, Mangrove provides access to configuration parameters in a packed manner via the getter `config(address outbound, address inbound).`
-{% endhint %}
 
-{% tabs %}
-{% tab title="Solidity" %}
-{% code title="config.sol" %}
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="solidity" label="Solidity" default>
+
 ```solidity
 import "src/IMangrove.sol";
 
@@ -70,6 +77,6 @@ global.f == global32.f()
 local.f == local32.f()
 
 ```
-{% endcode %}
-{% endtab %}
-{% endtabs %}
+
+</TabItem>
+</Tabs>
