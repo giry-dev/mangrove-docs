@@ -1,7 +1,6 @@
 ---
-description: >-
-  mangrove.js is a JavaScript API for the Mangrove exchange, the on-chain
-  orderbook where offers are code.
+description: mangrove.js is a JavaScript API for the Mangrove exchange, the on-chain orderbook where offers are code.
+sidebar_position: 1
 ---
 
 # SDK
