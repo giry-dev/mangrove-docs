@@ -95,7 +95,7 @@ const config = {
             label: 'SDK',
           },
           {
-            to: '/docs/keeper-bots/bots',
+            to: '/docs/keeper-bots',
             position: 'left',
             label: 'Bots',
           },

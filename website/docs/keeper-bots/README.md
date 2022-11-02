@@ -1,7 +1,6 @@
 ---
-description: >-
-  Keeper bots are an essential part of the Mangrove ecosystem that ensure a
-  smooth experience for all
+description: Keeper bots are an essential part of the Mangrove ecosystem that ensure a smooth experience for all
+sidebar_position: 1
 ---
 
 # Keeper bots
