@@ -84,6 +84,11 @@ const config = {
             label: 'SDK',
           },
           {
+            to: '/docs/keeper-bots/bots',
+            position: 'left',
+            label: 'Bots',
+          },
+          {
             href: 'https://github.com/mangrovedao',
             label: 'GitHub',
             position: 'right',
@@ -103,6 +108,10 @@ const config = {
               {
                 label: 'SDK',
                 to: '/docs/mangrove-js/README.md',
+              },
+              {
+                label: 'Bots',
+                to: '/docs/keeper-bots/README.md',
               },
             ],
           },
