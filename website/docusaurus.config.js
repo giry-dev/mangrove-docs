@@ -97,7 +97,7 @@ const config = {
           {
             to: '/docs/keeper-bots',
             position: 'left',
-            label: 'Bots',
+            label: 'Keeper bots',
           },
           {
             href: 'https://github.com/mangrovedao',
