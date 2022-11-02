@@ -1,3 +1,0 @@
-# 😎 Oracle
-
-Coming soon in the doc....
