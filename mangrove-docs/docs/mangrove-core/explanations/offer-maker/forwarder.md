@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Forwarder
 
 Forwarder is an abstract implementation of [MangroveOffer](mangrove-offer.md), if you don't have a good understanding of MangroveOffer we recommend reading that page first. This page is going to compare the [Direct](direct.md) implementation of MangroveOffer with Forwarder, we recommend reading about [Direct](direct.md) before reading this page.

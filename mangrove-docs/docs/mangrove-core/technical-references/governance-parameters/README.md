@@ -1,7 +1,5 @@
 ---
-description: >-
-  Mangrove's Governance is a user or a contract, which has permission to set
-  Protocol wide and Offer List specific configuration parameters.
+  sidebar_position: 2
 ---
 
 # Governance parameters

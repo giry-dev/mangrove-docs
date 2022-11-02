@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # How to test your contract
 
 You have now created your contract and would like to test it. Mangrove offers a helper contract, that can help setup everything needed for writing a test using the Mangrove core protocol.

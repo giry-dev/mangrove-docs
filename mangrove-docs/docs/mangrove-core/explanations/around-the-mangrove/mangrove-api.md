@@ -1,5 +1,6 @@
 ---
 description: mangrove.js - A JavaScript API for Mangrove written in TypeScript.
+sidebar_position: 2
 ---
 
 # Mangrove API

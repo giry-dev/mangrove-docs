@@ -1,7 +1,6 @@
 ---
-description: >-
-  Introducing Mangrove's Offer Lists a low level representation of (half) an
-  order book.
+description: Introducing Mangrove's Offer Lists a low level representation of (half) an order book.
+sidebar_position: 1
 ---
 
 # Offer Lists

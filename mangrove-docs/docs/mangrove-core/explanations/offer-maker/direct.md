@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Direct
 
 Direct is an abstract implementation of [MangroveOffer](mangrove-offer.md), if you don't have a good understanding of MangroveOffer we recommend reading that page first.

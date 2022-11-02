@@ -1,5 +1,6 @@
 ---
 description: Getting paid to clean Mangrove offer lists.
+sidebar_position: 1
 ---
 
 # Cleaning offers

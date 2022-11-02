@@ -1,5 +1,6 @@
 ---
 description: The Mangrove is an on-chain, orderbook-based exchange where offers are code.
+sidebar_position: 1
 ---
 
 # Mangrove developer documentation

@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Mangrove's ecosystem
 
 Mangrove's main contract may be deployed with additional useful contracts.

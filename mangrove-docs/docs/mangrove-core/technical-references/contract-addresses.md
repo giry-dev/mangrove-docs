@@ -1,4 +1,4 @@
-# Contract addresses
+# Deployment addresses
 
 ## Polygon Testnet - Mumbai
 

@@ -1,5 +1,6 @@
 ---
 description: A walkthrough guide to deploying a reactive offer on the Mangrove
+sidebar_position: 2
 ---
 
 # Making liquidity available

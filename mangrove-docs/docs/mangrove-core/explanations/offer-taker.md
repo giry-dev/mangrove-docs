@@ -1,5 +1,6 @@
 ---
 description: How to tap into the Mangrove's liquidity
+sidebar_position: 1
 ---
 
 # Taking available liquidity

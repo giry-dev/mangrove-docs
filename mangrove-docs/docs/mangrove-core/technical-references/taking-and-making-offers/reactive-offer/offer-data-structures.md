@@ -1,7 +1,6 @@
 ---
-description: >-
-  Mangrove communicates with Offer Logics with public data structures described
-  in this section.
+description: Mangrove communicates with Offer Logics with public data structures described in this section.
+sidebar_position: 3
 ---
 
 # Public data structures

@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # MangroveOffer
 
 Mangrove has a standard implementation of IOfferLogic called MangroveOffer. This implementation is an abstract contract, that reposts the residual of the offer, if the offer was not fully taken. This is done using the hooks exposed by MangroveOffer. These hooks are separated into 3 categories. The first hooks are called doing `makerExecute`. This means that you will be able to hook into the flow of how and if Mangrove is transferring the funds from the MangroveOffer contract to the **reserve** and from the **reserve** to the MangroveOffer contract.
