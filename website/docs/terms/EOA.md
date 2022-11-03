@@ -1,6 +1,6 @@
 ---
 id: eoa
-hoverText: Describe EOA
+hoverText: Externally Owned Account
 title: EOA
 ---
 

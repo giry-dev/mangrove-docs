@@ -35,8 +35,8 @@ Describe density
 Describe dust
 
 
-### [EOA](/docs/terms/Eoa) 
-Describe EOA
+### [EOA](/docs/terms/EOA) 
+Externally Owned Account
 
 
 ### [ERC20](/docs/terms/ERC20) 
@@ -108,7 +108,7 @@ Describe order
 
 
 ### [OTF](/docs/terms/OTF) 
-Describe OTF
+On-The-Fly Offer
 
 
 ### [Outbound](/docs/terms/Outbound) 

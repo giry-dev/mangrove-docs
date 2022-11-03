@@ -1,6 +1,6 @@
 ---
 id: otf
-hoverText: Describe OTF
+hoverText: On-The-Fly Offer
 title: OTF
 ---
 
@@ -10,6 +10,6 @@ An **On-the-fly offer** (OTF) can be listed on Mangrove but is not equipped with
 
 :::caution
 
-An OTF is not reactive (it has no code) and therefore cannot repost its residual if any. E.g an OTF offer of 1500 DAIs (outbound) for 1 wETH (inbound) that is matched by a taker order of 750 DAIs for 0.5 wETH will be removed from the book after it has been partially filled.
+An OTF is not reactive (it has no code) and therefore cannot repost its residual if any. For example, an OTF offer of 1500 DAI (outbound) for 1 wETH (inbound) that is matched by a taker order of 750 DAI for 0.5 wETH will be removed from the book after it has been partially filled.
 
 :::
