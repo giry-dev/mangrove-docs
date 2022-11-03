@@ -61,14 +61,25 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    # env:
-    #   working-directory: ../website
+    env:
+      working-directory: website
 
-    # defaults:
-    #   run:
-    #     working-directory: ${{env.working-directory}}
+    defaults:
+      run:
+        working-directory: ${{env.working-directory}}
 
     steps:
+
+
+    # == Git checkout ==
+    - name: Checkout
+      uses: actions/checkout@v3
+      # Workaround for https://github.com/npm/cli/issues/2610
+      with:
+        persist-credentials: false
+        ref: ${{ env.GIT_REF_TO_TEST }}
+        submodules: recursive
+
     - name: generate docs
       run: yarn docusaurus parse && yarn docusaurus glossary && yarn build
 
