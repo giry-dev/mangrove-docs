@@ -119,15 +119,15 @@ const config = {
             items: [
               {
                 label: 'Contracts',
-                to: '/docs/mangrove-core/README.md',
+                to: '/docs/mangrove-core/core',
               },
               {
                 label: 'SDK',
-                to: '/docs/mangrove-js/README.md',
+                to: '/docs/mangrove-js/sdk',
               },
               {
                 label: 'Bots',
-                to: '/docs/keeper-bots/README.md',
+                to: '/docs/keeper-bots',
               },
             ],
           },
