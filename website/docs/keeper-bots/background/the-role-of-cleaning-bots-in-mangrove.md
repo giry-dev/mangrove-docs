@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # The role of cleaning bots in Mangrove
 Cleaning bots rids Mangrove order books of failing offers. This page discusses why offers can fail and how community members can earn bounties cleaning these failing offers.
 
@@ -9,7 +12,7 @@ Offers on Mangrove may fail for a number of reasons:
 * The code of a smart offer might have a bug
 * A bad actor has posted bad offers to sabotage the Mangrove community
 
-From the user's perspective, failing offers are a nuissance: They consume gas when running limit orders and they pollute the price and depth information of the market. It's important to note, that failing offers are only a nuissance, not a risk: Users are compensated for gas spent on making the offer fail and the limit avg. price will never be exeeded.
+From the user's perspective, failing offers are a nuisance: They consume gas when running limit orders and they pollute the price and depth information of the market. It's important to note, that failing offers are only a nuisance, not a risk: Users are compensated for gas spent on making the offer fail and the limit avg. price will never be exceeded.
 
 From the maker's perspective, however, the possibility of offer failure is an important feature. It allows makers to implement strategies such as Last Look: When matched, a smart offer can check whether the trade still makes sense for the offer maker; If not, the smart offer reneges. Also, makers may post smart offers that are good when they are posted, but were changes in market conditions cause the offer to fail at a later point.
 
