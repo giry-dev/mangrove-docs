@@ -71,8 +71,8 @@ Describe gtc
 Describe inbound
 
 
-### [Keeper bots](/docs/terms/KeeperBots) 
-Describe keeper bots
+### [Keeper bot](/docs/terms/keeper-bot) 
+A bot that helps keep Mangrove functioning optimally
 
 
 ### [Maker](/docs/terms/Maker) 
