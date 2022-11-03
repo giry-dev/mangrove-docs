@@ -72,7 +72,7 @@ Note that Mangrove's API deals with token decimals automatically (see definition
 
 ## Market
 
-The `Market` class is an abstraction layer to interact with Mangrove as a liquidity taker, using standard market [buy and sell orders](sell-and-buy-orders.md). To obtain one instance use:
+The `Market` class is an abstraction layer to interact with Mangrove as a liquidity taker, using standard market [buy and sell orders](../guides/sell-and-buy-orders.md). To obtain one instance use:
 
 ```typescript
 //connect to a (base,quote) market with default options
@@ -149,7 +149,7 @@ When using an offer logic that inherits from the [`MultiUser.sol`](https://githu
 
 ## LiquidityProvider
 
-A `LiquidityProvider` instance is the object one needs to [post Bids and Asks](posting-bids-and-asks.md) on a Mangrove market. There are two means to obtain an LiquidityProvider: either to post a [direct Offer](https://docs.mangrove.exchange/offer-making-strategies/basic-offer) or to post an Offer relying on some onchain [logic](api-classes-overview.md#offerlogic).
+A `LiquidityProvider` instance is the object one needs to [post Bids and Asks](../guides/posting-bids-and-asks.md) on a Mangrove market. There are two means to obtain an LiquidityProvider: either to post a [direct Offer](https://docs.mangrove.exchange/offer-making-strategies/basic-offer) or to post an Offer relying on some onchain [logic](api-classes-overview.md#offerlogic).
 
 To act as a direct liquidity provider on a some [`mgvMarket`](api-classes-overview.md#market) you must obtain a `LiquidityProvider` instance from an [`mgv`](api-classes-overview.md#mangrove) object using:
 

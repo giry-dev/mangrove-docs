@@ -177,7 +177,7 @@ Whenever an offer is created or updated, Mangrove applies to following formula t
 
 $$\textrm{provision} = \max(\textrm{gasprice}_{\textrm{mgv}},\textrm{gasprice}_{\textrm{ofr}}) \times (\textrm{gasreq} + \textrm{gasbase}_{\textrm{mgv}}) \times 10^9$$​
 
-* $$\textrm{gasprice}_{\textrm{mgv}}$$ is the `gasprice` [global governance parameter](../../governance-parameters/global-variables.md#gas-price-and-oracle) (in gwei per gas units)
+* $$\textrm{gasprice}_{\textrm{mgv}}$$ is the `gasprice` [global governance parameter](../../governance-parameters/global-variables.mdx#gas-price-and-oracle) (in gwei per gas units)
 * $$\textrm{gasprice}_{\textrm{ofr}}$$ is the `gasprice` argument of the function being called ([`newOffer`](./#posting-a-new-offer) or [`updateOffer`](./#updating-an-existing-offer)) also in gwei per gas units.
 * $$\textrm{gasreq}$$ is the `gasreq` argument of the function being called (in gas units).
 * $$\textrm{gasbase}_{\rm mgv}$$is the `offer_gasbase` [local governance parameter](../../governance-parameters/local-variables.md#offer-gas-base).

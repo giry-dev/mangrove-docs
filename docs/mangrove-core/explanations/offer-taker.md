@@ -17,4 +17,4 @@ Offers on Mangrove can fail. Liquidity-taking functions can also be used to trig
 
 ### Delegation
 
-An allowance mechanism lets you separate the address that provides the funds and the address that originates the buy/sell transactions. The [Delegation](../technical-references/taking-and-making-offers/taker-order/delegate-takers.md) section details how to let other addresses use your funds.
+An allowance mechanism lets you separate the address that provides the funds and the address that originates the buy/sell transactions. The [Delegation](../technical-references/taking-and-making-offers/taker-order/delegate-takers.mdx) section details how to let other addresses use your funds.

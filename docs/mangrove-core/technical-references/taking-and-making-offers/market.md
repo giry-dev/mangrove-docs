@@ -67,7 +67,7 @@ Taken together, the **wants** and **gives** values define 1) a max volume, 2) a 
 
 ### Gas required
 
-The maximum amount of gas the [Maker Contract](reactive-offer/maker-contract.md) managing the offer will be allowed to spend if called by the Mangrove.
+The maximum amount of gas the [Maker Contract](reactive-offer/maker-contract.mdx) managing the offer will be allowed to spend if called by the Mangrove.
 
 :::info **Example**
 
@@ -77,12 +77,12 @@ Offer #77 may consume up to 250K gas units.
 
 ### Maker Contract
 
-The address of the [offer logic](reactive-offer/maker-contract.md#offer-logic) managing the offer. The `makerExecute` function of this contract will be called when one of its offers is executed.
+The address of the [offer logic](reactive-offer/maker-contract.mdx#offer-logic) managing the offer. The `makerExecute` function of this contract will be called when one of its offers is executed.
 
 ### Gas Price
 
-Gas price that was used to compute the [offer provision](reactive-offer/offer-provision.md). If the offer fails to deliver the promised **outbound tokens**, it will be charged in ETH based on this gasprice.
+Gas price that was used to compute the [offer provision](reactive-offer/offer-provision.mdx). If the offer fails to deliver the promised **outbound tokens**, it will be charged in ETH based on this gasprice.
 
 ## Offer list configuration
 
-Several [configuration](../governance-parameters/mangrove-configuration.md) parameters determine how new offers are inserted. Some are [global](../governance-parameters/mangrove-configuration.md#mgvlib.global) to Mangrove, some are [offer list specifics.](../governance-parameters/mangrove-configuration.md#mgvlib.local) See [Governance](../governance-parameters/) section for details.
+Several [configuration](../governance-parameters/mangrove-configuration.mdx) parameters determine how new offers are inserted. Some are [global](../governance-parameters/mangrove-configuration.mdx#mgvlib.global) to Mangrove, some are [offer list specifics.](../governance-parameters/mangrove-configuration.mdx#mgvlib.local) See [Governance](../governance-parameters/) section for details.

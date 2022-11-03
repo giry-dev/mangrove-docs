@@ -13,7 +13,7 @@ ERC20 tokens transfers are initiated by Mangrove using `transferFrom`. If Mangro
 
 ### Active offer lists
 
-Every Mangrove[ offer list ](../market.md#general-structure)can be either [active or inactive](../../governance-parameters/local-variables.md#de-activating-an-offer-list), and Mangrove itself can be either [alive or dead](../../governance-parameters/global-variables.md#other-governance-controlled-setters). Taking offers is only possible when Mangrove is alive on offer lists that are active.
+Every Mangrove[ offer list ](../market.md#general-structure)can be either [active or inactive](../../governance-parameters/local-variables.md#de-activating-an-offer-list), and Mangrove itself can be either [alive or dead](../../governance-parameters/global-variables.mdx#other-governance-controlled-setters). Taking offers is only possible when Mangrove is alive on offer lists that are active.
 
 ## Market order
 
@@ -22,13 +22,13 @@ A **Market Order** is Mangrove's simplest way of buying or selling assets. Such 
 When an order is processed by Mangrove's matching engine, it consumes the offers on the selected [offer list](../market.md), starting from the one which as the best [rank](../market.md#offer-rank). Execution works as follows:
 
 1. Mangrove checks that the current offer's [entailed price](../market.md#wants-gives-and-entailed-price) is at least as good as the taker's price. Otherwise execution stops there.
-2. Mangrove sends _inbound_ tokens to the current offer's associated [logic](../reactive-offer/maker-contract.md).
+2. Mangrove sends _inbound_ tokens to the current offer's associated [logic](../reactive-offer/maker-contract.mdx).
 3. Mangrove then executes the offer logic.
 4. If the call is successful, Mangrove sends _outbound_ tokens to the taker. If the call or the transfer fail, Mangrove reverts the effects of steps 2. and 3.
 5. The taker's _wants_ and _gives_ are reduced.
 6. If the taker's _wants_ has not been completely fulfilled, Mangrove moves back to step 1.
 
-Any failed [offer](../reactive-offer/) execution results in a [bounty](../reactive-offer/offer-provision.md#computing-the-provision-and-offer-bounty) being sent to the caller as compensation for the wasted gas.
+Any failed [offer](../reactive-offer/) execution results in a [bounty](../reactive-offer/offer-provision.mdx#computing-the-provision-and-offer-bounty) being sent to the caller as compensation for the wasted gas.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

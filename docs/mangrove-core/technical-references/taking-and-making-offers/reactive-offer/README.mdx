@@ -7,11 +7,11 @@ sidebar_position: 4
 
 ### Posting a new offer
 
-New offers should mostly be posted by [contracts](maker-contract.md) able to source liquidity when asked by Mangrove.&#x20;
+New offers should mostly be posted by [contracts](maker-contract.mdx) able to source liquidity when asked by Mangrove.&#x20;
 
 :::info 
 
-`newOffer` is payable and can be used to credit the Offer Logic's balance on Mangrove on the fly. A non zero `msg.value` will allow Mangrove to credit Offer Logic's balance prior to locking the [provision](offer-provision.md) of the newly posted offer.
+`newOffer` is payable and can be used to credit the Offer Logic's balance on Mangrove on the fly. A non zero `msg.value` will allow Mangrove to credit Offer Logic's balance prior to locking the [provision](offer-provision.mdx) of the newly posted offer.
 
 :::
 
@@ -189,8 +189,8 @@ await tx.wait();
 * `inbound_tkn` address of the inbound token (that the offer will receive).
 * `wants` amount of inbound tokens requested by the offer. **Must** fit in a `uint96`.
 * `gives` amount of outbound \*\*\*\* tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t to `gasreq` and offer list's [density](broken-reference/) parameter.
-* `gasreq` amount of gas that will be given to the offer's [account](maker-contract.md). **Must** fit in a `uint24` and be lower than [gasmax](broken-reference/). Should be sufficient to cover all calls to the offer logic posting the offer ([`makerExecute`](maker-contract.md#offer-execution) and [`makerPosthook`](maker-contract.md#offer-post-hook)). **Must** be compatible with the offered volume `gives` and the offer list's [density](broken-reference/) parameter.
-* `gasprice` gas price override used to compute the order provision (see [offer bounties](../../../../offer-maker/offer-provision.md)). Any value lower than Mangrove's current [gasprice](broken-reference/) will be ignored (thus 0 means "use Mangrove's current [gasprice](broken-reference/)"). **Must** fit in a `uint16`.
+* `gasreq` amount of gas that will be given to the offer's [account](maker-contract.mdx). **Must** fit in a `uint24` and be lower than [gasmax](broken-reference/). Should be sufficient to cover all calls to the offer logic posting the offer ([`makerExecute`](maker-contract.mdx#offer-execution) and [`makerPosthook`](maker-contract.mdx#offer-post-hook)). **Must** be compatible with the offered volume `gives` and the offer list's [density](broken-reference/) parameter.
+* `gasprice` gas price override used to compute the order provision (see [offer bounties](offer-provision.mdx)). Any value lower than Mangrove's current [gasprice](broken-reference/) will be ignored (thus 0 means "use Mangrove's current [gasprice](broken-reference/)"). **Must** fit in a `uint16`.
 * `pivotId` where to start the insertion process in the offer list. If `pivotId` is not in the offer list at the time the transaction is processed, the new offer will be inserted starting from the offer list's [best](./#getting-current-best-offer-of-a-market) offer. Should be the id of the existing live offer with the price closest to the price of the offer being posted.
 
 **Outputs**
@@ -199,15 +199,15 @@ await tx.wait();
 
 :::danger **Provisioning**
 
-Since offers can fail, Mangrove requires each offer to be [provisioned](offer-provision.md) in ETH. If an offer fails, part of that provision will be sent to the caller that executed the offer, as compensation.
+Since offers can fail, Mangrove requires each offer to be [provisioned](offer-provision.mdx) in ETH. If an offer fails, part of that provision will be sent to the caller that executed the offer, as compensation.
 
-Make sure that your offer is [well-provisioned](offer-provision.md#checking-an-account-balance) before calling `newOffer`, otherwise the call will fail. The easiest way to go is to send a comfortable amount of ETH to Mangrove from your offer-posting contract. Mangrove will remember your ETH balance and use it when necessary.
+Make sure that your offer is [well-provisioned](offer-provision.mdx#checking-an-account-balance) before calling `newOffer`, otherwise the call will fail. The easiest way to go is to send a comfortable amount of ETH to Mangrove from your offer-posting contract. Mangrove will remember your ETH balance and use it when necessary.
 
 :::
 
 :::danger **Offer execution**
 
-* If the offer account is a contract, it should implement the [IMaker](maker-contract.md) interface. At the very least, it must have a function with signature [`makerExecute(MgvLib.SingleOrder calldata order)`](maker-contract.md#offer-execution) or it will systematically revert when called by Mangrove.
+* If the offer account is a contract, it should implement the [IMaker](maker-contract.mdx) interface. At the very least, it must have a function with signature [`makerExecute(MgvLib.SingleOrder calldata order)`](maker-contract.mdx#offer-execution) or it will systematically revert when called by Mangrove.
 * `gives` and `gasreq` are subject to [density](../../governance-parameters/local-variables.md#density) constraints on the amount of _outbound_ token provided per gas spent.
 * The offer account will need to give Mangrove a high enough allowance in _outbound_ tokens since Mangrove will use the ERC20 standard's `transferFrom` function to source your tokens.
 
@@ -325,7 +325,7 @@ None.
 
 :::info **Offer updater**
 
-An offer can only be updated if `msg.sender` is the [account](maker-contract.md) that created the offer.
+An offer can only be updated if `msg.sender` is the [account](maker-contract.mdx) that created the offer.
 
 :::
 
@@ -410,7 +410,7 @@ function myRetractOffer(uint offerId) external {
 #### Inputs
 
 * `offerId` is the offer id of the offer to be updated.
-* `deprovision` if true, will free the offer's ETH provision so that you can [withdraw](offer-provision.md#withdrawing) them. Otherwise, will leave the provision in the offer.
+* `deprovision` if true, will free the offer's ETH provision so that you can [withdraw](offer-provision.mdx#withdrawing) them. Otherwise, will leave the provision in the offer.
 * For the other parameters, see [above](./#posting-a-new-reactive-offer).
 
 #### Outputs

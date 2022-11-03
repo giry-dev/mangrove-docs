@@ -74,13 +74,13 @@ To successfully execute, the logic **must** not revert during the call to `maker
 
 **How to renege on trade**
 
-The proper way to renege on an offer is to make the execution of `makerExecute` throw with a reason that can be cast to a `bytes32`. Having a balance of _outbound_ tokens that is lower than `order.wants` will also make trade fail, but with a higher incurred gas cost and thus a higher [bounty](offer-provision.md#provision-and-offer-bounty).
+The proper way to renege on an offer is to make the execution of `makerExecute` throw with a reason that can be cast to a `bytes32`. Having a balance of _outbound_ tokens that is lower than `order.wants` will also make trade fail, but with a higher incurred gas cost and thus a higher [bounty](offer-provision.mdx#provision-and-offer-bounty).
 
 :::
 
 :::caution **Better fail early!**
 
-The [bounty](offer-provision.md#computing-the-provision-and-offer-bounty) taken from the offer maker's provision is [proportional](offer-provision.md#computing-the-provision-and-offer-bounty) to the gas consumed by `makerExecute`. To minimize costs, try to fail as early as possible.
+The [bounty](offer-provision.mdx#computing-the-provision-and-offer-bounty) taken from the offer maker's provision is [proportional](offer-provision.mdx#computing-the-provision-and-offer-bounty) to the gas consumed by `makerExecute`. To minimize costs, try to fail as early as possible.
 
 :::
 
