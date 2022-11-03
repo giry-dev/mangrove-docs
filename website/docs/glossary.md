@@ -28,7 +28,7 @@ An amount of native token paid to the taker when an offer fails
 
 
 ### [Cleaning bot](/docs/terms/cleaning-bot) 
-A bot that keeps the order books clean by sniping failing offers
+An off-chain bot that keeps the order books clean by sniping failing offers
 
 
 ### [Density](/docs/terms/Density) 
@@ -72,7 +72,7 @@ Describe inbound
 
 
 ### [Keeper bot](/docs/terms/keeper-bot) 
-A bot that helps keep Mangrove functioning optimally
+An off-chain bot that helps keep Mangrove functioning optimally
 
 
 ### [Maker](/docs/terms/Maker) 
