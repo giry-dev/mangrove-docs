@@ -20,22 +20,20 @@ On the surface, this might seem skewed in favor of makers. However, by having ac
 In other words, the possibility of offers failing is a necessity for the power of smart offers.
 
 
-# Why and how cleaning bots keep the order books clean
+# Why should community members run cleaning bots?
 While we have to accept that offers may fail, we don't have to accept that they accumulate and degrade the order book. Mangrove therefore has a built-in incentive for removing failing offers: %%Bounties|bounty%%.
 
 When an offer fails, the taker receives a bounty in native token. The bounty is bigger than the gas used to make the offer fail and thus the taker is compensated for the wasted gas. But more importantly, it can be profitable to identify and snipe offers that will fail.
 
-This means that community members will be compensated for running %%cleaning bots|cleaning-bot%%: Bots that monitor the Mangrove order books and snipe any offer that will fail.
-
-
-# Determining when offers will fail
-TODO:
-- 
+This means that it can be profitable to run so-called %%cleaning bots|cleaning-bot%% that monitor the Mangrove order books and snipe any offer that will fail. Community members are encouraged to run such cleaning bots and thereby contribute to keeping Mangrove working optimally
 
 
 # Getting started with cleaning bots
-TODO:
-- example bot - naive
-- mangrove.js for monitoring and sniping
-- the `MgvCleaner` contract
-- tutorials
+Mangrove provides learning materials, smart contracts, SDK functions, and an example cleaning bot, that make it easy to write and run cleaning bots:
+
+- Tutorial: [Run a simple cleaning bot](../getting-started/run-a-simple-cleaning-bot)
+  - A tutorial that walks you through all the steps needed to run an example cleaning bot.
+- SDK: [`mangrove.js`](/docs/mangrove-js/)
+  - The `mangrove.js` SDK makes it easy to monitor order books and to send snipe transactions.
+- Contract: [`MgvCleaner`](https://github.com/mangrovedao/mangrove-core/blob/master/src/periphery/MgvCleaner.sol)
+  - The `MgvCleaner` smart contract is deployed together with Mangrove and provides a `collect` function that snipes  offers and reverts if any of the offers don't fail.
