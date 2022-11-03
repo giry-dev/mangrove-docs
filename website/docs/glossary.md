@@ -27,6 +27,10 @@ Describe bids
 An amount of native token paid to the taker when an offer fails
 
 
+### [Cleaning bot](/docs/terms/cleaning-bot) 
+A bot that keeps the order books clean by sniping failing offers
+
+
 ### [Density](/docs/terms/Density) 
 Describe density
 
@@ -77,10 +81,6 @@ Describe maker
 
 ### [Market](/docs/terms/Market) 
 Describe market
-
-
-### [Market cleaners](/docs/terms/MarketCleaners) 
-Describe market cleaners
 
 
 ### [Market order](/docs/terms/MarketOrder) 
