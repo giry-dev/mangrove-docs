@@ -10,8 +10,8 @@ const katex = require('rehype-katex');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   
-  title: 'Mangrove docs',
-  tagline: 'Mangrove documentation',
+  title: 'Mangrove',
+  tagline: 'Developer documentation for all things Mangrove',
   url: 'https://testnet.mangrove.exchange',
   baseUrl: '/',
   onBrokenLinks: 'warn',
@@ -75,9 +75,9 @@ const config = {
         additionalLanguages: ['solidity'],
       },
       navbar: {
-        title: 'Mangrove docs',
+        title: 'Mangrove Docs',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Mangrove logo',
           src: 'img/assets/mangrove_logo.png',
         },
         items: [
