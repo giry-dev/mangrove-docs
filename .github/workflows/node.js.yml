@@ -74,7 +74,7 @@ jobs:
 
     needs:
     - security-guard
-    - file-guard
+    - generate-docs
 
     runs-on: ubuntu-latest
 
