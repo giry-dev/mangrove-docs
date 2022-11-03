@@ -81,7 +81,7 @@ jobs:
         submodules: recursive
 
     - name: generate docs
-      run: yarn docusaurus parse && yarn docusaurus glossary && yarn build
+      run: yarn install && yarn docusaurus parse && yarn docusaurus glossary && yarn build
 
 
   check:
