@@ -57,9 +57,6 @@ const config = {
           remarkPlugins: [simplePlantUML, math],
           rehypePlugins: [katex],
         },
-        blog: {
-          showReadingTime: true,
-        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
