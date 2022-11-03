@@ -510,10 +510,10 @@ If you only want to take offers without any checks on the offer contents, you ca
 | 13 | 10    | 10    | 80\_000      |
 | 2  | 1     | 2     | 250\_000     |
 
-{% hint style="info" %}
-**Example**
+:::info **Example**
 
 Consider the above offers on the DAI-USDC offer list:
 
 Setting `targets` to `[[13,8,10,80_000],[2,1,1.1,250_000]]` with `fillWants` set to `true` will successfully buy 8 DAI from offer #13 (for 8 USDC), and will not attempt to execute offer #2 since 1.1 > 1/2.
-{% endhint %}
+
+:::

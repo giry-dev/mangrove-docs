@@ -197,28 +197,29 @@ await tx.wait();
 
 * `offerId` the id of the newly created offer. Note that offer ids are scoped to [offer lists](../../../../offer-maker/broken-reference/), so many offers can share the same id.
 
-{% hint style="danger" %}
-**Provisioning**
+:::danger **Provisioning**
 
 Since offers can fail, Mangrove requires each offer to be [provisioned](offer-provision.md) in ETH. If an offer fails, part of that provision will be sent to the caller that executed the offer, as compensation.
 
 Make sure that your offer is [well-provisioned](offer-provision.md#checking-an-account-balance) before calling `newOffer`, otherwise the call will fail. The easiest way to go is to send a comfortable amount of ETH to Mangrove from your offer-posting contract. Mangrove will remember your ETH balance and use it when necessary.
-{% endhint %}
 
-{% hint style="danger" %}
-**Offer execution**
+:::
+
+:::danger **Offer execution**
 
 * If the offer account is a contract, it should implement the [IMaker](maker-contract.md) interface. At the very least, it must have a function with signature [`makerExecute(MgvLib.SingleOrder calldata order)`](maker-contract.md#offer-execution) or it will systematically revert when called by Mangrove.
 * `gives` and `gasreq` are subject to [density](../../governance-parameters/local-variables.md#density) constraints on the amount of _outbound_ token provided per gas spent.
 * The offer account will need to give Mangrove a high enough allowance in _outbound_ tokens since Mangrove will use the ERC20 standard's `transferFrom` function to source your tokens.
-{% endhint %}
+
+:::
 
 ### Updating an existing offer
 
 Offers are updated through the aptly-named `updateOffer` function described below (source code is [here](https://github.com/giry-dev/mangrove/blob/552ab35500c34e831f40a68fac81c8b3e6be7f5b/packages/mangrove-solidity/contracts/MgvOfferMaking.sol#L99)).
 
-{% tabs %}
-{% tab title="Signature" %}
+<Tabs>
+<TabItem value="signature" label="Signature" default>
+
 ```solidity
 function updateOffer( 
     address outboundToken, 
@@ -231,9 +232,10 @@ function updateOffer(
     uint offerId
 ) external;
 ```
-{% endtab %}
 
-{% tab title="Events" %}
+</TabItem>
+<TabItem value="events" label="Events">
+
 ```solidity
 event OfferWrite(
       address outboundToken,
@@ -256,9 +258,10 @@ event CreditWei(address maker, uint amount);
 
  
 ```
-{% endtab %}
 
-{% tab title="Revert strings" %}
+</TabItem>
+<TabItem value="revertStrings" label="Revert strings">
+
 ```javascript
 // Gatekeeping
 "mgv/dead" // Mangrove contract is terminated
@@ -280,10 +283,10 @@ event CreditWei(address maker, uint amount);
 // Insufficient provision
 "mgv/insufficientProvision" // provision of caller no longer covers the offer bounty
 ```
-{% endtab %}
 
-{% tab title="Solidity" %}
-{% code title="updateOffer.sol" %}
+</TabItem>
+<TabItem value="soldity" label="Solidity">
+
 ```solidity
 import "src/IMangrove.sol";
 import {MgvStructs} form "src/MgvLib.sol";
@@ -307,9 +310,9 @@ IMangrove(MGV).updateOffer(
    offerId // id of the offer to be updated
 );
 ```
-{% endcode %}
-{% endtab %}
-{% endtabs %}
+
+</TabItem>
+</Tabs>
 
 #### Inputs
 
@@ -320,11 +323,11 @@ IMangrove(MGV).updateOffer(
 
 None.
 
-{% hint style="info" %}
-**Offer updater**
+:::info **Offer updater**
 
 An offer can only be updated if `msg.sender` is the [account](maker-contract.md) that created the offer.
-{% endhint %}
+
+:::
 
 :::caution **Reusing offers**
 
@@ -335,8 +338,9 @@ After being executed or [retracted](./#retracting-an-offer), an offer is moved o
 
 An offer can be withdrawn from the order book via the `retractOffer` function described below.
 
-{% tabs %}
-{% tab title="Signature" %}
+<Tabs>
+<TabItem value="signature" label="Signature" default>
+
 ```solidity
 function retractOffer(
     address outboundToken,
@@ -345,9 +349,10 @@ function retractOffer(
     bool deprovision
   ) external;
 ```
-{% endtab %}
 
-{% tab title="Events" %}
+</TabItem>
+<TabItem value="events" label="Events">
+
 ```solidity
 // emitted on all successful retractions
 event OfferRetract(
@@ -362,16 +367,17 @@ event Credit(
     uint amount // amount (in wei) being credited to the account
 ); 
 ```
-{% endtab %}
 
-{% tab title="Revert strings" %}
+</TabItem>
+<TabItem value="revertStrings" label="Revert strings">
+
 ```javascript
 "mgv/retractOffer/unauthorized" // only the offer's Maker Contract may call.
 ```
-{% endtab %}
 
-{% tab title="Solidity" %}
-{% code title="retractOffer.sol" %}
+</TabItem>
+<TabItem value="solidity" label="Solidity">
+
 ```solidity
 import "./Mangrove.sol";
 
@@ -397,9 +403,9 @@ function myRetractOffer(uint offerId) external {
 ...
 ...
 ```
-{% endcode %}
-{% endtab %}
-{% endtabs %}
+
+</TabItem>
+</Tabs>
 
 #### Inputs
 
