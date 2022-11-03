@@ -82,12 +82,12 @@ const config = {
         },
         items: [
           {
-            to: '/docs/mangrove-core/core',
+            to: '/docs/mangrove-core',
             position: 'left',
             label: 'Contracts',
           },
           {
-            to: '/docs/mangrove-js/sdk',
+            to: '/docs/mangrove-js',
             position: 'left',
             label: 'SDK',
           },
@@ -116,11 +116,11 @@ const config = {
             items: [
               {
                 label: 'Contracts',
-                to: '/docs/mangrove-core/core',
+                to: '/docs/mangrove-core',
               },
               {
                 label: 'SDK',
-                to: '/docs/mangrove-js/sdk',
+                to: '/docs/mangrove-js',
               },
               {
                 label: 'Bots',
