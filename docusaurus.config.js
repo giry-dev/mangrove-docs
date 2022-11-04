@@ -87,7 +87,7 @@ const config = {
             label: 'Contracts',
           },
           {
-            to: '/docs/mangrove-js',
+            to: '/docs/SDK',
             position: 'left',
             label: 'SDK',
           },
@@ -120,7 +120,7 @@ const config = {
               },
               {
                 label: 'SDK',
-                to: '/docs/mangrove-js',
+                to: '/docs/SDK',
               },
               {
                 label: 'Bots',
