@@ -30,7 +30,7 @@ export default function Home() {
         <div style={{margin:'auto', width: 'fit-content', paddingTop: '60px'}}>
           <h3><marquee>🏝 👷‍♂️Under Reconstruction 👷‍♀️🏝 </marquee></h3>
         </div>
-          <h2 style={{margin:'auto', width: 'fit-content', paddingTop: '10px'}}> 🌴 Learn more about the technical details of the Mangrove 🌴</h2>
+          <h2 style={{margin:'auto', width: 'fit-content', paddingTop: '10px'}}> 🌴 Developer Documentation for Mangrove 🌴</h2>
         <section style={{width:'40%', marginLeft:'20%', marginRight:'20%', width: 'fit-content', paddingTop: '10px'}}>
           <p>Strategy builders or market makers should check out the <a href="./docs/contracts/">Contracts</a> section. Go here if you want to delve into the core concepts for Mangrove, the API documentation or want to develop market making strategies.</p>
           <p>Off-chain builders that are keen to write bots or UI interfacing with Mangrove should check out the documentation for the <a href="./docs/SDK/">SDK</a> and the dedicated section on <a href="./docs/keeper-bots/">Keeper bots</a>.</p>
