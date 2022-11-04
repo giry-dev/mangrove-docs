@@ -6,7 +6,7 @@ description: The most simple liquidity providing strategy, no offer logic, just 
 
 :::info
 
-An [**On-the-fly offer** (OTF)](../../glossary.md#on-the-fly-offer-otf) can be listed on Mangrove but is not equipped with any on-chain [logic](../../mangrove-core/explanations/offer-maker/#executing-offers) that executes when the offer is taken. Whenever it is matched by a [taker order](../../mangrove-core/explanations/offer-taker.md#taking-offers), the offer sources its liquidity on an [Externally Owned Account (EOA)](../../glossary.md#externally-owned-account-eoa).
+An [**On-the-fly offer** (OTF)](../../glossary.md#on-the-fly-offer-otf) can be listed on Mangrove but is not equipped with any on-chain [logic](../../contracts/explanations/offer-maker/#executing-offers) that executes when the offer is taken. Whenever it is matched by a [taker order](../../contracts/explanations/offer-taker.md#taking-offers), the offer sources its liquidity on an [Externally Owned Account (EOA)](../../glossary.md#externally-owned-account-eoa).
 
 :::
 
@@ -17,7 +17,7 @@ To post an OTF you need to
 1. tell Mangrove you wish to post a new offer,
 2. sign the resulting transaction with the wallet (EOA) that contains the promised liquidity.
 
-Here is an example using [Mangrove's JS API](https://github.com/mangrovedao/mangrove/tree/master/packages/mangrove.js). Follow [preparation](../../mangrove-core/tutorials/preparation.md) (once) and start a fresh `node` in a shell and run the following statements.
+Here is an example using [Mangrove's JS API](https://github.com/mangrovedao/mangrove/tree/master/packages/mangrove.js). Follow [preparation](../../contracts/tutorials/preparation.md) (once) and start a fresh `node` in a shell and run the following statements.
 
 ```javascript
 // Load the NODE_URL and PRIVATE_KEY from .env file into process.env

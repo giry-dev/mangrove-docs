@@ -30,7 +30,7 @@ Mangrove provides a [cleaner contract ](../explanations/around-the-mangrove/mang
 
 ### Delegation
 
-Cleaning can also use Mangrove's [delegation mechanism](../technical-references/taking-and-making-offers/taker-order/delegate-takers.mdx), which means you only need Mangrove to have an allowance on any address that that has enough _inbound_ tokens of the [offer list](mangrove-core/technical-references/taking-and-making-offers/market.md) you are targeting. The cleaner contract will use those funds to execute the cleaning.
+Cleaning can also use Mangrove's [delegation mechanism](../technical-references/taking-and-making-offers/taker-order/delegate-takers.mdx), which means you only need Mangrove to have an allowance on any address that that has enough _inbound_ tokens of the [offer list](contracts/technical-references/taking-and-making-offers/market.md) you are targeting. The cleaner contract will use those funds to execute the cleaning.
 
 :::info **Example scenario**
 

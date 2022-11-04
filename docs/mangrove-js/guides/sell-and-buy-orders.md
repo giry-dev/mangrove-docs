@@ -22,6 +22,6 @@ const sellResult = mgvMarket.sell({volume:10, price: 0.09, slippage:2});
 
 * `takerGave` is the total amount of base (for a sell) or quote (for a buy) tokens that the taker spent for the order
 * `takerGot` is the total amount of quote (for a sell) or base (for a buy) tokens that the taker received as a result of the order
-* `penalty` is the amount of native tokens the taker received to compensate for the gas lost of executing failing offer during the order execution (see [offer bounty](../../mangrove-core/technical-references/taking-and-making-offers/reactive-offer/offer-provision.mdx#computing-the-provision-and-offer-bounty).
+* `penalty` is the amount of native tokens the taker received to compensate for the gas lost of executing failing offer during the order execution (see [offer bounty](../../contracts/technical-references/taking-and-making-offers/reactive-offer/offer-provision.mdx#computing-the-provision-and-offer-bounty).
 
 :::

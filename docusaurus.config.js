@@ -82,7 +82,7 @@ const config = {
         },
         items: [
           {
-            to: '/docs/mangrove-core',
+            to: '/docs/contracts',
             position: 'left',
             label: 'Contracts',
           },
@@ -116,7 +116,7 @@ const config = {
             items: [
               {
                 label: 'Contracts',
-                to: '/docs/mangrove-core',
+                to: '/docs/contracts',
               },
               {
                 label: 'SDK',
