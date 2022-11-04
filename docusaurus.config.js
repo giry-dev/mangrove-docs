@@ -155,7 +155,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Mangrove, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} ADDMA. All rights reserved.`,
       },
       
     }),
