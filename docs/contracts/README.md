@@ -3,16 +3,15 @@ description: The Mangrove is an on-chain, orderbook-based exchange where offers 
 sidebar_position: 1
 ---
 
-# Contracts Overview
 
-<i>TODO: Overview of Contracts section</i>
+# Contracts
 
-![A bird's-eye view of the Mangrove ecosystem.](../../static/img/assets/contactMap.png)
+The Mangrove is an on-chain, orderbook-based exchange where offers are code. Mangrove is built with Solidity with [smart contracts](https://ethereum.org/en/smart-contracts/) that run on [EVM-compatible](https://ethereum.org/en/developers/docs/scaling/sidechains/#evm-compatibility) blockchains like Ethereum and Polygon.
 
-## Who interacts with Mangrove
+In this part of the site you will find
 
-There are 3 types of actors in play:
-
-* Offer makers add [liquidity promises](explanations/offer-maker/README.md) to Mangrove. They own offers in [offer lists](te/takin/../../technical-references/taking-and-making-offers/market.md) and must manage contracts that react to [offer execution](technical-references/taking-and-making-offers/reactive-offer/offer-data-structures.md).
-* Takers go to Mangrove to [find liquidity](explanations/offer-taker.md) by executing offers already in Mangrove.
-* [Governance](technical-references/governance-parameters/README.md) adjusts Mangrove parameters, opens new pairs, sets fees, etc.
+* a number of [Tutorials](./tutorials/tutorials.md) and [Guides](./how-to-guides/how-to-guides.md) for developing smart contracts that work with Mangrove
+* [Technical reference](./technical-references/technical-references.md) material, including 
+    * an [Overview of the smart contracts](./technical-references/overview.md) comprising Mangrove
+    *  **TODO**: the [code docs](./technical-references/api-docs.md) generated from the [NatSpec](https://docs.soliditylang.org/en/v0.8.17/natspec-format.html) for Mangrove
+    * a reference page for the [Deployment addresses](./technical-references/contract-addresses.md)
