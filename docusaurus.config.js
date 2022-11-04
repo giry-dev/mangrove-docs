@@ -102,6 +102,11 @@ const config = {
             position: 'right',
           },
           {
+            href: 'https://bafybeig62o75bfxssic66w2zwerbo6ezlhb33vsg5idr4uprckn2dxrucy.ipfs.infura-ipfs.io/',
+            label: 'White Paper',
+            position: 'right',
+          },
+          {
             href: 'https://github.com/mangrovedao',
             label: 'GitHub',
             position: 'right',
