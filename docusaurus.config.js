@@ -128,7 +128,7 @@ const config = {
                 to: '/docs/SDK',
               },
               {
-                label: 'Bots',
+                label: 'Keeper bots',
                 to: '/docs/keeper-bots',
               },
             ],
