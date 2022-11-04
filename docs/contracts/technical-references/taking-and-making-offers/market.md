@@ -85,4 +85,4 @@ Gas price that was used to compute the [offer provision](reactive-offer/offer-pr
 
 ## Offer list configuration
 
-Several [configuration](../governance-parameters/mangrove-configuration.mdx) parameters determine how new offers are inserted. Some are [global](../governance-parameters/mangrove-configuration.mdx#mgvlib.global) to Mangrove, some are [offer list specifics.](../governance-parameters/mangrove-configuration.mdx#mgvlib.local) See [Governance](../governance-parameters/) section for details.
+Several [configuration](../governance-parameters/mangrove-configuration.mdx) parameters determine how new offers are inserted. Some are [global](../governance-parameters/mangrove-configuration.mdx#mgvlib.global) to Mangrove, some are [offer list specifics.](../governance-parameters/mangrove-configuration.mdx#mgvlib.local) See [Governance](../governance-parameters/README.md) section for details.

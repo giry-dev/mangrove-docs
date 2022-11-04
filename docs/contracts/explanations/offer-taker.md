@@ -9,7 +9,7 @@ sidebar_position: 1
 
 ### Taking offers
 
-The main way to consume liquidity on Mangrove is through a market order, a configurable type of order that executes offers from best to worst. The [Taking offers](../technical-references/taking-and-making-offers/taker-order/) section details how market orders work, and covers [offer sniping](../technical-references/taking-and-making-offers/taker-order/#offer-sniping) as well, wherein one can target individual offers.
+The main way to consume liquidity on Mangrove is through a market order, a configurable type of order that executes offers from best to worst. The [Taking offers](../technical-references/taking-and-making-offers/taker-order/README.mdx) section details how market orders work, and covers [offer sniping](../technical-references/taking-and-making-offers/taker-order/#offer-sniping) as well, wherein one can target individual offers.
 
 ### Cleaning offers
 
