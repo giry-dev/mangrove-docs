@@ -27,7 +27,10 @@ export default function Home() {
       description="Developer Documentation For Mangrove">
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
+        <div style={{margin:'auto', width: 'fit-content', paddingTop: '60px', fontSize: '24px'}}>
+          🏝 👷‍♂️Under Reconstruction 👷‍♀️🏝 
+
+        </div>
       </main>
     </Layout>
   );
