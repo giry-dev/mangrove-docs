@@ -12,7 +12,7 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <h1 className="hero__title">Mangrove Developer Documentation</h1>
+        <h1 className="hero__title">Welcome to the Mangrove Docs</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
       </div>
     </header>
@@ -27,10 +27,15 @@ export default function Home() {
       description="Developer Documentation For Mangrove">
       <HomepageHeader />
       <main>
-        <div style={{margin:'auto', width: 'fit-content', paddingTop: '60px', fontSize: '24px'}}>
-          🏝 👷‍♂️Under Reconstruction 👷‍♀️🏝 
-
+        <div style={{margin:'auto', width: 'fit-content', paddingTop: '60px'}}>
+          <h3><marquee>🏝 👷‍♂️Under Reconstruction 👷‍♀️🏝 </marquee></h3>
         </div>
+          <h2 style={{margin:'auto', width: 'fit-content', paddingTop: '10px'}}> 🌴 Learn more about the technical details of the Mangrove 🌴</h2>
+        <section style={{width:'40%', marginLeft:'20%', marginRight:'20%', width: 'fit-content', paddingTop: '10px'}}>
+          <p>Strategy builders or market makers should check out the <a href="./docs/contracts/">Contracts</a> section. Go here if you want to delve into the core concepts for Mangrove, the API documentation or want to develop market making strategies.</p>
+          <p>Off-chain builders that are keen to write bots or UI interfacing with Mangrove should check out the documentation for the <a href="./docs/SDK/">SDK</a> and the dedicated section on <a href="./docs/keeper-bots/">Keeper bots</a>.</p>
+          <p>All GitHub repositories can be found on the <a href="https://github.com/mangrovedao">Mangrove</a> GitHub.</p>
+        </section>
       </main>
     </Layout>
   );
