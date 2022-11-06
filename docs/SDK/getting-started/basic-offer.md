@@ -17,18 +17,18 @@ To post an OTF you need to
 1. tell Mangrove you wish to post a new offer,
 2. sign the resulting transaction with the wallet (EOA) that contains the promised liquidity.
 
-Here is an example using [Mangrove's JS API](https://github.com/mangrovedao/mangrove/tree/master/packages/mangrove.js). Follow [preparation](../../contracts/tutorials/preparation.md) (once) and start a fresh `node` in a shell and run the following statements.
+Here is an example using [Mangrove's JS API](https://github.com/mangrovedao/mangrove/tree/master/packages/mangrove.js). Follow [preparation](../../contracts/tutorials/preparation.mdx) (once) and start a fresh `node` in a shell and run the following statements.
 
 ```javascript
-// Load the NODE_URL and PRIVATE_KEY from .env file into process.env
-// This script assumes NODE_URL points to your access point and PRIVATE_KEY contains private key from which one wishes to post offers
+// Load the RPC_URL and PRIVATE_KEY from .env file into process.env
+// This script assumes RPC_URL points to your access point and PRIVATE_KEY contains private key from which one wishes to post offers
 var parsed = require("dotenv").config();
 // Import the Mangrove API
 const { Mangrove, ethers } = require("@mangrovedao/mangrove.js");
 
 // Create a wallet with a provider to interact with the chain.
 const provider = new ethers.providers.WebSocketProvider(
-  process.env.NODE_URL
+  process.env.RPC_URL
 );
 const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 
