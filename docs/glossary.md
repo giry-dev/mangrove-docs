@@ -47,6 +47,10 @@ Externally Owned Account
 Describe erc20
 
 
+### [Fee](/docs/terms/fee) 
+Describe fee
+
+
 ### [FOK](/docs/terms/FOK) 
 Describe FOK
 
@@ -95,6 +99,10 @@ Describe Off-chain
 Describe Offer id
 
 
+### [Offer list](/docs/terms/OfferList) 
+Describe pivot Id
+
+
 ### [Offer rank](/docs/terms/OfferRank) 
 Describe Offer rank
 
@@ -117,6 +125,14 @@ Describe outbound
 
 ### [Penalty](/docs/terms/Penalty) 
 Describe penalty
+
+
+### [Pivot Id](/docs/terms/PivotId) 
+Describe Pivot Id
+
+
+### [posthookSuccess](/docs/terms/posthookSuccess) 
+TODO
 
 
 ### [Provision](/docs/terms/Provision) 
