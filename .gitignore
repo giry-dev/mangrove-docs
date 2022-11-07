@@ -1,6 +1,13 @@
 # Dependencies
 /node_modules
 
+# solidity code
+/contracts
+/artifacts
+/typechain-types
+/cache
+/docs/contracts/technical-references/code
+
 # Production
 /build
 
