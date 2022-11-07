@@ -35,6 +35,21 @@ const config = {
     '@docusaurus-terminology/parser',
     require.resolve('docusaurus-lunr-search'),
     '@vegaprotocol/docusaurus-theme-github-codeblock',
+    [
+      'docusaurus-plugin-typedoc',
+
+      // Plugin / TypeDoc options
+      {
+        "entryPoints": ["node_modules/@mangrovedao/mangrove.js/src/index.ts"],
+        "tsconfig": "node_modules/@mangrovedao/mangrove.js/tsconfig.json",
+        "out": "SDK/technical-references/code",
+        "excludePrivate": true,
+        "excludeInternal": true,
+        "sort": "source-order",
+        "exclude": ["**/ethers.*","**/typechain/**.*"],
+        "namedAnchors": true
+      },
+    ],
     
   ],
   staticDirectories: ['static'],
