@@ -4,7 +4,7 @@ description: Simple tutorial showing how to post your first offer managed by you
 
 # Post a smart offer
 
-In this tutorial you will learn how to post a %%smart offer|smart offer%%  managed by your own maker contract and which simply transfers tokens to and from your reserve.
+In this tutorial you will learn how to post a %%smart offer|smartOffer%%  managed by your own maker contract and which simply transfers tokens to and from your reserve.
 
 ## Prerequisites
 
@@ -40,7 +40,7 @@ The abstract contract `Direct` has an internal function `_newOffer` for posting 
 
 See [OfferArgs](./TODOnatspec) for an explanation of the parameters for posting an offer.
 
-Also see %%provision|provision%%, %%gasreq|gasreq%%, and %%pivotId|pivotId%%, and %%offer list|offer list%%.
+Also see %%provision|provision%%, %%gasreq|gasreq%%, and %%pivotId|pivotId%%, and %%offer list|offerList%%.
 
 ```solidity reference title="OfferMaker.sol"
 https://github.com/mangrovedao/mangrove-core/blob/e307064c1da3375a116c6153c3d36a1b08e802ed/src/toy_strategies/offer_maker/tutorial/OfferMaker.sol#L26-L53
