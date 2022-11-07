@@ -47,7 +47,12 @@ const config = {
         "excludeInternal": true,
         "sort": "source-order",
         "exclude": ["**/ethers.*","**/typechain/**.*"],
-        "namedAnchors": true
+        "namedAnchors": true,
+        sidebar: {
+          categoryLabel: 'API reference',
+          position: 999,
+          fullNames: true,
+        },
       },
     ],
     
@@ -152,28 +157,53 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Telegram',
-                href: 'https://t.me/MangroveDAO',
-              },
-              {
                 label: 'Discord',
-                href: 'https://discord.gg/fuSuPC2G',
+                href: 'https://discord.gg/rk9Qthz5YE'
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/mangrovedao',
+                href: 'https://twitter.com/MangroveDAO'
               },
+              {
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/company/mangrovedao/'
+              }          
+            ],
+          },
+          {
+            title: 'GitHub',
+            items: [
+              {
+                label: 'Contracts',
+                href: 'https://github.com/mangrovedao/mangrove-core'
+              },
+              {
+                label: 'SDK',
+                href: 'https://github.com/mangrovedao/mangrove-ts'
+              },
+              {
+                label: 'Keeper bots',
+                href: 'https://github.com/mangrovedao/mangrove-ts'
+              },              
             ],
           },
           {
             title: 'More',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/mangrovedao',
+                label: 'White Paper',
+                href: 'https://bafybeig62o75bfxssic66w2zwerbo6ezlhb33vsg5idr4uprckn2dxrucy.ipfs.infura-ipfs.io/'
+              },              
+              {
+                label: 'Blog',
+                href: 'https://blog.mangrove.exchange/'
               },
-            ],
-          },
+              {
+                label: 'Home',
+                href: 'https://mangrove.exchange'
+              }
+            ]
+          }
         ],
         copyright: `Copyright © ${new Date().getFullYear()} ADDMA. All rights reserved.`,
       },
