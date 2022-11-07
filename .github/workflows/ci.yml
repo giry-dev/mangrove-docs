@@ -85,7 +85,7 @@ jobs:
     - run: yarn install --immutable
 
     # build
-    - name: commonlib.js - Build
+    - name: Build
       run: yarn run docgen
 
   # ==== End job: build ====
