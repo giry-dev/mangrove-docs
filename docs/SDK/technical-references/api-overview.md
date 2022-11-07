@@ -1,4 +1,8 @@
-# API classes overview
+---
+sidebar_position: 0
+---
+
+# API overview
 
 :::info **Numbers**
 
