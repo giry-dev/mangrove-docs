@@ -56,9 +56,10 @@ event OfferWrite(
 ```
 
 </TabItem>
+
 <TabItem value="revertStrings" label="Revert strings">
 
-```javascript
+```
 // Gatekeeping
 "mgv/dead" // Mangrove contract is terminated
 "mgv/inactive" // Trying to post an offer in an inactive market
@@ -73,14 +74,14 @@ event OfferWrite(
 
 // Invalid values
 "mgv/writeOffer/gasreq/tooHigh" // gasreq above gasmax
-"mgv/writeOffer/gives/tooLow"   // gives should be > 0
-"mgv/writeOffer/density/tooLow" // wants / (gasreq + overhead) < density
+"mgv/writeOffer/gives/tooLow"   // gives should be greater than 0
+"mgv/writeOffer/density/tooLow" // wants / (gasreq + overhead) below density
 
 // Insufficient provision
 "mgv/insufficientProvision" // provision of `msg.sender` should cover offer bounty
 ```
-
 </TabItem>
+
 <TabItem value="solidity" label="Solidity">
 
 ```solidity
