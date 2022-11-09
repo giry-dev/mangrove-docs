@@ -129,7 +129,7 @@ const config = {
           {
             to: '/docs/keeper-bots',
             position: 'left',
-            label: 'Keeper bots',
+            label: 'Keeper Bots',
           },
           {
             href: '/docs/glossary',
