@@ -2,7 +2,7 @@
 sidebar_position: 0
 ---
 
-# API overview
+# SDK Overview
 
 :::info **Numbers**
 
