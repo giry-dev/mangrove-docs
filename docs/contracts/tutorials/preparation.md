@@ -43,12 +43,6 @@ npm init -y
 
 Now install dependencies for the type of tutorial:
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs>
-<TabItem value="solidity" label="Solidity" default>
-
 ```bash
 # To create Solidity smart contracts
 # Install NPM package with strat library
@@ -65,18 +59,6 @@ ds-test/=node_modules/@mangrovedao/mangrove-core/lib/forge-std-vendored/lib/ds-t
 forge-std/=node_modules/@mangrovedao/mangrove-core/lib/forge-std-vendored/src/
 " > remappings.txt
 ```
-
-</TabItem>
-<TabItem value="mangrovesdk" label="Mangrove SDK">
-
-```bash
-# To use the mangrove SDK
-npm install --save dotenv
-npm install --save @mangrovedao/mangrove.js
-```
-
-</TabItem>
-</Tabs>
 
 ## Environment
 
