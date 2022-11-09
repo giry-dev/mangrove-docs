@@ -1,10 +1,8 @@
 ---
-sidebar_position: 5
+sidebar_position: 1
 ---
 
-# Technical reference
-
-## Example keeper bots
+# Example Keeper Bots
 * Cleaning bot example code: [mangrove-ts/packages/bot-cleaning](https://github.com/mangrovedao/mangrove-ts/tree/master/packages/bot-cleaning).
 * Gas price update bot example code: [mangrove-ts/packages/bot-updategas](https://github.com/mangrovedao/mangrove-ts/tree/master/packages/bot-updategas).
 
