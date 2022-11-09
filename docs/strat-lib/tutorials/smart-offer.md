@@ -8,7 +8,7 @@ In this tutorial you will learn how to post a %%smart offer|smartOffer%%  manage
 
 ## Prerequisites
 
-The tutorial assumes knowledge of solidity development. Follow [preparation](./preparation.mdx) to create a new `tutorial` folder.
+The tutorial assumes knowledge of solidity development. Follow [preparation](./preparation.md) to create a new `tutorial` folder.
 
 Open your favorite solidity editor inside that folder.
 
@@ -94,7 +94,7 @@ Start another terminal and import environment variables again
 source .env
 ```
 
-Now, create the `OfferMaker` contract on the `anvil` node with your private key by pointing to its `rpc-url`, and supplying the parameters for the Mangrove core contract (get it from [Addresses](../technical-references/contract-addresses.md))
+Now, create the `OfferMaker` contract on the `anvil` node with your private key by pointing to its `rpc-url`, and supplying the parameters for the Mangrove core contract (get it from [Addresses](../../contracts/technical-references/contract-addresses.md))
 
 ```bash
 export MANGROVE=<contract address> # 0xabcd.... 
