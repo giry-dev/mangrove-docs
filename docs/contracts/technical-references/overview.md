@@ -1,9 +1,9 @@
 ---
-description: Overview of Mangrove Smart Contracts
+description: Overview of Mangrove Protocol
 sidebar_position: 1
 ---
 
-# Smart Contracts Overview
+# Protocol Overview
 
 ## Core protocol
 
