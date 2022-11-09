@@ -1,4 +1,9 @@
-# Deployment addresses
+---
+description: Deployment Addresses
+sidebar_position: 4
+---
+
+# Deployment Addresses
 
 ## Polygon Testnet - Mumbai
 
