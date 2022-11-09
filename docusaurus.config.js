@@ -159,7 +159,7 @@ const config = {
                 to: '/docs/contracts',
               },
               {
-                label: 'Strat lib',
+                label: 'Strat Library',
                 to: 'docs/strat-lib'
               },
               {
@@ -167,7 +167,7 @@ const config = {
                 to: '/docs/SDK',
               },
               {
-                label: 'Keeper bots',
+                label: 'Keeper Bots',
                 to: '/docs/keeper-bots',
               },
             ],
@@ -193,7 +193,7 @@ const config = {
             title: 'GitHub',
             items: [
               {
-                label: 'Contracts',
+                label: 'Contracts and Strat Lib',
                 href: 'https://github.com/mangrovedao/mangrove-core'
               },
               {
