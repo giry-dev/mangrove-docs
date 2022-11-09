@@ -5,4 +5,6 @@ sidebar_position: 2
 
 # Mangrove API
 
+**TODO** Pointer to SDK or shouldn't be here.
+
 mangrove.js is a JavaScript API for Mangrove. You can find the developer documentation for mangrove.js here: [jsdocs.mangrove.exchange](https://jsdocs.mangrove.exchange/).

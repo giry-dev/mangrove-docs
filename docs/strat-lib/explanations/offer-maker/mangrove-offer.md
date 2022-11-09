@@ -10,7 +10,7 @@ The **reserve** is where the outbound tokens will be fetched, and where the inbo
 
 When an offer is taken, Mangrove transfers the funds from the taker to Mangrove and from Mangrove to the contract that posted the offer. It is not possible to hook in before or in between these 2 transfers. When these 2 transfers are done, MangroveOffer, has 3 hooks. **lastlook**, **put** and **get**. They are called in this order.
 
-**Lastlook** is meant for having a lastlook before the funds are transferred to the taker. It then returns a value that `makerPosthook` can use, to get information of how e.g. the markets looked, when `makerExecute` was executed. This can be useful since, `makerPosthook` may be call several orders later. See [Executing offers](../../technical-references/taking-and-making-offers/reactive-offer/executing-offers.md) for more information.
+**Lastlook** is meant for having a lastlook before the funds are transferred to the taker. It then returns a value that `makerPosthook` can use, to get information of how e.g. the markets looked, when `makerExecute` was executed. This can be useful since, `makerPosthook` may be call several orders later. See [Executing offers](../../../contracts/technical-references/taking-and-making-offers/reactive-offer/executing-offers.md) for more information.
 
 **Put** is meant as an option for the maker to transfer the given funds from the contract to e.g. the reserve. This could be useful if you don't want to leave the funds on the contract.
 
