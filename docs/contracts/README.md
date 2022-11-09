@@ -4,7 +4,7 @@ sidebar_position: 1
 ---
 
 
-# Contracts
+# What is Mangrove? 🌴
 
 The Mangrove is an [EVM-compatible](https://ethereum.org/en/developers/docs/scaling/sidechains/#evm-compatibility) orderbook-based exchange protocol, in which offers can be bound to a [smart contract](https://ethereum.org/en/smart-contracts/).
 
