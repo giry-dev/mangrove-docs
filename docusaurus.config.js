@@ -107,6 +107,11 @@ const config = {
             label: 'Contracts',
           },
           {
+            to: '/docs/strat-lib',
+            position: 'left',
+            label: 'Strat Lib',
+          },
+          {
             to: '/docs/SDK',
             position: 'left',
             label: 'SDK',
@@ -142,6 +147,10 @@ const config = {
               {
                 label: 'Contracts',
                 to: '/docs/contracts',
+              },
+              {
+                label: 'Strat lib',
+                to: 'docs/strat-lib'
               },
               {
                 label: 'SDK',
