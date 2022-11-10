@@ -3,11 +3,17 @@ description: Preparation for tutorials
 sidebar_position: 1
 ---
 
-# Preparation
+# Setup local environment
 
-## Prerequisites
+## Local development
+
+If you want to do any local development we recommend installing [Node.js](https://nodejs.org/en/) and [Foundry](https://book.getfoundry.sh/getting-started/installation.html).
+We are going to be using Node.js for running our javascript in the tutorials, but it is not required. You can use any development environment that supports javascript.
+
+We are going to be using Foundry to start local forks for existing chains. You don't have to use Foundry to do this, you can use any tool you want to do this, but we recommend Foundry.
 
 For Linux or macOS everything should work out of the box, if you are using Windows, then we recommend installing everything from within WSL2 and expect some quirks.
+Remember to reopen your shell after running the fist line.
 
 1. [Node.js](https://nodejs.org/en/) v16.10+, we recommend installation through [nvm](https://github.com/nvm-sh/nvm#installing-and-updating), with [Yarn 2](https://yarnpkg.com/getting-started/install) enabled:
 
@@ -19,13 +25,15 @@ For Linux or macOS everything should work out of the box, if you are using Windo
     corepack enable
     ```
 
-2. For Solidity contract development, the [Foundry](https://book.getfoundry.sh/getting-started/installation.html) development framework for Ethereum :
+2. [Foundry](https://book.getfoundry.sh/getting-started/installation.html) development framework for Ethereum :
 
     ```shell
     curl -L https://foundry.paradigm.xyz | bash
     # Reopen shell
     foundryup
     ```
+
+
 
 ## Create tutorial folder
 
@@ -63,4 +71,27 @@ export ADMIN_ADDRESS=<EOA> # 0xabcd...
 export RPC_URL=<https://polygon-mumbai.g.alchemy.com/v2/API key> # alchemy or infura node url for Polygon Mumbai
 ```
 
-Keep the terminal open, you’ll need it for your first tutorial.
+## Local chain
+
+Starting a local chain can easily be done by using `anvil`. This is a way to start a local chain, given by foundry. You can either start up an all new chain or fork an existing one.
+
+```bash title="How to start all new chain"
+anvil
+```
+
+```bash title="How to fork an existing chain"
+source .env
+anvil -f $RPC_URL
+```
+
+Both these start a new chain on with a local url of http://127.0.0.1:8545. Added this url to the `.env` file will make it easier for us to use it in tutorials.
+Foundry has many options for `anvil`, you can read about them [here](https://book.getfoundry.sh/reference/anvil/), if you are interested.
+
+When anvil starts up, it creates 10 test accounts, with some native tokens. If you do not have a real account on the chain, you can always use their accounts. Here is an example of a `.env` file that uses the first anvil account, a demo RPC URL and with a LOCAL URL.
+
+``` bash title=".env file"
+PRIVATE_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 # The first anvil private key
+ADMIN_ADDRESS=0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 # The matching public key, to the first anvil private key
+RPC_URL=https://polygon-mumbai.g.alchemy.com/v2/demo # Demo RPC provided by alchemy
+LOCAL_URL=http://127.0.0.1:8545 # Url for the local chan that anvil starts
+```
