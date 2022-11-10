@@ -64,7 +64,7 @@ forge-std/=node_modules/@mangrovedao/mangrove-core/lib/forge-std-vendored/src/
 
 Inside the tutorial folder, create a `.env` file. This will hold the secrets such as private key and API keys.
 
-The file should typically look as follows (with `<...>` replaced by proper values) - for instance you need a RPC URL from, e.g., [Infura](https://infura.io/) or [Alchemy](https://www.alchemy.com/), and an %%EOA|eoa%% with a private key. Note, there are other ways to provide secrets, but this is what we do in the tutorials.
+The file should typically look as follows (with `<...>` replaced by proper values) - for instance you need a RPC URL from, e.g., [Infura](https://infura.io/) or [Alchemy](https://www.alchemy.com/), and an EOA with a private key. Note, there are other ways to provide secrets, but this is what we do in the tutorials.
 
 ```bash
 # .env

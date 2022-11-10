@@ -63,8 +63,16 @@ The token type that an offer taker will receive.
 The identifier of an offer whose rank is close enough of the one at which an offer is inserted in an offer list.
 
 
+### [posthook](/docs/terms/Posthook) 
+the callback function of a smart offer that is reached by Mangrove after a trade execution.
+
+
 ### [Provision](/docs/terms/Provision) 
-Describe provision
+An amount of native tokens that is attached to a live offer on Mangrove and that is used to compensate a fail-to-deliver.
+
+
+### [Smart offer](/docs/terms/SmartOffer) 
+an offer that is bound to a smart contract, as opposed to an on-the-fly offer.
 
 
 ### [Wants](/docs/terms/Wants) 

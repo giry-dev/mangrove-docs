@@ -48,7 +48,7 @@ https://github.com/mangrovedao/mangrove-core/blob/e307064c1da3375a116c6153c3d36a
 
 ### Emit in Posthook
 
-When using our new contract we can inspect traces and addresses, but for illustrative purposes insert the following to emit an event in the %%posthookSuccess|posthookSuccess%% when the offer is successfully taken.
+When using our new contract we can inspect traces and addresses, but for illustrative purposes insert the following to emit an event in the %%posthook|posthook%% when the offer is successfully taken.
 
 Invoking `super` makes sure the offer is reposted in case it was not fully taken.
 
