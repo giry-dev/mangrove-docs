@@ -63,7 +63,7 @@ contract MyOffer is IMaker {
 
 ### Inputs
 
-* `order` is a [data structure](../../governance-parameters/) containing a recap of the [taker order](offer-data-structures.md#mgvlib.singleorder) and Mangrove's current configuration state. The protocol guarantees that `order.gives/order.wants` will match the price of the offer that is being executed up to a small precision.&#x20;
+* `order` is a [data structure](../../taking-and-making-offers/reactive-offer/offer-data-structures.md#public-data-structures) containing a recap of the [taker order](offer-data-structures.md#mgvlib.singleorder) and Mangrove's current configuration state. The protocol guarantees that `order.gives/order.wants` will match the price of the offer that is being executed up to a small precision.
 
 ### Outputs
 
@@ -71,17 +71,17 @@ contract MyOffer is IMaker {
 
 :::danger **Security concerns**
 
-Your contract should ensure that only Mangrove can call `makerExecute` to avoid unwanted state change.&#x20;
+Your contract should ensure that only Mangrove can call `makerExecute` to avoid unwanted state change.
 
 :::
 
 :::tip **How to succeed**
 
-To successfully execute, the logic **must** not revert during the call to `makerExecute` and have at least `wants` _outbound_ tokens available for Mangrove to transfer by the end of the function's execution.
+To successfully execute, the logic **must** not revert during the call to `makerExecute` and have at least `wants` %%outbound|outbound%% tokens available for Mangrove to transfer by the end of the function's execution.
 
 **How to renege on trade**
 
-The proper way to renege on an offer is to make the execution of `makerExecute` throw with a reason that can be cast to a `bytes32`. Having a balance of _outbound_ tokens that is lower than `order.wants` will also make trade fail, but with a higher incurred gas cost and thus a higher [bounty](offer-provision.mdx#provision-and-offer-bounty).
+The proper way to renege on an offer is to make the execution of `makerExecute` throw with a reason that can be cast to a `bytes32`. Having a balance of outbound tokens that is lower than `order.wants` will also make trade fail, but with a higher incurred gas cost and thus a higher [bounty](offer-provision.mdx#provision-and-offer-bounty).
 
 :::
 
@@ -93,11 +93,11 @@ The [bounty](offer-provision.mdx#computing-the-provision-and-offer-bounty) taken
 
 :::danger **Mangrove is guarded against reentrancy during `makerExecute`**
 
-The offer list for the _outbound_ / _inbound_ token pair is temporarily locked during calls to `makerExecute`. Its offers cannot be modified in any way. The offer logic must use `makerPosthook` to repost/update its offers, since the offer list will unlocked by then.
+The offer list for the outbound / %%inbound|inbound%% token pair is temporarily locked during calls to `makerExecute`. Its offers cannot be modified in any way. The offer logic must use `makerPosthook` to repost/update its offers, since the offer list will unlocked by then.
 
 :::
 
-## Trade post-hook
+## Trade posthook
 
 The logic associated with an offer may include a `makerPosthook` callback function. Its intended use is to update offers in the [offer list](../market.md) containing the [offer](./) that was just executed.
 
