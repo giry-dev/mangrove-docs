@@ -1,13 +1,20 @@
 ---
-description: How to write offer execution logic
+description: How to write a maker contract
 sidebar_position: 1
 ---
 
-# Executing offers
+# Maker contract
 
-### Offer Logic
+:::info 
+A maker contract is a smart contract that is bound to an offer posted on Mangrove. 
+It is the contract that is called by Mangrove should the offer be matched during a [taker order](../taker-order/README.md). 
+The offer logic is the part of the maker contract that executes as a consequence of a call by Mangrove. The offer logic is split into [trade execution](#trade-execution) 
+and [trade posthook](#trade-posthook).
+:::
 
-The logic associated with an offer **must** be implemented through a `makerExecute` callback function. (See [data structures](offer-data-structures.md#mgvlib.singleorder) for `SingleOrder` type).
+## Trade Execution
+
+The logic associated with an offer **must** be implemented in the `makerExecute` callback function. (See [data structures](offer-data-structures.md#mgvlib.singleorder) for `SingleOrder` type).
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -54,11 +61,11 @@ contract MyOffer is IMaker {
 </TabItem>
 </Tabs>
 
-#### Inputs
+### Inputs
 
 * `order` is a [data structure](../../governance-parameters/) containing a recap of the [taker order](offer-data-structures.md#mgvlib.singleorder) and Mangrove's current configuration state. The protocol guarantees that `order.gives/order.wants` will match the price of the offer that is being executed up to a small precision.&#x20;
 
-#### Outputs
+### Outputs
 
 * `makerData` is an arbitrary `bytes32` that will be passed to `makerPosthoook` in the `makerData` field.
 
@@ -90,7 +97,7 @@ The offer list for the _outbound_ / _inbound_ token pair is temporarily locked d
 
 :::
 
-### Offer post-hook
+## Trade post-hook
 
 The logic associated with an offer may include a `makerPosthook` callback function. Its intended use is to update offers in the [offer list](../market.md) containing the [offer](./) that was just executed.
 
@@ -144,14 +151,14 @@ abstract contract MakerContract is IMaker {
 </TabItem>
 </Tabs>
 
-#### Inputs
+### Inputs
 
 * `order` same as in `makerExecute`.
 * `result` A [struct](offer-data-structures.md#mgvlib-orderresult) containing:
   * the return value of `makerExecute`
   * additional data sent by Mangrove, more info [available here](offer-data-structures.md#mgvlib.orderresult).
 
-#### Outputs
+### Outputs
 
 None.
 
