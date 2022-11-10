@@ -1,6 +1,6 @@
 ---
 id: offerRank
-hoverText: Describe Offer rank
+hoverText: The position of an offer in an Offer List.
 title: Offer rank
 ---
 

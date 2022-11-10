@@ -1,7 +1,7 @@
 ---
 id: bounty
 title: Bounty
-hoverText: An amount of native token paid to the taker when an offer fails
+hoverText: An amount of native tokens paid to the taker when an offer fails.
 ---
 
 A bounty is an amount of native token paid to the taker when an offer fails.

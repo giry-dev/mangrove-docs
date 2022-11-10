@@ -1,6 +1,6 @@
 ---
 id: offerId
-hoverText: Describe Offer id
+hoverText: The identifier of an offer in a given offer list.
 title: Offer id
 ---
 

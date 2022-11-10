@@ -1,6 +1,6 @@
 ---
 id: pivotId
-hoverText: Describe Pivot Id
+hoverText: The identifier of an offer whose rank is close enough of the one at which an offer is inserted in an offer list.
 title: Pivot Id
 ---
 
