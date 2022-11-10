@@ -49,7 +49,7 @@ const config = {
         "exclude": ["**/ethers.*","**/typechain/**.*"],
         "namedAnchors": true,
         sidebar: {
-          categoryLabel: 'API reference',
+          categoryLabel: 'API Reference',
           position: 999,
           fullNames: true,
         },
@@ -201,7 +201,7 @@ const config = {
                 href: 'https://github.com/mangrovedao/mangrove-ts'
               },
               {
-                label: 'Keeper bots',
+                label: 'Keeper Bots',
                 href: 'https://github.com/mangrovedao/mangrove-ts'
               },              
             ],
