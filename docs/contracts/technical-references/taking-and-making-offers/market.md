@@ -13,9 +13,9 @@ The offer list is the basic Mangrove data structure. It contains offers (created
 
 For example in a DAI-wETH offer list, DAI is the outbound token (i.e. sent or given by the offer) and wETH the inbound token (i.e. received or wanted by the offer).
 
-Relationship to markets: a full market will always feature two offer lists. For instance, a wETH/DAI **market** has one DAI-wETH offer list (where wETH is requested and DAI is offered), and a wETH-DAI offer list (where DAI is requested and wETH is offered).\
-\
-[Mangrove's API ](../../explanations/around-the-mangrove/mangrove-api.md)offers Market abstractions that allows liquidity providers and takers to interact with Mangrove using standard **base &** **quote** denominations.
+Relationship to markets: a full market will always feature two offer lists. For instance, a wETH/DAI **market** has one DAI-wETH offer list (where wETH is requested and DAI is offered), and a wETH-DAI offer list (where DAI is requested and wETH is offered).
+
+[Mangrove's SDK ](../../../SDK/README.md) offers Market abstractions that allows liquidity providers and takers to interact with Mangrove using standard base & quote denominations.
 
 :::
 
