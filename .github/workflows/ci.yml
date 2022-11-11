@@ -88,6 +88,15 @@ jobs:
     - name: Build
       run: yarn run docgen
 
+    - name: Deploy to GitHub Pages branch
+      if: success() && github.event_name != 'pull_request_target' 
+      uses: crazy-max/ghaction-github-pages@v3
+      with:
+        target_branch: gh-pages
+        build_dir: build
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   # ==== End job: build ====
 
   # ==== final "check" job, using alls-green to have one single job to check for green workflow ====
