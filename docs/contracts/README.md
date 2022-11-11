@@ -14,7 +14,7 @@ As a maker, when you [post an offer](technical-references/taking-and-making-offe
 
 ## [When an offer is taken](technical-references/taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution)
 
-Mangrove calls the maker contract the first time, when an offer is attempted taken. This allows makers to source the liquidity *just-in-time* for the trade. It also allows the makers to [renege](explanations/taker-compensation) on the offer to trade (e.g, because the market conditions changed) by incorporating defensive code in the maker contract.
+Mangrove calls the maker contract the first time, when an offer is attempted taken. This allows makers to source the liquidity *just-in-time* for the trade. It also allows the makers to [renege](explanations/taker-compensation.md) on the offer to trade (e.g, because the market conditions changed) by incorporating defensive code in the maker contract.
 
 This means that offers posted to Mangrove need not be fully provisioned. As a maker, your liquidity can be shared, borrowed, lent and, at the same time, be displayed in the Mangrove's order book, ready to be sourced when, and only when, your offer is taken.
 
