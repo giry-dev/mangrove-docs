@@ -1,5 +1,5 @@
 ---
-description: The Mangrove is an on-chain, orderbook-based exchange where offers are code.
+description: The Mangrove DEX is an on-chain, orderbook-based exchange where offers are code.
 sidebar_position: 1
 ---
 
@@ -24,11 +24,11 @@ Mangrove calls the maker contract a second time during the trade transaction, *a
 
 This allows makers, for instance, to repost another offer to redisplay their liquidity instantly - in a manner similar to Automated Market Makers (AMMs). 
 
-### Where can I read more on how Mangrove handles trades?
+### Where can I read more on how the Mangrove exchange handles trades?
 
 Refer to the detailed section on [Executing Offers](technical-references/taking-and-making-offers/reactive-offer/executing-offers.md) for a detailed account on how offers are executed in Mangrove.
 
 
-## How does the Mangrove protocol compare to other DEXs?
+## Where can I get more information about the Mangrove project?
 
-**TODO**
+Please visit the [Mangrove](https://mangrove.exchange/) main site for more general information about the Mangrove project.
