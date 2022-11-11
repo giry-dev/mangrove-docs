@@ -8,13 +8,13 @@ In this tutorial you will learn how to post a %%smart offer|smartOffer%%  manage
 
 ## Prerequisites
 
-The tutorial assumes knowledge of solidity development. Follow [preparation](./preparation.md) to create a new `tutorial` folder.
+The tutorial assumes knowledge of solidity development. Follow [preparation](./preparation.mdx) to create a new `tutorial` folder.
 
 Open your favorite solidity editor inside that folder.
 
 ## Simple maker contract (offer logic)
 
-We want to create a new contract `OfferMaker` which inherits from the `Direct` contract in our strat-library. `Direct` provides a safety harness to make it easier to correctly interact with Mangrove.
+We want to create a new contract `OfferMaker` which inherits from the `Direct` contract in our strat-library. `Direct` provides a safety harness to make it easier to correctly interact with Mangrove, you can read more about it [here](../explanations/offer-maker/direct.md).
 
 Create a new `OfferMaker.sol` file in the `src` folder and add the following pieces.
 
@@ -94,7 +94,7 @@ Start another terminal and import environment variables again
 source .env
 ```
 
-Now, create the `OfferMaker` contract on the `anvil` node with your private key by pointing to its `rpc-url`, and supplying the parameters for the Mangrove core contract (get it from [Addresses](../../contracts/technical-references/contract-addresses.md))
+Now, create the `OfferMaker` contract on the `anvil` node with your private key by pointing to its `rpc-url`, and supplying the parameters for the Mangrove core contract (get it from [Addresses](../../contracts/technical-references/contract-addresses.md) for the network you have forked)
 
 ```bash
 export MANGROVE=<contract address> # 0xabcd.... 
@@ -111,7 +111,7 @@ export OFFER_MAKER=<contract address> # 0xabcd..., the address of the newly depl
 
 We have to let Mangrove pull the outbound token from our new contract.
 
-In this tutorial we will use the WETH, DAI market.
+In this tutorial we will use the WETH, DAI market (the example token addresses are for the Polygon Mumbai testnet).
 
 ```bash
 export WETH=0x63e537a69b3f5b03f4f46c5765c82861bd874b6e
