@@ -7,10 +7,11 @@
     "start": "yarn install && docusaurus start",
     "build": "yarn install && docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "docgen": "docusaurus parse && docusaurus glossary && docusaurus build",
+    "docgen": "yarn addresses-to-md && docusaurus parse && docusaurus glossary && docusaurus build",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
+    "addresses-to-md": "node scripts/addresses-to-md.js",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids"
   },
