@@ -7,7 +7,7 @@ sidebar_position: 2
 
 ## Intro
 
-This will go through sniping an offer using mangrove.js. In this section we assume that you already know how to connect to Mangrove either on a real chain or on a local chain. When sniping we need to make sure that we actually have the funds. If we do not have the funds the transaction will revert with the error `mgv/takerTransferFail`.  This means that the taker is the cause of the failed transfer and since we are trying to snipe an offer, we are the taker. Another result could be that the transfer failed because of the maker, then we will get this error `mgv/makerTransferFail`. This means that for some reason the makers funds was not transferred and the transfer therefore failed. In this case the taker (us), will be compensated for the gas we just used to make the offer fail. We are compensated in form of a %%bounty|bounty%.
+This will go through sniping an offer using mangrove.js. In this section we assume that you already know how to connect to Mangrove either on a real chain or on a local chain. When sniping we need to make sure that we actually have the funds. If we do not have the funds the transaction will revert with the error `mgv/takerTransferFail`.  This means that the taker is the cause of the failed transfer and since we are trying to snipe an offer, we are the taker. Another result could be that the transfer failed because of the maker, then we will get this error `mgv/makerTransferFail`. This means that for some reason the makers funds was not transferred and the transfer therefore failed. In this case the taker (us), will be compensated for the gas we just used to make the offer fail. We are compensated in form of a %%bounty|bounty%%.
 
 ### Connect to market (and mint tokens)
 
