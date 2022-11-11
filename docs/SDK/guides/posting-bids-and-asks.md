@@ -1,6 +1,6 @@
 ---
 description: Using the API to post Maker orders on a Mangrove Market.
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 # Posting bids and asks

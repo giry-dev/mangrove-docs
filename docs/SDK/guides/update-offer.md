@@ -3,7 +3,7 @@ description: How to update an offer using mangrove.js
 sidebar_position: 1
 ---
 
-# How To Update Your Offer
+# Update Your Offer
 
 ## Intro
 
