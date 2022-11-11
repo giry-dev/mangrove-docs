@@ -101,29 +101,27 @@ The file should typically look as follows (with `<...>` replaced by proper value
 export PRIVATE_KEY=<private key>   # 0xabcd.... <- This is the private key you'll be using in the tutorial - a test key for the Polygon Mumbai network
 export ADMIN_ADDRESS=<EOA> # 0xabcd...
 export RPC_URL=<https://polygon-mumbai.g.alchemy.com/v2/API key> # alchemy or infura node url for Polygon Mumbai
+export LOCAL_URL=http://127.0.0.1:8545 # Url for the local chan that anvil starts (see next section)
 ```
 
 ## Local chain
 
-Starting a local chain can easily be done by using `anvil`. This is a way to start a local chain, given by Foundry. You can either start up an all new chain or fork an existing one.
+The tutorials can be run on networks where Mangrove is deployed (see [Addresses](../../contracts/technical-references/contract-addresses.md)). However on real network you will spend real tokens, so we recommend starting on test networks with a test account.
 
-```bash title="How to start all new chain"
-anvil
-```
+To further speed things up we run tutorials on a local fork of a chain using Foundry's `anvil` tool.
 
 ```bash title="How to fork an existing chain"
 source .env
 anvil -f $RPC_URL
 ```
 
-Both these start a new chain on with a local url of `http://127.0.0.1:8545`. Adding this url to the `.env` file will make it easier for us to use it in tutorials.
-Foundry has many options for `anvil`, you can read about them [here](https://book.getfoundry.sh/reference/anvil/), if you are interested.
+This starts a new chain on with a local url of `http://127.0.0.1:8545`. You can read more about the `anvil` command [here](https://book.getfoundry.sh/reference/anvil/), if you are interested.
 
-When anvil starts up, it creates 10 test accounts, with some native tokens. If you do not have a real account on the chain, you can always use their accounts. Here is an example of a `.env` file that uses the first anvil account, a demo RPC URL and with a LOCAL URL.
+When `anvil` starts up, it creates 10 test accounts, with some native tokens. If you do not have a real account on the chain, you can always use these accounts. Here is an example of a `.env` file that uses the first anvil account, a demo RPC URL and with a LOCAL URL.
 
 ``` bash title=".env file"
-PRIVATE_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 # The first anvil private key
-ADMIN_ADDRESS=0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 # The matching public key, to the first anvil private key
-RPC_URL=https://polygon-mumbai.g.alchemy.com/v2/demo # Demo RPC provided by alchemy
-LOCAL_URL=http://127.0.0.1:8545 # Url for the local chan that anvil starts
+export PRIVATE_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 # The first anvil private key
+export ADMIN_ADDRESS=0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 # The matching public key, to the first anvil private key
+export RPC_URL=https://polygon-mumbai.g.alchemy.com/v2/demo # Demo RPC provided by alchemy
+export LOCAL_URL=http://127.0.0.1:8545 # Url for the local chan that anvil starts
 ```

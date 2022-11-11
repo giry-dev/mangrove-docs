@@ -3,19 +3,19 @@ description: The most simple liquidity providing strategy, no offer logic, just 
 sidebar_position: 2
 ---
 
-# Post simple offer
+# Post Simple Offer
 
-Posting a simple offer is also refered to as an %%on-the-fly offer|OTF%%.
+Posting a simple offer is also referred to as an %%on-the-fly offer|OTF%%.
 
 ## Prerequisites
 
 The tutorial assumes knowledge of javascript. Follow [preparation](./preparation.md) to create a new `tutorial` folder.
 
-Make sure to use a chain where Mangrove is live. You can find all all live addreses for Mangrove [here](../../contracts/technical-references/contract-addresses.md)
+Make sure to use a chain where Mangrove is live. You can find all all live addresses for Mangrove [here](../../contracts/technical-references/contract-addresses.md)
 
 :::info
 
-When running the tutorial be aware that some of the script, calls the chain and it can therefore take a few seconds before the transaction is completed.
+When running the tutorial be aware that some of the script calls the chain and it can therefore take a few seconds before the transaction is completed.
 
 :::
 
@@ -31,9 +31,6 @@ Open your favorite javascript editor inside that folder.
     - You can also replace the `PRIVATE_KEY` with a key provided by anvil, if you don't want yo use your own account or simple don't have an account on the chain.
 5. Once you have connected your wallet, you can connect to the Mangrove protocol using your wallet.
 
-
-
-
 ```javascript reference
 https://github.com/mangrovedao/mangrove-ts/blob/bbb41b873cb235f106746f113c720ec80da1a4f7/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L1-L13
 ```
@@ -43,8 +40,8 @@ https://github.com/mangrovedao/mangrove-ts/blob/bbb41b873cb235f106746f113c720ec8
 Next you need to connect to a market, in order to see the existing offers. This way you can figure out at what price you want to post your offer.
 
 1. Connect to the market using `mgv.market`, with a base and a quote.
-2. Console log asks. This outputs table of the 50. best asks.
-3. Console log bidss. This outputs table of the 50. best bids.
+2. Console log asks. This outputs table of the 50 best asks.
+3. Console log bidss. This outputs table of the 50 best bids.
 
 ```javascript reference
 https://github.com/mangrovedao/mangrove-ts/blob/bbb41b873cb235f106746f113c720ec80da1a4f7/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L15-L20
