@@ -7,4 +7,4 @@ sidebar_position: 1
 
 ## Core protocol
 
-The Solidity code for the core contracts for Mangrove can be found on [GitHub](https://github.com/mangrovedao/mangrove-core). There is also [annotated code](https://code.mangrove.exchange) available generated from code comments.
+The Solidity code for the core contracts for Mangrove can be found on [GitHub](https://github.com/mangrovedao/mangrove-core). There is also [annotated code](pathname:///MgvDoc.html) available generated from code comments.
