@@ -115,6 +115,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
+        if: github.event_name != 'pull_request_target'         
         uses: actions/deploy-pages@v1
 
   # ==== End job: Deploy to GitHub pages ====
@@ -128,6 +129,7 @@ jobs:
     needs:
     - security-guard
     - build
+    - deploy
 
     runs-on: ubuntu-latest
 
