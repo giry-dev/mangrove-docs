@@ -9,7 +9,7 @@ sidebar_position: 1
 
 ### Taking offers
 
-The main way to consume liquidity on Mangrove is through a market order, a configurable type of order that executes offers from best to worst. The [Taking offers](../technical-references/taking-and-making-offers/taker-order/README.mdx) section details how market orders work, and covers [offer sniping](../technical-references/taking-and-making-offers/taker-order/#offer-sniping) as well, wherein one can target individual offers.
+The main way to consume liquidity on Mangrove is through a market order, a configurable type of order that executes offers from best to worst. The [Taking offers](../technical-references/taking-and-making-offers/taker-order/README.md) section details how market orders work, and covers [offer sniping](../technical-references/taking-and-making-offers/taker-order/#offer-sniping) as well, wherein one can target individual offers.
 
 ### Cleaning offers
 
@@ -17,4 +17,4 @@ Offers on Mangrove can fail. Liquidity-taking functions can also be used to trig
 
 ### Delegation
 
-An allowance mechanism lets you separate the address that provides the funds and the address that originates the buy/sell transactions. The [Delegation](../technical-references/taking-and-making-offers/taker-order/delegate-takers.mdx) section details how to let other addresses use your funds.
+An allowance mechanism lets you separate the address that provides the funds and the address that originates the buy/sell transactions. The [Delegation](../technical-references/taking-and-making-offers/taker-order/delegate-takers.md) section details how to let other addresses use your funds.

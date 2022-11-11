@@ -5,13 +5,13 @@ sidebar_position: 2
 
 # Making liquidity available
 
-An offer on Mangrove usually points to a contract containing the [offer logic](../../../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.mdx) and specifies what it is ready to deliver and its price. Offer are stored in [offer lists](../../../contracts/technical-references//taking-and-making-offers/market.md).
+An offer on Mangrove usually points to a contract containing the [offer logic](../../../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md) and specifies what it is ready to deliver and its price. Offer are stored in [offer lists](../../../contracts/technical-references//taking-and-making-offers/offer-list.md).
 
 ![When a reactive Offer is matched, the contract implementing its logic is called by Mangrove](../../../../static/img/assets/MakerOffer.png)
 
 ### Creating & Updating offers
 
-Any Ethereum account can offer liquidity on Mangrove. New offers are created through a `newOffer` function, and updated through `updateOffer`. The [Creating & Updating offers](../../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.mdx) section details how to use those Mangrove functions. The Mangrove Strat Lib has a standard implementation of [offer logic](../../../contracts/technical-references//taking-and-making-offers/reactive-offer/maker-contract.mdx) called [MangroveOffer](mangrove-offer.md), that automatically reposts the residual of your offer, if the offer was not fully taken.
+Any Ethereum account can offer liquidity on Mangrove. New offers are created through a `newOffer` function, and updated through `updateOffer`. The [Creating & Updating offers](../../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md) section details how to use those Mangrove functions. The Mangrove Strat Lib has a standard implementation of [offer logic](../../../contracts/technical-references//taking-and-making-offers/reactive-offer/maker-contract.md) called [MangroveOffer](mangrove-offer.md), that automatically reposts the residual of your offer, if the offer was not fully taken.
 
 ### Executing offers
 

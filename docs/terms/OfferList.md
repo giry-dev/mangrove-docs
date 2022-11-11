@@ -7,4 +7,4 @@ title: Offer list
 
 # Offer list
 
-See [offer list](../contracts/technical-references/taking-and-making-offers/offer-lists.mdx)
+See [offer list](../contracts/technical-references/taking-and-making-offers/offer-list.md)

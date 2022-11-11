@@ -127,7 +127,7 @@ price: Big; // price offered
 
 ## OfferLogic
 
-A [reactive offer](https://docs.mangrove.exchange/data-structures/market) is managed by a smart contract which implements its [logic](api-classes-overview.md#offerlogic). One may use the API to post liquidity on Mangrove via a deployed logic that complies to the [IOfferLogic](https://github.com/mangrovedao/mangrove/blob/master/packages/mangrove-solidity/contracts/Strategies/interfaces/IOfferLogic.sol) interface. To do so, one first need an `OfferLogic` instance:
+A [reactive offer](https://docs.mangrove.exchange/data-structures/market) is managed by a smart contract which implements its [logic](api-overview.md#offerlogic). One may use the API to post liquidity on Mangrove via a deployed logic that complies to the [IOfferLogic](https://github.com/mangrovedao/mangrove/blob/master/packages/mangrove-solidity/contracts/Strategies/interfaces/IOfferLogic.sol) interface. To do so, one first need an `OfferLogic` instance:
 
 ```typescript
 const mgvLogic = mgv.offerLogic("0x..."); // NB not an async call
@@ -153,9 +153,9 @@ When using an offer logic that inherits from the [`MultiUser.sol`](https://githu
 
 ## LiquidityProvider
 
-A `LiquidityProvider` instance is the object one needs to [post Bids and Asks](../guides/posting-bids-and-asks.md) on a Mangrove market. There are two means to obtain an LiquidityProvider: either to post a [direct Offer](https://docs.mangrove.exchange/offer-making-strategies/basic-offer) or to post an Offer relying on some onchain [logic](api-classes-overview.md#offerlogic).
+A `LiquidityProvider` instance is the object one needs to [post Bids and Asks](../guides/posting-bids-and-asks.md) on a Mangrove market. There are two means to obtain an LiquidityProvider: either to post a [direct Offer](https://docs.mangrove.exchange/offer-making-strategies/basic-offer) or to post an Offer relying on some onchain [logic](api-overview.md#offerlogic).
 
-To act as a direct liquidity provider on a some [`mgvMarket`](api-classes-overview.md#market) you must obtain a `LiquidityProvider` instance from an [`mgv`](api-classes-overview.md#mangrove) object using:
+To act as a direct liquidity provider on a some [`mgvMarket`](api-overview.md#market) you must obtain a `LiquidityProvider` instance from an [`mgv`](api-overview.md#mangrove) object using:
 
 ```javascript
 const mgvDirectLP = await mgv.liquidityProvider(mgvMarket);
@@ -163,7 +163,7 @@ const mgvDirectLP = await mgv.liquidityProvider(mgvMarket);
 
 :::info
 
-The EOA providing the liquidity for ask and bid offers emanating from a direct liquidity provider is the address of the [`mgv`](api-classes-overview.md#mangrove)'s signer provided at the creation of the Mangrove instance.
+The EOA providing the liquidity for ask and bid offers emanating from a direct liquidity provider is the address of the [`mgv`](api-overview.md#mangrove)'s signer provided at the creation of the Mangrove instance.
 
 :::
 
