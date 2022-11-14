@@ -5,6 +5,8 @@ sidebar_position: 1
 
 # Cleaning offers
 
+** TODO** Move to SDK...
+
 ## Cleaning an offer
 
 Offers on Mangrove may fail. This may be done [on purpose](../explanations/taker-compensation.md), or be the result of unexpected conditions. Either way, callers are remunerated for their action by receiving a portion of the [bounty](../technical-references/taking-and-making-offers/reactive-offer/offer-provision.md) attached to the failing offer.
