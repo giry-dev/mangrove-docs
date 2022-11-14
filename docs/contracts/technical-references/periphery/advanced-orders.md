@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# 🧞 Mangrove Order
+# Mangrove Order
 
 **TODO**
 

@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# 😎 Oracle
+# Oracle
 
 The Mangrove Oracle contract is a special periphery contract in that it acts as a gas price and density oracle for the Mangrove core. It serves to bridge to an external oracle for gas price and density. 
 
