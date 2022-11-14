@@ -1,12 +1,12 @@
 ---
 title: Periphery
-sidebar_position: 2
+sidebar_position: 3
 ---
 # Periphery Contracts
 
-Mangrove's main contract may be deployed with additional useful contracts.
+A number of periphery contracts are deployed around the Mangrove core contract. The periphery contracts provide views, and convenient or safer methods of interacting with the core contract.
 
 * [Mangrove Reader](reader.md) contract provide easy to parse views on Mangrove's state.
-* [Mangrove Monitor](monitor.md) may act as a gas/density oracle for Mangrove and receives taker fees (if any).
-* [Mangrove Cleaner ](cleaner.md)an order reverter that allows one to snipe offers for their bounty (or revert if the offer was eventually successful).
-* [Mangrove Order](advanced-orders.md) is a contract that can be used to run advanced market orders on Mangrove, such as [GTC](https://www.investopedia.com/terms/g/gtc.asp) or [IOC](https://www.investopedia.com/terms/i/immediateorcancel.asp).
+* [Mangrove Oracle](oracle.md) may act as a gas/density oracle for Mangrove. 
+* **TODO to remove** [Mangrove Cleaner ](cleaner.md)an order reverter that allows one to snipe offers for their bounty (or revert if the offer was eventually successful).
+* **TODO to remove** [Mangrove Order](advanced-orders.md) is a contract that can be used to run advanced market orders on Mangrove, such as [GTC](https://www.investopedia.com/terms/g/gtc.asp) or [IOC](https://www.investopedia.com/terms/i/immediateorcancel.asp).
