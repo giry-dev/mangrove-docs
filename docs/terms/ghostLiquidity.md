@@ -1,6 +1,6 @@
 ---
 id: ghostLiquidity
-hoverText: See %%reactive liquidity%%.
+hoverText: See reactive liquidity.
 title: Ghost liquidity
 ---
 
