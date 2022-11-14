@@ -12,4 +12,8 @@ As this contract is queryed by the Mangrove core, this contract is configured wi
 
 The [`MgvOracle` source](https://github.com/mangrovedao/mangrove-core/blob/master/src/periphery/MgvOracle.sol) is available.
 
-Please refer to [Deployment Addresses](./contract-addresses.md) to verify the address of `MgvOracle` for a particular chain.
+:::danger Deployment Address
+
+Please refer to [Deployment Addresses](../contract-addresses.md) to verify the address of `MgvOracle` for a particular chain.
+
+:::

@@ -10,6 +10,16 @@ The Solidity source code for the [Mangrove Core](https://github.com/mangrovedao/
 
 ## Annotated Code
 
-The [annotated code](pathname:///MgvDoc.html) provides a comprehensive overview of the Mangrove contract. This overview is generated directly from annotation in comments in the Mangrove core code. It can be generated manually from the a clone of the codebase, and is provided here for convenience.
+:::info
+
+The [annotated code](pathname:///MgvDoc.html) provides a comprehensive overview of the Mangrove contract. 
+
+This overview is generated directly from annotation in comments in the Mangrove core code, and is currently *provided as a single separate webpage*. It can be generated manually from a clone of the codebase, and is provided as-is on this site for convenience.
+
+:::
+
+:::danger Deployment Address
 
 Please refer to [Deployment Addresses](./contract-addresses.md) to verify the address of the Mangrove core contract for a particular chain.
+
+:::
