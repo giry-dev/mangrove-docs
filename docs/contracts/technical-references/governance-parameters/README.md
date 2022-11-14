@@ -2,7 +2,7 @@
   sidebar_position: 3
 ---
 
-# Governance parameters
+# Governance Parameters
 
 :::info 
 

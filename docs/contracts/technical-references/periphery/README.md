@@ -1,7 +1,8 @@
 ---
-sidebar_position: 1
+title: Periphery
+sidebar_position: 2
 ---
-# Mangrove's ecosystem
+# Periphery Contracts
 
 Mangrove's main contract may be deployed with additional useful contracts.
 
