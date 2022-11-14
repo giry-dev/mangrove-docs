@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # How to create a Direct contract
 
-This section will go through a few different ways of how a Direct contract could be implemented. If you don't know what a Direct contract is, we recommend reading both [MangroveOffer](../explanations/offer-maker/mangrove-offer.md) and [Direct](../explanations/offer-maker/direct.md) before continuing.
+This section will go through a few different ways of how a Direct contract could be implemented. If you don't know what a Direct contract is, we recommend reading both [MangroveOffer](../explanations/mangrove-offer.md) and [Direct](../explanations/direct.md) before continuing.
 
 ## Simple Direct implementation
 

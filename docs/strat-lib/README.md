@@ -11,7 +11,7 @@ The Mangrove strat library is a repository of solidity code that will help you w
 
 Depending on the complexity of the %%offer logic|offerLogic%% your contract implements, you need to choose from which building block you will start to build your %%maker contract|makerContract%% from. At the very least your logic must provide an implementation of the [`IMaker`](https://github.com/mangrovedao/mangrove-core/blob/8c2724650c8b0cf3180cbbeb0d4b48d9c1cf9f98/src/MgvLib.sol#L159) interface [required by Mangrove](../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md), see [technical references](../contracts/technical-references/taking-and-making-offers/reactive-offer/executing-offers.md) for more details.
 
-The first design choice is to decide whether the maker contract you wish to implement will post and update offers on behalf of a privileged user, or whether it will be used by mulitple offer makers in a permissionless fashion. In the first case, you want your contract to inherit [Direct](./explanations/offer-maker/direct.md), in the latter you want to start from a [Forwarder](./explanations/offer-maker/forwarder.md) contract. 
+The first design choice is to decide whether the maker contract you wish to implement will post and update offers on behalf of a privileged user, or whether it will be used by mulitple offer makers in a permissionless fashion. In the first case, you want your contract to inherit [Direct](./explanations/direct.md), in the latter you want to start from a [Forwarder](./explanations/forwarder.md) contract. 
 
 ## Customizing the strat using hooks
 
