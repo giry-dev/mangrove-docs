@@ -1,6 +1,6 @@
 ---
 description: Using the API to pass taker orders on a Mangrove market.
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Sell and buy orders
