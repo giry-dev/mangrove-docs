@@ -23,5 +23,5 @@ sidebar_position: 3
 
 | Type | Field| Description |
 | ---- | ----------- | ---- |
-| `bytes32` | `makerData` | The returned or reverted value of %%`makerExecute`|execute%%, truncated to fit a `bytes32` word.|
+| `bytes32` | `makerData` | The returned or reverted value of %%`makerExecute`|makerExecute%%, truncated to fit a `bytes32` word.|
 | `bytes32` | `mgvData`| <p>Information gathered by Mangrove concerning the offer execution. If the offer was a success it is equal to:</p><ul><li><code>"mgv/tradeSuccess"</code>: offer execution succeeded.</li></ul><p>If the offer failed (Offer Bounty will be taken from Maker Contract), it will be equal to one the following messages:</p><ul><li><code>"mgv/makerRevert"</code>: offer execution reverted.</li><li><code>"mgv/makerTransferFail"</code>: Mangrove could not transfer <code>order.outbound_tkn</code> tokens from <a href="maker-contract">Offer Logic</a> to itself (e.g. contract has insufficient balance).</li><li><code>"mgv/makerReceiveFail"</code>: Mangrove could not transfer <code>order.inbound_tkn</code> tokens to <a href="maker-contract">Offer Logic</a> (e.g. contract is blacklisted).</li></ul> |
