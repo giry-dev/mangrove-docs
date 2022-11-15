@@ -19,7 +19,7 @@ If we want to snipe this offer, then it requires that we have enough USDC. In th
 
 If you do not have the funds need for this, we can mint them using the out-commented lines 4 to 7. In this example we mint 10.000 USDC, which is plenty for taking this offer.
 
-```bash
+```js
 > market.consoleAsks();
 ┌─────────┬──────┬──────────────────────────────────────────────┬────────────────────┬────────────────────────┐
 │ (index) │  id  │                    maker                     │       volume       │         price          │
@@ -90,7 +90,7 @@ We will also see the offer being gone when we log the asks on the market.
 https://github.com/mangrovedao/mangrove-ts/blob/f0bdd04f0953024831c50f0b1c0cdc0daf1ea61d/packages/mangrove.js/examples/how-tos/snipe-offer.js#L51-L55
 ```
 
-```bash 
+```js
 > market.consoleAsks();
 ┌─────────┬──────┬──────────────────────────────────────────────┬────────────────────┬────────────────────────┐
 │ (index) │  id  │                    maker                     │       volume       │         price          │

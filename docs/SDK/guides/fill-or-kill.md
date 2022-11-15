@@ -35,7 +35,7 @@ If you log the asks for the market before buying and after buying, you will be a
 
 <!-- TODO: We should have a section where the FoK order fails, do to not being able to complete the order fully. "noPartialFill"-->
 
-```bash title="Asks before fill or kill order"
+```js title="Asks before fill or kill order"
 > market.consoleAsks();
 ┌─────────┬──────┬──────────────────────────────────────────────┬────────────────────┬────────────────────────┐
 │ (index) │  id  │                    maker                     │       volume       │         price          │
@@ -61,7 +61,7 @@ If you log the asks for the market before buying and after buying, you will be a
   successes: [],
 ```
 
-```bash title="Asks after fill or kill order"
+```js title="Asks after fill or kill order"
 > market.consoleAsks()
 ┌─────────┬──────┬──────────────────────────────────────────────┬────────────────────┬────────────────────────┐
 │ (index) │  id  │                    maker                     │       volume       │         price          │

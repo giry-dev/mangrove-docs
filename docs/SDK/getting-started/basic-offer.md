@@ -81,10 +81,9 @@ We can then check if our offer has best been posted and is on the top of the lis
 
 ```javascript reference
 https://github.com/mangrovedao/mangrove-ts/blob/bbb41b873cb235f106746f113c720ec80da1a4f7/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L41-L43
-````
+```
 
-
-``` bash
+```js
 > console.log(offerId);
 5571
 undefined
@@ -100,10 +99,8 @@ undefined
 
 Another way to check your offer is to go to [testnet](https://testnet.mangrove.exchange/trade) and look at the asks for DAI-USDC. Here you will be able to see your offer. This can only be done if you didn't use a local chain, but actually ran on a real chain.
 
-
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img src={useBaseUrl('img/assets/basic-offer-on-testnet.png')} width="50%"/>
-
 
 The full script can be found on [github](https://github.com/mangrovedao/mangrove-ts/blob/3fd5dc57435d5cb9edd524a67f850cbeeee03ecd/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js).
