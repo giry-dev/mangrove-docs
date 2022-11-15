@@ -9,9 +9,9 @@ The Mangrove is an [EVM-compatible](https://ethereum.org/en/developers/docs/scal
 
 The order book of Mangrove lists promises to trade, instead of locked commitments.
 
-* Offer makers add [liquidity promises](explanations/offer-maker/README.md) to Mangrove. They own offers in [offer lists](te/takin/../../technical-references/taking-and-making-offers/market.md) and manage contracts that react to [offer execution](technical-references/taking-and-making-offers/reactive-offer/offer-data-structures.md).
+* Offer makers add [liquidity promises](./explanations/offer-maker.md) to Mangrove. They own offers in [offer lists](./technical-references/taking-and-making-offers/offer-list.md) and manage contracts that react to [offer execution](technical-references/taking-and-making-offers/reactive-offer/executing-offers.md).
 * Takers go to Mangrove to [find liquidity](explanations/offer-taker.md) by executing offers already in Mangrove.
-* [Governance](technical-references/governance-parameters/README.md) adjusts Mangrove parameters, opens new pairs, sets fees, etc.
+* [Governance](technical-references/governance-parameters/README.md) adjusts Mangrove parameters, sets fees, and opens and closes new markets.
 
 ## Where do I start?
 
