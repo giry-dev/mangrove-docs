@@ -1,10 +1,10 @@
 ---
 title: Periphery
-sidebar_position: 3
+sidebar_position: 4
 ---
 # Periphery Contracts
 
-A number of periphery contracts are deployed around the Mangrove core contract. The periphery contracts provide views, and convenient or safer methods of interacting with the core contract.
+A number of periphery contracts are deployed around the Mangrove core contract to support the core, or to provide convenient or safer methods of interacting with the core contract.
 
 * [Mangrove Reader](reader.md) contract provide easy to parse views on Mangrove's state.
 * [Mangrove Oracle](oracle.md) may act as a gas/density oracle for Mangrove. 
