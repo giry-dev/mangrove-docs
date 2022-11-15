@@ -18,5 +18,15 @@
 .env.production.local
 
 npm-debug.log*
+
+# Yarn 2 ignores
 yarn-debug.log*
 yarn-error.log*
+#   gitignore from Yarn 2 docs when not using Zero-installs
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
