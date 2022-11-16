@@ -5,4 +5,5 @@ title: Last Look
 ---
 
 # Last Look
-Liquidity providers can incorporate defensive code to cancel offers under certain conditions that are verifiable onchain. For instance,if market conditions are unfavorable in order to avoid price exposure.
+
+Liquidity providers can incorporate defensive code to cancel offers under certain conditions that are verifiable onchain. For instance, if market conditions are unfavorable in order to avoid price exposure. See %%renege%%.
