@@ -26,7 +26,7 @@ The offer logic in `makerExecute` **should** be gas bounded since an out-of-gas 
 * any logging of a revert reason raised during `makerExecute`. The (truncated to a bytes32) reason is passed to `makerPosthook` in the `makerData` field.
 
 **Should** be in `makerPosthook`:
-* actions that are not gas bounded, such as posting or updating an offer on Mangrove (unless you have a clear %%pivot|pivot%%).
+* actions that are not gas bounded, such as posting or updating an offer on Mangrove (unless you have a clear %%pivotId|pivotId%%).
 * in general, calls which may raise an exception that should not cause the current trade execution to fail.
 
 ## Keepers as krankers
