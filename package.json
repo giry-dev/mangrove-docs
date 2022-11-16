@@ -7,7 +7,7 @@
     "start": "yarn install && docusaurus start",
     "build": "yarn install && docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "docgen": "yarn doccore && yarn addresses-to-md && docusaurus parse && docusaurus glossary && docusaurus build",
+    "docgen": "yarn doccore && docusaurus parse && docusaurus glossary && docusaurus build",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
