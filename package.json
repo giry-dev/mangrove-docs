@@ -14,7 +14,7 @@
     "addresses-to-md": "node scripts/addresses-to-md.js",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "doccore": "solcco -f static/MgvDoc.html scripts/structs.js node_modules/@mangrovedao/mangrove-core/src/MgvLib.sol node_modules/@mangrovedao/mangrove-core/src/MgvRoot.sol node_modules/@mangrovedao/mangrove-core/src/MgvHasOffers.sol node_modules/@mangrovedao/mangrove-core/src/MgvOfferMaking.sol node_modules/@mangrovedao/mangrove-core/src/MgvOfferTaking.sol node_modules/@mangrovedao/mangrove-core/src/MgvOfferTakingWithPermit.sol node_modules/@mangrovedao/mangrove-core/src/MgvGovernable.sol node_modules/@mangrovedao/mangrove-core/src/AbstractMangrove.sol node_modules/@mangrovedao/mangrove-core/src/Mangrove.sol node_modules/@mangrovedao/mangrove-core/src/InvertedMangrove.sol"
+    "doccore": "cp -r node_modules/@mangrovedao/mangrove-core/doc/ static/MgvDoc && rm static/MgvDoc/index.html"
   },
   "dependencies": {
     "@akebifiky/remark-simple-plantuml": "^1.0.2",

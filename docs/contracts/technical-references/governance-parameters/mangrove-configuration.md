@@ -4,7 +4,7 @@ description: Global governance parameters and Offer List specific parameters.
 
 # Data structures and views
 
-Ground truth for configuration can be found in the code [documentation](pathname:///MgvDoc.html). All configuration options are under the control of [governance](README.md).
+Ground truth for configuration can be found in the code [documentation](pathname:///MgvDoc/). All configuration options are under the control of [governance](README.md).
 
 ## MgvLib.MgvStructs.GlobalUnpacked
 
