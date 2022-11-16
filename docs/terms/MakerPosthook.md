@@ -1,6 +1,6 @@
 ---
 id: makerPosthook
-hoverText: the callback function of a smart offer that is reached by Mangrove prior to trade execution.
+hoverText: the callback function of an offer logic that is called by Mangrove post trade settlement.
 title: MakerPosthook
 ---
 

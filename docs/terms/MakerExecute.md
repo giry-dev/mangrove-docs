@@ -1,6 +1,6 @@
 ---
 id: makerExecute
-hoverText: callback function that is called by Mangrove during trade execution.
+hoverText: callback function of an offer logic that is called by Mangrove to prior to a trade settlement.
 title: MakerExecute
 ---
 
