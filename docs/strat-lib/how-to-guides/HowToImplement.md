@@ -5,13 +5,19 @@ sidebar_position: 21
 # How to implement a safe offer logic
 
 ## Gatekeeping
-Verify external function's caller. Tricky public function that might be called during offer logic's execution.
+
+### Offer logic should only be called by Mangrove
+
+External functions of the %%offer logic|offerLogic%%, `makerExecute` and `makerPosthook`, should only be callable if `msg.sender` is Mangrove. %%Maker contracts|makerContract%% implemented with the strat library take care of this by construction.
+
+### Public functions that are called by offer logic
+It is sometimes convenient to define public function that can also be called internally during offer logic's execution. If such function needs to be restricted to privileged access, one cannot simply use `require(msg.sender == admin_address)` as `msg.sender` will be Mangrove when the function is called internally by the offer logic. Using a guard of the form `require(msg.sender == admin_address || msg.sender == mangrove_address)` will work though (notice that internal call preserves `msg.sender` of `makerExecute`).
 
 ## Token amounts
 %%Outbound|outbound%% and %%inbound|inbound%% tokens may have different decimals. Mangrove always use raw amounts.
 
 ## Which part of your %%Maker contract|makerContract%% should not be in the %%offer logic|offerLogic%%?
-Functions in offer logic are automatically executed by Mangrove, who is then `msg.sender`. Beware that taker is not necessarily `tx.origin`, as a contract could be acting as a taker. If your logic is exploitable by price manipulation, this can be dangerous (lastLook is there to protect). Dangers are: oracle manipulation, or liquiditation. Better have risky moves being admin controlled.
+Functions in offer logic are automatically executed by Mangrove, who is then `msg.sender`. Beware that taker is not necessarily `tx.origin`, as a contract could be acting as a taker. If your logic is exploitable by price manipulation, this can be dangerous (last Look is there to protect). Dangers are: oracle manipulation, or liquiditation. Better have risky moves being admin controlled.
 
 ## How to factor your offer logic between %%`makerExecute`|makerExecute%% and %%`makerPosthook`|makerPosthook%%.
 
