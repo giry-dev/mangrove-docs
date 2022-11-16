@@ -16,7 +16,12 @@ The prerequisites and steps needed to use the `MgvCleaner.collect` function are:
 1. Call `MgvCleaner.collect(..)` specifying the offer list and an array of offers to clean. Refer to the documentation for [sniping](/docs/contracts/technical-references/taking-and-making-offers/taker-order/#offer-sniping) for details on the parameters.
 2. The collected bounties (in native token) will be transferred to `msg.sender`.
 
-If any offer doesn't fail, the call will revert with the string `"mgvCleaner/anOfferDidNotFail"`.
+If any offer doesn't fail, the call will revert with one of the following reasons:
+
+| Revert reason | Description |
+| --------------| ------------ |
+| `"mgvCleaner/anOfferDidNotFail"` | An offer succeeded and `MgvCleaner` is approved to trade on Mangrove on behalf of `msg.sender` on that offer list. |
+| `"mgv/lowAllowance"` | An offer succeeded and `MgvCleaner` is **not** approved to trade on Mangrove on behalf of `msg.sender` on that offer list. |
 
 
 :::info **Example**
