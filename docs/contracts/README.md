@@ -15,7 +15,7 @@ The order book of Mangrove lists promises to trade, instead of locked commitment
 
 ## Where do I start?
 
-A good entry-point to this documentation is the [Overview of Mangrove](./technical-references/overview.md) in the Technical Reference section.
+A good entry-point to the documentation for the Mangrove protocol is the [Overview of Mangrove](./technical-references/overview.md) in the Technical Reference section.
 
 
 ## Who develops the Mangrove?
