@@ -29,5 +29,5 @@ The offer logic in `makerExecute` **should** be gas bounded since an out-of-gas 
 * actions that are not gas bounded, such as posting or updating an offer on Mangrove (unless you have a clear %%pivotId|pivotId%%).
 * in general, calls which may raise an exception that should not cause the current trade execution to fail.
 
-## Keepers as krankers
-An offer that fails should not come from a bug in your offer logic, but rather be a feature of it. Raising an exception during `makerExecute` is the proper way to cancel a trade if your logic deems it necessary. You should customize the `lastLook` %%hook|hook%% for this, in order to fail early in the trade and save you money. For instance, if your logic relies on funds being on a lender, and a price oracle as a relative protection against arbitrage, you should check the oracle before redeeming the funds from the lender.
+## Keepers as offer maintainers
+A failing offer should not be the consequence of a bug in your offer logic, but rather be a feature of it. Raising an exception during `makerExecute` is the proper way to cancel a trade if your logic deems it necessary. You should customize the `__lastLook__` %%hook|hook%% for this, in order to fail early in the trade and save you money. For instance, if your logic relies on funds being on a lender, and a price oracle as a relative protection against arbitrage, you should check the oracle before redeeming the funds from the lender.
