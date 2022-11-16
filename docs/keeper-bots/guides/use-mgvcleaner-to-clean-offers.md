@@ -24,7 +24,7 @@ If any offer doesn't fail, the call will revert with one of the following reason
 | `"mgv/lowAllowance"` | An offer succeeded and `MgvCleaner` is **not** approved to trade on Mangrove on behalf of `msg.sender` on that offer list. |
 
 
-:::info **Example**
+## Example
 
 Assume you have a cleaning bot that has 900 DAI and has approved Mangrove for spending its DAI.
 
@@ -36,8 +36,6 @@ To clean the offer, your cleaning bot triggers the following steps:
 2. Mangrove will use the bot's DAI to execute offer #708 and revert the offer execution after noticing that the offer fails.
 3. Because the offer failed, Mangrove transfers a bounty to `MgvCleaner`.
 6. `MgvCleaner` transfers the bounty to the bot account.
-
-:::
 
 
 # Further reading

@@ -28,7 +28,7 @@ If any offer doesn't fail, the call will revert with one of the following reason
 
 
 
-:::info **Example**
+## Example
 
 You have identified a whale that has 1,000,000 DAI and has approved Mangrove for spending its DAI.
 
@@ -41,7 +41,6 @@ To clean the offer using funds borrowed from the whale, your cleaning bot trigge
 3. Because the offer failed, Mangrove transfers a bounty to `MgvCleaner`.
 6. `MgvCleaner` transfers the bounty to the bot account.
 
-:::
 
 
 :::info **Impersonation only works for failing offers**
