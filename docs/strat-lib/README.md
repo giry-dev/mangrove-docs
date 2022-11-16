@@ -3,7 +3,7 @@ description: The Mangrove strat library are contract building blocks for writing
 sidebar_position: 1
 ---
 
-# What is the Strat Library?
+# How to use the Strat Library?
 
 The Mangrove strat library is a repository of solidity code that will help you write a custom %%maker contracts|makerContract%% able to manage offers on the Mangrove.
 
@@ -20,5 +20,9 @@ Default behavior of maker contracts built on top of Mangrove's strat library can
 ## Advanced cash management
 
 The strat library also provides a collection of %%router|router%% contracts, which are convenient when the offer logic of your contract involves some interaction with other DeFi bricks (such as a lender).
+
+## Safety first
+
+Writing a maker contract that will post and update offers on Mangrove exposes you to smart contract risks. We recommend reading some important [developper guidelines](./how-to-guides/HowToImplement.md) on the topic to understand better important design principles you should follow.
 
 
