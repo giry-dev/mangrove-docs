@@ -1,5 +1,6 @@
 ---
 description: How to determine gas requirements.
+sidebar_position: 1
 ---
 
 # How to determine gas requirements
@@ -22,7 +23,7 @@ In the trace you can find `OfferMakerTutorial::makerExecute` and `OfferMakerTuto
 
 When using the strat lib, then the gas usage from the %%router|router%% is automatically added by the library and should be subtracted from the measured total. Your own router would have to measure its worst case cost and provide it as part of its parameters.
 
-In our case the gas usage was 45658 and 8280, and since there is no router used, we don't have special code in [`posthookFallback`](./TODOnatspec) for this strat, we have to account for a small overhead in mangrove for gas accounting, and Foundry's traces leave some gas [unaccounted for](https://book.getfoundry.sh/forge/traces#understanding-traces) then setting the gasreq to `70,000` for this contract is a good choice. However, note that the default [`posthookSuccess`](./TODOnatspec) can repost an offer for the residual if not fully taken and that would require some gas. See how-to on [residual](../how-to-guides/residual.md) for more details.
+In our case the gas usage was 45658 and 8280, and since there is no router used, we don't have special code in [`posthookFallback`](./TODOnatspec) for this strat, we have to account for a small overhead in mangrove for gas accounting, and Foundry's traces leave some gas [unaccounted for](https://book.getfoundry.sh/forge/traces#understanding-traces) then setting the gasreq to `70,000` for this contract is a good choice. However, note that the default [`posthookSuccess`](./TODOnatspec) can repost an offer for the residual if not fully taken and that would require some gas. See how-to on [residual](../how-to-guides/howToResidual.md) for more details.
 
 For more complete gas consumption analysis for a larger contract it can be helpful to use Foundry's [gas tracking](https://book.getfoundry.sh/forge/gas-tracking) features.
 

@@ -13,7 +13,7 @@ The main way to consume liquidity on Mangrove is through a market order, a confi
 
 ### Cleaning offers
 
-Offers on Mangrove can fail. Liquidity-taking functions can also be used to trigger failing offers and take them out of Mangrove. The [Cleaning offers](../how-to-guides/cleaning-an-offer.md) section details how to safely trigger failing offers and make a profit doing so.
+Offers on Mangrove can fail. Liquidity-taking functions can also be used to trigger failing offers and take them out of Mangrove. The [Cleaning offers](../../keeper-bots/guides/use-mgvcleaner-to-clean-offers.md) section details how to safely trigger failing offers and make a profit doing so.
 
 ### Delegation
 
