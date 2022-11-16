@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 22
 ---
 
 # How to create a Direct contract
