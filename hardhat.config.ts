@@ -15,7 +15,7 @@ const getRemappings = () => {
 export default {
   solidity: "0.8.14",
   docgen: {
-    outputDir: 'docs/contracts/technical-references/code',
+    outputDir: 'docs/strat-lib/technical-references/api-reference',
     exclude: [ 'preprocessing/structs.js', 'IMangrove.sol', 'MgvLib.sol', 'MgvRoot.sol', 'MgvHasOffers.sol', 'MgvOfferMaking.sol', 'MgvOfferTaking.sol', 'MgvOfferTakingWithPermit.sol', 'MgvGovernable.sol', 'AbstractMangrove.sol', 'Mangrove.sol', 'InvertedMangrove.sol'],
     templates: './templates',
     pages: 'files',

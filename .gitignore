@@ -6,7 +6,7 @@
 /artifacts
 /typechain-types
 /cache
-/docs/contracts/technical-references/code
+/docs/strat-lib/technical-references/code/
 
 # Production
 /build
