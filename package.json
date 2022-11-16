@@ -16,9 +16,9 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "copy-solidity": "cp -R node_modules/@mangrovedao/mangrove-core/src ./contracts",
-    "doccore": "cp -r node_modules/@mangrovedao/mangrove-core/doc/ static/MgvDoc && rm static/MgvDoc/index.html"
-    "remove-solidity": "rm -R ./contracts",
-    "postinstall": "cp patches/scope.js node_modules/solidity-docgen/dist/utils"
+    "postinstall": "cp patches/scope.js node_modules/solidity-docgen/dist/utils",
+    "doccore": "cp -r node_modules/@mangrovedao/mangrove-core/doc/ static/MgvDoc && rm static/MgvDoc/index.html",
+    "remove-solidity": "rm -R ./contracts"
   },
   "dependencies": {
     "@akebifiky/remark-simple-plantuml": "^1.0.2",
