@@ -6,9 +6,9 @@ sidebar_position: 4
 
 ## Offer execution
 
-Offers are created with an associated account (a %%maker contract|makerContract%% or EOA) and listed on Mangrove [offer lists](../offer-list.md#offer-lists)
+Offers are created with an associated account (a %%maker contract|maker-contract%% or EOA) and listed on Mangrove [offer lists](../offer-list.md#offer-lists)
 
-* If the account is an EOA, no logic will be associated to the offer. These %%on-the-fly|OTF%% offers should have the promised liquidity on the EOA when the offer is matched during a taker order.
+* If the account is an EOA, no logic will be associated to the offer. These %%on-the-fly|on-the-fly-offer%% offers should have the promised liquidity on the EOA when the offer is matched during a taker order.
 * If the account is a maker contract, it should implement the offer logic through the [IMaker interface](https://github.com/giry-dev/mangrove/blob/0414196f4c30fddc0e364bd245ed0131b3362078/packages/mangrove-solidity/contracts/MgvLib.sol#L217). It must at least implement the `makerExecute` function, otherwise all offer executions will fail.
 
 Here is the offer lifecycle, with the parts addressed in this section bolded:
@@ -25,7 +25,7 @@ Here is the offer lifecycle, with the parts addressed in this section bolded:
 
 :::info **Multiple offers per address**
 
-An account can post more than one offer. When it gets called through `makerExecute`, it will receive the %%id|offerId%% of the offer being executed as well as additional information.
+An account can post more than one offer. When it gets called through `makerExecute`, it will receive the %%id|offer-id%% of the offer being executed as well as additional information.
 
 :::
 

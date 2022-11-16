@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Post Simple Offer
 
-Posting a simple offer is also referred to as an %%on-the-fly offer|OTF%%.
+Posting a simple offer is also referred to as an %%on-the-fly offer|on-the-fly-offer%%.
 
 ## Prerequisites
 

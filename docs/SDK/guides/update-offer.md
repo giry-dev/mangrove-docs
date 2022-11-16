@@ -67,7 +67,7 @@ When we updated our offer before, we used a `liquidityProvider` and we created t
 https://github.com/mangrovedao/mangrove-ts/blob/3fcbba7737f5206e4e8392c94807ec38dd65f391/packages/mangrove.js/examples/how-tos/update-offer.js#L44-L48
 ```
 
-When you have a OfferLogic you can the call update offer directly on that, but this requires a lot more info like %%gasreq|gasreq%%, %%gasprice|gasprice%% and %%pivot|pivotId%%.
+When you have a OfferLogic you can the call update offer directly on that, but this requires a lot more info like %%gasreq|gasreq%%, %%gasprice|gasprice%% and %%pivot|pivot-id%%.
 
 ```js reference
 https://github.com/mangrovedao/mangrove-ts/blob/3fcbba7737f5206e4e8392c94807ec38dd65f391/packages/mangrove.js/examples/how-tos/update-offer.js#L51-L63

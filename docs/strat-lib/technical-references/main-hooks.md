@@ -14,7 +14,7 @@ https://github.com/mangrovedao/mangrove-core/blob/381004ea8ccea9958d9c6db84e5ac1
 * **Input**: [taker `order`](../../contracts/technical-references/taking-and-making-offers/reactive-offer/offer-data-structures.md#mgvlibsingleorder)'s recap data. 
 * **Output**: data to be passed to %%`makerPosthook`|makerPosthook%% if the call does not throw.
 * **Default behavior**: returns `"mgvOffer/proceed"`.
-* **Usage**: override to insert requirements so as to renege on trade prior to transfering funds, as `lastLook` is the first hook being called during an %%offer logic|offerLogic%%'s execution
+* **Usage**: override to insert requirements so as to renege on trade prior to transfering funds, as `lastLook` is the first hook being called during an %%offer logic|offer-logic%%'s execution
 
 ### Managing taker's payment
 

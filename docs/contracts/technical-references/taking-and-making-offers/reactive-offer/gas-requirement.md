@@ -5,7 +5,7 @@ sidebar_position: 3
 
 # Gas requirement
 
-Gas requirement (gasreq) is the total amount of gas that the %%offer logic|offerLogic%% requires to execute an offer. This is an important measure as it goes into calculating the [offer provision](./offer-provision.md) which is used to compensate the taker's wasted gas on offer failure.
+Gas requirement (gasreq) is the total amount of gas that the %%offer logic|offer-logic%% requires to execute an offer. This is an important measure as it goes into calculating the [offer provision](./offer-provision.md) which is used to compensate the taker's wasted gas on offer failure.
 
 The required gas depends on the actual code path taken in the contract, so it should cover the worst case where you want the offer to succeed. Recall that offer logic is both %%makerExecute|makerExecute%% and %%makerPosthook|makerPosthook%%, then the estimation has the following consequences:
 

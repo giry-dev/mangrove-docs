@@ -5,7 +5,7 @@ sidebar_position: 0
 
 # Post a smart offer
 
-In this tutorial you will learn how to post a %%smart offer|smartOffer%% managed by your own maker contract and which simply transfers tokens to and from your reserve.
+In this tutorial you will learn how to post a %%smart offer|smart-offer%% managed by your own maker contract and which simply transfers tokens to and from your reserve.
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@ It is assumed that the `ADMIN_ADDRESS` has enough native tokens to complete the 
 
 ## Simple maker contract (offer logic)
 
-We want to create a new contract `OfferMakerTutorial` to implement %%offer logic|offerLogic%% and utilize the `Direct` contract in our strat-library for this purpose. `Direct` provides a safety harness to make it easier to correctly interact with Mangrove, you can read more about it [here](../explanations/offer-maker/direct.md).
+We want to create a new contract `OfferMakerTutorial` to implement %%offer logic|offer-logic%% and utilize the `Direct` contract in our strat-library for this purpose. `Direct` provides a safety harness to make it easier to correctly interact with Mangrove, you can read more about it [here](../explanations/offer-maker/direct.md).
 
 Create a new `OfferMakerTutorial.sol` file in the `src` folder and add the following pieces.
 
@@ -43,7 +43,7 @@ The abstract contract `Direct` has an internal function `_newOffer` for posting 
 
 See [OfferArgs](../technical-references/APIReference.md) for an explanation of the parameters for posting an offer.
 
-Also see %%provision|provision%%, %%gasreq|gasreq%%, and %%pivotId|pivotId%%, and %%offer list|offerList%%.
+Also see %%provision|provision%%, %%gasreq|gasreq%%, and %%pivotId|pivot-id%%, and %%offer list|offer-list%%.
 
 ```solidity reference title="OfferMakerTutorial.sol"
 hhttps://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L26-L53
@@ -57,7 +57,7 @@ When using our new contract we can inspect traces and addresses, but for illustr
 hhttps://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L57-L65
 ```
 
-There are more hooks to enable the Mangrovian abilities of %%last look|lastLook%% and more advanced %%reactive liquidity|reactiveLiquidity%%.
+There are more hooks to enable the Mangrovian abilities of %%last look|last-look%% and more advanced %%reactive liquidity|reactive-liquidity%%.
 
 ## Local test
 
@@ -157,7 +157,7 @@ Gas used: 168639
 
 `0x0000000000000000000000000000000000000000000000000000000000000235` is the offer id.
 
-### Unlocked liquidity (%%reactive liquidity|reactiveLiquidity%%)
+### Unlocked liquidity (%%reactive liquidity|reactive-liquidity%%)
 
 Notice that the offer was posted without transferring tokens from the admin to Mangrove or the `OfferMakerTutorial`. This way the tokens are pulled just-in-time when the offer is taken and can thus be made available for other purposes.
 

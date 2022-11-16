@@ -11,7 +11,7 @@ sidebar_position: 3
 |--------------------------------|----------------|------------|
 | `address`                      | `outbound_tkn` | %%outbound|outbound%% token address of the market order |
 | `address`                      | `inbound_tkn`  | %%inbound|inbound%% token address of the market |
-| `uint`                         | `offerId`      | %%Id|offerId%% of the offer that is matched by the order|
+| `uint`                         | `offerId`      | %%Id|offer-id%% of the offer that is matched by the order|
 | `MgvStructs.OfferPacked`       | `offer`        | Offer data of the current state of the offer on the offer list|
 | `uint`| `wants`| amount of outbound tokens that are required by the order (in max precision units of `outbound_tkn` ERC20). |
 | `uint`| `gives`| amount of inbound tokens that are given by the taker (in max precision units of `inbound_tkn` ERC20).|
