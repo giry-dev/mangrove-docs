@@ -13,9 +13,9 @@ The illustration belows depicts a bird's-eye view of the Mangrove ecosystem with
 
 The three most important actors are
 
-* [Offer makers](#makers) with a **Maker account** add [liquidity promises](explanations/offer-maker/README.md) to Mangrove. 
+* [Offer makers](#makers) with a **Maker account** add [liquidity promises](../explanations/offer-maker.md) to Mangrove. 
     
-* [**Takers**](#takers) go to Mangrove to [find liquidity](explanations/offer-taker.md) by executing offers already on Mangrove.
+* [**Takers**](#takers) go to Mangrove to [find liquidity](../explanations/offer-taker.md) by executing offers already on Mangrove.
 
 * [**Governance**](#governance) adjusts Mangrove parameters, sets fees and opens and closes new markets.
 
@@ -30,11 +30,11 @@ As a maker, when an offer is posted, you also provide an address for a smart con
 
 ### [When an offer is taken](taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution)
 
-Mangrove calls the maker contract the first time, via the callback function `makerExecute`, when an offer is attempted taken. This allows makers to source the liquidity *just-in-time* for the trade. It also allows the makers to [renege](explanations/taker-compensation.md) on the offer to trade (e.g, because the market conditions changed) by incorporating defensive code in the maker contract.
+Mangrove calls the maker contract the first time, via the callback function `makerExecute`, when an offer is attempted taken. This allows makers to source the liquidity *just-in-time* for the trade. It also allows the makers to [renege](../explanations/taker-compensation.md) on the offer to trade (e.g, because the market conditions changed) by incorporating defensive code in the maker contract.
 
 This means that offers posted to Mangrove need not be fully provisioned. As a maker, your liquidity can be shared, borrowed, lent and, at the same time, be displayed in the Mangrove's order book, ready to be sourced when, and only when, your offer is taken.
 
-### [After an offer is taken](technical-references/taking-and-making-offers/reactive-offer/maker-contract.md#offer-post-hook)
+### [After an offer is taken](taking-and-making-offers/reactive-offer/maker-contract.md#offer-post-hook)
 
 Mangrove calls the maker contract a second time, via the callback function `makerPosthook`,  during the trade transaction, *after* the offer has been taken.
 
