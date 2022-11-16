@@ -83,10 +83,12 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           remarkPlugins: [simplePlantUML, math],
           rehypePlugins: [katex],
         },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -112,32 +114,32 @@ const config = {
         },
         items: [
           {
-            to: '/docs/contracts',
+            to: '/contracts',
             position: 'left',
             label: 'Contracts',
           },
           {
-            to: '/docs/strat-lib',
+            to: '/strat-lib',
             position: 'left',
             label: 'Strat Lib',
           },
           {
-            to: '/docs/SDK',
+            to: '/SDK',
             position: 'left',
             label: 'SDK',
           },
           {
-            to: '/docs/keeper-bots',
+            to: '/keeper-bots',
             position: 'left',
             label: 'Keeper Bots',
           },
           {
-            to: '/docs/FAQ',
+            to: '/FAQ',
             position: 'left',
             label: 'FAQ',
           },
           {
-            href: '/docs/glossary',
+            href: '/glossary',
             label: 'Glossary',
             position: 'right',
           },
@@ -161,7 +163,7 @@ const config = {
             items: [
               {
                 label: 'Contracts',
-                to: '/docs/contracts',
+                to: '/contracts',
               },
               {
                 label: 'Strat Library',
@@ -169,11 +171,11 @@ const config = {
               },
               {
                 label: 'SDK',
-                to: '/docs/SDK',
+                to: '/SDK',
               },
               {
                 label: 'Keeper Bots',
-                to: '/docs/keeper-bots',
+                to: '/keeper-bots',
               },
             ],
           },
