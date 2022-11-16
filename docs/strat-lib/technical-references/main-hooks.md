@@ -5,7 +5,8 @@ sidebar_position: 1
 ---
 
 ## Customizing %%`makerExecute`|makerExecute%%
-### Lastlook hook
+
+### Last look before trade
 
 ```solidity reference title="PrincipalHooks.sol"
 https://github.com/mangrovedao/mangrove-core/blob/381004ea8ccea9958d9c6db84e5ac1dc6f6c3043/src/strategies/MangroveOffer.sol#L233-L241
