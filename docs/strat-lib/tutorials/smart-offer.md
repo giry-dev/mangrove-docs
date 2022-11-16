@@ -4,19 +4,19 @@ description: Simple tutorial showing how to post your first offer managed by you
 
 # Post a smart offer
 
-In this tutorial you will learn how to post a %%smart offer|smartOffer%%  managed by your own maker contract and which simply transfers tokens to and from your reserve.
+In this tutorial you will learn how to post a %%smart offer|smartOffer%% managed by your own maker contract and which simply transfers tokens to and from your reserve.
 
 ## Prerequisites
 
 The tutorial assumes knowledge of solidity development. Follow [preparation](./preparation.md) to create a new `tutorial` folder.
 
-It is assumed that the `ADMIN_ADDRESS` has enough native tokens to complete the steps.
-
 Open your favorite solidity editor inside that folder.
+
+It is assumed that the `ADMIN_ADDRESS` has enough native tokens to complete the steps.
 
 ## Simple maker contract (offer logic)
 
-We want to create a new contract `OfferMakerTutorial` which inherits from the `Direct` contract in our strat-library. `Direct` provides a safety harness to make it easier to correctly interact with Mangrove, you can read more about it [here](../explanations/offer-maker/direct.md).
+We want to create a new contract `OfferMakerTutorial` to implement %%offer logic|offerLogic%% and utilize the `Direct` contract in our strat-library for this purpose. `Direct` provides a safety harness to make it easier to correctly interact with Mangrove, you can read more about it [here](../explanations/offer-maker/direct.md).
 
 Create a new `OfferMakerTutorial.sol` file in the `src` folder and add the following pieces.
 
@@ -130,12 +130,6 @@ export WETH=0x63e537a69b3f5b03f4f46c5765c82861bd874b6e
 cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "activate(address[])" "[$WETH]" --private-key "$PRIVATE_KEY"
 ```
 
-We also need to let the `OfferMakerTutorial` pull funds from the admin's reserve of WETH.
-
-```bash
-cast send --rpc-url $LOCAL_URL "$WETH" "approve(address, uint)" "$OFFER_MAKER" 1000000000000000000 --private-key "$PRIVATE_KEY"
-```
-
 ### Post an offer
 
 Now that the contract is ready, we can use it to post an offer - note that we have to %%provision|provision%% the offer, and we do that by sending some native tokens to `newOffer`.
@@ -163,6 +157,20 @@ Gas used: 168639
 ```
 
 `0x0000000000000000000000000000000000000000000000000000000000000235` is the offer id.
+
+### Unlocked liquidity
+
+Notice that the offer was posted without transferring tokens from the admin to Mangrove or the `OfferMakerTutorial`. This way the tokens are pulled just-in-time when the offer is taken and can thus be made available for other purposes.
+
+For this to work, we need to let the `OfferMakerTutorial` pull funds from the admin's reserve of WETH.
+
+```bash
+cast send --rpc-url $LOCAL_URL "$WETH" "approve(address, uint)" "$OFFER_MAKER" 1000000000000000000 --private-key "$PRIVATE_KEY"
+```
+
+Alternatively, the admin could transfer tokens to the contract and lock them until the offer is taken or the tokens are withdrawn.
+
+The `OfferMakerTutorial` uses the approval to transfer funds from the admin, but this could also involve a %%router|router%% and require additional approvals depending on the scenario. See [approvals](./TODOapprovals) for more details.
 
 #### Mint
 
