@@ -8,7 +8,7 @@ The `MgvCleaner` contract is provided as part of the periphery contracts. Its pu
 
 It has a single function `collect`, with the same signature as as the function for [sniping offers](../taking-and-making-offers/taker-order/README.md#offer-sniping); please refer to that page for a detailed account of the arguments. In brief, for a given pair `(outbound_tkn, inbound_tkn)`, it takes an array of offers `targets` and expects all offers to fail or not to execute.
 
-This contract may be deployed and used as part of running your own [cleaner keeper bot](TODO). (**TODO: Update link, when cleaning keeper bot location has settled**)
+This contract may be deployed and used as part of running your own [cleaner keeper bot](/docs/keeper-bots/getting-started/run-a-simple-cleaning-bot.md).
 
 ```solidity
 function collect(
