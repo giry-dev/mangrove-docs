@@ -132,6 +132,11 @@ const config = {
             label: 'Keeper Bots',
           },
           {
+            to: '/docs/FAQ',
+            position: 'left',
+            label: 'FAQ',
+          },
+          {
             href: '/docs/glossary',
             label: 'Glossary',
             position: 'right',
