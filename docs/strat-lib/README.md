@@ -12,7 +12,7 @@ The strat library provides several good starting points for writing your own cus
 
 ## Open source and free to use - on your own responsibility
 
-The strat library is open source, and is provided freely to the community as a starting point for writing maker contracts. It is used as the starting point for several well-used contracts in the ecosystem. However, do note that the strat library as a whole may still contain bugs, and should be used responsibly and with care (see also [Safety first](#safety-first)).
+The strat library is open source, and is provided freely to the community as a starting point for writing maker contracts. It is already used as the basis for contracts in the ecosystem. However, do note that the strat library as a whole may still contain bugs, and should be used responsibly and with care (see also [Safety first](#safety-first)).
 
 If you have questions about how to use the Strat library, which are not answered sufficiently in this documentation, do reach out on the Mangrove Discord. And pull requests to the strategy library are, of course, welcome!
 
