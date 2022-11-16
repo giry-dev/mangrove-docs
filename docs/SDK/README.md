@@ -3,9 +3,11 @@ description: mangrove.js is a JavaScript API for the Mangrove exchange, the on-c
 sidebar_position: 1
 ---
 
-# SDK
+# The TypeScript SDK
 
 :::info
+
+The code for `mangrove.js` is available at [GitHub](https://github.com/mangrovedao/mangrove-ts).
 
 Wraps around [ethers.js](https://github.com/ethers-io/ethers.js). Works in the **web browser** and [Node.js](https://nodejs.org/en/).
 

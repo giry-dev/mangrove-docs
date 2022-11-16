@@ -1,62 +1,106 @@
 ---
 description: The most simple liquidity providing strategy, no offer logic, just a Wallet.
+sidebar_position: 2
 ---
 
-# On-the-fly offer
+# Post Simple Offer
+
+Posting a simple offer is also referred to as an %%on-the-fly offer|OTF%%.
+
+## Prerequisites
+
+The tutorial assumes knowledge of javascript. Follow [preparation](./preparation.md) to create a new `tutorial` folder.
+
+Make sure to use a chain where Mangrove is live. You can find all all live addresses for Mangrove [here](../../contracts/technical-references/contract-addresses.md)
 
 :::info
 
-An [**On-the-fly offer** (OTF)](../../glossary.md#on-the-fly-offer-otf) can be listed on Mangrove but is not equipped with any on-chain [logic](../../contracts/explanations/offer-maker/#executing-offers) that executes when the offer is taken. Whenever it is matched by a [taker order](../../contracts/explanations/offer-taker.md#taking-offers), the offer sources its liquidity on an [Externally Owned Account (EOA)](../../glossary.md#externally-owned-account-eoa).
+When running the tutorial be aware that some of the script calls the chain and it can therefore take a few seconds before the transaction is completed.
 
 :::
 
-## How to post one?
+Open your favorite javascript editor inside that folder.
 
-To post an OTF you need to
+### Import and connect
 
-1. tell Mangrove you wish to post a new offer,
-2. sign the resulting transaction with the wallet (EOA) that contains the promised liquidity.
+1. The first thing needed is to import `dotenv`, this handles the `.env` file you added in the [preparation](./preparation.md).
+2. Then import both `Mangrove` and `ethers` from the Mangrove package. `ethers` will allow you to connect to a node and your wallet. `Mangrove` will allow you to connect to the Mangrove protocol.
+3. In order to connect to a chain you need a `RPC_URL`, this should have been set up in the `.env` file doing the [preparation](./preparation.md).
+    - If you do not want to use a real chain, you can start up a local chain using `anvil` as described in [preparation](./preparation.md). If you do this, you have to replace `RPC_URL` with `LOCAL_URL`. This way you will be running on the local chain and not the real chain. Remember to start anvil in its own terminal.
+4. The same goes for connecting to your wallet, the `PRIVATE_KEY` is need in order to connect to your wallet.
+    - You can also replace the `PRIVATE_KEY` with a key provided by anvil, if you don't want yo use your own account or simple don't have an account on the chain.
+5. Once you have connected your wallet, you can connect to the Mangrove protocol using your wallet.
 
-Here is an example using [Mangrove's JS API](https://github.com/mangrovedao/mangrove/tree/master/packages/mangrove.js). Follow [preparation](../../contracts/tutorials/preparation.md) (once) and start a fresh `node` in a shell and run the following statements.
-
-```javascript
-// Load the NODE_URL and PRIVATE_KEY from .env file into process.env
-// This script assumes NODE_URL points to your access point and PRIVATE_KEY contains private key from which one wishes to post offers
-var parsed = require("dotenv").config();
-// Import the Mangrove API
-const { Mangrove, ethers } = require("@mangrovedao/mangrove.js");
-
-// Create a wallet with a provider to interact with the chain.
-const provider = new ethers.providers.WebSocketProvider(
-  process.env.NODE_URL
-);
-const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
-
-// Connect the API to Mangrove
-const mgv = await Mangrove.connect({ signer: wallet });
-
-// Connect mgv to a DAI, USDC market
-const market = await mgv.market({ base: "DAI", quote: "USDC" });
-
-// Check it's live, should display the best bids and asks of the DAI, USDC market
-market.consoleAsks();
-market.consoleBids();
-
-// Create a simple liquidity provider on `market`, using `wallet` as a source of liquidity
-const directLP = await mgv.liquidityProvider(market);
-
-// Liquidity provider needs to approve Mangrove for transfer of base token (DAI) which
-// will be transferred from the wallet to Mangrove and then to the taker when the offer is taken.
-const tx = await directLP.approveAsks();
-await tx.wait();
-
-// Query mangrove to know the bounty for posting a new Ask on `market`
-const provision = await directLP.computeAskProvision();
-
-// Post a new ask (offering 105 DAI for 104 USDC) at a price of 150/104~=1.0096
-// Consider looking at the consoleAsks above and increase gives such that the offer becomes visible in this list
-const { id: offerId } = await directLP.newAsk({ wants: 105, gives: 104, fund: provision });
-
-// Check the order was posted (or look at https://testnet.mangrove.exchange.
-market.consoleAsks();
+```javascript reference
+https://github.com/mangrovedao/mangrove-ts/blob/bbb41b873cb235f106746f113c720ec80da1a4f7/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L1-L13
 ```
+
+### Check existing market
+
+Next you need to connect to a market, in order to see the existing offers. This way you can figure out at what price you want to post your offer.
+
+1. Connect to the market using `mgv.market`, with a base and a quote.
+2. Console log asks. This outputs table of the 50 best asks.
+3. Console log bidss. This outputs table of the 50 best bids.
+
+```javascript reference
+https://github.com/mangrovedao/mangrove-ts/blob/bbb41b873cb235f106746f113c720ec80da1a4f7/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L15-L20
+```
+
+``` bash
+┌─────────┬──────┬──────────────────────────────────────────────┬────────────────────┬────────────────────────┐
+│ (index) │  id  │                    maker                     │       volume       │         price          │
+├─────────┼──────┼──────────────────────────────────────────────┼────────────────────┼────────────────────────┤
+│    0    │ 2774 │ '0x2CB51201CD176CcEa67a9c0B64391aE34e50C058' │ 1317.1775894557795 │ 1.00337113885004310077 │
+│    1    │ 3299 │ '0x2CB51201CD176CcEa67a9c0B64391aE34e50C058' │ 1308.2741138999688 │ 1.00337482875577922516 │
+│    2    │ 1829 │ '0x4326Ab97823d7509C1f0CB3bF68151081B26c970' │ 50.674948479792484 │ 1.00337923422410191358 │
+│    3    │ 598  │ '0x4326Ab97823d7509C1f0CB3bF68151081B26c970' │ 561.6921678391515  │ 1.00337932460078748916 │
+│    4    │ 5026 │ '0x2CB51201CD176CcEa67a9c0B64391aE34e50C058' │ 189.47603337984367 │ 1.00338137023837699789 │
+...
+```
+
+### Post new offer
+
+After having looked at the market you now know what the prices are and you can now post an offer at a better price, so that the offer will be on top of the book.
+
+1. First create a [`LiquidityProvider`](../technical-references/code/classes/LiquidityProvider). This allows for posting new offers.
+2. Then you need to approve your account/wallet. To make sure that the transaction has been made, we do `await tx.wait()`.
+3. Then you need to calculate how much %%provision|provision%% is needed.
+4. You can then post an offer using, in this case `wants: 100.5` and `gives:100.4`, which gives a price of $$100.5/100.4\approx1.00099$$. And since you saw that the best price was $$\approx1.003$$ you know our offer will be at the top of the list.
+
+```javascript reference
+https://github.com/mangrovedao/mangrove-ts/blob/bbb41b873cb235f106746f113c720ec80da1a4f7/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L22-L39
+```
+
+### Check market after new offer
+
+We can then check if our offer has best been posted and is on the top of the list, as excepted.
+
+1. First log the `offerId` in order to makes sure, you know what offer is yours.
+2. Then log the asks for the market. You will then see that your offer is on top of the list.
+
+```javascript reference
+https://github.com/mangrovedao/mangrove-ts/blob/bbb41b873cb235f106746f113c720ec80da1a4f7/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L41-L43
+```
+
+```js
+> console.log(offerId);
+5571
+undefined
+> market.consoleAsks();
+┌─────────┬──────┬──────────────────────────────────────────────┬────────────────────┬────────────────────────┐
+│ (index) │  id  │                    maker                     │       volume       │         price          │
+├─────────┼──────┼──────────────────────────────────────────────┼────────────────────┼────────────────────────┤
+│    0    │ 5571 │ '0xA4C7c59EB3D4Ab5CA4E6fB012CeD9c8F9A5Ecdd8' │       100.4        │ 1.00099601593625498008 │
+│    1    │ 2774 │ '0x2CB51201CD176CcEa67a9c0B64391aE34e50C058' │ 1317.1775894557795 │ 1.00337113885004310077 │
+│    2    │ 3299 │ '0x2CB51201CD176CcEa67a9c0B64391aE34e50C058' │ 1308.2741138999688 │ 1.00337482875577922516 │
+│    3    │ 1829 │ '0x4326Ab97823d7509C1f0CB3bF68151081B26c970' │ 50.674948479792484 │ 1.00337923422410191358 │
+```
+
+Another way to check your offer is to go to [testnet](https://testnet.mangrove.exchange/trade) and look at the asks for DAI-USDC. Here you will be able to see your offer. This can only be done if you didn't use a local chain, but actually ran on a real chain.
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<img src={useBaseUrl('img/assets/basic-offer-on-testnet.png')} width="50%"/>
+
+The full script can be found on [github](https://github.com/mangrovedao/mangrove-ts/blob/3fd5dc57435d5cb9edd524a67f850cbeeee03ecd/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js).

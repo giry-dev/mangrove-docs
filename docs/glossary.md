@@ -3,28 +3,8 @@ id: glossary
 title: Glossary
 ---
 
-### [Allowance](/docs/terms/Allowance) 
-Describe allowance
-
-
-### [Approval](/docs/terms/Approval) 
-Describe approval
-
-
-### [Asks](/docs/terms/Asks) 
-Describe asks
-
-
-### [Base](/docs/terms/Base) 
-Describe bae
-
-
-### [Bids](/docs/terms/Bids) 
-Describe bids
-
-
 ### [Bounty](/docs/terms/bounty) 
-An amount of native token paid to the taker when an offer fails
+An amount of native tokens paid to the taker when an offer fails.
 
 
 ### [Cleaning bot](/docs/terms/cleaning-bot) 
@@ -32,116 +12,68 @@ An off-chain bot that keeps the order books clean by sniping failing offers
 
 
 ### [Density](/docs/terms/Density) 
-Describe density
+The ratio of tokens promised by an offer over the gas it requires to be executed.
 
 
-### [Dust](/docs/terms/Dust) 
-Describe dust
+### [Fee](/docs/terms/fee) 
+A portion of the tokens promised to the taker that are sent to the protocol's vault.
 
 
-### [EOA](/docs/terms/EOA) 
-Externally Owned Account
-
-
-### [ERC20](/docs/terms/ERC20) 
-Describe erc20
-
-
-### [FOK](/docs/terms/FOK) 
-Describe FOK
+### [Gas price](/docs/terms/Gasprice) 
+An estimate of the price of a gas unit, in native token amount.
 
 
 ### [Gas requirement](/docs/terms/Gasreq) 
-Describe gasreq
-
-
-### [Gasprice](/docs/terms/Gasprice) 
-Describe gasprice
+An upper bound of the gas units that an offer requires when called by Mangrove.
 
 
 ### [Gives](/docs/terms/Gives) 
-Describe gives
-
-
-### [GTC](/docs/terms/GTC) 
-Describe gtc
+The volume of tokens an offer promises in exchange of the full volume of required tokens.
 
 
 ### [Inbound](/docs/terms/Inbound) 
-Describe inbound
+The token type that an offer taker must send.
 
 
 ### [Keeper bot](/docs/terms/keeper-bot) 
 An off-chain bot that helps keep Mangrove functioning optimally
 
 
-### [Maker](/docs/terms/Maker) 
-Describe maker
-
-
-### [Market](/docs/terms/Market) 
-Describe market
-
-
-### [Market order](/docs/terms/MarketOrder) 
-Describe market order
-
-
-### [Off-chain](/docs/terms/Off-chain) 
-Describe Off-chain
-
-
 ### [Offer id](/docs/terms/OfferId) 
-Describe Offer id
+The identifier of an offer in a given offer list.
+
+
+### [Offer list](/docs/terms/OfferList) 
+A list of offers on the same token pair, ranked from best price to worst price.
 
 
 ### [Offer rank](/docs/terms/OfferRank) 
-Describe Offer rank
+The position of an offer in an Offer List.
 
 
-### [On-chain](/docs/terms/On-chain) 
-Describe on-chain
-
-
-### [Order](/docs/terms/Order) 
-Describe order
-
-
-### [OTF](/docs/terms/OTF) 
-On-The-Fly Offer
+### [On-th-fly offer](/docs/terms/OTF) 
+An offer that is not posted by a smart contract and that can only source liquidity from an EOA.
 
 
 ### [Outbound](/docs/terms/Outbound) 
-Describe outbound
+The token type that an offer taker will receive.
 
 
-### [Penalty](/docs/terms/Penalty) 
-Describe penalty
+### [Pivot Id](/docs/terms/PivotId) 
+The identifier of an offer whose rank is close enough of the one at which an offer is inserted in an offer list.
+
+
+### [posthook](/docs/terms/Posthook) 
+the callback function of a smart offer that is reached by Mangrove after a trade execution.
 
 
 ### [Provision](/docs/terms/Provision) 
-Describe provision
-
-
-### [Quote](/docs/terms/Quote) 
-Describe quote
-
-
-### [Resting limit order](/docs/terms/RestingLimit) 
-Describe resting limit order
-
-
-### [Semibook](/docs/terms/Semibook) 
-Describe semibook
+An amount of native tokens that is attached to a live offer on Mangrove and that is used to compensate a fail-to-deliver.
 
 
 ### [Smart offer](/docs/terms/SmartOffer) 
-Describe smart offer
-
-
-### [Taker](/docs/terms/Taker) 
-Describe taker
+an offer that is bound to a smart contract, as opposed to an on-the-fly offer.
 
 
 ### [Wants](/docs/terms/Wants) 
-Describe wants
+The volume of tokens an offer requires in exchange of the full volume of promised tokens.

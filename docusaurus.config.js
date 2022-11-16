@@ -35,6 +35,36 @@ const config = {
     '@docusaurus-terminology/parser',
     require.resolve('docusaurus-lunr-search'),
     '@vegaprotocol/docusaurus-theme-github-codeblock',
+    [
+      'docusaurus-plugin-typedoc',
+
+      // Plugin / TypeDoc options
+      {
+        "entryPoints": ["node_modules/@mangrovedao/mangrove.js/src/index.ts"],
+        "tsconfig": "node_modules/@mangrovedao/mangrove.js/tsconfig.json",
+        "out": "SDK/technical-references/code",
+        "excludePrivate": true,
+        "excludeInternal": true,
+        "sort": "source-order",
+        "exclude": ["**/ethers.*","**/typechain/**.*"],
+        "namedAnchors": true,
+        sidebar: {
+          categoryLabel: 'API Reference',
+          position: 999,
+          fullNames: true,
+        },
+      },
+    ],
+    [
+      '@docusaurus/plugin-ideal-image',
+      {
+        quality: 70,
+        max: 1030, // max resized image's size.
+        min: 640, // min resized image's size. if original is lower, use that size.
+        steps: 6, // the max number of images generated between min and max (inclusive)
+        disableInDev: false,
+      },
+    ],
     
   ],
   staticDirectories: ['static'],
@@ -87,6 +117,11 @@ const config = {
             label: 'Contracts',
           },
           {
+            to: '/docs/strat-lib',
+            position: 'left',
+            label: 'Strat Lib',
+          },
+          {
             to: '/docs/SDK',
             position: 'left',
             label: 'SDK',
@@ -94,7 +129,12 @@ const config = {
           {
             to: '/docs/keeper-bots',
             position: 'left',
-            label: 'Keeper bots',
+            label: 'Keeper Bots',
+          },
+          {
+            to: '/docs/FAQ',
+            position: 'left',
+            label: 'FAQ',
           },
           {
             href: '/docs/glossary',
@@ -124,11 +164,15 @@ const config = {
                 to: '/docs/contracts',
               },
               {
+                label: 'Strat Library',
+                to: 'docs/strat-lib'
+              },
+              {
                 label: 'SDK',
                 to: '/docs/SDK',
               },
               {
-                label: 'Bots',
+                label: 'Keeper Bots',
                 to: '/docs/keeper-bots',
               },
             ],
@@ -137,28 +181,53 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Telegram',
-                href: 'https://t.me/MangroveDAO',
-              },
-              {
                 label: 'Discord',
-                href: 'https://discord.gg/fuSuPC2G',
+                href: 'https://discord.gg/rk9Qthz5YE'
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/mangrovedao',
+                href: 'https://twitter.com/MangroveDAO'
               },
+              {
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/company/mangrovedao/'
+              }          
+            ],
+          },
+          {
+            title: 'GitHub',
+            items: [
+              {
+                label: 'Contracts and Strat Lib',
+                href: 'https://github.com/mangrovedao/mangrove-core'
+              },
+              {
+                label: 'SDK',
+                href: 'https://github.com/mangrovedao/mangrove-ts'
+              },
+              {
+                label: 'Keeper Bots',
+                href: 'https://github.com/mangrovedao/mangrove-ts'
+              },              
             ],
           },
           {
             title: 'More',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/mangrovedao',
+                label: 'White Paper',
+                href: 'https://bafybeig62o75bfxssic66w2zwerbo6ezlhb33vsg5idr4uprckn2dxrucy.ipfs.infura-ipfs.io/'
+              },              
+              {
+                label: 'Blog',
+                href: 'https://blog.mangrove.exchange/'
               },
-            ],
-          },
+              {
+                label: 'Home',
+                href: 'https://mangrove.exchange'
+              }
+            ]
+          }
         ],
         copyright: `Copyright © ${new Date().getFullYear()} ADDMA. All rights reserved.`,
       },

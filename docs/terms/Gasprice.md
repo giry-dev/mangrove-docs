@@ -1,7 +1,7 @@
 ---
 id: gasprice
-hoverText: Describe gasprice
-title: Gasprice
+hoverText: An estimate of the price of a gas unit, in native token amount.
+title: Gas price
 ---
 
-# Gasprice
+# Gas price

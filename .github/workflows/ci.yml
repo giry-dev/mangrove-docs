@@ -1,0 +1,141 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: 
+      - main
+      - 'run-ci/**'
+  pull_request_target:
+    branches: [ main, test-pr ]
+    types: [opened, synchronize, reopened, labeled]
+
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+env:
+  NODE_ENV: test
+  # Ternary-esque expression hack: The first line is the condition,
+  # the 2nd line is the value if `true`, the 3rd line is the value if `false`.
+  GIT_REF_TO_TEST: >
+                   ${{  (   github.event_name != 'pull_request_target'
+                         && github.ref )
+                      || format('refs/pull/{0}/merge', github.event.number) }}
+  NOTIFY_SLACK_FOR_THIS_WORKFLOW_RUN: ${{ github.ref_name == 'main' && github.event_name != 'pull_request_target' }}
+jobs:
+  # ==== Job: Security guard ====
+  # The security guard job only allows workflows triggered by external PR's to continue
+  # if they are labelled 'safe to test'.
+  security-guard:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Comment external PR's with first time (before being labelled 'external PR')
+      if: >
+          !(   github.event_name != 'pull_request_target'
+            || github.event.pull_request.head.repo.full_name == github.repository
+            || contains(github.event.pull_request.labels.*.name, 'external PR') )
+      uses: peter-evans/create-or-update-comment@v2
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        body: >
+              Pull requests from forks must be reviewed before build and tests are run.
+
+              A maintainer will review and add the 'safe to test' label if everything looks good.
+
+    - name: Label external PR's with 'external PR'
+      if: >
+          !(   github.event_name != 'pull_request_target'
+            || github.event.pull_request.head.repo.full_name == github.repository
+            || contains(github.event.pull_request.labels.*.name, 'external PR') )
+      uses: actions-ecosystem/action-add-labels@v1
+      with:
+        labels: external PR
+
+  # ==== End job: Security guard ====
+
+  # ==== Job: Build ====
+  build:
+    needs: [security-guard]
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+    # == Git checkout ==
+    - name: Checkout
+      uses: actions/checkout@v3
+      # Workaround for https://github.com/npm/cli/issues/2610
+      with:
+        persist-credentials: false
+        ref: ${{ env.GIT_REF_TO_TEST }}
+        submodules: recursive
+
+    # == yarn setup ==
+    - name: Yarn setup (caching yarn dependencies)
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'yarn'
+        
+    - run: yarn install --immutable
+
+    # build
+    - name: Build
+      run: yarn run docgen
+
+    - name: Upload GitHub Pages artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: build/
+
+  # ==== End job: build ====
+
+  # ==== Job: Deploy to GitHub pages ====
+
+  deploy:
+    if: github.event_name != 'pull_request_target'         
+    needs: build
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+
+  # ==== End job: Deploy to GitHub pages ====
+
+  # ==== final "check" job, using alls-green to have one single job to check for green workflow ====
+  # see https://github.com/re-actors/alls-green
+
+  check:
+    if: always()
+
+    needs:
+    - security-guard
+    - build
+    - deploy
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Decide whether the needed jobs succeeded or failed
+      uses: re-actors/alls-green@release/v1
+      with:
+        allowed-skips: deploy
+        jobs: ${{ toJSON(needs) }}

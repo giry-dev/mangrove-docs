@@ -1,25 +1,30 @@
 ---
-description: The Mangrove is an on-chain, orderbook-based exchange where offers are code.
+description: The Mangrove DEX is an on-chain, orderbook-based exchange where offers are code.
 sidebar_position: 1
 ---
 
-# Mangrove developer documentation
+# What is Mangrove? 🌴
 
-## Who is this documentation for?
+The Mangrove is an [EVM-compatible](https://ethereum.org/en/developers/docs/scaling/sidechains/#evm-compatibility) order book-based exchange protocol (a [DEX](https://ethereum.org/en/defi/)), in which offers can be bound to a [smart contract](https://ethereum.org/en/smart-contracts/).
 
-* This documentation is targeted at readers who want to learn technical details about the Mangrove for instance to interact with it through code on-chain or off-chain.
-* For a higher-level intro to Mangrove, check out [mangrove.exchange](https://mangrove.exchange).
-* Strategy builders or market makers should check out the [contracts](README.md) documentation on how to write offers as code or post offers on-chain.
-* Off-chain builders writing, e.g., bots or UI, should check out the documentation for the [SDK](../SDK/README.md) and the [Keeper bots](../keeper-bots/README.md).
-* If you want to modify and improve the core of Mangrove, [read the annotated code](https://code.mangrove.exchange/MgvDoc.html) and head to the [GitHub repository](https://github.com/mangrovedao/mangrove-core).
-* All GitHub repositories can be found in the [mangrovedao](https://github.com/mangrovedao).
+The order book of Mangrove lists promises to trade, instead of locked commitments.
 
-![A bird's-eye view of the Mangrove ecosystem.](../../static/img/assets/contactMap.png)
-
-## Who interacts with Mangrove
-
-There are 3 types of actors in play:
-
-* Offer makers add [liquidity promises](explanations/offer-maker/README.md) to Mangrove. They own offers in [offer lists](te/takin/../../technical-references/taking-and-making-offers/market.md) and must manage contracts that react to [offer execution](technical-references/taking-and-making-offers/reactive-offer/offer-data-structures.md).
+* Offer makers add [liquidity promises](./explanations/offer-maker.md) to Mangrove. They own offers in [offer lists](./technical-references/taking-and-making-offers/offer-list.md) and manage contracts that react to [offer execution](technical-references/taking-and-making-offers/reactive-offer/executing-offers.md).
 * Takers go to Mangrove to [find liquidity](explanations/offer-taker.md) by executing offers already in Mangrove.
-* [Governance](technical-references/governance-parameters/README.md) adjusts Mangrove parameters, opens new pairs, sets fees, etc.
+* [Governance](technical-references/governance-parameters/README.md) adjusts Mangrove parameters, sets fees, and opens and closes new markets.
+
+## Where do I start?
+
+A good entry-point to the documentation for the Mangrove protocol is the [Overview of Mangrove](./technical-references/overview.md) in the Technical Reference section.
+
+
+## Who develops the Mangrove?
+
+**TODO: Brief introduction on Mangrove DAO** 
+
+The Mangrove project is open source. Follow and contribute on [GitHub](https://github.com/mangrovedao/).
+
+## Where can I join the community?
+
+Join the [Mangrove Discord](https://discord.gg/rk9Qthz5YE).
+
