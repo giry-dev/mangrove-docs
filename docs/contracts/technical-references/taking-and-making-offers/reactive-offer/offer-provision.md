@@ -9,14 +9,14 @@ sidebar_position: 2
 
 When an offer fails, the caller has wasted some gas. To compensate the caller, Mangrove gives them a _bounty_ in native tokens. Offers must provision enough ethers to maximize the chances that Mangrove can compensate the caller. In more details:
 
-* Every offer logic that posted an offer has a balance in ethers held by Mangrove. Funds can be freely added to or withdrawn from the balance.
-* Whenever the logic creates or updates an offer, its balance is adjusted so that enough native tokens are locked as the offer's provision.
+* Every maker contract that posted an offer has a balance in ethers held by Mangrove. Funds can be freely added to or withdrawn from the balance.
+* Whenever the contract creates or updates an offer, its balance is adjusted so that enough native tokens are locked as the offer's provision.
   * If the offer is retracted that provision is credited back to the logic's account balance.
-  * If the offer is executed and fails, part or all of the provision is sent as compensation, to the caller. We call that the bounty. The rest of the provision is credited back to the offer logic's account balance.
+  * If the offer logic is executed and fails, part or all of the provision is sent as compensation, to the caller. We call that the bounty. The rest of the provision is credited back to the maker contract's account balance.
 
 ## Funding an offer
 
-There are three ways an offer logic can credit its balance on Mangrove. (1) The logic may either call the `fund` function, or (2) make a call to the fallback function with some value, or (3) pay on the fly when a [new offer is posted](./#posting-a-new-offer).&#x20;
+There are three ways a maker contract can credit its balance on Mangrove. (1) The contract may either call the `fund` function, or (2) make a call to the fallback function with some value, or (3) pay on the fly when a [new offer is posted](./#posting-a-new-offer).&#x20;
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -90,7 +90,7 @@ await Mangrove["fund(address)"](maker_contract_address, overrides);
 
 ### Inputs
 
-* `maker` the offer logic's balance on Mangrove to credit
+* `maker` the maker contract's balance on Mangrove to credit
 
 :::danger 
 **Do not use `send` or `transfer` to credit Mangrove**&#x20;

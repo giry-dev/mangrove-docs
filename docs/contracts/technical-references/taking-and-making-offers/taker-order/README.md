@@ -73,8 +73,8 @@ event OfferFail(
     uint takerGives,
     // `mgvData` is either:
     // * `"mgv/makerRevert"` if `makerExecute` call reverted
-    // * `"mgv/makerTransferFail"` if `outbound_tkn` transfer from the offer logic failed after `makerExecute`
-    // * `"mgv/makerReceiveFail"` if `inbound_tkn` transfer to offer logic failed (e.g. contract's address is not allowed to receive `inbound_tkn`) 
+    // * `"mgv/makerTransferFail"` if `outbound_tkn` transfer from the maker contract failed after `makerExecute`
+    // * `"mgv/makerReceiveFail"` if `inbound_tkn` transfer to maker contract failed (e.g. contract's address is not allowed to receive `inbound_tkn`) 
     bytes32 mgvData
   );
   
