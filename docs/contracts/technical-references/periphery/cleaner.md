@@ -3,7 +3,7 @@ title: Cleaner
 sidebar_position: 3
 ---
 
-## Execute Failing Offer - `MgvCleaner`
+## Execute Failing Offers - `MgvCleaner`
 
 The `MgvCleaner` contract is provided as part of the periphery contracts. Its purpose is to execute failing offers (see [Reneging on Offers](../../explanations/taker-compensation.md)) and to collect their [associated bounty](../taking-and-making-offers/reactive-offer/offer-provision.md#provision-and-offer-bounty). 
 
