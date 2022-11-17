@@ -12,11 +12,11 @@ The illustration belows depicts a bird's-eye view of the Mangrove ecosystem with
 
 The three most important actors are:
 
-* [Offer makers](#makers), via a **maker contract**, add [liquidity promises](../explanations/offer-maker.md) to Mangrove. The **offer logic** of the maker contract is called by Mangrove whenever the offer is matched by a taker order.
+* [Offer makers](#makers), via a **maker contract**, add [liquidity promises](../explanations/offer-maker.md) to Mangrove. The **offer logic** of the maker contract is called by Mangrove whenever the offer is matched by a taker order (see also the call sequence [overview](#overview-of-the-calls-sequence-induced-by-a-taker-order)).
     
-* [**Takers**](#takers) use Mangrove to [find liquidity](../explanations/offer-taker.md) by executing offers published on Mangrove.
+* [Takers](#takers) use Mangrove to [find liquidity](../explanations/offer-taker.md) by executing offers published on Mangrove.
 
-* [**Governance**](#governance) adjusts Mangrove [parameters](./governance-parameters/README.md) such as setting fees or opening and closing markets.
+* [Governance](#governance) adjusts Mangrove [parameters](./governance-parameters/README.md) such as setting fees or opening and closing markets.
 
 ## Takers
 
