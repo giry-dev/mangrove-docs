@@ -35,5 +35,3 @@ Suppose that an [offer](README.md) managed by a contract promises 100,000 DAI in
 Upon being called, the contract has 100,000 USDC available (just given to it by Mangrove) and may source DAI from anywhere on the chain. It needs to end execution with 100,000 DAI available and ready to be transferred by Mangrove through `transferFrom`.
 
 :::
-
-![Example of a the execution of two offers during a market order. Offer #1 has the best price and is called first. Notice the posthook of Offer #2 is called first at the end of the maker order.](@site/static/img/assets/execution.png)
