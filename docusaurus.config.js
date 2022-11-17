@@ -32,10 +32,20 @@ const config = {
   },
 
   plugins: [
-    '@docusaurus-terminology/parser',
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'terms',
+        path: 'terms',
+        routeBasePath: 'terms',
+        sidebarPath: require.resolve('./sidebarsTerms.js'),
+        // ... other options
+      },
+    ],    
+    ['@docusaurus-terminology/parser',
     {
       "termsDir": "./terms/"
-    }
+    }],
     require.resolve('docusaurus-lunr-search'),
     '@vegaprotocol/docusaurus-theme-github-codeblock',
     [
@@ -170,7 +180,7 @@ const config = {
               },
               {
                 label: 'Strat Library',
-                to: 'docs/strat-lib'
+                to: '/strat-lib'
               },
               {
                 label: 'SDK',
