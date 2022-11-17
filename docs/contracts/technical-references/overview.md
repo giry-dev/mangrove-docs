@@ -12,7 +12,7 @@ The illustration belows depicts a bird's-eye view of the Mangrove ecosystem with
 
 The three most important actors are:
 
-* [Offer makers](#makers), via a **maker contract**, add [liquidity promises](../explanations/offer-maker.md) to Mangrove. The **offer logic** of the maker contract is called by Mangrove whenever the offer is matched by a taker order (see also the call sequence [overview](#overview-of-the-calls-sequence-induced-by-a-taker-order)).
+* [Offer makers](#makers), via a **maker contract**, add [liquidity promises](../explanations/offer-maker.md) to Mangrove. The **offer logic** of the maker contract is called by Mangrove whenever the offer is matched by a taker order (see also the call sequence [overview](#call-sequence-overview)).
     
 * [Takers](#takers) use Mangrove to [find liquidity](../explanations/offer-taker.md) by executing offers published on Mangrove.
 
@@ -28,7 +28,7 @@ Takers may typically operate via a web front-end or with the help of the TypeScr
 
 Makers own [offers](taking-and-making-offers/reactive-offer/README.md), which live in [offer lists](taking-and-making-offers/offer-list.md) in the Mangrove order book, that react to [offer execution](taking-and-making-offers/reactive-offer/executing-offers.md).
 
-As a maker, when an offer is posted, you also provide an address for a smart contract - the [maker contract](taking-and-making-offers/reactive-offer/maker-contract.md). The maker contract is called by the Mangrove protocol, [*when*](taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution) your offer is [taken](taking-and-making-offers/taker-order/README.md), and [*after*](taking-and-making-offers/reactive-offer/maker-contract.md#trade-posthook) your offer was [taken](taking-and-making-offers/taker-order/README.md). 
+As a maker, when you post an offer your address is recorded on Mangrove and will be called back when your offer is matched by a taker order. If this address is that of [maker contract](taking-and-making-offers/reactive-offer/maker-contract.md) it will be given the opportunity to execute its %%offer logic|offer-logic%%. More precisely, the maker contract is called twice by the Mangrove protocol: first [*when*](taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution) your offer is [taken](taking-and-making-offers/taker-order/README.md), and a second time [*after*](taking-and-making-offers/reactive-offer/maker-contract.md#trade-posthook) your offer was [taken](taking-and-making-offers/taker-order/README.md). 
 
 ### When an offer is taken
 
@@ -42,7 +42,7 @@ Mangrove calls the maker contract a [second time](taking-and-making-offers/react
 
 This allows makers to repost an offer in order to publish their liquidity instantly, in a manner similar to Automated Market Makers (AMMs). 
 
-## Overview of the calls sequence induced by a taker order
+## Call sequence overview
 The diagram below summarizes the call sequence induced by a taker order.
 
 ![Mangrove call sequence induced by a taker order](../../../static/img/assets/execution.png)
