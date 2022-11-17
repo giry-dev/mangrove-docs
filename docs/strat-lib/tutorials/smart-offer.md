@@ -1,9 +1,9 @@
 ---
 description: Simple tutorial showing how to post your first offer managed by your own contract on-chain.
-sidebar_position: 0
+sidebar_position: 2
 ---
 
-# Post a smart offer
+# Post a Smart Offer
 
 In this tutorial you will learn how to post a %%smart offer|smart-offer%% managed by your own maker contract and which simply transfers tokens to and from your reserve.
 
