@@ -44,3 +44,8 @@ table {
   top: 8px;
   left: 16px;
 }
+
+/* make room for headings that break in two lines */
+.navbar {
+  min-height: 70px;
+}
