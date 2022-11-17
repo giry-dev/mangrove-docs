@@ -146,7 +146,7 @@ const config = {
           {
             href: '/glossary',
             label: 'Glossary',
-            position: 'right',
+            position: 'left',
           },
           {
             href: 'https://bafybeig62o75bfxssic66w2zwerbo6ezlhb33vsg5idr4uprckn2dxrucy.ipfs.infura-ipfs.io/',
