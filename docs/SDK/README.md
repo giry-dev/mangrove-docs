@@ -1,53 +1,33 @@
 ---
-description: mangrove.js is a JavaScript API for the Mangrove exchange, the on-chain orderbook where offers are code.
+description: mangrove.js is a TypeScript SDK for the Mangrove exchange, the on-chain orderbook where offers are code.
 sidebar_position: 1
 ---
 
-# The TypeScript SDK
+# The TypeScript SDK ⌨️
 
-:::info
+The Mangrove SDK is a TypeScript library that can help you write off-chain apps that work the Mangrove ecosystem. It wraps around [ethers.js](https://github.com/ethers-io/ethers.js) and adds a number of Mangrove-specific functionality and API. In a nod towards its `ethers.js`-underpinnings, the SDK package is named `mangrove.js`.
 
-The code for `mangrove.js` is available at [GitHub](https://github.com/mangrovedao/mangrove-ts).
+The SDK is appropriate for both **client-** and **server-side** apps: It is web browser-compatible and works with [Node.js](https://nodejs.org/en/). 
 
-Wraps around [ethers.js](https://github.com/ethers-io/ethers.js). Works in the **web browser** and [Node.js](https://nodejs.org/en/).
+## Open source and free to use - on your own responsibility
 
-:::
+The SDK is used in production in the Mangrove web app, and in a number of keeper bots, but the SDK should be used responsibly. It is considered in open beta, and is constantly under development. 
 
-## Getting started
+The SDK is open source, and is provided freely to the community as a starting point for writing apps to work with the Mangrove ecosystem. However, do note that the SDK may contain bugs or may change significantly between patch versions. As such it should be used responsibly and with care.
 
-You can install the API using \`npm\` package manager using:
+If you have questions about how to use the SDK, which are not answered sufficiently in this documentation, do reach out on the Mangrove Discord. And pull requests to the SDK are, of course, welcome!
 
-```bash
-sandbox_folder$> npm install @mangrovedao/mangrove.js
-```
+## Where do I start? 
 
-and you may readily connect to Mangrove with [Node.js](https://nodejs.org/en/), for instance:
+The best starting point for developing your app, is the Getting Started section - start by reading the page on [Setting up your local development environment](./getting-started/preparation.md).
 
-```bash
-sandbox_folder$> node
-Welcome to Node.js v_xxx
-Type ".help" for more information.
-> const { Mangrove } = require("@mangrovedao/mangrove.js");
-> const { ethers } = require("ethers");
-> let provider = new ethers.providers.WebSocketProvider(
-    "https://polygon-mumbai.g.alchemy.com/v2/<PRIVATE_KEY>"
-  );
-> let myWallet = new ethers.Wallet(
-    "<WALLET_PRIVATE_KEY>",
-    provider
-  );
-> let mgvAPI = await Mangrove.connect({
-    signer: myWallet
-  });
-> let market = await mgvAPI.market({base:"WETH", quote:"DAI"});
-> console.log("pretty prints available bids from the WETH,DAI market on Mangove");
-// pretty prints available bids from the WETH,DAI market on Mangove
-> await market.consoleBids();
-┌─────────┬────┬──────────────────────────────────────────────┬─────────────────────┬───────────────────────────┐
-│ (index) │ id │                    maker                     │       volume        │           price           │
-├─────────┼────┼──────────────────────────────────────────────┼─────────────────────┼───────────────────────────┤
-│    0    │ 4  │ '0x54782b0c6080DBC5492BCB4Fa4BA4103845940Ad' │ 0.2355813953488372  │ 4244.81737413622919031855 │
-│    1    │ 5  │ '0x54782b0c6080DBC5492BCB4Fa4BA4103845940Ad' │ 0.2355813953488372  │ 4244.81737413622919031855 │
-│    2    │ 1  │ '0xcBb37575320FF499E9F69d0090b6944bc0aD7585' │ 0.23559598787030558 │ 4244.55445544554446426917 │
-└─────────┴────┴──────────────────────────────────────────────┴─────────────────────┴───────────────────────────┘
-```
+If you just want to dive directly into reading about the technical details of the SDK, jump to the [SDK Overview](./technical-references/api-overview.md) or refer directly to the [mangrove.js API reference](technical-references/code/index.md) generated from the [latest published package on NPM](#where-is-the-mangrovejs-package).
+
+## Where is the `mangrove.js` package?
+
+If you just want to find the latest `mangrove.js` package on NPM - go to [@mangrovedao/mangrove.js](https://www.npmjs.com/package/@mangrovedao/mangrove.js).
+
+## Where is the code?
+
+The code for the `mangrove.js` SDK is available on [GitHub](https://github.com/mangrovedao/mangrove-ts). Pull requests are welcome!
+
