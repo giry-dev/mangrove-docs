@@ -50,8 +50,8 @@ The diagram below summarizes the call sequence induced by a taker order.
 
 ## Where can I read more?
 
-* Refer to the section on [Creating and Updating Offers](taking-and-making-offers/reactive-offer/).
-* Read more about [Offer Execution](taking-and-making-offers/reactive-offer/executing-offers) on Mangrove.
+* Refer to the section on [Creating and Updating Offers](taking-and-making-offers/reactive-offer/README.md).
+* Read more about [Offer Execution](taking-and-making-offers/reactive-offer/executing-offers.md) on Mangrove.
 * Read about the freely available [Strat Library](../../strat-lib/README.md) - a repository of Solidity code to help write your own custom maker contract.
 * Read about the TypeScript [SDK](../../SDK/README.md) for developing off-chain apps to interact with the Mangrove ecosystem.
 
