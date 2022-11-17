@@ -1,0 +1,14 @@
+diff --git a/build/theme/ReferenceCodeBlock/index.js b/build/theme/ReferenceCodeBlock/index.js
+index 1bb9f31f67897438e73bc7d9b0fcc53c25087445..476975698419dd20ce34a4b92c5c794aa568d036 100644
+--- a/build/theme/ReferenceCodeBlock/index.js
++++ b/build/theme/ReferenceCodeBlock/index.js
+@@ -134,7 +134,7 @@ function ReferenceCode(props) {
+     return (react_1.default.createElement("div", null,
+         react_1.default.createElement(CodeBlock_1.default, { ...customProps }, fetchResultState.code),
+         react_1.default.createElement("div", { style: noteStyle },
+-            react_1.default.createElement("a", { href: props.children, target: "_blank" }, "See full example on GitHub"))));
++            react_1.default.createElement("a", { href: props.children, target: "_blank" }, "See entire file on GitHub"))));
+ }
+ exports.default = ReferenceCode;
+ //# sourceMappingURL=index.js.map
+\ No newline at end of file

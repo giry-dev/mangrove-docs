@@ -1,0 +1,26 @@
+diff --git a/lib/index.js b/lib/index.js
+index 8b1a3754b07cbafd4c359218a5ef8dd11af038c0..4961de20d3a80914126d8188e929fc6e49c45b67 100644
+--- a/lib/index.js
++++ b/lib/index.js
+@@ -37,7 +37,7 @@ module.exports = function (context, opts) {
+   !opts.termsDir && console.log("\n! No option for terms directory found, " + "using default directory \"".concat(DEFAULT_OPTIONS.termsDir, "\"\n"));
+   options = Object.assign({}, DEFAULT_OPTIONS, opts);
+   validateOptions(options);
+-  options.termsUrl = path.join(context.baseUrl, options.termsDir, "/");
++  //options.termsUrl = path.join(context.baseUrl, options.termsDir, "/");
+   options.termsDir = path.resolve(options.termsDir) + "/";
+   options.docsDir = path.resolve(options.docsDir) + "/";
+   options.glossaryFilepath = path.resolve(options.glossaryFilepath);
+diff --git a/src/index.js b/src/index.js
+index 128dd98c213dde48a8bb16f147ba8f8f9b55f93a..f4033d02944dd2d5413cfd15c5dcdfef06a582ac 100644
+--- a/src/index.js
++++ b/src/index.js
+@@ -24,7 +24,7 @@ module.exports = function (context, opts) {
+       `using default directory "${DEFAULT_OPTIONS.termsDir}"\n`);
+   options = Object.assign({}, DEFAULT_OPTIONS, opts);
+   validateOptions(options);
+-  options.termsUrl = path.join(context.baseUrl, options.termsDir, "/");
++  //options.termsUrl = path.join(context.baseUrl, options.termsDir, "/");
+   options.termsDir = path.resolve(options.termsDir) + "/";
+   options.docsDir = path.resolve(options.docsDir) + "/";
+   options.glossaryFilepath = path.resolve(options.glossaryFilepath);

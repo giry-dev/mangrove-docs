@@ -34,7 +34,8 @@ const config = {
   plugins: [
     ['@docusaurus-terminology/parser',
     {
-      "termsUrl": "/terms/"
+      "termsUrl": "/terms/",
+      "termsDir": "./docs/terms/"
     }
     ],
     require.resolve('docusaurus-lunr-search'),
@@ -171,7 +172,7 @@ const config = {
               },
               {
                 label: 'Strat Library',
-                to: 'docs/strat-lib'
+                to: '/strat-lib'
               },
               {
                 label: 'SDK',
