@@ -4464,10 +4464,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vegaprotocol/docusaurus-theme-github-codeblock@npm:^0.1.8":
+"@vegaprotocol/docusaurus-theme-github-codeblock@npm:0.1.8":
   version: 0.1.8
   resolution: "@vegaprotocol/docusaurus-theme-github-codeblock@npm:0.1.8"
   checksum: 0209341a49c44016b41022c38a1d7cd13d194d1c1af2f5f0420d4c58949ef46a3ba3f2ac7db15a0124f45f7ace055e89652eae3e4bc9567428daaf70b5409e1e
+  languageName: node
+  linkType: hard
+
+"@vegaprotocol/docusaurus-theme-github-codeblock@patch:@vegaprotocol/docusaurus-theme-github-codeblock@npm%3A0.1.8#./.yarn/patches/@vegaprotocol-docusaurus-theme-github-codeblock-npm-0.1.8-70d8c7434d.patch::locator=my-website%40workspace%3A.":
+  version: 0.1.8
+  resolution: "@vegaprotocol/docusaurus-theme-github-codeblock@patch:@vegaprotocol/docusaurus-theme-github-codeblock@npm%3A0.1.8#./.yarn/patches/@vegaprotocol-docusaurus-theme-github-codeblock-npm-0.1.8-70d8c7434d.patch::version=0.1.8&hash=808287&locator=my-website%40workspace%3A."
+  checksum: e5bb98cde9934637f2bc157a765d4dd5eeadea719d670acec716ded9755353cca5ad17585fac62f3434e59eb207db42ac6540d75a3ac63f4822d7036993eb5b3
   languageName: node
   linkType: hard
 
@@ -15312,7 +15319,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solidity-docgen@npm:^0.6.0-beta.29":
+"solidity-docgen@npm:0.6.0-beta.30":
   version: 0.6.0-beta.30
   resolution: "solidity-docgen@npm:0.6.0-beta.30"
   dependencies:
@@ -15321,6 +15328,18 @@ __metadata:
   peerDependencies:
     hardhat: ^2.8.0
   checksum: 5b41b4548bfce157142d13974955d41ab4c57a018d0ab1e3e074c93090a21ca7b978072fc1014ca8b3c436662ced525d9b3c147b2a1f0327ad262c4c4babaafe
+  languageName: node
+  linkType: hard
+
+"solidity-docgen@patch:solidity-docgen@npm%3A0.6.0-beta.30#./.yarn/patches/solidity-docgen-npm-0.6.0-beta.30-bf73aface8.patch::locator=my-website%40workspace%3A.":
+  version: 0.6.0-beta.30
+  resolution: "solidity-docgen@patch:solidity-docgen@npm%3A0.6.0-beta.30#./.yarn/patches/solidity-docgen-npm-0.6.0-beta.30-bf73aface8.patch::version=0.6.0-beta.30&hash=bf7809&locator=my-website%40workspace%3A."
+  dependencies:
+    handlebars: ^4.7.7
+    solidity-ast: ^0.4.38
+  peerDependencies:
+    hardhat: ^2.8.0
+  checksum: 2ad5c629dfad42c9f66d888527aa40edf76769ada86326044238ca41b96b6b1f16649729329f84abf7a794839dd0a386a26402560989af4ed15ded4dfc753bd9
   languageName: node
   linkType: hard
 

@@ -16,6 +16,7 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "copy-solidity": "cp -R node_modules/@mangrovedao/mangrove-core/src ./contracts",
+    "postinstall": "cp patches/scope.js node_modules/solidity-docgen/dist/utils",
     "doccore": "rm -rf static/MgvDoc && cp -r node_modules/@mangrovedao/mangrove-core/doc/ static/MgvDoc && rm static/MgvDoc/index.html && mv static/MgvDoc/MgvDoc.html static/MgvDoc/index.html",
     "remove-solidity": "rm -R ./contracts"
   },
