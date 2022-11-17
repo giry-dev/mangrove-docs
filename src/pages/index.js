@@ -28,10 +28,10 @@ export default function Home() {
       <HomepageHeader />
       <main>
         <HomepageSections />
-        <h3 style={{margin:'auto', width: 'fit-content', paddingTop: '10px', textAlign: 'center'}}>
+        <h3 style={{margin:'auto', width: 'fit-content', paddingTop: '5px', textAlign: 'center'}}>
           Mangrove is built by the Mangrove DAO.
         </h3>
-        <section style={{margin:'auto', width: 'fit-content', paddingTop: '0px', textAlign: 'center'}}>
+        <section style={{margin:'auto', width: 'fit-content', paddingTop: '5px', paddingBottom: '10px', textAlign: 'center'}}>
           Read more at <a href="https://mangrove.exchange">mangrove.exchange</a>.
         </section>
       </main>
