@@ -53,7 +53,7 @@ function marketOrder(
 // Since the contracts that are called during the order may be partly reentrant, more logs could be emitted by Mangrove.
 // we list here only the main expected logs.
 
-// For each succesful offer taken during the market order:
+// For each successful offer taken during the market order:
 event OfferSuccess(
     address indexed outbound_tkn,
     address indexed inbound_tkn,

@@ -62,7 +62,7 @@ function marketOrderFor(
     uint takerGives,
     bool fillWants,
     address taker
-  ) external returns (uint takerGot, uint takerGave);
+  ) external returns (uint takerGot, uint takerGave, uint bounty, uint fee);
  
 // Delegated snipes
 function snipesFor(
@@ -76,7 +76,9 @@ function snipesFor(
     returns (
       uint successes,
       uint takerGot,
-      uint takerGave
+      uint takerGave,
+      uint bounty,
+      uint fee
     );
     
 ```
