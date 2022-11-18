@@ -29,7 +29,7 @@ In TradFi, a market order is an order to buy or sell immediately at the best ava
 In DeFi, where transactions can be front-run/sandwiched, adversaries may manipulate the best available price and thus extract value from a market order as there is no limit on the price. TradFi market orders are therefore unsafe for fully on-chain DEX'es like Mangrove.
 
 To protect the user, Mangrove's market order therefore corresponds to a **limit order** in TradFi: An order to buy or sell at or below a given price.
-More precisely, Mangrove ensures that the **average** price of the offers matched with the order does not exceed the specified the specified price.
+More precisely, Mangrove ensures that the **average** price of the offers matched with the order does not exceed the specified price.
 
 :::
 
