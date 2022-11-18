@@ -21,7 +21,7 @@ If you have questions about how to use the SDK, which are not answered sufficien
 
 The best starting point for developing your app, is the Getting Started section - start by reading the page on [Setting up your local development environment](./getting-started/preparation.md).
 
-If you just want to dive directly into reading about the technical details of the SDK, jump to the [SDK Overview](./technical-references/api-overview.md) or refer directly to the [mangrove.js API reference](technical-references/code/index.md) generated from the [latest published package on NPM](#where-is-the-mangrovejs-package).
+If you just want to dive directly into reading about the technical details of the SDK, jump to the [SDK Overview](./technical-references/api-overview.md) or refer directly to the [mangrove.js API Reference](technical-references/code/index.md) generated from the [latest published package on NPM](#where-is-the-mangrovejs-package).
 
 ## Where is the `mangrove.js` package?
 
