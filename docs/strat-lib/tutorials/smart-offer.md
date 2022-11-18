@@ -26,7 +26,7 @@ Create a new `OfferMakerTutorial.sol` file in the `src` folder and add the follo
 Add the imports we are going to need, along with a standard solidity preamble.
 
 ```solidity reference title="OfferMakerTutorial.sol"
-hhttps://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L1-L8
+https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L1-L8
 ```
 
 ### Constructor
@@ -34,7 +34,7 @@ hhttps://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fa
 Add the contract and the code for the construct. We will skip some details here, which you can read more about later; %%routers|router%%, %%gas requirements|gasreq%%, and [deployment scripts](../how-to-guides/HowToDeploy.md).
 
 ```solidity reference title="OfferMakerTutorial.sol"
-hhttps://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L12-L22
+https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L12-L22
 ```
 
 ### Add offer posting function
@@ -46,7 +46,7 @@ See [OfferArgs](../technical-references/APIReference.md) for an explanation of t
 Also see %%provision|provision%%, %%gasreq|gasreq%%, and %%pivotId|pivot-id%%, and %%offer list|offer-list%%.
 
 ```solidity reference title="OfferMakerTutorial.sol"
-hhttps://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L26-L53
+https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L26-L53
 ```
 
 ### Emit in Posthook
@@ -54,7 +54,7 @@ hhttps://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fa
 When using our new contract we can inspect traces and addresses, but for illustrative purposes insert the following to emit an event in the %%posthook|makerPosthook%% when the offer is successfully taken.
 
 ```solidity reference title="OfferMakerTutorial.sol"
-hhttps://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L57-L65
+https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L57-L65
 ```
 
 There are more hooks to enable the Mangrovian abilities of %%last look|last-look%% and more advanced %%reactive liquidity|reactive-liquidity%%.
