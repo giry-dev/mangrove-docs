@@ -6,7 +6,7 @@ sidebar_position: 2
 
 # Routers
 
-Maker contracts can be set to utilize a %%router|router%% in order to manage %%outbound|outbound%% and %%inbound|inbound%% tokens reserves of %%offer owners|offer-owner%%. Routers' interface are constrained by the `AbstractRouter` contract and use  %%hooks|hook% to customize the public functions described below.
+Maker contracts can be set to utilize a %%router|router%% in order to manage %%outbound|outbound%% and %%inbound|inbound%% tokens reserves of %%offer owners|offer-owner%%. Routers' interface are constrained by the `AbstractRouter` contract and use  %%hooks|hook%% to customize the public functions described below.
 
 :::caution modifers
 Function modifier `onlyMakers` requires that only an approved maker contract can call this functions. Modifier `onlyAdmin` requires function caller to be the admin of the router. Modifier `makerOrAdmin` is a disjunction of the both the above requirements.
