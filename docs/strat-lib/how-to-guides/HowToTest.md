@@ -1,5 +1,5 @@
 ---
-sidebar_position: 23
+sidebar_position: 6
 ---
 
 # How to test your contract

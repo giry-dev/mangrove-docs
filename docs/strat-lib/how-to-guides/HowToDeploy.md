@@ -1,5 +1,5 @@
 ---
-sidebar_position: 24
+sidebar_position: 7
 ---
 
 # How to deploy your contract

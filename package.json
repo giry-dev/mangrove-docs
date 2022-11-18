@@ -28,6 +28,7 @@
     "@docusaurus/plugin-content-docs": "^2.0.0",
     "@docusaurus/plugin-ideal-image": "^2.2.0",
     "@docusaurus/preset-classic": "^2.0.0",
+    "@docusaurus/theme-mermaid": "^2.2.0",
     "@mangrovedao/mangrove-core": "^1.1.1",
     "@mangrovedao/mangrove.js": "^0.11.4",
     "@mdx-js/react": "^1.6.22",
