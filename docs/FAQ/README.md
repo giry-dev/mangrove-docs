@@ -25,13 +25,13 @@ Offers in the order book may fail when taken, either because the maker conscious
 
 ## Are Mangrove market orders the same as traditional market orders?
 
-Mangrove's market orders are DeFi market orders which are different from market orders in TradFi:
+Mangrove's [market orders](../contracts/technical-references/taking-and-making-offers/taker-order/README.md) are DeFi market orders which are different from market orders in TradFi:
 
 In TradFi, a market order is an order to buy or sell immediately at the best available price.
 
-In DeFi, where transactions can be front-run/sandwiched, adversaries may manipulate the best available price and thus extract value from a market order as there is no limit on the price. TradFi market orders are therefore unsafe for fully on-chain DEX'es like Mangrove.
+In DeFi, where transactions can be [front-run](https://www.investopedia.com/terms/f/frontrunning.asp) or [sandwiched](https://coinmarketcap.com/alexandria/article/what-are-sandwich-attacks-in-defi-and-how-can-you-avoid-them), adversaries may manipulate the best available price and thus extract value from a market order as there is no limit on the price. TradFi market orders are therefore unsafe for fully on-chain DEX'es like Mangrove.
 
-To protect the user, Mangrove's market order therefore corresponds to a **limit order** in TradFi: An order to buy or sell at or below a given price.
+To protect the user, Mangrove's market order therefore corresponds to a **limit order** in TradFi: An order to buy or sell at or below a given price (as described, e.g., [on Investopedia](https://www.investopedia.com/terms/l/limitorder.asp)).
 More precisely, Mangrove ensures that the **average** price of the offers matched with the order does not exceed the specified the specified price.
 
 TL;DR: Mangrove market order = TradFi limit order.
