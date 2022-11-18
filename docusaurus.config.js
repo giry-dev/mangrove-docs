@@ -51,6 +51,7 @@ const config = {
         "entryPoints": ["node_modules/@mangrovedao/mangrove.js/src/index.ts"],
         "tsconfig": "node_modules/@mangrovedao/mangrove.js/tsconfig.json",
         "out": "SDK/technical-references/code",
+        "cleanOutputDir": true,
         "excludePrivate": true,
         "excludeInternal": true,
         "sort": "source-order",
