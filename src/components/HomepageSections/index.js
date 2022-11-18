@@ -19,7 +19,7 @@ const FeatureList = [
     Svg: require('@site/static/img/chess-svgrepo-com.svg').default,
     description: (
       <>
-        Strategy builders or market makers that want to develop their own market making strategies should make sure to read about <a href="./strat-lib/">the Mangrove Strat Library</a>  with contract building blocks to help you write safe and efficient market making strats for Mangrove.      
+        Builders that want to develop their own market making strategies should read about <a href="./strat-lib/">the Mangrove Strat Library</a> with contract building blocks to help you write safe and efficient market making strats for Mangrove.
       </>
     ),
   },
