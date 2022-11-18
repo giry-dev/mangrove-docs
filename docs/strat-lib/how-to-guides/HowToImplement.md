@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 7
 ---
 
-# How to implement a safe offer logic
+# Safe offer logic guidelines
 
 ## Gatekeeping
 

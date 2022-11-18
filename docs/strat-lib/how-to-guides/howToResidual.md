@@ -11,15 +11,15 @@ In case a offer is partially taken, the maker may want to repost a new offer for
 
 ## Repost in posthook
 
-In the tutorials [posthook](../tutorials/smart-offer.md#emit-in-posthook) an event was emitted. However, since reposting is such a common action, it is already implemented for the simple cases - if you invoke `super` like below, then the base implementation of [`__posthookSuccess__`](./TODOnatspec) will repost the residual.
+In the tutorials [posthook](../tutorials/smart-offer.md#emit-in-posthook) emitted an event. However, since reposting is such a common action, it is already implemented for the simple cases - if you invoke `super` like below, then the base implementation of [`__posthookSuccess__`](./TODOnatspec) will repost the residual.
 
 ```solidity reference title="OfferMakerTutorial.sol"
-hhttps://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorialResidual.sol#L69-L81
+https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorialResidual.sol#L69-L81
 ```
 
 When writing posthooks to repost residuals there are some caveats. One should
 
-* Use [`updateOffer`](./TODOnatspec) instead of posting a new offer. The old offer is not alive and can be reused (and the memory is hot), this is [cheaper](./howtoGasreq.md than using [`_newOffer`](./todonatspec).
+* Use [`updateOffer`](../technical-references/code/strategies/interfaces/IOfferLogic.md#updateoffer) instead of posting a new offer. The old offer is not alive and can be reused (and the memory is hot), this is [cheaper](./howtoGasreq.md) than using [`_newOffer`](../technical-references/code/strategies/offer_maker/abstract/Direct.md#_newoffer).
 * Use the helper methods supplied to calculate the residual (see below).
 * Beware that updates can fail, e.g., due to too low density.
 * Be aware of [how to implement safe offer logic](./HowToImplement.md).
@@ -37,5 +37,5 @@ cast send --rpc-url $LOCAL_URL "$MANGROVE" "snipes(address, address, uint[4][], 
 -->
 
 ```solidity reference title="MangroveOffer.sol"
-hhttps://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/strategies/MangroveOffer.sol#L277-L321
+https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/strategies/MangroveOffer.sol#L277-L321
 ```
