@@ -16,7 +16,7 @@ export default {
   solidity: "0.8.14",
   docgen: {
     outputDir: 'docs/strat-lib/technical-references/code',
-    exclude: [ 'preprocessing/structs.js', 'IMangrove.sol', 'MgvLib.sol', 'MgvRoot.sol', 'MgvHasOffers.sol', 'MgvOfferMaking.sol', 'MgvOfferTaking.sol', 'MgvOfferTakingWithPermit.sol', 'MgvGovernable.sol', 'AbstractMangrove.sol', 'Mangrove.sol', 'InvertedMangrove.sol'],
+    exclude: [ 'preprocessed/', 'periphery/', 'toy_strategies/', 'IMangrove.sol', 'MgvLib.sol', 'MgvRoot.sol', 'MgvHasOffers.sol', 'MgvOfferMaking.sol', 'MgvOfferTaking.sol', 'MgvOfferTakingWithPermit.sol', 'MgvGovernable.sol', 'AbstractMangrove.sol', 'Mangrove.sol', 'InvertedMangrove.sol'],
     templates: './templates',
     pages: 'files',
   }, 
