@@ -28,7 +28,7 @@
 ### MangroveOrderEnriched
 
 ```txt
-0x2a4b3282E45f3f9C6e151Ec2D69fcE5E32410D14
+0x2dB249612f45580f8288DD75cd9264270f9B6726
 ```
 
 ### Mango_tGNT_USDC
