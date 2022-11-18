@@ -7,11 +7,12 @@
     "start": "yarn install && docusaurus start",
     "build": "yarn install && docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "update-generated": "yarn typedoc && yarn natspec && yarn doccore && cp categoryForTypeDoc.json docs/SDK/technical-references/code/_category_.json",
+    "update-generated": "yarn typedoc-with-category && yarn natspec && yarn doccore",
     "predocgen": "bash git diff-index --quiet HEAD -- || echo \"You have uncommitted changes\"",
     "docgen-core": "docusaurus parse && docusaurus glossary && docusaurus build",
     "docgen": "(git diff-index --quiet HEAD -- || (echo \"You have uncommitted changes\" && exit 1)) && yarn docgen-core",
-    "natspec": "yarn copy-solidity && yarn hardhat docgen && yarn remove-solidity",
+    "typedoc-with-category": "yarn typedoc && cp categoryForTypeDoc.json docs/SDK/technical-references/code/_category_.json",
+    "natspec": "yarn remove-solidity && yarn copy-solidity && yarn hardhat docgen && yarn remove-solidity && cp categoryForNatSpec.json docs/strat-lib/technical-references/code/_category_.json",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
@@ -21,7 +22,7 @@
     "copy-solidity": "cp -R node_modules/@mangrovedao/mangrove-core/src ./contracts",
     "postinstall": "cp patches/scope.js node_modules/solidity-docgen/dist/utils",
     "doccore": "rm -rf static/MgvDoc && cp -r node_modules/@mangrovedao/mangrove-core/doc/ static/MgvDoc && rm static/MgvDoc/index.html && mv static/MgvDoc/MgvDoc.html static/MgvDoc/index.html",
-    "remove-solidity": "rm -R ./contracts"
+    "remove-solidity": "rm -rf ./contracts"
   },
   "dependencies": {
     "@akebifiky/remark-simple-plantuml": "^1.0.2",
