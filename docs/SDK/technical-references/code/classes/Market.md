@@ -1,6 +1,10 @@
-[@mangrovedao/mangrove.js](../README.md) / [Exports](../modules.md) / Market
-
-# Class: Market
+---
+id: "Market"
+title: "Class: Market"
+sidebar_label: "Market"
+sidebar_position: 0
+custom_edit_url: null
+---
 
 The Market class focuses on a Mangrove market.
 On-chain, markets are implemented as two offer lists,
@@ -10,61 +14,6 @@ Market initialization needs to store the network name, so you cannot
 directly use the constructor. Instead of `new Market(...)`, do
 
 `await Market.connect(...)`
-
-## Table of contents
-
-### Properties
-
-- [mgv](Market.md#mgv)
-- [base](Market.md#base)
-- [quote](Market.md#quote)
-- [trade](Market.md#trade)
-- [tradeEventManagement](Market.md#tradeeventmanagement)
-- [prettyP](Market.md#prettyp)
-
-### Methods
-
-- [connect](Market.md#connect)
-- [disconnect](Market.md#disconnect)
-- [initialize](Market.md#initialize)
-- [getBook](Market.md#getbook)
-- [afterBlock](Market.md#afterblock)
-- [getSemibook](Market.md#getsemibook)
-- [requestBook](Market.md#requestbook)
-- [isActive](Market.md#isactive)
-- [isLive](Market.md#islive)
-- [getPivotId](Market.md#getpivotid)
-- [getOfferProvision](Market.md#getofferprovision)
-- [getBidProvision](Market.md#getbidprovision)
-- [getAskProvision](Market.md#getaskprovision)
-- [bidInfo](Market.md#bidinfo)
-- [askInfo](Market.md#askinfo)
-- [offerInfo](Market.md#offerinfo)
-- [buy](Market.md#buy)
-- [sell](Market.md#sell)
-- [snipe](Market.md#snipe)
-- [getRawSnipeParams](Market.md#getrawsnipeparams)
-- [estimateGas](Market.md#estimategas)
-- [estimateVolume](Market.md#estimatevolume)
-- [estimateVolumeToReceive](Market.md#estimatevolumetoreceive)
-- [estimateVolumeToSpend](Market.md#estimatevolumetospend)
-- [config](Market.md#config)
-- [consoleAsks](Market.md#consoleasks)
-- [consoleBids](Market.md#consolebids)
-- [prettyPrint](Market.md#prettyprint)
-- [subscribe](Market.md#subscribe)
-- [once](Market.md#once)
-- [onceWithTxPromise](Market.md#oncewithtxpromise)
-- [unsubscribe](Market.md#unsubscribe)
-- [getOutboundInbound](Market.md#getoutboundinbound)
-- [getOutboundInbound](Market.md#getoutboundinbound-1)
-- [getBaseQuoteVolumes](Market.md#getbasequotevolumes)
-- [getPrice](Market.md#getprice)
-- [getWantsForPrice](Market.md#getwantsforprice)
-- [getGivesForPrice](Market.md#getgivesforprice)
-- [getGivesWantsForVolumeAtPrice](Market.md#getgiveswantsforvolumeatprice)
-- [getDisplayDecimalsForPriceDifferences](Market.md#getdisplaydecimalsforpricedifferences)
-- [getDisplayDecimalsForPriceDifferences](Market.md#getdisplaydecimalsforpricedifferences-1)
 
 ## Properties
 
@@ -140,7 +89,7 @@ ___
 | `params.mgv` | [`Mangrove`](Mangrove.md) |
 | `params.base` | `string` |
 | `params.quote` | `string` |
-| `params.bookOptions?` | [`BookOptions`](../modules/Market-1.md#bookoptions) |
+| `params.bookOptions?` | [`BookOptions`](../namespaces/Market-1.md#bookoptions) |
 
 #### Returns
 
@@ -182,7 +131,7 @@ ___
 
 ### <a id="getbook" name="getbook"></a> getBook
 
-▸ **getBook**(): [`Book`](../modules/Market-1.md#book)
+▸ **getBook**(): [`Book`](../namespaces/Market-1.md#book)
 
 Return the semibooks of this market.
 
@@ -193,7 +142,7 @@ Order is from best to worse from taker perspective.
 
 #### Returns
 
-[`Book`](../modules/Market-1.md#book)
+[`Book`](../namespaces/Market-1.md#book)
 
 #### Defined in
 
@@ -240,7 +189,7 @@ Return the asks or bids semibook
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 
 #### Returns
 
@@ -254,17 +203,17 @@ ___
 
 ### <a id="requestbook" name="requestbook"></a> requestBook
 
-▸ **requestBook**(`opts?`): `Promise`<{ `asks`: [`Offer`](../modules/Market-1.md#offer)[] ; `bids`: [`Offer`](../modules/Market-1.md#offer)[]  }\>
+▸ **requestBook**(`opts?`): `Promise`<{ `asks`: [`Offer`](../namespaces/Market-1.md#offer)[] ; `bids`: [`Offer`](../namespaces/Market-1.md#offer)[]  }\>
 
 #### Parameters
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `opts` | [`BookOptions`](../modules/Market-1.md#bookoptions) | `bookOptsDefault` |
+| `opts` | [`BookOptions`](../namespaces/Market-1.md#bookoptions) | `bookOptsDefault` |
 
 #### Returns
 
-`Promise`<{ `asks`: [`Offer`](../modules/Market-1.md#offer)[] ; `bids`: [`Offer`](../modules/Market-1.md#offer)[]  }\>
+`Promise`<{ `asks`: [`Offer`](../namespaces/Market-1.md#offer)[] ; `bids`: [`Offer`](../namespaces/Market-1.md#offer)[]  }\>
 
 #### Defined in
 
@@ -294,7 +243,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 | `offerId` | `number` |
 
 #### Returns
@@ -318,7 +267,7 @@ book. If there is no offer with a better price, `undefined` is returned.
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 | `price` | `any` |
 
 #### Returns
@@ -339,7 +288,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 | `gasreq` | `number` |
 | `gasprice` | `number` |
 
@@ -397,7 +346,7 @@ ___
 
 ### <a id="bidinfo" name="bidinfo"></a> bidInfo
 
-▸ **bidInfo**(`offerId`): `Promise`<[`Offer`](../modules/Market-1.md#offer)\>
+▸ **bidInfo**(`offerId`): `Promise`<[`Offer`](../namespaces/Market-1.md#offer)\>
 
 #### Parameters
 
@@ -407,7 +356,7 @@ ___
 
 #### Returns
 
-`Promise`<[`Offer`](../modules/Market-1.md#offer)\>
+`Promise`<[`Offer`](../namespaces/Market-1.md#offer)\>
 
 #### Defined in
 
@@ -417,7 +366,7 @@ ___
 
 ### <a id="askinfo" name="askinfo"></a> askInfo
 
-▸ **askInfo**(`offerId`): `Promise`<[`Offer`](../modules/Market-1.md#offer)\>
+▸ **askInfo**(`offerId`): `Promise`<[`Offer`](../namespaces/Market-1.md#offer)\>
 
 #### Parameters
 
@@ -427,7 +376,7 @@ ___
 
 #### Returns
 
-`Promise`<[`Offer`](../modules/Market-1.md#offer)\>
+`Promise`<[`Offer`](../namespaces/Market-1.md#offer)\>
 
 #### Defined in
 
@@ -437,7 +386,7 @@ ___
 
 ### <a id="offerinfo" name="offerinfo"></a> offerInfo
 
-▸ **offerInfo**(`ba`, `offerId`): `Promise`<[`Offer`](../modules/Market-1.md#offer)\>
+▸ **offerInfo**(`ba`, `offerId`): `Promise`<[`Offer`](../namespaces/Market-1.md#offer)\>
 
 Returns struct containing offer details in the current market
 
@@ -445,12 +394,12 @@ Returns struct containing offer details in the current market
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 | `offerId` | `number` |
 
 #### Returns
 
-`Promise`<[`Offer`](../modules/Market-1.md#offer)\>
+`Promise`<[`Offer`](../namespaces/Market-1.md#offer)\>
 
 #### Defined in
 
@@ -460,7 +409,7 @@ ___
 
 ### <a id="buy" name="buy"></a> buy
 
-▸ **buy**(`params`, `overrides?`): `Promise`<[`OrderResult`](../modules/Market-1.md#orderresult)\>
+▸ **buy**(`params`, `overrides?`): `Promise`<[`OrderResult`](../namespaces/Market-1.md#orderresult)\>
 
 Market buy order. Will attempt to buy base token using quote tokens.
 Params can be of the form:
@@ -488,12 +437,12 @@ market.buy({volume: 100, price: '1.01'}) //use strings to be exact
 
 | Name | Type |
 | :------ | :------ |
-| `params` | [`TradeParams`](../modules/Market-1.md#tradeparams) |
+| `params` | [`TradeParams`](../namespaces/Market-1.md#tradeparams) |
 | `overrides` | `Overrides` |
 
 #### Returns
 
-`Promise`<[`OrderResult`](../modules/Market-1.md#orderresult)\>
+`Promise`<[`OrderResult`](../namespaces/Market-1.md#orderresult)\>
 
 #### Defined in
 
@@ -503,7 +452,7 @@ ___
 
 ### <a id="sell" name="sell"></a> sell
 
-▸ **sell**(`params`, `overrides?`): `Promise`<[`OrderResult`](../modules/Market-1.md#orderresult)\>
+▸ **sell**(`params`, `overrides?`): `Promise`<[`OrderResult`](../namespaces/Market-1.md#orderresult)\>
 
 Market sell order. Will attempt to sell base token for quote tokens.
 Params can be of the form:
@@ -531,12 +480,12 @@ market.sell({volume: 100, price: 1})
 
 | Name | Type |
 | :------ | :------ |
-| `params` | [`TradeParams`](../modules/Market-1.md#tradeparams) |
+| `params` | [`TradeParams`](../namespaces/Market-1.md#tradeparams) |
 | `overrides` | `Overrides` |
 
 #### Returns
 
-`Promise`<[`OrderResult`](../modules/Market-1.md#orderresult)\>
+`Promise`<[`OrderResult`](../namespaces/Market-1.md#orderresult)\>
 
 #### Defined in
 
@@ -546,7 +495,7 @@ ___
 
 ### <a id="snipe" name="snipe"></a> snipe
 
-▸ **snipe**(`params`, `overrides?`): `Promise`<[`OrderResult`](../modules/Market-1.md#orderresult)\>
+▸ **snipe**(`params`, `overrides?`): `Promise`<[`OrderResult`](../namespaces/Market-1.md#orderresult)\>
 
 Snipe specific offers.
 Params are:
@@ -565,12 +514,12 @@ Params are:
 
 | Name | Type |
 | :------ | :------ |
-| `params` | [`SnipeParams`](../modules/Market-1.md#snipeparams) |
+| `params` | [`SnipeParams`](../namespaces/Market-1.md#snipeparams) |
 | `overrides` | `Overrides` |
 
 #### Returns
 
-`Promise`<[`OrderResult`](../modules/Market-1.md#orderresult)\>
+`Promise`<[`OrderResult`](../namespaces/Market-1.md#orderresult)\>
 
 #### Defined in
 
@@ -580,7 +529,7 @@ ___
 
 ### <a id="getrawsnipeparams" name="getrawsnipeparams"></a> getRawSnipeParams
 
-▸ **getRawSnipeParams**(`params`, `overrides?`): `Promise`<[`RawSnipeParams`](../modules/Market-1.md#rawsnipeparams)\>
+▸ **getRawSnipeParams**(`params`, `overrides?`): `Promise`<[`RawSnipeParams`](../namespaces/Market-1.md#rawsnipeparams)\>
 
 Gets parameters to send to functions `market.mgv.cleanerContract.collect` or `market.mgv.contract.snipes`.
 Params are:
@@ -597,12 +546,12 @@ Params are:
 
 | Name | Type |
 | :------ | :------ |
-| `params` | [`SnipeParams`](../modules/Market-1.md#snipeparams) |
+| `params` | [`SnipeParams`](../namespaces/Market-1.md#snipeparams) |
 | `overrides` | `Overrides` |
 
 #### Returns
 
-`Promise`<[`RawSnipeParams`](../modules/Market-1.md#rawsnipeparams)\>
+`Promise`<[`RawSnipeParams`](../namespaces/Market-1.md#rawsnipeparams)\>
 
 #### Defined in
 
@@ -618,7 +567,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `bs` | [`BS`](../modules/Market-1.md#bs) |
+| `bs` | [`BS`](../namespaces/Market-1.md#bs) |
 | `volume` | `BigNumber` |
 
 #### Returns
@@ -633,7 +582,7 @@ ___
 
 ### <a id="estimatevolume" name="estimatevolume"></a> estimateVolume
 
-▸ **estimateVolume**(`params`): `Promise`<[`VolumeEstimate`](../modules/Market-1.md#volumeestimate)\>
+▸ **estimateVolume**(`params`): `Promise`<[`VolumeEstimate`](../namespaces/Market-1.md#volumeestimate)\>
 
 Volume estimator.
 
@@ -651,11 +600,11 @@ order to spend 10 quote tokens.
 
 | Name | Type |
 | :------ | :------ |
-| `params` | [`VolumeParams`](../modules/Market-1.md#volumeparams) |
+| `params` | [`VolumeParams`](../namespaces/Market-1.md#volumeparams) |
 
 #### Returns
 
-`Promise`<[`VolumeEstimate`](../modules/Market-1.md#volumeestimate)\>
+`Promise`<[`VolumeEstimate`](../namespaces/Market-1.md#volumeestimate)\>
 
 #### Defined in
 
@@ -665,17 +614,17 @@ ___
 
 ### <a id="estimatevolumetoreceive" name="estimatevolumetoreceive"></a> estimateVolumeToReceive
 
-▸ **estimateVolumeToReceive**(`params`): `Promise`<[`VolumeEstimate`](../modules/Market-1.md#volumeestimate)\>
+▸ **estimateVolumeToReceive**(`params`): `Promise`<[`VolumeEstimate`](../namespaces/Market-1.md#volumeestimate)\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `params` | [`DirectionlessVolumeParams`](../modules/Market-1.md#directionlessvolumeparams) |
+| `params` | [`DirectionlessVolumeParams`](../namespaces/Market-1.md#directionlessvolumeparams) |
 
 #### Returns
 
-`Promise`<[`VolumeEstimate`](../modules/Market-1.md#volumeestimate)\>
+`Promise`<[`VolumeEstimate`](../namespaces/Market-1.md#volumeestimate)\>
 
 #### Defined in
 
@@ -685,17 +634,17 @@ ___
 
 ### <a id="estimatevolumetospend" name="estimatevolumetospend"></a> estimateVolumeToSpend
 
-▸ **estimateVolumeToSpend**(`params`): `Promise`<[`VolumeEstimate`](../modules/Market-1.md#volumeestimate)\>
+▸ **estimateVolumeToSpend**(`params`): `Promise`<[`VolumeEstimate`](../namespaces/Market-1.md#volumeestimate)\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `params` | [`DirectionlessVolumeParams`](../modules/Market-1.md#directionlessvolumeparams) |
+| `params` | [`DirectionlessVolumeParams`](../namespaces/Market-1.md#directionlessvolumeparams) |
 
 #### Returns
 
-`Promise`<[`VolumeEstimate`](../modules/Market-1.md#volumeestimate)\>
+`Promise`<[`VolumeEstimate`](../namespaces/Market-1.md#volumeestimate)\>
 
 #### Defined in
 
@@ -705,7 +654,7 @@ ___
 
 ### <a id="config" name="config"></a> config
 
-▸ **config**(): `Promise`<{ `asks`: [`LocalConfig`](../modules/Mangrove-1.md#localconfig) ; `bids`: [`LocalConfig`](../modules/Mangrove-1.md#localconfig)  }\>
+▸ **config**(): `Promise`<{ `asks`: [`LocalConfig`](../namespaces/Mangrove-1.md#localconfig) ; `bids`: [`LocalConfig`](../namespaces/Mangrove-1.md#localconfig)  }\>
 
 Return config local to a market.
 Returned object is of the form
@@ -717,7 +666,7 @@ fee *remains* in basis points of the token being bought
 
 #### Returns
 
-`Promise`<{ `asks`: [`LocalConfig`](../modules/Mangrove-1.md#localconfig) ; `bids`: [`LocalConfig`](../modules/Mangrove-1.md#localconfig)  }\>
+`Promise`<{ `asks`: [`LocalConfig`](../namespaces/Mangrove-1.md#localconfig) ; `bids`: [`LocalConfig`](../namespaces/Mangrove-1.md#localconfig)  }\>
 
 #### Defined in
 
@@ -779,7 +728,7 @@ Pretty prints the current state of the asks or bids of the market
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 | `filter` | `prettyPrintFilter` |
 
 #### Returns
@@ -837,7 +786,7 @@ Only one subscription may be active at a time.
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`MarketCallback`](../modules/Market-1.md#marketcallback)<`void`\> |
+| `cb` | [`MarketCallback`](../namespaces/Market-1.md#marketcallback)<`void`\> |
 
 #### Returns
 
@@ -865,8 +814,8 @@ Returns a promise which is fulfilled after execution of the callback.
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`MarketCallback`](../modules/Market-1.md#marketcallback)<`T`\> |
-| `filter?` | [`MarketFilter`](../modules/Market-1.md#marketfilter) |
+| `cb` | [`MarketCallback`](../namespaces/Market-1.md#marketcallback)<`T`\> |
+| `filter?` | [`MarketFilter`](../namespaces/Market-1.md#marketfilter) |
 
 #### Returns
 
@@ -905,8 +854,8 @@ never fulfill.
 | Name | Type |
 | :------ | :------ |
 | `txPromise` | `Promise`<`ContractTransaction`\> |
-| `cb` | [`MarketCallback`](../modules/Market-1.md#marketcallback)<`T`\> |
-| `filter?` | [`MarketFilter`](../modules/Market-1.md#marketfilter) |
+| `cb` | [`MarketCallback`](../namespaces/Market-1.md#marketcallback)<`T`\> |
+| `filter?` | [`MarketFilter`](../namespaces/Market-1.md#marketfilter) |
 
 #### Returns
 
@@ -926,7 +875,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`StorableMarketCallback`](../modules/Market-1.md#storablemarketcallback) |
+| `cb` | [`StorableMarketCallback`](../namespaces/Market-1.md#storablemarketcallback) |
 
 #### Returns
 
@@ -948,7 +897,7 @@ Determine which token will be Mangrove's outbound/inbound depending on whether y
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 
 #### Returns
 
@@ -975,7 +924,7 @@ Determine which token will be Mangrove's outbound/inbound depending on whether y
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 | `base` | [`MgvToken`](MgvToken.md) |
 | `quote` | [`MgvToken`](MgvToken.md) |
 
@@ -1004,7 +953,7 @@ Determine whether gives or wants will be baseVolume/quoteVolume depending on whe
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 | `gives` | `Big` |
 | `wants` | `Big` |
 
@@ -1033,7 +982,7 @@ Determine the price from gives or wants depending on whether you're working with
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 | `gives` | `Big` |
 | `wants` | `Big` |
 
@@ -1057,7 +1006,7 @@ Determine the wants from gives and price depending on whether you're working wit
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 | `gives` | `Big` |
 | `price` | `Big` |
 
@@ -1081,7 +1030,7 @@ Determine the gives from wants and price depending on whether you're working wit
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 | `wants` | `Big` |
 | `price` | `Big` |
 
@@ -1105,7 +1054,7 @@ Determine gives and wants from a volume (in base) and a price depending on wheth
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 | `volume` | `Big` |
 | `price` | `Big` |
 
@@ -1150,7 +1099,7 @@ Determine the first decimal place where the smallest price difference between ne
 
 | Name | Type |
 | :------ | :------ |
-| `offers` | [`Offer`](../modules/Market-1.md#offer)[] |
+| `offers` | [`Offer`](../namespaces/Market-1.md#offer)[] |
 
 #### Returns
 

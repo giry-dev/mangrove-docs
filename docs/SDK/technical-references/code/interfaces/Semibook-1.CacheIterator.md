@@ -1,28 +1,19 @@
-[@mangrovedao/mangrove.js](../README.md) / [Exports](../modules.md) / [Semibook](../modules/Semibook-1.md) / CacheIterator
+---
+id: "Semibook-1.CacheIterator"
+title: "Interface: CacheIterator"
+sidebar_label: "Semibook.CacheIterator"
+custom_edit_url: null
+---
 
-# Interface: CacheIterator
-
-[Semibook](../modules/Semibook-1.md).CacheIterator
+[Semibook](../namespaces/Semibook-1.md).CacheIterator
 
 An iterator over a semibook cache.
 
 ## Hierarchy
 
-- `IterableIterator`<[`Offer`](../modules/Market-1.md#offer)\>
+- `IterableIterator`<[`Offer`](../namespaces/Market-1.md#offer)\>
 
   ↳ **`CacheIterator`**
-
-## Table of contents
-
-### Methods
-
-- [filter](Semibook-1.CacheIterator.md#filter)
-- [find](Semibook-1.CacheIterator.md#find)
-- [toArray](Semibook-1.CacheIterator.md#toarray)
-- [next](Semibook-1.CacheIterator.md#next)
-- [return](Semibook-1.CacheIterator.md#return)
-- [throw](Semibook-1.CacheIterator.md#throw)
-- [[iterator]](Semibook-1.CacheIterator.md#[iterator])
 
 ## Methods
 
@@ -36,7 +27,7 @@ Filter the offers in the cache using a predicate.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`offer`: [`Offer`](../modules/Market-1.md#offer)) => `boolean` | Function is a predicate, to test each element of the array.   Should return `true` if the element should be kept; otherwise `false` should be returned. |
+| `predicate` | (`offer`: [`Offer`](../namespaces/Market-1.md#offer)) => `boolean` | Function is a predicate, to test each element of the array.   Should return `true` if the element should be kept; otherwise `false` should be returned. |
 
 #### Returns
 
@@ -50,7 +41,7 @@ ___
 
 ### <a id="find" name="find"></a> find
 
-▸ **find**(`predicate`): [`Offer`](../modules/Market-1.md#offer)
+▸ **find**(`predicate`): [`Offer`](../namespaces/Market-1.md#offer)
 
 Returns the value of the first element in the provided array that
 satisfies the provided predicate. If no values satisfy the testing function,
@@ -60,11 +51,11 @@ satisfies the provided predicate. If no values satisfy the testing function,
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`offer`: [`Offer`](../modules/Market-1.md#offer)) => `boolean` | Function is a predicate, to test each element of the array.  The firs offer that satisifies the predicate is returned;  otherwise `undefined` is returned. |
+| `predicate` | (`offer`: [`Offer`](../namespaces/Market-1.md#offer)) => `boolean` | Function is a predicate, to test each element of the array.  The firs offer that satisifies the predicate is returned;  otherwise `undefined` is returned. |
 
 #### Returns
 
-[`Offer`](../modules/Market-1.md#offer)
+[`Offer`](../namespaces/Market-1.md#offer)
 
 #### Defined in
 
@@ -74,13 +65,13 @@ ___
 
 ### <a id="toarray" name="toarray"></a> toArray
 
-▸ **toArray**(): [`Offer`](../modules/Market-1.md#offer)[]
+▸ **toArray**(): [`Offer`](../namespaces/Market-1.md#offer)[]
 
 Returns the elements in an array.
 
 #### Returns
 
-[`Offer`](../modules/Market-1.md#offer)[]
+[`Offer`](../namespaces/Market-1.md#offer)[]
 
 #### Defined in
 
@@ -90,7 +81,7 @@ ___
 
 ### <a id="next" name="next"></a> next
 
-▸ **next**(...`args`): `IteratorResult`<[`Offer`](../modules/Market-1.md#offer), `any`\>
+▸ **next**(...`args`): `IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
 
 #### Parameters
 
@@ -100,7 +91,7 @@ ___
 
 #### Returns
 
-`IteratorResult`<[`Offer`](../modules/Market-1.md#offer), `any`\>
+`IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
 
 #### Inherited from
 
@@ -114,7 +105,7 @@ ___
 
 ### <a id="return" name="return"></a> return
 
-▸ `Optional` **return**(`value?`): `IteratorResult`<[`Offer`](../modules/Market-1.md#offer), `any`\>
+▸ `Optional` **return**(`value?`): `IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
 
 #### Parameters
 
@@ -124,7 +115,7 @@ ___
 
 #### Returns
 
-`IteratorResult`<[`Offer`](../modules/Market-1.md#offer), `any`\>
+`IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
 
 #### Inherited from
 
@@ -138,7 +129,7 @@ ___
 
 ### <a id="throw" name="throw"></a> throw
 
-▸ `Optional` **throw**(`e?`): `IteratorResult`<[`Offer`](../modules/Market-1.md#offer), `any`\>
+▸ `Optional` **throw**(`e?`): `IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
 
 #### Parameters
 
@@ -148,7 +139,7 @@ ___
 
 #### Returns
 
-`IteratorResult`<[`Offer`](../modules/Market-1.md#offer), `any`\>
+`IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
 
 #### Inherited from
 
@@ -162,11 +153,11 @@ ___
 
 ### <a id="[iterator]" name="[iterator]"></a> [iterator]
 
-▸ **[iterator]**(): `IterableIterator`<[`Offer`](../modules/Market-1.md#offer)\>
+▸ **[iterator]**(): `IterableIterator`<[`Offer`](../namespaces/Market-1.md#offer)\>
 
 #### Returns
 
-`IterableIterator`<[`Offer`](../modules/Market-1.md#offer)\>
+`IterableIterator`<[`Offer`](../namespaces/Market-1.md#offer)\>
 
 #### Inherited from
 

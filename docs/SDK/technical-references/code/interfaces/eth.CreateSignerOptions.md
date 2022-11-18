@@ -1,21 +1,11 @@
-[@mangrovedao/mangrove.js](../README.md) / [Exports](../modules.md) / [eth](../modules/eth.md) / CreateSignerOptions
+---
+id: "eth.CreateSignerOptions"
+title: "Interface: CreateSignerOptions"
+sidebar_label: "eth.CreateSignerOptions"
+custom_edit_url: null
+---
 
-# Interface: CreateSignerOptions
-
-[eth](../modules/eth.md).CreateSignerOptions
-
-## Table of contents
-
-### Properties
-
-- [provider](eth.CreateSignerOptions.md#provider)
-- [signerIndex](eth.CreateSignerOptions.md#signerindex)
-- [privateKey](eth.CreateSignerOptions.md#privatekey)
-- [mnemonic](eth.CreateSignerOptions.md#mnemonic)
-- [path](eth.CreateSignerOptions.md#path)
-- [signer](eth.CreateSignerOptions.md#signer)
-- [jsonWallet](eth.CreateSignerOptions.md#jsonwallet)
-- [forceReadOnly](eth.CreateSignerOptions.md#forcereadonly)
+[eth](../namespaces/eth.md).CreateSignerOptions
 
 ## Properties
 

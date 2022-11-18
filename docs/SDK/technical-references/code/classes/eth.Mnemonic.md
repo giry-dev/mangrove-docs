@@ -1,26 +1,11 @@
-[@mangrovedao/mangrove.js](../README.md) / [Exports](../modules.md) / [eth](../modules/eth.md) / Mnemonic
+---
+id: "eth.Mnemonic"
+title: "Class: Mnemonic"
+sidebar_label: "eth.Mnemonic"
+custom_edit_url: null
+---
 
-# Class: Mnemonic
-
-[eth](../modules/eth.md).Mnemonic
-
-## Table of contents
-
-### Properties
-
-- [mnemonic](eth.Mnemonic.md#mnemonic)
-- [iterateOn](eth.Mnemonic.md#iterateon)
-
-### Methods
-
-- [path](eth.Mnemonic.md#path)
-- [signer](eth.Mnemonic.md#signer)
-- [address](eth.Mnemonic.md#address)
-- [key](eth.Mnemonic.md#key)
-
-### Constructors
-
-- [constructor](eth.Mnemonic.md#constructor)
+[eth](../namespaces/eth.md).Mnemonic
 
 ## Properties
 

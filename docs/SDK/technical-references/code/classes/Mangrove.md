@@ -1,56 +1,10 @@
-[@mangrovedao/mangrove.js](../README.md) / [Exports](../modules.md) / Mangrove
-
-# Class: Mangrove
-
-## Table of contents
-
-### Properties
-
-- [\_provider](Mangrove.md#_provider)
-- [\_signer](Mangrove.md#_signer)
-- [\_network](Mangrove.md#_network)
-- [\_readOnly](Mangrove.md#_readonly)
-- [\_address](Mangrove.md#_address)
-- [contract](Mangrove.md#contract)
-- [readerContract](Mangrove.md#readercontract)
-- [cleanerContract](Mangrove.md#cleanercontract)
-- [orderContract](Mangrove.md#ordercontract)
-- [typechain](Mangrove.md#typechain)
-- [addresses](Mangrove.md#addresses)
-- [unitCalculations](Mangrove.md#unitcalculations)
-
-### Methods
-
-- [connect](Mangrove.md#connect)
-- [disconnect](Mangrove.md#disconnect)
-- [market](Mangrove.md#market)
-- [offerLogic](Mangrove.md#offerlogic)
-- [liquidityProvider](Mangrove.md#liquidityprovider)
-- [token](Mangrove.md#token)
-- [getAddress](Mangrove.md#getaddress)
-- [setAddress](Mangrove.md#setaddress)
-- [toUnits](Mangrove.md#tounits)
-- [fromUnits](Mangrove.md#fromunits)
-- [balanceOf](Mangrove.md#balanceof)
-- [fundMangrove](Mangrove.md#fundmangrove)
-- [withdraw](Mangrove.md#withdraw)
-- [approveMangrove](Mangrove.md#approvemangrove)
-- [config](Mangrove.md#config)
-- [getAllAddresses](Mangrove.md#getalladdresses)
-- [getAddress](Mangrove.md#getaddress-1)
-- [setAddress](Mangrove.md#setaddress-1)
-- [getDecimals](Mangrove.md#getdecimals)
-- [getDisplayedDecimals](Mangrove.md#getdisplayeddecimals)
-- [getDisplayedPriceDecimals](Mangrove.md#getdisplayedpricedecimals)
-- [setDecimals](Mangrove.md#setdecimals)
-- [setDisplayedDecimals](Mangrove.md#setdisplayeddecimals)
-- [setDisplayedPriceDecimals](Mangrove.md#setdisplayedpricedecimals)
-- [fetchDecimals](Mangrove.md#fetchdecimals)
-- [fetchAllAddresses](Mangrove.md#fetchalladdresses)
-
-### Constructors
-
-- [constructor](Mangrove.md#constructor)
+---
+id: "Mangrove"
+title: "Class: Mangrove"
+sidebar_label: "Mangrove"
+sidebar_position: 0
+custom_edit_url: null
+---
 
 ## Properties
 
@@ -261,7 +215,7 @@ ___
 | `params` | `Object` |
 | `params.base` | `string` |
 | `params.quote` | `string` |
-| `params.bookOptions?` | [`BookOptions`](../modules/Market-1.md#bookoptions) |
+| `params.bookOptions?` | [`BookOptions`](../namespaces/Market-1.md#bookoptions) |
 
 #### Returns
 
@@ -306,7 +260,7 @@ Get a LiquidityProvider object to enable Mangrove's signer to pass buy and sell 
 
 | Name | Type |
 | :------ | :------ |
-| `p` | [`Market`](Market.md) \| { `base`: `string` ; `quote`: `string` ; `bookOptions?`: [`BookOptions`](../modules/Market-1.md#bookoptions)  } |
+| `p` | [`Market`](Market.md) \| { `base`: `string` ; `quote`: `string` ; `bookOptions?`: [`BookOptions`](../namespaces/Market-1.md#bookoptions)  } |
 
 #### Returns
 
@@ -327,7 +281,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `name` | `string` |
-| `options?` | [`ConstructorOptions`](../modules/MgvToken-1.md#constructoroptions) |
+| `options?` | [`ConstructorOptions`](../namespaces/MgvToken-1.md#constructoroptions) |
 
 #### Returns
 
@@ -545,13 +499,13 @@ ___
 
 ### <a id="config" name="config"></a> config
 
-▸ **config**(): `Promise`<[`GlobalConfig`](../modules/Mangrove-1.md#globalconfig)\>
+▸ **config**(): `Promise`<[`GlobalConfig`](../namespaces/Mangrove-1.md#globalconfig)\>
 
 Return global Mangrove config
 
 #### Returns
 
-`Promise`<[`GlobalConfig`](../modules/Mangrove-1.md#globalconfig)\>
+`Promise`<[`GlobalConfig`](../namespaces/Mangrove-1.md#globalconfig)\>
 
 #### Defined in
 

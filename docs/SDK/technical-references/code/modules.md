@@ -1,10 +1,12 @@
-[@mangrovedao/mangrove.js](README.md) / Exports
+---
+id: "modules"
+title: "@mangrovedao/mangrove.js"
+sidebar_label: "Exports"
+sidebar_position: 0.5
+custom_edit_url: null
+---
 
-# @mangrovedao/mangrove.js
-
-## Table of contents
-
-### Classes
+## Classes
 
 - [AaveV3Module](classes/AaveV3Module.md)
 - [LiquidityProvider](classes/LiquidityProvider.md)
@@ -14,23 +16,15 @@
 - [OfferLogic](classes/OfferLogic.md)
 - [Semibook](classes/Semibook.md)
 
-### Variables
+## Namespaces
 
-- [decimals](modules.md#decimals)
-
-### Namespaces
-
-- [eth](modules/eth.md)
-- [LiquidityProvider](modules/LiquidityProvider-1.md)
-- [Mangrove](modules/Mangrove-1.md)
-- [Market](modules/Market-1.md)
-- [MgvToken](modules/MgvToken-1.md)
-- [Semibook](modules/Semibook-1.md)
-- [mgvTestUtil](modules/mgvTestUtil.md)
-
-### References
-
-- [default](modules.md#default)
+- [eth](namespaces/eth.md)
+- [LiquidityProvider](namespaces/LiquidityProvider-1.md)
+- [Mangrove](namespaces/Mangrove-1.md)
+- [Market](namespaces/Market-1.md)
+- [MgvToken](namespaces/MgvToken-1.md)
+- [Semibook](namespaces/Semibook-1.md)
+- [mgvTestUtil](namespaces/mgvTestUtil.md)
 
 ## Variables
 

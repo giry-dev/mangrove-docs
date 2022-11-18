@@ -1,53 +1,13 @@
-[@mangrovedao/mangrove.js](../README.md) / [Exports](../modules.md) / LiquidityProvider
-
-# Class: LiquidityProvider
+---
+id: "LiquidityProvider"
+title: "Class: LiquidityProvider"
+sidebar_label: "LiquidityProvider"
+sidebar_position: 0
+custom_edit_url: null
+---
 
 The LiquidityProvider class connects an offerLogic (or an EOA) to a market.
 It posts onchain offers.
-
-## Table of contents
-
-### Properties
-
-- [mgv](LiquidityProvider.md#mgv)
-- [logic](LiquidityProvider.md#logic)
-- [eoa](LiquidityProvider.md#eoa)
-- [market](LiquidityProvider.md#market)
-- [prettyP](LiquidityProvider.md#prettyp)
-
-### Constructors
-
-- [constructor](LiquidityProvider.md#constructor)
-
-### Methods
-
-- [computeOfferProvision](LiquidityProvider.md#computeofferprovision)
-- [computeBidProvision](LiquidityProvider.md#computebidprovision)
-- [computeAskProvision](LiquidityProvider.md#computeaskprovision)
-- [getBidPivotId](LiquidityProvider.md#getbidpivotid)
-- [getAskPivotId](LiquidityProvider.md#getaskpivotid)
-- [asks](LiquidityProvider.md#asks)
-- [bids](LiquidityProvider.md#bids)
-- [consoleAsks](LiquidityProvider.md#consoleasks)
-- [consoleBids](LiquidityProvider.md#consolebids)
-- [newAsk](LiquidityProvider.md#newask)
-- [newBid](LiquidityProvider.md#newbid)
-- [mangroveAllowance](LiquidityProvider.md#mangroveallowance)
-- [fundMangrove](LiquidityProvider.md#fundmangrove)
-- [parseEvents](LiquidityProvider.md#parseevents)
-- [newOffer](LiquidityProvider.md#newoffer)
-- [updateAsk](LiquidityProvider.md#updateask)
-- [updateBid](LiquidityProvider.md#updatebid)
-- [updateOffer](LiquidityProvider.md#updateoffer)
-- [retractAsk](LiquidityProvider.md#retractask)
-- [retractBid](LiquidityProvider.md#retractbid)
-- [retractOffer](LiquidityProvider.md#retractoffer)
-- [balanceOnMangrove](LiquidityProvider.md#balanceonmangrove)
-- [tokenBalance](LiquidityProvider.md#tokenbalance)
-- [withdrawFromMangrove](LiquidityProvider.md#withdrawfrommangrove)
-- [approveAsks](LiquidityProvider.md#approveasks)
-- [approveBids](LiquidityProvider.md#approvebids)
-- [getMissingProvision](LiquidityProvider.md#getmissingprovision)
 
 ## Properties
 
@@ -109,7 +69,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `p` | [`ConstructionParams`](../modules/LiquidityProvider-1.md#constructionparams) |
+| `p` | [`ConstructionParams`](../namespaces/LiquidityProvider-1.md#constructionparams) |
 
 #### Defined in
 
@@ -125,7 +85,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 | `opts` | `Object` |
 | `opts.id?` | `number` |
 | `opts.gasreq?` | `number` |
@@ -232,13 +192,13 @@ ___
 
 ### <a id="asks" name="asks"></a> asks
 
-▸ **asks**(): [`Offer`](../modules/Market-1.md#offer)[]
+▸ **asks**(): [`Offer`](../namespaces/Market-1.md#offer)[]
 
 List all of the maker's asks in the cache
 
 #### Returns
 
-[`Offer`](../modules/Market-1.md#offer)[]
+[`Offer`](../namespaces/Market-1.md#offer)[]
 
 #### Defined in
 
@@ -248,13 +208,13 @@ ___
 
 ### <a id="bids" name="bids"></a> bids
 
-▸ **bids**(): [`Offer`](../modules/Market-1.md#offer)[]
+▸ **bids**(): [`Offer`](../namespaces/Market-1.md#offer)[]
 
 List all of the maker's bids in the cache
 
 #### Returns
 
-[`Offer`](../modules/Market-1.md#offer)[]
+[`Offer`](../namespaces/Market-1.md#offer)[]
 
 #### Defined in
 
@@ -316,7 +276,7 @@ Post a new ask
 
 | Name | Type |
 | :------ | :------ |
-| `p` | [`OfferParams`](../modules/LiquidityProvider-1.md#offerparams) |
+| `p` | [`OfferParams`](../namespaces/LiquidityProvider-1.md#offerparams) |
 | `overrides` | `Overrides` |
 
 #### Returns
@@ -339,7 +299,7 @@ Post a new bid
 
 | Name | Type |
 | :------ | :------ |
-| `p` | [`OfferParams`](../modules/LiquidityProvider-1.md#offerparams) |
+| `p` | [`OfferParams`](../namespaces/LiquidityProvider-1.md#offerparams) |
 | `overrides` | `Overrides` |
 
 #### Returns
@@ -447,7 +407,7 @@ to change volume and price of the offer, and update its gas requirement and fund
 | Name | Type |
 | :------ | :------ |
 | `id` | `number` |
-| `p` | [`OfferParams`](../modules/LiquidityProvider-1.md#offerparams) |
+| `p` | [`OfferParams`](../namespaces/LiquidityProvider-1.md#offerparams) |
 | `overrides` | `PayableOverrides` |
 
 #### Returns
@@ -471,7 +431,7 @@ Update an existing offer
 | Name | Type |
 | :------ | :------ |
 | `id` | `number` |
-| `p` | [`OfferParams`](../modules/LiquidityProvider-1.md#offerparams) |
+| `p` | [`OfferParams`](../namespaces/LiquidityProvider-1.md#offerparams) |
 | `overrides` | `PayableOverrides` |
 
 #### Returns
@@ -562,7 +522,7 @@ ___
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) | `undefined` |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) | `undefined` |
 | `id` | `number` | `undefined` |
 | `deprovision` | `boolean` | `false` |
 | `overrides` | `Overrides` | `{}` |
@@ -694,7 +654,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 | `opts` | `Object` |
 | `opts.id?` | `number` |
 | `opts.gasreq?` | `number` |

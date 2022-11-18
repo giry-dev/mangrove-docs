@@ -1,45 +1,13 @@
-[@mangrovedao/mangrove.js](../README.md) / [Exports](../modules.md) / OfferLogic
-
-# Class: OfferLogic
+---
+id: "OfferLogic"
+title: "Class: OfferLogic"
+sidebar_label: "OfferLogic"
+sidebar_position: 0
+custom_edit_url: null
+---
 
 The OfferLogic class connects to a OfferLogic contract.
 It posts onchain offers.
-
-## Table of contents
-
-### Properties
-
-- [mgv](OfferLogic.md#mgv)
-- [contract](OfferLogic.md#contract)
-- [address](OfferLogic.md#address)
-- [isForwarder](OfferLogic.md#isforwarder)
-
-### Constructors
-
-- [constructor](OfferLogic.md#constructor)
-
-### Methods
-
-- [deploy](OfferLogic.md#deploy)
-- [mangroveAllowance](OfferLogic.md#mangroveallowance)
-- [router](OfferLogic.md#router)
-- [aaveModule](OfferLogic.md#aavemodule)
-- [approveToken](OfferLogic.md#approvetoken)
-- [allowance](OfferLogic.md#allowance)
-- [balanceOnMangrove](OfferLogic.md#balanceonmangrove)
-- [tokenBalance](OfferLogic.md#tokenbalance)
-- [withdrawToken](OfferLogic.md#withdrawtoken)
-- [connect](OfferLogic.md#connect)
-- [fundMangrove](OfferLogic.md#fundmangrove)
-- [getDefaultGasreq](OfferLogic.md#getdefaultgasreq)
-- [setAdmin](OfferLogic.md#setadmin)
-- [getAdmin](OfferLogic.md#getadmin)
-- [activate](OfferLogic.md#activate)
-- [newOffer](OfferLogic.md#newoffer)
-- [updateOffer](OfferLogic.md#updateoffer)
-- [retractOffer](OfferLogic.md#retractoffer)
-- [withdrawFromMangrove](OfferLogic.md#withdrawfrommangrove)
-- [liquidityProvider](OfferLogic.md#liquidityprovider)
 
 ## Properties
 
@@ -565,7 +533,7 @@ Connects the logic to a Market in order to pass market orders. The function retu
 
 | Name | Type |
 | :------ | :------ |
-| `p` | [`Market`](Market.md) \| { `base`: `string` ; `quote`: `string` ; `bookOptions?`: [`BookOptions`](../modules/Market-1.md#bookoptions)  } |
+| `p` | [`Market`](Market.md) \| { `base`: `string` ; `quote`: `string` ; `bookOptions?`: [`BookOptions`](../namespaces/Market-1.md#bookoptions)  } |
 
 #### Returns
 

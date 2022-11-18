@@ -1,26 +1,13 @@
-[@mangrovedao/mangrove.js](../README.md) / [Exports](../modules.md) / AaveV3Module
-
-# Class: AaveV3Module
+---
+id: "AaveV3Module"
+title: "Class: AaveV3Module"
+sidebar_label: "AaveV3Module"
+sidebar_position: 0
+custom_edit_url: null
+---
 
 The OfferLogic class connects to a OfferLogic contract.
 It posts onchain offers.
-
-## Table of contents
-
-### Properties
-
-- [mgv](AaveV3Module.md#mgv)
-- [contract](AaveV3Module.md#contract)
-
-### Constructors
-
-- [constructor](AaveV3Module.md#constructor)
-
-### Methods
-
-- [approveDelegation](AaveV3Module.md#approvedelegation)
-- [status](AaveV3Module.md#status)
-- [logStatus](AaveV3Module.md#logstatus)
 
 ## Properties
 

@@ -44,6 +44,27 @@ const config = {
     require.resolve('docusaurus-lunr-search'),
     '@vegaprotocol/docusaurus-theme-github-codeblock',
     [
+      'docusaurus-plugin-typedoc',
+
+      // Plugin / TypeDoc options
+      {
+        "entryPoints": ["node_modules/@mangrovedao/mangrove.js/src/index.ts"],
+        "tsconfig": "node_modules/@mangrovedao/mangrove.js/tsconfig.json",
+        "out": "SDK/technical-references/code",
+        "cleanOutputDir": true,
+        "excludePrivate": true,
+        "excludeInternal": true,
+        "sort": "source-order",
+        "exclude": ["**/ethers.*","**/typechain/**.*"],
+        "namedAnchors": true,
+        sidebar: {
+          categoryLabel: 'API Reference',
+          position: 999,
+          fullNames: true,
+        },
+      },
+    ],    
+    [
       '@docusaurus/plugin-ideal-image',
       {
         quality: 70,

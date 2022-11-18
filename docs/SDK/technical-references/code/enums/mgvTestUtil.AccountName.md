@@ -1,16 +1,11 @@
-[@mangrovedao/mangrove.js](../README.md) / [Exports](../modules.md) / [mgvTestUtil](../modules/mgvTestUtil.md) / AccountName
+---
+id: "mgvTestUtil.AccountName"
+title: "Enumeration: AccountName"
+sidebar_label: "mgvTestUtil.AccountName"
+custom_edit_url: null
+---
 
-# Enumeration: AccountName
-
-[mgvTestUtil](../modules/mgvTestUtil.md).AccountName
-
-## Table of contents
-
-### Enumeration Members
-
-- [Deployer](mgvTestUtil.AccountName.md#deployer)
-- [Cleaner](mgvTestUtil.AccountName.md#cleaner)
-- [Maker](mgvTestUtil.AccountName.md#maker)
+[mgvTestUtil](../namespaces/mgvTestUtil.md).AccountName
 
 ## Enumeration Members
 

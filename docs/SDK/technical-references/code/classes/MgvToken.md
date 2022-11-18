@@ -1,35 +1,10 @@
-[@mangrovedao/mangrove.js](../README.md) / [Exports](../modules.md) / MgvToken
-
-# Class: MgvToken
-
-## Table of contents
-
-### Properties
-
-- [mgv](MgvToken.md#mgv)
-- [name](MgvToken.md#name)
-- [address](MgvToken.md#address)
-- [displayedDecimals](MgvToken.md#displayeddecimals)
-- [decimals](MgvToken.md#decimals)
-- [contract](MgvToken.md#contract)
-- [unitCalculations](MgvToken.md#unitcalculations)
-
-### Constructors
-
-- [constructor](MgvToken.md#constructor)
-
-### Methods
-
-- [fromUnits](MgvToken.md#fromunits)
-- [toUnits](MgvToken.md#tounits)
-- [toFixed](MgvToken.md#tofixed)
-- [allowance](MgvToken.md#allowance)
-- [getDecimals](MgvToken.md#getdecimals)
-- [setDecimals](MgvToken.md#setdecimals)
-- [approveMangrove](MgvToken.md#approvemangrove)
-- [approve](MgvToken.md#approve)
-- [balanceOf](MgvToken.md#balanceof)
-- [transfer](MgvToken.md#transfer)
+---
+id: "MgvToken"
+title: "Class: MgvToken"
+sidebar_label: "MgvToken"
+sidebar_position: 0
+custom_edit_url: null
+---
 
 ## Properties
 
@@ -113,7 +88,7 @@ ___
 | :------ | :------ |
 | `name` | `string` |
 | `mgv` | [`Mangrove`](Mangrove.md) |
-| `options` | [`ConstructorOptions`](../modules/MgvToken-1.md#constructoroptions) |
+| `options` | [`ConstructorOptions`](../namespaces/MgvToken-1.md#constructoroptions) |
 
 #### Defined in
 

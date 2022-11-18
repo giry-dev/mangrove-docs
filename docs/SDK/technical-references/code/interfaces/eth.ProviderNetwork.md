@@ -1,15 +1,11 @@
-[@mangrovedao/mangrove.js](../README.md) / [Exports](../modules.md) / [eth](../modules/eth.md) / ProviderNetwork
+---
+id: "eth.ProviderNetwork"
+title: "Interface: ProviderNetwork"
+sidebar_label: "eth.ProviderNetwork"
+custom_edit_url: null
+---
 
-# Interface: ProviderNetwork
-
-[eth](../modules/eth.md).ProviderNetwork
-
-## Table of contents
-
-### Properties
-
-- [id](eth.ProviderNetwork.md#id)
-- [name](eth.ProviderNetwork.md#name)
+[eth](../namespaces/eth.md).ProviderNetwork
 
 ## Properties
 

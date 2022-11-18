@@ -1,6 +1,10 @@
-[@mangrovedao/mangrove.js](../README.md) / [Exports](../modules.md) / Semibook
-
-# Class: Semibook
+---
+id: "Semibook"
+title: "Class: Semibook"
+sidebar_label: "Semibook"
+sidebar_position: 0
+custom_edit_url: null
+---
 
 The Semibook is a data structure for maintaining a cached prefix
 of an offer list for one side (asks or bids) of a market.
@@ -13,39 +17,7 @@ the same for the market B-A), a `Semibook` depends on the market:
 
 ## Implements
 
-- `Iterable`<[`Offer`](../modules/Market-1.md#offer)\>
-
-## Table of contents
-
-### Properties
-
-- [DEFAULT\_MAX\_OFFERS](Semibook.md#default_max_offers)
-- [ba](Semibook.md#ba)
-- [market](Semibook.md#market)
-- [options](Semibook.md#options)
-- [tradeManagement](Semibook.md#trademanagement)
-
-### Methods
-
-- [connect](Semibook.md#connect)
-- [disconnect](Semibook.md#disconnect)
-- [requestOfferListPrefix](Semibook.md#requestofferlistprefix)
-- [offerInfo](Semibook.md#offerinfo)
-- [getConfig](Semibook.md#getconfig)
-- [getRawConfig](Semibook.md#getrawconfig)
-- [size](Semibook.md#size)
-- [getBestInCache](Semibook.md#getbestincache)
-- [[iterator]](Semibook.md#[iterator])
-- [iter](Semibook.md#iter)
-- [getPivotId](Semibook.md#getpivotid)
-- [estimateVolume](Semibook.md#estimatevolume)
-- [simulateMarketOrder](Semibook.md#simulatemarketorder)
-- [isPriceBetter](Semibook.md#ispricebetter)
-- [isPriceWorse](Semibook.md#ispriceworse)
-- [getMaxGasReq](Semibook.md#getmaxgasreq)
-- [lastReadBlockNumber](Semibook.md#lastreadblocknumber)
-- [getIsVolumeDesiredForAsks](Semibook.md#getisvolumedesiredforasks)
-- [getIsVolumeDesiredForBids](Semibook.md#getisvolumedesiredforbids)
+- `Iterable`<[`Offer`](../namespaces/Market-1.md#offer)\>
 
 ## Properties
 
@@ -61,7 +33,7 @@ ___
 
 ### <a id="ba" name="ba"></a> ba
 
-• `Readonly` **ba**: [`BA`](../modules/Market-1.md#ba)
+• `Readonly` **ba**: [`BA`](../namespaces/Market-1.md#ba)
 
 #### Defined in
 
@@ -81,7 +53,7 @@ ___
 
 ### <a id="options" name="options"></a> options
 
-• `Readonly` **options**: [`Options`](../modules/Semibook-1.md#options)
+• `Readonly` **options**: [`Options`](../namespaces/Semibook-1.md#options)
 
 #### Defined in
 
@@ -108,10 +80,10 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `market` | [`Market`](Market.md) |
-| `ba` | [`BA`](../modules/Market-1.md#ba) |
-| `eventListener` | [`EventListener`](../modules/Semibook-1.md#eventlistener) |
-| `blockListener` | [`BlockListener`](../modules/Semibook-1.md#blocklistener) |
-| `options` | [`Options`](../modules/Semibook-1.md#options) |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
+| `eventListener` | [`EventListener`](../namespaces/Semibook-1.md#eventlistener) |
+| `blockListener` | [`BlockListener`](../namespaces/Semibook-1.md#blocklistener) |
+| `options` | [`Options`](../namespaces/Semibook-1.md#options) |
 
 #### Returns
 
@@ -141,17 +113,17 @@ ___
 
 ### <a id="requestofferlistprefix" name="requestofferlistprefix"></a> requestOfferListPrefix
 
-▸ **requestOfferListPrefix**(`options`): `Promise`<[`Offer`](../modules/Market-1.md#offer)[]\>
+▸ **requestOfferListPrefix**(`options`): `Promise`<[`Offer`](../namespaces/Market-1.md#offer)[]\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `options` | [`Options`](../modules/Semibook-1.md#options) |
+| `options` | [`Options`](../namespaces/Semibook-1.md#options) |
 
 #### Returns
 
-`Promise`<[`Offer`](../modules/Market-1.md#offer)[]\>
+`Promise`<[`Offer`](../namespaces/Market-1.md#offer)[]\>
 
 #### Defined in
 
@@ -161,7 +133,7 @@ ___
 
 ### <a id="offerinfo" name="offerinfo"></a> offerInfo
 
-▸ **offerInfo**(`offerId`): `Promise`<[`Offer`](../modules/Market-1.md#offer)\>
+▸ **offerInfo**(`offerId`): `Promise`<[`Offer`](../namespaces/Market-1.md#offer)\>
 
 Returns struct containing offer details in the current offer list
 
@@ -173,7 +145,7 @@ Returns struct containing offer details in the current offer list
 
 #### Returns
 
-`Promise`<[`Offer`](../modules/Market-1.md#offer)\>
+`Promise`<[`Offer`](../namespaces/Market-1.md#offer)\>
 
 #### Defined in
 
@@ -183,7 +155,7 @@ ___
 
 ### <a id="getconfig" name="getconfig"></a> getConfig
 
-▸ **getConfig**(`blockNumber?`): `Promise`<[`LocalConfig`](../modules/Mangrove-1.md#localconfig)\>
+▸ **getConfig**(`blockNumber?`): `Promise`<[`LocalConfig`](../namespaces/Mangrove-1.md#localconfig)\>
 
 Return config local to a semibook.
 Notes:
@@ -199,7 +171,7 @@ fee *remains* in basis points of the token being bought
 
 #### Returns
 
-`Promise`<[`LocalConfig`](../modules/Mangrove-1.md#localconfig)\>
+`Promise`<[`LocalConfig`](../namespaces/Mangrove-1.md#localconfig)\>
 
 #### Defined in
 
@@ -320,7 +292,7 @@ ___
 
 ### <a id="estimatevolume" name="estimatevolume"></a> estimateVolume
 
-▸ **estimateVolume**(`params`): `Promise`<[`VolumeEstimate`](../modules/Market-1.md#volumeestimate)\>
+▸ **estimateVolume**(`params`): `Promise`<[`VolumeEstimate`](../namespaces/Market-1.md#volumeestimate)\>
 
 Volume estimator.
 
@@ -347,11 +319,11 @@ traded due to insufficient volume on the book / price becoming bad.
 
 | Name | Type |
 | :------ | :------ |
-| `params` | [`VolumeParams`](../modules/Semibook-1.md#volumeparams) |
+| `params` | [`VolumeParams`](../namespaces/Semibook-1.md#volumeparams) |
 
 #### Returns
 
-`Promise`<[`VolumeEstimate`](../modules/Market-1.md#volumeestimate)\>
+`Promise`<[`VolumeEstimate`](../namespaces/Market-1.md#volumeestimate)\>
 
 #### Defined in
 
@@ -463,7 +435,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `opts` | [`BookOptions`](../modules/Market-1.md#bookoptions) |
+| `opts` | [`BookOptions`](../namespaces/Market-1.md#bookoptions) |
 
 #### Returns
 
@@ -483,7 +455,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `opts` | [`BookOptions`](../modules/Market-1.md#bookoptions) |
+| `opts` | [`BookOptions`](../namespaces/Market-1.md#bookoptions) |
 
 #### Returns
 
