@@ -23,3 +23,15 @@ If the offer succeeds, the gas costs for the [execution of the trade](../contrac
 
 Offers in the order book may fail when taken, either because the maker consciously chose to [renege on the offer to trade](../contracts/explanations/taker-compensation.md), or because the maker contract reverted for other reasons. In that case, the taker has wasted some gas, and will be compensated using the [offer provision](../contracts/technical-references/taking-and-making-offers/reactive-offer/offer-provision.md) that the maker has already locked in on Mangrove.
 
+## Are Mangrove market orders the same as traditional market orders?
+
+Mangrove's market orders are DeFi market orders which are different from market orders in TradFi:
+
+In TradFi, a market order is an order to buy or sell immediately at the best available price.
+
+In DeFi, where transactions can be front-run/sandwiched, adversaries may manipulate the best available price and thus extract value from a market order as there is no limit on the price. TradFi market orders are therefore unsafe for fully on-chain DEX'es like Mangrove.
+
+To protect the user, Mangrove's market order therefore corresponds to a **limit order** in TradFi: An order to buy or sell at or below a given price.
+More precisely, Mangrove ensures that the **average** price of the offers matched with the order does not exceed the specified the specified price.
+
+TL;DR: Mangrove market order = TradFi limit order.
