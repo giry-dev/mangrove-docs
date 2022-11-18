@@ -63,7 +63,7 @@ const config = {
           fullNames: true,
         },
       },
-    ],    
+    ],
     [
       '@docusaurus/plugin-ideal-image',
       {
