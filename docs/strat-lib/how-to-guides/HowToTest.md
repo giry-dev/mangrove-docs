@@ -118,7 +118,7 @@ We now have a function that can deploy a new Ghost contract on our local chain. 
 
 First we save what amounts we want to use for the 2 offers. For the amount of WETH, we use the solidity shorthand `ether`. This is a way of multiplying a number with 10^18, which is the number of decimals ether has and because we are using WETH, it as the same amount of decimals. For both DAI and USDC we use the function `cash(token, amount)`. This is a helper function by MangroveTest, it makes sure to multiply the amount with the correct amount of decimals that the token is using. This way we now have the correct amounts of all tokens, using the correct decimals for each token.
 
-Next we need to approve the router of Ghost the use the WETH of the tester contract. This is needed because we are using the tester contract as the reserve for Ghost. We then need to give the tester contract som WETH in order to be able to complete the offers. Foundry has a cheatcode to give an address an amount of a token. This function is called `deal(address_of_token, address_to_receive_token, amount)`. We again use weth in order to use the correct amount of decimals.
+Next we need to approve the %%router|router%% of Ghost the use the WETH of the tester contract. This is needed because we are using the tester contract as the reserve for Ghost. We then need to give the tester contract som WETH in order to be able to complete the offers. Foundry has a cheatcode to give an address an amount of a token. This function is called `deal(address_of_token, address_to_receive_token, amount)`. We again use weth in order to use the correct amount of decimals.
 
 ```solidity
   function execTraderStratWithFillSuccess() public {

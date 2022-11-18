@@ -74,7 +74,7 @@ One option when using Direct/MangroveOffer is to not only post one offer but two
 
 As before we start by creating a constructor, since we now want to post 2 offers, we need some information about what kind of offers the contract should post. The contract needs to know the `BASE` token, and what 2 kinds of stable coins to post (`STABLE1` & `STABLE2`). These are saved in public immutable variables. Besides knowing what kind of tokens that should be used for the offers, the contract needs to know the ids of the offers. This is needed to be able to retract the offers in posthook. We again call the Direct contract, but this time we set the gas requirement to 100.000, because our posthook will require more gas.
 
-In the constructor for Ghost, we create a SimpleRouter and sets it as the router for the contract. It also binds the contract address to the router, allowing the contract to use the router and sets the admin of the router as the given admin. Direct does not require a router, but we use one in this example to show how to use one. The last thing is to set the admin of the contract, to the admin given to the constructor.
+In the constructor for Ghost, we create a SimpleRouter and sets it as the %%router|router%% for the contract. It also binds the contract address to the router, allowing the contract to use the router and sets the admin of the router as the given admin. Direct does not require a router, but we use one in this example to show how to use one. The last thing is to set the admin of the contract, to the admin given to the constructor.
 
 ```solidity
 pragma solidity ^0.8.10;
