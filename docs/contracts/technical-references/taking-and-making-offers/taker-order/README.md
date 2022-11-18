@@ -19,6 +19,21 @@ Every Mangrove[ offer list ](../offer-list.md#general-structure)can be either [a
 
 A **Market Order** is Mangrove's simplest way of buying or selling assets. Such (taker) orders are run against a specific [offer list](../offer-list.md#general-structure) with its associated _outbound_ token (tokens that flow out of Mangrove) and _inbound_ token (tokens that flow into Mangrove). The liquidity taker specifies how many _outbound_ tokens she [wants](../offer-list.md#wants-gives-and-entailed-price) and how many _inbound_ tokens she [gives](../offer-list.md#wants-gives-and-entailed-price).
 
+
+:::info **Mangrove Market Order = TradFi Limit Order**
+
+Mangrove's market orders are DeFi market orders which are different from market orders in TradFi:
+
+In TradFi, a market order is an order to buy or sell immediately at the best available price.
+
+In DeFi, where transactions can be front-run/sandwiched, adversaries may manipulate the best available price and thus extract value from a market order as there is no limit on the price. TradFi market orders are therefore unsafe for fully on-chain DEX'es like Mangrove.
+
+To protect the user, Mangrove's market order therefore corresponds to a **limit order** in TradFi: An order to buy or sell at or below a given price.
+More precisely, Mangrove ensures that the **average** price of the offers matched with the order does not exceed the specified the specified price.
+
+:::
+
+
 When an order is processed by Mangrove's matching engine, it consumes the offers on the selected [offer list](../offer-list.md), starting from the one which as the best [rank](../offer-list.md#offer-rank). Execution works as follows:
 
 1. Mangrove checks that the current offer's [entailed price](../offer-list.md#wants-gives-and-entailed-price) is at least as good as the taker's price. Otherwise execution stops there.
