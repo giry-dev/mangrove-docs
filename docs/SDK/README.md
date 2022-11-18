@@ -15,7 +15,7 @@ The SDK is used in production in the Mangrove web app, and in a number of keeper
 
 The SDK is open source, and is provided freely to the community as a starting point for writing apps to work with the Mangrove ecosystem. However, do note that the SDK may contain bugs or may change significantly between patch versions. As such it should be used responsibly and with care.
 
-If you have questions about how to use the SDK, which are not answered sufficiently in this documentation, do reach out on the Mangrove Discord. And pull requests to the SDK are, of course, welcome!
+If you have questions about how to use the SDK, which are not answered sufficiently in this documentation, do reach out on the Mangrove [Discord](https://discord.gg/rk9Qthz5YE). And pull requests to the SDK are, of course, welcome!
 
 ## Where do I start? 
 
