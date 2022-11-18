@@ -13,7 +13,7 @@ Function modifier `onlyMakers` requires that only an approved maker contract can
 :::
 
 :::info `SimpleRouter`
-The `SimpleRouter` contract provides a (simple) router instance. We illustrate usage of the main router functions through it. 
+The [`SimpleRouter` contract](./code/strategies/routers/SimpleRouter) provides a (simple) router instance. We illustrate usage of the main router functions through it. 
 :::
 
 
