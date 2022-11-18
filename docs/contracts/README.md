@@ -17,14 +17,8 @@ The order book of Mangrove lists promises to trade, instead of locked commitment
 
 A good entry-point to the documentation for the Mangrove protocol is the [Overview of Mangrove](./technical-references/overview.md) in the Technical Reference section.
 
-
-## Who develops the Mangrove?
-
-**TODO: Brief introduction on Mangrove DAO** 
-
-The Mangrove project is open source. Follow and contribute on [GitHub](https://github.com/mangrovedao/).
-
 ## Where can I join the community?
 
-Join the [Mangrove Discord](https://discord.gg/rk9Qthz5YE).
+The Mangrove project is open source. Follow and contribute on [GitHub](https://github.com/mangrovedao/), and join the [Mangrove Discord](https://discord.gg/rk9Qthz5YE).
+
 
