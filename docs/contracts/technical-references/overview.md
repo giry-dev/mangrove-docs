@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Overview of this section
+description: Overview of the Mangrove ecosystem
 sidebar_position: 1
 ---
 
