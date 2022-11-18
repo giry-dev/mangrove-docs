@@ -9,7 +9,7 @@ const FeatureList = [
     Svg: require('@site/static/img/contract-svgrepo-com.svg').default,
     description: (
       <>
-        Go to the Contracts section, if you want to learn more about Mangrove, by delving into the core concepts, finding the API documentation, or because you want to check out the deployment addresses for Mangrove.
+        Go to the <a href="./contracts/">Contracts</a> section, if you want to learn more about Mangrove, by delving into the core concepts, finding the API documentation, or because you want to check out the deployment addresses for Mangrove.
       </>
     ),
   },
@@ -52,11 +52,14 @@ function Section({Svg, title, path, description}) {
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>
+      </a>
       <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
+        <a href={path} className={styles.noColorLink}>
+          <h3>{title}</h3>
+        </a>                
         <p>{description}</p>
       </div>
-      </a>
+
     </div>
   );
 }
