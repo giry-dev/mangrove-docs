@@ -6,7 +6,6 @@
 /artifacts
 /typechain-types
 /cache
-/docs/strat-lib/technical-references/code/
 
 # Production
 /build
@@ -14,8 +13,6 @@
 # Generated files
 .docusaurus
 .cache-loader
-/docs/SDK/technical-references/code
-/static/MgvDoc/*
 
 # Misc
 .DS_Store

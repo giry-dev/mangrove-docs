@@ -8074,16 +8074,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"docusaurus-plugin-typedoc@npm:^0.17.5":
-  version: 0.17.5
-  resolution: "docusaurus-plugin-typedoc@npm:0.17.5"
-  peerDependencies:
-    typedoc: ">=0.22.0"
-    typedoc-plugin-markdown: ">=3.11.10"
-  checksum: 62af962dad33a413fe3b049b8a5642a3533f35d1cc6163e5db1a06d476b8eab77c4be9bea86c5ae9e30a0310039bb8730c18f1a87fcc8a4ef0c13ceba2ed8dd8
-  languageName: node
-  linkType: hard
-
 "dom-converter@npm:^0.2.0":
   version: 0.2.0
   resolution: "dom-converter@npm:0.2.0"
@@ -12895,7 +12885,6 @@ __metadata:
     chai: ^4.2.0
     clsx: ^1.2.1
     docusaurus-lunr-search: ^2.3.0
-    docusaurus-plugin-typedoc: ^0.17.5
     ethers: ^5.4.7
     hardhat: ^2.12.2
     hardhat-gas-reporter: ^1.0.8
@@ -12912,7 +12901,7 @@ __metadata:
     ts-essentials: ^9.3.0
     ts-node: ">=8.0.0"
     typechain: ^8.1.0
-    typedoc: ^0.23.20
+    typedoc: ^0.23.21
     typedoc-plugin-markdown: ^3.13.6
     typescript: ">=4.5.0"
     vercel: ^28.4.12
@@ -17119,7 +17108,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc@npm:^0.23.20":
+"typedoc@npm:^0.23.21":
   version: 0.23.21
   resolution: "typedoc@npm:0.23.21"
   dependencies:
