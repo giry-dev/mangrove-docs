@@ -9,7 +9,7 @@ Mangrove needs approvals for transferring funds from offer taker to the %%maker 
 
 ## Maker side approvals
 
-Maker contract (or EOA posting an %%on-the-fly|OTF%% offer) need to approve Mangrove for %%outbound|outbound%% token transfer for at least the amount that the offer %%gives|gives%%.
+Maker contract (or EOA posting an %%on-the-fly|on-the-fly-offer%% offer) need to approve Mangrove for %%outbound|outbound%% token transfer for at least the amount that the offer %%gives|gives%%.
 
 ## Taker side approvals
 
