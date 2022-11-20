@@ -8,12 +8,12 @@ sidebar_position: 1
 
 ## Where can I get Mangrove’s addresses?
 
-The deployment addresses for the core contract for Mangrove, as well as the most important periphery contracts are available on [Contracts -> Deployment Addresses](../contracts/technical-references/contract-addresses.md).
+The deployment addresses for the core contract for Mangrove, as well as the most important periphery contracts are available at [Contracts → Deployment Addresses](../contracts/technical-references/contract-addresses.md).
 
 ## Who pays the fees on Mangrove?
 Fees on Mangrove are paid by the taker: The fee is taken from the tokens that the taker has bought.
 
-You can read more about fees here: [Taker fees](/docs/contracts/technical-references/governance-parameters/local-variables#taker-fees).
+Read more about fees here: [Taker fees](/docs/contracts/technical-references/governance-parameters/local-variables#taker-fees).
 
 ## Who pays the gas on Mangrove?
 
@@ -31,7 +31,7 @@ In TradFi, a market order is an order to buy or sell immediately at the best ava
 
 In DeFi, where transactions can be [front-run](https://www.investopedia.com/terms/f/frontrunning.asp) or [sandwiched](https://coinmarketcap.com/alexandria/article/what-are-sandwich-attacks-in-defi-and-how-can-you-avoid-them), adversaries may manipulate the best available price and thus extract value from a market order as there is no limit on the price. TradFi market orders are therefore unsafe for fully on-chain DEX'es like Mangrove.
 
-To protect the user, Mangrove's market order therefore corresponds to a **limit order** in TradFi: An order to buy or sell at or below a given price (as described, e.g., [on Investopedia](https://www.investopedia.com/terms/l/limitorder.asp)).
+To protect the user, Mangrove's market order therefore corresponds to a [**limit order**](https://www.investopedia.com/terms/l/limitorder.asp) in TradFi: An order to buy or sell at or below a given price.
 More precisely, Mangrove ensures that the **average** price of the offers matched with the order does not exceed the specified price.
 
 TL;DR: Mangrove market order = TradFi limit order.
