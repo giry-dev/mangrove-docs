@@ -145,7 +145,7 @@ We already know some of the parameters of new offers beforehand, since we gave t
 
 If the gas price is left at zero, then Mangrove will use its own gas price. And for the gas requirement, we can use the function ´offerGasreq()´ which returns the default gas requirement for the contract plus the gas requirement for the router. 
 
-So we only have to provide the amount of `gives` which is the `BASE` token, and the amount of `STABLE1` and `STABLE2` (`wants1` & `wants2`) as well as the %%pivots|pivot%% for the to offers (`pivot1` & `pivot2`). As before, we only want the admin of the contract to able to post offers, so we keep the modifier `onlyAdmin`.
+So we only have to provide the amount of `gives` which is the `BASE` token, and the amount of `STABLE1` and `STABLE2` (`wants1` & `wants2`) as well as the %%pivots|pivot-id%% for the to offers (`pivot1` & `pivot2`). As before, we only want the admin of the contract to able to post offers, so we keep the modifier `onlyAdmin`.
 
 ```solidity
   function newAmplifiedOffers(
