@@ -8,6 +8,8 @@ This section will go through a two ways of implementing a **Direct** %%maker con
 
 ## Simple Direct maker contract
 
+### Simple contract's constructor
+
 The Direct constructor we wish to use is:
 ```solidity reference title="Direct contract's constructor"
 https://github.com/mangrovedao/mangrove-core/blob/d2bcb7dd1723569bb9c4449572c74aa901e187d2/src/strategies/offer_maker/abstract/Direct.sol#L26-L30
@@ -43,7 +45,7 @@ We use 30K for default %%`gasreq`|gasreq%% of our strat. This does not leave roo
 This constructor sets deployer %%reserve|reserve%% to be the maker contract itself. This means that outbound tokens have to be present on the maker contract's balance when needed (no just in time liquidity).
 :::
 
-## Offer management
+### Simple offer management
 
 With this constructor in place we have almost a deployable maker contract, because Direct provides the implementation of a default offer logic as well as public functions to update and retract offers posted by our contract.
 
@@ -81,7 +83,7 @@ Our implementation of `newOffer` is simply to expose `_newOffer` provided by Dir
 
 Our maker contract is now finished and is now able to post offers on Mangrove when called (by admin) of `newOffer`. Its offer logic is simple: %%outbound|outbound%% tokens must be present in the contract when called by Mangrove and %%inbound|inbound%% tokens will be stored in the contract as well. Admin can redeem those tokens by calling the public `withdrawToken` function (see [here](../technical-references/code/strategies/interfaces/IOfferLogic.md) for all public functions that our contract inherits from Direct). 
 
-# Advanced Direct offer: liquidity amplification
+## Advanced Direct offer: liquidity amplification
 
 We now show how we can tweak our maker contract to do something more interesting that posting plain offers on Mangrove.
 
@@ -91,7 +93,7 @@ Of course if we offer twice `N` tokens on two offer lists and we only have a tot
 
 We have two design choices here: either we let the second offer fail and compensate the taker with our offer's %%bounty|bounty%% or we incorporate in our offer logic that we wish to retract the second offer when the first one is taken. Let's follow the second design principle.
 
-## Amplifier's constructor
+### Amplifier's constructor
 
 We tweak the simple offer's constructor to take into account the additional gas requirement of the amplifier's logic, which now requires retracting the second offer each time an offer is taken. We also chose here to specialize our maker contract to a particular choice of `BASE`, `STABLE1` and `STABLE2` tokens.
 
@@ -139,7 +141,7 @@ I the above constructor we have not set deployer's reserve. By default this is i
 As in the example above, we need to create a way for the maker contract to post an offer. Here we will not follow the `IMakerLogic` interface (and therefore this contract will no longer be fully usable with the SDK) and use a custom way of posting two offers in the same transaction.
 
 
-## Publishing amplified liquidity
+### Publishing amplified liquidity
 
 We already know some of the parameters of new offers beforehand, since we gave them in the constructor: we know the inbound and the outbound tokens of both offers. Besides this we don't want the %%offer owner|offer-owner%% to specify the gas price and gas requirement, but just use the standard implementations.  
 
@@ -201,7 +203,7 @@ So we only have to provide the amount of `gives` which is the `BASE` token, and 
 If both our amplified offers were once live on Mangrove, but are no longer (either after a retract or because one of them was consumed by a taker), it is more gas efficient to [update the offers](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#creating--updating-offers) to reinstate them on the offer list, rather than creating new ones as we do in the above code.
 :::
 
-## Updating under-collateralized offer on the fly
+### Updating under-collateralized offer on the fly
 
 Since we now can post new offers, one of these offers might be taken at some point. When this happens we wish to retract the other offer, which is now uncollateralized, in order to save the bounty. To do this we use the %%hook|hook%% `posthookSuccess`.
 
@@ -263,7 +265,7 @@ Notice the use of the hook `__residualGives__` in the above code snippet. It ret
 
 We cannot use `__residualWants__` for the other offer because we cannot assume both `STABLE1` and `STABLE2` have the same decimals (we only assume here that they have the same value with respect to `BASE`).
 
-## Retracting uncollateralized offer on the fly
+### Retracting uncollateralized offer on the fly
 
 During the offer logic's execution it might be that the taken offer does not repost itself on the book. This may happen for the following reasons:
 * the offer was completely filled
@@ -285,7 +287,7 @@ else { // if offer was not reposted
 }
 ```
 
-## Managing offer failure
+### Managing offer failure
 
 When writing posthooks, we need to consider all possible outcomes. The first outcome was that the offer was successfull, but it might be that the offer failed when it was taken. This may happen in this case because we opted for using a router that brings liquidity from deployer's account. Nothing prevents this account to be empty when the taker order arrives.
 
