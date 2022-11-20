@@ -6,11 +6,11 @@ sidebar_position: 4
 
 This section will go through a two ways of implementing a **Direct** %%maker contract|maker-contract%%. If you don't know what a Direct contract is, we recommend reading both [MangroveOffer](../explanations/offer-maker/mangrove-offer.md) and [Direct](../explanations/offer-maker/direct.md) before continuing.
 
-## Simple Direct maker contract
+## Simple Offer Maker contract
 
-### Simple contract's constructor
+### Offer Maker's constructor
 
-The Direct constructor we wish to use is:
+The Offer Maker constructor we wish to use is:
 ```solidity reference title="Direct contract's constructor"
 https://github.com/mangrovedao/mangrove-core/blob/d2bcb7dd1723569bb9c4449572c74aa901e187d2/src/strategies/offer_maker/abstract/Direct.sol#L26-L30
 ```
@@ -42,7 +42,7 @@ We use 30K for default %%`gasreq`|gasreq%% of our strat. This does not leave roo
 ::: 
 
 :::info `reserve`
-This constructor sets deployer %%reserve|reserve%% to be the maker contract itself. This means that outbound tokens have to be present on the maker contract's balance when needed (no just in time liquidity).
+This constructor sets deployer %%reserve|reserve%% to be the %%maker contract|maker-contract%% itself. This means that %%outbound|outbound%% tokens have to be present on the maker contract's balance when needed (no just in time liquidity).
 :::
 
 ### Simple offer management
@@ -81,23 +81,23 @@ Our implementation of `newOffer` is simply to expose `_newOffer` provided by Dir
 }
 ```
 
-Our maker contract is now finished and is now able to post offers on Mangrove when called (by admin) of `newOffer`. Its offer logic is simple: %%outbound|outbound%% tokens must be present in the contract when called by Mangrove and %%inbound|inbound%% tokens will be stored in the contract as well. Admin can redeem those tokens by calling the public `withdrawToken` function (see [here](../technical-references/code/strategies/interfaces/IOfferLogic.md) for all public functions that our contract inherits from Direct). 
+Our maker contract is now complete and is now able to post offers on Mangrove when called (by admin) of `newOffer`. Its offer logic is simple: %%outbound|outbound%% tokens must be present in the contract when called by Mangrove and %%inbound|inbound%% tokens will be stored in the contract when the taker's payment is received. Admin can redeem those tokens by calling the public `withdrawToken` function (see [here](../technical-references/code/strategies/interfaces/IOfferLogic.md) for all public functions that our contract inherits from Direct). 
 
 ## Advanced Direct offer: liquidity amplification
 
 We now show how we can tweak our maker contract to do something more interesting that posting plain offers on Mangrove.
 
-Suppose we have a certain amount `N` of some `BASE` token and we wish to sell it on two markets at the same time. To simplify assume that `BASE` is some volatile asset and we wish to sell it for any of two(equivalent-ish) stables `STABLE1` and `STABLE2`. 
+Suppose we have a certain amount `N` of some `BASE` token and we wish to sell it on two markets at the same time. To simplify assume that `BASE` is some volatile asset like ETH and we wish to sell it for any of two (equivalent-ish) stables `STABLE1` and `STABLE2` (e.g. DAI and USDC).
 
-Of course if we offer twice `N` tokens on two offer lists and we only have a total of `N` tokens one of our offers will fail if both are taken.
+Of course if we offer twice `N` tokens on the (`BASE`, `STABLE1`) and the (`BASE`, `STABLE2`) %%offer lists|offer-list%%, one of our offers will fail if both are taken.
 
-We have two design choices here: either we let the second offer fail and compensate the taker with our offer's %%bounty|bounty%% or we incorporate in our offer logic that we wish to retract the second offer when the first one is taken. Let's follow the second design principle.
+We have two design choices here: either we let the second offer fail and compensate the taker with our offer's %%bounty|bounty%% or we incorporate in our offer logic that we wish to retract the second offer when the first one is taken. Let's follow the second design principle as it allows us to illustrate how to use offer logic's hooks to update offer prices or retract them.
 
 ### Amplifier's constructor
 
 We tweak the simple offer's constructor to take into account the additional gas requirement of the amplifier's logic, which now requires retracting the second offer each time an offer is taken. We also chose here to specialize our maker contract to a particular choice of `BASE`, `STABLE1` and `STABLE2` tokens.
 
-We also show how to use a simple router in order to use deployer's account as reserve. 
+We also show how to use a simple %%router|router%% in order to use deployer's account as %%reserve|reserve%%.
 
 ```solidity
 pragma solidity ^0.8.10;
@@ -138,14 +138,13 @@ contract Amplifier is Direct {
 I the above constructor we have not set deployer's reserve. By default this is interpreted as deployer's reserve is deployer's account. Deployer must therefore approve maker contract's router for outbound token transfer (see [approvals](../how-to-guides/approvals.md) for more details.)
 :::
 
-As in the example above, we need to create a way for the maker contract to post an offer. Here we will not follow the `IMakerLogic` interface (and therefore this contract will no longer be fully usable with the SDK) and use a custom way of posting two offers in the same transaction.
-
+As in the example above, we need to create a way for the maker contract to post an offer. Here we will not follow the `IMakerLogic` interface (and therefore this contract will no longer be fully usable with the SDK) and use a custom way of posting our two offers in the same transaction.
 
 ### Publishing amplified liquidity
 
 We already know some of the parameters of new offers beforehand, since we gave them in the constructor: we know the inbound and the outbound tokens of both offers. Besides this we don't want the %%offer owner|offer-owner%% to specify the gas price and gas requirement, but just use the standard implementations.  
 
-If the gas price is left at zero, then Mangrove will use its own gas price. And for the gas requirement, we can use the function ´offerGasreq()´ which returns the default gas requirement for the contract plus the gas requirement for the router. 
+If the gas price is left at zero, then Mangrove will use its own gas price. And for the gas requirement, we can use the function `offerGasreq()` which returns the default gas requirement for the contract plus the gas requirement for the router. 
 
 So we only have to provide the amount of `gives` which is the `BASE` token, and the amount of `STABLE1` and `STABLE2` (`wants1` & `wants2`) as well as the %%pivots|pivot-id%% for the to offers (`pivot1` & `pivot2`). As before, we only want the admin of the contract to able to post offers, so we keep the modifier `onlyAdmin`.
 
@@ -205,7 +204,7 @@ If both our amplified offers were once live on Mangrove, but are no longer (eith
 
 ### Updating under-collateralized offer on the fly
 
-Since we now can post new offers, one of these offers might be taken at some point. When this happens we wish to retract the other offer, which is now uncollateralized, in order to save the bounty. To do this we use the %%hook|hook%% `posthookSuccess`.
+Since we can now post new offers, one of these offers might be taken at some point. When this happens we wish to retract the other offer, which is now un(der)-collateralized, in order to save some %%provision|provision%%. To do this we use the %%hook|hook%% `posthookSuccess`.
 
 The first thing we want to do is use Directs inherited implementation of `posthookSuccess` which makes sure to repost the offer if it was partially taken. So the begining of our custom hook looks like:
 
@@ -261,9 +260,9 @@ if (repost_status == "posthook/reposted") {
 } // end if
 ```  
 
-Notice the use of the hook `__residualGives__` in the above code snippet. It returns what the offer, whose logic is currently execute, will give when reposted. By default, this is simply what the offer was originally giving, minus what the maker partial fill.
+Notice the use of the hook `__residualGives__` in the above code snippet. It returns what the offer, whose logic is currently execute, will give when reposted. By default, this is simply what the offer was originally giving, minus what it is giving to the the taker in the current offer logic's execution.
 
-We cannot use `__residualWants__` for the other offer because we cannot assume both `STABLE1` and `STABLE2` have the same decimals (we only assume here that they have the same value with respect to `BASE`).
+We cannot use `__residualWants__` to deduce how much token the other offer should want because we cannot assume both `STABLE1` and `STABLE2` have the same decimals (we only assume here that they have the same value with respect to `BASE`).
 
 ### Retracting uncollateralized offer on the fly
 
