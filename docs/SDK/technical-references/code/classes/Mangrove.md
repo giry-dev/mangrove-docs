@@ -153,7 +153,7 @@ ___
 
 ▸ `Static` **connect**(`options?`): `Promise`<[`Mangrove`](Mangrove.md)\>
 
-Creates an instance of Mangrove Typescript object
+Creates an instance of the Mangrove Typescript object
 
 **`Example`**
 
