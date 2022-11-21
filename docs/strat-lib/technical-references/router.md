@@ -76,10 +76,8 @@ function checkList(IERC20 token, address reserve) external view;
 
 :::info Plug and play routing
 
-Since routers are autonomous smart contracts, it is possible to modify an offer logic without redeploying the corresponding maker contracts. The `setRouter` function of all library based maker contracts can be used to set a new router. However the gas requirement of the offer logic is impacted by the router's design. To cope with this, routers provide the `routerGaseq()` function that returns the amount of gas that is necessary to cover a call to `pull` and `push`. 
+Since routers are autonomous smart contracts, it is possible to modify an offer logic without redeploying the corresponding maker contracts. The `setRouter` function of all library based maker contracts can be used to set a new router. By setting a new router for the maker contract, you are indirectly modifying the offer logic of the contract. However the gas requirement of the offer logic is impacted by the router's design. To cope with this, routers provide the `routerGaseq()` function that returns the amount of gas that is necessary to cover a call to `pull` and `push`.
 
 Note that maker contracts' view `offerGasreq` returns the sum of the offer logic's raw %%`gasreq`|gasreq%% (without taking router into account) and the router specific `gasreq`
 
 :::
-
-
