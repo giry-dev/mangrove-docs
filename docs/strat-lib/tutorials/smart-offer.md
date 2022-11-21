@@ -41,7 +41,7 @@ https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab
 
 The abstract contract `Direct` has an internal function `_newOffer` for posting offers on Mangrove. We need to expose this, so that we can post offers using our contract.
 
-See [OfferArgs](../technical-references/APIReference.md) for an explanation of the parameters for posting an offer.
+See [OfferArgs](../technical-references/code/strategies/interfaces/IOfferLogic.md#offerargs) for an explanation of the parameters for posting an offer.
 
 Also see %%provision|provision%%, %%gasreq|gasreq%%, and %%pivotId|pivot-id%%, and %%offer list|offer-list%%.
 

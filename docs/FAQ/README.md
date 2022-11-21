@@ -20,7 +20,7 @@ The deployment addresses for the core contract for Mangrove, as well as the most
 </summary>
 Fees on Mangrove are paid by the taker: The fee is taken from the tokens that the taker has bought.
 
-Read more about fees here: [Taker fees](/docs/contracts/technical-references/governance-parameters/local-variables#taker-fees).
+Read more about fees here: [Taker fees](../contracts/technical-references/governance-parameters/local-variables.md#taker-fees).
 </details>
 
 <details><summary>
