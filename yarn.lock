@@ -1706,12 +1706,12 @@ __metadata:
 
 "@docusaurus-terminology/parser@patch:@docusaurus-terminology/parser@npm%3A1.3.0#./.yarn/patches/@docusaurus-terminology-parser-npm-1.3.0-aec379a90d.patch::locator=my-website%40workspace%3A.":
   version: 1.3.0
-  resolution: "@docusaurus-terminology/parser@patch:@docusaurus-terminology/parser@npm%3A1.3.0#./.yarn/patches/@docusaurus-terminology-parser-npm-1.3.0-aec379a90d.patch::version=1.3.0&hash=c6b398&locator=my-website%40workspace%3A."
+  resolution: "@docusaurus-terminology/parser@patch:@docusaurus-terminology/parser@npm%3A1.3.0#./.yarn/patches/@docusaurus-terminology-parser-npm-1.3.0-aec379a90d.patch::version=1.3.0&hash=b54e20&locator=my-website%40workspace%3A."
   dependencies:
     git-diff: ^2.0.6
     globby: ^11.0.1
     parse-md: ^2.0.4
-  checksum: f8da87e831a0964a1fa29a31f0fc8b17e66bac0ff45123ab3d1ee3016d261ffbe03826a856d8c23f4c7896596135afd85c9bce1a11fdfdac08842c07774574ec
+  checksum: f4046becce93e753ac88f5106c7f0c8c02af34e85da5d6aa81b29e0eb09a0e2f34236a713f664a41ebd45091a36a9778851b7b4c37e6643a57f27bb81597ae1b
   languageName: node
   linkType: hard
 
