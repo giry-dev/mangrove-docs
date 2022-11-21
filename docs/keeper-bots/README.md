@@ -4,9 +4,9 @@ sidebar_position: 1
 
 # Keeper Bots 🤖
 
-Keeper bots are an essential part of the Mangrove ecosystem that ensure a smooth experience for all.
+Keeper bots are an essential part of Mangrove ecosystem that ensure a smooth experience for all.
 
-There are two types of keeper bots in the Mangrove ecosystem:
+There are two types of keeper bots in Mangrove ecosystem:
 
 | Keeper bot            | Purpose                                                                                                                              | Operated by  |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------ |

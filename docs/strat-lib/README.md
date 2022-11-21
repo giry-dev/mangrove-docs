@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # What is the Strat Library? 📖
 
-The Mangrove strat library is a repository of Solidity code that will help you write a custom %%maker contracts|maker-contract%% able to manage offers on the Mangrove.
+The Mangrove strat library is a repository of Solidity code that will help you write a custom %%maker contracts|maker-contract%% able to post %%smart offers|smart-offer%% on Mangrove.
 
 The strat library provides several good starting points for writing your own custom maker contract for providing liquidity on Mangrove, but the library should be used responsibly.
 
@@ -14,7 +14,7 @@ The strat library provides several good starting points for writing your own cus
 
 The strat library is open source, and is provided freely to the community as a starting point for writing maker contracts. However, do note that the strat library as a whole may still contain bugs, and should be used responsibly and with care (see also [Safety first](#safety-first)).
 
-If you have questions about how to use the Strat library, which are not answered sufficiently in this documentation, do reach out on the Mangrove [Discord](https://discord.gg/rk9Qthz5YE). And pull requests to the strategy library are, of course, welcome!
+If you have questions about how to use the Strat library, which are not answered sufficiently in this documentation, do reach out on Mangrove [Discord](https://discord.gg/rk9Qthz5YE). And pull requests to the strategy library are, of course, welcome!
 
 ## How do I use the Strat Library?
 

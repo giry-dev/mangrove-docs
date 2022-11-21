@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Post a Smart Offer
 
-In this tutorial you will learn how to post a %%smart offer|smart-offer%% managed by your own maker contract and which simply transfers tokens to and from your reserve.
+In this tutorial you will learn how to post a %%smart offer|smart-offer%% managed by your own %%maker contract|maker-contract%% and which simply transfers tokens to and from your reserve.
 
 ## Prerequisites
 
@@ -95,7 +95,7 @@ Start another terminal and import environment variables again
 source .env
 ```
 
-Now, create the `OfferMakerTutorial` contract on the `anvil` node with your private key by pointing to its local `rpc-url`, and supplying the parameters for the Mangrove core contract (get it from [Addresses](../../contracts/technical-references/contract-addresses.md) for the network you have forked)
+Now, create the `OfferMakerTutorial` contract on the `anvil` node with your private key by pointing to its local `rpc-url`, and supplying the parameters for Mangrove core contract (get it from [Addresses](../../contracts/technical-references/contract-addresses.md) for the network you have forked)
 
 ```bash
 export MANGROVE=<contract address> # 0xabcd.... 
@@ -221,7 +221,7 @@ Towards the end of the trace you can find the function of `makerPosthook` being 
 
 The next step could be to publish the contract on mainnet by stopping Anvil and replacing the `--rpc-url $LOCAL_URL` in the above `create`, `activate`, and `approve` commands with `--rpc-url $RPC_URL` - and finally, the `newOffer` with sensible prices.
 
-To get a view of the order book the Mangrove UI can be used, or you can use the [SDK](../../SDK/getting-started/basic-offer.md).
+To get a view of the order book Mangrove UI can be used, or you can use the [SDK](../../SDK/getting-started/basic-offer.md).
 
 To get a better understanding of how tokens flow between taker, maker, Mangrove, and maker contracts like `OfferMakerTutorial`, see [Mangrove Offer](../explanations/offer-maker/mangrove-offer.md)
 

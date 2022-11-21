@@ -5,7 +5,7 @@ sidebar_position: 2
 
 ## Monitor Contract - `MgvOracle`
 
-As described in the section [Governance -> Global Variables](../governance-parameters/global-variables.md#gas-price-and-oracle), the Mangrove governance can configure Mangrove to use a separate Monitor Contract as a gas price and density oracle.
+As described in the section [Governance -> Global Variables](../governance-parameters/global-variables.md#gas-price-and-oracle), Mangrove governance can configure Mangrove to use a separate Monitor Contract as a gas price and density oracle.
 
 The `MgvOracle` contract is a simple contract that implements the Monitor interface and can be deployed by Mangrove governance to serve as a Monitor Contract. It serves as a bridge to an off-chain oracle for gas price and density. When deployed, this contract is configured with the address of a specified permissioned sender that is allowed to call the external functions to update the values for gas price and density that the oracle reports to Mangrove.
 

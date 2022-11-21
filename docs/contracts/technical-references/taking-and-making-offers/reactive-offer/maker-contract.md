@@ -119,7 +119,7 @@ import {IERC20, IMaker, SingleOrder, OrderResult, MgvStructs} from "src/MgvLib.s
 
 abstract contract MakerContract is IMaker {
     // context 
-    address MGV; // address of the Mangrove contract
+    address MGV; // address of Mangrove contract
     
     // Example of post-hook
     // if taker order was a success, try to repost residual offer at the same price

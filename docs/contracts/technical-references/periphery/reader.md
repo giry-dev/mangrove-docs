@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ## View Functions - `MgvReader`
 
-The `MgvReader` contract collects a number of view functions that provide convenient views on the Mangrove core state.
+The `MgvReader` contract collects a number of view functions that provide convenient views on Mangrove core state.
 
 ### Function `offerListEndPoints`
 

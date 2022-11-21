@@ -19,7 +19,7 @@ const FeatureList = [
     Svg: require('@site/static/img/chess-svgrepo-com.svg').default,
     description: (
       <>
-        Builders that want to develop their own market making strategies should read about <a href="./strat-lib/">the Mangrove Strat Library</a> with contract building blocks to help you write safe and efficient market making strats for Mangrove.
+        Builders that want to develop their own market making strategies should read about <a href="./strat-lib/">Mangrove Strat Library</a> with contract building blocks to help you write safe and efficient market making strats for Mangrove.
       </>
     ),
   },
@@ -39,7 +39,7 @@ const FeatureList = [
     Svg: require('@site/static/img/industrial-robot-factory-svgrepo-com.svg').default,
     description: (
       <>
-        Mangrovians who want contribute to the Mangrove ecosystem by building and running keeper bots should visit the dedicated section on <a href="./keeper-bots/">Keeper bots</a>.
+        Mangrovians who want contribute to Mangrove ecosystem by building and running keeper bots should visit the dedicated section on <a href="./keeper-bots/">Keeper bots</a>.
       </>
     ),
   },

@@ -8,16 +8,16 @@ sidebar_position: 7
 
 ### Offer logic should only be called by Mangrove
 
-External functions of the %%offer logic|offer-logic%%, `makerExecute` and `makerPosthook`, should only be callable if `msg.sender` is Mangrove. %%Maker contracts|maker-contract%% implemented with the strat library take care of this by construction.
+External functions of an %%offer logic|offer-logic%%, `makerExecute` and `makerPosthook`, should only be callable if `msg.sender` is Mangrove. %%Maker contracts|maker-contract%% implemented with the strat library take care of this by construction.
 
 ### Public functions that are called by offer logic
 It is sometimes convenient to define public function that can also be called internally during offer logic's execution. If such function needs to be restricted to privileged access, one cannot simply use `require(msg.sender == admin_address)` as `msg.sender` will be Mangrove when the function is called internally by the offer logic. Using a guard of the form `require(msg.sender == admin_address || msg.sender == mangrove_address)` will work though (notice that internal call preserves `msg.sender` of `makerExecute`).
 
 ## Token amounts
-%%Outbound|outbound%% and %%inbound|inbound%% tokens may have different decimals. Mangrove always use raw amounts.
+%%Outbound|outbound%% and %%inbound|inbound%% tokens may have different decimals. Mangrove always use raw amounts, so offer do not have directly a price but a %%wants|wants%% and a %%gives|gives%% both expressed in raw token amounts. 
 
 ## Which part of your %%Maker contract|maker-contract%% should not be in the %%offer logic|offer-logic%%?
-Functions in offer logic are automatically executed by Mangrove, who is then `msg.sender`. Beware that taker is not necessarily `tx.origin`, as a contract could be acting as a taker. If your logic is exploitable by price manipulation, this can be dangerous (last Look is there to protect). Dangers are: oracle manipulation, or liquiditation. Better have risky moves being admin controlled.
+Functions in offer logic are automatically executed by Mangrove, who is then `msg.sender`. Beware that taker is not necessarily `tx.origin`, as a contract could be acting as a taker. Importantly, make sure that your logic is not exploitable by context manipulation, which could force your offer to fail.
 
 ## How to factor your offer logic between %%`makerExecute`|makerExecute%% and %%`makerPosthook`|makerPosthook%%.
 

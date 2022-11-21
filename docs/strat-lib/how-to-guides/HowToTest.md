@@ -4,13 +4,13 @@ sidebar_position: 5
 
 # How to test your contract
 
-You have now created your contract and would like to test it. Mangrove offers a helper contract, that can help setup everything needed for writing a test using the Mangrove core protocol.
+You have now created your contract and would like to test it. Mangrove offers a helper contract, that can help setup everything needed for writing a test using Mangrove core protocol.
 
 When we write test we are going to be using the framework [Foundry](https://book.getfoundry.sh/). Foundry is a smart contract development toolchain.
 
 When explaining "how to test" we are going to use the Amplifier contract, created in [How to create a Direct contract](DirectHowTo.md).
 
-When creating your test, remember to use the naming convention `<name>.t.sol`, this way Foundry knows what files are test. The first thing to do is to import the relevant contracts. We are going to use `MangroveTest` which is a helper to setup the Mangrove protocol. This way you do not need to fork a existing chain, it can just deploy the Mangrove protocol for you before running your tests. It has many other helpers. We import `Polygon` which is a helper to fork the polygon chain, we do this because we want to use the real address for WETH, USDC and DAI. This is not necessary, one could just create some test tokens an use them. We import the Amplifier contract, because that is the contract we want to test. The last thing is `MgvStructs`, this helps with getting information about offers, which we need later in the test.
+When creating your test, remember to use the naming convention `<name>.t.sol`, this way Foundry knows what files are test. The first thing to do is to import the relevant contracts. We are going to use `MangroveTest` which is a helper to setup Mangrove protocol. This way you do not need to fork a existing chain, it can just deploy Mangrove protocol for you before running your tests. It has many other helpers. We import `Polygon` which is a helper to fork the polygon chain, we do this because we want to use the real address for WETH, USDC and DAI. This is not necessary, one could just create some test tokens an use them. We import the Amplifier contract, because that is the contract we want to test. The last thing is `MgvStructs`, this helps with getting information about offers, which we need later in the test.
 
 The console import is not needed, but can be very useful, if you want to log something during your test. Debugging solidity code is not that easy, so using console logs is sometimes faster.
 

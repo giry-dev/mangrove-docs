@@ -10,7 +10,7 @@ Offers on Mangrove may fail for a number of reasons:
 * The offer doesn't have (or cannot procure) the promised tokens
 * The offer chooses to renege on its promise
 * The code of a smart offer might have a bug
-* A bad actor has posted bad offers to sabotage the Mangrove community
+* A bad actor has posted bad offers to sabotage Mangrove community
 
 From the user's perspective, failing offers are a nuisance: They consume gas when running limit orders and they pollute the price and depth information of the market. It's important to note, that failing offers are only a nuisance, not a risk: Users are compensated for gas spent on making the offer fail and the limit avg. price will never be exceeded.
 
@@ -25,7 +25,7 @@ While we have to accept that offers may fail, we don't have to accept that they 
 
 When an offer fails, the taker receives a bounty in native token. The bounty is bigger than the gas used to make the offer fail and thus the taker is compensated for the wasted gas. But more importantly, it can be profitable to identify and snipe offers that will fail.
 
-This means that it can be profitable to run so-called %%cleaning bots|cleaning-bot%% that monitor the Mangrove order books and snipe any offer that will fail. Community members are encouraged to run such cleaning bots and thereby contribute to keeping Mangrove working optimally
+This means that it can be profitable to run so-called %%cleaning bots|cleaning-bot%% that monitor Mangrove order books and snipe any offer that will fail. Community members are encouraged to run such cleaning bots and thereby contribute to keeping Mangrove working optimally
 
 
 # Getting started with cleaning bots

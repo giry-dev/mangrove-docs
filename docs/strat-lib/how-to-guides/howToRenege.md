@@ -16,7 +16,7 @@ https://github.com/mangrovedao/mangrove-core/blob/d2bcb7dd1723569bb9c4449572c74a
 
 This override of the `__lastLook__` will renege if the offer is not fully taken. Note that since the %%provision|provision%% is lost as a bounty to the taker, care must be taken to select the right circumstances to renege. This uses the mechanisms for compensating the taker on failure, and therefore the maker should [renege early](../../contracts/explanations/taker-compensation.md#encouraging-early-renege).
 
-You can try and follow the [tutorial](../tutorials/smart-offer.md) that posts a smart offer, but instead using a contract that implements `__lastLook__` as shown here. When doing this, sniping only part of the offer, you will then see that `makerExecute` fails with the reason that the offer must be fully taken.
+You can try and follow the [tutorial](../tutorials/smart-offer.md) that posts a %%smart offer|smart-offer%%, but instead using a contract that implements `__lastLook__` as shown here. When doing this, sniping only part of the offer, you will then see that `makerExecute` fails with the reason that the offer must be fully taken.
 
 ```js
     │   │   └─ ← 0x0000000000000000000000000000000000000000000000000000000000000001

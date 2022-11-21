@@ -3,7 +3,7 @@ description: The most simple liquidity providing strategy, no offer logic, just 
 sidebar_position: 2
 ---
 
-# Post Simple Offer
+# Post a simple offer
 
 Posting a simple offer is also referred to as an %%on-the-fly offer|on-the-fly-offer%%.
 
@@ -24,12 +24,12 @@ Open your favorite javascript editor inside that folder.
 ### Import and connect
 
 1. The first thing needed is to import `dotenv`, this handles the `.env` file you added in the [preparation](./preparation.md).
-2. Then import both `Mangrove` and `ethers` from the Mangrove package. `ethers` will allow you to connect to a node and your wallet. `Mangrove` will allow you to connect to the Mangrove protocol.
+2. Then import both `Mangrove` and `ethers` from Mangrove package. `ethers` will allow you to connect to a node and your wallet. `Mangrove` will allow you to connect to Mangrove protocol.
 3. In order to connect to a chain you need a `RPC_URL`, this should have been set up in the `.env` file doing the [preparation](./preparation.md).
     - If you do not want to use a real chain, you can start up a local chain using `anvil` as described in [preparation](./preparation.md). If you do this, you have to replace `RPC_URL` with `LOCAL_URL`. This way you will be running on the local chain and not the real chain. Remember to start anvil in its own terminal.
 4. The same goes for connecting to your wallet, the `PRIVATE_KEY` is need in order to connect to your wallet.
     - You can also replace the `PRIVATE_KEY` with a key provided by anvil, if you don't want yo use your own account or simple don't have an account on the chain.
-5. Once you have connected your wallet, you can connect to the Mangrove protocol using your wallet.
+5. Once you have connected your wallet, you can connect to Mangrove protocol using your wallet.
 
 ```javascript reference
 https://github.com/mangrovedao/mangrove-ts/blob/bbb41b873cb235f106746f113c720ec80da1a4f7/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L1-L13

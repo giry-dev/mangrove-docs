@@ -1355,7 +1355,7 @@ They have the following fields:</p>
       <div class="hover-background"></div>
       <div class="left">
         <div class="blockComment"><ul>
-<li><a id="structs.js/gasbase"></a>  <code>offer_gasbase</code> represents the gas overhead used by processing the offer inside the Mangrove + the overhead of initiating an entire order.</li>
+<li><a id="structs.js/gasbase"></a>  <code>offer_gasbase</code> represents the gas overhead used by processing the offer inside Mangrove + the overhead of initiating an entire order.</li>
 </ul>
 <p>The gas considered ‘used’ by an offer is the sum of</p>
 <ul>
@@ -1368,16 +1368,16 @@ provision per unit of gas used. <code>gasprice</code> should approximate the ave
 price at offer creation time.</p>
 <p><code>offer_gasbase</code> is <em>24 bits wide</em> – note that if more room was needed, we could bring it down to 8 bits and have it represent 1k gas increments.</p>
 <p><code>offer_gasbase</code> is also the name of a local Mangrove
-parameters. When an offer is created, their current value is copied from the Mangrove local configuration.  The maker does not choose it.</p>
+parameters. When an offer is created, their current value is copied from Mangrove local configuration.  The maker does not choose it.</p>
 <p>So, when an offer is created, the maker is asked to provision the
 following amount of wei:</p>
 <pre><code>(gasreq + offer_gasbase) * gasprice
 </code></pre>
-<p>where <code>offer_gasbase</code> and <code>gasprice</code> are the Mangrove’s current configuration values (or a higher value for <code>gasprice</code> if specified by the maker).</p>
+<p>where <code>offer_gasbase</code> and <code>gasprice</code> are Mangrove’s current configuration values (or a higher value for <code>gasprice</code> if specified by the maker).</p>
 <p>When an offer fails, the following amount is given to the taker as compensation:</p>
 <pre><code>(gasused + offer_gasbase) * gasprice
 </code></pre>
-<p>where <code>offer_gasbase</code> and <code>gasprice</code> are the Mangrove’s current configuration values.  The rest is given back to the maker.</p>
+<p>where <code>offer_gasbase</code> and <code>gasprice</code> are Mangrove’s current configuration values.  The rest is given back to the maker.</p>
 </div>
       </div>
       <code class="right solidity">
@@ -1396,7 +1396,7 @@ following amount of wei:</p>
       <div class="hover-background"></div>
       <div class="left">
         <div class="blockComment"><ul>
-<li><code>gasprice</code> is in gwei/gas and <em>16 bits wide</em>, which accomodates 1 to ~65k gwei / gas.  <code>gasprice</code> is also the name of a global Mangrove parameter. When an offer is created, the offer’s <code>gasprice</code> is set to the max of the user-specified <code>gasprice</code> and the Mangrove’s global <code>gasprice</code>.</li>
+<li><code>gasprice</code> is in gwei/gas and <em>16 bits wide</em>, which accomodates 1 to ~65k gwei / gas.  <code>gasprice</code> is also the name of a global Mangrove parameter. When an offer is created, the offer’s <code>gasprice</code> is set to the max of the user-specified <code>gasprice</code> and Mangrove’s global <code>gasprice</code>.</li>
 </ul>
 </div>
       </div>
@@ -1619,7 +1619,7 @@ following amount of wei:</p>
       <div class="hover-background"></div>
       <div class="left">
         <div class="blockComment"><ul>
-<li><code>fee</code>, in basis points, of <code>outbound_tkn</code> given to the taker. This fee is sent to the Mangrove. Fee is capped to 5%.</li>
+<li><code>fee</code>, in basis points, of <code>outbound_tkn</code> given to the taker. This fee is sent to Mangrove. Fee is capped to 5%.</li>
 </ul>
 </div>
       </div>
@@ -2038,7 +2038,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p><a id="MgvLib/OrderResult"></a> <code>OrderResult</code> holds additional data for the maker and is given to them <em>after</em> they fulfilled an offer. It gives them their own returned data from the previous call, and an <code>mgvData</code> specifying whether the Mangrove encountered an error.</p>
+        <div class="blockComment"><p><a id="MgvLib/OrderResult"></a> <code>OrderResult</code> holds additional data for the maker and is given to them <em>after</em> they fulfilled an offer. It gives them their own returned data from the previous call, and an <code>mgvData</code> specifying whether Mangrove encountered an error.</p>
 </div>
       </div>
       <code class="right solidity">
@@ -2160,7 +2160,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
       <div class="hover-background"></div>
       <div class="left">
         <div class="blockComment"><ul>
-<li>Credit event occurs when an offer is removed from the Mangrove or when the <code>fund</code> function is called</li>
+<li>Credit event occurs when an offer is removed from Mangrove or when the <code>fund</code> function is called</li>
 </ul>
 </div>
       </div>
@@ -2586,7 +2586,7 @@ useless in client code.</p>
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p>Called after all offers of an order have been executed. Posthook of the last executed order is called first and full reentrancy into the Mangrove is enabled at this time. <code>order</code> recalls key arguments of the order that was processed and <code>result</code> recalls important information for updating the current offer. (see <a href="#MgvLib/OrderResult">above</a>)</p>
+        <div class="blockComment"><p>Called after all offers of an order have been executed. Posthook of the last executed order is called first and full reentrancy into Mangrove is enabled at this time. <code>order</code> recalls key arguments of the order that was processed and <code>result</code> recalls important information for updating the current offer. (see <a href="#MgvLib/OrderResult">above</a>)</p>
 </div>
       </div>
       <code class="right solidity">
@@ -3063,7 +3063,7 @@ useless in client code.</p>
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p><code>MgvRoot</code> and its descendants describe an orderbook-based exchange (“the Mangrove”) where market makers <em>do not have to provision their offer</em>. See <code>structs.js</code> for a longer introduction. In a nutshell: each offer created by a maker specifies an address (<code>maker</code>) to call upon offer execution by a taker. In the normal mode of operation, the Mangrove transfers the amount to be paid by the taker to the maker, calls the maker, attempts to transfer the amount promised by the maker to the taker, and reverts if it cannot.</p>
+        <div class="blockComment"><p><code>MgvRoot</code> and its descendants describe an orderbook-based exchange (“Mangrove”) where market makers <em>do not have to provision their offer</em>. See <code>structs.js</code> for a longer introduction. In a nutshell: each offer created by a maker specifies an address (<code>maker</code>) to call upon offer execution by a taker. In the normal mode of operation, Mangrove transfers the amount to be paid by the taker to the maker, calls the maker, attempts to transfer the amount promised by the maker to the taker, and reverts if it cannot.</p>
 <p>There is one Mangrove contract that manages all tradeable pairs. This reduces deployment costs for new pairs and lets market makers have all their provision for all pairs in the same place.</p>
 <p>The interaction map between the different actors is as follows:
 <img src="./contactMap.png" width="190%"></img></p>
@@ -3102,7 +3102,7 @@ useless in client code.</p>
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p><code>MgvRoot</code> contains state variables used everywhere in the operation of the Mangrove and their related function.</p>
+        <div class="blockComment"><p><code>MgvRoot</code> contains state variables used everywhere in the operation of Mangrove and their related function.</p>
 </div>
       </div>
       <code class="right solidity">
@@ -3452,10 +3452,10 @@ useless in client code.</p>
       <div class="hover-background"></div>
       <div class="left">
         <div class="blockComment"><p><a id="Mangrove/definition/liveMgvOnly"></a>
-In case of emergency, the Mangrove can be <code>kill</code>ed. It cannot be resurrected. When a Mangrove is dead, the following operations are disabled :</p>
+In case of emergency, Mangrove can be <code>kill</code>ed. It cannot be resurrected. When a Mangrove is dead, the following operations are disabled :</p>
 <ul>
 <li>Executing an offer</li>
-<li>Sending ETH to the Mangrove the normal way. Usual <a href="https://medium.com/@alexsherbuck/two-ways-to-force-ether-into-a-contract-1543c1311c56">shenanigans</a> are possible.</li>
+<li>Sending ETH to Mangrove the normal way. Usual <a href="https://medium.com/@alexsherbuck/two-ways-to-force-ether-into-a-contract-1543c1311c56">shenanigans</a> are possible.</li>
 <li>Creating a new offer</li>
 </ul>
 </div>
@@ -3481,7 +3481,7 @@ In case of emergency, the Mangrove can be <code>kill</code>ed. It cannot be resu
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p>When the Mangrove is deployed, all pairs are inactive by default (since <code>locals[outbound_tkn][inbound_tkn]</code> is 0 by default). Offers on inactive pairs cannot be taken or created. They can be updated and retracted.</p>
+        <div class="blockComment"><p>When Mangrove is deployed, all pairs are inactive by default (since <code>locals[outbound_tkn][inbound_tkn]</code> is 0 by default). Offers on inactive pairs cannot be taken or created. They can be updated and retracted.</p>
 </div>
       </div>
       <code class="right solidity">
@@ -4080,7 +4080,7 @@ In case of emergency, the Mangrove can be <code>kill</code>ed. It cannot be resu
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p>When an offer is deleted, it is marked as such by setting <code>gives</code> to 0. Note that provision accounting in the Mangrove aims to minimize writes. Each maker <code>fund</code>s the Mangrove to increase its balance. When an offer is created/updated, we compute how much should be reserved to pay for possible penalties. That amount can always be recomputed with <code>offerDetail.gasprice * (offerDetail.gasreq + offerDetail.offer_gasbase)</code>. The balance is updated to reflect the remaining available ethers.</p>
+        <div class="blockComment"><p>When an offer is deleted, it is marked as such by setting <code>gives</code> to 0. Note that provision accounting in Mangrove aims to minimize writes. Each maker <code>fund</code>s Mangrove to increase its balance. When an offer is created/updated, we compute how much should be reserved to pay for possible penalties. That amount can always be recomputed with <code>offerDetail.gasprice * (offerDetail.gasreq + offerDetail.offer_gasbase)</code>. The balance is updated to reflect the remaining available ethers.</p>
 <p>Now, when an offer is deleted, the offer can stay provisioned, or be <code>deprovision</code>ed. In the latter case, we set <code>gasprice</code> to 0, which induces a provision of 0. All code calling <code>dirtyDeleteOffer</code> with <code>deprovision</code> set to <code>true</code> must be careful to correctly account for where that provision is going (back to the maker’s <code>balanceOf</code>, or sent to a taker as compensation).</p>
 </div>
       </div>
@@ -4608,7 +4608,7 @@ In case of emergency, the Mangrove can be <code>kill</code>ed. It cannot be resu
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p>In the Mangrove, makers and takers call separate functions. Market makers call <code>newOffer</code> to fill the book, and takers call functions such as <code>marketOrder</code> to consume it.</p>
+        <div class="blockComment"><p>In Mangrove, makers and takers call separate functions. Market makers call <code>newOffer</code> to fill the book, and takers call functions such as <code>marketOrder</code> to consume it.</p>
 </div>
       </div>
       <code class="right solidity">
@@ -4704,8 +4704,8 @@ In case of emergency, the Mangrove can be <code>kill</code>ed. It cannot be resu
       <div class="left">
         <div class="blockComment"><p>The function <code>newOffer</code> is for market makers only; no match with the existing book is done. A maker specifies how much <code>inbound_tkn</code> it <code>wants</code> and how much <code>outbound_tkn</code> it <code>gives</code>.</p>
 <p>It also specify with <code>gasreq</code> how much gas should be given when executing their offer.</p>
-<p><code>gasprice</code> indicates an upper bound on the gasprice at which the maker is ready to be penalised if their offer fails. Any value below the Mangrove’s internal <code>gasprice</code> configuration value will be ignored.</p>
-<p><code>gasreq</code>, together with <code>gasprice</code>, will contribute to determining the penalty provision set aside by the Mangrove from the market maker’s <code>balanceOf</code> balance.</p>
+<p><code>gasprice</code> indicates an upper bound on the gasprice at which the maker is ready to be penalised if their offer fails. Any value below Mangrove’s internal <code>gasprice</code> configuration value will be ignored.</p>
+<p><code>gasreq</code>, together with <code>gasprice</code>, will contribute to determining the penalty provision set aside by Mangrove from the market maker’s <code>balanceOf</code> balance.</p>
 <p>Offers are always inserted at the correct place in the book. This requires walking through offers to find the correct insertion point. As in <a href="https://github.com/daifoundation/maker-otc/blob/f2060c5fe12fe3da71ac98e8f6acc06bca3698f5/src/matching_market.sol#L493">Oasis</a>, the maker should find the id of an offer close to its own and provide it as <code>pivotId</code>.</p>
 <p>An offer cannot be inserted in a closed market, nor when a reentrancy lock for <code>outbound_tkn</code>,<code>inbound_tkn</code> is on.</p>
 <p>No more than <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>32</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{32}-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> offers can ever be created for one <code>outbound_tkn</code>,<code>inbound_tkn</code> pair.</p>
@@ -4891,7 +4891,7 @@ In case of emergency, the Mangrove can be <code>kill</code>ed. It cannot be resu
 <li>The offer does not change its <code>gasreq</code></li>
 <li>The (<code>outbound_tkn</code>,<code>inbound_tkn</code>)'s <code>offer_gasbase</code> has not changed since the offer was last written</li>
 <li><code>gasprice</code> has not changed since the offer was last written</li>
-<li><code>gasprice</code> is greater than the Mangrove’s gasprice estimation</li>
+<li><code>gasprice</code> is greater than Mangrove’s gasprice estimation</li>
 </ol>
 </div>
       </div>
@@ -5294,7 +5294,7 @@ In case of emergency, the Mangrove can be <code>kill</code>ed. It cannot be resu
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p>A transfer with enough gas to the Mangrove will increase the caller’s available <code>balanceOf</code> balance. <em>You should send enough gas to execute this function when sending money to the Mangrove.</em></p>
+        <div class="blockComment"><p>A transfer with enough gas to Mangrove will increase the caller’s available <code>balanceOf</code> balance. <em>You should send enough gas to execute this function when sending money to Mangrove.</em></p>
 </div>
       </div>
       <code class="right solidity">
@@ -5602,7 +5602,7 @@ In case of emergency, the Mangrove can be <code>kill</code>ed. It cannot be resu
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p>If the offer is new, has a new <code>gasprice</code>, <code>gasreq</code>, or if the Mangrove’s <code>offer_gasbase</code> configuration parameter has changed, we also update <code>offerDetails</code>.</p>
+        <div class="blockComment"><p>If the offer is new, has a new <code>gasprice</code>, <code>gasreq</code>, or if Mangrove’s <code>offer_gasbase</code> configuration parameter has changed, we also update <code>offerDetails</code>.</p>
 </div>
       </div>
       <code class="right solidity">
@@ -6893,7 +6893,7 @@ Note that the <code>taker</code> can be anyone. This is safe when <code>taker ==
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p>Over the course of the market order, a penalty reserved for <code>msg.sender</code> has accumulated in <code>mor.totalPenalty</code>. No actual transfers have occured yet – all the ethers given by the makers as provision are owned by the Mangrove. <code>sendPenalty</code> finally gives the accumulated penalty to <code>msg.sender</code>.</p>
+        <div class="blockComment"><p>Over the course of the market order, a penalty reserved for <code>msg.sender</code> has accumulated in <code>mor.totalPenalty</code>. No actual transfers have occured yet – all the ethers given by the makers as provision are owned by Mangrove. <code>sendPenalty</code> finally gives the accumulated penalty to <code>msg.sender</code>.</p>
 </div>
       </div>
       <code class="right solidity">
@@ -7647,7 +7647,7 @@ Note that unlike general market order, the returned total values are <em>not</em
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p>Over the course of the snipes order, a penalty reserved for <code>msg.sender</code> has accumulated in <code>mor.totalPenalty</code>. No actual transfers have occured yet – all the ethers given by the makers as provision are owned by the Mangrove. <code>sendPenalty</code> finally gives the accumulated penalty to <code>msg.sender</code>.</p>
+        <div class="blockComment"><p>Over the course of the snipes order, a penalty reserved for <code>msg.sender</code> has accumulated in <code>mor.totalPenalty</code>. No actual transfers have occured yet – all the ethers given by the makers as provision are owned by Mangrove. <code>sendPenalty</code> finally gives the accumulated penalty to <code>msg.sender</code>.</p>
 </div>
       </div>
       <code class="right solidity">
@@ -8301,7 +8301,7 @@ Note that unlike general market order, the returned total values are <em>not</em
       <div class="left">
         <div class="blockComment"><p>The flashloan is executed by call to <code>flashloan</code>. If the call reverts, it means the maker failed to send back <code>sor.wants</code> <code>outbound_tkn</code> to the taker. Notes :</p>
 <ul>
-<li><code>msg.sender</code> is the Mangrove itself in those calls – all operations related to the actual caller should be done outside of this call.</li>
+<li><code>msg.sender</code> is Mangrove itself in those calls – all operations related to the actual caller should be done outside of this call.</li>
 <li>any spurious exception due to an error in Mangrove code will be falsely blamed on the Maker, and its provision for the offer will be unfairly taken away.</li>
 </ul>
 </div>
@@ -8383,7 +8383,7 @@ Note that unlike general market order, the returned total values are <em>not</em
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p>If configured to do so, the Mangrove notifies an external contract that a successful trade has taken place.</p>
+        <div class="blockComment"><p>If configured to do so, Mangrove notifies an external contract that a successful trade has taken place.</p>
 </div>
       </div>
       <code class="right solidity">
@@ -8487,7 +8487,7 @@ Note that unlike general market order, the returned total values are <em>not</em
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p>If configured to do so, the Mangrove notifies an external contract that a failed trade has taken place.</p>
+        <div class="blockComment"><p>If configured to do so, Mangrove notifies an external contract that a failed trade has taken place.</p>
 </div>
       </div>
       <code class="right solidity">
@@ -8535,7 +8535,7 @@ Note that unlike general market order, the returned total values are <em>not</em
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p>This code must be unreachable except if the call to flashloan went OOG and there is enough gas to revert here. <strong>Danger</strong>: if a well-crafted offer/maker pair can force a revert of <code>flashloan</code>, the Mangrove will be stuck.</p>
+        <div class="blockComment"><p>This code must be unreachable except if the call to flashloan went OOG and there is enough gas to revert here. <strong>Danger</strong>: if a well-crafted offer/maker pair can force a revert of <code>flashloan</code>, Mangrove will be stuck.</p>
 </div>
       </div>
       <code class="right solidity">
@@ -9129,8 +9129,8 @@ Note that unlike general market order, the returned total values are <em>not</em
 <p><strong>Incentive issue</strong>: if the gas price increases enough after an offer has been created, there may not be an immediately profitable way to remove the fake offers. In that case, we count on 3 factors to keep the book clean:</p>
 <ol>
 <li>Gas price eventually comes down.</li>
-<li>Other market makers want to keep the Mangrove attractive and maintain their offer flow.</li>
-<li>Mangrove governance (who may collect a fee) wants to keep the Mangrove attractive and maximize exchange volume.</li>
+<li>Other market makers want to keep Mangrove attractive and maintain their offer flow.</li>
+<li>Mangrove governance (who may collect a fee) wants to keep Mangrove attractive and maximize exchange volume.</li>
 </ol>
 </div>
       </div>
@@ -9189,7 +9189,7 @@ Note that unlike general market order, the returned total values are <em>not</em
 <li>Otherwise, the maker loses the cost of <code>gasused + offer_gasbase</code> gas. The gas price is estimated by <code>gasprice</code>.</li>
 <li>To create the offer, the maker had to provision for <code>gasreq + offer_gasbase</code> gas at a price of <code>offerDetail.gasprice</code>.</li>
 <li>We do not consider the tx.gasprice.</li>
-<li><code>offerDetail.gasbase</code> and <code>offerDetail.gasprice</code> are the values of the Mangrove parameters <code>config.offer_gasbase</code> and <code>config.gasprice</code> when the offer was created. Without caching those values, the provision set aside could end up insufficient to reimburse the maker (or to retribute the taker).</li>
+<li><code>offerDetail.gasbase</code> and <code>offerDetail.gasprice</code> are the values of Mangrove parameters <code>config.offer_gasbase</code> and <code>config.gasprice</code> when the offer was created. Without caching those values, the provision set aside could end up insufficient to reimburse the maker (or to retribute the taker).</li>
 </ul>
 </div>
       </div>
@@ -9316,7 +9316,7 @@ Note that unlike general market order, the returned total values are <em>not</em
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p>Post-trade, <code>payTakerMinusFees</code> sends what’s due to the taker and the rest (the fees) to the vault. Routing through the Mangrove like that also deals with blacklisting issues (separates the maker-blacklisted and the taker-blacklisted cases).</p>
+        <div class="blockComment"><p>Post-trade, <code>payTakerMinusFees</code> sends what’s due to the taker and the rest (the fees) to the vault. Routing through Mangrove like that also deals with blacklisting issues (separates the maker-blacklisted and the taker-blacklisted cases).</p>
 </div>
       </div>
       <code class="right solidity">

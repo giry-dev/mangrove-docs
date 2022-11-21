@@ -16,7 +16,7 @@ sidebar_position: 3
 | `uint`| `wants`| amount of outbound tokens that are required by the order (in max precision units of `outbound_tkn` ERC20). |
 | `uint`| `gives`| amount of inbound tokens that are given by the taker (in max precision units of `inbound_tkn` ERC20).|
 | `MgvStructs.OfferDetailPacked` | `offerDetail`| packing of the matched offer details|
-| `MgvStructs.GlobalPacked`| `global`| packing of the global parameters of the Mangrove that apply to this order|
+| `MgvStructs.GlobalPacked`| `global`| packing of the global parameters of Mangrove that apply to this order|
 | `MgvStructs.LocalPacked`| `local`| packing of the offer list parameters that apply to this order|
 
 ## MgvLib.OrderResult

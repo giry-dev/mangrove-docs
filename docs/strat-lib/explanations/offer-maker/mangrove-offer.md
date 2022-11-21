@@ -24,7 +24,7 @@ When an offer is taken, Mangrove transfers the funds from the taker to Mangrove 
 
 * [Put](../../technical-references/main-hooks.md#managing-takers-payment) is meant as an option for the maker to transfer the given funds from the contract to e.g. the reserve. This could be useful if you don't want to leave the funds on the contract.
 
-* [Get](../../technical-references/main-hooks.md#sourcing-liquidity) is meant as an option for the maker to transfer the funds, promised to taker the, from e.g. the reserve to the MangroveOffer contract. This could be useful if you don't want to have the promised funds laying on the contract.
+* [Get](../../technical-references/main-hooks.md#sourcing-liquidity) is meant as an option for the maker to transfer the funds, promised to taker the, from e.g. the reserve to MangroveOffer contract. This could be useful if you don't want to have the promised funds laying on the contract.
 
 ### Post trade hooks
 
@@ -36,7 +36,7 @@ The next hooks are called doing `makerPosthook`. This i called after the offer i
 
 ## Other maker contract's hooks
 
-Besides having hooks that can be overriden to customize the offer logic, MangroveOffer also offers two additional hooks, namely **Activate** and **Checklist**. Before an offer can be taken on Mangrove, Mangrove needs to have the correct approvals to transfer the tokens from the MangroveOffer contract to Mangrove. And if the contract is using a Router it also needs to approve the router to transfer the tokens from the contract. Both these hooks are helpers to setup the correct approvals.
+Besides having hooks that can be overriden to customize the offer logic, MangroveOffer also offers two additional hooks, namely **Activate** and **Checklist**. Before an offer can be taken on Mangrove, Mangrove needs to have the correct approvals to transfer the tokens from MangroveOffer contract to Mangrove. And if the contract is using a Router it also needs to approve the router to transfer the tokens from the contract. Both these hooks are helpers to setup the correct approvals.
 
 * **Checklist** is a hook that is meant for checking if a token as the correct approvals. MangroveOffer always starts by checking if Mangrove and maybe the router has correct approvals. After this check, the hook gets called. An example of how to use this hook, would be if you are using a router that tries to lend the funds. This probably needs additional approvals, this hook should then check if those approvals are made.
 
@@ -49,9 +49,9 @@ Here is list of all approval needed for MangroveOffer contract:
 * MangroveOffer contract must approve Mangrove to transfer outbound tokens. (Done by activate)
 * Mangrove contract must approve its router (if any) to transfer inbound tokens. (Done by activate)
 
-Besides the MangroveOffer contract giving approvals, the offer makers reserve needs to give this approval:
+Besides MangroveOffer contract giving approvals, the offer makers reserve needs to give this approval:
 
-* The offer makers reserve of the MangroveOffer contract must approve the router for outbound token transfer.
+* The offer makers reserve of MangroveOffer contract must approve the router for outbound token transfer.
 
 **CheckReserveApproval** is a hook that should check whether the reserve has approved the maker to use it. This is needed so that a maker don't use the reserve without the approval of the owner of the reserve. If this was allowed, it would be possible to set your reserve to the same as someone with a large amount of tokens and steal there tokens, when offers a taken. MangroveOffer has no default implementation. The hook is used, when the a maker tries to set their reserve.
 

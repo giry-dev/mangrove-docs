@@ -37,7 +37,7 @@ For Linux or macOS everything should work out of the box, if you are using Windo
 
 ## Create tutorial folder
 
-The tutorials can be run in an isolated folder where you install the Mangrove dependencies.
+The tutorials can be run in an isolated folder where you install Mangrove dependencies.
 
 Open a terminal and run the following commands:
 

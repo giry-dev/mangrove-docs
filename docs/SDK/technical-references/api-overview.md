@@ -163,11 +163,11 @@ const mgvDirectLP = await mgv.liquidityProvider(mgvMarket);
 
 :::info
 
-The EOA providing the liquidity for ask and bid offers emanating from a direct liquidity provider is the address of the [`mgv`](api-overview.md#mangrove)'s signer provided at the creation of the Mangrove instance.
+The EOA providing the liquidity for ask and bid offers emanating from a direct liquidity provider is the address of the [`mgv`](api-overview.md#mangrove)'s signer provided at the creation of Mangrove instance.
 
 :::
 
-For more complete experience of the Mangrove capabilities, on may rather post bids and asks via an offer logic `mgvLogic`. To do so, one does:
+For more complete experience of Mangrove capabilities, on may rather post bids and asks via an offer logic `mgvLogic`. To do so, one does:
 
 ```javascript
 const mgvOnchainLP = await mgvLogic.liquidityProvider(mgvMarket);

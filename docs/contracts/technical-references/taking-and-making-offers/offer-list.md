@@ -67,7 +67,7 @@ Taken together, the **wants** and **gives** values define 1) a max volume, 2) a 
 
 ### Gas required
 
-The maximum amount of gas the [Maker Contract](reactive-offer/maker-contract.md) managing the offer will be allowed to spend if called by the Mangrove.
+The maximum amount of gas the [Maker Contract](reactive-offer/maker-contract.md) managing the offer will be allowed to spend if called by Mangrove.
 
 :::info **Example**
 
