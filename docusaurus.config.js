@@ -14,8 +14,8 @@ const config = {
   tagline: 'Developer documentation for all things Mangrove',
   url: 'https://testnet.mangrove.exchange',
   baseUrl: '/',
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
   favicon: 'img/assets/mangrove_logo.png',
 
   // GitHub pages deployment config.
