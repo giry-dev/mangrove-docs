@@ -7,11 +7,11 @@ sidebar_position: 4
 
 ### Posting a new offer
 
-New offers should mostly be posted by [contracts](maker-contract.md) able to source liquidity when asked by Mangrove.&#x20;
+New offers should mostly be posted by [maker contracts](maker-contract.md) able to source liquidity when asked by Mangrove.
 
 :::info 
 
-`newOffer` is payable and can be used to credit the maker contract's balance on Mangrove on the fly. A non zero `msg.value` will allow Mangrove to credit maker contract's balance prior to locking the [provision](offer-provision.md) of the newly posted offer.
+`newOffer` is payable and can be used to credit the maker contract's balance on Mangrove on the fly. A non zero `msg.value` will allow Mangrove to credit the maker contract's balance prior to locking the %%provision|provision%% of the newly posted offer.
 
 :::
 
@@ -190,7 +190,7 @@ await tx.wait();
 * `inbound_tkn` address of the inbound token (that the offer will receive).
 * `wants` amount of inbound tokens requested by the offer. **Must** fit in a `uint96`.
 * `gives` amount of outbound \*\*\*\* tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t to `gasreq` and offer list's %%density|density%% parameter.
-* `gasreq` amount of gas that will be given to the offer's [account](maker-contract.md). **Must** fit in a `uint24` and be lower than gasmax. Should be sufficient to cover all calls to the maker contract's offer logic ([`makerExecute`](maker-contract.md#offer-execution) and [`makerPosthook`](maker-contract.md#offer-post-hook)). **Must** be compatible with the offered volume `gives` and the offer list's %%density|density%% parameter.
+* `gasreq` amount of gas that will be given to the offer's [account](maker-contract.md). **Must** fit in a `uint24` and be lower than gasmax. Should be sufficient to cover all calls to the maker contract's offer logic ([`makerExecute`](maker-contract.md#offer-execution) and [`makerPosthook`](maker-contract.md#offer-post-hook)). **Must** be compatible with the offered volume `gives` and the offer list's %%density|density%% parameter. See also %%gasreq|gasreq%%.
 * `gasprice` gas price override used to compute the order provision (see [offer bounties](offer-provision.md)). Any value lower than Mangrove's current %%gasprice|gasprice%% will be ignored (thus 0 means "use Mangrove's current %%gasprice|gasprice%% "). **Must** fit in a `uint16`.
 * `pivotId` where to start the insertion process in the offer list. If `pivotId` is not in the offer list at the time the transaction is processed, the new offer will be inserted starting from the offer list's [best](./#getting-current-best-offer-of-a-market) offer. Should be the id of the existing live offer with the price closest to the price of the offer being posted.
 

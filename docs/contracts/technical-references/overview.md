@@ -28,7 +28,7 @@ Takers may typically operate via a web front-end or with the help of the TypeScr
 
 Makers own [offers](taking-and-making-offers/reactive-offer/README.md), which live in [offer lists](taking-and-making-offers/offer-list.md) in the Mangrove order book, that react to [offer execution](taking-and-making-offers/reactive-offer/executing-offers.md).
 
-As a maker, when you post an offer your address is recorded on Mangrove and will be called back when your offer is matched by a taker order. If this address is that of [maker contract](taking-and-making-offers/reactive-offer/maker-contract.md) it will be given the opportunity to execute its %%offer logic|offer-logic%%. More precisely, the maker contract is called twice by the Mangrove protocol: first [*when*](taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution) your offer is [taken](taking-and-making-offers/taker-order/README.md), and a second time [*after*](taking-and-making-offers/reactive-offer/maker-contract.md#trade-posthook) your offer was [taken](taking-and-making-offers/taker-order/README.md). 
+As a maker, when you post an offer your address is recorded on Mangrove and will be called back when your offer is matched by a taker order. If this address is that of [maker contract](taking-and-making-offers/reactive-offer/maker-contract.md) it will be given the opportunity to execute its %%offer logic|offer-logic%%. More precisely, the maker contract is called twice by the Mangrove protocol: first [*when*](taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution) your offer is [taken](taking-and-making-offers/taker-order/README.md), and a second time [*after*](taking-and-making-offers/reactive-offer/maker-contract.md#trade-posthook) your offer was taken.
 
 ### When an offer is taken
 
@@ -43,10 +43,10 @@ Mangrove calls the maker contract a [second time](taking-and-making-offers/react
 This allows makers to repost an offer in order to publish their liquidity instantly, in a manner similar to Automated Market Makers (AMMs). 
 
 ## Call sequence overview
-The diagram below summarizes the call sequence induced by a taker order.
+
+The diagram below summarizes the call sequence induced by a taker order. Notice that first `makerExecute` functions is executed for all offers, and only after that are the offer's `makerPosthook` functions executed.
 
 ![Mangrove call sequence induced by a taker order](../../../static/img/assets/execution.png)
-
 
 ## Where can I read more?
 
