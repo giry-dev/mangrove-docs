@@ -23,7 +23,7 @@ In the trace you can find `OfferMakerTutorial::makerExecute` and `OfferMakerTuto
 
 When using the strat lib, then the gas usage from the %%router|router%% is automatically added by the library and should be subtracted from the measured total. Your own router would have to measure its worst case cost and provide it as part of its parameters.
 
-In our case the gas usage was `45,658` and `1,659`, and since there is no router used, we don't have special code in [`posthookFallback`](./TODOnatspec) for this strat, we have to account for a small overhead in mangrove for gas accounting, and Foundry's traces leave some gas [unaccounted for](https://book.getfoundry.sh/forge/traces#understanding-traces) then setting the gasreq to `70,000` for this contract is a good choice. However, note that the default [`posthookSuccess`](./TODOnatspec) can repost an offer for the residual if not fully taken and that would require some gas. See how-to on [residual](../how-to-guides/howToResidual.md) for more details.
+In our case the gas usage was `45,658` and `1,659`, and since there is no router used, we don't have special code in [`posthookFallback`](../technical-references/code/strategies/MangroveOffer.md#posthookfallback) for this strat, we have to account for a small overhead in mangrove for gas accounting, and Foundry's traces leave some gas [unaccounted for](https://book.getfoundry.sh/forge/traces#understanding-traces) then setting the gasreq to `70,000` for this contract is a good choice. However, note that the default [`posthookSuccess`](../technical-references/code/strategies/MangroveOffer.md#posthooksuccess) can repost an offer for the residual if not fully taken and that would require some gas. See how-to on [residual](../how-to-guides/howToResidual.md) for more details.
 
 For more complete gas consumption analysis for a larger contract it can be helpful to use Foundry's [gas tracking](https://book.getfoundry.sh/forge/gas-tracking) features.
 
@@ -36,9 +36,9 @@ Here are some common operations and their approximate gas consumption:
 | Simple [Direct](../explanations/offer-maker/direct.md) contract   | 30,000   |
 | ERC20 transfer | 25,000 (worst case is when transferring to account with 0 balance)      |
 | AAVE redeem/borrow | 300,000 |
-| [updateOffer](./TODOnatsspec) without changing the price | 20,000 |
-| [retractOffer](./TODOnatsspec) without deprovision | 10,000 |
-| [retractOffer](./TODOnatsspec) with deprovision | 50,000 |
+| [updateOffer](../technical-references/code/strategies/offer_maker/abstract/Direct.md#updateoffer) without changing the price | 20,000 |
+| [retractOffer](../technical-references/code/strategies/offer_maker/abstract/Direct.md#retractoffer) without deprovision | 10,000 |
+| [retractOffer](../technical-references/code/strategies/offer_maker/abstract/Direct.md#retractoffer) with deprovision | 50,000 |
 | Ethereum opcodes | [See ethereum documentation](https://ethereum.org/en/developers/docs/evm/opcodes/) |
 | Set cold storage value `x!=0` to `x!=0` | 3,000 |
 | Set cold storage value `x==0` to `x!=0` | 20,000 |

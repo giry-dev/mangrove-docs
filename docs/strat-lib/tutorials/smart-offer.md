@@ -169,7 +169,7 @@ cast send --rpc-url $LOCAL_URL "$WETH" "approve(address, uint)" "$OFFER_MAKER" 1
 
 Alternatively, the admin could transfer tokens to the contract and lock them until the offer is taken or the tokens are withdrawn.
 
-The `OfferMakerTutorial` uses the approval to transfer funds from the admin, but this could also involve a %%router|router%% and require additional approvals depending on the scenario. See [approvals](./TODOapprovals) for more details.
+The `OfferMakerTutorial` uses the approval to transfer funds from the admin, but this could also involve a %%router|router%% and require additional approvals depending on the scenario. See [approvals](../how-to-guides/approvals.md) for more details.
 
 #### Mint
 

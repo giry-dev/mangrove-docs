@@ -7,7 +7,7 @@ sidebar_position: 3
 
 ## Intro
 
-This section will go through how to create a fill or kill ([FoK](TODO)) order using mangrove.js.
+This section will go through how to create a fill or kill ([FoK](https://www.investopedia.com/terms/f/fok.asp)) order using mangrove.js.
 
 We assume you know how to connect to Mangrove protocol. We are going to be buying 2000 USDC at a maximum avg. price of 1.3. It is a requirement for this script to have enough USDC. If you do not have enough USDC, you can use a testnet and mint some USDC. This can either be done by going to our [dApp](https://testnet.mangrove.exchange/faucet) or by minting directly in the [script](https://github.com/mangrovedao/mangrove-ts/blob/23240214a98c8d47769844b674eac3fe2b5e1781/packages/mangrove.js/examples/how-tos/fill-or-kill.js) (see the commented lines in the script about minting).
 
@@ -31,7 +31,7 @@ https://github.com/mangrovedao/mangrove-ts/blob/23240214a98c8d47769844b674eac3fe
 
 If you log the asks for the market before buying and after buying, you will be able to see that the first 3 offers were taken. Offers 1669, 3344 and 1157 were all taken. But when we look at the result of the Fill or Kill order, we see that we got a %%bounty|bounty%%. This means that one of the offers failed and we got a bounty for making the offer fail.
 
-<!-- TODO: add info when we have a decent result, e.g. when the arrays for success and failure aren't empty and the user can actually see what offers failed and what offers succeeded -->
+<!-- TODO: add info when we have a decent result, e.g. when the arrays for success and failure aren't empty and the user can actually see what offers failed and what offers succeeded, see this issue https://github.com/mangrovedao/mangrove-ts/issues/862 -->
 
 <!-- TODO: We should have a section where the FoK order fails, do to not being able to complete the order fully. "noPartialFill"-->
 
