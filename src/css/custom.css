@@ -3,9 +3,10 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-
+ @import url('https://fonts.googleapis.com/css2?family=Exo:wght@100;800&family=Inter:wght@400;500;600;700&display=swap');
 /* You can override the default Infima variables here. */
 :root {
+  --ifm-font-family-base: 'Inter';
   --ifm-color-primary: #2e4385;
   --ifm-color-primary-dark: #293c78;
   --ifm-color-primary-darker: #273971;
@@ -25,6 +26,11 @@
   --ifm-color-primary-lighter: #3181d8;
   --ifm-color-primary-lightest: #4e93dd;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Exo', sans-serif;
+}
+
 table {
   display: inline-table;
   width: 100%;
