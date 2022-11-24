@@ -33,7 +33,7 @@ If you log the asks for the market before buying and after buying, you will be a
 
 <!-- TODO: add info when we have a decent result, e.g. when the arrays for success and failure aren't empty and the user can actually see what offers failed and what offers succeeded, see this issue https://github.com/mangrovedao/mangrove-ts/issues/862 -->
 
-<!-- TODO: We should have a section where the FoK order fails, do to not being able to complete the order fully. "noPartialFill"-->
+<!-- TODO: We should have a section where the FoK order fails, do to not being able to complete the order fully. "noPartialFill". After this issue, https://github.com/mangrovedao/mangrove-ts/issues/862, has been fixed, this section can reasonably be added (as we then have better return value). -->
 
 ```js title="Asks before fill or kill order"
 > market.consoleAsks();
