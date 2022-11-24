@@ -36,7 +36,7 @@ If the offer succeeds, the gas costs for the [execution of the trade](../contrac
 ## What happens when an offer fails?
 </summary>
 
-Offers in the order book may fail when taken, either because the maker consciously chose to [renege on the offer to trade](../contracts/explanations/taker-compensation.md), or because the maker contract reverted for other reasons. In that case, the taker has wasted some gas and will be compensated using the [offer provision](../contracts/technical-references/taking-and-making-offers/reactive-offer/offer-provision.md) (in native token) that the maker has deposited in Mangrove.
+Offers in the order book may fail when taken, either because the maker consciously chose to [renege on the offer to trade](../contracts/background/taker-compensation.md), or because the maker contract reverted for other reasons. In that case, the taker has wasted some gas and will be compensated using the [offer provision](../contracts/technical-references/taking-and-making-offers/reactive-offer/offer-provision.md) (in native token) that the maker has deposited in Mangrove.
 </details>
 
 <details><summary>

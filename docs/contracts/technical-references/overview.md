@@ -12,9 +12,9 @@ The illustration belows depicts a bird's-eye view of Mangrove ecosystem with the
 
 The three most important actors are:
 
-* [Offer makers](#makers), via a **maker contract**, add [liquidity promises](../explanations/offer-maker.md) to Mangrove. The **offer logic** of the maker contract is called by Mangrove whenever the offer is matched by a taker order (see also the call sequence [overview](#call-sequence-overview)).
+* [Offer makers](#makers), via a **maker contract**, add [liquidity promises](../background/offer-maker.md) to Mangrove. The **offer logic** of the maker contract is called by Mangrove whenever the offer is matched by a taker order (see also the call sequence [overview](#call-sequence-overview)).
     
-* [Takers](#takers) use Mangrove to [find liquidity](../explanations/offer-taker.md) by executing offers published on Mangrove.
+* [Takers](#takers) use Mangrove to [find liquidity](../background/offer-taker.md) by executing offers published on Mangrove.
 
 * [Governance](#governance) adjusts Mangrove [parameters](./governance-parameters/README.md) such as setting fees or opening and closing markets.
 
@@ -32,7 +32,7 @@ As a maker, when you post an offer your address is recorded on Mangrove and will
 
 ### When an offer is taken
 
-Mangrove calls the maker contract a [first time](taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution), via the callback function `makerExecute`, when an offer is matched by a taker order. This allows makers to source the liquidity *just-in-time* for the trade. It also allows the makers to [renege](../explanations/taker-compensation.md) on the offer to trade (e.g, because the market conditions changed) by incorporating defensive code in the maker contract.
+Mangrove calls the maker contract a [first time](taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution), via the callback function `makerExecute`, when an offer is matched by a taker order. This allows makers to source the liquidity *just-in-time* for the trade. It also allows the makers to [renege](../background/taker-compensation.md) on the offer to trade (e.g, because the market conditions changed) by incorporating defensive code in the maker contract.
 
 This implies that offers posted to Mangrove need not be fully provisioned. As a maker, your liquidity can be shared, borrowed, lent and, at the same time, be displayed in Mangrove's order book, ready to be sourced when, and only when, your offer is taken.
 

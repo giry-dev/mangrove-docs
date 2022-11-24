@@ -4,7 +4,7 @@ title: On-the-fly offer (OTF)
 hoverText: An offer that is not posted by a smart contract and that can only source liquidity from an EOA.
 ---
 
-An **On-the-fly offer** (OTF) can be listed on Mangrove but is not equipped with any on-chain [logic](../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md) that executes when the offer is taken. Whenever it is matched by a [taker order](contracts/explanations/offer-taker.md#taking-offers), the offer sources its liquidity on an [Externally Owned Account (EOA)](#externally-owned-account-eoa).
+An **On-the-fly offer** (OTF) can be listed on Mangrove but is not equipped with any on-chain [logic](../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md) that executes when the offer is taken. Whenever it is matched by a [taker order](contracts/background/offer-taker.md#taking-offers), the offer sources its liquidity on an [Externally Owned Account (EOA)](#externally-owned-account-eoa).
 
 :::caution
 
