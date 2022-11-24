@@ -61,7 +61,7 @@ https://github.com/mangrovedao/mangrove-ts/blob/3fcbba7737f5206e4e8392c94807ec38
 
 ### Update offer using OfferLogic
 
-When we updated our offer before, we used a `liquidityProvider` and we created this using Mangrove. This means that when we updated our offer, we did using Mangrove directly. But if you have your own contract with your own update offer logic, you can use that by creating an [`OfferLogic`](../technical-references/code/classes/OfferLogic). This is simply done by calling the constructor with Mangrove, your contracts address and if your contract is a [forwarder](../../strat-lib/explanations/offer-maker/forwarder.md).
+When we updated our offer before, we used a `liquidityProvider` and we created this using Mangrove. This means that when we updated our offer, we did using Mangrove directly. But if you have your own contract with your own update offer logic, you can use that by creating an [`OfferLogic`](../technical-references/code/classes/OfferLogic). This is simply done by calling the constructor with Mangrove, your contracts address and if your contract is a [forwarder](../../strat-lib/background/offer-maker/forwarder.md).
 
 ```js reference
 https://github.com/mangrovedao/mangrove-ts/blob/3fcbba7737f5206e4e8392c94807ec38dd65f391/packages/mangrove.js/examples/how-tos/update-offer.js#L44-L48

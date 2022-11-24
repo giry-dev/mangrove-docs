@@ -33,7 +33,7 @@ Here are some common operations and their approximate gas consumption:
 
 | Operation | Approximate Gas |
 | ---- | -------- |
-| Simple [Direct](../explanations/offer-maker/direct.md) contract   | 30,000   |
+| Simple [Direct](../background/offer-maker/direct.md) contract   | 30,000   |
 | ERC20 transfer | 25,000 (worst case is when transferring to account with 0 balance)      |
 | AAVE redeem/borrow | 300,000 |
 | [updateOffer](../technical-references/code/strategies/offer_maker/abstract/Direct.md#updateoffer) without changing the price | 20,000 |

@@ -17,7 +17,7 @@ It is assumed that the `ADMIN_ADDRESS` has enough native tokens to complete the 
 
 ## Simple maker contract (offer logic)
 
-We want to create a new contract `OfferMakerTutorial` to implement %%offer logic|offer-logic%% and utilize the `Direct` contract in our strat-library for this purpose. `Direct` provides a safety harness to make it easier to correctly interact with Mangrove, you can read more about it [here](../explanations/offer-maker/direct.md).
+We want to create a new contract `OfferMakerTutorial` to implement %%offer logic|offer-logic%% and utilize the `Direct` contract in our strat-library for this purpose. `Direct` provides a safety harness to make it easier to correctly interact with Mangrove, you can read more about it [here](../background/offer-maker/direct.md).
 
 Create a new `OfferMakerTutorial.sol` file in the `src` folder and add the following pieces.
 
@@ -223,7 +223,7 @@ The next step could be to publish the contract on mainnet by stopping Anvil and 
 
 To get a view of the order book Mangrove UI can be used, or you can use the [SDK](../../SDK/getting-started/basic-offer.md).
 
-To get a better understanding of how tokens flow between taker, maker, Mangrove, and maker contracts like `OfferMakerTutorial`, see [Mangrove Offer](../explanations/offer-maker/mangrove-offer.md)
+To get a better understanding of how tokens flow between taker, maker, Mangrove, and maker contracts like `OfferMakerTutorial`, see [Mangrove Offer](../background/offer-maker/mangrove-offer.md)
 
 ### Troubleshooting
 
