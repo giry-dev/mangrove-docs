@@ -28,7 +28,7 @@ To get an idea of what it is all about, you can try out the [smart offer](./tuto
 
 ### Customizing the strat using hooks
 
-Default behavior of maker contracts built on top of Mangrove's strat library can be modified by overriding various %%hooks|hook%%, see [how-to's](./how-to-guides/DirectHowTo.md) for some concrete examples.
+Default behavior of maker contracts built on top of Mangrove's strat library can be modified by overriding various %%hooks|hook%%, see [how-to's](./guides/DirectHowTo.md) for some concrete examples.
 
 ### Advanced cash management
 
@@ -36,6 +36,6 @@ The strat library also provides [router building blocks](./technical-references/
 
 ### Safety first
 
-Writing a maker contract that will post and update offers on Mangrove exposes you to smart contract risks. We recommend reading some important [developer guidelines](./how-to-guides/HowToImplement.md) on the topic to understand better important design principles you should follow.
+Writing a maker contract that will post and update offers on Mangrove exposes you to smart contract risks. We recommend reading some important [developer guidelines](./guides/HowToImplement.md) on the topic to understand better important design principles you should follow.
 
 

@@ -31,7 +31,7 @@ https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab
 
 ### Constructor
 
-Add the contract and the code for the construct. We will skip some details here, which you can read more about later; %%routers|router%%, %%gas requirements|gasreq%%, and [deployment scripts](../how-to-guides/HowToDeploy.md).
+Add the contract and the code for the construct. We will skip some details here, which you can read more about later; %%routers|router%%, %%gas requirements|gasreq%%, and [deployment scripts](../guides/HowToDeploy.md).
 
 ```solidity reference title="OfferMakerTutorial.sol"
 https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L12-L22
@@ -169,7 +169,7 @@ cast send --rpc-url $LOCAL_URL "$WETH" "approve(address, uint)" "$OFFER_MAKER" 1
 
 Alternatively, the admin could transfer tokens to the contract and lock them until the offer is taken or the tokens are withdrawn.
 
-The `OfferMakerTutorial` uses the approval to transfer funds from the admin, but this could also involve a %%router|router%% and require additional approvals depending on the scenario. See [approvals](../how-to-guides/approvals.md) for more details.
+The `OfferMakerTutorial` uses the approval to transfer funds from the admin, but this could also involve a %%router|router%% and require additional approvals depending on the scenario. See [approvals](../guides/approvals.md) for more details.
 
 #### Mint
 

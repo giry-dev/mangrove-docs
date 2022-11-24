@@ -8,4 +8,4 @@ An offer logic may use an offer logic that has _amplified liquidity_ by offering
 
 ## References
 
-* [Amplifier](../strat-lib/how-to-guides/DirectHowTo.md#advanced-direct-offer-liquidity-amplification)
+* [Amplifier](../strat-lib/guides/DirectHowTo.md#advanced-direct-offer-liquidity-amplification)

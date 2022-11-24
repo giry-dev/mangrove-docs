@@ -12,5 +12,5 @@ The required gas depends on the actual code path taken in the contract, so it sh
 * Underestimating gasreq: if offer logic runs out of gas during `makerExecute`, the maker is penalized and the taker gets a bounty. If `makerPosthook` runs out of gas, it is not executed (and offer bookkeeping that should have occurred in posthook is lost).
 * Overestimating gasreq: offer is seen as less attractive for a taker (see [offer rank](../offer-list.md#offer-rank)) and requires more provision, it also requires more outbound token volume (to match %%density|density%%).
 
-To get an idea of the gasreq for your contract, see [How to determine gas requirements](../../../../strat-lib/how-to-guides/howtoGasreq.md) which also covers extra details when using the strat library.
+To get an idea of the gasreq for your contract, see [How to determine gas requirements](../../../../strat-lib/guides/howtoGasreq.md) which also covers extra details when using the strat library.
 

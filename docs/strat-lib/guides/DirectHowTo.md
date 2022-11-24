@@ -140,7 +140,7 @@ contract Amplifier is Direct {
 
 :::caution Admin's reserve
 
-In the above constructor we have not set deployer's reserve. By default this sets deployer's reserve as deployer's address. Deployer must therefore approve maker contract's router for outbound token transfer (see [approvals](../how-to-guides/approvals.md) for more details.)
+In the above constructor we have not set deployer's reserve. By default this sets deployer's reserve as deployer's address. Deployer must therefore approve maker contract's router for outbound token transfer (see [approvals](../guides/approvals.md) for more details.)
 
 :::
 

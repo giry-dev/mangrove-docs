@@ -8,4 +8,4 @@ The `gasreq` of an offer is an upper bound on the gas units that the offer requi
 
 ## References
 * [Technical reference](../contracts/technical-references/taking-and-making-offers/reactive-offer/gas-requirement.md) for details.
-* [How to](../strat-lib/how-to-guides/howtoGasreq.md)
+* [How to](../strat-lib/guides/howtoGasreq.md)
