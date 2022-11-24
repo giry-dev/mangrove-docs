@@ -5,13 +5,13 @@ sidebar_position: 2
 
 # How to repost an offer in the posthook
 
-In the [smart offer tutorial](../tutorials/smart-offer.md) the offer was fully taken by the taker at the end.
+In the [smart offer tutorial](../getting-started/smart-offer.md) the offer was fully taken by the taker at the end.
 
 In case a offer is partially taken, the maker may want to repost a new offer for the residual.
 
 ## Repost in posthook
 
-In the tutorials [posthook](../tutorials/smart-offer.md#emit-in-posthook) emitted an event. However, since reposting is such a common action, it is already implemented for the simple cases - if you invoke `super` like below, then the base implementation of [`__posthookSuccess__`](../technical-references/code/strategies/MangroveOffer.md#posthooksuccess) will repost the residual.
+In the tutorials [posthook](../getting-started/smart-offer.md#emit-in-posthook) emitted an event. However, since reposting is such a common action, it is already implemented for the simple cases - if you invoke `super` like below, then the base implementation of [`__posthookSuccess__`](../technical-references/code/strategies/MangroveOffer.md#posthooksuccess) will repost the residual.
 
 ```solidity reference title="OfferMakerTutorial.sol"
 https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorialResidual.sol#L69-L81

@@ -9,7 +9,7 @@ Determining %%gas requirements (gasreq)|gasreq%% for your offer logic in a maker
 
 To determine the gasreq, you can measure the worst case gas usage when %%`makerExecute`|makerExecute%% and %%`makerPosthook`|makerPosthook%% are called. There could be exception cases which are very gas costly where you simply want the offer to fail instead, and you could skip those.
 
-Measuring gas usage can be done with Foundry - in the [smart offer tutorial](../tutorials/smart-offer.md) you can see how to make and take orders with your contract, and using `cast run [transactionHash]` you can find the actual gas usage. Bear in mind that all relevant code paths should be hit, the tutorial only covers the happy path of `makerExecute` followed by `makerPosthook` with a successful trade.
+Measuring gas usage can be done with Foundry - in the [smart offer tutorial](../getting-started/smart-offer.md) you can see how to make and take orders with your contract, and using `cast run [transactionHash]` you can find the actual gas usage. Bear in mind that all relevant code paths should be hit, the tutorial only covers the happy path of `makerExecute` followed by `makerPosthook` with a successful trade.
 
 Note, that the tutorial did not implement either `makerExecute` or `makerPosthook` as they are implemented by the strat lib and in turn invoke actual strategy through a template method pattern.
 

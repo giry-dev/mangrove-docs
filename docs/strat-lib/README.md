@@ -24,7 +24,7 @@ Depending on the complexity of the %%offer logic|offer-logic%% your contract imp
 
 However, we suggest utilizing the building blocks in the strat lib. The first design choice is to decide whether owning offers posted by your contract is the sole privilege of the contract's admin or whether your contract's logic wishes to support multiple offer owners, in a permissionless fashion. In the first case, you want your contract to inherit [Direct](./background/offer-maker/direct.md), in the latter you want to start from a [Forwarder](./background/offer-maker/forwarder.md) contract which has a pre-established code infrastructure to handle multiple ownership.
 
-To get an idea of what it is all about, you can try out the [smart offer](./tutorials/smart-offer.md) tutorial to make a simple `Direct` maker contract.
+To get an idea of what it is all about, you can try out the [smart offer](./getting-started/smart-offer.md) tutorial to make a simple `Direct` maker contract.
 
 ### Customizing the strat using hooks
 
