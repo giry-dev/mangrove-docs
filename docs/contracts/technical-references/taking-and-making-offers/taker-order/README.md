@@ -238,7 +238,7 @@ await tx.wait();
 * `takerGot` is the net amount of _outbound_ tokens the taker has received (i.e after applying the offer list [fee](../../governance-parameters/local-variables.md#taker-fees) if any).
 * `takerGave` is the amount of _inbound_ tokens the taker has sent.
 * `bounty` is the amount of native tokens (in units of wei) the taker received in compensation for cleaning failing offers
-* `fee` is the amount of `outbound_tkn` that was sent to Mangrove's vault in payment of the potential %%fee|fee%% associated to the `(outbound_tkn, inbound_tkn)`[offer list](../offer-list.md#general-structure).&#x20;
+* `fee` is the amount of `outbound_tkn` that was sent to Mangrove's vault in payment of the potential %%fee|taker-fee%% associated to the `(outbound_tkn, inbound_tkn)`[offer list](../offer-list.md#general-structure).&#x20;
 
 :::tip **Specification**
 
