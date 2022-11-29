@@ -413,8 +413,8 @@ ___
 
 Market buy order. Will attempt to buy base token using quote tokens.
 Params can be of the form:
-- `{volume,price}`: buy `volume` base tokens for a max average price of `price`. Set `price` to null for a true market order. `fillWants` will be true.
-- `{total,price}` : buy as many base tokens as possible using up to `total` quote tokens, with a max average price of `price`. Set `price` to null for a true market order. `fillWants` will be false.
+- `{volume,price}`: buy `volume` base tokens for a max average price of `price`.
+- `{total,price}` : buy as many base tokens as possible using up to `total` quote tokens, with a max average price of `price`.
 - `{wants,gives,fillWants?}`: accept implicit max average price of `gives/wants`
 
 In addition, `slippage` defines an allowed slippage in % of the amount of quote token, and
@@ -429,7 +429,7 @@ Will stop if
 **`Example`**
 
 ```
-const market = await mgv.market({base:"USDC",quote:"DAI"}
+const market = await mgv.market({base:"USDC",quote:"DAI"};
 market.buy({volume: 100, price: '1.01'}) //use strings to be exact
 ```
 
@@ -456,8 +456,8 @@ ___
 
 Market sell order. Will attempt to sell base token for quote tokens.
 Params can be of the form:
-- `{volume,price}`: sell `volume` base tokens for a min average price of `price`. Set `price` to null for a true market order. `fillWants` will be false.
-- `{total,price}` : sell as many base tokens as possible buying up to `total` quote tokens, with a min average price of `price`. Set `price` to null. `fillWants` will be true.
+- `{volume,price}`: sell `volume` base tokens for a min average price of `price`.
+- `{total,price}` : sell as many base tokens as possible buying up to `total` quote tokens, with a min average price of `price`.
 - `{wants,gives,fillWants?}`: accept implicit min average price of `gives/wants`. `fillWants` will be false by default.
 
 In addition, `slippage` defines an allowed slippage in % of the amount of quote token, and
@@ -472,7 +472,7 @@ Will stop if
 **`Example`**
 
 ```
-const market = await mgv.market({base:"USDC",quote:"DAI"}
+const market = await mgv.market({base:"USDC",quote:"DAI"})
 market.sell({volume: 100, price: 1})
 ```
 

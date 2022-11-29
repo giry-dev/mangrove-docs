@@ -155,7 +155,7 @@ _the returned gasprice is slightly lower than the real gasprice that the provisi
 | ---- | ---- | ----------- |
 | gasreq | uint256 | the gas required by the offer |
 | provision | uint256 | the amount of native token one wishes to use, to provision the offer on Mangrove. |
-| offerGasbase | uint256 | Mangrove's offer_gasbase. |
+| offerGasbase | uint256 | the Mangrove's offer_gasbase. |
 
 #### Return Values
 

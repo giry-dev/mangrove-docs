@@ -132,6 +132,7 @@ ___
 | `maticmum.DAI` | `string` |
 | `maticmum.USDC` | `string` |
 | `maticmum.WETH` | `string` |
+| `local` | {} |
 
 #### Defined in
 
@@ -741,9 +742,9 @@ Read chain for decimals of `tokenName` on current network and save them
 
 ___
 
-### <a id="fetchalladdresses" name="fetchalladdresses"></a> fetchAllAddresses
+### <a id="watchlocaladdresses" name="watchlocaladdresses"></a> watchLocalAddresses
 
-▸ `Static` **fetchAllAddresses**(`provider`): `Promise`<`void`\>
+▸ `Static` **watchLocalAddresses**(`provider`): `Promise`<`void`\>
 
 Returns all addresses registered at the local server's Toy ENS contract.
 Assumes provider is connected to a local server (typically for testing/experimentation).
