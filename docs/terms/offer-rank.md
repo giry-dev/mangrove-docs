@@ -1,6 +1,6 @@
 ---
 id: offer-rank
-title: Offer rank
+title: Offer Rank
 hoverText: The position of an offer in an Offer List.
 ---
 

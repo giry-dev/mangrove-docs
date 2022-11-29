@@ -1,6 +1,6 @@
 ---
 id: taker-fee
-title: Taker fee
+title: Taker Fee
 hoverText: A portion of the tokens promised to the taker that are sent to the protocol's vault.
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: bounty
-title: Offer bounty
+title: Bounty
 hoverText: A portion of an offer provision that is sent to the taker to compensate a failure to deliver.
 ---
 
