@@ -1,6 +1,6 @@
 ---
 id: keeper-bot
-title: Keeper bot
+title: Keeper Bot
 hoverText: An off-chain bot that helps keep Mangrove functioning optimally.
 ---
 

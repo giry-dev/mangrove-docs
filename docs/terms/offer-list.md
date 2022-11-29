@@ -1,6 +1,6 @@
 ---
 id: offer-list
-title: Offer list
+title: Offer List
 hoverText: A list of offers on the same token pair, ranked from best price to worst price.
 ---
 

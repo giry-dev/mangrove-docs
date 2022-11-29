@@ -1,6 +1,6 @@
 ---
 id: on-the-fly-offer
-title: On-the-fly offer
+title: On-the-fly Offer
 hoverText: An offer posted by an EOA, in contrast with a smart offer, which is posted by a smart contract.
 ---
 
