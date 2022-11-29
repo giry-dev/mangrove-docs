@@ -53,9 +53,12 @@ table {
 }
 
 
-.navbar [data-theme='dark']{
+.navbar {
   /* make room for headings that break in two lines */
   min-height: 70px;
+}
+
+[data-theme='dark'] .navbar {
   background-color: #1a1f30;
 }
 
