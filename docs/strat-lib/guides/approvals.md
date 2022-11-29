@@ -38,7 +38,7 @@ As drawn, the [call sequence diagram](#call-sequence-overview) depicts a situati
 
 As an outset, the administrator of the maker contract and any other contracts involved in trade settlement initiated by Mangrove must ensure that the proper approvals for liquidity flow is in place before offers are executed. 
 
-For maker contracts building on top of the building blocks provided by the Strat Lib, we comment on two noteworthy advanced making strategies below.
+For maker contracts that are built using the Strat Lib, the default behavior of the %%offer logic|offer-logic%% is to assume the funds will come from the offer owner %%reserve|reserve%%. If the address of the reserve is not the maker contract itself, then proper approvals need to be set up so that liquidity can be brought from there. There are two noteworthy cases we comment below.
 
 #### When a Strat Lib router is used to manage the funds of the maker
 
@@ -58,22 +58,22 @@ Please refer to the section on [Routers](../technical-references/router.md) for 
 
 The [Forwarder](../background/offer-maker/forwarder.md) building block provides a base for maker contracts that manages offers belonging to several offer owners.
 
-This is an example of case, where the %%offer reserve|reserve%% of offer owners will not reside directly on the maker contract. In such cases, the offer owners need to approve the maker contract or its %%router|router%% (if it has one) for outbound token transfer. 
+A basic Forwarder strategy is to assume that each offer owner's %%reserve|reserve%% is actually the offer owner's address. In such cases, the offer owners need to approve the maker contract or its %%router|router%% (if it has one) for outbound token transfer. 
 
 In particular, for contracts based on the [Forwarder](../background/offer-maker/forwarder.md) building block the usage of a %%liquidity router|router%% is *required*  - so in this case, the offer owners need only consider approval for the router of the `Forwarder` contract.
 
 Please refer to the section on the [Forwarder building block](../background/offer-maker/forwarder.md) and to the API Reference for the [Forwarder](../technical-references/code/strategies/offer_forwarder/abstract/Forwarder.md) base for further reading.
 
 
-#### Example of approvals with a router and external liquidity reserve
+<!-- #### Example -->
 
-The schematic diagram below illustrates a case, where a maker contract manages offers with a %%router|router%% and external %%offer reserves|reserve%%. The maker contract may, for instance, be implemented with the [Forwarder](../background/offer-maker/forwarder.md) building block using a router.
+The schematic diagram below illustrates the case, where a maker contract manages offers with a %%router|router%% and external %%offer reserves|reserve%%. Such a maker contract may be implemented with the [Forwarder](../background/offer-maker/forwarder.md) building block combined with a %%router|router%%.
 
 In this case, 
 * the router needs approval to transfer outbound from the Maker reserve and needs approval to transfer inbound from the maker contract. 
 * Mangrove needs approval to transfer outbound from the Maker contract.
 
-This is illustrated n the diagram below where we only focus on the `transferFrom` calls.
+This is illustrated in the diagram below where we only focus on the `transferFrom` calls.
 
 ```mermaid
 sequenceDiagram
