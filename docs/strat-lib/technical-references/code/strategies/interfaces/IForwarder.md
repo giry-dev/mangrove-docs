@@ -14,7 +14,7 @@ Logging new offer owner
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| mangrove | contract IMangrove | Mangrove contract on which the offer is posted |
+| mangrove | contract IMangrove | the Mangrove contract on which the offer is posted |
 | outbound_tkn | contract IERC20 | the outbound token of the offer list. |
 | inbound_tkn | contract IERC20 | the inbound token of the offer list. |
 | offerId | uint256 |  |

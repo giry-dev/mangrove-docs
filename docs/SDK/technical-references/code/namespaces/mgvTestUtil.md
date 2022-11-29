@@ -383,7 +383,7 @@ Call this to enable tracking of whether the last transaction sent by this librar
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:294
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:299
 
 ___
 
@@ -399,7 +399,7 @@ Call this disable tracking of whether the last transaction sent by this library 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:304
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:309
 
 ___
 
@@ -423,7 +423,7 @@ NB: Only works when this is awaited before sending more tx's.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:315
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:320
 
 ___
 
@@ -443,7 +443,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:331
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:336
 
 ___
 
@@ -465,7 +465,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:376
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:381
 
 ___
 
@@ -487,7 +487,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:391
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:396
 
 ___
 
@@ -509,7 +509,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:399
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:404
 
 ___
 
@@ -529,7 +529,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:407
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:412
 
 ___
 
@@ -551,7 +551,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:439
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:444
 
 ___
 
@@ -573,7 +573,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:447
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:452
 
 ___
 
@@ -596,4 +596,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:456
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:461
