@@ -1,6 +1,6 @@
 ---
 id: offer-owner
-title: Offer owner
+title: Offer Owner
 hoverText: An account that is allowed to post, update or retract a specific offer posted by a maker contract.
 ---
 

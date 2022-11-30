@@ -1,6 +1,6 @@
 ---
 id: maker-partial-fill
-title: Maker partial fill
+title: Maker Partial Fill
 hoverText: When an incoming order partially takes the volume given by an offer.
 ---
 

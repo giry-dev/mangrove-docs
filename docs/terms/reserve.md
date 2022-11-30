@@ -1,7 +1,7 @@
 ---
 id: reserve
-title: Offer owner's reserve
-hoverText: The location of an offer owners' funds for offer logic's execution.
+title: Reserve
+hoverText: Location of offer owners' funds for offer logic's execution.
 ---
 
 %%Offer owners|offer-owner%% may customize where their funds should be deposited (%%inbound|inbound%% tokens) and fetched (%%outbound|outbound%%) tokens during the %%offer logic|offer-logic%% execution. If the reserve is placed at another address than the offer owner itself, the reserve must approve the offer owner to use them for maker contracts that accept several offer owners.

@@ -198,7 +198,7 @@ const config = {
             items: [
               {
                 label: 'Discord',
-                href: 'https://discord.gg/rk9Qthz5YE'
+                href: 'https://discord.mangrove.exchange'
               },
               {
                 label: 'Twitter',

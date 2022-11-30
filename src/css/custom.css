@@ -25,6 +25,7 @@
   --ifm-color-primary-light: #297bd4;
   --ifm-color-primary-lighter: #3181d8;
   --ifm-color-primary-lightest: #4e93dd;
+  background-color: #000618;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -51,7 +52,21 @@ table {
   left: 16px;
 }
 
-/* make room for headings that break in two lines */
+
 .navbar {
+  /* make room for headings that break in two lines */
   min-height: 70px;
 }
+
+[data-theme='dark'] .navbar {
+  background-color: #1a1f30;
+}
+
+.hero--primary {
+  background-color: #08a8a9;
+}
+
+.footer {
+  background-color: #1f263b;
+}
+

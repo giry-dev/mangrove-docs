@@ -1,6 +1,6 @@
 ---
 id: cleaning-bot
-title: Cleaning bot
+title: Cleaning Bot
 hoverText: An off-chain bot that keeps the order books clean by sniping failing offers.
 ---
 
