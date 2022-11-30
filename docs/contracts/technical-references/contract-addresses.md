@@ -13,37 +13,3 @@ import Raw from './_contract-addresses-raw.md';
 
 For previous versions we recommend inspecting the addresses in previous versions of the [mangrove-core](https://www.npmjs.com/package/@mangrovedao/mangrove-core) NPM package. They are in the `@mangrovedao/mangrove-core/addresses/*.json` files.
 
-### v5
-
-* Mangrove: `0xa34b6ADdf822177258Cbd0A9c3a80600C1028Ca8`
-* MgvReader: `0x72c7f3144ccb0D76D2c7B8D4f996F0f7D0511358`
-* MgvCleaner: `0x8d8daA2Ee56712b25f0c616AC374Fe98B84A99Be`
-* MgvOracle: `0xb5Fa732eb1a6BA0E3000E5eda48fc84A0dC55cb9`
-
-### v4
-
-* Mangrove: `0x6f531931A7EaefB95307CcD93a348e4C27F62DCF`
-* MgvReader: `0x2f9bb88571E9B27e8291B1a9dBD376C755C87d49`
-* MgvCleaner: `0x44deC8A22DAea93D3F2519702954000B459B4F1B`
-* MgvOracle: `0x6735091776a7dEf7058b2ec8Bea721F7cc503f50`
-
-### v3
-
-* Mangrove: `0xD27139C60ED051b65c3AEe193BCABFfa1067D243`
-* MgvReader: `0xa1e2f6EEe41799d44e365135F70fD23b0d0505D6`
-* MgvCleaner: `0x9C0AC5b8F47c912b33Bdd0a21273A673e2A47D32`
-* MgvOracle: `0xA7F318d18d163E4677A4eAc2ffd820bA0c605EB7`
-
-### v2
-
-* Mangrove: `0x493Bd4Ae961B3C50e1a1C86CC0D433aDa66870D0`
-* MgvReader: `0x69dE7df175444cd44667DdfA74FbEb5095C3dB34`
-* MgvCleaner: `0xad53eB62d210DeeB30854e1b73dD4Ee88E612cc9`
-* MgvOracle: `0xb4C0B66F158C314FfBDF1b64d9B517B8aaB46773`
-
-### v1
-
-* Mangrove: `0xE44FfC50ED6673d6A1C385B76152E1551a6c14a3`
-* MgvReader: `0xc00d2da52195b123d3c994aaf2eb1e8da8999d4f`
-* MgvCleaner: `none`
-* MgvOracle: `none`
