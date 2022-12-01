@@ -149,13 +149,13 @@ const config = {
           },
           {
             to: '/FAQ',
-            position: 'left',
+            position: 'right',
             label: 'FAQ',
           },
           {
             href: '/glossary',
             label: 'Glossary',
-            position: 'left',
+            position: 'right',
           },
           {
             href: 'https://bafybeig62o75bfxssic66w2zwerbo6ezlhb33vsg5idr4uprckn2dxrucy.ipfs.infura-ipfs.io/',
