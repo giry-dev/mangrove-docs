@@ -14,7 +14,12 @@ import Raw from './_contract-addresses-raw.md';
 import coreVersion from './mangrove-core-version.json';
 import jsVersion from './mangrove-js-version.json';
 
-<p>The addresses, annotated code, and NatSpec are made based on the mangrove-core NPM package version {coreVersion.children.Version}. The TypeDoc for the SDK is based on the mangrove.js NPM package version {jsVersion.children.Version}.</p>
+The addresses and API documentation corresponds to the following packages NPM packages published in [@mangrovedao](https://www.npmjs.com/org/mangrovedao):
+
+<ul>
+<li>@mangrovedao/mangrove-core@{coreVersion.children.Version}</li>
+<li>@mangrovedao/mangrove.js@{jsVersion.children.Version}</li>
+</ul>
 
 ## Addresses of previous versions
 
