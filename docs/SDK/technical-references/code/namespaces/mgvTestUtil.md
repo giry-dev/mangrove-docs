@@ -429,13 +429,13 @@ ___
 
 ### <a id="postnewoffer" name="postnewoffer"></a> postNewOffer
 
-▸ **postNewOffer**(`__namedParameters`): `Promise`<`void`\>
+▸ **postNewOffer**(`«destructured»`): `Promise`<`void`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `__namedParameters` | [`NewOffer`](mgvTestUtil.md#newoffer) |
+| `«destructured»` | [`NewOffer`](mgvTestUtil.md#newoffer) |
 
 #### Returns
 

@@ -13,7 +13,7 @@
     "predocgen": "bash git diff-index --quiet HEAD -- || echo \"You have uncommitted changes\"",
     "docgen-core": "docusaurus parse && docusaurus glossary && docusaurus build",
     "docgen": "(git diff-index --quiet HEAD -- || (echo \"You have uncommitted changes\" && exit 1)) && yarn docgen-core",
-    "natspec": "yarn remove-solidity && yarn copy-solidity && yarn hardhat docgen && yarn remove-solidity && cp categoryForNatSpec.json docs/strat-lib/technical-references/code/_category_.json",
+    "natspec": "yarn remove-solidity && yarn copy-solidity && yarn remove-natspec && yarn hardhat docgen && yarn remove-solidity && cp categoryForNatSpec.json docs/strat-lib/technical-references/code/_category_.json",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
@@ -21,9 +21,9 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "copy-solidity": "cp -R node_modules/@mangrovedao/mangrove-core/src ./contracts",
-    "postinstall": "cp patches/scope.js node_modules/solidity-docgen/dist/utils",
     "doccore": "rm -rf static/MgvDoc && cp -r node_modules/@mangrovedao/mangrove-core/doc/ static/MgvDoc && rm static/MgvDoc/index.html && mv static/MgvDoc/MgvDoc.html static/MgvDoc/index.html",
-    "remove-solidity": "rm -rf ./contracts"
+    "remove-solidity": "rm -rf ./contracts",
+    "remove-natspec": "rm -rf docs/strat-lib/technical-references/code"
   },
   "dependencies": {
     "@akebifiky/remark-simple-plantuml": "^1.0.2",
@@ -39,7 +39,7 @@
     "@mdx-js/react": "^1.6.22",
     "@vegaprotocol/docusaurus-theme-github-codeblock": "^0.1.8",
     "clsx": "^1.2.1",
-    "docusaurus-plugin-typedoc": "^0.17.5",
+    "docusaurus-plugin-typedoc": "^0.18.0",
     "hast-util-is-element": "1.1.0",
     "postinstall": "^0.8.0",
     "prism-react-renderer": "^1.3.5",
@@ -47,11 +47,11 @@
     "react-dom": "^17.0.2",
     "rehype-katex": "5",
     "remark-math": "3",
-    "solidity-docgen": "^0.6.0-beta.29",
+    "solidity-docgen": "^0.6.0-beta.32",
     "ts-essentials": "^9.3.0",
     "typechain": "^8.1.1",
     "typedoc": "^0.23.21",
-    "typedoc-plugin-markdown": "^3.13.6",
+    "typedoc-plugin-markdown": "^3.14.0",
     "typescript": "^4.8.4",
     "vercel": "^28.4.12"
   },
