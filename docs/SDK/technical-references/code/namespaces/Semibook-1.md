@@ -117,8 +117,8 @@ If none of these are specfied, the default is `maxOffers` = `Semibook.DEFAULT_MA
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `maxOffers?` | `number` | The maximum number of offers to store in the cache.  `maxOffers` and `desiredPrice` are mutually exclusive. |
-| `chunkSize?` | `number` | The number of offers to fetch in one call.  Defaults to `maxOffers` if it is set and positive; Otherwise `Semibook.DEFAULT_MAX_OFFERS` is used. |
+| `maxOffers?` | `number` | The maximum number of offers to store in the cache. `maxOffers` and `desiredPrice` are mutually exclusive. |
+| `chunkSize?` | `number` | The number of offers to fetch in one call. Defaults to `maxOffers` if it is set and positive; Otherwise `Semibook.DEFAULT_MAX_OFFERS` is used. |
 | `desiredPrice?` | `Bigish` | The price that is expected to be used in calls to the market. The cache will initially contain all offers with this price or better. This can be useful in order to ensure a good pivot is readily available. |
 | `desiredVolume?` | [`VolumeParams`](Semibook-1.md#volumeparams) | The volume that is expected to be used in trades on the market. |
 

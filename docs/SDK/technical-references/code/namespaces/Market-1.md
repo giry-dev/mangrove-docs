@@ -226,9 +226,9 @@ Options that control how the book cache behaves.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `maxOffers?` | `number` | The maximum number of offers to store in the cache.  `maxOffers` and `desiredPrice` are mutually exclusive. |
-| `chunkSize?` | `number` | The number of offers to fetch in one call.  Defaults to `maxOffers` if it is set and positive; Otherwise `Semibook.DEFAULT_MAX_OFFERS` is used. |
-| `desiredPrice?` | `Bigish` | The price that is expected to be used in calls to the market. The cache will initially contain all offers with this price or better. This can be useful in order to ensure a good pivot is readily available.  `maxOffers` and `desiredPrice` are mutually exclusive. |
+| `maxOffers?` | `number` | The maximum number of offers to store in the cache. `maxOffers` and `desiredPrice` are mutually exclusive. |
+| `chunkSize?` | `number` | The number of offers to fetch in one call. Defaults to `maxOffers` if it is set and positive; Otherwise `Semibook.DEFAULT_MAX_OFFERS` is used. |
+| `desiredPrice?` | `Bigish` | The price that is expected to be used in calls to the market. The cache will initially contain all offers with this price or better. This can be useful in order to ensure a good pivot is readily available. `maxOffers` and `desiredPrice` are mutually exclusive. |
 | `desiredVolume?` | [`VolumeParams`](Market-1.md#volumeparams) | The volume that is expected to be used in trades on the market. |
 
 #### Defined in

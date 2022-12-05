@@ -27,7 +27,7 @@ Filter the offers in the cache using a predicate.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`offer`: [`Offer`](../namespaces/Market-1.md#offer)) => `boolean` | Function is a predicate, to test each element of the array.   Should return `true` if the element should be kept; otherwise `false` should be returned. |
+| `predicate` | (`offer`: [`Offer`](../namespaces/Market-1.md#offer)) => `boolean` | Function is a predicate, to test each element of the array. Should return `true` if the element should be kept; otherwise `false` should be returned. |
 
 #### Returns
 
@@ -51,7 +51,7 @@ satisfies the provided predicate. If no values satisfy the testing function,
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`offer`: [`Offer`](../namespaces/Market-1.md#offer)) => `boolean` | Function is a predicate, to test each element of the array.  The firs offer that satisifies the predicate is returned;  otherwise `undefined` is returned. |
+| `predicate` | (`offer`: [`Offer`](../namespaces/Market-1.md#offer)) => `boolean` | Function is a predicate, to test each element of the array. The firs offer that satisifies the predicate is returned; otherwise `undefined` is returned. |
 
 #### Returns
 
@@ -81,7 +81,7 @@ ___
 
 ### <a id="next" name="next"></a> next
 
-▸ **next**(...`args`): `IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
+▸ **next**(`...args`): `IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
 
 #### Parameters
 
