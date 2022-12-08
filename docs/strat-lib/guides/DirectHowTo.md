@@ -16,7 +16,7 @@ This section will go through two implementations of a **Direct** %%maker contrac
 
 The Direct constructor is:
 ```solidity reference title="Direct contract's constructor"
-https://github.com/mangrovedao/mangrove-core/blob/d2bcb7dd1723569bb9c4449572c74aa901e187d2/src/strategies/offer_maker/abstract/Direct.sol#L26-L30
+https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/strategies/offer_maker/abstract/Direct.sol#L24-L28
 ```
 which passes `mgv`, the address of Mangrove contract and  `gasreq`, the default gas requirement of the strat you wish to implement, to the [MangroveOffer](../background/offer-maker/mangrove-offer.md)'s constructor. The additional element that is required to build Direct is `router_` that should be either the address of a deployed %%router|router%%, or the zero address (`NO_ROUTER` is just an alias for `AbstractRouter(address(0))`), when building a Direct contract that will do its own liquidity routing.
 
@@ -328,4 +328,4 @@ This now means that the offer that was unsuccessfully taken is no longer live on
   }
 ```
 
-The full code for the contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/master/src/toy\_strategies/offer\_maker/Amplifier.sol).
+The full code for the contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/toy_strategies/offer_maker/Amplifier.sol).

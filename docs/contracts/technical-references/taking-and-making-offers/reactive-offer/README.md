@@ -216,7 +216,7 @@ Make sure that your offer is [well-provisioned](offer-provision.md#checking-an-a
 
 ### Updating an existing offer
 
-Offers are updated through the aptly-named `updateOffer` function described below (source code is [here](https://github.com/giry-dev/mangrove/blob/552ab35500c34e831f40a68fac81c8b3e6be7f5b/packages/mangrove-solidity/contracts/MgvOfferMaking.sol#L99)).
+Offers are updated through the aptly-named `updateOffer` function described below (source code is [here](https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/MgvOfferMaking.sol#L106-L156)).
 
 <Tabs>
 <TabItem value="signature" label="Signature" default>
@@ -231,7 +231,7 @@ function updateOffer(
     uint gasprice, 
     uint pivotId, 
     uint offerId
-) external;
+) external payable;
 ```
 
 </TabItem>

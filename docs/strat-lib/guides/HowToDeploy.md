@@ -108,7 +108,7 @@ Everything is now approve correctly and we check that by calling the checklist f
   }
 ```
 
-The full version of the deployer contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/master/script/toy/AmplifierDeployer.s.sol).
+The full version of the deployer contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/script/toy/AmplifierDeployer.s.sol).
 
 The deployment script is now ready, so lets try and deploy it to a local fork of mumbai. The first thing you need to do, is to start an anvil node, running on a fork of mumbai. This can be done like this `anvil --port 8545 --fork-url $MUMBAI_NODE_URL --silent`. Notice at the `MUMBAI_NODE_URL` is fetch of the `.env`file. If you don't have URL, polygon offers one [here](https://wiki.polygon.technology/docs/develop/network-details/network/). When running this the `.env` file might not have been sourced, so you might need to run `source .env`in order for it to find the `MUMBAI_NODE_URL`. The silent flag is not necessary, it is simply a way of starting the node without writing the setup for the fork. This can include secrets that you may not want to share.
 
