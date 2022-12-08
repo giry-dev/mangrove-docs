@@ -25,11 +25,11 @@ function offerListEndPoints(
 
 ### Function `packedOfferList`
 
-Returns the orderbook for the `outbound_tkn`/`inbound_tkn` pair in packed form: 
+Returns the order book for the `outbound_tkn`/`inbound_tkn` pair in packed form: 
 `(uint nextOfferId, uint[] memory offerIds, MgvStructs.OfferPacked[] memory offers, MgvStructs.OfferDetailPacked[] memory offerDetails)`.
 
 * `nextOfferId` is the id of next offer (0 means this is the last offer)
-* `offerIds` is an array of offerIds in the orderbook 
+* `offerIds` is an array of offerIds in the order book 
 * `offers` (as bytes32) hold the core price volume information on offers
 * `offerDetails` (as bytes32) holds maker address and provision/penalty-related info for offers
 
@@ -52,10 +52,10 @@ function packedOfferList(
 
 ### Function `offerList`
 
-Returns the orderbook for the `outbound_tkn/inbound_tkn` pair in unpacked form: `(uint nextOfferId, uint[] memory offerIds, MgvStructs.OfferUnpacked[] memory offers, MgvStructs.OfferDetailUnpacked[] memory offerDetails)`.
+Returns the order book for the `outbound_tkn/inbound_tkn` pair in unpacked form: `(uint nextOfferId, uint[] memory offerIds, MgvStructs.OfferUnpacked[] memory offers, MgvStructs.OfferDetailUnpacked[] memory offerDetails)`.
 
 * `nextOfferId` is the id of next offer (0 means this is the last offer)
-* `offerIds` is an array of offerIds in the orderbook 
+* `offerIds` is an array of offerIds in the order book
 * `offers` (as structs) hold the core price volume information on offers
 * `offerDetails` (as structs) holds maker address and provision/penalty-related info for offers
 

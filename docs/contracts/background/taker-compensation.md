@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 # Reneging on offers
 
-Since Mangrove offers do not provision liquidity, there must be a mechanism that ensures that most of the time, the orderbook does not contain 'fake offers', that is, offers that renege on their promises.
+Since Mangrove offers do not provision liquidity, there must be a mechanism that ensures that most of the time, the order book does not contain 'fake offers', that is, offers that renege on their promises.
 
 Mangrove uses [Offer Provisions](../technical-references/taking-and-making-offers/reactive-offer/offer-provision.md) as a protection mechanism.
 

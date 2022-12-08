@@ -276,7 +276,7 @@ Mangrove's market orders are configurable using the three parameters `takerWants
 
 :::caution **On order residuals**
 
-Contrary to [GTC orders](https://www.investopedia.com/terms/g/gtc.asp) on regular [orderbook](https://www.investopedia.com/terms/o/order-book.asp) based exchanges, the residual of your order (i.e. the volume you were not able to buy/sell due to hitting your price limit) will _not_ be put on the market as an offer. Instead, the market order will simply end partially filled.
+Contrary to [GTC orders](https://www.investopedia.com/terms/g/gtc.asp) on regular [order book](https://www.investopedia.com/terms/o/order-book.asp) based exchanges, the residual of your order (i.e. the volume you were not able to buy/sell due to hitting your price limit) will _not_ be put on the market as an offer. Instead, the market order will simply end partially filled.
 
 :::
 

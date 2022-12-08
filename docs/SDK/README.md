@@ -1,5 +1,5 @@
 ---
-description: mangrove.js is a TypeScript SDK for Mangrove exchange, the on-chain orderbook where offers are code.
+description: mangrove.js is a TypeScript SDK for Mangrove exchange, the on-chain order book where offers are code.
 sidebar_position: 1
 ---
 
