@@ -11,13 +11,13 @@ This will go through sniping an offer using mangrove.js. In this section we assu
 
 ### Connect to market (and mint tokens)
 
-As mentioned we assume that you are already connected to Mangrove, if not you can look at [github](https://github.com/mangrovedao/mangrove-ts/blob/master/packages/mangrove.js/examples/how-tos/snipe-offer.js), to see the full script.
+As mentioned we assume that you are already connected to Mangrove, if not you can look at [github](https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/how-tos/snipe-offer.js), to see the full script.
 
 When connected to Mangrove we need to connect to a market. We do this to check whether the market is live and has offers. In this case we look at all the asks for the market. In this case the best offer is id 5572. Another way to check the market is to go to [testnet](https://testnet.mangrove.exchange/trade) and look at the DAI-USDC market.
 
 If we want to snipe this offer, then it requires that we have enough USDC. In this case we need $$100.5 \times 1.00345 \approx 100.85$$. If we look at UI for the testnet, we will also be able to see that the required USDC is 100.85.
 
-If you do not have the funds need for this, we can mint them using the out-commented lines 4 to 7. In this example we mint 10.000 USDC, which is plenty for taking this offer.
+If you do not have the funds need for this, we can mint them using the commented out lines 4 to 7 below. In this example we mint 10.000 USDC, which is plenty for taking this offer.
 
 ```js
 > market.consoleAsks();
@@ -38,19 +38,19 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 
 ```javascript showLineNumbers reference
-https://github.com/mangrovedao/mangrove-ts/blob/f0bdd04f0953024831c50f0b1c0cdc0daf1ea61d/packages/mangrove.js/examples/how-tos/snipe-offer.js#L15-L24
+https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/how-tos/snipe-offer.js#L15-L24
 ```
 
 ### Snipe best offer
 
 We now know that we want to snipe the best offer on the book, which is offer 5572. In order to snipe the offer, want to get all the info about the offer. We do this because we want the precise numbers for wants and gives.
 
-Before sniping the offer with the information we just gathered, we have to [approve](../../strat-lib/guides/approvals.md) Mangrove to be able to take the funds (USDC), from our account. We need to do this, because when taking any offer, the first thing Mangrove does, is to transfer the takers funds to the maker. If we have not approved this, the transfer will fail with a `mgv/takerTransferFail`.
+Before sniping the offer with the information we just gathered, we have to [approve](../../strat-lib/guides/approvals.md) Mangrove to be able to take the funds (USDC), from our account. We need to do this, because when taking any offer, the first thing Mangrove does, is to transfer the takers funds to Mangrove and from Mangrove to the maker. If we have not approved this, the transfer will fail with a `mgv/takerTransferFail`.
 
-We can now snipe the offer. Be ware that the information on the offer, is from the makers side. This means that what we, the taker, wants is what the offer (the maker) gives. And the same with gives, what we, the taker, gives, is what the offer (the maker) wants. When taking a offer we should be aware that if we do not give a %%`gasLimit`|gasLimit%%, mangrove.js will get the `gasLimit` from the offers %%`gasreq`|gasreq%%. The `gasLimit` sets a limit on how much gas we max want to use, when taking the offer. This way we can control, that if it is very costly to take the offer and it ends up costing more than our `gasLimit`, then the transfer will revert.
+We can now snipe the offer. Be ware that the information on the offer, is from the makers side. This means that what we, the taker, wants is what the offer (the maker) gives. Similarly with gives; what we, the taker, gives, is what the offer (the maker) wants. When taking a offer we should be aware that if we do not give a %%`gasLimit`|gasLimit%%, mangrove.js will get the `gasLimit` from the offer's %%`gasreq`|gasreq%%. The `gasLimit` sets a limit on how much gas we max want to use, when taking the offer. This way we can control, that if it is very costly to take the offer and it ends up costing more than our `gasLimit`, then the transfer will revert.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/f0bdd04f0953024831c50f0b1c0cdc0daf1ea61d/packages/mangrove.js/examples/how-tos/snipe-offer.js#L27-L49
+https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/how-tos/snipe-offer.js#L27-L49
 ```
 
 ### Check the result of sniping
@@ -67,7 +67,7 @@ If the transaction was successful then we should see a result like this. In this
   posthookFailures: [],
 ```
 
-If the transaction failed, it is most likely that the account that posted the offer (the maker) couldn't complete the transaction. Because of this we will receive a %%bounty|bounty%% for making an offer fail.
+If the transaction failed, it is most likely that the account that posted the offer (the maker) couldn't complete the transaction. Because of this we will receive a %%bounty|bounty%% for making an offer fail. If sniped your own offer after following the [Post a simple offer](../getting-started/basic-offer.md) and it failed, then you most likely lack the DAI to fulfil the offer - try minting some.
 
 ```bash title="Snipe failed because of maker"
     events: [ [Object], [Object], [Object], [Object] ]
@@ -87,7 +87,7 @@ If the transaction failed, it is most likely that the account that posted the of
 We will also see the offer being gone when we log the asks on the market.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/f0bdd04f0953024831c50f0b1c0cdc0daf1ea61d/packages/mangrove.js/examples/how-tos/snipe-offer.js#L51-L55
+https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/how-tos/snipe-offer.js#L51-L55
 ```
 
 ```js

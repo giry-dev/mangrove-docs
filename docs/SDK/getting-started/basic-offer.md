@@ -19,20 +19,32 @@ When running the tutorial be aware that some of the script calls the chain and i
 
 :::
 
-Open your favorite javascript editor inside that folder.
+### Start local node
+
+Before proceeding, import the environment variables made as part of the preparation
+
+```bash
+source .env
+```
+
+Start Foundry's local node `anvil` to test things locally, with `$RPC_URL` coming from `.env` and pointing, for instance, to the Polygon Mumbai testnet.
+
+```bash
+anvil --fork-url $RPC_URL
+```
 
 ### Import and connect
 
+Start up `node` in a new terminal and issue the following code which performs the following steps:
+
 1. The first thing needed is to import `dotenv`, this handles the `.env` file you added in the [preparation](./preparation.md).
 2. Then import both `Mangrove` and `ethers` from Mangrove package. `ethers` will allow you to connect to a node and your wallet. `Mangrove` will allow you to connect to Mangrove protocol.
-3. In order to connect to a chain you need a `RPC_URL`, this should have been set up in the `.env` file doing the [preparation](./preparation.md).
-    - If you do not want to use a real chain, you can start up a local chain using `anvil` as described in [preparation](./preparation.md). If you do this, you have to replace `RPC_URL` with `LOCAL_URL`. This way you will be running on the local chain and not the real chain. Remember to start anvil in its own terminal.
-4. The same goes for connecting to your wallet, the `PRIVATE_KEY` is need in order to connect to your wallet.
-    - You can also replace the `PRIVATE_KEY` with a key provided by anvil, if you don't want yo use your own account or simple don't have an account on the chain.
+3. We connect to a local `anvil` node through `LOCAL_URL`. In order to connect to a real chain can replace `LOCAL_URL` with `RPC_URL`.
+4. The `PRIVATE_KEY` is needed in order to connect to your wallet.
 5. Once you have connected your wallet, you can connect to Mangrove protocol using your wallet.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/bbb41b873cb235f106746f113c720ec80da1a4f7/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L1-L13
+https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L1-L12
 ```
 
 ### Check existing market
@@ -44,7 +56,7 @@ Next you need to connect to a market, in order to see the existing offers. This 
 3. Console log bidss. This outputs table of the 50 best bids.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/bbb41b873cb235f106746f113c720ec80da1a4f7/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L15-L20
+https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L14-L19
 ```
 
 ``` bash
@@ -69,7 +81,7 @@ After having looked at the market you now know what the prices are and you can n
 4. You can then post an offer using, in this case `wants: 100.5` and `gives:100.4`, which gives a price of $$100.5/100.4\approx1.00099$$. And since you saw that the best price was $$\approx1.003$$ you know our offer will be at the top of the list.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/bbb41b873cb235f106746f113c720ec80da1a4f7/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L22-L39
+https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L21-L38
 ```
 
 ### Check market after new offer
@@ -80,7 +92,7 @@ We can then check if our offer has best been posted and is on the top of the lis
 2. Then log the asks for the market. You will then see that your offer is on top of the list.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/bbb41b873cb235f106746f113c720ec80da1a4f7/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L41-L43
+https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L40-L42
 ```
 
 ```js
@@ -103,4 +115,4 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img src={useBaseUrl('img/assets/basic-offer-on-testnet.png')} width="50%"/>
 
-The full script can be found on [github](https://github.com/mangrovedao/mangrove-ts/blob/3fd5dc57435d5cb9edd524a67f850cbeeee03ecd/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js).
+The full script can be found on [github](https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js).

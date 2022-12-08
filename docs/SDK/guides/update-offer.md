@@ -9,17 +9,7 @@ sidebar_position: 1
 
 This will explain how you update an offer using mangrove.js.
 
-Since you need to have an offer on the book in order to update it, this will assume that you already have an offer on the book. In this case we will use the offer id 5572. But make sure you use your own offer id.
-
-<details>
-
-<summary>Post offer</summary>
-
-```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/bbb41b873cb235f106746f113c720ec80da1a4f7/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js
-```
-
-</details>
+Since you need to have an offer on the book in order to update it, this will assume that you already have an offer on the book. In this case we will use the offer id 5572. But make sure you use your own offer id. See for instance [Post a simple offer](../getting-started/basic-offer.md).
 
 ### Update offer
 
@@ -41,12 +31,12 @@ market.consoleAsks();
 │    3    │ 1669 │ '0x4326Ab97823d7509C1f0CB3bF68151081B26c970' │ 1376.6273438550415 │ 1.00346478817687987934 │
 ```
 
-To update the offer we use the [`updateAsk`](../technical-references/code/classes/LiquidityProvider#-updateask) function on our `liquidityProvider`. This has two options, you can either post using a `wants` and a `gives`. If we chose to use this, we would have to calculate what `gives` should be, given that `wants` stays a 100.5 and we want the price to be slightly better than the next best offer, e.g. 1.00345. $$\frac{wants}{price}=gives$$ -> $$\frac{100.5}{1.00345}\approx 100.1494$$.
+To update the offer we use the [`updateAsk`](../technical-references/code/classes/LiquidityProvider.md#-updateask) function on our `liquidityProvider`. This has two options available in the [OfferParams](../technical-references/code/namespaces/LiquidityProvider-1.md#offerparams). First, you can provide `wants` and `gives`. If we chose to use this, we would have to calculate what `gives` should be, given that `wants` stays a 100.5 and we want the price to be slightly better than the next best offer, e.g. 1.00345. $$\frac{wants}{price}=gives$$ -> $$\frac{100.5}{1.00345}\approx 100.1494$$.
 
-There is another option when updating an offer. You can use `volume` and `price`, since this is exactly what we want to use, we don't have to calculate `gives`. We then just update the offer using the `volume:100.5` and the `price:1.00345`.
+Second, you can provide `volume` and `price`, since this is exactly what we want to use, we don't have to calculate `gives`. We then just update the offer using `volume: 100.5` and `price: 1.00345`.
 
 ```js reference
-https://github.com/mangrovedao/mangrove-ts/blob/3fcbba7737f5206e4e8392c94807ec38dd65f391/packages/mangrove.js/examples/how-tos/update-offer.js#L23-L42
+https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/how-tos/update-offer.js#L23-L41
 ```
 
 ```bash
@@ -64,17 +54,17 @@ https://github.com/mangrovedao/mangrove-ts/blob/3fcbba7737f5206e4e8392c94807ec38
 When we updated our offer before, we used a `liquidityProvider` and we created this using Mangrove. This means that when we updated our offer, we did using Mangrove directly. But if you have your own contract with your own update offer logic, you can use that by creating an [`OfferLogic`](../technical-references/code/classes/OfferLogic). This is simply done by calling the constructor with Mangrove, your contracts address and if your contract is a [forwarder](../../strat-lib/background/offer-maker/forwarder.md).
 
 ```js reference
-https://github.com/mangrovedao/mangrove-ts/blob/3fcbba7737f5206e4e8392c94807ec38dd65f391/packages/mangrove.js/examples/how-tos/update-offer.js#L44-L48
+https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/how-tos/update-offer.js#L43-L46
 ```
 
-When you have a OfferLogic you can the call update offer directly on that, but this requires a lot more info like %%gasreq|gasreq%%, %%gasprice|gasprice%% and %%pivot|pivot-id%%.
+When you have a OfferLogic you can the call update offer directly on the underlying contract (which is assumed to implement the [`ILiquidityProvider` interface](TODO)), but this requires a lot more info and unit conversions.
 
 ```js reference
-https://github.com/mangrovedao/mangrove-ts/blob/3fcbba7737f5206e4e8392c94807ec38dd65f391/packages/mangrove.js/examples/how-tos/update-offer.js#L51-L63
+https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/how-tos/update-offer.js#L49-L60
 ```
 
 To keep things more simple you can create a `liquidityProvider` with your offerLogic and a market. This way the LiquidityProvider will make sure to update your offer using your offerLogic. This saves you for taking any other decisions than `wants` and `gives` or `volume` and `price`.
 
 ```js reference
-https://github.com/mangrovedao/mangrove-ts/blob/3fcbba7737f5206e4e8392c94807ec38dd65f391/packages/mangrove.js/examples/how-tos/update-offer.js#L65-L70
+https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/how-tos/update-offer.js#L62-L67
 ```
