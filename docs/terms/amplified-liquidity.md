@@ -1,10 +1,10 @@
 ---
 id: amplified-liquidity
 title: Amplified Liquidity
-hoverText: An offer on mangrove that is under collateralized.
+hoverText: An offer on Mangrove that is undercollateralized.
 ---
 
-An offer logic may use an offer logic that has _amplified liquidity_ by offering more volumes than it has in reserve.
+A %%maker contract|maker-contract%% may use an %%offer logic|offer-logic%% that has _amplified liquidity_ by offering more volumes than it has in reserve.
 
 ## References
 
