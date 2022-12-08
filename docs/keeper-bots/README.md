@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Keeper Bots 🤖
+# Keeper Bots
 
 Keeper bots are an essential part of Mangrove ecosystem that ensure a smooth experience for all.
 
