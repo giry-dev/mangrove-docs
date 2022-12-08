@@ -7,4 +7,4 @@ hoverText: A list of offers on the same token pair, ranked from best price to wo
 An _offer list_ is list of offers on the same token pair, ranked from best price to worst price.
 
 ## References
-* [Offer list](../contracts/technical-references/taking-and-making-offers/offer-list.md).
+* Technical reference for [Offer lists](../contracts/technical-references/taking-and-making-offers/offer-list.md).

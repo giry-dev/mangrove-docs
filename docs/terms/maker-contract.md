@@ -11,5 +11,5 @@ In addition to implementing the %%offer logic|offer-logic%% it must provide publ
 
 ## References
 
-* Technical reference for [maker contracts](../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md)
+* Technical reference for [Maker contracts](../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md).
 * The [Strat Lib](../strat-lib/README.md) provides makers with a basis for writing custom maker contracts.
