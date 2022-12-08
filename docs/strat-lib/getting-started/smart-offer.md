@@ -39,7 +39,7 @@ https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8
 
 ### Add offer posting function
 
-The abstract contract `Direct` has an internal function `_newOffer` for posting offers on Mangrove. We need to expose this, so that we can post offers using our contract. We expose it through functions matching the [`ILiquidityProvider` interface](TODO).
+The abstract contract `Direct` has an internal function `_newOffer` for posting offers on Mangrove. We need to expose this, so that we can post offers using our contract. We expose it through functions matching the [`ILiquidityProvider`](../technical-references/code/strategies/interfaces/ILiquidityProvider.md) interface.
 
 See [OfferArgs](../technical-references/code/strategies/interfaces/IOfferLogic.md#offerargs) for an explanation of the parameters for posting an offer.
 
