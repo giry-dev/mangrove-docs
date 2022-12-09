@@ -37,7 +37,7 @@ We display human-readable values in the examples, but Mangrove stores raw token 
 
 ### Offer rank
 
-Offers are ordered from best to worst. Offers are compared based on _price_, and then on [_gas required_](#gas-required), if they have the same price.
+Offers are ordered from best to worst. Offers are compared based on _price_, and subsequently ranked based on delivering more volume per [_gas required_](#gas-required), if they have the same price.
 
 :::info **Example**
 

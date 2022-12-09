@@ -5,17 +5,15 @@ sidebar_position: 2
 
 # Views on offers
 
+Mangrove provides a number of getter functions providing views on offers and %%offer lists|offer-list%%.
+
 ## Public getters
 
 ### `best(address outbound, address inbound)`
 
 :::info
 
-Returns the offer identifier that occupies the best [rank](offer-list.md#offer-rank) in the `(outbound, inbound)`[offer list](offer-list.md).
-
-* highest outbound volume
-* least gas required
-* oldest time of insertion on the list
+Returns the offer identifier that occupies the best %%rank|offer-rank%% in the `(outbound, inbound)` %%offer list|offer-list%%.
 
 :::
 
@@ -60,11 +58,11 @@ const best = await mgv.best(outboundTkn, inboundTkn);
 </TabItem>
 </Tabs>
 
-### `offers(address, address) / offerDetails(address, address, uint)`
+### `offers(address, address)` and `offerDetails(address, address, uint)`
 
 :::info
 
-The data pertaining to a particular offer is contained in the `OfferUnpacked` and `OfferDetailUnpacked` structs, which are stored as packed custom types called, respectively, `OfferPacked` and `OfferDetailUnpacked.` For on-chain calls, Mangrove provides unpacking functions to extract a particular field out of a packed structure. For off-chain calls, Mangrove also provide direct getter for the unpacked structures.&#x20;
+The data pertaining to a particular offer is contained in the [`OfferUnpacked`](#mgvlibmgvstructsofferunpacked) and [`OfferDetailUnpacked`](#mgvlibofferdetailunpacked) structs, which are stored as packed custom types called, respectively, `OfferPacked` and `OfferDetailPacked.` For on-chain calls, Mangrove provides unpacking functions to extract a particular field out of a packed structure. For off-chain calls, Mangrove also provide direct getters for the unpacked structures.&#x20;
 
 :::
 
@@ -132,7 +130,7 @@ const gasreq = offerDetail.gasreq;
 
 :::info
 
-An offer is **live** in a given [Offer Lists](offer-list.md) if it can be matched during a [market order](taker-order/). One can  verify whether `offerId` identifies a **live** offer in a (`outboundToken`,`inboundToken`) Offer List of Mangrove using this view function.
+An offer is **live** in a given [Offer List](offer-list.md) if it can be matched during a [market order](taker-order/). The view function `isLive` can be used to verify whether `offerId` identifies a **live** offer in a (`outboundToken`,`inboundToken`) offer List of Mangrove.
 
 :::
 
@@ -182,7 +180,7 @@ const isLive = await Mangrove.isLive(outTkn,outTkn,offerId);
 
 :::info 
 
-Offer data is split between `OfferUnpacked` and `OfferDetailedUnPacked` for  storage read/write optimisation (as both structs can be efficiently packed on storage).
+Offer data is split between  [`OfferUnpacked`](#mgvlibmgvstructsofferunpacked) and [`OfferDetailUnpacked`](#mgvlibofferdetailunpacked) for storage read/write optimisation (as both structs can be efficiently packed on storage).
 
 :::
 
