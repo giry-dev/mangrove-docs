@@ -235,7 +235,7 @@ await tx.wait();
 
 ### Outputs
 
-* `takerGot` is the net amount of _outbound_ tokens the taker has received (i.e after applying the offer list [fee](../../governance-parameters/local-variables.md#taker-fees) if any).
+* `takerGot` is the net amount of _outbound_ tokens the taker has received (i.e., after applying the offer list [fee](../../governance-parameters/local-variables.md#taker-fees) if any).
 * `takerGave` is the amount of _inbound_ tokens the taker has sent.
 * `bounty` is the amount of native tokens (in units of wei) the taker received in compensation for cleaning failing offers
 * `fee` is the amount of `outbound_tkn` that was sent to Mangrove's vault in payment of the potential %%fee|taker-fee%% associated to the `(outbound_tkn, inbound_tkn)`[offer list](../offer-list.md#general-structure).&#x20;
@@ -276,7 +276,7 @@ Mangrove's market orders are configurable using the three parameters `takerWants
 
 :::caution **On order residuals**
 
-Contrary to [GTC orders](https://www.investopedia.com/terms/g/gtc.asp) on regular [order book](https://www.investopedia.com/terms/o/order-book.asp) based exchanges, the residual of your order (i.e. the volume you were not able to buy/sell due to hitting your price limit) will _not_ be put on the market as an offer. Instead, the market order will simply end partially filled.
+Contrary to [GTC orders](https://www.investopedia.com/terms/g/gtc.asp) on regular [order book](https://www.investopedia.com/terms/o/order-book.asp) based exchanges, the residual of your order (i.e., the volume you were not able to buy/sell due to hitting your price limit) will _not_ be put on the market as an offer. Instead, the market order will simply end partially filled.
 
 :::
 

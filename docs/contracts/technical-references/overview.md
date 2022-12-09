@@ -43,17 +43,17 @@ The offer logic of the maker contract is called twice by the Mangrove protocol d
 
 Mangrove calls the offer logic of the maker contract a [first time](taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution), via the callback function %%`makerExecute`|makerExecute%%, when an offer is matched by a taker order. This happens immediately prior to trade settlement allowing makers to source liquidity %%reactively|reactive-liquidity%% and *just-in-time* for the trade. It also allows makers to %%renege|renege%% on the offer to trade by incorporating defensive code (called %%last look|last-look%%) in the maker contract (e.g., because the market conditions changed).
 
-This implies that offers posted to Mangrove need not be fully provisioned. As a maker, your liquidity can be shared, borrowed, lent and, at the same time, be displayed in Mangrove's order book, ready to be sourced when, and only when, your offer is taken.
+This implies that offers posted to Mangrove need not be fully provisioned. As a maker, your liquidity can be shared, borrowed, lent and, at the same time, be displayed in Mangrove's order book - ready to be sourced when, and only when, your offer is taken.
 
 ### After a smart offer is taken
 
 Mangrove calls the offer logic of the maker contract a [second time](taking-and-making-offers/reactive-offer/maker-contract.md#offer-post-hook), via the callback function %%`makerPosthook`|makerPosthook%% during trade execution immediately *after* the offer has been taken.
 
-This allows makers, for instance, to repost the offer (or an altered offer) in order to redisplay their liquidity instantly, in a manner similar to Automated Market Makers (AMMs). 
+This allows makers, for instance, to post another offer to redisplay their liquidity instantly, in a manner similar to [Automated Market Makers (AMMs)](https://coinmarketcap.com/alexandria/glossary/automated-market-maker-amm).
 
 ## Call sequence overview
 
-The diagram below summarizes the call sequence induced by a taker order. Notice that first `makerExecute` functions is executed for all offers, and only after that are `makerPosthook` functions of the offers executed.
+The diagram below summarizes the call sequence induced by a taker order. Notice that first the `makerExecute` functions is executed for all offers, and only subsequently are the `makerPosthook` functions of the offers executed.
 
 ![Mangrove call sequence induced by a taker order](../../../static/img/assets/execution.png)
 
