@@ -152,33 +152,6 @@ _when this router is pulling from a lender, this must return the amount of asset
 | token | contract IERC20 | is the asset one wishes to know the balance of |
 | reserve | address | is the address identifying the location of the assets |
 
-### withdrawToken
-
-```solidity
-function withdrawToken(contract IERC20 token, address reserve, address recipient, uint256 amount) public returns (bool)
-```
-
-withdraws `amount` of tokens from `reserve` and sends them to `recipient`
-
-_this is called by maker's contract when offer maker wishes to withdraw funds from it._
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| token | contract IERC20 | is the asset one wishes to withdraw |
-| reserve | address | is the location of the assets |
-| recipient | address | is address receiving the tokens |
-| amount | uint256 | is the amount of asset that should be withdrawn |
-
-### __withdrawToken__
-
-```solidity
-function __withdrawToken__(contract IERC20 token, address reserve, address recipient, uint256 amount) internal virtual returns (bool)
-```
-
-router-dependant implementation of the `withdrawToken` function
-
 ### bind
 
 ```solidity

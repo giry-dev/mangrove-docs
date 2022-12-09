@@ -197,40 +197,19 @@ _if no reserve is set for maker, default reserve is maker's address. Thus this f
 | ---- | ---- | ----------- |
 | [0] | address | reserve_ the address of the offer maker's reserve of liquidity. |
 
-### setReserve
+### __reserve__
 
 ```solidity
-function setReserve(address maker, address reserve_) public
+function __reserve__(address maker) internal view virtual returns (address)
 ```
 
-sets reserve of an offer maker.
-
-_`setReserve(maker, address(0))` has the same effect as `setReserve(maker, maker)`
-admin restricted call. If two makers have the same reserve, they share liquidity._
+hook to customize offer owner's reserve for the offer logic
 
 #### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| maker | address | the address of the offer maker |
-| reserve_ | address | the address of the offer maker's reserve of liquidity. |
-
-### __checkReserveApproval__
-
-```solidity
-function __checkReserveApproval__(address reserve_, address maker) internal virtual returns (bool)
-```
-
-verifies that maker is allowed to use a reserve for pooling funds
-
-_function throws if `reserve_` has not approved `maker`_
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| reserve_ | address | the reserve on which one is pooling funds |
-| maker | address | the pooler of the reserve |
+| maker | address | the offer owner's address whose address is being queried |
 
 ### activate
 
@@ -300,29 +279,6 @@ _Since a call is made to the `receiver`, this function is subject to reentrancy.
 | ---- | ---- | ----------- |
 | amount | uint256 | the amount of WEI one wishes to withdraw. |
 | receiver | address payable | the address of the receiver of the funds. |
-
-### tokenBalance
-
-```solidity
-function tokenBalance(contract IERC20 token, address maker) external view returns (uint256)
-```
-
-View of the reserve's balance of a particular asset.
-
-_this call is not in general equivalent to `token.balanceOf(maker)` when the reserve is a specific contract on which router is redeeming liquidity (e.g. a lender)._
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| token | contract IERC20 | the asset type one wishes to know the reserve balance of |
-| maker | address | the offer maker one wishes to know the balance of. |
-
-#### Return Values
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| [0] | uint256 |  |
 
 ### __put__
 

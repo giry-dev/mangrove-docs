@@ -18,14 +18,6 @@ event SetRouter(contract AbstractRouter)
 
 Logging change of router address
 
-### SetReserve
-
-```solidity
-event SetReserve(address, address)
-```
-
-Logging change of router address
-
 ### offerGasreq
 
 ```solidity
@@ -100,28 +92,6 @@ _admin may use this function to revoke specific approvals of `this` that are set
 | spender | address | the approved spender |
 | amount | uint256 | the spending amount |
 
-### withdrawToken
-
-```solidity
-function withdrawToken(contract IERC20 token, address receiver, uint256 amount) external returns (bool success)
-```
-
-Withdraws tokens from `msg.sender`'s reserve
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| token | contract IERC20 | the type of asset one is willing to retrieve |
-| receiver | address | the address of the receiver of the tokens (must not be `address(0)`) |
-| amount | uint256 | the quantity of tokens to withdraw from reserve (in WEI units). |
-
-#### Return Values
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| success | bool | whether funds were successfully transferred to `receiver` |
-
 ### provisionOf
 
 ```solidity
@@ -153,29 +123,6 @@ function checkList(contract IERC20[] tokens) external view
 verifies that this contract's current state is ready to be used by `msg.sender` to post offers on Mangrove
 
 _throws with a reason if something (e.g. an approval) is missing._
-
-### tokenBalance
-
-```solidity
-function tokenBalance(contract IERC20 token, address maker) external view returns (uint256 balance)
-```
-
-View of the reserve's balance of a particular asset.
-
-_this call is not in general equivalent to `token.balanceOf(maker)` when the reserve is a specific contract on which router is redeeming liquidity (e.g. a lender)._
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| token | contract IERC20 | the asset type one wishes to know the reserve balance of |
-| maker | address | the offer maker one wishes to know the balance of. |
-
-#### Return Values
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| balance | uint256 | the `token` amount in offer maker's reserve |
 
 ### activate
 
@@ -225,27 +172,6 @@ struct OfferArgs {
 }
 ```
 
-### updateOffer
-
-```solidity
-function updateOffer(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 wants, uint256 gives, uint256 gasreq, uint256 gasprice, uint256 pivotId, uint256 offerId) external payable
-```
-
-updates an offer existing on Mangrove (not necessarily live).
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| outbound_tkn | contract IERC20 | the outbound token of the offer list of the offer |
-| inbound_tkn | contract IERC20 | the outbound token of the offer list of the offer |
-| wants | uint256 | the new amount of outbound tokens the offer maker requires for a complete fill |
-| gives | uint256 | the new amount of inbound tokens the offer maker gives for a complete fill |
-| gasreq | uint256 | the new amount of gas units that are required to execute the trade (use type(uint).max for using `this.offerGasReq()`) |
-| gasprice | uint256 | the new gasprice used to compute offer's provision (use 0 to use Mangrove's gasprice) |
-| pivotId | uint256 | the pivot to use for re-inserting the offer in the list (use `offerId` if updated offer is live) |
-| offerId | uint256 | the id of the offer in the offer list. |
-
 ### retractOffer
 
 ```solidity
@@ -293,24 +219,6 @@ _if no reserve is set for maker, default reserve is maker's address. Thus this f
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | [0] | address | reserve_ the address of the offer maker's reserve of liquidity. |
-
-### setReserve
-
-```solidity
-function setReserve(address maker, address reserve_) external
-```
-
-sets reserve of an offer maker.
-
-_`setReserve(maker, address(0))` has the same effect as `setReserve(maker, maker)`
-admin restricted call. If two makers have the same reserve, they share liquidity._
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| maker | address | the address of the offer maker |
-| reserve_ | address | the address of the offer maker's reserve of liquidity. |
 
 ### router
 

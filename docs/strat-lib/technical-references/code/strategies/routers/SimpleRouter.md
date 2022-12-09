@@ -52,32 +52,6 @@ will revert if transfer fails_
 | maker | address | Address of the maker, where the tokens will be transferred from |
 | amount | uint256 | The amount of tokens to be transferred |
 
-### __withdrawToken__
-
-```solidity
-function __withdrawToken__(contract IERC20 token, address reserve, address recipient, uint256 amount) internal virtual returns (bool)
-```
-
-router-dependent implementation of the `withdrawToken` function
-withdraws `amount` of reserve tokens and sends them to `recipient`
-
-_this is called by maker's contract when originator wishes to withdraw funds from it._
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| token | contract IERC20 | is the asset one wishes to withdraw |
-| reserve | address | is the address identifying the location of the assets |
-| recipient | address | is the address identifying the location of the recipient |
-| amount | uint256 | is the amount of asset that should be withdrawn |
-
-#### Return Values
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| [0] | bool | true if transfer was successful; otherwise, false. |
-
 ### reserveBalance
 
 ```solidity
