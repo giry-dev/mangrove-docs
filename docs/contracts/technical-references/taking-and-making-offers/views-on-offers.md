@@ -5,17 +5,15 @@ sidebar_position: 2
 
 # Views on offers
 
+Mangrove provides a number of getter functions providing views on offers and %%offer lists|offer-list%%.
+
 ## Public getters
 
 ### `best(address outbound, address inbound)`
 
 :::info
 
-Returns the offer identifier that occupies the best [rank](offer-list.md#offer-rank) in the `(outbound, inbound)`[offer list](offer-list.md).
-
-* highest outbound volume
-* least gas required
-* oldest time of insertion on the list
+Returns the offer identifier that occupies the best %%rank|offer-rank%% in the `(outbound, inbound)` %%offer list|offer-list%%.
 
 :::
 
