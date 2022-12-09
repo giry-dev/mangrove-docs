@@ -6,7 +6,7 @@ description: Offer List specific governance parameters
 
 ### Taker fees
 :::info **Taker fee**
-**Taker fee** is defined in basis points (i.e. in percents of a percent) of the total amount of outbound tokens received by taker. 
+**Taker fee** is defined in basis points (i.e., in percents of a percent) of the total amount of outbound tokens received by taker. 
 It is capped by the protocol to 5%. Collected fees accrue in the procol's vault that is [Governance controlled](./global-variables#other-governance-controlled-setters).
 :::
 
