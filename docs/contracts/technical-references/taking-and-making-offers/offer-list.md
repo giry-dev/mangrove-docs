@@ -84,7 +84,7 @@ An offer _may_ also be posted from EOA with no logic attached - see %%On-the-fly
 
 ### Gas Price
 
-Gas price that was used to compute the %%offer provision|offer-provision%%. If the offer fails to deliver the promised **outbound tokens**, it will be charged based on this gasprice.
+Gas price that was used to compute the %%offer provision|provision%%. If the offer fails to deliver the promised **outbound tokens**, it will be charged based on this gasprice.
 
 ## Offer list configuration
 
