@@ -8,5 +8,5 @@ hoverText: Location of offer owners' funds for offer logic's execution.
 
 ## References
 
-* The [Forwarder](../strat-lib/background/offer-maker/forwarder.md) building block is a [Strat Lib](../strat-lib/README.md) building block intended to serve as the basis for maker contracts, with multiple offer owners.
-* Read more about [Approval](../strat-lib/guides/approvals.md) considerations when using the Strat Lib.
+* The [Strat Lib -> Forwarder](../strat-lib/background/offer-maker/forwarder.md) building block is a [Strat Lib](../strat-lib/README.md) building block intended to serve as the basis for maker contracts, with multiple offer owners.
+* Read more about approvals considerations when using the Strat Lib: [Strat Lib -> Approval](../strat-lib/guides/approvals.md).

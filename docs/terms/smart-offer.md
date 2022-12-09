@@ -12,4 +12,3 @@ The contract bound to the smart offer is referred to as the %%maker contract|mak
 ## References
 * [Making liquidity available](../contracts/background/offer-maker.md)
 * [Maker contract](../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md)
-
