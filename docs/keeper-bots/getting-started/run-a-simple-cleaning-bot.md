@@ -105,7 +105,7 @@ Congratulations, you're now a Mangrove Keeper Bot Operator 🤠🧹
 
 # Next steps
 
-The example cleaning bot we used in this tutorial is fully functional, but rather naive. For example, it tries to snipe offers without paying anything and only the simplest of offers will fail in this scenario. So you'll probably want to implement more advanced sniping techniques, e.g, by looking into more advanced ways offers may fail.
+The example cleaning bot we used in this tutorial is fully functional, but rather naive. For example, it tries to snipe offers without paying anything and only the simplest of offers will fail in this scenario. So you'll probably want to implement more advanced sniping techniques, e.g., by looking into more advanced ways offers may fail.
 
 You can read more about why offers can fail and the role of cleaning bots in Mangrove ecosystem here: [The role of cleaning bots in Mangrove](../background/the-role-of-cleaning-bots-in-mangrove.md).
 
