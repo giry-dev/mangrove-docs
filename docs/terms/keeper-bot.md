@@ -8,4 +8,4 @@ A _keeper bot_ is an off-chain bot that helps keep Mangrove functioning optimall
 
 ## References
 
-* [Keeper bots](../keeper-bots/README.md).
+* Refer to the section on [Keeper bots](../keeper-bots/README.md).

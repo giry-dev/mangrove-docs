@@ -8,4 +8,4 @@ A %%maker contract|maker-contract%% may use an %%offer logic|offer-logic%% that 
 
 ## References
 
-* [Amplifier](../strat-lib/guides/DirectHowTo.md#advanced-direct-offer-liquidity-amplification)
+* Read about how liquidity amplification can be set up via building blocks in the Strat Lib: [Strat Lib -> Amplifier](../strat-lib/guides/DirectHowTo.md#advanced-direct-offer-liquidity-amplification)
