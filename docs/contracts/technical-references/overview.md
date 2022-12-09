@@ -6,13 +6,13 @@ sidebar_position: 1
 
 # Overview of Mangrove ecosystem
 
-The illustration belows depicts a bird's-eye view of Mangrove ecosystem with the main actors as well as their most important interaction.
+The illustration belows depicts a bird's-eye view of the Mangrove ecosystem. The main actors are depicted as well as their most important interactions.
 
 ![A bird's-eye view of Mangrove ecosystem.](../../../static/img/assets/contactMap.png)
 
-The three most important actors are:
+The Mangrove contract is depicted in the middle, with the three most important actors interacting with Mangrove around it:
 
-* [Offer makers](#makers), via a **maker contract**, add [liquidity promises](../background/offer-maker.md) to Mangrove. The **offer logic** of the maker contract is called by Mangrove whenever the offer is matched by a taker order (see also the call sequence [overview](#call-sequence-overview)).
+* [Offer makers](#makers) add [liquidity promises](../background/offer-maker.md) to Mangrove. 
     
 * [Takers](#takers) use Mangrove to [find liquidity](../background/offer-taker.md) by executing offers published on Mangrove.
 
@@ -26,25 +26,34 @@ Takers may typically operate via a web front-end or with the help of the TypeScr
 
 ## Makers
 
-Makers own [offers](taking-and-making-offers/reactive-offer/README.md), which live in [offer lists](taking-and-making-offers/offer-list.md) in Mangrove order book, that react to [offer execution](taking-and-making-offers/reactive-offer/executing-offers.md).
+Makers own [offers](taking-and-making-offers/reactive-offer/README.md), which live in %%offer lists|offer-list%% in the Mangrove order book. 
 
-As a maker, when you post an offer your address is recorded on Mangrove and will be called back when your offer is matched by a taker order. If this address is that of [maker contract](taking-and-making-offers/reactive-offer/maker-contract.md) it will be given the opportunity to execute its %%offer logic|offer-logic%%. More precisely, the maker contract is called twice by Mangrove protocol: first [*when*](taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution) your offer is [taken](taking-and-making-offers/taker-order/README.md), and a second time [*after*](taking-and-making-offers/reactive-offer/maker-contract.md#trade-posthook) your offer was taken.
+As a maker you have the choice of posting two kinds of offers:
 
-### When an offer is taken
+* %%On-the-fly offers|on-the-fly-offer%% posted directly from an EOA. Such offers have no logic attached, and the promised liquidity should be available on the EAO, when the offer is matched during a trade.
+* %%Smart offers|smart-offer%% posted via a smart contract - called a %%maker contract|maker-contract%%. When a smart offer is matched by a taker order during trade execution, the maker contract will be called and given the opportunity to execute its %%offer logic|offer-logic%%. 
 
-Mangrove calls the maker contract a [first time](taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution), via the callback function `makerExecute`, when an offer is matched by a taker order. This allows makers to source the liquidity *just-in-time* for the trade. It also allows the makers to [renege](../background/taker-compensation.md) on the offer to trade (e.g, because the market conditions changed) by incorporating defensive code in the maker contract.
+### Smart offers
+
+Smart offers are where Mangrove really distinguishes itself from other DEX's, so we shall discuss them in a bit more detail in this overview.
+
+The offer logic of the maker contract is called twice by the Mangrove protocol during trade execution - [when the smart offer is taken](#when-a-smart-offer-is-taken) and [after the smart offer was taken](#after-a-smart-offer-is-taken).
+
+### When a smart offer is taken
+
+Mangrove calls the offer logic of the maker contract a [first time](taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution), via the callback function %%`makerExecute`|makerExecute%%, when an offer is matched by a taker order. This happens immediately prior to trade settlement allowing makers to source liquidity %%reactively|reactive-liquidity%% and *just-in-time* for the trade. It also allows makers to %%renege|renege%% on the offer to trade by incorporating defensive code (called %%last look|last-look%%) in the maker contract (e.g., because the market conditions changed).
 
 This implies that offers posted to Mangrove need not be fully provisioned. As a maker, your liquidity can be shared, borrowed, lent and, at the same time, be displayed in Mangrove's order book, ready to be sourced when, and only when, your offer is taken.
 
-### After an offer is taken
+### After a smart offer is taken
 
-Mangrove calls the maker contract a [second time](taking-and-making-offers/reactive-offer/maker-contract.md#offer-post-hook), via the callback function `makerPosthook`,  during the trade execution, *after* the offer has been taken.
+Mangrove calls the offer logic of the maker contract a [second time](taking-and-making-offers/reactive-offer/maker-contract.md#offer-post-hook), via the callback function %%`makerPosthook`|makerPosthook%% during trade execution immediately *after* the offer has been taken.
 
-This allows makers to repost an offer in order to publish their liquidity instantly, in a manner similar to Automated Market Makers (AMMs). 
+This allows makers, for instance, to repost the offer (or an altered offer) in order to redisplay their liquidity instantly, in a manner similar to Automated Market Makers (AMMs). 
 
 ## Call sequence overview
 
-The diagram below summarizes the call sequence induced by a taker order. Notice that first `makerExecute` functions is executed for all offers, and only after that are the offer's `makerPosthook` functions executed.
+The diagram below summarizes the call sequence induced by a taker order. Notice that first `makerExecute` functions is executed for all offers, and only after that are `makerPosthook` functions of the offers executed.
 
 ![Mangrove call sequence induced by a taker order](../../../static/img/assets/execution.png)
 

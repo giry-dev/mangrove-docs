@@ -3,7 +3,7 @@ description: The Mangrove strat library are contract building blocks for writing
 sidebar_position: 1
 ---
 
-# What is the Strat Library? 📖
+# What is the Strat Library?
 
 The Mangrove strat library is a repository of Solidity code that will help you write a custom %%maker contracts|maker-contract%% able to post %%smart offers|smart-offer%% on Mangrove.
 

@@ -3,7 +3,8 @@ description: The Mangrove DEX is an on-chain, order book-based exchange where of
 sidebar_position: 1
 ---
 
-# What is Mangrove? 🌴
+
+# What is Mangrove? 
 
 The Mangrove is an [EVM-compatible](https://ethereum.org/en/developers/docs/scaling/sidechains/#evm-compatibility) order book-based exchange protocol (a [DEX](https://ethereum.org/en/defi/)), in which offers can be bound to a [smart contract](https://ethereum.org/en/smart-contracts/).
 
@@ -15,7 +16,7 @@ The order book of Mangrove lists promises to trade, instead of locked commitment
 
 ## Where do I start?
 
-A good entry-point to the documentation for Mangrove protocol is the [Overview of Mangrove](./technical-references/overview.md) in the Technical Reference section.
+A good entry-point to the documentation for the Mangrove protocol is the [Overview of Mangrove](./technical-references/overview.md) in the Technical Reference section.
 
 ## Where can I join the community?
 

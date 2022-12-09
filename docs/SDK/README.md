@@ -3,7 +3,7 @@ description: mangrove.js is a TypeScript SDK for Mangrove exchange, the on-chain
 sidebar_position: 1
 ---
 
-# The TypeScript SDK ⌨️
+# The TypeScript SDK
 
 The Mangrove SDK is a TypeScript library that can help you write off-chain apps that work Mangrove ecosystem. It wraps around [ethers.js](https://github.com/ethers-io/ethers.js) and adds a number of Mangrove-specific functionality and API. In a nod towards its `ethers.js`-underpinnings, the SDK package is named `mangrove.js`.
 

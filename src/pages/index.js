@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageSections from '@site/src/components/HomepageSections';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import styles from './index.module.css';
 
@@ -12,8 +13,8 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
+        <img src={useBaseUrl('/img/assets/mangrove-art.jpg')} className="hero-image" />
         <h1 className="hero__title">Welcome to Mangrove Docs</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
       </div>
     </header>
   );
@@ -23,7 +24,7 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Mangrove Docs`}
+      title={`Welcome to Mangrove Docs`}
       description="Developer Documentation For Mangrove">
       <HomepageHeader />
       <main>
