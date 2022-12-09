@@ -9,4 +9,4 @@ _Routers_ are a kind of building block for smart contracts provided by the [Stra
 ## References
 
 * [Strat Lib -> Routers](../strat-lib/technical-references/router.md)
-* [API: AbstractRouter](https://github.com/mangrovedao/mangrove-core/blob/382d55788ca1667312f8046e198fc3235ff93650/src/strategies/routers/AbstractRouter.sol#L24) 
+* [API: AbstractRouter](https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/strategies/routers/AbstractRouter.sol#L22)

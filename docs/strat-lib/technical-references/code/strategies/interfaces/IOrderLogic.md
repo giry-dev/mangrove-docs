@@ -9,7 +9,6 @@ struct TakerOrder {
   bool fillOrKill;
   uint256 takerWants;
   uint256 takerGives;
-  uint256 slippageAmount;
   bool fillWants;
   bool restingOrder;
   uint256 pivotId;
@@ -110,18 +109,4 @@ Implements "Fill or kill" or "Good till cancelled" orders on a given offer list.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | res | struct IOrderLogic.TakerOrderResult | the result of the taker order. If `offerId==0`, no resting order was posted on `msg.sender`'s behalf. |
-
-### setAdditionalGasreq
-
-```solidity
-function setAdditionalGasreq(uint256 additionalGasreq_) external
-```
-
-Increase gas requirement for all new offers.
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| additionalGasreq_ | uint256 | additional gas requirement |
 

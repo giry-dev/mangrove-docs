@@ -5,7 +5,6 @@
 ```solidity
 struct Layout {
   contract AbstractRouter router;
-  mapping(address => address) reserves;
 }
 ```
 

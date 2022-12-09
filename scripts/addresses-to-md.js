@@ -3,7 +3,7 @@ const fs = require('fs');
 const relevantERC20 = [ "WETH", "DAI", "USDC", "PxMATIC", "PxUSDC" ];
 
 const networks = [
-  //{ id: "polygon", name: "Polygon Mainnet" },
+  //{ id: "matic", name: "Polygon Mainnet" },
   { id: "maticmum", name: "Polygon Testnet - Mumbai" },
 ];
 

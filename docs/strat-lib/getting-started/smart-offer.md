@@ -26,27 +26,33 @@ Create a new `OfferMakerTutorial.sol` file in the `src` folder and add the follo
 Add the imports we are going to need, along with a standard solidity preamble.
 
 ```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L1-L8
+https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L1-L8
 ```
 
 ### Constructor
 
-Add the contract and the code for the construct. We will skip some details here, which you can read more about later; %%routers|router%%, %%gas requirements|gasreq%%, and [deployment scripts](../guides/HowToDeploy.md).
+Add the contract and the code for the constructor. We will skip some details here, which you can read more about later; %%routers|router%%, %%gas requirements|gasreq%%, and [deployment scripts](../guides/HowToDeploy.md). Note, we also implement the `ILiquidityProvider` interface which makes the contract compatible with what the [SDK](../../SDK/README.md) expects.
 
 ```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L12-L22
+https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L12-L22
 ```
 
 ### Add offer posting function
 
-The abstract contract `Direct` has an internal function `_newOffer` for posting offers on Mangrove. We need to expose this, so that we can post offers using our contract.
+The abstract contract `Direct` has an internal function `_newOffer` for posting offers on Mangrove. We need to expose this, so that we can post offers using our contract. We expose it through functions matching the [`ILiquidityProvider`](../technical-references/code/strategies/interfaces/ILiquidityProvider.md) interface.
 
 See [OfferArgs](../technical-references/code/strategies/interfaces/IOfferLogic.md#offerargs) for an explanation of the parameters for posting an offer.
 
 Also see %%provision|provision%%, %%gasreq|gasreq%%, and %%pivotId|pivot-id%%, and %%offer list|offer-list%%.
 
 ```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L26-L53
+https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L26-L49
+```
+
+To complete the `ILiquidityProvder` interface we also need to provide an `updateOffer` like so (details are not covered in this tutorial, but see [Update Your Offer](../../SDK/guides/update-offer.md) in the SDK for the convenience it provides):
+
+```solidity reference title="OfferMakerTutorial.sol"
+https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L51-L73
 ```
 
 ### Emit in Posthook
@@ -54,7 +60,7 @@ https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab
 When using our new contract we can inspect traces and addresses, but for illustrative purposes insert the following to emit an event in the %%posthook|makerPosthook%% when the offer is successfully taken.
 
 ```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-core/blob/5fb08b2b2742a0e9dee57662085fab03279afc72/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L57-L65
+https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L77-L84
 ```
 
 There are more hooks to enable the Mangrovian abilities of %%last look|last-look%% and more advanced %%reactive liquidity|reactive-liquidity%%.
@@ -81,7 +87,7 @@ Before proceeding, import the environment variables made as part of the preparat
 source .env
 ```
 
-Start Foundry's local node `anvil` to test things locally before broadcasting to the real chain, with `$FORK_URL` coming from `.env` and pointing, for instance, to the Polygon Mumbai testnet.
+Start Foundry's local node `anvil` to test things locally before broadcasting to the real chain, with `$RPC_URL` coming from `.env` and pointing, for instance, to the Polygon Mumbai testnet.
 
 ```bash
 anvil --fork-url $RPC_URL
@@ -135,7 +141,7 @@ Now that the contract is ready, we can use it to post an offer - note that we ha
 
 ```bash
 export DAI=0xc87385b5e62099f92d490750fcd6c901a524bbca
-cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "newOffer(address, address, uint, uint)(uint)" "$WETH" "$DAI" 1000000000000000000 1700000000000000000000  --private-key "$PRIVATE_KEY" --value 0.01ether
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "newOffer(address, address, uint, uint, uint)(uint)" "$WETH" "$DAI" 1000000000000000000 1700000000000000000000 0 --private-key "$PRIVATE_KEY" --value 0.01ether
 ```
 
 Instead of trying to parse the logs, we can make a note of the `transactionHash` at the end of the output and use local execution to see the `offerId` returned by `newOffer`.
@@ -223,7 +229,7 @@ The next step could be to publish the contract on mainnet by stopping Anvil and 
 
 To get a view of the order book Mangrove UI can be used, or you can use the [SDK](../../SDK/getting-started/basic-offer.md).
 
-To get a better understanding of how tokens flow between taker, maker, Mangrove, and maker contracts like `OfferMakerTutorial`, see [Mangrove Offer](../background/offer-maker/mangrove-offer.md)
+To get a better understanding of how tokens flow between taker, maker, Mangrove, and maker contracts like `OfferMakerTutorial`, see [Mangrove Offer](../background/offer-maker/mangrove-offer.md).
 
 ### Troubleshooting
 

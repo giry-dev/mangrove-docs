@@ -14,43 +14,11 @@ Logging new offer owner
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| mangrove | contract IMangrove | the Mangrove contract on which the offer is posted |
+| mangrove | contract IMangrove | Mangrove contract on which the offer is posted |
 | outbound_tkn | contract IERC20 | the outbound token of the offer list. |
 | inbound_tkn | contract IERC20 | the inbound token of the offer list. |
 | offerId | uint256 |  |
 | owner | address | the offer maker that can manage the offer. |
-
-### ReserveApproval
-
-```solidity
-event ReserveApproval(address reserve_, address maker, bool isApproved)
-```
-
-Logging reserve approval
-
-### reserveApprovals
-
-```solidity
-function reserveApprovals(address reserve_, address maker) external view returns (bool)
-```
-
-view for reserve approvals
-
-### approvePooledMaker
-
-```solidity
-function approvePooledMaker(address maker) external
-```
-
-reserve (who must be `msg.sender`) approves `maker` for pooling.
-
-### revokePooledMaker
-
-```solidity
-function revokePooledMaker(address maker) external
-```
-
-reserve (who must be `msg.sender`) revokes `maker` from its approved poolers.
 
 ### offerOwners
 

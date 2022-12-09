@@ -22,38 +22,6 @@ function __push__(contract IERC20 token, address reserve, address maker, uint256
 
 router-dependant implementation of the `push` function
 
-### __withdrawToken__
-
-```solidity
-function __withdrawToken__(contract IERC20 token, address reserve, address recipient, uint256 amount) internal returns (bool)
-```
-
-router-dependant implementation of the `withdrawToken` function
-
-### borrow
-
-```solidity
-function borrow(contract IERC20 token, address reserve, uint256 amount, address to) external
-```
-
-### repay
-
-```solidity
-function repay(contract IERC20 token, address reserve, uint256 amount, address from) external
-```
-
-### supply
-
-```solidity
-function supply(contract IERC20 token, address reserve, uint256 amount, address from) external
-```
-
-### claimRewards
-
-```solidity
-function claimRewards(contract IRewardsControllerIsh rewardsController, address[] assets) external returns (address[] rewardsList, uint256[] claimedAmounts)
-```
-
 ### reserveBalance
 
 ```solidity

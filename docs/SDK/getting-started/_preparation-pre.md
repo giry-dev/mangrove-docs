@@ -8,8 +8,6 @@ We are going to be using Foundry to start local forks for existing chains. You d
 For Linux or macOS everything should work out of the box, if you are using Windows, then we recommend installing everything from within WSL2 and expect some quirks.
 Remember to reopen your shell after running the fist line.
 
-For Linux or macOS everything should work out of the box, if you are using Windows, then we recommend installing everything from within WSL2 and expect some quirks.
-
 1. [Node.js](https://nodejs.org/en/) v16.10+, we recommend installation through [nvm](https://github.com/nvm-sh/nvm#installing-and-updating), with [Yarn 2](https://yarnpkg.com/getting-started/install) enabled:
 
 ```shell
@@ -20,7 +18,7 @@ nvm install --lts
 corepack enable
 ```
 
-2. [Foundry](https://book.getfoundry.sh/getting-started/installation.html) development framework for Ethereum :
+2. [Foundry](https://book.getfoundry.sh/getting-started/installation.html) development framework for Ethereum:
 
 ```shell
 curl -L https://foundry.paradigm.xyz | bash
@@ -44,4 +42,3 @@ npm init -y
 ## Install dependencies
 
 Now install the following dependencies:
-

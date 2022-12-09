@@ -29,16 +29,13 @@ Owner data mapping.
 _mapping is outbound_tkn -> inbound_tkn -> offerId -> OwnerData
 'ownerData[out][in][offerId].owner == maker` if `maker` is offer owner of `offerId` in the `(out, in)` offer list._
 
-### reserveApprovals
+### onlyOwner
 
 ```solidity
-mapping(address => mapping(address => bool)) reserveApprovals
+modifier onlyOwner(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 offerId)
 ```
 
-Reserve approvals mapping.
-
-_mapping is reserve -> maker -> isApproved.
-`reserveApprovals[reserve][maker] => setReserve(maker, reserve)` will not revert._
+modifier to enforce function caller to be offer owner
 
 ### mgvOrOwner
 
@@ -46,7 +43,7 @@ _mapping is reserve -> maker -> isApproved.
 modifier mgvOrOwner(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 offerId)
 ```
 
-modifier to enforce function caller to be either Mangrove or offer owner
+modifier to enforce function caller to be offer owner or MGV (for use in the offer logic)
 
 ### constructor
 
@@ -63,39 +60,6 @@ Forwarder constructor
 | mgv | contract IMangrove | the deployed Mangrove contract on which this contract will post offers. |
 | router | contract AbstractRouter | the router that this contract will use to pull/push liquidity from offer maker's reserve. This must not be `NO_ROUTER`. |
 | gasreq | uint256 | Gas requirement when posting offers via this strategy, excluding router requirement. |
-
-### approvePooledMaker
-
-```solidity
-function approvePooledMaker(address maker) external
-```
-
-reserve (who must be `msg.sender`) approves `maker` for pooling.
-
-### revokePooledMaker
-
-```solidity
-function revokePooledMaker(address maker) external
-```
-
-reserve (who must be `msg.sender`) revokes `maker` from its approved poolers.
-
-### __checkReserveApproval__
-
-```solidity
-function __checkReserveApproval__(address reserve_, address maker) internal view returns (bool)
-```
-
-verifies that maker is allowed to use a reserve for pooling funds
-
-_setting reserve(maker) to address(0) is always permitted since `reserve(maker)` is then `maker` itself._
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| reserve_ | address | the reserve on which one is pooling funds |
-| maker | address | the pooler of the reserve |
 
 ### offerOwners
 
@@ -155,7 +119,7 @@ _the returned gasprice is slightly lower than the real gasprice that the provisi
 | ---- | ---- | ----------- |
 | gasreq | uint256 | the gas required by the offer |
 | provision | uint256 | the amount of native token one wishes to use, to provision the offer on Mangrove. |
-| offerGasbase | uint256 | the Mangrove's offer_gasbase. |
+| offerGasbase | uint256 | Mangrove's offer_gasbase. |
 
 #### Return Values
 
@@ -211,29 +175,6 @@ _If inside a hook, one should call `_newOffer` to create a new offer and not dir
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | offerId | uint256 | the identifier of the new offer on the offer list. Can be 0 if posting was rejected by Mangrove and `args.noRevert` is `true`. Forwarder logic does not manage user funds on Mangrove, as a consequence: An offer maker's redeemable provisions on Mangrove is just the sum $S_locked(maker)$ of locked provision in all live offers it owns plus the sum $S_free(maker)$ of `weiBalance`'s in all dead offers it owns (see `OwnerData.weiBalance`). Notice $\sum_i S_free(maker_i)$ <= MGV.balanceOf(address(this))`. Any fund of an offer maker on Mangrove that is either not locked on Mangrove or stored in the `OwnerData` free wei's is thus not recoverable by the offer maker (although it is admin recoverable). Therefore we need to make sure that all `msg.value` is either used to provision the offer at `gasprice` or stored in the offer data under `weiBalance`. To do so, we do not let offer maker fix a gasprice. Rather we derive the gasprice based on `msg.value`. Because of rounding errors in `deriveGasprice` a small amount of WEIs will accumulate in mangrove's balance of `this` contract We assign this leftover to the corresponding `weiBalance` of `OwnerData`. |
-
-### updateOffer
-
-```solidity
-function updateOffer(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 wants, uint256 gives, uint256 gasreq, uint256 gasprice, uint256 pivotId, uint256 offerId) public payable
-```
-
-updates an offer existing on Mangrove (not necessarily live).
-
-_the `gasprice` argument is always ignored in `Forwarder` logic, since it has to be derived from `msg.value` of the call (see `_newOffer`)._
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| outbound_tkn | contract IERC20 | the outbound token of the offer list of the offer |
-| inbound_tkn | contract IERC20 | the outbound token of the offer list of the offer |
-| wants | uint256 | the new amount of outbound tokens the offer maker requires for a complete fill |
-| gives | uint256 | the new amount of inbound tokens the offer maker gives for a complete fill |
-| gasreq | uint256 | the new amount of gas units that are required to execute the trade (use type(uint).max for using `this.offerGasReq()`) |
-| gasprice | uint256 | the new gasprice used to compute offer's provision (use 0 to use Mangrove's gasprice) |
-| pivotId | uint256 | the pivot to use for re-inserting the offer in the list (use `offerId` if updated offer is live) |
-| offerId | uint256 | the id of the offer in the offer list. |
 
 ### UpdateOfferVars
 
@@ -307,30 +248,6 @@ Calling this function, with the `deprovision` flag, on an offer that is already 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | freeWei | uint256 |  |
-
-### withdrawToken
-
-```solidity
-function withdrawToken(contract IERC20 token, address receiver, uint256 amount) external returns (bool success)
-```
-
-Withdraws tokens from `msg.sender`'s reserve
-
-_function is not guarded but only `msg.sender`'s reserve can be reached._
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| token | contract IERC20 | the type of asset one is willing to retrieve |
-| receiver | address | the address of the receiver of the tokens (must not be `address(0)`) |
-| amount | uint256 | the quantity of tokens to withdraw from reserve (in WEI units). |
-
-#### Return Values
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| success | bool | whether funds were successfully transferred to `receiver` |
 
 ### __put__
 

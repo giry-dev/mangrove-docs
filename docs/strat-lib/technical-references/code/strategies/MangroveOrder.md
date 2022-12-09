@@ -1,9 +1,9 @@
 ## MangroveOrder
 
-A GTC order is a market buy (sell) order complemented by a bid (ask) order, called a resting order, that occurs when the buy (sell) order was partially filled.
-If the GTC is for some amount $a_goal$ at a price $(1+s)*p$ with slippage $s$, and the corresponding market order was partially filled for $a_now < a_goal$,
-the resting order should be posted for an amount $a_later = a_goal - a_now$ at price $p$ (slippage is discarded).
-A FOK order is simply a buy or sell order that is either completely filled or cancelled. No resting order is posted.
+A GTC order is a buy (sell) limit order complemented by a bid (ask) limit order, called a resting order, that occurs when the buy (sell) order was partially filled.
+If the GTC is for some amount $a_goal$ at a price $p$, and the corresponding limit order was partially filled for $a_now < a_goal$,
+the resting order should be posted for an amount $a_later = a_goal - a_now$ at price $p$.
+A FOK order is simply a buy or sell limit order that is either completely filled or cancelled. No resting order is posted.
 
 _requiring no partial fill *and* a resting order is interpreted here as an instruction to revert if the resting order fails to be posted (e.g., if below density)._
 
@@ -17,15 +17,6 @@ mapping(contract IERC20 => mapping(contract IERC20 => mapping(uint256 => uint256
 if the order tx is included after the expriry date, it reverts.
 
 _0 means no expiry._
-
-### additionalGasreq
-
-```solidity
-uint256 additionalGasreq
-```
-
-if evm gas cost is updated, one may need to increase gas requirements for new offers to avoid failing.
-Setting `additionalGasreq` is an alternative to redeployment.
 
 ### constructor
 
@@ -62,19 +53,26 @@ _We also allow Mangrove to call this so that it can part of an offer logic._
 | offerId | uint256 | The offer id whose expiry date is to be set. |
 | date | uint256 | in seconds since unix epoch |
 
-### setAdditionalGasreq
+### updateOffer
 
 ```solidity
-function setAdditionalGasreq(uint256 additionalGasreq_) external
+function updateOffer(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 wants, uint256 gives, uint256 pivotId, uint256 offerId) external payable
 ```
 
-Increase gas requirement for all new offers.
+updates an offer on Mangrove
+
+_this can be used to update price of the resting order_
 
 #### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| additionalGasreq_ | uint256 | additional gas requirement |
+| outbound_tkn | contract IERC20 | outbound token of the offer list |
+| inbound_tkn | contract IERC20 | inbound token of the offer list |
+| wants | uint256 | new amount of `inbound_tkn` offer owner wants |
+| gives | uint256 | new amount of `outbound_tkn` offer owner gives |
+| pivotId | uint256 | pivot for the new rank of the offer |
+| offerId | uint256 | the id of the offer to be updated |
 
 ### __lastLook__
 
@@ -141,12 +139,9 @@ function postRestingOrder(struct IOrderLogic.TakerOrder tko, contract IERC20 out
 
 posts a maker order on the (`outbound_tkn`, `inbound_tkn`) offer list.
 
-_entailed price of the (instant) market order includes taker's slippage tolerance. It is given by:
+_entailed price that should be preserved for the maker order are:
 * `tko.takerGives/tko.takerWants` for buy orders (i.e `fillWants==true`)
-* `tko.takerWants/tko.takerGives` for sell orders (i.e `fillWants==false`)
-Price w/o slippage for potential resting order is thus:
-* `(tko.takerGives - tko.slippageAmount)/tko.takerWants` for the resting bid
-* `(tko.takerWants + tko.slippageAmount)/tko.takerGives` for the resting ask._
+* `tko.takerWants/tko.takerGives` for sell orders (i.e `fillWants==false`)_
 
 #### Parameters
 

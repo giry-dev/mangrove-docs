@@ -1,5 +1,5 @@
 ---
-description: The Mangrove DEX is an on-chain, orderbook-based exchange where offers are code.
+description: The Mangrove DEX is an on-chain, order book-based exchange where offers are code.
 sidebar_position: 1
 ---
 

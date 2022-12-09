@@ -2907,6 +2907,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mangrovedao/mangrove-core@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@mangrovedao/mangrove-core@npm:1.2.0"
+  checksum: a678a273c5d56f4c6de3818caa70025de4a7eb18b7605f159020236d6b74295ea4b7b93d2922dc21ea2b81713e7f3e0aad765f898b32aa6e16405f1ba9e1b5cc
+  languageName: node
+  linkType: hard
+
 "@mangrovedao/mangrove.js@npm:^0.13.0":
   version: 0.13.0
   resolution: "@mangrovedao/mangrove.js@npm:0.13.0"
@@ -12878,7 +12885,7 @@ __metadata:
     "@docusaurus/theme-mermaid": ^2.2.0
     "@ethersproject/abi": ^5.4.7
     "@ethersproject/providers": ^5.4.7
-    "@mangrovedao/mangrove-core": ^1.1.3
+    "@mangrovedao/mangrove-core": ^1.2.0
     "@mangrovedao/mangrove.js": ^0.13.0
     "@mdx-js/react": ^1.6.22
     "@nomicfoundation/hardhat-chai-matchers": ^1.0.0

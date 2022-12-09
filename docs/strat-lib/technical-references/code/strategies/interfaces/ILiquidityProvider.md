@@ -1,15 +1,9 @@
-## OfferForwarder
-
-### constructor
-
-```solidity
-constructor(contract IMangrove mgv, address deployer) public
-```
+## ILiquidityProvider
 
 ### newOffer
 
 ```solidity
-function newOffer(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 wants, uint256 gives, uint256 gasreq, uint256 gasprice, uint256 pivotId) external payable returns (uint256 offerId)
+function newOffer(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 wants, uint256 gives, uint256 gasreq, uint256 gasprice, uint256 pivotId) external payable returns (uint256)
 ```
 
 creates a new offer on Mangrove.
@@ -33,8 +27,6 @@ function updateOffer(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, 
 ```
 
 updates an offer existing on Mangrove (not necessarily live).
-
-_the `gasprice` argument is always ignored in `Forwarder` logic, since it has to be derived from `msg.value` of the call (see `_newOffer`)._
 
 #### Parameters
 

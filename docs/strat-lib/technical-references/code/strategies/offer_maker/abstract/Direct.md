@@ -8,23 +8,6 @@
 constructor(contract IMangrove mgv, contract AbstractRouter router_, uint256 gasreq) internal
 ```
 
-### __checkReserveApproval__
-
-```solidity
-function __checkReserveApproval__(address reserve_, address maker) internal view returns (bool)
-```
-
-verifies that maker is allowed to use a reserve for pooling funds
-
-_function throws if `reserve_` has not approved `maker`_
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| reserve_ | address | the reserve on which one is pooling funds |
-| maker | address | the pooler of the reserve |
-
 ### __checkList__
 
 ```solidity
@@ -38,28 +21,6 @@ _override conservatively to define strat-specific additional check list_
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | token | contract IERC20 | the ERC20 one wishes this contract to trade on. |
-
-### withdrawToken
-
-```solidity
-function withdrawToken(contract IERC20 token, address receiver, uint256 amount) external returns (bool success)
-```
-
-Withdraws tokens from `msg.sender`'s reserve
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| token | contract IERC20 | the type of asset one is willing to retrieve |
-| receiver | address | the address of the receiver of the tokens (must not be `address(0)`) |
-| amount | uint256 | the quantity of tokens to withdraw from reserve (in WEI units). |
-
-#### Return Values
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| success | bool | whether funds were successfully transferred to `receiver` |
 
 ### pull
 
@@ -84,27 +45,6 @@ function flush(contract IERC20[] tokens) internal
 ```solidity
 function _newOffer(struct IOfferLogic.OfferArgs args) internal returns (uint256)
 ```
-
-### updateOffer
-
-```solidity
-function updateOffer(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 wants, uint256 gives, uint256 gasreq, uint256 gasprice, uint256 pivotId, uint256 offerId) public payable
-```
-
-updates an offer existing on Mangrove (not necessarily live).
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| outbound_tkn | contract IERC20 | the outbound token of the offer list of the offer |
-| inbound_tkn | contract IERC20 | the outbound token of the offer list of the offer |
-| wants | uint256 | the new amount of outbound tokens the offer maker requires for a complete fill |
-| gives | uint256 | the new amount of inbound tokens the offer maker gives for a complete fill |
-| gasreq | uint256 | the new amount of gas units that are required to execute the trade (use type(uint).max for using `this.offerGasReq()`) |
-| gasprice | uint256 | the new gasprice used to compute offer's provision (use 0 to use Mangrove's gasprice) |
-| pivotId | uint256 | the pivot to use for re-inserting the offer in the list (use `offerId` if updated offer is live) |
-| offerId | uint256 | the id of the offer in the offer list. |
 
 ### _updateOffer
 

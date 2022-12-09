@@ -153,9 +153,9 @@ When using an offer logic that inherits from the [`MultiUser.sol`](https://githu
 
 ## LiquidityProvider
 
-A `LiquidityProvider` instance is the object one needs to [post Bids and Asks](../guides/posting-bids-and-asks.md) on a Mangrove market. There are two means to obtain an LiquidityProvider: either to post a [direct Offer](https://docs.mangrove.exchange/offer-making-strategies/basic-offer) or to post an Offer relying on some onchain [logic](api-overview.md#offerlogic).
+A `LiquidityProvider` instance is the object one needs to post bids and asks on a Mangrove market. It can be used to post a [direct offer](../getting-started/basic-offer.md) or to post an offer relying on some on-chain [logic](api-overview.md#offerlogic).
 
-To act as a direct liquidity provider on a some [`mgvMarket`](api-overview.md#market) you must obtain a `LiquidityProvider` instance from an [`mgv`](api-overview.md#mangrove) object using:
+To act as a direct liquidity provider on a [`mgvMarket`](api-overview.md#market) you must obtain a `LiquidityProvider` instance from an [`mgv`](api-overview.md#mangrove) object using:
 
 ```javascript
 const mgvDirectLP = await mgv.liquidityProvider(mgvMarket);
