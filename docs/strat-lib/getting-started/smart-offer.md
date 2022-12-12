@@ -227,7 +227,7 @@ Towards the end of the trace you can find the function of `makerPosthook` being 
 
 The next step could be to publish the contract on mainnet by stopping Anvil and replacing the `--rpc-url $LOCAL_URL` in the above `create`, `activate`, and `approve` commands with `--rpc-url $RPC_URL` - and finally, the `newOffer` with sensible prices.
 
-To get a view of the order book Mangrove UI can be used, or you can use the [SDK](../../SDK/getting-started/basic-offer.md).
+To get a view of the order book, the Mangrove UI can be used, or you can use the [SDK](../../SDK/getting-started/basic-offer.md).
 
 To get a better understanding of how tokens flow between taker, maker, Mangrove, and maker contracts like `OfferMakerTutorial`, see [Mangrove Offer](../background/offer-maker/mangrove-offer.md).
 

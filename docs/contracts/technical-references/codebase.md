@@ -12,9 +12,9 @@ The Solidity source code for the [Mangrove Core](https://github.com/mangrovedao/
 
 :::info
 
-The [annotated code](pathname:///MgvDoc/) provides a comprehensive overview of Mangrove contract.
+The [annotated code](pathname:///MgvDoc/) provides a comprehensive overview of the Mangrove contract.
 
-This overview is generated directly from annotation in comments in Mangrove core code, and is currently *provided as a single separate webpage*. It can be generated manually from a clone of the codebase, and is provided as-is on this site for convenience.
+This overview is generated directly from annotation in comments in the Mangrove core code, and is currently *provided as a single separate webpage*. It can be generated manually from a clone of the codebase, and is provided as-is on this site for convenience.
 
 :::
 

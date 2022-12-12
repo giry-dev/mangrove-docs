@@ -38,10 +38,10 @@ anvil --fork-url $RPC_URL
 Start up `node` in a new terminal and issue the following code which performs the following steps:
 
 1. The first thing needed is to import `dotenv`, this handles the `.env` file you added in the [preparation](./preparation.md).
-2. Then import both `Mangrove` and `ethers` from Mangrove package. `ethers` will allow you to connect to a node and your wallet. `Mangrove` will allow you to connect to Mangrove protocol.
+2. Then import both `Mangrove` and `ethers` from the Mangrove package. `ethers` will allow you to connect to a node and your wallet. `Mangrove` will allow you to connect to the Mangrove protocol.
 3. We connect to a local `anvil` node through `LOCAL_URL`. In order to connect to a real chain can replace `LOCAL_URL` with `RPC_URL`.
 4. The `PRIVATE_KEY` is needed in order to connect to your wallet.
-5. Once you have connected your wallet, you can connect to Mangrove protocol using your wallet.
+5. Once you have connected your wallet, you can connect to the Mangrove protocol using your wallet.
 
 ```javascript reference
 https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L1-L12

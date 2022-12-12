@@ -6,7 +6,7 @@ sidebar_position: 8
 
 # Approvals
 
-During trade settlement, Mangrove needs certain approvals for transferring funds between the offer taker and maker with Mangrove as an intermediary.
+During trade settlement, Mangrove needs certain approvals for transferring funds between the offer taker and the maker with Mangrove as an intermediary.
 
 ### Call sequence overview
 
