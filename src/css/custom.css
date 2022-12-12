@@ -126,3 +126,9 @@ table {
 [data-theme='dark'] .frontpageSvgButton {
   filter: invert(100%);
 }
+
+@media screen and (max-width: 1200px) {
+  .navbar__title {
+    width: 0;
+  }
+}
