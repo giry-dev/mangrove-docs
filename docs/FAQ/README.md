@@ -44,7 +44,7 @@ Offers in the order book may fail when taken, either because the maker conscious
 ## Are Mangrove market orders the same as traditional market orders?
 </summary>
 
-Mangrove's [market orders](../contracts/technical-references/taking-and-making-offers/taker-order/README.md) are DeFi market orders which are different from market orders in TradFi:
+Mangrove's [market orders](../contracts/technical-references/taking-and-making-offers/taker-order/README.md) are DeFi market orders - which are different from market orders in TradFi:
 
 In TradFi, a market order is an order to buy or sell immediately at the best available price.
 

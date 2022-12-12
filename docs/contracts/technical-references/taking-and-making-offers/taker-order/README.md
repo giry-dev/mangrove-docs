@@ -5,7 +5,9 @@ sidebar_position: 3
 
 # Taking offers
 
-## Generalities
+Offers on Mangrove can be taken in two ways - with a [market order](#market-order) or by [sniping](#offer-sniping) individual offers.
+
+## General considerations
 
 ### Token allowance
 
@@ -13,22 +15,22 @@ ERC20 tokens transfers are initiated by Mangrove using `transferFrom`. If Mangro
 
 ### Active offer lists
 
-Every Mangrove[ offer list ](../offer-list.md#general-structure)can be either [active or inactive](../../governance-parameters/local-variables.md#de-activating-an-offer-list), and Mangrove itself can be either [alive or dead](../../governance-parameters/global-variables.md#other-governance-controlled-setters). Taking offers is only possible when Mangrove is alive on offer lists that are active.
+Every Mangrove [offer list](../offer-list.md) can be either [active or inactive](../../governance-parameters/local-variables.md#de-activating-an-offer-list), and Mangrove itself can be either [alive or dead](../../governance-parameters/global-variables.md#other-governance-controlled-setters). Taking offers is only possible when Mangrove is alive and on offer lists that are active.
 
 ## Market order
 
-A **Market Order** is Mangrove's simplest way of buying or selling assets. Such (taker) orders are run against a specific [offer list](../offer-list.md#general-structure) with its associated _outbound_ token (tokens that flow out of Mangrove) and _inbound_ token (tokens that flow into Mangrove). The liquidity taker specifies how many _outbound_ tokens she [wants](../offer-list.md#wants-gives-and-entailed-price) and how many _inbound_ tokens she [gives](../offer-list.md#wants-gives-and-entailed-price).
+A **Market Order** is Mangrove's simplest way of buying or selling assets. Such (taker) orders are run against a specific [offer list](../offer-list.md) with its associated %%outbound|outbound%% token and %%inbound|inbound%% token. The liquidity taker specifies how many _outbound_ tokens she %%wants|wants%% and how many _inbound_ tokens she %%gives|gives%%.
 
 
 :::info **Mangrove Market Order = TradFi Limit Order**
 
-Mangrove's market orders are DeFi market orders which are different from market orders in TradFi:
+Mangrove's market orders are _DeFi_ market orders - which are different from market orders in TradFi:
 
 In TradFi, a market order is an order to buy or sell immediately at the best available price.
 
-In DeFi, where transactions can be front-run/sandwiched, adversaries may manipulate the best available price and thus extract value from a market order as there is no limit on the price. TradFi market orders are therefore unsafe for fully on-chain DEX'es like Mangrove.
+In DeFi, where transactions can be [front-run](https://www.investopedia.com/terms/f/frontrunning.asp) or [sandwiched](https://coinmarketcap.com/alexandria/article/what-are-sandwich-attacks-in-defi-and-how-can-you-avoid-them), adversaries may manipulate the best available price and thus extract value from a market order as there is no limit on the price. TradFi market orders are therefore unsafe for fully on-chain DEX'es like Mangrove.
 
-To protect the user, Mangrove's market order therefore corresponds to a **limit order** in TradFi: An order to buy or sell at or below a given price.
+To protect the user, Mangrove's market order therefore corresponds to a TradFi [**limit order**](https://www.investopedia.com/terms/l/limitorder.asp): An order to buy or sell at or below a given price.
 More precisely, Mangrove ensures that the **average** price of the offers matched with the order does not exceed the specified price.
 
 :::
@@ -249,6 +251,10 @@ At the end of a Market Order the following is guaranteed to hold:
 
 :::
 
+#### Example
+
+Consider the offer list below. As is usual for %%offer lists|offer-list%%, offers are ordered in the table by %%rank|offer-rank%%.
+
 | ID | wants (USDC) | gives (DAI) |
 | -- | ------------ | ----------- |
 | 2  | 0.98         | 1           |
@@ -267,9 +273,12 @@ Consider the DAI-USDC offer list (with no fee) above. If a taker calls `marketOr
 
 :::
 
+
 ### More on market order behaviour
 
-Mangrove's market orders are configurable using the three parameters `takerWants`, `takerGives` and `fillWants.` Suppose one wants to buy or sell some token `B` (base), using token `Q` (quote) as payment.
+Mangrove's market orders are configurable using the three parameters `takerWants`, `takerGives` and `fillWants.` 
+
+Suppose one wants to buy or sell some token `B` (base), using token `Q` (quote) as payment.
 
 * **Market buy:** A limit **buy** order for x tokens B, corresponds to a `marketOrder` on the (`B`,`Q`) offer list with `takerWants=x` (the volume one wishes to buy) and with `takerGives` such that `takerGives/x` is the limit price cap, and setting `fillWants` to `true`.
 * **Market sell:** A limit **sell** order for x tokens B, corresponds to a `marketOrder` on the (`Q`, `B`) offer list with `takerGives=x` (the volume one wishes to sell) and with `takerWants` such that `takerGives/x` is the limit price cap, and setting `fillWants` to `false`.
@@ -515,8 +524,8 @@ If you only want to take offers without any checks on the offer contents, you ca
 
 ### Outputs
 
-* `successes` is the number of sniped offers that transferred the expected volume to the taker (in particular `successes < target.length` if and only if some of the sniped offers reneged on their trade and `bounty > 0`).
-* `takerGot, takerGet, bounty, fee` as in `marketOrder`.
+* `successes` is the number of sniped offers that transferred the expected volume to the taker (in particular, `successes < target.length` if and only if some of the sniped offers reneged on their trade and `bounty > 0`).
+* `takerGot, takerGet, bounty, fee` as in [`marketOrder`](#market-order).
 
 #### Example
 
@@ -527,7 +536,7 @@ If you only want to take offers without any checks on the offer contents, you ca
 
 :::info **Example**
 
-Consider the above offers on the DAI-USDC offer list:
+Consider the offers above on the DAI-USDC offer list:
 
 Setting `targets` to `[[13,8,10,80_000],[2,1,1.1,250_000]]` with `fillWants` set to `true` will successfully buy 8 DAI from offer #13 (for 8 USDC), and will not attempt to execute offer #2 since 1.1 > 1/2.
 
