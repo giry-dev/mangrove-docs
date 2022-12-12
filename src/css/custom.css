@@ -127,7 +127,7 @@ table {
   filter: invert(100%);
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (min-width: 996px) and (max-width: 1200px) {
   .navbar__title {
     width: 0;
   }
