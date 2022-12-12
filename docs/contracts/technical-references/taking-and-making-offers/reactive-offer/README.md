@@ -192,11 +192,11 @@ await tx.wait();
 
 * `outbound_tkn` address of the %%outbound|outbound%% token (that the offer will provide).
 * `inbound_tkn` address of the %%inbound|inbound%% token (that the offer will receive).
-* %%`wants`|wants%% amount of inbound tokens requested by the offer. **Must** fit in a `uint96`.
-* %%`gives`|gives%% amount of outbound tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t. to %%`gasreq`|gasreq%% and offer list's %%density|density%% parameter.
-* %%`gasreq`|gasreq%% amount of gas that will be given to the offer's [account](maker-contract.md). **Must** fit in a `uint24` and be lower than `gasmax`. Should be sufficient to cover all calls to the maker contract's %%offer logic|offer-logic%% (%%`makerExecute`|makerExecute%%) and %%`makerPosthook`|makerPosthook%%). **Must** be compatible with the offered volume `gives` and the offer list's %%density|density%% parameter. See also %%gasreq|gasreq%%.
-* %%`gasprice`|gasprice%% gas price override used to compute the order %%provision|provision%% (see also [offer bounties](offer-provision.md)). Any value lower than Mangrove's current %%gasprice|gasprice%% will be ignored (thus 0 means "use Mangrove's current %%gasprice|gasprice%%"). **Must** fit in a `uint16`.
-* %%`pivotId`|pivot-id%% where to start the insertion process in the offer list. If `pivotId` is not in the offer list at the time the transaction is processed, the new offer will be inserted starting from the offer list's [best](./#getting-current-best-offer-of-a-market) offer. Should be the id of the existing live offer with the price closest to the price of the offer being posted.
+* `wants` amount of inbound tokens requested by the offer. **Must** fit in a `uint96`.
+* `gives` amount of outbound tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t. to `gasreq` and offer list's %%density|density%% parameter.
+* `gasreq` amount of gas that will be given to the offer's account. **Must** fit in a `uint24` and be lower than `gasmax`. Should be sufficient to cover all calls to the maker contract's %%offer logic|offer-logic%% (%%`makerExecute`|makerExecute%%) and %%`makerPosthook`|makerPosthook%%). **Must** be compatible with the offered volume `gives` and the offer list's %%density|density%% parameter. See also %%gasreq|gasreq%%.
+* `gasprice` gas price override used to compute the order %%provision|provision%% (see also [offer bounties](offer-provision.md)). Any value lower than Mangrove's current %%gasprice|gasprice%% will be ignored (thus 0 means "use Mangrove's current %%gasprice|gasprice%%"). **Must** fit in a `uint16`.
+* `pivotId` where to start the insertion process in the offer list. If %%pivotId|pivot-id%% is not in the offer list at the time the transaction is processed, the new offer will be inserted starting from the offer list's [best](./#getting-current-best-offer-of-a-market) offer. Should be the id of the existing live offer with the price closest to the price of the offer being posted.
 
 **Outputs**
 
