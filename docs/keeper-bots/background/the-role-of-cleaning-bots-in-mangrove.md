@@ -25,7 +25,7 @@ While we have to accept that offers may fail, we don't have to accept that they 
 
 When an offer fails, the taker receives a bounty in native token. The bounty is bigger than the gas used to make the offer fail and thus the taker is compensated for the wasted gas. But more importantly, it can be profitable to identify and snipe offers that will fail.
 
-This means that it can be profitable to run so-called %%cleaning bots|cleaning-bot%% that monitor Mangrove order books and snipe any offer that will fail. Community members are encouraged to run such cleaning bots and thereby contribute to keeping Mangrove working optimally
+This means that it can be profitable to run so-called %%cleaning bots|cleaning-bot%% that monitor Mangrove order books and snipe any offer that will fail. Community members are encouraged to run such cleaning bots and thereby contribute to keeping Mangrove working optimally.
 
 
 # Getting started with cleaning bots

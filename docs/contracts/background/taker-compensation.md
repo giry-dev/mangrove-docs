@@ -11,9 +11,9 @@ Consider an offer that promises 100WETH for 100DAI and requires 300k for executi
 
 If they are not, the taker must be compensated for the wasted gas. This is why, when creating an offer, market makers must [provision](../technical-references/taking-and-making-offers/reactive-offer/offer-provision.md) for a potential [bounty](../technical-references/taking-and-making-offers/reactive-offer/offer-provision.md#computing-the-provision-and-offer-bounty) in ETH. That [bounty](../technical-references/taking-and-making-offers/reactive-offer/offer-provision.md#computing-the-provision-and-offer-bounty) depends on :
 
-* The average gas price, as estimated by Mangrove exchange itself. Let's name it `gasprice`.
+* The average gas price, as estimated by Mangrove itself. Let's name it `gasprice`.
 * The amount of gas requested by the offer. Let's name it `gasreq`.
-* A minimum gas expense determined by Mangrove exchange. Let's name it `gas_overhead`.
+* A minimum gas expense determined by Mangrove. Let's name it `gas_overhead`.
 
 To post their offer, the maker must lock `gasprice * (gasreq + gas_overhead)` WEI in Mangrove.
 

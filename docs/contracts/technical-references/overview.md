@@ -4,7 +4,7 @@ description: Overview of Mangrove ecosystem
 sidebar_position: 1
 ---
 
-# Overview of Mangrove ecosystem
+# Overview of Mangrove's ecosystem
 
 The illustration belows depicts a bird's-eye view of the Mangrove ecosystem. The main actors are depicted as well as their most important interactions.
 

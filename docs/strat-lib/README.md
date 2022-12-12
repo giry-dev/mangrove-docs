@@ -1,5 +1,5 @@
 ---
-description: The Mangrove strat library are contract building blocks for writing safe and efficient market making strats for Mangrove.
+description: The Mangrove strat library comprises contract building blocks for writing safe and efficient market making strats for Mangrove.
 sidebar_position: 1
 ---
 
@@ -14,7 +14,7 @@ The strat library provides several good starting points for writing your own cus
 
 The strat library is open source, and is provided freely to the community as a starting point for writing maker contracts. However, do note that the strat library as a whole may still contain bugs, and should be used responsibly and with care (see also [Safety first](#safety-first)).
 
-If you have questions about how to use the Strat library, which are not answered sufficiently in this documentation, do reach out on Mangrove [Discord](https://discord.gg/rk9Qthz5YE). And pull requests to the strategy library are, of course, welcome!
+If you have questions about how to use the Strat library, which are not answered sufficiently in this documentation, do reach out on the Mangrove [Discord](https://discord.gg/rk9Qthz5YE). And pull requests to the strategy library are, of course, welcome!
 
 ## How do I use the Strat Library?
 
