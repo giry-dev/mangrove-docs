@@ -194,13 +194,13 @@ await tx.wait();
 * `inbound_tkn` address of the %%inbound|inbound%% token (that the offer will receive).
 * `wants` amount of inbound tokens requested by the offer. **Must** fit in a `uint96`.
 * `gives` amount of outbound tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t. to `gasreq` and offer list's %%density|density%% parameter.
-* `gasreq` amount of gas that will be given to the offer's account. **Must** fit in a `uint24` and be lower than `gasmax`. Should be sufficient to cover all calls to the maker contract's %%offer logic|offer-logic%% (%%`makerExecute`|makerExecute%%) and %%`makerPosthook`|makerPosthook%%). **Must** be compatible with the offered volume `gives` and the offer list's %%density|density%% parameter. See also %%gasreq|gasreq%%.
+* `gasreq` amount of gas that will be given to the offer's account. **Must** fit in a `uint24` and be lower than [`gasmax`](../../governance-parameters/mangrove-configuration.md#mgvlibmgvstructsglobalunpacked). Should be sufficient to cover all calls to the maker contract's %%offer logic|offer-logic%% (%%`makerExecute`|makerExecute%%) and %%`makerPosthook`|makerPosthook%%). **Must** be compatible with the offered volume `gives` and the offer list's %%density|density%% parameter. (See also %%gasreq|gasreq%%.)
 * `gasprice` gas price override used to compute the order %%provision|provision%% (see also [offer bounties](offer-provision.md)). Any value lower than Mangrove's current %%gasprice|gasprice%% will be ignored (thus 0 means "use Mangrove's current %%gasprice|gasprice%%"). **Must** fit in a `uint16`.
 * `pivotId` where to start the insertion process in the offer list. If %%pivotId|pivot-id%% is not in the offer list at the time the transaction is processed, the new offer will be inserted starting from the offer list's [best](./#getting-current-best-offer-of-a-market) offer. Should be the id of the existing live offer with the price closest to the price of the offer being posted.
 
 **Outputs**
 
-* %%`offerId`|offer-id%% the id of the newly created offer. Note that offer ids are scoped to %%offer lists|offer-list%%, so many offers can share the same id.
+* `offerId` the %%id|offer-id%% of the newly created offer. Note that offer ids are scoped to %%offer lists|offer-list%%, so many offers can share the same id.
 
 :::danger **Provisioning**
 
@@ -220,7 +220,7 @@ Make sure that your offer is [well-provisioned](offer-provision.md#checking-an-a
 
 ### Updating an existing offer
 
-Offers are updated through the `updateOffer` function described below (source code is [here](https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/MgvOfferMaking.sol#L106-L156)).
+Offers are updated through the `updateOffer` function described below.
 
 <Tabs>
 <TabItem value="signature" label="Signature" default>
@@ -321,8 +321,8 @@ IMangrove(MGV).updateOffer(
 
 #### Inputs
 
-* `offerId` is the offer id of the offer to be updated.
-* For the other parameters, see [above](./#posting-a-new-reactive-offer).
+* `offerId` is the %%offer id|offer-id%% of the offer to be updated.
+* All other parameters are exactly like for `newOffer` - see [above](#posting-a-new-offer).
 
 #### Outputs
 
@@ -330,13 +330,13 @@ None.
 
 :::info **Offer updater**
 
-An offer can only be updated if `msg.sender` is the [account](maker-contract.md) that created the offer.
+An offer can only be updated if `msg.sender` is the account that created the offer.
 
 :::
 
 :::caution **Reusing offers**
 
-After being executed or [retracted](./#retracting-an-offer), an offer is moved out of the offer list. It can still be updated and reinserted in the offer list. We recommend updating offers instead of creating new ones, as it costs much less gas.
+After being executed or [retracted](#retracting-an-offer), an offer is moved out of the %%offer list|offer-list%%. It can still be updated and reinserted in the offer list. It is generally recommended to update offers instead of creating new ones, as it costs much less gas.
 :::
 
 ### Retracting an offer
@@ -414,9 +414,10 @@ function myRetractOffer(uint offerId) external {
 
 #### Inputs
 
-* `offerId` is the offer id of the offer to be updated.
+* `outbound_tkn` address of the %%outbound|outbound%% token (like for [`newOffer`](#posting-a-new-offer)).
+* `inbound_tkn` address of the %%inbound|inbound%% token (like for [`newOffer`](#posting-a-new-offer)).
+* `offerId` is the %%offer id|offer-id%% of the offer to be retracted.
 * `deprovision` if true, will free the offer's %%provision|provision%% so that you can [withdraw](offer-provision.md#withdrawing) them. Otherwise, will leave the provision in the offer.
-* For the other parameters, see [above](./#posting-a-new-reactive-offer).
 
 #### Outputs
 
