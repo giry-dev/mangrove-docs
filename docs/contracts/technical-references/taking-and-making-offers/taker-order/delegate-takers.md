@@ -48,7 +48,7 @@ function permit(
 
 ## Delegated Order Taking
 
-Once a Delegate Taker is approved or permitted by a taker, she can use the delegated Taker Orders variants `marketOrderFor` and `snipesFor` which work similarly to `marketOrder` and `snipes` but require an additional `taker` address.
+Once a Delegate Taker is approved or permitted by a taker, she can use the delegated Taker Orders variants `marketOrderFor` and `snipesFor` which work similarly to [`marketOrder`](README.md#market-order) and [`snipes`](README.md#offer-sniping) but require an additional `taker` address.
 
 <Tabs>
 <TabItem value="function" label="Function" default>
@@ -61,6 +61,7 @@ function marketOrderFor(
     uint takerWants,
     uint takerGives,
     bool fillWants,
+    // highlight-next-line
     address taker
   ) external returns (uint takerGot, uint takerGave, uint bounty, uint fee);
  
@@ -70,6 +71,7 @@ function snipesFor(
     address inbound_tkn,
     uint[4][] memory targets,
     bool fillWants,
+    // highlight-next-line
     address taker
   )
     external

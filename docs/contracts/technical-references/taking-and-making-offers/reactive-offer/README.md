@@ -7,7 +7,11 @@ sidebar_position: 4
 
 ### Posting a new offer
 
-New offers should mostly be posted by [maker contracts](maker-contract.md) able to source liquidity when asked by Mangrove.
+New offers should mostly be posted by [maker contracts](maker-contract.md) able to source liquidity when asked by Mangrove. 
+
+Offers posted via maker contracts are called %%smart offers|smart-offer%% - as opposed to %%on-the-fly offers|on-the-fly-offer%% made from EOA's.
+
+All offers on Mangrove are posted via Mangrove's `newOffer` function.
 
 :::info 
 
@@ -186,23 +190,23 @@ await tx.wait();
 
 **Inputs**
 
-* `outbound_tkn` address of the outbound token (that the offer will provide).
-* `inbound_tkn` address of the inbound token (that the offer will receive).
-* `wants` amount of inbound tokens requested by the offer. **Must** fit in a `uint96`.
-* `gives` amount of outbound \*\*\*\* tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t to `gasreq` and offer list's %%density|density%% parameter.
-* `gasreq` amount of gas that will be given to the offer's [account](maker-contract.md). **Must** fit in a `uint24` and be lower than gasmax. Should be sufficient to cover all calls to the maker contract's offer logic ([`makerExecute`](maker-contract.md#offer-execution) and [`makerPosthook`](maker-contract.md#offer-post-hook)). **Must** be compatible with the offered volume `gives` and the offer list's %%density|density%% parameter. See also %%gasreq|gasreq%%.
-* `gasprice` gas price override used to compute the order provision (see [offer bounties](offer-provision.md)). Any value lower than Mangrove's current %%gasprice|gasprice%% will be ignored (thus 0 means "use Mangrove's current %%gasprice|gasprice%% "). **Must** fit in a `uint16`.
-* `pivotId` where to start the insertion process in the offer list. If `pivotId` is not in the offer list at the time the transaction is processed, the new offer will be inserted starting from the offer list's [best](./#getting-current-best-offer-of-a-market) offer. Should be the id of the existing live offer with the price closest to the price of the offer being posted.
+* `outbound_tkn` address of the %%outbound|outbound%% token (that the offer will provide).
+* `inbound_tkn` address of the %%inbound|inbound%% token (that the offer will receive).
+* %%`wants`|wants%% amount of inbound tokens requested by the offer. **Must** fit in a `uint96`.
+* %%`gives`|gives%% amount of outbound tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t. to %%`gasreq`|gasreq%% and offer list's %%density|density%% parameter.
+* %%`gasreq`|gasreq%% amount of gas that will be given to the offer's [account](maker-contract.md). **Must** fit in a `uint24` and be lower than `gasmax`. Should be sufficient to cover all calls to the maker contract's %%offer logic|offer-logic%% (%%`makerExecute`|makerExecute%%) and %%`makerPosthook`|makerPosthook%%). **Must** be compatible with the offered volume `gives` and the offer list's %%density|density%% parameter. See also %%gasreq|gasreq%%.
+* %%`gasprice`|gasprice%% gas price override used to compute the order %%provision|provision%% (see also [offer bounties](offer-provision.md)). Any value lower than Mangrove's current %%gasprice|gasprice%% will be ignored (thus 0 means "use Mangrove's current %%gasprice|gasprice%%"). **Must** fit in a `uint16`.
+* %%`pivotId`|pivot-id%% where to start the insertion process in the offer list. If `pivotId` is not in the offer list at the time the transaction is processed, the new offer will be inserted starting from the offer list's [best](./#getting-current-best-offer-of-a-market) offer. Should be the id of the existing live offer with the price closest to the price of the offer being posted.
 
 **Outputs**
 
-* `offerId` the id of the newly created offer. Note that offer ids are scoped to [offer lists](../offer-list.md), so many offers can share the same id.
+* %%`offerId`|offer-id%% the id of the newly created offer. Note that offer ids are scoped to %%offer lists|offer-list%%, so many offers can share the same id.
 
 :::danger **Provisioning**
 
-Since offers can fail, Mangrove requires each offer to be [provisioned](offer-provision.md) in ETH. If an offer fails, part of that provision will be sent to the caller that executed the offer, as compensation.
+Since offers can fail, Mangrove requires each offer to be %%provisioned|provision%% in native token. If an offer fails, part of that provision will be sent to the caller that executed the offer, as compensation.
 
-Make sure that your offer is [well-provisioned](offer-provision.md#checking-an-account-balance) before calling `newOffer`, otherwise the call will fail. The easiest way to go is to send a comfortable amount of ETH to Mangrove from your offer-posting contract. Mangrove will remember your ETH balance and use it when necessary.
+Make sure that your offer is [well-provisioned](offer-provision.md#checking-an-account-balance) before calling `newOffer`, otherwise the call will fail. The easiest way to go is to send a comfortable amount of native token to Mangrove from your offer-posting contract. Mangrove will remember your balance and use it when necessary.
 
 :::
 
@@ -216,7 +220,7 @@ Make sure that your offer is [well-provisioned](offer-provision.md#checking-an-a
 
 ### Updating an existing offer
 
-Offers are updated through the aptly-named `updateOffer` function described below (source code is [here](https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/MgvOfferMaking.sol#L106-L156)).
+Offers are updated through the `updateOffer` function described below (source code is [here](https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/MgvOfferMaking.sol#L106-L156)).
 
 <Tabs>
 <TabItem value="signature" label="Signature" default>
@@ -411,7 +415,7 @@ function myRetractOffer(uint offerId) external {
 #### Inputs
 
 * `offerId` is the offer id of the offer to be updated.
-* `deprovision` if true, will free the offer's ETH provision so that you can [withdraw](offer-provision.md#withdrawing) them. Otherwise, will leave the provision in the offer.
+* `deprovision` if true, will free the offer's %%provision|provision%% so that you can [withdraw](offer-provision.md#withdrawing) them. Otherwise, will leave the provision in the offer.
 * For the other parameters, see [above](./#posting-a-new-reactive-offer).
 
 #### Outputs

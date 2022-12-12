@@ -7,9 +7,9 @@ sidebar_position: 2
 
 ## Summary
 
-When an offer fails, the caller has wasted some gas. To compensate the caller, Mangrove gives them a _bounty_ in native tokens. Offers must provision enough ethers to maximize the chances that Mangrove can compensate the caller. In more details:
+When an offer fails, the caller has wasted some gas. To compensate the caller, Mangrove gives them a _bounty_ in native tokens. Offers must %%provision|provision%% enough native token to maximize the chances that Mangrove can compensate the caller. In more details:
 
-* Every maker contract that posted an offer has a balance in ethers held by Mangrove. Funds can be freely added to or withdrawn from the balance.
+* Every maker contract that posted an offer has a balance in native token held by Mangrove. Funds can be freely added to or withdrawn from the balance.
 * Whenever the contract creates or updates an offer, its balance is adjusted so that enough native tokens are locked as the offer's provision.
   * If the offer is retracted that provision is credited back to the logic's account balance.
   * If the offer logic is executed and fails, part or all of the provision is sent as compensation, to the caller. We call that the bounty. The rest of the provision is credited back to the maker contract's account balance.
@@ -156,11 +156,11 @@ require(mgv.withdraw(wei_balance), "Mangrove failed to transfer funds");
 
 ### Inputs
 
-* `amount` the amount of ethers (in wei) one wishes to withdraw from Mangrove's provisions.
+* `amount` the amount of native token (in wei) one wishes to withdraw from Mangrove's provisions.
 
 ### Outputs
 
-* `noRevert` whether the ether transfer was successful.
+* `noRevert` whether the transfer was successful.
 
 :::danger **Important points**
 
