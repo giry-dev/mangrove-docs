@@ -147,6 +147,10 @@ table {
   --ifm-link-hover-color: var(--ifm-color-primary);
 }
 
+.frontpage--button-link div p {
+  margin-bottom: 0;
+}
+
 .col--offset-05 {
   margin-right: calc(1 / 30 * 100%);
   margin-left: calc(1 / 30 * 100%);
