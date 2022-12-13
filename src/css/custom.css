@@ -42,8 +42,7 @@ table {
 }
 
 .container {
-  /* position: relative; */
-  /* color: white; */
+  padding-top: 2rem;
 }
 
 /* Top left text */
