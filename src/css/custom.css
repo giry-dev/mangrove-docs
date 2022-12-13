@@ -165,7 +165,7 @@ table {
 
 [data-theme='light'] .frontpage--button {
   border-color: var(--ifm-color-emphasis-500);
-  background-color: #f2fcf4;
+  background-color: #e8f8f3;
 }
 
 .frontpage--button:hover {
