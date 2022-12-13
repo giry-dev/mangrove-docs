@@ -50,21 +50,7 @@ const TopFeatureList = [
   },
 ]
 
-const MessagesList = [
-  {
-    title: 'Contracts',
-    path: 'contracts',
-    Svg: 'img/streamlinehq-phone-contact-phone-book-phone.svg',
-    description: (
-      <>
-        Go to the Contracts section, if you want to learn more about Mangrove, by delving into the core concepts, finding the API documentation, or because you want to check out the deployment addresses for Mangrove.
-      </>
-    ),
-    colStyle: 'col--5',
-  },
-];
-
-function Section({Svg, title, path, description, colStyle = 'col--5 col--offset-05', elementClass=''}) {
+function Section({Svg, title, path, description, colStyle = 'col--4 col--offset-05', elementClass=''}) {
   return (
     <div className={clsx('col ' + colStyle) + ' ' + elementClass}>
         <a href={path} className={styles.noColorLink + ' frontpage--button-link'}>
@@ -85,17 +71,8 @@ export default function HomepageSections() {
     <>
       <section className={styles.features}>
         <div className="container">
-          <div className="row">
+          <div className="row frontpage--feature-row">
             {TopFeatureList.map((props, idx) => (
-              <Section key={idx} {...props} />
-            ))}
-          </div>
-        </div>
-      </section>
-      <section>
-        <div className="container">
-          <div className="row">
-            {MessagesList.map((props, idx) => (
               <Section key={idx} {...props} />
             ))}
           </div>

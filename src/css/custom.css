@@ -115,10 +115,6 @@ table {
   .frontpage--button {
      --ifm-col-width: 400px;
   }
-
-  .row {
-    justify-content: center;
-  }
 }
 
 .frontpageSvgButton {
@@ -134,6 +130,10 @@ table {
   .navbar__title {
     width: 0;
   }
+}
+
+.frontpage--feature-row {
+  justify-content: center;
 }
 
 .frontpage--button {
