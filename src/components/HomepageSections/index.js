@@ -69,7 +69,6 @@ function Section({Svg, title, path, description, colStyle = '', elementClass=''}
 }
 
 export default function HomepageSections() {
-  // row
   return (
     <>
       <section className={styles.features}>
