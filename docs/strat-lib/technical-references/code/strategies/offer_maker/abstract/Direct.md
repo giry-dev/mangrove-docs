@@ -49,7 +49,7 @@ function _newOffer(struct IOfferLogic.OfferArgs args) internal returns (uint256)
 ### _updateOffer
 
 ```solidity
-function _updateOffer(struct IOfferLogic.OfferArgs args, uint256 offerId) internal returns (uint256)
+function _updateOffer(struct IOfferLogic.OfferArgs args, uint256 offerId) internal returns (bytes32)
 ```
 
 ### retractOffer

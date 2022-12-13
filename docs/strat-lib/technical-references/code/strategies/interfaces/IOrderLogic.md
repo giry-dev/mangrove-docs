@@ -31,7 +31,7 @@ struct TakerOrderResult {
 ### OrderSummary
 
 ```solidity
-event OrderSummary(contract IMangrove mangrove, contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, address taker, bool fillWants, uint256 takerGot, uint256 takerGave, uint256 penalty)
+event OrderSummary(contract IMangrove mangrove, contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, address taker, bool fillOrKill, uint256 takerWants, uint256 takerGives, bool fillWants, bool restingOrder, uint256 expiryDate, uint256 takerGot, uint256 takerGave, uint256 bounty, uint256 fee, uint256 restingOrderId)
 ```
 
 Information about the order.
@@ -44,10 +44,17 @@ Information about the order.
 | outbound_tkn | contract IERC20 | The outbound token of the order. |
 | inbound_tkn | contract IERC20 | The inbound token of the order. |
 | taker | address | The address of the taker |
+| fillOrKill | bool | The fillOrKill that take was called with |
+| takerWants | uint256 | How much the taker wanted |
+| takerGives | uint256 | How much the taker would give |
 | fillWants | bool | If true, the market order stopped when `takerWants` units of `outbound_tkn` had been obtained; otherwise, the market order stopped when `takerGives` units of `inbound_tkn` had been sold. |
+| restingOrder | bool | The restingOrder boolean take was called with |
+| expiryDate | uint256 | The expiry date take was called with |
 | takerGot | uint256 | How much the taker got |
 | takerGave | uint256 | How much the taker gave |
-| penalty | uint256 | How much penalty was given |
+| bounty | uint256 | How much bounty was given |
+| fee | uint256 | How much fee was paid for the order |
+| restingOrderId | uint256 | If a restingOrder was posted, then this holds the offerId for the restingOrder |
 
 ### expiring
 

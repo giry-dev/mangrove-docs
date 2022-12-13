@@ -168,7 +168,6 @@ struct OfferArgs {
   uint256 pivotId;
   uint256 fund;
   bool noRevert;
-  address owner;
 }
 ```
 

@@ -285,7 +285,7 @@ Post a new ask
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:202
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:188
 
 ___
 
@@ -308,70 +308,7 @@ Post a new bid
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:210
-
-___
-
-### <a id="mangroveallowance" name="mangroveallowance"></a> mangroveAllowance
-
-▸ **mangroveAllowance**(`tokenName`): `Promise`<`Big`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `tokenName` | `string` |
-
-#### Returns
-
-`Promise`<`Big`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:218
-
-___
-
-### <a id="fundmangrove" name="fundmangrove"></a> fundMangrove
-
-▸ **fundMangrove**(`amount`, `overrides?`): `Promise`<`ContractTransaction`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `amount` | `any` |
-| `overrides` | `Overrides` |
-
-#### Returns
-
-`Promise`<`ContractTransaction`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:226
-
-___
-
-### <a id="parseevents" name="parseevents"></a> parseEvents
-
-▸ **parseEvents**(`receipt`, `contractInterface`, `eventName`): `any`[]
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `receipt` | `ContractReceipt` |
-| `contractInterface` | `any` |
-| `eventName` | `string` |
-
-#### Returns
-
-`any`[]
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:253
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:196
 
 ___
 
@@ -392,7 +329,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:288
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:217
 
 ___
 
@@ -416,7 +353,7 @@ to change volume and price of the offer, and update its gas requirement and fund
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:341
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:267
 
 ___
 
@@ -440,7 +377,7 @@ Update an existing offer
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:350
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:276
 
 ___
 
@@ -462,7 +399,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:362
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:288
 
 ___
 
@@ -486,7 +423,7 @@ Cancel an ask. If deprovision is true, will return the offer's provision to the 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:424
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:347
 
 ___
 
@@ -510,7 +447,7 @@ Cancel a bid. If deprovision is true, will return the offer's provision to the m
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:433
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:356
 
 ___
 
@@ -533,67 +470,20 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:442
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:365
 
 ___
 
-### <a id="balanceonmangrove" name="balanceonmangrove"></a> balanceOnMangrove
+### <a id="approveasks" name="approveasks"></a> approveAsks
 
-▸ **balanceOnMangrove**(`arg?`, `overrides?`): `Promise`<`Big`\>
-
-**`Note`**
-
-Get the current balance the liquidity provider has on Mangrove
-If this liquidity provider has a multi user underlying logic, the balance corresponds to the sum of all offers' available balances
+▸ **approveAsks**(`arg?`, `overrides?`): `Promise`<`ContractTransaction`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `arg` | `Object` |
-| `arg.owner?` | `string` |
-| `overrides` | `Overrides` |
-
-#### Returns
-
-`Promise`<`Big`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:485
-
-___
-
-### <a id="tokenbalance" name="tokenbalance"></a> tokenBalance
-
-▸ **tokenBalance**(`tokenName`, `overrides?`): `Promise`<`Big`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `tokenName` | `string` |
-| `overrides` | `Overrides` |
-
-#### Returns
-
-`Promise`<`Big`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:499
-
-___
-
-### <a id="withdrawfrommangrove" name="withdrawfrommangrove"></a> withdrawFromMangrove
-
-▸ **withdrawFromMangrove**(`amount`, `overrides?`): `Promise`<`ContractTransaction`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `amount` | `any` |
+| `arg.amount?` | `any` |
 | `overrides` | `Overrides` |
 
 #### Returns
@@ -602,38 +492,20 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:511
-
-___
-
-### <a id="approveasks" name="approveasks"></a> approveAsks
-
-▸ **approveAsks**(`overrides?`): `Promise`<`ContractTransaction`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `overrides` | `Overrides` |
-
-#### Returns
-
-`Promise`<`ContractTransaction`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:537
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:409
 
 ___
 
 ### <a id="approvebids" name="approvebids"></a> approveBids
 
-▸ **approveBids**(`overrides?`): `Promise`<`ContractTransaction`\>
+▸ **approveBids**(`arg?`, `overrides?`): `Promise`<`ContractTransaction`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
+| `arg` | `Object` |
+| `arg.amount?` | `any` |
 | `overrides` | `Overrides` |
 
 #### Returns
@@ -642,7 +514,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:542
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:415
 
 ___
 
@@ -666,4 +538,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:549
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:422
