@@ -243,7 +243,7 @@ Returns an iterator over the offers in the cache.
 
 #### Implementation of
 
-Iterable.\_\_@iterator@90
+Iterable.\_\_@iterator@89
 
 #### Defined in
 

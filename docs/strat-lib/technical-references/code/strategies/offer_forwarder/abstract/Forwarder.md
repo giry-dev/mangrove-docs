@@ -155,7 +155,7 @@ _`ownerOf(in,out,id)` is equivalent to `offerOwners(in, out, [id])` but more gas
 ### _newOffer
 
 ```solidity
-function _newOffer(struct IOfferLogic.OfferArgs args) internal returns (uint256 offerId)
+function _newOffer(struct IOfferLogic.OfferArgs args, address owner) internal returns (uint256 offerId)
 ```
 
 Inserts a new offer on a Mangrove Offer List.
@@ -169,6 +169,7 @@ _If inside a hook, one should call `_newOffer` to create a new offer and not dir
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | args | struct IOfferLogic.OfferArgs | memory location of the function's arguments |
+| owner | address | the address of the offer owner |
 
 #### Return Values
 
@@ -190,7 +191,7 @@ struct UpdateOfferVars {
 ### _updateOffer
 
 ```solidity
-function _updateOffer(struct IOfferLogic.OfferArgs args, uint256 offerId) internal returns (uint256)
+function _updateOffer(struct IOfferLogic.OfferArgs args, uint256 offerId) internal returns (bytes32)
 ```
 
 Internal `updateOffer`, using arguments and variables on memory to avoid stack too deep.
@@ -199,7 +200,7 @@ Internal `updateOffer`, using arguments and variables on memory to avoid stack t
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| [0] | uint256 | 0 if update was rejected by Mangrove and `args.noRevert` is `true`. Returns `args.offerId` otherwise |
+| [0] | bytes32 | reason in {REPOST_FAILED_DUST, REPOST_FAILED} if update was rejected by Mangrove and `args.noRevert` is `true` or REPOST_SUCCESS otherwise |
 
 ### provisionOf
 
@@ -300,16 +301,24 @@ _get outbound tokens from offer owner reserve_
 | ---- | ---- | ----------- |
 | [0] | uint256 |  |
 
-### __posthookFallback__
+### __handleResidualProvision__
 
 ```solidity
-function __posthookFallback__(struct MgvLib.SingleOrder order, struct MgvLib.OrderResult result) internal virtual returns (bytes32)
+function __handleResidualProvision__(struct MgvLib.SingleOrder order) internal virtual
 ```
 
+Hook that defines what needs to be done to the part of an offer provision that was added to the balance of `this` on Mangrove after an offer has failed.
+
 _if offer failed to execute, Mangrove retracts and deprovisions it after the posthook call.
-As a consequence if `__posthookFallback__` is reached, `this` balance on Mangrove *will* increase, after the posthook,
+As a consequence if this hook is reached, `this` balance on Mangrove *will* increase, after the posthook,
 of some amount $n$ of native tokens. We evaluate here an underapproximation $~n$ in order to credit the offer maker in a pull based manner:
 failed offer owner can retrieve $~n$ by calling `retractOffer` on the failed offer.
 because $~n<n$ a small amount of WEIs will accumulate on the balance of `this` on Mangrove over time.
 Note that these WEIs are not burnt since they can be admin retrieved using `withdrawFromMangrove`._
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| order | struct MgvLib.SingleOrder | is a recal of the taker order that failed |
 

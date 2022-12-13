@@ -8,9 +8,9 @@ custom_edit_url: null
 
 ## Properties
 
-### <a id="_provider" name="_provider"></a> \_provider
+### <a id="provider" name="provider"></a> provider
 
-• **\_provider**: `Provider`
+• **provider**: `Provider`
 
 #### Defined in
 
@@ -18,9 +18,9 @@ custom_edit_url: null
 
 ___
 
-### <a id="_signer" name="_signer"></a> \_signer
+### <a id="signer" name="signer"></a> signer
 
-• **\_signer**: `Signer`
+• **signer**: `Signer`
 
 #### Defined in
 
@@ -28,9 +28,9 @@ ___
 
 ___
 
-### <a id="_network" name="_network"></a> \_network
+### <a id="network" name="network"></a> network
 
-• **\_network**: [`ProviderNetwork`](../interfaces/eth.ProviderNetwork.md)
+• **network**: [`ProviderNetwork`](../interfaces/eth.ProviderNetwork.md)
 
 #### Defined in
 
@@ -48,9 +48,9 @@ ___
 
 ___
 
-### <a id="_address" name="_address"></a> \_address
+### <a id="address" name="address"></a> address
 
-• **\_address**: `string`
+• **address**: `string`
 
 #### Defined in
 
@@ -133,6 +133,10 @@ ___
 | `maticmum.USDC` | `string` |
 | `maticmum.WETH` | `string` |
 | `local` | {} |
+| `matic` | { `DAI`: `string` = "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063"; `USDC`: `string` = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"; `WETH`: `string` = "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619" } |
+| `matic.DAI` | `string` |
+| `matic.USDC` | `string` |
+| `matic.WETH` | `string` |
 
 #### Defined in
 
@@ -199,7 +203,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:125
+@mangrovedao/mangrove.js/src/mangrove.ts:130
 
 ___
 
@@ -224,13 +228,13 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:187
+@mangrovedao/mangrove.js/src/mangrove.ts:188
 
 ___
 
 ### <a id="offerlogic" name="offerlogic"></a> offerLogic
 
-▸ **offerLogic**(`logic`, `multiMaker?`): [`OfferLogic`](OfferLogic.md)
+▸ **offerLogic**(`logic`): [`OfferLogic`](OfferLogic.md)
 
 Get an OfferLogic object allowing one to monitor and set up an onchain offer logic
 
@@ -239,7 +243,6 @@ Get an OfferLogic object allowing one to monitor and set up an onchain offer log
 | Name | Type |
 | :------ | :------ |
 | `logic` | `string` |
-| `multiMaker?` | `boolean` |
 
 #### Returns
 
@@ -247,7 +250,7 @@ Get an OfferLogic object allowing one to monitor and set up an onchain offer log
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:204
+@mangrovedao/mangrove.js/src/mangrove.ts:205
 
 ___
 
@@ -269,7 +272,7 @@ Get a LiquidityProvider object to enable Mangrove's signer to pass buy and sell 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:219
+@mangrovedao/mangrove.js/src/mangrove.ts:220
 
 ___
 
@@ -290,7 +293,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:245
+@mangrovedao/mangrove.js/src/mangrove.ts:246
 
 ___
 
@@ -314,7 +317,7 @@ Note that this reads from the static `Mangrove` address registry which is shared
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:254
+@mangrovedao/mangrove.js/src/mangrove.ts:255
 
 ___
 
@@ -339,7 +342,7 @@ Note that this writes to the static `Mangrove` address registry which is shared 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:263
+@mangrovedao/mangrove.js/src/mangrove.ts:264
 
 ___
 
@@ -372,7 +375,7 @@ it is the number of decimals.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:278
+@mangrovedao/mangrove.js/src/mangrove.ts:279
 
 ___
 
@@ -405,7 +408,7 @@ it is the number of decimals.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:293
+@mangrovedao/mangrove.js/src/mangrove.ts:294
 
 ___
 
@@ -428,7 +431,7 @@ Provision available at mangrove for address given in argument, in ethers
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:301
+@mangrovedao/mangrove.js/src/mangrove.ts:302
 
 ___
 
@@ -450,7 +453,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:309
+@mangrovedao/mangrove.js/src/mangrove.ts:310
 
 ___
 
@@ -471,7 +474,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:318
+@mangrovedao/mangrove.js/src/mangrove.ts:319
 
 ___
 
@@ -494,7 +497,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:325
+@mangrovedao/mangrove.js/src/mangrove.ts:326
 
 ___
 
@@ -510,7 +513,7 @@ Return global Mangrove config
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:337
+@mangrovedao/mangrove.js/src/mangrove.ts:338
 
 ___
 
@@ -532,7 +535,7 @@ Read all contract addresses on the given network.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:358
+@mangrovedao/mangrove.js/src/mangrove.ts:359
 
 ___
 
@@ -555,7 +558,7 @@ Read a contract address on a given network.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:369
+@mangrovedao/mangrove.js/src/mangrove.ts:370
 
 ___
 
@@ -579,7 +582,7 @@ Set a contract address on the given network.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:384
+@mangrovedao/mangrove.js/src/mangrove.ts:385
 
 ___
 
@@ -602,7 +605,7 @@ To read decimals directly onchain, use `fetchDecimals`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:396
+@mangrovedao/mangrove.js/src/mangrove.ts:397
 
 ___
 
@@ -624,7 +627,7 @@ Read displayed decimals for `tokenName`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:403
+@mangrovedao/mangrove.js/src/mangrove.ts:404
 
 ___
 
@@ -646,7 +649,7 @@ Read displayed decimals for `tokenName` when displayed as a price.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:410
+@mangrovedao/mangrove.js/src/mangrove.ts:411
 
 ___
 
@@ -669,7 +672,7 @@ Set decimals for `tokenName` on current network.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:419
+@mangrovedao/mangrove.js/src/mangrove.ts:420
 
 ___
 
@@ -692,7 +695,7 @@ Set displayed decimals for `tokenName`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:426
+@mangrovedao/mangrove.js/src/mangrove.ts:427
 
 ___
 
@@ -715,7 +718,7 @@ Set displayed decimals for `tokenName` when displayed as a price.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:433
+@mangrovedao/mangrove.js/src/mangrove.ts:434
 
 ___
 
@@ -738,13 +741,13 @@ Read chain for decimals of `tokenName` on current network and save them
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:440
+@mangrovedao/mangrove.js/src/mangrove.ts:441
 
 ___
 
 ### <a id="watchlocaladdresses" name="watchlocaladdresses"></a> watchLocalAddresses
 
-▸ `Static` **watchLocalAddresses**(`provider`): `Promise`<`void`\>
+▸ `Static` **watchLocalAddresses**(`devNode`): `Promise`<`void`\>
 
 Returns all addresses registered at the local server's Toy ENS contract.
 Assumes provider is connected to a local server (typically for testing/experimentation).
@@ -753,7 +756,7 @@ Assumes provider is connected to a local server (typically for testing/experimen
 
 | Name | Type |
 | :------ | :------ |
-| `provider` | `Provider` |
+| `devNode` | `DevNode` |
 
 #### Returns
 
@@ -761,7 +764,7 @@ Assumes provider is connected to a local server (typically for testing/experimen
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:458
+@mangrovedao/mangrove.js/src/mangrove.ts:459
 
 ## Constructors
 
@@ -780,4 +783,4 @@ Assumes provider is connected to a local server (typically for testing/experimen
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:135
+@mangrovedao/mangrove.js/src/mangrove.ts:139

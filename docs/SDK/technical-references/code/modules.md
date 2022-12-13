@@ -6,16 +6,6 @@ sidebar_position: 0.5
 custom_edit_url: null
 ---
 
-## Classes
-
-- [AaveV3Module](classes/AaveV3Module.md)
-- [LiquidityProvider](classes/LiquidityProvider.md)
-- [Mangrove](classes/Mangrove.md)
-- [Market](classes/Market.md)
-- [MgvToken](classes/MgvToken.md)
-- [OfferLogic](classes/OfferLogic.md)
-- [Semibook](classes/Semibook.md)
-
 ## Namespaces
 
 - [eth](namespaces/eth.md)
@@ -25,6 +15,15 @@ custom_edit_url: null
 - [MgvToken](namespaces/MgvToken-1.md)
 - [Semibook](namespaces/Semibook-1.md)
 - [mgvTestUtil](namespaces/mgvTestUtil.md)
+
+## Classes
+
+- [LiquidityProvider](classes/LiquidityProvider.md)
+- [Mangrove](classes/Mangrove.md)
+- [Market](classes/Market.md)
+- [MgvToken](classes/MgvToken.md)
+- [OfferLogic](classes/OfferLogic.md)
+- [Semibook](classes/Semibook.md)
 
 ## Variables
 
@@ -74,6 +73,8 @@ custom_edit_url: null
 | `aWETH` | `number` |
 | `aDAI` | `number` |
 | `aUSDC` | `number` |
+| `PxUSDC` | `number` |
+| `PxMATIC` | `number` |
 
 #### Defined in
 
