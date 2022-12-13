@@ -41,10 +41,6 @@ table {
   border:hidden;
 }
 
-.container {
-  padding-top: 2rem;
-}
-
 /* Top left text */
 .top-left {
   position: absolute;
@@ -115,6 +111,14 @@ table {
   .hero-image {
     height: 50vh;
   }
+
+  .frontpage--button {
+     --ifm-col-width: 400px;
+  }
+
+  .row {
+    justify-content: center;
+  }
 }
 
 .frontpageSvgButton {
@@ -130,4 +134,43 @@ table {
   .navbar__title {
     width: 0;
   }
+}
+
+.frontpage--button {
+  padding: 1.5rem;
+  border-radius: 20px;
+  border: 2px solid var(--ifm-color-emphasis-200);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  background-color: #ffffff10;
+  margin: 1rem;
+  --ifm-link-hover-color: var(--ifm-color-primary);
+}
+
+.col--offset-05 {
+  margin-right: calc(1 / 30 * 100%);
+  margin-left: calc(1 / 30 * 100%);
+}
+
+a.frontpage--button-link:hover {
+   text-decoration: none; 
+   /* --ifm-link-hover-color: var(--ifm-color-content); */
+}
+
+a.frontpage--button-link:active {
+  text-decoration: none; 
+  /* --ifm-link-hover-color: var(--ifm-color-content); */
+
+}
+
+a.frontpage--button-link:visited {
+  text-decoration: none; 
+  /* --ifm-link-hover-color: var(--ifm-color-content); */
+
+}
+
+a.frontpage--button-link:link {
+  text-decoration: none; 
+  /* --ifm-link-hover-color: var(--ifm-color-content); */ 
+
 }
