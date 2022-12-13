@@ -14,7 +14,7 @@ mapping(contract IERC20 => mapping(contract IERC20 => mapping(uint256 => uint256
 ```
 
 `expiring[outbound_tkn][inbound_tkn][offerId]` gives timestamp beyond which `offerId` on the `(outbound_tkn, inbound_tkn)` offer list should renege on trade.
-if the order tx is included after the expriry date, it reverts.
+if the order tx is included after the expiry date, it reverts.
 
 _0 means no expiry._
 
@@ -33,6 +33,12 @@ MangroveOrder is a Forwarder logic with a simple router.
 | mgv | contract IMangrove | The mangrove contract on which this logic will run taker and maker orders. |
 | deployer | address | The address of the admin of `this` at the end of deployment |
 | gasreq | uint256 | The gas required for `this` to execute `makerExecute` and `makerPosthoook` when called by mangrove for a resting order. |
+
+### SetExpiry
+
+```solidity
+event SetExpiry(address outbound_tkn, address inbound_tkn, uint256 offerId, uint256 date)
+```
 
 ### setExpiry
 
@@ -130,6 +136,16 @@ Implements "Fill or kill" or "Good till cancelled" orders on a given offer list.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | res | struct IOrderLogic.TakerOrderResult | the result of the taker order. If `offerId==0`, no resting order was posted on `msg.sender`'s behalf. |
+
+### logOrderData
+
+```solidity
+function logOrderData(struct IOrderLogic.TakerOrder tko, struct IOrderLogic.TakerOrderResult res) internal
+```
+
+logs `OrderSummary`
+
+_this function avoids loading too many variables on the stack_
 
 ### postRestingOrder
 

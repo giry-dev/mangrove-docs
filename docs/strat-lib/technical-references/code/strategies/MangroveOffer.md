@@ -37,6 +37,18 @@ bytes32 OUT_OF_FUNDS
 bytes32 BELOW_DENSITY
 ```
 
+### REPOST_SUCCESS
+
+```solidity
+bytes32 REPOST_SUCCESS
+```
+
+### REPOST_FAILED
+
+```solidity
+bytes32 REPOST_FAILED
+```
+
 ### mgvOrAdmin
 
 ```solidity
@@ -398,6 +410,20 @@ _default is to require the original amount of tokens minus those that have been 
 | ---- | ---- | ----------- |
 | new_gives | uint256 | the new volume of `outbound_tkn` the offer will give if fully taken. |
 
+### __handleResidualProvision__
+
+```solidity
+function __handleResidualProvision__(struct MgvLib.SingleOrder order) internal virtual
+```
+
+Hook that defines what needs to be done to the part of an offer provision that was added to the balance of `this` on Mangrove after an offer has failed.
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| order | struct MgvLib.SingleOrder | is a recal of the taker order that failed |
+
 ### __posthookSuccess__
 
 ```solidity
@@ -417,7 +443,37 @@ Post-hook that implements default behavior when Taker Order's execution succeede
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| data | bytes32 | can be: * `"posthook/filled"` when offer was completely filled * `"posthook/reposted"` when offer was partially filled and successfully reposted * `"posthook/dustRemainder"` when offer was partially filled but residual was below density (and thus not reposted) |
+| data | bytes32 | can be: * `"posthook/filled"` when offer was completely filled * `"posthook/reposted"` when offer was partially filled and successfully reposted * Mangrove's revert reason (cast to a bytes32) when residual is below density or `this` balance on Mangrove is too low (and thus not reposted) |
+
+### _updateOffer
+
+```solidity
+function _updateOffer(struct IOfferLogic.OfferArgs, uint256) internal virtual returns (bytes32)
+```
+
+template for start specific update offer function
+
+### _provisionOf
+
+```solidity
+function _provisionOf(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 offerId) internal view returns (uint256 provision)
+```
+
+computes the provision that can be redeemed if deprovisioning a certain offer
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| outbound_tkn | contract IERC20 | the outbound token of the offer list |
+| inbound_tkn | contract IERC20 | the inbound otken of the offer list |
+| offerId | uint256 | the id of the offer |
+
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| provision | uint256 | the provision that can be redeemed |
 
 ### getMissingProvision
 
