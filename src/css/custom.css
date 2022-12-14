@@ -132,22 +132,54 @@ table {
 .frontpage--feature-row {
   justify-content: center;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 1rem;
-  grid-template-rows: auto;
+  grid-template-columns: repeat(4, 1fr); 
+  column-gap: 1rem; 
 }
 
-@media screen and (max-width: 1080px) {
+/* 
+  distribute across first 2 then 1 cols as screen gets narrower, 
+  width a few quick hacks to adjust total width and col-gap's to make it a bit prettier
+
+  --- begin col dist stuff ---
+*/
+@media screen and (max-width: 1180px) {
   .frontpage--feature-row {
-    grid-template-columns: repeat(2, 1fr);
+     grid-template-columns: repeat(2, 1fr); 
+     column-gap: 5rem; 
+  }
+
+  .frontpage--feature-container {
+    max-width: 90%;
   }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 860px) {
+  .frontpage--feature-row {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+  }
+
+  .frontpage--feature-container {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 680px) {
   .frontpage--feature-row {
     grid-template-columns: repeat(1, 1fr);
-  }  
+  }
+
+  .frontpage--feature-container {
+    max-width: 90%;
+  }
 }
+
+@media screen and (max-width: 480px) {
+  .frontpage--feature-container {
+    max-width: 100%;
+  }
+}
+/* --- end col dist business --- */
 
 .frontpage--button {
   padding-top: 1.5rem;

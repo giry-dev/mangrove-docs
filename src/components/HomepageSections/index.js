@@ -72,7 +72,7 @@ export default function HomepageSections() {
   return (
     <>
       <section className={styles.features}>
-        <div className="container">
+        <div className="frontpage--feature-container container">
           <div className="frontpage--feature-row">
             {TopFeatureList.map((props, idx) => (
               <Section key={idx} {...props} />
