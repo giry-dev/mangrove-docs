@@ -83,6 +83,23 @@ function Section({Svg, title, path = '', description, colStyle = '', elementClas
 }
 
 export default function HomepageSections() {
+  const renderMessages = () => {
+    if(MessageList.length > 0){
+      return (
+        <section className={styles.features}>
+          <div className="frontpage--message-container container">
+            <div className="row">
+              {MessageList.map((props, idx) => (
+                <Section key={idx} {...props} />
+              ))}
+            </div>
+          </div>
+        </section>      
+      )}
+      else 
+        return;
+    };
+
   return (
     <>
       <section className={styles.features}>
@@ -94,15 +111,7 @@ export default function HomepageSections() {
           </div>
         </div>
       </section>
-      <section className={styles.features}>
-        <div className="frontpage--message-container container">
-          <div className="row">
-            {MessageList.map((props, idx) => (
-              <Section key={idx} {...props} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {renderMessages()}
     </>
   );
 }
