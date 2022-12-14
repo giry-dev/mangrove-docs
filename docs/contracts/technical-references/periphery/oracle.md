@@ -22,7 +22,7 @@ A method is also provided for governance to change the permissioned sender.
 
 ## Source Code
 
-The [`MgvOracle` source](https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/periphery/MgvOracle.sol) is available.
+The [`MgvOracle` source](https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/periphery/MgvOracle.sol) is available.
 
 :::danger Deployment Address
 

@@ -11,7 +11,7 @@ This will go through sniping an offer using mangrove.js. In this section we assu
 
 ### Connect to market (and mint tokens)
 
-As mentioned we assume that you are already connected to Mangrove, if not you can look at [github](https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/how-tos/snipe-offer.js), to see the full script.
+As mentioned we assume that you are already connected to Mangrove, if not you can look at [github](https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95ba097bf5/packages/mangrove.js/examples/how-tos/snipe-offer.js), to see the full script.
 
 When connected to Mangrove we need to connect to a market. We do this to check whether the market is live and has offers. In this case we look at all the asks for the market. In this case the best offer is id 5572. Another way to check the market is to go to [testnet](https://testnet.mangrove.exchange/trade) and look at the DAI-USDC market.
 
@@ -38,7 +38,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 
 ```javascript showLineNumbers reference
-https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/how-tos/snipe-offer.js#L15-L24
+https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95ba097bf5/packages/mangrove.js/examples/how-tos/snipe-offer.js#L15-L24
 ```
 
 ### Snipe best offer
@@ -50,7 +50,7 @@ Before sniping the offer with the information we just gathered, we have to [appr
 We can now snipe the offer. Be ware that the information on the offer, is from the makers side. This means that what we, the taker, wants is what the offer (the maker) gives. Similarly with gives; what we, the taker, gives, is what the offer (the maker) wants. When taking a offer we should be aware that if we do not give a %%`gasLimit`|gasLimit%%, mangrove.js will get the `gasLimit` from the offer's %%`gasreq`|gasreq%%. The `gasLimit` sets a limit on how much gas we max want to use, when taking the offer. This way we can control, that if it is very costly to take the offer and it ends up costing more than our `gasLimit`, then the transfer will revert.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/how-tos/snipe-offer.js#L27-L49
+https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95ba097bf5/packages/mangrove.js/examples/how-tos/snipe-offer.js#L27-L49
 ```
 
 ### Check the result of sniping
@@ -87,7 +87,7 @@ If the transaction failed, it is most likely that the account that posted the of
 We will also see the offer being gone when we log the asks on the market.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/cdfaf84328144c617bae9320fa44dbe77b6aa8cb/packages/mangrove.js/examples/how-tos/snipe-offer.js#L51-L55
+https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95ba097bf5/packages/mangrove.js/examples/how-tos/snipe-offer.js#L51-L55
 ```
 
 ```js
