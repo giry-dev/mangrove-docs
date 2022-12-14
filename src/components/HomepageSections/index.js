@@ -50,10 +50,15 @@ const TopFeatureList = [
   },
 ]
 
+const MessageList = [
 
-function Section({Svg, title, path, description, colStyle = '', elementClass=''}) {
-  return (
-    <a href={path} className={styles.noColorLink + ' frontpage--button-link' + ' ' + elementClass}>
+]
+
+
+function Section({Svg, title, path = '', description, colStyle = '', elementClass=''}) {
+  const renderInner = () =>
+  {
+    return (
       <div className={clsx('col ' + colStyle) }>
         <div className="text--center">
           <img src={Svg} className='frontpageSvgButton' />
@@ -64,8 +69,17 @@ function Section({Svg, title, path, description, colStyle = '', elementClass=''}
         </div>
         <img src="img/streamlinehq-interface-arrows-corner-up-right-interface-essential-gray.svg" className='frontpage--button-linkArrow' />
       </div>
-    </a>
-  );
+    );
+  }
+  if(path) {
+    return (
+      <a href={path} className={styles.noColorLink + ' frontpage--button-link' + ' ' + elementClass}>
+        {renderInner()}
+      </a>
+    );
+  }
+  else 
+    return renderInner();
 }
 
 export default function HomepageSections() {
@@ -75,6 +89,15 @@ export default function HomepageSections() {
         <div className="frontpage--feature-container container">
           <div className="frontpage--feature-row">
             {TopFeatureList.map((props, idx) => (
+              <Section key={idx} {...props} />
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className={styles.features}>
+        <div className="frontpage--message-container container">
+          <div className="row">
+            {MessageList.map((props, idx) => (
               <Section key={idx} {...props} />
             ))}
           </div>

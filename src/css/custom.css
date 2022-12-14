@@ -247,3 +247,11 @@ a.frontpage--button-link:link {
   margin-right: calc(1 / 30 * 100%);
   margin-left: calc(1 / 30 * 100%);
 }
+
+.frontpage--message-container {
+  max-width: 75%;
+}
+
+.frontpage--message {
+  padding-bottom: 10px;
+}
