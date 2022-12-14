@@ -20,7 +20,7 @@ If you have questions about how to use the Strat library, which are not answered
 
 ### Choosing the right starting point
 
-Depending on the complexity of the %%offer logic|offer-logic%% your contract implements, you need to choose from which building block you will start to build your %%maker contract|maker-contract%% from. At the very least your logic must provide an implementation of the [`IMaker`](https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/MgvLib.sol#L156-L166) interface [required by Mangrove](../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md).
+Depending on the complexity of the %%offer logic|offer-logic%% your contract implements, you need to choose from which building block you will start to build your %%maker contract|maker-contract%% from. At the very least your logic must provide an implementation of the [`IMaker`](https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/MgvLib.sol#L157-L167) interface [required by Mangrove](../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md).
 
 However, we suggest utilizing the building blocks in the strat lib. The first design choice is to decide whether owning offers posted by your contract is the sole privilege of the contract's admin or whether your contract's logic wishes to support multiple offer owners, in a permissionless fashion. In the first case, you want your contract to inherit [Direct](./background/offer-maker/direct.md), in the latter you want to start from a [Forwarder](./background/offer-maker/forwarder.md) contract which has a pre-established code infrastructure to handle multiple ownership.
 

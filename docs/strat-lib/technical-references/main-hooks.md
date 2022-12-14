@@ -9,7 +9,7 @@ sidebar_position: 1
 ### Last look before trade
 
 ```solidity reference title="Last look before trade"
-https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/strategies/MangroveOffer.sol#L216-L221
+https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/strategies/MangroveOffer.sol#L219-L227
 ```
 
 * **Input**: [taker `order`](../../contracts/technical-references/taking-and-making-offers/reactive-offer/offer-data-structures.md#mgvlibsingleorder)'s recap data.
@@ -20,7 +20,7 @@ https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8
 ### Managing taker's payment
 
 ```solidity reference title="Managing taker's payment"
-https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/strategies/MangroveOffer.sol#L200-L206
+https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/strategies/MangroveOffer.sol#L203-L209
 ```
 
 * **Input**s: 
@@ -33,7 +33,7 @@ https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8
 ### Sourcing liquidity
 
 ```solidity reference title="Sourcing liquidity"
-https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/strategies/MangroveOffer.sol#L208-L214
+https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/strategies/MangroveOffer.sol#L211-L217
 ```
 
 * **Input**: 
@@ -48,7 +48,7 @@ https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8
 ### Posthook after trade success
 
 ```solidity reference title="Posthook after trade success"
-https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/strategies/MangroveOffer.sol#L260-L271
+https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/strategies/MangroveOffer.sol#L269-L280
 ```
 
 * **Input**:
@@ -61,7 +61,7 @@ https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8
 ### Posthook after trade failure
 
 ```solidity reference title="Posthook after trade failure"
-https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/strategies/MangroveOffer.sol#L226-L237
+https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/strategies/MangroveOffer.sol#L229-L240
 ```
 
 * **Input**:
@@ -72,5 +72,5 @@ https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8
 * **Usage**: this hook is only reached in the offer logic if trade was not settled correctly by Mangrove. Override this hook to customize what should be done after the maker offer has failed. Note that if this hook is reached during offer logic's execution, maker contract has already emitted the following log:
 
 ```solidity reference title="Offer logic's incident log"
-https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/src/strategies/interfaces/IOfferLogic.sol#L23-L31
+https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/strategies/interfaces/IOfferLogic.sol#L23-L31
 ```

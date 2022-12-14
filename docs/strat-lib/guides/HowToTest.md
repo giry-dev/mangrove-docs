@@ -241,6 +241,6 @@ Writing your next test is now a lot easier since have create all the helper func
   }
 ```
 
-A full test of the contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/9d117a3be278fa1bb35e0562fc6ed8447ca90ec1/test/toy_strategies/Amplifier.t.sol).
+A full test of the contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/test/toy_strategies/Amplifier.t.sol).
 
 When you have create all your tests, you may want to deploy your contract to a real chain. Read more about how to deploy [here](HowToDeploy.md).
