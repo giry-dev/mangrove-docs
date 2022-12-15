@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# How to use borrowed funds for cleaning via Mangrove's delegation mechanism
+# Using borrowed funds for cleaning via Mangrove's delegation mechanism
 
 Cleaners can use Mangrove's [delegation mechanism](/docs/contracts/technical-references/taking-and-making-offers/taker-order/delegate-takers.md) to borrow funds for cleaning: Mangrove will allow an account to call `snipesFor` on behalf of a taker that has not approved that account, as long as all sniped offers fail. This enables borrowing of funds from any taker that has approved Mangrove for some token.
 

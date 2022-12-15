@@ -3,7 +3,7 @@ description: How to repost an offer in the posthook
 sidebar_position: 2
 ---
 
-# How to repost an offer in the posthook
+# Reposting an offer in the posthook
 
 In the [smart offer tutorial](../getting-started/smart-offer.md) the offer was fully taken by the taker at the end.
 

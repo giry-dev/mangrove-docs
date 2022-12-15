@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# How to create a Direct contract
+# Creating a Direct contract
 
 :::info
 
