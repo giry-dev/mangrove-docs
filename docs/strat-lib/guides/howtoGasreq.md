@@ -3,7 +3,7 @@ description: How to determine gas requirements.
 sidebar_position: 1
 ---
 
-# How to determine gas requirements
+# Determining gas requirements
 
 Determining %%gas requirements (gasreq)|gasreq%% for your offer logic in a maker contract is important to avoid failures, save on provision, and make offers as attractable as possible.
 

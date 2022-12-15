@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# How to deploy your contract
+# Deploying your contract
 
 After you have created and tested your contract, you might want to deploy it on chain. Deploying a contract is easy with the use of [Foundry](https://book.getfoundry.sh/) and a helper from our Deployer contract.
 

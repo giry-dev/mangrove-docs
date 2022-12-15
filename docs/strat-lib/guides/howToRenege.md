@@ -4,7 +4,7 @@ sidebar_position: 3
 
 ---
 
-# How to use last look to renege on a trade
+# Using last look to renege trades
 
 A maker can %%renege|renege%% on a trade if the market conditions are no longer favorable. This can be done in [multiple ways](../../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md), but the strat lib has made it easy by adding a [`__lastLook__`](../technical-references/code/strategies/MangroveOffer.md#lastlook) function which can be overridden.
 
