@@ -105,6 +105,9 @@ Now, create the `OfferMakerTutorial` contract on the `anvil` node with your priv
 
 ```bash
 export MANGROVE=<contract address> # 0xabcd.... 
+```
+
+```bash
 forge create "OfferMakerTutorial" --private-key "$PRIVATE_KEY" --rpc-url $LOCAL_URL --constructor-args "$MANGROVE" "$ADMIN_ADDRESS"
 ```
 
@@ -204,7 +207,10 @@ cast send --rpc-url $LOCAL_URL "$DAI" "approve(address, uint)" "$MANGROVE" 17000
 Now we ensure that we have set everything up correctly for the offer to be successfully taken. We use Mangrove's `snipes` functionality to ensure it is exactly our own posted offer that we take, and not some other one in the order book. Takers would normally make market orders instead.
 
 ```bash
-export OFFER_ID_HEX=0xabcd... # the hexadecimal offer ID captured when posting the offer
+export OFFER_ID_HEX=<0xabcd...> # the hexadecimal offer ID captured when posting the offer
+```
+
+```bash
 export OFFER_ID=$(($OFFER_ID_HEX)) # the decimal ID of the offer captured above
 cast send --rpc-url $LOCAL_URL "$MANGROVE" "snipes(address, address, uint[4][], bool)" "$WETH" "$DAI" "[[$OFFER_ID,1000000000000000000,1700000000000000000000,100000000000000000]]" 1 --private-key "$PRIVATE_KEY"
 ```

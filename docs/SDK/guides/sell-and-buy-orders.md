@@ -5,7 +5,7 @@ sidebar_position: 4
 
 # Sell and buy orders
 
-Buying with cash or selling for cash can be done via the `buy` and `sell` functions of a [Market](../technical-references/api-overview.md#market) instance. The code snippets below send limit buy (taker) orders on the market, with an allowed slippage of 2%:
+Buying with cash or selling for cash can be done via the [`buy`](../technical-references/code/classes/Market.md#-buy) and [`sell`](../technical-references/code/classes/Market.md#-sell) functions of a [Market](../technical-references/api-overview.md#market) instance. The code snippets below send limit buy (taker) orders on the market, with an allowed slippage of 2%:
 
 ```typescript
 // buy limit order for 100 base tokens at an average price of 0.1 quote per base

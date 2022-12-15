@@ -49,9 +49,11 @@ https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95
 │    3    │ 1669 │ '0x4326Ab97823d7509C1f0CB3bF68151081B26c970' │ 1376.6273438550415 │ 1.00346478817687987934 │
 ```
 
+Changing the price of an offer can change its %%rank|offer-rank%% in the offer book.
+
 ### Update offer using OfferLogic
 
-When we updated our offer before, we used a `liquidityProvider` and we created this using Mangrove. This means that when we updated our offer, we did using Mangrove directly. But if you have your own contract with your own update offer logic, you can use that by creating an [`OfferLogic`](../technical-references/code/classes/OfferLogic). This is simply done by calling the constructor with Mangrove, your contracts address and if your contract is a [forwarder](../../strat-lib/background/offer-maker/forwarder.md).
+When we updated our offer before, we used a `liquidityProvider` and we created this using Mangrove. This means that when we updated our offer, we did using Mangrove directly. But if you have your own contract with your own update offer logic, you can use that by creating an [`OfferLogic`](../technical-references/code/classes/OfferLogic). This is simply done by calling the constructor with Mangrove, your contracts address and if your contract is a [forwarder](../../strat-lib/background/offer-maker/forwarder.md) (remember to import the type first, e.g., using `const { OfferLogic } = require("@mangrovedao/mangrove.js");`).
 
 ```js reference
 https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95ba097bf5/packages/mangrove.js/examples/how-tos/update-offer.js#L43-L46
@@ -68,3 +70,5 @@ To keep things more simple you can create a `liquidityProvider` with your offerL
 ```js reference
 https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95ba097bf5/packages/mangrove.js/examples/how-tos/update-offer.js#L62-L67
 ```
+
+You can only update offers you own as a maker. And from the `consoleAsks()` above you can see the `maker` of each offer. So for instance, you cannot update an offer posted directly in [Post a simple offer](../getting-started/basic-offer.md) using your `offerLogic`'s `liquitidyProvider` - it has to be an offer posted by the `offerLogic`.
