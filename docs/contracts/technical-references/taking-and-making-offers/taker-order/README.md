@@ -540,7 +540,10 @@ If you only want to take offers without any checks on the offer contents, you ca
 
 Consider the offers above on the DAI-USDC offer list. Let us construct a `snipes` call. 
 
-We start by specifying that the `fillWants` flag is `true`. This means that we ask to act as a buyer of %%inbound tokens|inbound%%, i.e., DAI, and that we as to *at most* buy what we specify for `takerWants` in the `targets` elements.
+We start by specifying that the `fillWants` flag is `true`. This means, that we ask
+
+* to act as a buyer of %%inbound|inbound%% tokens, i.e., DAI, and, 
+* to buy *at most* what we specify for `takerWants` in `targets`.
 
 Now let us construct the following `targets` array:
 

@@ -8,7 +8,7 @@ The entailed price of a specific offer in an %%offer list|offer-list%% is %%want
 
 :::info example
 
-If a maker has posted an offer with `wants = 1` USDC and `gives = 2` DAI, then the entailed price of that offer is `0.5` - a taker must give `0.5` USDC per DAI received.
+If a maker has posted an offer with `wants = 1` WETH and `gives = 2 925.26` DAI, then the entailed price of that offer is `1/2925.26 = ~0.00034185` wETH per DAI. That means that a taker must give `~0.00034185` wETH per DAI received.
 
 :::
 
