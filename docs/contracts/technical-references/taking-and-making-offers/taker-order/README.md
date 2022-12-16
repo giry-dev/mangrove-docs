@@ -507,7 +507,9 @@ await Mangrove.connect(signer).snipes(
   * `takerWants` the amount of outbound tokens the taker wants from that [offer](../reactive-offer/). **Must fit in a `uint96`.**
   * `takerGives` the amount of inbound tokens the taker is willing to give to that [offer](../reactive-offer/). **Must fit in a `uint96`.**
   * `gasreq_permitted` is the maximum `gasreq` the taker will tolerate for that [offer](../reactive-offer/). If the offer's `gasreq` is higher than `gasreq_permitted`, the offer will not be sniped.
-* `fillWants` specifies whether you are acting as a buyer of **outbound tokens**, in which case you will buy at most `takerWants`, or a seller of **inbound tokens**, in which case you will buy as many tokens as possible as long as you don't spend more than `takerGives`.&#x20;
+* `fillWants` is a flag:
+    * `fillWants = true` specifies that you are acting as a buyer of **outbound tokens**, in which case you will buy at most `takerWants`. 
+    * `fillWants = false` specifies that you are a seller of **inbound tokens**, in which case you will buy as many tokens as possible as long as you don't spend more than `takerGives`.
 
 :::caution **Protection against malicious offer updates**
 
@@ -529,15 +531,37 @@ If you only want to take offers without any checks on the offer contents, you ca
 
 #### Example
 
-| ID | Wants | Gives | Gas required |
+| ID | Wants (USDC) | Gives (DAI) | Gas required |
 | -- | ----- | ----- | ------------ |
 | 13 | 10    | 10    | 80\_000      |
 | 2  | 1     | 2     | 250\_000     |
 
 :::info **Example**
 
-Consider the offers above on the DAI-USDC offer list:
+Consider the offers above on the DAI-USDC offer list. Let us construct a `snipes` call. 
 
-Setting `targets` to `[[13,8,10,80_000],[2,1,1.1,250_000]]` with `fillWants` set to `true` will successfully buy 8 DAI from offer #13 (for 8 USDC), and will not attempt to execute offer #2 since 1.1 > 1/2.
+We start by specifying that the `fillWants` flag is `true`. This means that we ask to act as a buyer of %%inbound tokens|inbound%%, i.e., DAI, and that we as to *at most* buy what we specify for `takerWants` in the `targets` elements.
+
+Now let us construct the following `targets` array:
+
+* `targets[0] = [13, 8, 10, 80_000]`
+* `targets[1] = [2, 10, 2, 250_000]`
+
+Taking into account that we have set `fillWants = true`, this means that we are:
+
+* targeting offer #13, willing to give 10 USDC for at most 8 DAI, and,
+* targeting offer #8, willing to give 2 USDC for at most 10 DAI
+
+accepting a gas cost of up to `80_000` gas units and `250_000`, respectively.
+
+Let `DAI_addr` and `USDC_addr` be the addresses for the relevant tokens. Putting it together, the call to `snipes` looks like this:
+
+    snipes(DAI_addr, USDC_addr, [[13, 8, 10, 80_000],[2, 10, 2, 250_000]], true)
+
+With the DAI-USDC offer list as given above, the result will be that:
+
+For offer #13, we will successfully buy 8 DAI for 8 USDC, as the %%entailed price|offer-entailed-price%% for offer #13 is `10/10 = 1` USDC per DAI. This is below the price we were willing to pay: `10/8 = 1.25` USDC per DAI for this offer, so the offer is executed, resulting in a %%partial fill|maker-partial-fill%%.
+
+For offer #2, we will *not* attempt to execute this offer, as the %%entailed price|offer-entailed-price%% for offer #2 is `1/2 = 0.5` USDC per DAI, above the price that we were are willing to pay: `2/10 = 0.2` USDC per DAI for this offer.
 
 :::
