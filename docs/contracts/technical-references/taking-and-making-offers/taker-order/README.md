@@ -553,7 +553,7 @@ Now let us construct the following `targets` array:
 Taking into account that we have set `fillWants = true`, this means that we are:
 
 * targeting offer #13, willing to give 10 USDC for at most 8 DAI, and,
-* targeting offer #8, willing to give 2 USDC for at most 10 DAI
+* targeting offer #2, willing to give 2 USDC for at most 10 DAI
 
 accepting a gas cost of up to `80_000` gas units and `250_000`, respectively.
 
