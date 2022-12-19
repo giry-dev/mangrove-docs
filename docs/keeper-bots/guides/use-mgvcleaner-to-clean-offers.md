@@ -42,5 +42,5 @@ To clean the offer, your cleaning bot triggers the following steps:
 
 # Further reading
 
-- Borrowing funds for cleaning: [How to use borrowed funds for cleaning via Mangrove's delegation mechanism](./use-delegation-to-borrow-funds-for-cleaning)
+- Borrowing funds for cleaning: [Using borrowed funds for cleaning via Mangrove's delegation mechanism](./use-delegation-to-borrow-funds-for-cleaning)
 - Background on why cleaning is needed in Mangrove: [The role of cleaning bots in Mangrove](../background/the-role-of-cleaning-bots-in-mangrove.md)

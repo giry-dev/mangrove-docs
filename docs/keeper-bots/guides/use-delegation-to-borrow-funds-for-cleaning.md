@@ -51,5 +51,5 @@ The impersonation trick only works for sniping of failing offers. Mangrove check
 
 # Further reading
 
-- Cleaning using your own funds: [How to use the `MgvCleaner` contract to clean failing offers](./use-mgvcleaner-to-clean-offers)
+- Cleaning using your own funds: [Using the `MgvCleaner` contract to clean failing offers](./use-mgvcleaner-to-clean-offers)
 - Background on why cleaning is needed in Mangrove: [The role of cleaning bots in Mangrove](../background/the-role-of-cleaning-bots-in-mangrove.md)
