@@ -39,9 +39,9 @@ pragma solidity ^0.8.10;
 pragma abicoder v2;
 
 import {Direct, AbstractRouter, IMangrove, IERC20} from "src/strategies/offer_maker/abstract/Direct.sol";
-import {IMakerLogic} from "src/strategies/interfaces/IMakerLogic.sol";
+import {ILiquidityProvider} from "src/strategies/interfaces/ILiquidityProvider.sol";
 
-contract OfferMaker is Direct, IMakerLogic {
+contract OfferMaker is Direct, ILiquidityProvider {
 
   constructor(IMangrove mgv, AbstractRouter router_, address deployer) Direct(mgv, router_, 30_000) {
     // liquidity reserve of (unique) offer manager is this maker contract
@@ -65,7 +65,7 @@ This constructor sets the deployer %%reserve|reserve%% to be the %%maker contrac
 
 With this constructor in place we already almost have a deployable maker contract. `Direct` provides the implementation of a default %%offer logic|offer-logic%% as well as public functions to [update](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#updating-an-existing-offer) and [retract]((../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#retracting-an-offer) offers posted by `OfferMaker`.
 
-However, `Direct` does not expose any function able to [create new offers](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#posting-a-new-offer) on Mangrove, since the [`_newOffer`](../technical-references/code/strategies/offer_maker/abstract/Direct.md) function of Direct is internal. The requirement in our constructor to implement `IMakerLogic` imposes on us to have a public `newOffer` function. Using `IMakerLogic` ensures our contract is compatible with the [Mangrove SDK](../../SDK/README.md), which expects the `IMakerLogic` ABI.
+However, `Direct` does not expose any function able to [create new offers](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#posting-a-new-offer) on Mangrove, since the [`_newOffer`](../technical-references/code/strategies/offer_maker/abstract/Direct.md) function of Direct is internal. The requirement in our constructor to implement `ILiquidityProvider` imposes on us to have a public `newOffer` function. Using `ILiquidityProvider` ensures our contract is compatible with the [Mangrove SDK](../../SDK/README.md), which expects the `ILiquidityProvider` ABI.
 
 Our implementation of `newOffer` is simply to expose the internal `_newOffer` provided by Direct making sure the function is admin restricted (`Direct` provides the appropriate modifier `onlyAdmin`):
 
@@ -109,7 +109,7 @@ Suppose we have a certain amount `N` of some `BASE` token and we wish to put it 
 
 Of course, if we offer `N` tokens *both* on the (`BASE`, `STABLE1`) and the (`BASE`, `STABLE2`) %%offer lists|offer-list%%, one of our offers will fail if both are taken.
 
-We have a design choice here: Either we
+We have a design choice here. Either we
 
 1. let the second offer fail and compensate the taker with our offer's %%bounty|bounty%%, or,
 2. incorporate in our offer logic that we wish to [retract](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#retracting-an-offer) the second offer when the first one is taken. 
@@ -118,9 +118,9 @@ Let's follow the second design principle as it allows us to illustrate how to us
 
 ### Constructor
 
-We modify the simple constructor of `OfferMaker` to take into account the additional gas requirement of the `Amplifier`'s logic, which now requires retracting the second offer each time an offer is taken. We also choose to specialize our maker contract to a particular choice of `BASE`, `STABLE1` and `STABLE2` tokens.
+We modify the simple constructor of `OfferMaker` to take into account the additional gas requirements of `Amplifier`'s logic: To retract (or update) the second offer each time an offer is taken. We also choose to specialize instances of our maker contract to a particular choice of `BASE`, `STABLE1` and `STABLE2` tokens - requiring these to be given as arguments when construing the contract.
 
-We also show how to instantiate and use a simple %%router|router%% in order to use the deployer's account as %%reserve|reserve%%. 
+In the constructor below, we also show how to instantiate and setup a simple %%router|router%% in order to use the deployer's account as %%reserve|reserve%%.
 
 ```solidity
 pragma solidity ^0.8.10;
@@ -161,19 +161,19 @@ Note that as we manually construct and configure `router_` and set it as the rou
 
 :::caution Admin's reserve
 
-In the constructor above, we do not directly set the deployer %%reserve|reserve%%. By default, this means that the deployer's address is set as the address of the reserve. The deployer must therefore approve the maker contract's %%router|router%% for %%outbound|outbound%% token transfer (see [approvals](../guides/approvals.md) for more details.)
+In the constructor above, we do not explicitly set the deployer %%reserve|reserve%%. By default, this means that the deployer's address is set as the address of the reserve. The deployer must therefore approve the maker contract's %%router|router%% for %%outbound|outbound%% token transfer (see [approvals](../guides/approvals.md) for more details).
 
 :::
 
-As for `OfferMaker`, we need to create a way for the %%maker contract|maker-contract%% to post an offer. For `Amplifier`, we will not try to comply to the `IMakerLogic` interface (and therefore this contract will no longer be fully usable with the SDK). We will instead use a custom implementation to post our two offers in the same transaction.
+As for `OfferMaker`, we need to create a way for the %%maker contract|maker-contract%% to post offers. For `Amplifier`, we will not try to comply to the `ILiquidityProvider` interface (and therefore this contract will no longer be fully usable with the SDK). We will instead use a custom implementation to post our two offers in the same transaction.
 
 ### Publishing amplified liquidity
 
-We already know some of the parameters we need to implement posting new offers, since we received them in the constructor: We know the %%inbound|inbound%% and the %%outbound|outbound%% tokens of both offers. Also, we do not want the %%offer owner|offer-owner%% to have to specify new offer's %%`gasprice`|gasprice%% and %%`gasreq`|gasreq%% so we just use default values.
+We already know some of the parameters we need to implement posting new offers, since we gave them in the constructor: We know the %%inbound|inbound%% and the %%outbound|outbound%% tokens of both offers. Also, we do not want the %%offer owner|offer-owner%% to have to specify new offer's %%`gasprice`|gasprice%% and %%`gasreq`|gasreq%% so we just use default values.
 
 If we specify a `gasprice` of zero when posting the offer, Mangrove will use [its own gas price](../../contracts/technical-references/governance-parameters/global-variables.md#gas-price-and-oracle). For `gasreq`, we can use the public getter `offerGasreq()`, which returns the default gas requirement for the contract plus the gas required for the %%router|router%%. 
 
-This leaves us having to provide the amount that the offer should %%`give`|gives%% in `BASE` token, and the amount of `STABLE1` and `STABLE2`, which the offer %%wants|wants%% - `wants1` and `wants2`. We also need to specify the %%pivot ids|pivot-id%% for insertion of the two offers (`pivot1` and `pivot2`) in the relevant %%ofer lists|offer-list%%. As for `OfferMaker`, we only want the admin of the contract to able to post offers, so we keep the modifier `onlyAdmin`.
+This leaves us having to provide the amount that the offer should %%`give`|gives%% in `BASE` token, and the amount of `STABLE1` and `STABLE2`, which the offer %%wants|wants%% - `wants1` and `wants2`. We also need to specify the %%pivot ids|pivot-id%% for insertion of the two offers (`pivot1` and `pivot2`) in the relevant %%ofer lists|offer-list%%. As for `OfferMaker`, we only want the admin of the contract to able to post offers, so we use the modifier `onlyAdmin` again.
 
 ```solidity
   function newAmplifiedOffers(
@@ -226,7 +226,7 @@ This leaves us having to provide the amount that the offer should %%`give`|gives
   }
 ```
 
-Notice in the implementation of `newAmplifiedOffers`, the calls to the offer data getter `MGV.offers(address, address, uint)`: This returns a packed data structure `offer` whose fields `f` can be unpacked by doing `offer.f()` (see the documentation for the [offer data structure](../../contracts/technical-references/taking-and-making-offers/views-on-offers.md#views-on-offers)).
+In the implementation of `newAmplifiedOffers` notice the calls to the offer data getter `MGV.offers(address, address, uint)`: This returns a packed data structure `offer` whose fields `f` can be unpacked by doing `offer.f()` (see the documentation for the [offer data structure](../../contracts/technical-references/taking-and-making-offers/views-on-offers.md#views-on-offers)).
 
 :::info possible gas optimization
 
@@ -236,9 +236,9 @@ If both our amplified offers were once live on Mangrove, but are no longer (eith
 
 ### Updating an under-collateralized offer on the fly
 
-With `newAmplifiedOffers` implemented, we can now post new offers. One of these offers might be taken at some point. When this happens, as per the specification we decided upon above, we wish to retract the other offer, which is now un(der)-collateralized, in order to save some %%provision|provision%%. To do this we override the `posthookSuccess` %%hook|hook%%.
+With `newAmplifiedOffers` implemented, we can now post new offers. We hope that one of these offers will be taken at some point. When this happens, as per the specification we decided upon [above](#advanced-direct-offer-liquidity-amplification-with-amplifier), we wish to retract the other offer, which is now un(der)-collateralized, in order to save some %%provision|provision%%. To do this we override the `posthookSuccess` %%hook|hook%%.
 
-The begining of our custom hook looks like:
+The signature and first line of our custom %%hook|hook%% looks like this:
 
 ```solidity
 function __posthookSuccess__(MgvLib.SingleOrder calldata order, bytes32 makerData)
@@ -247,14 +247,19 @@ function __posthookSuccess__(MgvLib.SingleOrder calldata order, bytes32 makerDat
     returns (bytes32)
   {
     bytes32 repost_status = super.__posthookSuccess__(order, makerData);
+    ...
 ```
-Notice we call `super`'s implementation of the hook, which tries to repost the offer residual. The `repost_status` tells us whether the offer had a residual (in case of a %%maker partial fill|maker-partial-fill%).
 
-Because both offers should always %%give|gives%% the same volume, we now have two cases:
-* either the current offer's logic has reposted a residual and we need to update the other offer immediately to %%give|gives%% the same residual, and adapt %%wants|wants%% accordingly.
-* or the current offer was not reposted, in which case it is no longer in the %%offer list|offer-list%%, and we need to retract the second offer.
+Notice that we call `super`'s implementation of the hook. This ultimately ends up attempting to repost the offer residual (cf. the documentation of [Post trade hooks for MangroveOffer](../background/offer-maker/mangrove-offer.md#post-trade-hooks) and the reference for [Customizing `makerPosthook`](../technical-references/main-hooks.md#customizing-makerposthook)). The `repost_status` tells us whether the offer had a residual (in case of a %%maker partial fill|maker-partial-fill%).
 
-So we continue our implementation of the `__posthookSuccess__` hook with:
+Because both offers should always %%give|gives%% the same volume, we have two cases to handle - either
+
+1. the current offer's logic has reposted a residual and we need to update the other offer to %%give|gives%% the same residual and adapt %%wants|wants%% accordingly, or,
+2. the current offer was not reposted, in which case it is no longer in the %%offer list|offer-list%%, and we need to retract the second offer.
+
+#### Implementing case 1: An offer was reposted with a residual
+
+We continue our implementation of the `__posthookSuccess__` hook by handling case 1:
 
 ```solidity
 ...
@@ -291,20 +296,26 @@ if (repost_status == "posthook/reposted") {
   });
   return "posthook/bothOfferReposted";
 } // end if
+...
 ```  
 
-Notice the use of the hook `__residualGives__` in the code snippet above. It returns what the offer, whose logic is currently being executed, will %%give|gives%% when reposted. By default, this is simply what the offer was originally giving, minus what it gave to the the taker after %%`makerExecute`|makerExecute%%.
+Notice the use of the hook [`__residualGives__`](../technical-references/code/strategies/MangroveOffer.md#residualgives) in the code snippet above. For the offer currently being executed, it returns the %%give|gives%% at that offer when it is reposted. By default, this is calculated by subtracting what the taker took during %%`makerExecute`|makerExecute%% from what the offer originally gave.
 
-We cannot use `__residualWants__` to deduce how much token the *other* offer should %%want|wants%% because we cannot assume both `STABLE1` and `STABLE2` have the same decimals (for this example, we only assume that they have the same value with respect to `BASE`). We could zero pad or truncate, but it is more elegant to compute the new %%wants|wants%% based on the new %%gives|gives%% - with the constraint that we wish to preserve the %%entailed price|offer-entailed-price%%.
+Also notice that go through a slightly more complex calculation to compute the updated wants for the *other* offer: We cannot use [`__residualWants__`](../technical-references/code/strategies/MangroveOffer.md#residualwants) to deduce the amount of tokens the *other* offer should %%want|wants%%, because we cannot assume both `STABLE1` and `STABLE2` have the same decimals. (For this example, we only assume that they have the same value with respect to `BASE`.) We could zero-pad or truncate, but it is more elegant to compute the new %%wants|wants%% based on the new %%gives|gives%% - we set the constraint that we wish to preserve the %%entailed price|offer-entailed-price%%.
 
 ### Retracting the uncollateralized offer on the fly
 
-During the %%offer logic's|offer-logic%% execution it might be that the taken offer does not repost itself on the book. This may happen for the following reasons:
-* the offer was completely filled
-* the offer is partially filled but its residual is below the offer list's %%density|density%%.
-* the offer no longer has enough %%provision|provision%%. This last case may occur if one is reposting an offer that has failed (because a part of the provision was turned into a bounty), or because Mangrove's %%gasprice|gasprice%% is now above the offer's gasprice (because Mangrove updated its gasprice after the offer was last posted).
+During the execution of the %%offer logic|offer-logic%% it may occur that the taken offer does not repost itself on the %%offer list|offer-list%%. This may happen for the following reasons:
 
-In each of this cases we wish to retract the other offer from the book, so we continue our hook with:
+* the offer was completely filled
+* the offer is %%partially filled|maker-partial-fill%% but its residual is below the offer list's %%density|density%%
+* the offer no longer has enough %%provision|provision%%. This last case may occur if one is reposting an offer that has failed (because a part of the %%provision|provision%% was turned into a %%bounty|bounty%%), or because Mangrove's %%gasprice|gasprice%% is now above the offer's gasprice. (This may happen, if Mangrove updated its [own gasprice](../../contracts/technical-references/governance-parameters/global-variables.md#gas-price-and-oracle) after the offer was last posted.)
+
+In all of these cases we wish to retract the other offer from the book.
+
+#### Implementing case 2: An offer was not reposted, and we need to retract the other offer
+
+We continue our hook by handling case 2 from our [breakdown above](#updating-an-under-collateralized-offer-on-the-fly).
 
 ```solidity
 ...
@@ -321,15 +332,17 @@ else { // if offer was not reposted
 
 :::warning Refunding offer automatically
 
-An alternative to retracting both offers in case the taken offer failed to repost itself for lack of provision, might be to replenish the maker contract's balance on Mangrove. However we advise against refunding provisions within the offer logic: if some attackers found a way to make your offer fail, they will iterate the attack for as long as you repost an reprovision your offer, draining your native token balance.
+There is an alternative to retracting both offers in case the taken offer failed to repost itself for lack of provision: We might replenish the maker contract's balance on Mangrove. However, we advise against refunding provisions automatically within the %%offer logic|offer-logic%% itself: 
+
+Suppose that you instrumented your offer logic to do this. Now, if an attacker found a reproducible way of making your offer fail, they could loop that attack for as long as you repost a reprovision for your offer. This could ultimately draining your native token balance!
 
 :::
 
 ### Managing offer failure
 
-When writing posthooks, we need to consider all possible outcomes. The first outcome was that the offer was successfull, but it might be that the offer failed when it was taken. This may happen in this case because we opted for using a router that brings liquidity from deployer's account. Nothing prevents this account to be empty when the taker order arrives.
+When writing posthooks, we need to consider all possible outcomes. The first outcome we have handled above assumed that the offer was successful. However, it might also be that the offer failed when it was taken. In this setup, this may happen, for instance, because we opted for using a router that brings liquidity from deployer's account. Nothing prevents this account from being empty when the taker order actually arrives.
 
-This now means that the offer that was unsuccessfully taken is no longer live on Mangrove, and that some bounty has been sent to the taker. However the other offer will also fail if taken. For this reason we want to override `posthookFallback` in order to retract the other offer as well:
+If this happens, this means that the offer that was unsuccessfully taken is no longer live on Mangrove and that some %%bounty|bounty%% has been sent to the taker. However, in this case, we **know** that the *other* offer will also fail if taken. For this reason, in case if a trade fails, rather than waiting for the other offer to fail by itself, we can save some %%provision|provision%% and override [`posthookFallback`](../technical-references/main-hooks.md#posthook-after-trade-failure) to retract the other offer:
 
 ```solidity
   function __posthookFallback__(MgvLib.SingleOrder calldata order, MgvLib.OrderResult calldata)
@@ -350,4 +363,3 @@ This now means that the offer that was unsuccessfully taken is no longer live on
   }
 ```
 
-The full code for the contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/toy_strategies/offer_maker/Amplifier.sol).
