@@ -273,7 +273,7 @@ if (repost_status == "posthook/reposted") {
 
 Notice the use of the hook `__residualGives__` in the above code snippet. It returns what the offer, whose logic is currently executed, will give when reposted. By default, this is simply what the offer was originally giving, minus what it gave to the the taker after %%`makerExecute`|makerExecute%%.
 
-We cannot use `__residualWants__` to deduce how much token the other offer should want because we cannot assume both `STABLE1` and `STABLE2` have the same decimals (we only assume here that they have the same value with respect to `BASE`). We could zero pad or truncate but it's more elegant to compute the new %%wants|wants%% based on the new %%gives|gives%% with the constraint wish to preserve the [entailed price](../../contracts/technical-references/taking-and-making-offers/offer-list.md#wants-gives-and-entailed-price).
+We cannot use `__residualWants__` to deduce how much token the other offer should want because we cannot assume both `STABLE1` and `STABLE2` have the same decimals (we only assume here that they have the same value with respect to `BASE`). We could zero pad or truncate but it's more elegant to compute the new %%wants|wants%% based on the new %%gives|gives%% with the constraint wish to preserve the %%entailed price|offer-entailed-price%%.
 
 ### Retracting uncollateralized offer on the fly
 
