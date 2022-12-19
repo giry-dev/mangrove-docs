@@ -22,7 +22,7 @@ When writing posthooks to repost residuals there are both caveats and points to 
 * Use [`updateOffer`](../technical-references/code/strategies/interfaces/IOfferLogic.md#updateoffer) instead of posting a new offer. The old offer is not alive and can be reused (and the memory is hot), this is [cheaper](./howtoGasreq.md) than using [`_newOffer`](../technical-references/code/strategies/offer_maker/abstract/Direct.md#_newoffer).
 * Use the helper  methods [`__residualGives__`](../technical-references/code/strategies/MangroveOffer.md#residualgives) and [`__residualWants__`](../technical-references/code/strategies/MangroveOffer.md#residualwants) supplied to calculate the residual (see example below).
 * Beware that updates can fail, e.g., due to too low density.
-* Make sure to refer to the guidelines on [how to implement safe offer logics](./HowToImplement.md).
+* Make sure to refer to the guidelines on [Safe offer logic guidelines](./HowToImplement.md).
 * Note that the parameters to `__posthookSuccess__` already point out the old offer. This can save storage since we do not have to store %%IDs|offer-id%% of posted offers.
 * Beware of gas usage changes on different code paths. As an example, the [gas requirements](./howtoGasreq.md) for the tutorial increases to 80,000 to be able to repost.
 
