@@ -54,7 +54,7 @@ contract OfferMaker is Direct, ILiquidityProvider {
 ...
 ```
 :::caution `gasreq`
-We use 30K for the default %%`gasreq`|gasreq%% of our strat. This does not leave room for any advanced %%offer logic|offer-logic%%, so for this example, we effectively assume a very simple %%offer logic|offer-logic%% where liquidity is stored on this contract. See [how to evaluate `gasreq`](./howtoGasreq.md) for more information.
+We use 30K for the default %%`gasreq`|gasreq%% of our strat. This does not leave room for any advanced %%offer logic|offer-logic%%, so for this example, we effectively assume a very simple %%offer logic|offer-logic%% where liquidity is stored on this contract. See [Determining gas requirements](./howtoGasreq.md) for more information.
 ::: 
 
 :::info `reserve`
