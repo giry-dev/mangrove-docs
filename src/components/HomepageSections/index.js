@@ -56,7 +56,7 @@ const MessageList = [
     Svg: 'img/streamlinehq-nature-ecology-leaf-nature-ecology.svg',
     description: (
       <>
-        The core team has just deployed a Soft Launch of the Mangrove DEX. This deployment is an internal milestone with the objective of testing Mangrove protocol in real conditions, on the <a href="https://polygon.technology/">Polygon Mainnet</a>.
+        The core team has just deployed a Soft Launch of the Mangrove DEX. This deployment is an internal milestone with the objective of testing the Mangrove protocol in real conditions, on the <a href="https://polygon.technology/">Polygon Mainnet</a>.
       </>
     ),
     colStyle: 'frontpage--message',    
