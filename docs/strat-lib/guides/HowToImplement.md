@@ -25,7 +25,7 @@ Functions in offer logic are automatically executed by Mangrove, who is then `ms
 * decision to renege on trade
 * every moves that are needed to bring liquidity promised to the taker. 
 
-The offer logic in `makerExecute` **should** be gas bounded since an out-of-gas exception will lead to Mangrove transfering your whole %%provision|provision%% to the taker as a %%bounty|bounty%%.
+The offer logic in `makerExecute` **should** be gas bounded since an out-of-gas exception will lead to Mangrove transferring your whole %%provision|provision%% to the taker as a %%bounty|bounty%%.
 
 **Must** be in `makerPoshtook`:
 * any write action to the %%offer list|offer-list%% to which the currently executed offer belongs.
@@ -51,7 +51,7 @@ __activate__(IERC20 token) internal override {
 The [`activate(IERC20[] calldata tokens)`](../technical-references/code/strategies/routers/AbstractRouter.md#activate) function follows the same pattern for custom %%routers|router%% (see router [activation](../technical-references/router.md#router-activation)).
 
 :::info cascading activation
-The activate function's default behavior is to perfom maker contract's activations and then ask its router (if any) to perform its own.
+The activate function's default behavior is to perform the maker contract's activations and then ask its router (if any) to perform its own.
 :::
 
 ### Checklist functions
@@ -61,7 +61,7 @@ The activate function's default behavior is to perfom maker contract's activatio
 Router use a similar [function](../technical-references/code/strategies/routers/AbstractRouter.md#checklist) to verify that maker contract can source tokens via the router (see router [checklist](../technical-references/router.md#router-checklist)).
 
 :::info cascading checkList
-The checkList function's default behavior is to perfom maker contract's checkList and then ask its router (if any) to perform its own.
+The checkList function's default behavior is to perform maker contract's checkList and then ask its router (if any) to perform its own.
 :::
 
 
