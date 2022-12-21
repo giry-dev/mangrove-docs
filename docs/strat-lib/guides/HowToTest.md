@@ -2,29 +2,27 @@
 sidebar_position: 5
 ---
 
-# Testing your contract
+# Testing a maker contract
 
-You have now created your contract and would like to test it. Mangrove offers a helper contract, that can help setup everything needed for writing a test using the Mangrove core protocol.
+After following the tutorial [Post a Smart Offer](../getting-started/smart-offer.md) or some of the guides in this section, you have created a %%maker contract|maker-contract%% and are ready to test it. Mangrove offers a helper contract, [`MangroveTest`](https://github.com/mangrovedao/mangrove-core/blob/master/test/lib/MangroveTest.sol), that helps setup everything needed for writing a test using the Mangrove core protocol.
 
-When we write test we are going to be using the framework [Foundry](https://book.getfoundry.sh/). Foundry is a smart contract development toolchain.
+We are going to use [Foundry](https://book.getfoundry.sh/) as the test runner - and we are going to use some of the features that Foundry provides for testing. Please refer to [Set Up Your Local Environment](../getting-started/preparation.md) for instructions on how to get and setup Foundry. For this guide, we assume basic knowledge of writing and running tests with Foundry - as can be gained by reading the relevant sections on [Foundry -> Tests](https://book.getfoundry.sh/forge/tests) in the Foundry book.
 
-When explaining "how to test" we are going to use the Amplifier contract, created in [How to create a Direct contract](DirectHowTo.md).
+For this example, we are going to write a simple test for the `Amplifier` contract that we implemented in the advanced part of [Creating a Direct contract](DirectHowTo.md).
 
-When creating your test, remember to use the naming convention `<name>.t.sol`, this way Foundry knows what files are test. The first thing to do is to import the relevant contracts. We are going to use `MangroveTest` which is a helper to setup the Mangrove protocol. This way you do not need to fork a existing chain, it can just deploy Mangrove protocol for you before running your tests. It has many other helpers. We import `Polygon` which is a helper to fork the polygon chain, we do this because we want to use the real address for WETH, USDC and DAI. This is not necessary, one could just create some test tokens an use them. We import the Amplifier contract, because that is the contract we want to test. The last thing is `MgvStructs`, this helps with getting information about offers, which we need later in the test.
+## Creating the test file
 
-The console import is not needed, but can be very useful, if you want to log something during your test. Debugging solidity code is not that easy, so using console logs is sometimes faster.
+When creating the test file, remember to use the naming convention `<name>.t.sol`, this way Foundry knows what files are tests. 
 
-Then we create a contract called AmplifierTest that inherence from MangroveTest. Making the contract a MangroveTest makes it possible to use all its helper functions. There is a few variable we know we are going to need, in order to test Amplifier, we need 3 tokens, the fork the test should run on, a taker address and the Amplifier contract.
+## Imports
 
-The receive function is defined in order for the test contract to be able to receive funds. In this test we are going to use the test contract as a offer maker, this means that it should be able to receive funds. A contract i solidity that does not have the receive function defined, will not be able to receive any funds.
+The first thing to do is to import the relevant contracts. As mentioned, we are going to use the helper contract provided by the Mangrove test library, [`MangroveTest`](https://github.com/mangrovedao/mangrove-core/blob/master/test/lib/MangroveTest.sol). This allows us to avoid having to fork an existing chain with Mangrove deployed. We may simply deploy a Mangrove protocol for this specific purpose before running our tests. 
 
-Before we run any tests, we want to create a setUp function that gets called before the actual test gets called. In Foundry creating a function called setUp will automatically make it run before the tests. In this case MangroveTest already has a setUp function, because of this we override it, since we only want to do part of the default setup.
+The Mangrove test library provides other helpers. We import `Polygon` - a helper to fork the polygon chain. We do this because we want to use the real addresses for WETH, USDC and DAI. (This is not strictly necessary - we could just create some test tokens and use those instead.) 
 
-In the setup function we start by creating a fork from the polygon chain and run its setup function. Next we need to setup Mangrove using the helper function from MangroveTest. We then get the 3 tokens from the polygon chain, all the addresses can be found in the `polygon.json` file where some standard addresses are saved.
+We also import the `Amplifier` contract - the contract that we wish to test. The last thing we import is `MgvStructs`, which contain struct definitions for the [offer views](../../contracts/technical-references/taking-and-making-offers/views-on-offers.md), which we shall need in the test.
 
-The Amplifier contract is using two markets, it is there for necessary to setup the 2 markets, in this case we are using DAI/WETH and USDC/WETH market. The last thing is creating the taker address, giving it some native tokens (to pay for gas), some DAI and USDC (to be able to take the offers) and approving Mangrove to take the funds. I order to approve Mangrove the taker has to call the approve function on each token, giving the address for Mangrove. Here we are using 3 helper functions `startPrank(<address>)`, `stopPrank(<address>` and `$`. The start and stop prank, are cheatcodes offered by Foundry, they make it possible to impersonate an address as if it was that address calling. This is makes it possible for us to call as the taker and approve Mangrove. This is only possible because we are in a test, using Foundry and not on any real chain, otherwise this would not be possible. The last helper function is `$`, this MangroveTest offer a shorthand for writing `address()` and casting the contract to its address.
-
-The setup is done, at we are now ready to write the first test.
+The console import is not strictly needed - however, it can be very useful, if we want to log something to the console while we are developing the test. Let us import it for now.
 
 ```solidity
 import {MangroveTest} from "mgv_test/lib/MangroveTest.sol";
@@ -34,7 +32,29 @@ import {MgvStructs} from "src/MgvLib.sol";
 import {MgvReader} from "src/periphery/MgvReader.sol";
 
 import {console} from "lib/forge-std-vendored/src/console.sol";
+...
+```
 
+## Test Class and Setup
+
+We call the test class `AmplifierTest` and let it inherit from `MangroveTest` to be able to use all helper functions. We override the basic `setUp()` function provided by `MangroveTest` to setup the actors we shall need in the test. We need 3 tokens, the fork the test should run on, a taker address and the `Amplifier` contract.
+
+For this test, we are going to use the test contract as the offer maker. Consequentially, it should be able to receive funds (from the taker), so we make sure to define the `receive()` function.
+
+We do the following in `setUp()` - refer to the full implementation below:
+
+* use the pinned fork of Polygon provided the Mangrove test library
+* get three tokens from the fork
+* setup the two relevant markets - DAI/WETH and USDC/WETH (using a helper from `MangroveTest`)
+* create an address for the taker, and provide it with native tokens, as well as DAI and USDC for taking the offer(s)
+* as the taker, we also need to approve Mangrove for taking the funds
+
+In the implementation, we use standard *cheatcodes*, `startPrank(<address>)`, `stopPrank(<address>` provided by Foundry for setting up the test (see [Foundry -> Cheatcodes](https://book.getfoundry.sh/forge/cheatcodes])).
+
+We also use a helper function `$()` provided by the Mangrove testing library offering a shorthand for writing `address()` and casting the contract to its address.
+
+```solidity
+...
 contract AmplifierTest is MangroveTest {
   IERC20 weth;
   IERC20 dai;
@@ -79,19 +99,42 @@ contract AmplifierTest is MangroveTest {
 ...
 ```
 
-When creating test using Foundry, you have to name the function that runs the test `test<the name>`. This way Foundry knows what functions are tests. I our first test we want to test that when the offer is fully taken, we therefore call the test `test_success_fill`.
 
-The first thing we need to do in our test is to deploy the Amplifier contract on our local chain. Since we know that this is going to be necessary for all the test, we write how to deploy the test on the local chain in its own function.
+## Testing a Successful Fill
 
-Deploying a contract locally is just calling its constructor of the contract. We are setting address of the testing contract(`$(this)`), as admin of the Amplifier contract, this way we can use the testing contract as maker. When the contract is deployed, we then need to activate it. We know which tokens we are going to use, so we first create an array with the 3 tokens, next we call Amplifier to check if any of the tokens have the correct approvals. Since we haven't activated Amplifier, we then expect it to revert with a specific message. Foundry has a cheatcode to catch excepted reverts called `expectRevert(<message>)`. This way we can call the checklist and see if the get the expected revert. The last thing we do in our deploy function, is activating Amplifier for the tokens we need.
+With `setUp` done, let us write the first test.
+
+We start by testing that we can take the offer fully without any rejections, and that after [trade execution](../../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution) both offers are retracted (recall that was how we [decided to implement](DirectHowTo.md#advanced-direct-offer-liquidity-amplification-with-amplifier) `Amplifier`). Let us call the test `test_success_fill` - in line with the naming guidelines of the [Foundry test framework](https://book.getfoundry.sh/forge/tests).
+
+Breaking the problem down, for this test, we need to
+
+* deploy `Amplifier` on our local fork,
+* take one of the offers, and verify our conditions
+
+We implement these two steps as separate functions (we need to deploy the contract for other tests, also).
 
 ```solidity
+...
   function test_success_fill() public {
     deployStrat();
 
     execTraderStratWithFillSuccess();
   }
+...
+```
 
+Now, of course, we need to implement `deployStrat()` and `execTraderStratWithFillSuccess()`.
+
+### Deploying `Amplifier` on the fork
+
+Deploying a contract on the fork is just calling its constructor of the contract. We give the address of the testing contract(`$(this)`) as the administrator of the `Amplifier` contract to be able to use that directly as the maker. 
+
+After deployment, we use the [`activate()`](../background/offer-maker/mangrove-offer.md#other-maker-contracts-hooks) helper provided by [MangroveOffer](../background/offer-maker/mangrove-offer.md), which helps setup the correct token approvals for Mangrove for our %%maker contract|maker-contract%%.
+
+Before calling `activate()` we also take the opportunity to demonstrate the related helper, [`checkList()`](../background/offer-maker/mangrove-offer.md#other-maker-contracts-hooks), which *checks* whether necessary approvals have been setup, and, if not, reverts (recall that `expectRevert(<message>)` is a [Foundry cheatcode](https://book.getfoundry.sh/forge/cheatcodes])).
+
+```solidity
+...
   function deployStrat() public {
     strat = new Amplifier({
       mgv: IMangrove($(mgv)),
@@ -112,15 +155,83 @@ Deploying a contract locally is just calling its constructor of the contract. We
     // and now activate them
     strat.activate(tokens);
   }
+...
 ```
 
-We now have a function that can deploy a new Amplifier contract on our local chain. Next is writing the actual test. In the first test we want to create a new offer using Amplifier, sniping one of the offer and then checking that the maker and taker got what they were promised and that both offers now are inactive.
+With this, we have a function that can deploy a new `Amplifier` contract on our local chain. Let us turn to writing the actual test. 
 
-First we save what amounts we want to use for the 2 offers. For the amount of WETH, we use the solidity shorthand `ether`. This is a way of multiplying a number with 10^18, which is the number of decimals ether has and because we are using WETH, it as the same amount of decimals. For both DAI and USDC we use the function `cash(token, amount)`. This is a helper function by MangroveTest, it makes sure to multiply the amount with the correct amount of decimals that the token is using. This way we now have the correct amounts of all tokens, using the correct decimals for each token.
+### Breaking down the test-specification further
 
-Next we need to approve the %%router|router%% of Amplifier the use the WETH of the tester contract. This is needed because we are using the tester contract as the reserve for Amplifier. We then need to give the tester contract som WETH in order to be able to complete the offers. Foundry has a cheatcode to give an address an amount of a token. This function is called `deal(address_of_token, address_to_receive_token, amount)`. We again use weth in order to use the correct amount of decimals.
+Let us unfold the specification for the test itself.
+
+For this first test, we want to 
+
+* post and fund a pair of offers using [`Amplifier.newAmplifiedOffers(...)`](./DirectHowTo.md#publishing-amplified-liquidity), 
+* [snipe](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#offer-sniping) *one* of the offers, and,
+* verify these properties
+    * both maker and taker received tokens as expected
+    * after trade execution *both* offers are retracted
+    
+Let us continue our divide-and-conquer strategy and write helper methods for the two first steps, before writing the body of the test. (As we shall see, we can reuse these helper methods, later.)
+
+#### Post and Fund Offers 
+
+Posting offers with `Amplifier` is simply a call to [`newAmplifiedOffers`](./DirectHowTo.md#publishing-amplified-liquidity), sending along funds for the %%provision|provision%%. (And we make a note to ensure in the test body that the testing contract has the funds for the %%provision|provision%%.)
 
 ```solidity
+...
+  function postAndFundOffers(uint makerGivesAmount, uint makerWantsAmountDAI, uint makerWantsAmountUSDC)
+    public
+    returns (uint offerId1, uint offerId2)
+  {
+    (offerId1, offerId2) = strat.newAmplifiedOffers{value: 1 ether}({
+      gives: makerGivesAmount, // WETH
+      wants1: makerWantsAmountUSDC, // USDC
+      wants2: makerWantsAmountDAI, // DAI
+      pivot1: 0, // we are testing, so there are no other offers in the offer lists
+      pivot2: 0  // --- || ---
+    });
+  }
+...
+```
+
+#### Taking a Single Offer
+
+Mangrove provides [snipe](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#offer-sniping) exactly for taking a *specific* offer. 
+
+We make sure to impersonate the taker that we setup an address for [above](#test-class-and-setup). (Recall that Foundry provides [`vm.prank()`](https://book.getfoundry.sh/cheatcodes/prank) for this exact purpose.)
+
+```solidity
+...
+  function takeOffer(uint makerGivesAmount, uint makerWantsAmount, IERC20 makerWantsToken, uint offerId)
+    public
+    returns (uint takerGot, uint takerGave, uint bounty)
+  {
+    // try to snipe one of the offers (using the separate taker account)
+    vm.prank(taker);
+    (, takerGot, takerGave, bounty,) = mgv.snipes({
+      outbound_tkn: $(weth),
+      inbound_tkn: $(makerWantsToken),
+      targets: wrap_dynamic([offerId, makerGivesAmount, makerWantsAmount, type(uint).max]),
+      fillWants: true
+    });
+  }
+...
+```
+
+#### And Finally, The Test
+
+With these helper methods, the test body amounts to the following steps:
+
+* Approve the %%router|router%% of `Amplifier` for access of the WETH of the tester contract - as we are using the tester contract itself as the %%reserve|reserve%% of `Amplifier` (read more about [Approvals](./approvals.md)).
+* Provide the tester contract - i.e., the %%reserve|reserve%% - with WETH to be able to successfully %%give|gives%% what the offer promises. (Using another cheatcode from Foundry, [`deal()`](https://book.getfoundry.sh/cheatcodes/deal).)
+* Post and fund offers with [`postAndFundOffers()`](#post-and-fund-offers).
+* Snipe *one* offer with [`takeOffer()`](#taking-a-single-offer).
+* Assert and verify the properties [we listed above](#breaking-down-the-test-specification-further).
+
+
+```solidity
+...
   function execTraderStratWithFillSuccess() public {
     uint makerGivesAmount = 0.15 ether;
     uint makerWantsAmountDAI = cash(dai, 300);
@@ -144,70 +255,26 @@ Next we need to approve the %%router|router%% of Amplifier the use the WETH of t
     assertTrue(!mgv.isLive(offer_on_dai), "weth->dai offer should have been retracted");
     assertTrue(!mgv.isLive(offer_on_usdc), "weth->usdc offer should have been retracted");
   }
-```
-
-We are now ready to post the offers using Amplifier and take one of the offers. Posting new offers and taken an offer, is something all the test are going to do, so we implement a function for each thing. This way we make it easier to write the next test.
-
-When posting offers using Amplifier, we need to fund it, in order to cover gas and provision, giving 1 ether is more than enough to cover the gas. For the pivot ids, we just give 0, since we know that there are no other offers on those markets.
-
-When taking an offer, we need to know what offer to take. Because of this we need the inbound token, in order to snipe the correct offer. We again use a cheatcode by Foundry `prank(address)`, this works like `startPrank`but only for the next call, where `startPrank` works for all calls, until `stopPrank` is called. When using `prank`one should be aware of nested calls, e.g. had we used a call to figure out the pivot1 and just called it inline like this `pivot1: strat.getPivot1()` then it would be that called that gets pranked and not the snipe call.
-
-```solidity
-  function postAndFundOffers(uint makerGivesAmount, uint makerWantsAmountDAI, uint makerWantsAmountUSDC)
-    public
-    returns (uint offerId1, uint offerId2)
-  {
-    (offerId1, offerId2) = strat.newAmplifiedOffers{value: 1 ether}({
-      gives: makerGivesAmount, // WETH
-      wants1: makerWantsAmountUSDC, // USDC
-      wants2: makerWantsAmountDAI, // DAI
-      pivot1: 0,
-      pivot2: 0
-    });
-  }
-
-  function takeOffer(uint makerGivesAmount, uint makerWantsAmount, IERC20 makerWantsToken, uint offerId)
-    public
-    returns (uint takerGot, uint takerGave, uint bounty)
-  {
-    // try to snipe one of the offers (using the separate taker account)
-    vm.prank(taker);
-    (, takerGot, takerGave, bounty,) = mgv.snipes({
-      outbound_tkn: $(weth),
-      inbound_tkn: $(makerWantsToken),
-      targets: wrap_dynamic([offerId, makerGivesAmount, makerWantsAmount, type(uint).max]),
-      fillWants: true
-    });
-  }
-```
-
-After having posted and taken one of the offers, we can now check whether everything happen as excepted. We use `assertEq` and ´assertTrue´ which are Foundry methods for asserting. The first thing we want to check, is whether the taker got the expected amount of WETH minus the fees taken by Mangrove. MangroveTest has a function ´minusFee(address\_outbound,address\_inbound, price)´, that will calculate the fee for a given market and price. The next thing is if the taker gave the correct amount of DAI.
-
-Having tested that the taker got and gave the correct amounts, we then want to check whether the offers are no longer live on Mangrove. To do this we use Mangrove to get the packed offers and then using Mangroves `isLive` function to check if an offer is live. In this case we except that both offers are inactive.
-
-```solidity
-...
-    (uint offerId1, uint offerId2) = postAndFundOffers(makerGivesAmount, makerWantsAmountDAI, makerWantsAmountUSDC);
-
-    (uint takerGot, uint takerGave,) = takeOffer(makerGivesAmount, makerWantsAmountDAI, dai, offerId1);
-
-    // assert that
-    assertEq(takerGot, minusFee($(dai), $(weth), makerGivesAmount), "taker got wrong amount");
-    assertEq(takerGave, makerWantsAmountDAI, "taker gave wrong amount");
-
-    // assert that neither offer posted by Amplifier are live (= have been retracted)
-    MgvStructs.OfferPacked offer_on_dai = mgv.offers($(weth), $(dai), offerId1);
-    MgvStructs.OfferPacked offer_on_usdc = mgv.offers($(weth), $(usdc), offerId2);
-    assertTrue(!mgv.isLive(offer_on_dai), "weth->dai offer should have been retracted");
-    assertTrue(!mgv.isLive(offer_on_usdc), "weth->usdc offer should have been retracted");
 ...
 ```
 
-We have now written our first test. In Foundry you can run all your tests by running `forge test`, if you want to run only for one specific contract you can add `--match-contract <name_of_contract>` and if you only want to run one test on that contract, you can add `--match-test <name_of_test>`. In our case we would run `forge test --match-contract AmplifierTest --match-test test_success_fill`. You can get full stacktraces by uses `-vvv`, you can read more about how `--verbose` works on [Foundry](https://book.getfoundry.sh/)'s own website.
+In verifying, we use a few helper functions provided by `MangroveTest`
 
-Writing your next test is now a lot easier since have create all the helper functions. E.g. writing a test for a on only being partially taken, would look like this:
+* `cash(token, amount)` - that helps us ensure that we use the correct decimals for a specific token,
+* `minusFee(address_outbound, address_inbound, price)` - that calculates the fee for a given market and price,
+
+and a few view functions provided by Mangrove, `offers()` and `isLive()` (see [Views on Offers](../../contracts/technical-references/taking-and-making-offers/views-on-offers.md)).
+
+## Running Tests with Foundry
+
+In Foundry tests are run with the Forge tool, typically invoking something like `forge test`. Please refer to the [Foundry Book -> Tests](https://book.getfoundry.sh/forge/tests) for updated documentation.
+
+## Adding More Tests - Testing Partial Fills
+
+With our helper functions for posting and sniping offers, we we can easily add more tests. For instance, testing that an offer was correctly handled for a %%partial fill|maker-partial-fill%% looks like this:
 
 ```solidity
+...
   function test_success_partialFill() public {
     deployStrat();
 
@@ -239,8 +306,9 @@ Writing your next test is now a lot easier since have create all the helper func
     assertTrue(mgv.isLive(offer_on_dai), "weth->dai offer should not have been retracted");
     assertTrue(mgv.isLive(offer_on_usdc), "weth->usdc offer should not have been retracted");
   }
+...
 ```
 
-A full test of the contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/test/toy_strategies/Amplifier.t.sol).
+A full test file for for the `Amplifier` contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/test/toy_strategies/Amplifier.t.sol).
 
-When you have create all your tests, you may want to deploy your contract to a real chain. Read more about how to deploy [here](HowToDeploy.md).
+When you have sufficiently tested your %%maker contract|maker-contract%%, you may want to [deploy your contract](HowToDeploy.md) to a real chain.
