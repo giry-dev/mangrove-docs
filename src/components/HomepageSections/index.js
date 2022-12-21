@@ -51,7 +51,37 @@ const TopFeatureList = [
 ]
 
 const MessageList = [
-
+  {
+    title: 'Soft Launch',
+    Svg: 'img/streamlinehq-nature-ecology-leaf-nature-ecology.svg',
+    description: (
+      <>
+        The core team has just deployed a Soft Launch of the Mangrove DEX. This deployment is an internal milestone with the objective of testing Mangrove protocol in real conditions, on the <a href="https://polygon.technology/">Polygon Mainnet</a>.
+      </>
+    ),
+    colStyle: 'frontpage--message',    
+  },
+  {
+    title: 'Disclaimer',
+    Svg: 'img/streamlinehq-interface-alert-warning-circle-interface-essential.svg',
+    description: (
+      <>
+        This soft launch will only use test tokens, with no monetary value.
+        Please refer to the <a href="./contracts/technical-references/contract-addresses">Deployment Addresses</a> for Mangrove.
+      </>
+    ),
+    colStyle: 'frontpage--message',    
+  },
+  {
+    title: 'What\'s Next?',
+    Svg: 'img/streamlinehq-interface-award-half-star-interface-essential.svg',
+    description: (
+      <>
+        The core team is currently working on the public launch of Mangrove. Stay tuned on <a href="https://twitter.com/mangroveDAO">Twitter</a> or join the <a href="https://discord.gg/rk9Qthz5YE">Mangrove Discord</a>.
+      </>
+    ),
+    colStyle: 'frontpage--message',    
+  },
 ]
 
 
