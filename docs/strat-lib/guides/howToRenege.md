@@ -16,7 +16,7 @@ https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650
 
 This override of the `__lastLook__` will renege if the offer is not fully taken. Note that since the %%provision|provision%% is lost as a %%bounty|bounty%% to the taker, care must be taken to select the right circumstances to renege. This uses the mechanisms for compensating the taker on failure, and therefore the maker should [renege early](../../contracts/background/taker-compensation.md#encouraging-early-renege).
 
-As an exercise, try posting an offer with a %%maker contract|maker-contract%% with the implementation of `__lastlook__` above. Now try out targetting this offer with a [snipe](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#offer-sniping) that takes only _part_ of the tokens that the offer %%gives|gives%%. The result should be a `makerExecute` fail with the reason that the offer must be fully taken. 
+As an exercise, try posting an offer with a %%maker contract|maker-contract%% with the implementation of `__lastlook__` above. Now try out targeting this offer with a [snipe](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#offer-sniping) that takes only _part_ of the tokens that the offer %%gives|gives%%. The result should be a `makerExecute` fail with the reason that the offer must be fully taken. 
 
 In a [Foundry](https://book.getfoundry.sh/getting-started/installation) trace this might look something like this:
 
