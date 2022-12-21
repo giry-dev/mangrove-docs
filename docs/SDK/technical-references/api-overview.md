@@ -6,8 +6,8 @@ sidebar_position: 0
 
 :::info **Numbers**
 
-* Numbers returned by functions are either plain javascript [`number`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global\_Objects/Number) or [`big.js`](https://github.com/MikeMcl/big.js/)instances. Some functions with names ending in `Raw` may return`ethers.BigNumbers`.
-* As input, numbers can be as plain javascript `numbers`, `big.js` instances, but also a`string`.
+* Numbers returned by functions are either plain JavaScript [`number`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global\_Objects/Number) or [`big.js`](https://github.com/MikeMcl/big.js/)instances. Some functions with names ending in `Raw` may return`ethers.BigNumbers`.
+* As input, numbers can be as plain JavaScript `numbers`, `big.js` instances, but also a`string`.
 
 The precision used when dividing is 20 decimal places.
 
@@ -42,7 +42,7 @@ You can test you are indeed connected to the [deployed Mangrove](../../contracts
 
 `config = await mgv.config()`
 
-The above `mgv` object gives you access to the `MgvToken`, `Market` and `OfferLogic` (allowing one to connect to an onchain offer logic) and `LiquidityProvider`(an abstraction layer to pass [bids](https://www.investopedia.com/terms/b/bid.asp) and [asks](https://www.investopedia.com/terms/a/ask.asp) on Mangrove) objects.
+The above `mgv` object gives you access to the `MgvToken`, `Market` and `OfferLogic` (allowing one to connect to an on-chain offer logic) and `LiquidityProvider`(an abstraction layer to pass [bids](https://www.investopedia.com/terms/b/bid.asp) and [asks](https://www.investopedia.com/terms/a/ask.asp) on Mangrove) objects.
 
 :::info
 

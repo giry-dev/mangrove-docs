@@ -30,7 +30,7 @@ It is in the interest of a maker to code their contract such that, if they decid
 
 ### Bounties finance fast updates
 
-During the lifecycle of a market order, makers of executed offers are called twice. Once to fulfill their promise, and once again to reinsert offers in the book. So even if an offer fails, the bounty mechanism lets the maker pay for reinserting their offer without delay. This reinsertion can use any onchain information available at the time, such as oracles.
+During the lifecycle of a market order, makers of executed offers are called twice. Once to fulfill their promise, and once again to reinsert offers in the book. So even if an offer fails, the bounty mechanism lets the maker pay for reinserting their offer without delay. This reinsertion can use any on-chain information available at the time, such as oracles.
 
 ### Don't update gasprice
 

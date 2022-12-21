@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # Overview of Mangrove's ecosystem
 
-The illustration belows depicts a bird's-eye view of the Mangrove ecosystem. The main actors are depicted as well as their most important interactions.
+The illustration below depicts a bird's-eye view of the Mangrove ecosystem. The main actors are depicted as well as their most important interactions.
 
 ![A bird's-eye view of Mangrove ecosystem.](../../../static/img/assets/contactMap.png)
 
