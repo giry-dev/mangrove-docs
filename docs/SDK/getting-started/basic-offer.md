@@ -9,7 +9,7 @@ Posting a simple offer is also referred to as an %%on-the-fly offer|on-the-fly-o
 
 ## Prerequisites
 
-The tutorial assumes knowledge of javascript. Follow [preparation](./preparation.md) to create a new `tutorial` folder.
+The tutorial assumes knowledge of JavaScript. Follow [preparation](./preparation.md) to create a new `tutorial` folder.
 
 Make sure to use a chain where Mangrove is live. You can find all all live addresses for Mangrove [here](../../contracts/technical-references/contract-addresses.md)
 
