@@ -8,7 +8,7 @@ sidebar_position: 2
 
 Maker contracts can be set to utilize a %%router|router%% in order to manage %%outbound|outbound%% and %%inbound|inbound%% tokens reserves of %%offer owners|offer-owner%%. Routers' interface are constrained by the `AbstractRouter` contract and use  %%hooks|hook%% to customize the public functions described below.
 
-:::caution modifers
+:::caution modifiers
 Function modifier `onlyMakers` requires that only an approved maker contract can call this functions. Modifier `onlyAdmin` requires function caller to be the admin of the router. Modifier `makerOrAdmin` is a disjunction of both the above requirements.
 :::
 
@@ -63,8 +63,8 @@ Function approves `maker` as a user of the router. The `unbind` function can be 
 function activate(IERC20 token) external makersOrAdmin;
 ```
 
-* **Usage**: performs all router centric approvals that are necessary to route `token` liquidity. For instance a router using a lender might need to approve the lender for transfering `token` in deposit calls.
-* **SimpleRouter behavior**: SimpleRouter does not need to approve any contract, and `activate` is a noop in that context.
+* **Usage**: performs all router centric approvals that are necessary to route `token` liquidity. For instance a router using a lender might need to approve the lender for transferring `token` in deposit calls.
+* **SimpleRouter behavior**: SimpleRouter does not need to approve any contract, and `activate` is a no-op in that context.
 
 ### Router checklist
 
