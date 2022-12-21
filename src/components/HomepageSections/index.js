@@ -9,8 +9,8 @@ const TopFeatureList = [
     Svg: 'img/streamlinehq-phone-contact-phone-book-phone.svg',
     description: (
       <>
-        Go to the Contracts section to learn more about Mangrove. 
-        Delve into the core concepts, find the API documentation, or check out the deployment addresses for Mangrove.
+        Visit the Contracts section to learn more about Mangrove. 
+        Delve into core concepts, find technical reference material, or check the deployment addresses.
       </>
     ),
     elementClass: 'frontpage--button',
@@ -21,7 +21,7 @@ const TopFeatureList = [
     Svg: 'img/streamlinehq-money-graph-arrow-increase-money-shopping.svg',
     description: (
       <>
-        Read about how to develop market making strategies with the Mangrove Strat Library that provides contract building blocks to help write safe and efficient market making strats for Mangrove.
+        Read about how to write safe and efficient maker contracts for liquidity providing with the Mangrove Strat Library.
       </>
     ),
     elementClass: 'frontpage--button',
@@ -43,7 +43,7 @@ const TopFeatureList = [
     Svg: 'img/streamlinehq-computer-robot-computer-devices.svg',
     description: (
       <>
-        Mangrovians who want to contribute to the Mangrove ecosystem by building and running keeper bots should visit the dedicated section on Keeper Bots.
+        Mangrovians who want to contribute to the ecosystem by building and running keeper bots should visit the section on Keeper Bots.
       </>
     ),
     elementClass: 'frontpage--button',
