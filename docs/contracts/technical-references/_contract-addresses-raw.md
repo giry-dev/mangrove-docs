@@ -1,4 +1,50 @@
 <!-- GENERATED DO NOT EDIT - see addresses-to-md.js -->
+## Polygon Mainnet
+
+### Mangrove
+
+```txt
+0x2f5a51B09044754C7C8b1A9deE29E046b5432038
+```
+
+### MgvOracle
+
+```txt
+0x09f8b6E32DB426aa477ad815544d0573FeFdBeEF
+```
+
+### MgvReader
+
+```txt
+0xb2C51219745BDA3c812A6A144c8F78699d278810
+```
+
+### MgvCleaner
+
+```txt
+0x673b35A107a1299D0CaC48b9b25Ba1E3e9f9B54f
+```
+
+### MgvGovernance
+
+```txt
+0x0813Ec5f3b54003197d8B40A36Ed570E803cfBF7
+```
+
+### MangroveOrderEnriched
+
+```txt
+0x61e4e74ab24D7e136E375C8DDD9758F0793076E5
+```
+
+### ERC20 addresses
+
+* WETH: `0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619`
+* USDC: `0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174`
+* DAI: `0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063`
+* PxUSDC: `0xB70041dC246412E0DCE34bd788062E969276E737`
+* PxMATIC: `0xba6fBacEeeE55D2d657Eb26023C64002e23Af5E8`
+
 ## Polygon Testnet - Mumbai
 
 ### Mangrove
@@ -10,7 +56,7 @@
 ### MgvReader
 
 ```txt
-0xf931586733eAaE22F3AEf14C2f28177F25dBfC66
+0x4aa55b5f46c42531ea4772ab8c808399d067BfF0
 ```
 
 ### MgvCleaner

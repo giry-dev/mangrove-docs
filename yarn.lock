@@ -2882,13 +2882,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mangrovedao/commonlib.js@npm:0.0.5":
-  version: 0.0.5
-  resolution: "@mangrovedao/commonlib.js@npm:0.0.5"
+"@mangrovedao/commonlib.js@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@mangrovedao/commonlib.js@npm:1.0.0"
   dependencies:
     "@types/object-inspect": ^1.8.1
     "@types/triple-beam": ^1.3.2
-    config: ^3.3.7
+    config: ^3.3.8
     dotenv-flow: ^3.2.0
     fast-safe-stringify: ^2.1.1
     json-truncate: ^3.0.0
@@ -2896,24 +2896,24 @@ __metadata:
     loglevel: ^1.8.0
     object-inspect: ^1.12.2
     triple-beam: ^1.3.0
-  checksum: 752c2d3faaef56c95397abdbc0eb924a4a8166e2b25bde620bd072155d31420d42e56b1835a688657f9ba5aca4b3ec13dbaf9b872be2ad038a34ddf6a7c15cdd
+  checksum: 31e53eca39a3abdaa3577a0672657e3df56f4687451bab99c6cca860c629d3f3fad42602590db4092a2871a7d870d5f03c89cc3b410777bc303738cb7bc6440f
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove-core@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "@mangrovedao/mangrove-core@npm:1.3.0"
-  checksum: 9ab55095007973a07d72d9cc1f327fde17db275c00b44fc97e929acb5ba74fced1b2f7bef7d1e3846708e678555dc1258e9e6e6e53676e0b14906b8defa7a536
+"@mangrovedao/mangrove-core@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "@mangrovedao/mangrove-core@npm:1.4.0"
+  checksum: 479a74adfe64e91d6a8fb93c91d541f3a8e96d2cba22a79d408455789bdb23539767afe042f6af195d864c4a5177ef30643cceacf871523fe08bf123540b12f8
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove.js@npm:^0.14.0":
-  version: 0.14.0
-  resolution: "@mangrovedao/mangrove.js@npm:0.14.0"
+"@mangrovedao/mangrove.js@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@mangrovedao/mangrove.js@npm:1.0.0"
   dependencies:
     "@ethersproject/experimental": ^5.7.0
-    "@mangrovedao/commonlib.js": 0.0.5
-    "@mangrovedao/mangrove-core": ^1.3.0
+    "@mangrovedao/commonlib.js": 1.0.0
+    "@mangrovedao/mangrove-core": ^1.4.0
     async-mutex: ^0.4.0
     big.js: ^6.2.1
     esbuild-plugin-resolve: ^1.0.3
@@ -2921,7 +2921,7 @@ __metadata:
     node-cleanup: ^2.1.2
   bin:
     mgv: ./dist/nodejs/cli/mgv.js
-  checksum: 528cf50d2cc9479d343bff34ad870213a3dc1d0032fada1e3488ad1fef81f2454dbdd9e4a412a9112b0c2b226f9c4151b09fa8d3e0d6360614f025a8e02708f4
+  checksum: b0f243d04a69e0616d9214157a6fd4eb78449685fe4f6d2077576b18b23c72e4f833db1a186ac0944246bacdc029ac399d5bcf0cd0272083d22e2a35bb57a97a
   languageName: node
   linkType: hard
 
@@ -6575,7 +6575,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"config@npm:^3.3.7":
+"config@npm:^3.3.8":
   version: 3.3.8
   resolution: "config@npm:3.3.8"
   dependencies:
@@ -12878,8 +12878,8 @@ __metadata:
     "@docusaurus/theme-mermaid": ^2.2.0
     "@ethersproject/abi": ^5.4.7
     "@ethersproject/providers": ^5.4.7
-    "@mangrovedao/mangrove-core": ^1.3.0
-    "@mangrovedao/mangrove.js": ^0.14.0
+    "@mangrovedao/mangrove-core": ^1.4.0
+    "@mangrovedao/mangrove.js": ^1.0.0
     "@mdx-js/react": ^1.6.22
     "@nomicfoundation/hardhat-chai-matchers": ^1.0.0
     "@nomicfoundation/hardhat-network-helpers": ^1.0.0
