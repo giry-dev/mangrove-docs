@@ -15,7 +15,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:172
+@mangrovedao/mangrove.js/src/market.ts:175
 
 ___
 
@@ -25,7 +25,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:173
+@mangrovedao/mangrove.js/src/market.ts:176
 
 ___
 
@@ -35,4 +35,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:174
+@mangrovedao/mangrove.js/src/market.ts:177
