@@ -50,7 +50,7 @@ Before sniping the offer with the information we just gathered, we have to [appr
 We can now snipe the offer. Be ware that the information on the offer, is from the makers side. This means that what we, the taker, wants is what the offer (the maker) gives. Similarly with gives; what we, the taker, gives, is what the offer (the maker) wants. When taking a offer we should be aware that if we do not give a %%`gasLimit`|gasLimit%%, mangrove.js will get the `gasLimit` from the offer's %%`gasreq`|gasreq%%. The `gasLimit` sets a limit on how much gas we max want to use, when taking the offer. This way we can control, that if it is very costly to take the offer and it ends up costing more than our `gasLimit`, then the transfer will revert.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95ba097bf5/packages/mangrove.js/examples/how-tos/snipe-offer.js#L27-L49
+https://github.com/mangrovedao/mangrove-ts/blob/481e174a4644fa260ce3fa8b09d91aebfc5d0c10/packages/mangrove.js/examples/how-tos/snipe-offer.js#L27-L50
 ```
 
 ### Check the result of sniping
@@ -87,7 +87,7 @@ If the transaction failed, it is most likely that the account that posted the of
 We will also see the offer being gone when we log the asks on the market.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95ba097bf5/packages/mangrove.js/examples/how-tos/snipe-offer.js#L51-L55
+https://github.com/mangrovedao/mangrove-ts/blob/481e174a4644fa260ce3fa8b09d91aebfc5d0c10/packages/mangrove.js/examples/how-tos/snipe-offer.js#L52-L56
 ```
 
 ```js

@@ -20,7 +20,7 @@ If we look at the asks before and after we have updated the offer, we now see th
 <!-- TODO: add better return info description, when this issue is fixed  https://github.com/mangrovedao/mangrove-ts/issues/866 -->
 
 ```js reference
-https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95ba097bf5/packages/mangrove.js/examples/how-tos/reuse-offer.js#L61-L74
+https://github.com/mangrovedao/mangrove-ts/blob/481e174a4644fa260ce3fa8b09d91aebfc5d0c10/packages/mangrove.js/examples/how-tos/reuse-offer.js#L66-L78
 ```
 
 ```js title="Asks before update"x
