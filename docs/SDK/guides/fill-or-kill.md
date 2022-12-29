@@ -26,7 +26,7 @@ https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95
 We are now ready to buy some DAI using a FoK order. It is very simple to do. Using the same method as for a market order (`buy`), we just give it an extra parameter `fillOrKill` which we set to true. This way we use the [MangroveOrder](../../strat-lib/technical-references/code/strategies/MangroveOrder) contract to buy.
 
 ```js reference
-https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95ba097bf5/packages/mangrove.js/examples/how-tos/fill-or-kill.js#L29-L35
+https://github.com/mangrovedao/mangrove-ts/blob/481e174a4644fa260ce3fa8b09d91aebfc5d0c10/packages/mangrove.js/examples/how-tos/fill-or-kill.js#L29-L37
 ```
 
 Here we show logs asks for the market before buying and after buying, you will see that the first 3 offers were taken. Offers 1669, 3344 and 1157 were all taken. But when we look at the result of the Fill or Kill order, we see that we got a %%bounty|bounty%%. This means that one of the offers failed and we got a bounty for making the offer fail.

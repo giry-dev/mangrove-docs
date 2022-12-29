@@ -75,7 +75,7 @@ markdownFiles.forEach(file => {
 
 const newHeads = {
     "mangrovedao/mangrove-core": "89b38bc46a3783ce06072cca744650a77efcb048",
-    "mangrovedao/mangrove-ts": "83e1d09e0fce20441aa219a71b6cbb95ba097bf5"
+    "mangrovedao/mangrove-ts": "481e174a4644fa260ce3fa8b09d91aebfc5d0c10"
 }
 
 async function compareAll() {

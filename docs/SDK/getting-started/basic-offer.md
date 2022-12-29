@@ -81,7 +81,7 @@ After having looked at the market you now know what the prices are and you can n
 4. You can then post an offer using, in this case `wants: 100.5` and `gives:100.4`, which gives a price of $$100.5/100.4\approx1.00099$$. And since you saw that the best price was $$\approx1.003$$ you know our offer will be at the top of the list.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95ba097bf5/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L21-L38
+https://github.com/mangrovedao/mangrove-ts/blob/481e174a4644fa260ce3fa8b09d91aebfc5d0c10/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L21-L38
 ```
 
 ### Check market after new offer
