@@ -26,7 +26,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:15
+@mangrovedao/mangrove.js/src/semibook.ts:16
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:21
+@mangrovedao/mangrove.js/src/semibook.ts:22
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:23
+@mangrovedao/mangrove.js/src/semibook.ts:24
 
 ___
 
@@ -100,7 +100,7 @@ Specification of how much volume to (potentially) trade on the semibook.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:34
+@mangrovedao/mangrove.js/src/semibook.ts:35
 
 ___
 
@@ -124,4 +124,4 @@ If none of these are specfied, the default is `maxOffers` = `Semibook.DEFAULT_MA
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:49
+@mangrovedao/mangrove.js/src/semibook.ts:50

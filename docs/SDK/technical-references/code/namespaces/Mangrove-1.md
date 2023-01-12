@@ -14,7 +14,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:31
+@mangrovedao/mangrove.js/src/mangrove.ts:32
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:35
+@mangrovedao/mangrove.js/src/mangrove.ts:36
 
 ___
 
@@ -57,4 +57,29 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:45
+@mangrovedao/mangrove.js/src/mangrove.ts:46
+
+___
+
+### <a id="openmarketinfo" name="openmarketinfo"></a> OpenMarketInfo
+
+Ƭ **OpenMarketInfo**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `base` | { `address`: `string` ; `symbol`: `string` ; `decimals`: `number`  } |
+| `base.address` | `string` |
+| `base.symbol` | `string` |
+| `base.decimals` | `number` |
+| `quote` | { `address`: `string` ; `symbol`: `string` ; `decimals`: `number`  } |
+| `quote.address` | `string` |
+| `quote.symbol` | `string` |
+| `quote.decimals` | `number` |
+| `asksConfig` | [`LocalConfig`](Mangrove-1.md#localconfig) |
+| `bidsConfig` | [`LocalConfig`](Mangrove-1.md#localconfig) |
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:55

@@ -2907,9 +2907,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove.js@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@mangrovedao/mangrove.js@npm:1.0.1"
+"@mangrovedao/mangrove.js@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@mangrovedao/mangrove.js@npm:1.1.1"
   dependencies:
     "@ethersproject/experimental": ^5.7.0
     "@mangrovedao/commonlib.js": 1.0.0
@@ -2921,7 +2921,7 @@ __metadata:
     node-cleanup: ^2.1.2
   bin:
     mgv: ./dist/nodejs/cli/mgv.js
-  checksum: 035b47da2b58faeee9e4e720e26c987fab4d3be6fa413a305d73584b61dc5137dc549de4daf4313684f5e03a500060f61424783e6d4635c5358fb3a6fcd006f9
+  checksum: 7eb947fc0f865dc78d12b8b58f23a74e2d606cc0cd38a5b5231d0a7a57c06ab755f49aa86a51ef21851774dd721b4720a4e48f37a761461204b033693db7adf0
   languageName: node
   linkType: hard
 
@@ -12879,7 +12879,7 @@ __metadata:
     "@ethersproject/abi": ^5.4.7
     "@ethersproject/providers": ^5.4.7
     "@mangrovedao/mangrove-core": ^1.4.0
-    "@mangrovedao/mangrove.js": ^1.0.1
+    "@mangrovedao/mangrove.js": ^1.1.1
     "@mdx-js/react": ^1.6.22
     "@nomicfoundation/hardhat-chai-matchers": ^1.0.0
     "@nomicfoundation/hardhat-network-helpers": ^1.0.0
