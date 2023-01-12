@@ -27,7 +27,7 @@ the same for the market B-A), a `Semibook` depends on the market:
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:108
+@mangrovedao/mangrove.js/src/semibook.ts:109
 
 ___
 
@@ -37,7 +37,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:110
+@mangrovedao/mangrove.js/src/semibook.ts:111
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:111
+@mangrovedao/mangrove.js/src/semibook.ts:112
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:112
+@mangrovedao/mangrove.js/src/semibook.ts:113
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:129
+@mangrovedao/mangrove.js/src/semibook.ts:130
 
 ## Methods
 
@@ -91,7 +91,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:130
+@mangrovedao/mangrove.js/src/semibook.ts:131
 
 ___
 
@@ -107,7 +107,7 @@ Stop listening to events from mangrove
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:151
+@mangrovedao/mangrove.js/src/semibook.ts:152
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:155
+@mangrovedao/mangrove.js/src/semibook.ts:156
 
 ___
 
@@ -149,7 +149,7 @@ Returns struct containing offer details in the current offer list
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:166
+@mangrovedao/mangrove.js/src/semibook.ts:167
 
 ___
 
@@ -175,7 +175,7 @@ fee *remains* in basis points of the token being bought
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:202
+@mangrovedao/mangrove.js/src/semibook.ts:203
 
 ___
 
@@ -195,7 +195,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:207
+@mangrovedao/mangrove.js/src/semibook.ts:208
 
 ___
 
@@ -211,7 +211,7 @@ Returns the number of offers in the cache.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:221
+@mangrovedao/mangrove.js/src/semibook.ts:222
 
 ___
 
@@ -227,7 +227,7 @@ Returns the id of the best offer in the cache
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:226
+@mangrovedao/mangrove.js/src/semibook.ts:227
 
 ___
 
@@ -247,7 +247,7 @@ Iterable.\_\_@iterator@89
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:231
+@mangrovedao/mangrove.js/src/semibook.ts:232
 
 ___
 
@@ -263,7 +263,7 @@ Convenience method for getting an iterator without having to call `[Symbol.itera
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:236
+@mangrovedao/mangrove.js/src/semibook.ts:237
 
 ___
 
@@ -286,7 +286,7 @@ semibook. If there is no offer with a better price, `undefined` is returned.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:243
+@mangrovedao/mangrove.js/src/semibook.ts:244
 
 ___
 
@@ -327,7 +327,7 @@ traded due to insufficient volume on the book / price becoming bad.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:291
+@mangrovedao/mangrove.js/src/semibook.ts:292
 
 ___
 
@@ -349,7 +349,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:318
+@mangrovedao/mangrove.js/src/semibook.ts:319
 
 ___
 
@@ -372,7 +372,7 @@ Returns `true` if `price` is better than `referencePrice`; Otherwise, `false` is
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:389
+@mangrovedao/mangrove.js/src/semibook.ts:390
 
 ___
 
@@ -395,7 +395,7 @@ Returns `true` if `price` is worse than `referencePrice`; Otherwise, `false` is 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:395
+@mangrovedao/mangrove.js/src/semibook.ts:396
 
 ___
 
@@ -409,7 +409,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:399
+@mangrovedao/mangrove.js/src/semibook.ts:400
 
 ___
 
@@ -423,7 +423,48 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:578
+@mangrovedao/mangrove.js/src/semibook.ts:579
+
+___
+
+### <a id="rawlocalconfigtolocalconfig" name="rawlocalconfigtolocalconfig"></a> rawLocalConfigToLocalConfig
+
+▸ `Static` **rawLocalConfigToLocalConfig**(`local`, `outboundDecimals`): [`LocalConfig`](../namespaces/Mangrove-1.md#localconfig)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `local` | `LocalUnpackedStructOutput` |
+| `outboundDecimals` | `number` |
+
+#### Returns
+
+[`LocalConfig`](../namespaces/Mangrove-1.md#localconfig)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:900
+
+___
+
+### <a id="rawidtoid" name="rawidtoid"></a> rawIdToId
+
+▸ `Static` **rawIdToId**(`rawId`): `number`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `rawId` | `BigNumber` |
+
+#### Returns
+
+`number`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:918
 
 ___
 
@@ -443,7 +484,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:971
+@mangrovedao/mangrove.js/src/semibook.ts:984
 
 ___
 
@@ -463,4 +504,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:980
+@mangrovedao/mangrove.js/src/semibook.ts:993

@@ -35,7 +35,7 @@ Filter the offers in the cache using a predicate.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:79
+@mangrovedao/mangrove.js/src/semibook.ts:80
 
 ___
 
@@ -59,7 +59,7 @@ satisfies the provided predicate. If no values satisfy the testing function,
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:89
+@mangrovedao/mangrove.js/src/semibook.ts:90
 
 ___
 
@@ -75,7 +75,7 @@ Returns the elements in an array.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:92
+@mangrovedao/mangrove.js/src/semibook.ts:93
 
 ___
 

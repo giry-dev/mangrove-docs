@@ -78,7 +78,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/constants.ts:30
+@mangrovedao/mangrove.js/src/constants.ts:31
 
 ## References
 
