@@ -353,7 +353,7 @@ to change volume and price of the offer, and update its gas requirement and fund
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:267
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:304
 
 ___
 
@@ -377,7 +377,7 @@ Update an existing offer
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:276
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:313
 
 ___
 
@@ -399,7 +399,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:288
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:325
 
 ___
 
@@ -423,7 +423,7 @@ Cancel an ask. If deprovision is true, will return the offer's provision to the 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:347
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:390
 
 ___
 
@@ -447,7 +447,7 @@ Cancel a bid. If deprovision is true, will return the offer's provision to the m
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:356
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:399
 
 ___
 
@@ -470,7 +470,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:365
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:408
 
 ___
 
@@ -492,7 +492,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:409
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:456
 
 ___
 
@@ -514,7 +514,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:415
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:462
 
 ___
 
@@ -538,4 +538,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:422
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:469

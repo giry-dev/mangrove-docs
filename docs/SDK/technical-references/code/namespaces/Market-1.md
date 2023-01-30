@@ -18,7 +18,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:34
+@mangrovedao/mangrove.js/src/market.ts:32
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:35
+@mangrovedao/mangrove.js/src/market.ts:33
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:36
+@mangrovedao/mangrove.js/src/market.ts:34
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:37
+@mangrovedao/mangrove.js/src/market.ts:35
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:43
+@mangrovedao/mangrove.js/src/market.ts:41
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:48
+@mangrovedao/mangrove.js/src/market.ts:46
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:55
+@mangrovedao/mangrove.js/src/market.ts:53
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:64
+@mangrovedao/mangrove.js/src/market.ts:62
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:71
+@mangrovedao/mangrove.js/src/market.ts:69
 
 ___
 
@@ -147,7 +147,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:73
+@mangrovedao/mangrove.js/src/market.ts:71
 
 ___
 
@@ -163,7 +163,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:85
+@mangrovedao/mangrove.js/src/market.ts:83
 
 ___
 
@@ -182,7 +182,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:89
+@mangrovedao/mangrove.js/src/market.ts:87
 
 ___
 
@@ -202,7 +202,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:101
+@mangrovedao/mangrove.js/src/market.ts:99
 
 ___
 
@@ -218,7 +218,7 @@ Specification of how much volume to (potentially) trade on the market.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:121
+@mangrovedao/mangrove.js/src/market.ts:119
 
 ___
 
@@ -228,7 +228,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:125
+@mangrovedao/mangrove.js/src/market.ts:123
 
 ___
 
@@ -249,7 +249,7 @@ Options that control how the book cache behaves.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:130
+@mangrovedao/mangrove.js/src/market.ts:128
 
 ___
 
@@ -273,7 +273,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:153
+@mangrovedao/mangrove.js/src/market.ts:151
 
 ___
 
@@ -283,17 +283,17 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:165
+@mangrovedao/mangrove.js/src/market.ts:163
 
 ___
 
 ### <a id="booksubscriptioncbargument" name="booksubscriptioncbargument"></a> BookSubscriptionCbArgument
 
-Ƭ **BookSubscriptionCbArgument**: { `ba`: [`BA`](Market-1.md#ba) ; `offerId`: `number` ; `offer?`: [`Offer`](Market-1.md#offer)  } & { `type`: ``"OfferWrite"``  } \| { `type`: ``"OfferFail"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big` ; `mgvData`: `string`  } \| { `type`: ``"OfferSuccess"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big`  } \| { `type`: ``"OfferRetract"``  }
+Ƭ **BookSubscriptionCbArgument**: { `ba`: [`BA`](Market-1.md#ba) ; `offerId?`: `number` ; `offer?`: [`Offer`](Market-1.md#offer)  } & { `type`: ``"OfferWrite"``  } \| { `type`: ``"OfferFail"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big` ; `mgvData`: `string`  } \| { `type`: ``"OfferSuccess"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big`  } \| { `type`: ``"OfferRetract"``  } \| { `type`: ``"SetGasbase"``  }
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:180
+@mangrovedao/mangrove.js/src/market.ts:178
 
 ___
 
@@ -325,7 +325,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:197
+@mangrovedao/mangrove.js/src/market.ts:196
 
 ___
 
@@ -335,7 +335,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:202
+@mangrovedao/mangrove.js/src/market.ts:201
 
 ___
 
@@ -345,7 +345,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:203
+@mangrovedao/mangrove.js/src/market.ts:202
 
 ___
 
@@ -355,7 +355,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:204
+@mangrovedao/mangrove.js/src/market.ts:203
 
 ___
 
@@ -372,7 +372,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:213
+@mangrovedao/mangrove.js/src/market.ts:212
 
 ___
 
@@ -389,4 +389,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:215
+@mangrovedao/mangrove.js/src/market.ts:214

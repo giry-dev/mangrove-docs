@@ -67,13 +67,13 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:130
+@mangrovedao/mangrove.js/src/semibook.ts:131
 
 ## Methods
 
 ### <a id="connect" name="connect"></a> connect
 
-▸ `Static` **connect**(`market`, `ba`, `eventListener`, `blockListener`, `options`): `Promise`<[`Semibook`](Semibook.md)\>
+▸ `Static` **connect**(`market`, `ba`, `eventListener`, `options`): `Promise`<[`Semibook`](Semibook.md)\>
 
 #### Parameters
 
@@ -82,7 +82,6 @@ ___
 | `market` | [`Market`](Market.md) |
 | `ba` | [`BA`](../namespaces/Market-1.md#ba) |
 | `eventListener` | [`EventListener`](../namespaces/Semibook-1.md#eventlistener) |
-| `blockListener` | [`BlockListener`](../namespaces/Semibook-1.md#blocklistener) |
 | `options` | [`Options`](../namespaces/Semibook-1.md#options) |
 
 #### Returns
@@ -91,7 +90,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:131
+@mangrovedao/mangrove.js/src/semibook.ts:132
 
 ___
 
@@ -107,7 +106,7 @@ Stop listening to events from mangrove
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:152
+@mangrovedao/mangrove.js/src/semibook.ts:146
 
 ___
 
@@ -127,7 +126,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:156
+@mangrovedao/mangrove.js/src/semibook.ts:150
 
 ___
 
@@ -149,7 +148,7 @@ Returns struct containing offer details in the current offer list
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:167
+@mangrovedao/mangrove.js/src/semibook.ts:161
 
 ___
 
@@ -175,7 +174,7 @@ fee *remains* in basis points of the token being bought
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:203
+@mangrovedao/mangrove.js/src/semibook.ts:197
 
 ___
 
@@ -195,7 +194,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:208
+@mangrovedao/mangrove.js/src/semibook.ts:202
 
 ___
 
@@ -211,7 +210,7 @@ Returns the number of offers in the cache.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:222
+@mangrovedao/mangrove.js/src/semibook.ts:216
 
 ___
 
@@ -227,7 +226,7 @@ Returns the id of the best offer in the cache
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:227
+@mangrovedao/mangrove.js/src/semibook.ts:221
 
 ___
 
@@ -243,11 +242,11 @@ Returns an iterator over the offers in the cache.
 
 #### Implementation of
 
-Iterable.\_\_@iterator@89
+Iterable.\_\_@iterator@88
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:232
+@mangrovedao/mangrove.js/src/semibook.ts:226
 
 ___
 
@@ -263,7 +262,7 @@ Convenience method for getting an iterator without having to call `[Symbol.itera
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:237
+@mangrovedao/mangrove.js/src/semibook.ts:231
 
 ___
 
@@ -286,7 +285,7 @@ semibook. If there is no offer with a better price, `undefined` is returned.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:244
+@mangrovedao/mangrove.js/src/semibook.ts:238
 
 ___
 
@@ -327,7 +326,7 @@ traded due to insufficient volume on the book / price becoming bad.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:292
+@mangrovedao/mangrove.js/src/semibook.ts:286
 
 ___
 
@@ -349,7 +348,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:319
+@mangrovedao/mangrove.js/src/semibook.ts:313
 
 ___
 
@@ -372,7 +371,7 @@ Returns `true` if `price` is better than `referencePrice`; Otherwise, `false` is
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:390
+@mangrovedao/mangrove.js/src/semibook.ts:384
 
 ___
 
@@ -395,7 +394,7 @@ Returns `true` if `price` is worse than `referencePrice`; Otherwise, `false` is 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:396
+@mangrovedao/mangrove.js/src/semibook.ts:390
 
 ___
 
@@ -409,21 +408,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:400
-
-___
-
-### <a id="lastreadblocknumber" name="lastreadblocknumber"></a> lastReadBlockNumber
-
-▸ **lastReadBlockNumber**(): `number`
-
-#### Returns
-
-`number`
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/semibook.ts:579
+@mangrovedao/mangrove.js/src/semibook.ts:394
 
 ___
 
@@ -444,7 +429,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:900
+@mangrovedao/mangrove.js/src/semibook.ts:892
 
 ___
 
@@ -464,7 +449,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:918
+@mangrovedao/mangrove.js/src/semibook.ts:910
 
 ___
 
@@ -484,7 +469,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:984
+@mangrovedao/mangrove.js/src/semibook.ts:976
 
 ___
 
@@ -504,4 +489,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:993
+@mangrovedao/mangrove.js/src/semibook.ts:985
