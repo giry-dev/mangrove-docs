@@ -19,6 +19,6 @@ The Mangrove [Strat Lib](../../strat-lib/README.md) has a standard implementatio
 
 After an offer has been created or updated, it can be executed by anyone. Upon execution, the offer's logic has an opportunity to source the liquidity it has promised. Refer to [Executing Offers](../technical-references/taking-and-making-offers/reactive-offer/executing-offers.md) for details on how to structure your contract code in order to respond when its offers are executed.
 
-### Offer bounties
+### Offer provisions and bounties
 
-Since offers on Mangrove can fail, an ETH bounty is given to those who trigger failing offers, as compensation for the gas spent. This bounty is extracted from the offer's account deposit at Mangrove. Refer to the section on [Offer Bounties](../technical-references/taking-and-making-offers/reactive-offer/offer-provision.md#provision-and-offer-bounty) section details how bounties work and how they are calculated.
+Since offers on Mangrove can fail, an ETH bounty is given to those who trigger failing offers, as compensation for the gas spent. This bounty is paid from a %%provision|provision%% that %%offer owners|offer-owner%% must deposit with Mangrove when posting an offer. Refer to [Offer provisions](../technical-references/taking-and-making-offers/reactive-offer/offer-provision.md) for details on how provisions and bounties work.
