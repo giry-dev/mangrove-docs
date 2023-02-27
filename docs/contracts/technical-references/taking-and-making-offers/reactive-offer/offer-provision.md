@@ -7,7 +7,7 @@ sidebar_position: 2
 
 ## Summary
 
-When an offer fails, the caller has wasted some gas. To compensate the caller, Mangrove gives them a _bounty_ in native tokens. Offers must %%provision|provision%% enough native token to maximize the chances that Mangrove can compensate the caller. In more details:
+When an offer fails, the caller has wasted some gas. To compensate the caller, Mangrove gives them a %%bounty|bounty%% in native tokens. Offers must %%provision|provision%% enough native token to maximize the chances that Mangrove can compensate the caller. In more details:
 
 * Every maker contract that posted an offer has a balance in native token held by Mangrove. Funds can be freely added to or withdrawn from the balance.
 * Whenever the contract creates or updates an offer, its balance is adjusted so that enough native tokens are locked as the offer's provision.
@@ -231,14 +231,15 @@ const MangroveReader = new ethers.Contract(
     );
 
 const ofr_gasreq = ethers.parseUnits("1",5); //100,000 gas units
-const bounty = await MangroveReader.getProvision(outTkn, inbTkn, ofr_gasreq,0);
+const provision = await MangroveReader.getProvision(outTkn, inbTkn, ofr_gasreq,0);
 ```
 
 </TabItem>
 </Tabs>
 
-:::caution **Applied bounty**
+The bounty paid to the taker if an offer fails depends on how much gas the offer uses before failing. The bounty amount is calculated with the following formula:
 
-Suppose an offer requires $$g_{\mathsf{ofr}}$$​ gas units to execute. As explained above, Mangrove will require the logic posting the offer to provision $$\beta$$ WEI. Suppo se the offer is executed during a Taker Order and fails after $$g_{\mathsf{used}}$$gas units ($$g_\mathsf{used}<g_\mathsf{ofr}$$). The portion of the bounty that will be transferred to the Offer Taker's account is $$\dot G*(\dot g_0/n+\dot g_1+g_\mathsf{used})$$ where $$\dot G$$​, $$\dot g_0$$, $$n$$ and $$\dot g_1$$are respectively the %%`global.gasprice`|gasprice%%, `local.overhead_gasbase`, the number of offers executed during the take order, and the `local.offer_gasbase` values _at the time the offer is taken_ (which may differ from their values at the time the offer was posted, as a consequence of some parameter changes by the governance).
+$$\textrm{bounty} = \min(\textrm{offer.provision}, 
+  (\textrm{gas\_used} + \textrm{local.offer\_gasbase}) \times \textrm{global.gasprice} \times 10^9)$$
 
-:::
+Thus the bounty is capped at the offer's original provision.
