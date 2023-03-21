@@ -88,4 +88,4 @@ Gas price that was used to compute the %%offer provision|provision%%. If the off
 
 ## Offer list configuration
 
-Several [configuration](../governance-parameters/mangrove-configuration.md) parameters determine how new offers are inserted. Some are [global](../governance-parameters/mangrove-configuration.md#mgvlib.global) to Mangrove, some are [offer list specifics.](../governance-parameters/mangrove-configuration.md#mgvlib.local) See [Governance](../governance-parameters/README.md) section for details.
+Several [configuration](../governance-parameters/mangrove-configuration.md) parameters determine how new offers are inserted. Some are [global](../governance-parameters/global-variables.md) to Mangrove, some are [offer list specifics.](../governance-parameters/local-variables.md) See [Governance](../governance-parameters/README.md) section for details.
