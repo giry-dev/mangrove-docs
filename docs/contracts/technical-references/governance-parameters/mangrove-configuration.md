@@ -26,7 +26,7 @@ For every pair of addresses, there is a set of local parameters. Note that the p
 | `active`            | `bool`   | If inactive, offers on this pair can only be retracted.                         |
 | `fee`               | `uint16` | Fee in basis points, at most 500.                                               |
 | `density`           | `uint32` | Minimum amount of token an offer must promise per gas required.                 |
-| `overhead_ gasbase` | `uint24` | Constant gas overhead associated with taking an any number of offers in 1 call. |
+| `overhead_ gasbase` | `uint24` | Constant gas overhead associated with taking any number of offers in 1 call. |
 | `offer_gasbase`     | `uint24` | Gas overhead associated with taking one offer.                                  |
 
 
