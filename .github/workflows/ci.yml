@@ -98,7 +98,7 @@ jobs:
   # ==== Job: Deploy to GitHub pages ====
 
   deploy:
-    if: github.event_name != 'pull_request_target'         
+    if: github.event_name != 'pull_request_target' && github.ref == 'refs/heads/main'
     needs: build
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
