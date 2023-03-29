@@ -53,7 +53,9 @@ We use 30K for default %%`gasreq`|gasreq%% of our strat. This does not leave roo
 
 With this constructor in place we have almost a deployable maker contract, because Direct provides the implementation of a default offer logic as well as internal functions to post, update and retract offers posted by our contract.
 
-However Direct does not expose any function able to create new offers on Mangrove, since the [`_newOffer`](../technical-references/code/strategies/offer_maker/abstract/Direct.md) function of Direct is internal. The requirement in our constructor to implement `ILiquidityProvider` imposes to have a public `newOffer`, `updateOffer` and `retractOffer` functions. Using `ILiquidityProvider` ensures our contract is compatible with the [Mangrove SDK](../../SDK/README.md), which expects the `ILiquidityProvider` ABI.
+However, `Direct` does not expose any function able to [create new offers](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#posting-a-new-offer) on Mangrove, since the [`_newOffer`](../technical-references/code/strategies/offer_maker/abstract/Direct.md) function of Direct is internal. The requirement in our constructor to implement `ILiquidityProvider` imposes on us to have a public `newOffer` function. Using `ILiquidityProvider` ensures our contract is compatible with the [Mangrove SDK](../../SDK/README.md), which expects the `ILiquidityProvider` ABI.
+
+Our implementation of `newOffer` is simply to expose the internal `_newOffer` provided by Direct making sure the function is admin restricted (`Direct` provides the appropriate modifier `onlyAdmin`):
 
 ```solidity
   ///@inheritdoc ILiquidityProvider
@@ -122,7 +124,7 @@ function retractOffer(IERC20 outbound_tkn, IERC20 inbound_tkn, uint offerId, boo
 }
 ```
 
-Our maker contract is now complete and ready to be [tested](./HowToTest.md) and [deployed](./HowToDeploy.md). Its offer logic is simple: %%outbound|outbound%% tokens must be present in the contract when called by Mangrove and %%inbound|inbound%% tokens will be stored in the contract when the taker's payment is received. 
+Our maker contract is now complete and ready to be [tested](./HowToTest.md) and [deployed](./HowToDeploy.md). 
 
 :::caution Redeeming funds
 We do not provide any method to redeem inbound or outbound tokens from the contract. However, MangroveOffer provides an admin only `approve` function, that allows contract's admin to retreive any token, following a call sequence of the form:
@@ -132,6 +134,9 @@ token.transferFrom(address(makerContract), address(this), amount);
 ``` 
 :::
 
+## Advanced Direct offer: Liquidity Amplification with `Amplifier`
+
+With a simple implementation of `Direct` under our belt, let us proceed show how we can tweak our maker contract to do something more interesting that posting plain offers on Mangrove.
 
 Suppose we have a certain amount `N` of some `BASE` token and we wish to put it for sale on two markets at the same time. To simplify assume that `BASE` is some volatile asset like ETH and we wish to sell it for any of two (equivalent-ish) stables `STABLE1` and `STABLE2` (e.g. DAI and USDC).
 
@@ -269,7 +274,8 @@ function __posthookSuccess__(MgvLib.SingleOrder calldata order, bytes32 makerDat
     bytes32 repost_status = super.__posthookSuccess__(order, makerData);
     ...
 ```
-Notice we call `super`'s implementation of the hook, which tries to repost offer residual. The `repost_status` tells us whether the offer had a residual (in case of a %%maker partial fill|maker-partial-fill%).
+
+Notice that we call `super`'s implementation of the hook. This ultimately ends up attempting to repost the offer residual (cf. the documentation of [Post trade hooks for MangroveOffer](../background/offer-maker/mangrove-offer.md#post-trade-hooks) and the reference for [Customizing `makerPosthook`](../technical-references/main-hooks.md#customizing-makerposthook)). The return value captured in `repost_status` tells us whether the offer had a residual (in case of a %%maker partial fill|maker-partial-fill%).
 
 :::info default reposting policy
 Direct offer that are partially filled are automatically reposted during posthook, adapting %%wants|wants%% to remaining %%gives|gives%% in order to maintain offer's orginial price. Direct's posthook returns the constants REPOST_SUCCESS in case the offer's residual was reposted, or COMPLETE_FILL if the offer was entirely consumed by taker (constants are defined in MangroveOffer). If offer failed to repost, the hook returns Mangrove's reason.
