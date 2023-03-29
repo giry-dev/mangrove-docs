@@ -20,15 +20,9 @@ Recall that `Direct` is an abstract implementation of `MangroveOffer`, which is 
 
 The Direct constructor looks like this:
 ```solidity reference title="Direct contract's constructor"
-https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/strategies/offer_maker/abstract/Direct.sol#L24-L28
+https://github.com/mangrovedao/mangrove-core/blob/6439b68eb657200192d84cddf094892181c74596/src/strategies/offer_maker/abstract/Direct.sol#L36-L43
 ```
-
-It passes 
-
-* `mgv`, the address of the Mangrove contract, and, 
-* `gasreq`, the default gas requirement of the strat you wish to implement, 
-
-to the [MangroveOffer](../background/offer-maker/mangrove-offer.md) constructor. 
+which provides `mgv` (the address of the Mangrove contract) to MangroveOffer and %%`gasreq`|gasreq%% the gas that is required to execute the %%offer logic|offer-logic%%. The specific arguments of the Direct's constructor are the %%router|router%%'s address and its %%reserveId|reserveId%%. Notice that passing `address(0)` as reserveId is interpreted by Direct as requiring reserveId to be the contract's address.
 
 The additional formal parameter, which `Direct` requires is called `router_`. This should be either the address of a deployed %%router|router%%, or the zero address, when you wish to build a `Direct` contract that will do its own liquidity routing. (In the latter case, for clarity, you may also use the public constant [`NO_ROUTER`](../technical-references/code/strategies/MangroveOffer.md#no_router) provided by `MangroveOffer`, which is simply an alias for `AbstractRouter(address(0))`.)
 
@@ -39,45 +33,37 @@ pragma solidity ^0.8.10;
 pragma abicoder v2;
 
 import {Direct, AbstractRouter, IMangrove, IERC20} from "src/strategies/offer_maker/abstract/Direct.sol";
-import {ILiquidityProvider} from "src/strategies/interfaces/ILiquidityProvider.sol";
+import {IMakerLogic} from "src/strategies/interfaces/ILiquidityProvider.sol";
 
 contract OfferMaker is Direct, ILiquidityProvider {
 
-  constructor(IMangrove mgv, AbstractRouter router_, address deployer) Direct(mgv, router_, 30_000) {
-    // liquidity reserve of (unique) offer manager is this maker contract
-    setReserve(deployer, address(this));
-    // if contract is deployed with static address, then one must set admin to something else than msg.sender
-    if (deployer != msg.sender) {
+  constructor(IMangrove mgv, AbstractRouter router_, address admin_) Direct(mgv, router_, 30_000, address(0)) {
+    // Direct sets admin to msg.sender by default
+    if (admin_ != msg.sender) {
       setAdmin(deployer);
     }
   }
 ...
 ```
 :::caution `gasreq`
-We use 30K for the default %%`gasreq`|gasreq%% of our strat. This does not leave room for any advanced %%offer logic|offer-logic%%, so for this example, we effectively assume a very simple %%offer logic|offer-logic%% where liquidity is stored on this contract. See [Determining gas requirements](./howtoGasreq.md) for more information.
+We use 30K for default %%`gasreq`|gasreq%% of our strat. This does not leave room for any advanced %%offer logic|offer-logic%%, so we'll stick here with a very simple one where liquidity is stored on this contract. See [how to evaluate `gasreq`](./howtoGasreq.md) for more information.
 ::: 
-
-:::info `reserve`
-This constructor sets the deployer %%reserve|reserve%% to be the %%maker contract|maker-contract%% itself. This means that %%outbound|outbound%% tokens have to be present on the maker contract's balance when needed (this prevents %%reactive liquidity|reactive-liquidity%% for `OfferMaker`. See [below](#advanced-direct-offer-liquidity-amplification-with-amplifier) for more advanced liquidity management).
-:::
 
 ### Simple offer management
 
-With this constructor in place we already almost have a deployable maker contract. `Direct` provides the implementation of a default %%offer logic|offer-logic%% as well as public functions to [update](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#updating-an-existing-offer) and [retract]((../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#retracting-an-offer) offers posted by `OfferMaker`.
+With this constructor in place we have almost a deployable maker contract, because Direct provides the implementation of a default offer logic as well as internal functions to post, update and retract offers posted by our contract.
 
-However, `Direct` does not expose any function able to [create new offers](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#posting-a-new-offer) on Mangrove, since the [`_newOffer`](../technical-references/code/strategies/offer_maker/abstract/Direct.md) function of Direct is internal. The requirement in our constructor to implement `ILiquidityProvider` imposes on us to have a public `newOffer` function. Using `ILiquidityProvider` ensures our contract is compatible with the [Mangrove SDK](../../SDK/README.md), which expects the `ILiquidityProvider` ABI.
-
-Our implementation of `newOffer` is simply to expose the internal `_newOffer` provided by Direct making sure the function is admin restricted (`Direct` provides the appropriate modifier `onlyAdmin`):
+However Direct does not expose any function able to create new offers on Mangrove, since the [`_newOffer`](../technical-references/code/strategies/offer_maker/abstract/Direct.md) function of Direct is internal. The requirement in our constructor to implement `ILiquidityProvider` imposes to have a public `newOffer`, `updateOffer` and `retractOffer` functions. Using `ILiquidityProvider` ensures our contract is compatible with the [Mangrove SDK](../../SDK/README.md), which expects the `ILiquidityProvider` ABI.
 
 ```solidity
+  ///@inheritdoc ILiquidityProvider
   function newOffer(
     IERC20 outbound_tkn,
     IERC20 inbound_tkn,
     uint wants,
     uint gives,
-    uint gasreq,
-    uint gasprice,
-    uint pivotId
+    uint pivotId,
+    uint gasreq
   ) public payable override onlyAdmin returns (uint offerId) {
     offerId = _newOffer(
       OfferArgs({
@@ -86,24 +72,66 @@ Our implementation of `newOffer` is simply to expose the internal `_newOffer` pr
         wants: wants,
         gives: gives,
         gasreq: gasreq,
-        gasprice: gasprice,
+        gasprice: 0, // use mangrove's gasprice
         pivotId: pivotId,
         fund: msg.value,
-        noRevert: false,
-        caller: msg.sender
+        noRevert: false
       })
     );
   }
 }
+///@inheritdoc ILiquidityProvider
+function updateOffer(
+  IERC20 outbound_tkn,
+  IERC20 inbound_tkn,
+  uint wants,
+  uint gives,
+  uint pivotId,
+  uint offerId,
+  uint gasreq
+) public payable override onlyAdmin {
+  _updateOffer(
+    OfferArgs({
+      outbound_tkn: outbound_tkn,
+      inbound_tkn: inbound_tkn,
+      wants: wants,
+      gives: gives,
+      gasreq: gasreq,
+      gasprice: 0,
+      pivotId: pivotId,
+      fund: msg.value,
+      noRevert: false
+    }),
+    offerId
+  );
+}
+///@inheritdoc ILiquidityProvider
+function retractOffer(IERC20 outbound_tkn, IERC20 inbound_tkn, uint offerId, bool deprovision)
+  public
+  adminOrCaller(address(MGV))
+  returns (uint freeWei)
+{
+  freeWei = _retractOffer(outbound_tkn, inbound_tkn, offerId, deprovision);
+  if (freeWei > 0) {
+    require(MGV.withdraw(freeWei), "Direct/withdrawFail");
+    // sending native tokens to `msg.sender` prevents reentrancy issues
+    // (the context call of `retractOffer` could be coming from `makerExecute` and a different recipient of transfer than `msg.sender` could use this call to make offer fail)
+    (bool noRevert,) = admin().call{value: freeWei}("");
+    require(noRevert, "mgvOffer/weiTransferFail");
+  }
+}
 ```
 
-Our maker contract is now complete and ready to be [tested](./HowToTest.md) and [deployed](./HowToDeploy.md). 
+Our maker contract is now complete and ready to be [tested](./HowToTest.md) and [deployed](./HowToDeploy.md). Its offer logic is simple: %%outbound|outbound%% tokens must be present in the contract when called by Mangrove and %%inbound|inbound%% tokens will be stored in the contract when the taker's payment is received. 
 
-The %%offer logic|offer-logic%% of `OfferMaker` is simple: %%outbound|outbound%% tokens must be present in the contract when called by Mangrove and %%inbound|inbound%% tokens will be stored in the contract when the taker's payment is received. The admin of the contract can redeem those tokens by calling the public `withdrawToken` function (refer to the documentation for [`IOfferLogic`](../technical-references/code/strategies/interfaces/IOfferLogic.md) for a reference on all public functions that our contract inherits from `Direct`). 
+:::caution Redeeming funds
+We do not provide any method to redeem inbound or outbound tokens from the contract. However, MangroveOffer provides an admin only `approve` function, that allows contract's admin to retreive any token, following a call sequence of the form:
+```solidity
+makerContract.approve(token, address(this), amount);
+token.transferFrom(address(makerContract), address(this), amount);
+``` 
+:::
 
-## Advanced Direct offer: Liquidity Amplification with `Amplifier`
-
-With a simple implementation of `Direct` under our belt, let us proceed show how we can tweak our maker contract to do something more interesting that posting plain offers on Mangrove.
 
 Suppose we have a certain amount `N` of some `BASE` token and we wish to put it for sale on two markets at the same time. To simplify assume that `BASE` is some volatile asset like ETH and we wish to sell it for any of two (equivalent-ish) stables `STABLE1` and `STABLE2` (e.g. DAI and USDC).
 
@@ -139,19 +167,19 @@ contract Amplifier is Direct {
   uint offerId1; // id of the offer on stable 1
   uint offerId2; // id of the offer on stable 2
 
-  constructor(IMangrove mgv, IERC20 base, IERC20 stable1, IERC20 stable2, address admin)
-    Direct(mgv, NO_ROUTER, 60_000)
+  constructor(IMangrove mgv, IERC20 base, IERC20 stable1, IERC20 stable2, address admin_)
+    Direct(mgv, NO_ROUTER, 60_000, admin_)
   {
-    // SimpleRouter takes promised liquidity from admin's address (wallet)
+    // SimpleRouter takes promised liquidity from reserveId (here admin's wallet)
     STABLE1 = stable1;
     STABLE2 = stable2;
     BASE = base;
     AbstractRouter router_ = new SimpleRouter();
     setRouter(router_);
     // adding `this` to the allowed makers of `router_` to pull/push liquidity
-    // Note: `reserve(admin)` needs to approve `this.router()` for base token transfer
+    // Note: `admin_` will need to approve `this.router()` for base token transfer
     router_.bind(address(this));
-    router_.setAdmin(admin);
+    router_.setAdmin(admin_);
     setAdmin(admin);
   }
 }
@@ -159,13 +187,7 @@ contract Amplifier is Direct {
 
 Note that as we manually construct and configure `router_` and set it as the router of `Amplifier`, we initially send the constant `NO_ROUTER` as argument to the `Direct` constructor.
 
-:::caution Admin's reserve
-
-In the constructor above, we do not explicitly set the deployer %%reserve|reserve%%. By default, this means that the deployer's address is set as the address of the reserve. The deployer must therefore approve the maker contract's %%router|router%% for %%outbound|outbound%% token transfer (see [approvals](../guides/approvals.md) for more details).
-
-:::
-
-As for `OfferMaker`, we need to create a way for the %%maker contract|maker-contract%% to post offers. For `Amplifier`, we will not try to comply to the `ILiquidityProvider` interface (and therefore this contract will no longer be fully usable with the SDK). We will instead use a custom implementation to post our two offers in the same transaction.
+As in the example above, we need to create a way for the maker contract to post an offer. Here we will not try to comply to the `ILiquidityProvider` interface (and therefore this contract will no longer be fully usable with the SDK) and use a custom way of posting our two offers in the same transaction.
 
 ### Publishing amplified liquidity
 
@@ -204,8 +226,7 @@ This leaves us having to provide the amount that the offer should %%`give`|gives
       gasprice: 0, // we let Mangrove use its own gasprice
       pivotId: pivot1,
       fund: msg.value, 
-      noRevert: false,
-      owner: msg.sender
+      noRevert: false
     });
 
     OfferArgs memory offerArgs2 = OfferArgs({
@@ -217,8 +238,7 @@ This leaves us having to provide the amount that the offer should %%`give`|gives
       gasprice: 0,
       pivotId: pivot2,
       fund: 0, // no need to fund this second call for provision since the above call should be enough
-      noRevert: false,
-      owner: msg.sender
+      noRevert: false
     });
 
     offerId1 = _newOffer(offerArgs1);
@@ -249,13 +269,11 @@ function __posthookSuccess__(MgvLib.SingleOrder calldata order, bytes32 makerDat
     bytes32 repost_status = super.__posthookSuccess__(order, makerData);
     ...
 ```
+Notice we call `super`'s implementation of the hook, which tries to repost offer residual. The `repost_status` tells us whether the offer had a residual (in case of a %%maker partial fill|maker-partial-fill%).
 
-Notice that we call `super`'s implementation of the hook. This ultimately ends up attempting to repost the offer residual (cf. the documentation of [Post trade hooks for MangroveOffer](../background/offer-maker/mangrove-offer.md#post-trade-hooks) and the reference for [Customizing `makerPosthook`](../technical-references/main-hooks.md#customizing-makerposthook)). The return value captured in `repost_status` tells us whether the offer had a residual (in case of a %%maker partial fill|maker-partial-fill%).
-
-Because both offers should always %%give|gives%% the same volume, we have two cases to handle - either
-
-1. the current offer's logic has reposted a residual and we need to update the other offer to %%give|gives%% the same residual and adapt %%wants|wants%% accordingly, or,
-2. the current offer was not reposted, in which case it is no longer in the %%offer list|offer-list%%, and we need to retract the second offer.
+:::info default reposting policy
+Direct offer that are partially filled are automatically reposted during posthook, adapting %%wants|wants%% to remaining %%gives|gives%% in order to maintain offer's orginial price. Direct's posthook returns the constants REPOST_SUCCESS in case the offer's residual was reposted, or COMPLETE_FILL if the offer was entirely consumed by taker (constants are defined in MangroveOffer). If offer failed to repost, the hook returns Mangrove's reason.
+:::
 
 #### Implementing case 1: An offer was reposted with a residual
 
@@ -268,7 +286,7 @@ We continue our implementation of the `__posthookSuccess__` hook by handling cas
 ? (STABLE2, offerId2) 
 : (STABLE1, offerId1);
 
-if (repost_status == "posthook/reposted") {
+if (repost_status == REPOST_SUCCESS) {
   // alt_gives is the same as what the new gives of this offer
   uint new_alt_gives = __residualGives__(order); // in base units
   // fetching current data about alt_offer
@@ -284,16 +302,17 @@ if (repost_status == "posthook/reposted") {
   unchecked {
     new_alt_wants = (old_alt_wants * new_alt_gives) / old_alt_gives;
   }
-  updateOffer({
-    outbound_tkn: IERC20(order.outbound_tkn),
-    inbound_tkn: IERC20(alt_stable),
-    gives: new_alt_gives,
-    wants: new_alt_wants,
-    offerId: alt_offerId,
-    gasreq: alt_detail.gasreq(),
-    pivotId: alt_offer.next(),
-    gasprice: 0
-  });
+  _updateOffer(
+    OfferArgs({
+      outbound_tkn: IERC20(order.outbound_tkn),
+      inbound_tkn: IERC20(alt_stable),
+      gives: new_alt_gives,
+      wants: new_alt_wants,
+      gasreq: alt_detail.gasreq(),
+      pivotId: alt_offer.next(),
+      gasprice: 0
+    }), offerId
+  );
   return "posthook/bothOfferReposted";
 } // end if
 ...
@@ -320,7 +339,7 @@ We continue our hook by handling case 2 from our [breakdown above](#updating-an-
 ```solidity
 ...
 else { // if offer was not reposted
-  retractOffer({
+  _retractOffer({
     outbound_tkn: IERC20(order.outbound_tkn),
     inbound_tkn: IERC20(alt_stable),
     offerId: alt_offerId,
@@ -353,7 +372,7 @@ If this happens, this means that the offer that was unsuccessfully taken is no l
     // if we reach this code, trade has failed for lack of base token
     (IERC20 alt_stable, uint alt_offerId) =
       IERC20(order.inbound_tkn) == STABLE1 ? (STABLE2, offerId2) : (STABLE1, offerId1);
-    retractOffer({
+    _retractOffer({
       outbound_tkn: IERC20(order.outbound_tkn),
       inbound_tkn: IERC20(alt_stable),
       offerId: alt_offerId,
