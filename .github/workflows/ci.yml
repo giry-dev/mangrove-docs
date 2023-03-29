@@ -5,9 +5,10 @@ on:
   push:
     branches: 
       - main
+      - develop
       - 'run-ci/**'
   pull_request_target:
-    branches: [ main, test-pr ]
+    branches: [ main, develop, test-pr ]
     types: [opened, synchronize, reopened, labeled]
 
 concurrency: 
