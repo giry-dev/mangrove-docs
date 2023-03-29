@@ -23,7 +23,7 @@ directly use the constructor. Instead of `new Market(...)`, do
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:232
+@mangrovedao/mangrove.js/src/market.ts:237
 
 ___
 
@@ -33,7 +33,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:233
+@mangrovedao/mangrove.js/src/market.ts:238
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:234
+@mangrovedao/mangrove.js/src/market.ts:239
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:239
+@mangrovedao/mangrove.js/src/market.ts:244
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:240
+@mangrovedao/mangrove.js/src/market.ts:245
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:241
+@mangrovedao/mangrove.js/src/market.ts:246
 
 ## Methods
 
@@ -85,12 +85,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `params` | `Object` |
-| `params.mgv` | [`Mangrove`](Mangrove.md) |
-| `params.base` | `string` |
-| `params.quote` | `string` |
-| `params.bookOptions?` | [`BookOptions`](../namespaces/Market-1.md#bookoptions) |
-| `params.noInit?` | `boolean` |
+| `params` | { `mgv`: [`Mangrove`](Mangrove.md) ; `base`: `string` ; `quote`: `string`  } & `Partial`<[`OptionalParams`](../namespaces/Market-1.md#optionalparams)\> |
 
 #### Returns
 
@@ -98,7 +93,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:243
+@mangrovedao/mangrove.js/src/market.ts:248
 
 ___
 
@@ -112,7 +107,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:265
+@mangrovedao/mangrove.js/src/market.ts:270
 
 ___
 
@@ -126,7 +121,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:289
+@mangrovedao/mangrove.js/src/market.ts:294
 
 ___
 
@@ -147,7 +142,7 @@ Order is from best to worse from taker perspective.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:370
+@mangrovedao/mangrove.js/src/market.ts:375
 
 ___
 
@@ -169,7 +164,7 @@ Return the asks or bids semibook
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:380
+@mangrovedao/mangrove.js/src/market.ts:385
 
 ___
 
@@ -189,7 +184,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:384
+@mangrovedao/mangrove.js/src/market.ts:389
 
 ___
 
@@ -203,7 +198,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:395
+@mangrovedao/mangrove.js/src/market.ts:400
 
 ___
 
@@ -224,7 +219,27 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:400
+@mangrovedao/mangrove.js/src/market.ts:405
+
+___
+
+### <a id="isliveoffer" name="isliveoffer"></a> isLiveOffer
+
+▸ **isLiveOffer**(`offer`): `boolean`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `offer` | [`Offer`](../namespaces/Market-1.md#offer) |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/market.ts:410
 
 ___
 
@@ -248,7 +263,7 @@ book. If there is no offer with a better price, `undefined` is returned.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:408
+@mangrovedao/mangrove.js/src/market.ts:417
 
 ___
 
@@ -270,7 +285,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:412
+@mangrovedao/mangrove.js/src/market.ts:421
 
 ___
 
@@ -291,7 +306,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:424
+@mangrovedao/mangrove.js/src/market.ts:433
 
 ___
 
@@ -312,7 +327,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:427
+@mangrovedao/mangrove.js/src/market.ts:436
 
 ___
 
@@ -332,7 +347,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:431
+@mangrovedao/mangrove.js/src/market.ts:440
 
 ___
 
@@ -352,7 +367,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:435
+@mangrovedao/mangrove.js/src/market.ts:444
 
 ___
 
@@ -375,7 +390,32 @@ Returns struct containing offer details in the current market
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:440
+@mangrovedao/mangrove.js/src/market.ts:449
+
+___
+
+### <a id="permit" name="permit"></a> permit
+
+▸ **permit**(`action`, `data`): `Promise`<`ContractTransaction`\>
+
+Sign permit data. If action="buy", will permit buying base with spender's
+quote token. If action="sell", will permit buying quote with spender's base
+token. See mangrove.ts.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `action` | ``"buy"`` \| ``"sell"`` |
+| `data` | `Omit`<[`SimplePermitData`](../namespaces/Mangrove-1.md#simplepermitdata), ``"outbound_tkn"`` \| ``"inbound_tkn"``\> |
+
+#### Returns
+
+`Promise`<`ContractTransaction`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/market.ts:456
 
 ___
 
@@ -418,7 +458,7 @@ market.buy({volume: 100, price: '1.01'}) //use strings to be exact
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:466
+@mangrovedao/mangrove.js/src/market.ts:500
 
 ___
 
@@ -461,7 +501,7 @@ market.sell({volume: 100, price: 1})
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:498
+@mangrovedao/mangrove.js/src/market.ts:532
 
 ___
 
@@ -495,7 +535,7 @@ Params are:
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:522
+@mangrovedao/mangrove.js/src/market.ts:556
 
 ___
 
@@ -527,7 +567,7 @@ Params are:
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:544
+@mangrovedao/mangrove.js/src/market.ts:578
 
 ___
 
@@ -548,7 +588,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:551
+@mangrovedao/mangrove.js/src/market.ts:585
 
 ___
 
@@ -580,7 +620,7 @@ order to spend 10 quote tokens.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:581
+@mangrovedao/mangrove.js/src/market.ts:615
 
 ___
 
@@ -600,7 +640,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:595
+@mangrovedao/mangrove.js/src/market.ts:629
 
 ___
 
@@ -620,7 +660,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:602
+@mangrovedao/mangrove.js/src/market.ts:636
 
 ___
 
@@ -642,7 +682,7 @@ fee *remains* in basis points of the token being bought
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:619
+@mangrovedao/mangrove.js/src/market.ts:653
 
 ___
 
@@ -664,7 +704,7 @@ Pretty prints the current state of the asks of the market
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:632
+@mangrovedao/mangrove.js/src/market.ts:666
 
 ___
 
@@ -686,7 +726,7 @@ Pretty prints the current state of the bids of the market
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:637
+@mangrovedao/mangrove.js/src/market.ts:671
 
 ___
 
@@ -709,7 +749,7 @@ Pretty prints the current state of the asks or bids of the market
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:642
+@mangrovedao/mangrove.js/src/market.ts:676
 
 ___
 
@@ -766,7 +806,7 @@ Only one subscription may be active at a time.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:682
+@mangrovedao/mangrove.js/src/market.ts:716
 
 ___
 
@@ -795,7 +835,7 @@ Returns a promise which is fulfilled after execution of the callback.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:689
+@mangrovedao/mangrove.js/src/market.ts:723
 
 ___
 
@@ -815,7 +855,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:703
+@mangrovedao/mangrove.js/src/market.ts:737
 
 ___
 
@@ -842,7 +882,7 @@ Determine which token will be Mangrove's outbound/inbound depending on whether y
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:708
+@mangrovedao/mangrove.js/src/market.ts:742
 
 ___
 
@@ -871,7 +911,7 @@ Determine which token will be Mangrove's outbound/inbound depending on whether y
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:716
+@mangrovedao/mangrove.js/src/market.ts:750
 
 ___
 
@@ -900,7 +940,7 @@ Determine whether gives or wants will be baseVolume/quoteVolume depending on whe
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:731
+@mangrovedao/mangrove.js/src/market.ts:765
 
 ___
 
@@ -924,7 +964,7 @@ Determine the price from gives or wants depending on whether you're working with
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:743
+@mangrovedao/mangrove.js/src/market.ts:777
 
 ___
 
@@ -948,7 +988,7 @@ Determine the wants from gives and price depending on whether you're working wit
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:753
+@mangrovedao/mangrove.js/src/market.ts:787
 
 ___
 
@@ -972,7 +1012,7 @@ Determine the gives from wants and price depending on whether you're working wit
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:758
+@mangrovedao/mangrove.js/src/market.ts:792
 
 ___
 
@@ -1001,7 +1041,7 @@ Determine gives and wants from a volume (in base) and a price depending on wheth
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:763
+@mangrovedao/mangrove.js/src/market.ts:797
 
 ___
 
@@ -1017,7 +1057,7 @@ Determine the first decimal place where the smallest price difference between ne
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:777
+@mangrovedao/mangrove.js/src/market.ts:811
 
 ___
 
@@ -1039,4 +1079,4 @@ Determine the first decimal place where the smallest price difference between ne
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:785
+@mangrovedao/mangrove.js/src/market.ts:819

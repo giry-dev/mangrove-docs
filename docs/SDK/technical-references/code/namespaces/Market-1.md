@@ -232,6 +232,23 @@ ___
 
 ___
 
+### <a id="optionalparams" name="optionalparams"></a> OptionalParams
+
+Ƭ **OptionalParams**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `bookOptions` | [`BookOptions`](Market-1.md#bookoptions) |
+| `noInit` | `boolean` |
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/market.ts:125
+
+___
+
 ### <a id="bookoptions" name="bookoptions"></a> BookOptions
 
 Ƭ **BookOptions**: `Object`
@@ -249,7 +266,7 @@ Options that control how the book cache behaves.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:128
+@mangrovedao/mangrove.js/src/market.ts:133
 
 ___
 
@@ -273,7 +290,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:151
+@mangrovedao/mangrove.js/src/market.ts:156
 
 ___
 
@@ -283,7 +300,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:163
+@mangrovedao/mangrove.js/src/market.ts:168
 
 ___
 
@@ -293,7 +310,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:178
+@mangrovedao/mangrove.js/src/market.ts:183
 
 ___
 
@@ -325,7 +342,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:196
+@mangrovedao/mangrove.js/src/market.ts:201
 
 ___
 
@@ -335,7 +352,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:201
+@mangrovedao/mangrove.js/src/market.ts:206
 
 ___
 
@@ -345,7 +362,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:202
+@mangrovedao/mangrove.js/src/market.ts:207
 
 ___
 
@@ -355,7 +372,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:203
+@mangrovedao/mangrove.js/src/market.ts:208
 
 ___
 
@@ -372,7 +389,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:212
+@mangrovedao/mangrove.js/src/market.ts:217
 
 ___
 
@@ -389,4 +406,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:214
+@mangrovedao/mangrove.js/src/market.ts:219

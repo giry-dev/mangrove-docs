@@ -15,7 +15,6 @@ struct Layout {
   uint256 min_buffer;
   bool paused;
   contract AbstractRouter router;
-  address reserve;
 }
 ```
 

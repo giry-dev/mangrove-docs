@@ -16,7 +16,7 @@ The OfferLogic class connects to a Maker contract
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:25
+@mangrovedao/mangrove.js/src/offerLogic.ts:26
 
 ___
 
@@ -26,7 +26,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:26
+@mangrovedao/mangrove.js/src/offerLogic.ts:27
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:27
+@mangrovedao/mangrove.js/src/offerLogic.ts:28
 
 ## Constructors
 
@@ -54,19 +54,20 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:29
+@mangrovedao/mangrove.js/src/offerLogic.ts:30
 
 ## Methods
 
 ### <a id="deploy" name="deploy"></a> deploy
 
-▸ `Static` **deploy**(`mgv`): `Promise`<`string`\>
+▸ `Static` **deploy**(`mgv`, `gasreq?`): `Promise`<`string`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `mgv` | [`Mangrove`](Mangrove.md) |
+| `gasreq?` | `number` |
 
 #### Returns
 
@@ -74,7 +75,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:38
+@mangrovedao/mangrove.js/src/offerLogic.ts:39
 
 ___
 
@@ -94,13 +95,13 @@ the router ethers.js contract responding to the `AbstractRouter` abi.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:54
+@mangrovedao/mangrove.js/src/offerLogic.ts:57
 
 ___
 
 ### <a id="approvetoken" name="approvetoken"></a> approveToken
 
-▸ **approveToken**(`tokenName`, `arg?`, `overrides`): `Promise`<`ContractTransaction`\>
+▸ **approveToken**(`tokenName`, `arg?`): `Promise`<`ContractTransaction`\>
 
 **`Note`**
 
@@ -112,9 +113,7 @@ This has to be done for each token the signer's wishes to ask or bid for.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `tokenName` | `string` | - |
-| `arg` | `Object` | optional `arg.amount` can be used if one wishes to approve a finite amount |
-| `arg.amount?` | `any` | - |
-| `overrides` | `Overrides` | - |
+| `arg` | `any` | optional `arg.amount` can be used if one wishes to approve a finite amount |
 
 #### Returns
 
@@ -122,7 +121,7 @@ This has to be done for each token the signer's wishes to ask or bid for.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:69
+@mangrovedao/mangrove.js/src/offerLogic.ts:72
 
 ___
 
@@ -146,7 +145,7 @@ returns logic's allowance to trade `tokenName` on signer's behalf
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:86
+@mangrovedao/mangrove.js/src/offerLogic.ts:88
 
 ___
 
@@ -166,7 +165,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:103
+@mangrovedao/mangrove.js/src/offerLogic.ts:105
 
 ___
 
@@ -180,7 +179,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:107
+@mangrovedao/mangrove.js/src/offerLogic.ts:109
 
 ___
 
@@ -201,7 +200,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:112
+@mangrovedao/mangrove.js/src/offerLogic.ts:114
 
 ___
 
@@ -215,7 +214,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:123
+@mangrovedao/mangrove.js/src/offerLogic.ts:125
 
 ___
 
@@ -240,7 +239,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:135
+@mangrovedao/mangrove.js/src/offerLogic.ts:137
 
 ___
 
@@ -264,7 +263,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:146
+@mangrovedao/mangrove.js/src/offerLogic.ts:148
 
 ___
 
@@ -287,7 +286,7 @@ tx will revert is signer is not the admin of the OfferLogic onchain contract
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:164
+@mangrovedao/mangrove.js/src/offerLogic.ts:166
 
 ___
 
@@ -309,4 +308,4 @@ Connects the logic to a Market in order to pass market orders. The function retu
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:176
+@mangrovedao/mangrove.js/src/offerLogic.ts:178
