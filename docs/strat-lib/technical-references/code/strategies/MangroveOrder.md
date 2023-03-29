@@ -32,13 +32,24 @@ MangroveOrder is a Forwarder logic with a simple router.
 | ---- | ---- | ----------- |
 | mgv | contract IMangrove | The mangrove contract on which this logic will run taker and maker orders. |
 | deployer | address | The address of the admin of `this` at the end of deployment |
-| gasreq | uint256 | The gas required for `this` to execute `makerExecute` and `makerPosthoook` when called by mangrove for a resting order. |
+| gasreq | uint256 | The gas required for `this` to execute `makerExecute` and `makerPosthook` when called by mangrove for a resting order. |
 
 ### SetExpiry
 
 ```solidity
 event SetExpiry(address outbound_tkn, address inbound_tkn, uint256 offerId, uint256 date)
 ```
+
+The expiry of the offer has been set
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| outbound_tkn | address | the outbound token of the offer list. |
+| inbound_tkn | address | the inbound token of the offer list. |
+| offerId | uint256 | the Mangrove offer id. |
+| date | uint256 | in seconds since unix epoch |
 
 ### setExpiry
 
@@ -80,6 +91,32 @@ _this can be used to update price of the resting order_
 | pivotId | uint256 | pivot for the new rank of the offer |
 | offerId | uint256 | the id of the offer to be updated |
 
+### retractOffer
+
+```solidity
+function retractOffer(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 offerId, bool deprovision) public returns (uint256 freeWei)
+```
+
+Retracts an offer from an Offer List of Mangrove.
+
+_An offer that is retracted without `deprovision` is retracted from the offer list, but still has its provisions locked by Mangrove.
+Calling this function, with the `deprovision` flag, on an offer that is already retracted must be used to retrieve the locked provisions._
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| outbound_tkn | contract IERC20 | the outbound token of the offer list. |
+| inbound_tkn | contract IERC20 | the inbound token of the offer list. |
+| offerId | uint256 | the identifier of the offer in the (`outbound_tkn`,`inbound_tkn`) offer list |
+| deprovision | bool | if set to `true` if offer owner wishes to redeem the offer's provision. |
+
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| freeWei | uint256 | the amount of native tokens (in WEI) that have been retrieved by retracting the offer. |
+
 ### __lastLook__
 
 ```solidity
@@ -117,6 +154,12 @@ compares a taker order with a market order result and checks whether the order w
 | tko | struct IOrderLogic.TakerOrder | the taker order |
 | res | struct IOrderLogic.TakerOrderResult | the market order result |
 
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| [0] | bool | true if the order was entirely filled, false otherwise. |
+
 ### take
 
 ```solidity
@@ -147,6 +190,13 @@ logs `OrderSummary`
 
 _this function avoids loading too many variables on the stack_
 
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| tko | struct IOrderLogic.TakerOrder | the arguments in memory of the taker order |
+| res | struct IOrderLogic.TakerOrderResult | the result of the taker order. |
+
 ### postRestingOrder
 
 ```solidity
@@ -163,11 +213,17 @@ _entailed price that should be preserved for the maker order are:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| tko | struct IOrderLogic.TakerOrder |  |
-| outbound_tkn | contract IERC20 |  |
-| inbound_tkn | contract IERC20 |  |
-| res | struct IOrderLogic.TakerOrderResult |  |
+| tko | struct IOrderLogic.TakerOrder | the arguments in memory of the taker order |
+| outbound_tkn | contract IERC20 | the outbound token of the offer to post |
+| inbound_tkn | contract IERC20 | the inbound token of the offer to post |
+| res | struct IOrderLogic.TakerOrderResult | the result of the taker order. |
 | fund | uint256 | amount of WEIs used to cover for the offer bounty (covered gasprice is derived from `fund`). |
+
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| refund | uint256 | the amount to refund to the taker of the fund. |
 
 ### __logOwnershipRelation__
 

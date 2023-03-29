@@ -19,11 +19,12 @@ custom_edit_url: null
 | `mgv` | [`Mangrove`](../classes/Mangrove.md) |
 | `logic?` | [`OfferLogic`](../classes/OfferLogic.md) |
 | `eoa?` | `string` |
+| `gasreq` | `number` |
 | `market` | [`Market`](../classes/Market.md) |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:21
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:22
 
 ___
 
@@ -33,7 +34,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:34
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:36
 
 ___
 
@@ -55,4 +56,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:38
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:40

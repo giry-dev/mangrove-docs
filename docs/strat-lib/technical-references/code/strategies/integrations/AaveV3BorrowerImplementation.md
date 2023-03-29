@@ -1,4 +1,4 @@
-## AaveV3ModuleImplementation
+## AaveV3BorrowerImplementation
 
 ### POOL
 
@@ -42,6 +42,12 @@ struct Account {
   uint256 health;
   uint256 balanceOfUnderlying;
 }
+```
+
+### $getCaps
+
+```solidity
+function $getCaps(address asset) public view returns (uint256, uint256)
 ```
 
 ### $maxGettableUnderlying

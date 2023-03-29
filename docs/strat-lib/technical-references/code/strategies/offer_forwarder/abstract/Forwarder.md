@@ -9,6 +9,8 @@ This class implements IForwarder, which contains specific Forwarder logic functi
 uint256 GAS_APPROX
 ```
 
+approx of amount of gas units required to complete `__posthookFallback__` when evaluating penalty.
+
 ### OwnerData
 
 ```solidity
@@ -152,10 +154,33 @@ _`ownerOf(in,out,id)` is equivalent to `offerOwners(in, out, [id])` but more gas
 | ---- | ---- | ----------- |
 | owner | address | the offer maker that can manage the offer. |
 
+### deriveAndCheckGasprice
+
+```solidity
+function deriveAndCheckGasprice(struct IOfferLogic.OfferArgs args) internal view returns (uint256 gasprice, uint256 leftover)
+```
+
+Derives the gas price for the new offer and verifies it against the global configuration.
+
+_the returned gasprice is slightly lower than the real gasprice that the provision can cover because of the rounding error due to division_
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| args | struct IOfferLogic.OfferArgs | function's arguments in memory |
+
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| gasprice | uint256 | the gas price that is covered by `provision` - `leftover`. |
+| leftover | uint256 | the sub amount of `provision` that is not used to provision the offer. |
+
 ### _newOffer
 
 ```solidity
-function _newOffer(struct IOfferLogic.OfferArgs args, address owner) internal returns (uint256 offerId)
+function _newOffer(struct IOfferLogic.OfferArgs args, address owner) internal returns (uint256 offerId, bytes32 status)
 ```
 
 Inserts a new offer on a Mangrove Offer List.
@@ -168,14 +193,15 @@ _If inside a hook, one should call `_newOffer` to create a new offer and not dir
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| args | struct IOfferLogic.OfferArgs | memory location of the function's arguments |
+| args | struct IOfferLogic.OfferArgs | function's arguments in memory |
 | owner | address | the address of the offer owner |
 
 #### Return Values
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| offerId | uint256 | the identifier of the new offer on the offer list. Can be 0 if posting was rejected by Mangrove and `args.noRevert` is `true`. Forwarder logic does not manage user funds on Mangrove, as a consequence: An offer maker's redeemable provisions on Mangrove is just the sum $S_locked(maker)$ of locked provision in all live offers it owns plus the sum $S_free(maker)$ of `weiBalance`'s in all dead offers it owns (see `OwnerData.weiBalance`). Notice $\sum_i S_free(maker_i)$ <= MGV.balanceOf(address(this))`. Any fund of an offer maker on Mangrove that is either not locked on Mangrove or stored in the `OwnerData` free wei's is thus not recoverable by the offer maker (although it is admin recoverable). Therefore we need to make sure that all `msg.value` is either used to provision the offer at `gasprice` or stored in the offer data under `weiBalance`. To do so, we do not let offer maker fix a gasprice. Rather we derive the gasprice based on `msg.value`. Because of rounding errors in `deriveGasprice` a small amount of WEIs will accumulate in mangrove's balance of `this` contract We assign this leftover to the corresponding `weiBalance` of `OwnerData`. |
+| offerId | uint256 | the identifier of the new offer on the offer list. Can be 0 if posting was rejected by Mangrove and `args.noRevert` is `true`. |
+| status | bytes32 | the status of the new offer on Mangrove if the call has not reverted. It may be NEW_OFFER_SUCCESS or Mangrove's revert reason if `args.noRevert` was set to true. Forwarder logic does not manage user funds on Mangrove, as a consequence: An offer maker's redeemable provisions on Mangrove is just the sum $S_locked(maker)$ of locked provision in all live offers it owns plus the sum $S_free(maker)$ of `weiBalance`'s in all dead offers it owns (see `OwnerData.weiBalance`). Notice $\sum_i S_free(maker_i)$ <= MGV.balanceOf(address(this))`. Any fund of an offer maker on Mangrove that is either not locked on Mangrove or stored in the `OwnerData` free wei's is thus not recoverable by the offer maker (although it is admin recoverable). Therefore we need to make sure that all `msg.value` is either used to provision the offer at `gasprice` or stored in the offer data under `weiBalance`. To do so, we do not let offer maker fix a gasprice. Rather we derive the gasprice based on `msg.value`. Because of rounding errors in `deriveGasprice` a small amount of WEIs will accumulate in mangrove's balance of `this` contract We assign this leftover to the corresponding `weiBalance` of `OwnerData`. |
 
 ### UpdateOfferVars
 
@@ -194,13 +220,20 @@ struct UpdateOfferVars {
 function _updateOffer(struct IOfferLogic.OfferArgs args, uint256 offerId) internal returns (bytes32)
 ```
 
-Internal `updateOffer`, using arguments and variables on memory to avoid stack too deep.
+Updates the offer specified by `offerId` on Mangrove with the parameters in `args`.
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| args | struct IOfferLogic.OfferArgs | A memory struct containing the offer parameters to update. |
+| offerId | uint256 | An unsigned integer representing the identifier of the offer to be updated. |
 
 #### Return Values
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| [0] | bytes32 | reason in {REPOST_FAILED_DUST, REPOST_FAILED} if update was rejected by Mangrove and `args.noRevert` is `true` or REPOST_SUCCESS otherwise |
+| [0] | bytes32 | status a `bytes32` value representing either `REPOST_SUCCESS` if the update is successful, or an error message if an error occurs and `OfferArgs.noRevert` is `true`. If `OfferArgs.noRevert` is `false`, the function reverts with the error message as the reason. |
 
 ### provisionOf
 
@@ -224,10 +257,10 @@ computes the amount of native tokens that can be redeemed when deprovisioning a 
 | ---- | ---- | ----------- |
 | provision | uint256 | the amount of native tokens that can be redeemed when deprovisioning the offer |
 
-### retractOffer
+### _retractOffer
 
 ```solidity
-function retractOffer(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 offerId, bool deprovision) public returns (uint256 freeWei)
+function _retractOffer(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 offerId, bool deprovision) internal returns (uint256 freeWei)
 ```
 
 Retracts an offer from an Offer List of Mangrove.
@@ -242,13 +275,13 @@ Calling this function, with the `deprovision` flag, on an offer that is already 
 | outbound_tkn | contract IERC20 | the outbound token of the offer list. |
 | inbound_tkn | contract IERC20 | the inbound token of the offer list. |
 | offerId | uint256 | the identifier of the offer in the (`outbound_tkn`,`inbound_tkn`) offer list |
-| deprovision | bool | positioned if `msg.sender` wishes to redeem the offer's provision. |
+| deprovision | bool | if set to `true` if offer owner wishes to redeem the offer's provision. |
 
 #### Return Values
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| freeWei | uint256 |  |
+| freeWei | uint256 | the amount of native tokens (in WEI) that have been retrieved by retracting the offer. |
 
 ### __put__
 
@@ -320,5 +353,19 @@ Note that these WEIs are not burnt since they can be admin retrieved using `with
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| order | struct MgvLib.SingleOrder | is a recal of the taker order that failed |
+| order | struct MgvLib.SingleOrder | is a recall of the taker order that failed |
+
+### __checkList__
+
+```solidity
+function __checkList__(contract IERC20 token) internal view virtual
+```
+
+verifies that msg.sender is an allowed reserve id to trade tokens with this contract
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| token | contract IERC20 | a token that is traded by this contract |
 

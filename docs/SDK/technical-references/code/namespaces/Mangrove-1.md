@@ -14,7 +14,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:32
+@mangrovedao/mangrove.js/src/mangrove.ts:34
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:36
+@mangrovedao/mangrove.js/src/mangrove.ts:38
 
 ___
 
@@ -57,7 +57,51 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:46
+@mangrovedao/mangrove.js/src/mangrove.ts:48
+
+___
+
+### <a id="simplepermitdata" name="simplepermitdata"></a> SimplePermitData
+
+Ƭ **SimplePermitData**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `outbound_tkn` | `string` |
+| `inbound_tkn` | `string` |
+| `owner` | `string` |
+| `spender` | `string` |
+| `value` | `ethers.BigNumber` |
+| `nonce?` | `number` \| `ethers.BigNumber` |
+| `deadline` | `number` \| `Date` |
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:57
+
+___
+
+### <a id="permitdata" name="permitdata"></a> PermitData
+
+Ƭ **PermitData**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `outbound_tkn` | `string` |
+| `inbound_tkn` | `string` |
+| `owner` | `string` |
+| `spender` | `string` |
+| `value` | `ethers.BigNumber` |
+| `nonce` | `ethers.BigNumber` |
+| `deadline` | `number` |
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:67
 
 ___
 
@@ -82,4 +126,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:55
+@mangrovedao/mangrove.js/src/mangrove.ts:77

@@ -7715,7 +7715,7 @@ Note that unlike general market order, the returned total values are <em>not</em
     <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">uint</span> successCount<span class="token punctuation">,</span> <span class="token builtin">uint</span> snipesGot<span class="token punctuation">,</span> <span class="token builtin">uint</span> snipesGave<span class="token punctuation">)</span>
   <span class="token punctuation">{</span>
     unchecked <span class="token punctuation">{</span>
-      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token builtin">uint</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> targets<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></pre>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token builtin">uint</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> targets<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span></pre>
         </div>
         <div class="focuser">
           <div class="focus-icon"><!--⥮--></div>
@@ -8281,10 +8281,8 @@ Note that unlike general market order, the returned total values are <em>not</em
       <code class="right solidity">
         <div class="codewrap">
           <code class="lines"><pre>443
-444
-445</pre></code>
-          <pre>      <span class="token punctuation">(</span><span class="token builtin">bool</span> success<span class="token punctuation">,</span> <span class="token builtin">bytes</span> <span class="token keyword">memory</span> retdata<span class="token punctuation">)</span> <span class="token operator">=</span>
-        <span class="token builtin">address</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>abi<span class="token punctuation">.</span><span class="token function">encodeWithSelector</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>flashloan<span class="token punctuation">.</span>selector<span class="token punctuation">,</span> sor<span class="token punctuation">,</span> mor<span class="token punctuation">.</span>taker<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+444</pre></code>
+          <pre>      <span class="token punctuation">(</span><span class="token builtin">bool</span> success<span class="token punctuation">,</span> <span class="token builtin">bytes</span> <span class="token keyword">memory</span> retdata<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token builtin">address</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>abi<span class="token punctuation">.</span><span class="token function">encodeCall</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>flashloan<span class="token punctuation">,</span> <span class="token punctuation">(</span>sor<span class="token punctuation">,</span> mor<span class="token punctuation">.</span>taker<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </pre>
         </div>
         <div class="focuser">
@@ -8302,7 +8300,7 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>447</pre></code>
+          <code class="lines"><pre>446</pre></code>
           <pre>      <span class="token keyword">if</span> <span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span></pre>
         </div>
         <div class="focuser">
@@ -8315,13 +8313,13 @@ Note that unlike general market order, the returned total values are <em>not</em
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p>In case of success, <code>retdata</code> encodes the gas used by the offer.</p>
+        <div class="blockComment"><p>In case of failure, <code>retdata</code> encodes the gas used by the offer, and an arbitrary 256 bits word sent by the maker.</p>
 </div>
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>449</pre></code>
-          <pre>        gasused <span class="token operator">=</span> abi<span class="token punctuation">.</span><span class="token function">decode</span><span class="token punctuation">(</span>retdata<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token builtin">uint</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre>
+          <code class="lines"><pre>448</pre></code>
+          <pre>        <span class="token punctuation">(</span>gasused<span class="token punctuation">,</span> makerData<span class="token punctuation">)</span> <span class="token operator">=</span> abi<span class="token punctuation">.</span><span class="token function">decode</span><span class="token punctuation">(</span>retdata<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token builtin">uint</span><span class="token punctuation">,</span> <span class="token builtin">bytes32</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre>
         </div>
         <div class="focuser">
           <div class="focus-icon"><!--⥮--></div>
@@ -8338,9 +8336,9 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>451
-452
-453</pre></code>
+          <code class="lines"><pre>450
+451
+452</pre></code>
           <pre>        mgvData <span class="token operator">=</span> <span class="token builtin">bytes32</span><span class="token punctuation">(</span><span class="token string">"mgv/tradeSuccess"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">emit</span> <span class="token function">OfferSuccess</span><span class="token punctuation">(</span>sor<span class="token punctuation">.</span>outbound_tkn<span class="token punctuation">,</span> sor<span class="token punctuation">.</span>inbound_tkn<span class="token punctuation">,</span> sor<span class="token punctuation">.</span>offerId<span class="token punctuation">,</span> mor<span class="token punctuation">.</span>taker<span class="token punctuation">,</span> sor<span class="token punctuation">.</span>wants<span class="token punctuation">,</span> sor<span class="token punctuation">.</span>gives<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </pre>
@@ -8360,10 +8358,10 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>455
+          <code class="lines"><pre>454
+455
 456
-457
-458</pre></code>
+457</pre></code>
           <pre>        <span class="token keyword">if</span> <span class="token punctuation">(</span>sor<span class="token punctuation">.</span>global<span class="token punctuation">.</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
           <span class="token function">IMgvMonitor</span><span class="token punctuation">(</span>sor<span class="token punctuation">.</span>global<span class="token punctuation">.</span><span class="token function">monitor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">notifySuccess</span><span class="token punctuation">(</span>sor<span class="token punctuation">,</span> mor<span class="token punctuation">.</span>taker<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
@@ -8402,9 +8400,9 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>461
-462
-463</pre></code>
+          <code class="lines"><pre>460
+461
+462</pre></code>
           <pre>        mor<span class="token punctuation">.</span>totalGot <span class="token operator">+=</span> sor<span class="token punctuation">.</span>wants<span class="token punctuation">;</span>
         mor<span class="token punctuation">.</span>totalGave <span class="token operator">+=</span> sor<span class="token punctuation">.</span>gives<span class="token punctuation">;</span>
       <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></pre>
@@ -8419,12 +8417,12 @@ Note that unlike general market order, the returned total values are <em>not</em
       <div class="left-background"></div>
       <div class="hover-background"></div>
       <div class="left">
-        <div class="blockComment"><p>In case of failure, <code>retdata</code> encodes a short <a href="#MgvOfferTaking/statusCodes">status code</a>, the gas used by the offer, and an arbitrary 256 bits word sent by the maker.</p>
+        <div class="blockComment"><p>In case of success, <code>retdata</code> encodes a short <a href="#MgvOfferTaking/statusCodes">status code</a>, the gas used by the offer, and an arbitrary 256 bits word sent by the maker.</p>
 </div>
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>465</pre></code>
+          <code class="lines"><pre>464</pre></code>
           <pre>        <span class="token punctuation">(</span>mgvData<span class="token punctuation">,</span> gasused<span class="token punctuation">,</span> makerData<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">innerDecode</span><span class="token punctuation">(</span>retdata<span class="token punctuation">)</span><span class="token punctuation">;</span></pre>
         </div>
         <div class="focuser">
@@ -8442,9 +8440,9 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>467
-468
-469</pre></code>
+          <code class="lines"><pre>466
+467
+468</pre></code>
           <pre>        <span class="token keyword">if</span> <span class="token punctuation">(</span>mgvData <span class="token operator">==</span> <span class="token string">"mgv/makerRevert"</span> <span class="token operator">||</span> mgvData <span class="token operator">==</span> <span class="token string">"mgv/makerTransferFail"</span> <span class="token operator">||</span> mgvData <span class="token operator">==</span> <span class="token string">"mgv/makerReceiveFail"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
           <span class="token keyword">emit</span> <span class="token function">OfferFail</span><span class="token punctuation">(</span>sor<span class="token punctuation">.</span>outbound_tkn<span class="token punctuation">,</span> sor<span class="token punctuation">.</span>inbound_tkn<span class="token punctuation">,</span> sor<span class="token punctuation">.</span>offerId<span class="token punctuation">,</span> mor<span class="token punctuation">.</span>taker<span class="token punctuation">,</span> sor<span class="token punctuation">.</span>wants<span class="token punctuation">,</span> sor<span class="token punctuation">.</span>gives<span class="token punctuation">,</span> mgvData<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </pre>
@@ -8464,9 +8462,9 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>471
-472
-473</pre></code>
+          <code class="lines"><pre>470
+471
+472</pre></code>
           <pre>          <span class="token keyword">if</span> <span class="token punctuation">(</span>sor<span class="token punctuation">.</span>global<span class="token punctuation">.</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token function">IMgvMonitor</span><span class="token punctuation">(</span>sor<span class="token punctuation">.</span>global<span class="token punctuation">.</span><span class="token function">monitor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">notifyFail</span><span class="token punctuation">(</span>sor<span class="token punctuation">,</span> mor<span class="token punctuation">.</span>taker<span class="token punctuation">)</span><span class="token punctuation">;</span>
           <span class="token punctuation">}</span></pre>
@@ -8486,11 +8484,11 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>475
+          <code class="lines"><pre>474
+475
 476
 477
-478
-479</pre></code>
+478</pre></code>
           <pre>        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>mgvData <span class="token operator">==</span> <span class="token string">"mgv/notEnoughGasForMakerTrade"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
           <span class="token keyword">revert</span><span class="token punctuation">(</span><span class="token string">"mgv/notEnoughGasForMakerTrade"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>mgvData <span class="token operator">==</span> <span class="token string">"mgv/takerTransferFail"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -8512,10 +8510,10 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>481
+          <code class="lines"><pre>480
+481
 482
-483
-484</pre></code>
+483</pre></code>
           <pre>          <span class="token keyword">revert</span><span class="token punctuation">(</span><span class="token string">"mgv/swapError"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
       <span class="token punctuation">}</span>
@@ -8536,12 +8534,12 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>486
+          <code class="lines"><pre>485
+486
 487
 488
 489
-490
-491</pre></code>
+490</pre></code>
           <pre>      <span class="token function">dirtyDeleteOffer</span><span class="token punctuation">(</span>
         sor<span class="token punctuation">.</span>outbound_tkn<span class="token punctuation">,</span> sor<span class="token punctuation">.</span>inbound_tkn<span class="token punctuation">,</span> sor<span class="token punctuation">.</span>offerId<span class="token punctuation">,</span> sor<span class="token punctuation">.</span>offer<span class="token punctuation">,</span> sor<span class="token punctuation">.</span>offerDetail<span class="token punctuation">,</span> mgvData <span class="token operator">!=</span> <span class="token string">"mgv/tradeSuccess"</span>
       <span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -8583,9 +8581,15 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>496
-497</pre></code>
-          <pre>  <span class="token keyword">function</span> <span class="token function">flashloan</span><span class="token punctuation">(</span>MgvLib<span class="token punctuation">.</span>SingleOrder <span class="token keyword">calldata</span> sor<span class="token punctuation">,</span> <span class="token builtin">address</span> taker<span class="token punctuation">)</span> <span class="token keyword">external</span> virtual <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">uint</span> gasused<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <code class="lines"><pre>495
+496
+497
+498
+499</pre></code>
+          <pre>  <span class="token keyword">function</span> <span class="token function">flashloan</span><span class="token punctuation">(</span>MgvLib<span class="token punctuation">.</span>SingleOrder <span class="token keyword">calldata</span> sor<span class="token punctuation">,</span> <span class="token builtin">address</span> taker<span class="token punctuation">)</span>
+    <span class="token keyword">external</span>
+    virtual
+    <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">uint</span> gasused<span class="token punctuation">,</span> <span class="token builtin">bytes32</span> makerData<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </pre>
         </div>
         <div class="focuser">
@@ -8621,18 +8625,18 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>500
-501
-502
+          <code class="lines"><pre>502
 503
 504
 505
 506
-507</pre></code>
+507
+508
+509</pre></code>
           <pre>
-  <span class="token keyword">function</span> <span class="token function">makerExecute</span><span class="token punctuation">(</span>MgvLib<span class="token punctuation">.</span>SingleOrder <span class="token keyword">calldata</span> sor<span class="token punctuation">)</span> <span class="token keyword">internal</span> <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">uint</span> gasused<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">makerExecute</span><span class="token punctuation">(</span>MgvLib<span class="token punctuation">.</span>SingleOrder <span class="token keyword">calldata</span> sor<span class="token punctuation">)</span> <span class="token keyword">internal</span> <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">uint</span> gasused<span class="token punctuation">,</span> <span class="token builtin">bytes32</span> makerData<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     unchecked <span class="token punctuation">{</span>
-      <span class="token builtin">bytes</span> <span class="token keyword">memory</span> cd <span class="token operator">=</span> abi<span class="token punctuation">.</span><span class="token function">encodeWithSelector</span><span class="token punctuation">(</span>IMaker<span class="token punctuation">.</span>makerExecute<span class="token punctuation">.</span>selector<span class="token punctuation">,</span> sor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token builtin">bytes</span> <span class="token keyword">memory</span> cd <span class="token operator">=</span> abi<span class="token punctuation">.</span><span class="token function">encodeCall</span><span class="token punctuation">(</span>IMaker<span class="token punctuation">.</span>makerExecute<span class="token punctuation">,</span> <span class="token punctuation">(</span>sor<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
       <span class="token builtin">uint</span> gasreq <span class="token operator">=</span> sor<span class="token punctuation">.</span>offerDetail<span class="token punctuation">.</span><span class="token function">gasreq</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token builtin">address</span> maker <span class="token operator">=</span> sor<span class="token punctuation">.</span>offerDetail<span class="token punctuation">.</span><span class="token function">maker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -8671,9 +8675,7 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>510
-511
-512
+          <code class="lines"><pre>512
 513
 514
 515
@@ -8690,12 +8692,16 @@ Note that unlike general market order, the returned total values are <em>not</em
 526
 527
 528
-529</pre></code>
+529
+530
+531
+532</pre></code>
           <pre>      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>oldGas <span class="token operator">-</span> oldGas <span class="token operator">/</span> <span class="token number">64</span> <span class="token operator">>=</span> gasreq<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token function">innerRevert</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">bytes32</span><span class="token punctuation">(</span><span class="token string">"mgv/notEnoughGasForMakerTrade"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
 
-      <span class="token punctuation">(</span><span class="token builtin">bool</span> callSuccess<span class="token punctuation">,</span> <span class="token builtin">bytes32</span> makerData<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">controlledCall</span><span class="token punctuation">(</span>maker<span class="token punctuation">,</span> gasreq<span class="token punctuation">,</span> cd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token builtin">bool</span> callSuccess<span class="token punctuation">;</span>
+      <span class="token punctuation">(</span>callSuccess<span class="token punctuation">,</span> makerData<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">controlledCall</span><span class="token punctuation">(</span>maker<span class="token punctuation">,</span> gasreq<span class="token punctuation">,</span> cd<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
       gasused <span class="token operator">=</span> oldGas <span class="token operator">-</span> <span class="token function">gasleft</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -8745,8 +8751,8 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>532
-533</pre></code>
+          <code class="lines"><pre>535
+536</pre></code>
           <pre>  <span class="token keyword">function</span> <span class="token function">executeEnd</span><span class="token punctuation">(</span>MultiOrder <span class="token keyword">memory</span> mor<span class="token punctuation">,</span> MgvLib<span class="token punctuation">.</span>SingleOrder <span class="token keyword">memory</span> sor<span class="token punctuation">)</span> <span class="token keyword">internal</span> virtual<span class="token punctuation">;</span>
 </pre>
         </div>
@@ -8787,10 +8793,7 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>539
-540
-541
-542
+          <code class="lines"><pre>542
 543
 544
 545
@@ -8800,7 +8803,10 @@ Note that unlike general market order, the returned total values are <em>not</em
 549
 550
 551
-552</pre></code>
+552
+553
+554
+555</pre></code>
           <pre>  <span class="token keyword">function</span> <span class="token function">postExecute</span><span class="token punctuation">(</span>
     MultiOrder <span class="token keyword">memory</span> mor<span class="token punctuation">,</span>
     MgvLib<span class="token punctuation">.</span>SingleOrder <span class="token keyword">memory</span> sor<span class="token punctuation">,</span>
@@ -8831,10 +8837,7 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>554
-555
-556
-557
+          <code class="lines"><pre>557
 558
 559
 560
@@ -8842,7 +8845,10 @@ Note that unlike general market order, the returned total values are <em>not</em
 562
 563
 564
-565</pre></code>
+565
+566
+567
+568</pre></code>
           <pre>      <span class="token keyword">if</span> <span class="token punctuation">(</span>gasused <span class="token operator">></span> gasreq<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         gasused <span class="token operator">=</span> gasreq<span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
@@ -8889,9 +8895,9 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>568
-569
-570</pre></code>
+          <code class="lines"><pre>571
+572
+573</pre></code>
           <pre>
   <span class="token keyword">function</span> <span class="token function">beforePosthook</span><span class="token punctuation">(</span>MgvLib<span class="token punctuation">.</span>SingleOrder <span class="token keyword">memory</span> sor<span class="token punctuation">)</span> <span class="token keyword">internal</span> virtual<span class="token punctuation">;</span>
 </pre>
@@ -8911,11 +8917,11 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>572
-573
-574
-575
-576</pre></code>
+          <code class="lines"><pre>575
+576
+577
+578
+579</pre></code>
           <pre>  <span class="token keyword">function</span> <span class="token function">makerPosthook</span><span class="token punctuation">(</span>MgvLib<span class="token punctuation">.</span>SingleOrder <span class="token keyword">memory</span> sor<span class="token punctuation">,</span> <span class="token builtin">uint</span> gasLeft<span class="token punctuation">,</span> <span class="token builtin">bytes32</span> makerData<span class="token punctuation">,</span> <span class="token builtin">bytes32</span> mgvData<span class="token punctuation">)</span>
     <span class="token keyword">internal</span>
     <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">uint</span> gasused<span class="token punctuation">)</span>
@@ -8937,16 +8943,14 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>578
-579
-580
-581
+          <code class="lines"><pre>581
 582
 583
-584</pre></code>
-          <pre>      <span class="token builtin">bytes</span> <span class="token keyword">memory</span> cd <span class="token operator">=</span> abi<span class="token punctuation">.</span><span class="token function">encodeWithSelector</span><span class="token punctuation">(</span>
-        IMaker<span class="token punctuation">.</span>makerPosthook<span class="token punctuation">.</span>selector<span class="token punctuation">,</span> sor<span class="token punctuation">,</span> MgvLib<span class="token punctuation">.</span><span class="token function">OrderResult</span><span class="token punctuation">(</span><span class="token punctuation">{</span>makerData<span class="token punctuation">:</span> makerData<span class="token punctuation">,</span> mgvData<span class="token punctuation">:</span> mgvData<span class="token punctuation">}</span><span class="token punctuation">)</span>
-      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+584
+585
+586</pre></code>
+          <pre>      <span class="token builtin">bytes</span> <span class="token keyword">memory</span> cd <span class="token operator">=</span>
+        abi<span class="token punctuation">.</span><span class="token function">encodeCall</span><span class="token punctuation">(</span>IMaker<span class="token punctuation">.</span>makerPosthook<span class="token punctuation">,</span> <span class="token punctuation">(</span>sor<span class="token punctuation">,</span> MgvLib<span class="token punctuation">.</span><span class="token function">OrderResult</span><span class="token punctuation">(</span><span class="token punctuation">{</span>makerData<span class="token punctuation">:</span> makerData<span class="token punctuation">,</span> mgvData<span class="token punctuation">:</span> mgvData<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
       <span class="token builtin">address</span> maker <span class="token operator">=</span> sor<span class="token punctuation">.</span>offerDetail<span class="token punctuation">.</span><span class="token function">maker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -8967,9 +8971,7 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>586
-587
-588
+          <code class="lines"><pre>588
 589
 590
 591
@@ -8980,7 +8982,9 @@ Note that unlike general market order, the returned total values are <em>not</em
 596
 597
 598
-599</pre></code>
+599
+600
+601</pre></code>
           <pre>      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>oldGas <span class="token operator">-</span> oldGas <span class="token operator">/</span> <span class="token number">64</span> <span class="token operator">>=</span> gasLeft<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">revert</span><span class="token punctuation">(</span><span class="token string">"mgv/notEnoughGasForMakerPosthook"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
@@ -9029,10 +9033,10 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>602
-603
-604
-605</pre></code>
+          <code class="lines"><pre>604
+605
+606
+607</pre></code>
           <pre>  <span class="token keyword">function</span> <span class="token function">controlledCall</span><span class="token punctuation">(</span><span class="token builtin">address</span> callee<span class="token punctuation">,</span> <span class="token builtin">uint</span> gasreq<span class="token punctuation">,</span> <span class="token builtin">bytes</span> <span class="token keyword">memory</span> cd<span class="token punctuation">)</span> <span class="token keyword">internal</span> <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">bool</span> success<span class="token punctuation">,</span> <span class="token builtin">bytes32</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     unchecked <span class="token punctuation">{</span>
       <span class="token builtin">bytes32</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token keyword">memory</span> retdata<span class="token punctuation">;</span>
@@ -9053,13 +9057,13 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>607
-608
-609
+          <code class="lines"><pre>609
 610
 611
 612
-613</pre></code>
+613
+614
+615</pre></code>
           <pre>      <span class="token keyword">assembly</span> <span class="token punctuation">{</span>
         success <span class="token operator">:=</span> <span class="token function">call</span><span class="token punctuation">(</span>gasreq<span class="token punctuation">,</span> callee<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token function">add</span><span class="token punctuation">(</span>cd<span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">mload</span><span class="token punctuation">(</span>cd<span class="token punctuation">)</span><span class="token punctuation">,</span> retdata<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
         data <span class="token operator">:=</span> <span class="token function">mload</span><span class="token punctuation">(</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token function">mul</span><span class="token punctuation">(</span><span class="token function">iszero</span><span class="token punctuation">(</span>success<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">68</span><span class="token punctuation">)</span><span class="token punctuation">,</span> retdata<span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -9167,12 +9171,12 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>635
-636
-637
+          <code class="lines"><pre>637
 638
 639
-640</pre></code>
+640
+641
+642</pre></code>
           <pre>  <span class="token keyword">function</span> <span class="token function">applyPenalty</span><span class="token punctuation">(</span>MgvLib<span class="token punctuation">.</span>SingleOrder <span class="token keyword">memory</span> sor<span class="token punctuation">,</span> <span class="token builtin">uint</span> gasused<span class="token punctuation">)</span> <span class="token keyword">internal</span> <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">uint</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     unchecked <span class="token punctuation">{</span>
       <span class="token builtin">uint</span> gasreq <span class="token operator">=</span> sor<span class="token punctuation">.</span>offerDetail<span class="token punctuation">.</span><span class="token function">gasreq</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -9195,10 +9199,10 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>642
-643
-644
-645</pre></code>
+          <code class="lines"><pre>644
+645
+646
+647</pre></code>
           <pre>      <span class="token keyword">if</span> <span class="token punctuation">(</span>gasused <span class="token operator">></span> gasreq<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         gasused <span class="token operator">=</span> gasreq<span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
@@ -9219,12 +9223,12 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>647
-648
-649
+          <code class="lines"><pre>649
 650
 651
-652</pre></code>
+652
+653
+654</pre></code>
           <pre>      <span class="token builtin">uint</span> penalty <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">**</span> <span class="token number">9</span> <span class="token operator">*</span> sor<span class="token punctuation">.</span>global<span class="token punctuation">.</span><span class="token function">gasprice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>gasused <span class="token operator">+</span> sor<span class="token punctuation">.</span>local<span class="token punctuation">.</span><span class="token function">offer_gasbase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
       <span class="token keyword">if</span> <span class="token punctuation">(</span>penalty <span class="token operator">></span> provision<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -9247,9 +9251,7 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>654
-655
-656
+          <code class="lines"><pre>656
 657
 658
 659
@@ -9261,7 +9263,9 @@ Note that unlike general market order, the returned total values are <em>not</em
 665
 666
 667
-668</pre></code>
+668
+669
+670</pre></code>
           <pre>      <span class="token function">creditWei</span><span class="token punctuation">(</span>sor<span class="token punctuation">.</span>offerDetail<span class="token punctuation">.</span><span class="token function">maker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> provision <span class="token operator">-</span> penalty<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
       <span class="token keyword">return</span> penalty<span class="token punctuation">;</span>
@@ -9293,14 +9297,14 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>670
-671
-672
+          <code class="lines"><pre>672
 673
 674
 675
 676
-677</pre></code>
+677
+678
+679</pre></code>
           <pre>  <span class="token keyword">function</span> <span class="token function">payTakerMinusFees</span><span class="token punctuation">(</span>MultiOrder <span class="token keyword">memory</span> mor<span class="token punctuation">,</span> MgvLib<span class="token punctuation">.</span>SingleOrder <span class="token keyword">memory</span> sor<span class="token punctuation">)</span> <span class="token keyword">internal</span> <span class="token punctuation">{</span>
     unchecked <span class="token punctuation">{</span>
       <span class="token builtin">uint</span> concreteFee <span class="token operator">=</span> <span class="token punctuation">(</span>mor<span class="token punctuation">.</span>totalGot <span class="token operator">*</span> sor<span class="token punctuation">.</span>local<span class="token punctuation">.</span><span class="token function">fee</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">10</span>_000<span class="token punctuation">;</span>
@@ -9325,11 +9329,11 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>679
-680
-681
+          <code class="lines"><pre>681
 682
-683</pre></code>
+683
+684
+685</pre></code>
           <pre>        <span class="token keyword">require</span><span class="token punctuation">(</span><span class="token function">transferToken</span><span class="token punctuation">(</span>sor<span class="token punctuation">.</span>outbound_tkn<span class="token punctuation">,</span> mor<span class="token punctuation">.</span>taker<span class="token punctuation">,</span> mor<span class="token punctuation">.</span>totalGot<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"mgv/MgvFailToPayTaker"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
@@ -9369,8 +9373,8 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>687
-688</pre></code>
+          <code class="lines"><pre>689
+690</pre></code>
           <pre>  <span class="token keyword">function</span> <span class="token function">innerDecode</span><span class="token punctuation">(</span><span class="token builtin">bytes</span> <span class="token keyword">memory</span> data<span class="token punctuation">)</span> <span class="token keyword">internal</span> <span class="token keyword">pure</span> <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">bytes32</span> mgvData<span class="token punctuation">,</span> <span class="token builtin">uint</span> gasused<span class="token punctuation">,</span> <span class="token builtin">bytes32</span> makerData<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     unchecked <span class="token punctuation">{</span></pre>
         </div>
@@ -9389,14 +9393,14 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>690
-691
-692
+          <code class="lines"><pre>692
 693
 694
 695
 696
-697</pre></code>
+697
+698
+699</pre></code>
           <pre>      <span class="token keyword">assembly</span> <span class="token punctuation">{</span>
         mgvData <span class="token operator">:=</span> <span class="token function">mload</span><span class="token punctuation">(</span><span class="token function">add</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
         gasused <span class="token operator">:=</span> <span class="token function">mload</span><span class="token punctuation">(</span><span class="token function">add</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -9421,14 +9425,14 @@ Note that unlike general market order, the returned total values are <em>not</em
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>699
-700
-701
+          <code class="lines"><pre>701
 702
 703
 704
 705
-706</pre></code>
+706
+707
+708</pre></code>
           <pre>  <span class="token keyword">function</span> <span class="token function">innerRevert</span><span class="token punctuation">(</span><span class="token builtin">bytes32</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token keyword">memory</span> data<span class="token punctuation">)</span> <span class="token keyword">internal</span> <span class="token keyword">pure</span> <span class="token punctuation">{</span>
     unchecked <span class="token punctuation">{</span>
       <span class="token keyword">assembly</span> <span class="token punctuation">{</span>
@@ -11872,8 +11876,16 @@ abstract <span class="token keyword">contract</span> <span class="token class-na
       <code class="right solidity">
         <div class="codewrap">
           <code class="lines"><pre>42
-43</pre></code>
-          <pre>  <span class="token keyword">function</span> <span class="token function">flashloan</span><span class="token punctuation">(</span>MgvLib<span class="token punctuation">.</span>SingleOrder <span class="token keyword">calldata</span> sor<span class="token punctuation">,</span> <span class="token builtin">address</span> taker<span class="token punctuation">)</span> <span class="token keyword">external</span> override <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">uint</span> gasused<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+43
+44
+45
+46
+47</pre></code>
+          <pre>  <span class="token keyword">function</span> <span class="token function">flashloan</span><span class="token punctuation">(</span>MgvLib<span class="token punctuation">.</span>SingleOrder <span class="token keyword">calldata</span> sor<span class="token punctuation">,</span> <span class="token builtin">address</span> taker<span class="token punctuation">)</span>
+    <span class="token keyword">external</span>
+    override
+    <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">uint</span> gasused<span class="token punctuation">,</span> <span class="token builtin">bytes32</span> makerData<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
     unchecked <span class="token punctuation">{</span></pre>
         </div>
         <div class="focuser">
@@ -11891,7 +11903,7 @@ abstract <span class="token keyword">contract</span> <span class="token class-na
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>45</pre></code>
+          <code class="lines"><pre>49</pre></code>
           <pre>      <span class="token keyword">require</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>sender <span class="token operator">==</span> <span class="token builtin">address</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"mgv/flashloan/protected"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre>
         </div>
         <div class="focuser">
@@ -11912,21 +11924,21 @@ if we incorrectly blame the taker, a blacklisted maker can block a pair forever;
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>50
-51
-52
-53
-54
+          <code class="lines"><pre>54
 55
 56
 57
 58
 59
 60
-61</pre></code>
+61
+62
+63
+64
+65</pre></code>
           <pre>      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">transferTokenFrom</span><span class="token punctuation">(</span>sor<span class="token punctuation">.</span>inbound_tkn<span class="token punctuation">,</span> taker<span class="token punctuation">,</span> <span class="token builtin">address</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">,</span> sor<span class="token punctuation">.</span>gives<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">transferToken</span><span class="token punctuation">(</span>sor<span class="token punctuation">.</span>inbound_tkn<span class="token punctuation">,</span> sor<span class="token punctuation">.</span>offerDetail<span class="token punctuation">.</span><span class="token function">maker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> sor<span class="token punctuation">.</span>gives<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          gasused <span class="token operator">=</span> <span class="token function">makerExecute</span><span class="token punctuation">(</span>sor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">(</span>gasused<span class="token punctuation">,</span> makerData<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">makerExecute</span><span class="token punctuation">(</span>sor<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
           <span class="token function">innerRevert</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">bytes32</span><span class="token punctuation">(</span><span class="token string">"mgv/makerReceiveFail"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">bytes32</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
@@ -12432,9 +12444,17 @@ if we incorrectly blame the taker, a blacklisted maker can block a pair forever;
         <div class="codewrap">
           <code class="lines"><pre>80
 81
-82</pre></code>
+82
+83
+84
+85
+86</pre></code>
           <pre>
-  <span class="token keyword">function</span> <span class="token function">flashloan</span><span class="token punctuation">(</span>MgvLib<span class="token punctuation">.</span>SingleOrder <span class="token keyword">calldata</span> sor<span class="token punctuation">,</span> <span class="token builtin">address</span><span class="token punctuation">)</span> <span class="token keyword">external</span> override <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">uint</span> gasused<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">flashloan</span><span class="token punctuation">(</span>MgvLib<span class="token punctuation">.</span>SingleOrder <span class="token keyword">calldata</span> sor<span class="token punctuation">,</span> <span class="token builtin">address</span><span class="token punctuation">)</span>
+    <span class="token keyword">external</span>
+    override
+    <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">uint</span> gasused<span class="token punctuation">,</span> <span class="token builtin">bytes32</span> makerData<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
     unchecked <span class="token punctuation">{</span></pre>
         </div>
         <div class="focuser">
@@ -12452,13 +12472,13 @@ if we incorrectly blame the taker, a blacklisted maker can block a pair forever;
       </div>
       <code class="right solidity">
         <div class="codewrap">
-          <code class="lines"><pre>84
-85
-86
-87
-88</pre></code>
+          <code class="lines"><pre>88
+89
+90
+91
+92</pre></code>
           <pre>      <span class="token keyword">require</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>sender <span class="token operator">==</span> <span class="token builtin">address</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"mgv/invertedFlashloan/protected"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      gasused <span class="token operator">=</span> <span class="token function">makerExecute</span><span class="token punctuation">(</span>sor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">(</span>gasused<span class="token punctuation">,</span> makerData<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">makerExecute</span><span class="token punctuation">(</span>sor<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></pre>

@@ -13,11 +13,15 @@ _Naming scheme:
 uint256 OFFER_GASREQ
 ```
 
+Gas requirement when posting offers via this strategy, excluding router requirement.
+
 ### MGV
 
 ```solidity
 contract IMangrove MGV
 ```
+
+The Mangrove deployment that is allowed to call `this` for trade execution and posthook.
 
 ### NO_ROUTER
 
@@ -25,17 +29,15 @@ contract IMangrove MGV
 contract AbstractRouter NO_ROUTER
 ```
 
-### OUT_OF_FUNDS
+constant for no router
+
+### __router
 
 ```solidity
-bytes32 OUT_OF_FUNDS
+contract AbstractRouter __router
 ```
 
-### BELOW_DENSITY
-
-```solidity
-bytes32 BELOW_DENSITY
-```
+The router to use for this strategy.
 
 ### REPOST_SUCCESS
 
@@ -43,21 +45,32 @@ bytes32 BELOW_DENSITY
 bytes32 REPOST_SUCCESS
 ```
 
-### REPOST_FAILED
+The offer was successfully reposted.
+
+### NEW_OFFER_SUCCESS
 
 ```solidity
-bytes32 REPOST_FAILED
+bytes32 NEW_OFFER_SUCCESS
 ```
 
-### mgvOrAdmin
+New offer successfully created.
+
+### COMPLETE_FILL
 
 ```solidity
-modifier mgvOrAdmin()
+bytes32 COMPLETE_FILL
 ```
 
-guards for restricting a function call to either `MGV` or `admin()`.
+The offer was completely filled.
 
-_When `msg.sender` is `MGV`, the function is being called either via `makerExecute` or `makerPosthook`._
+### Mgv
+
+```solidity
+event Mgv(contract IMangrove mgv)
+```
+
+The Mangrove deployment that is allowed to call `this` for trade execution and posthook.
+  @param mgv The Mangrove deployment.
 
 ### receive
 
@@ -83,6 +96,22 @@ constructor(contract IMangrove mgv, uint256 gasreq) internal
 | ---- | ---- | ----------- |
 | mgv | contract IMangrove | The Mangrove deployment that is allowed to call `this` for trade execution and posthook. |
 | gasreq | uint256 | Gas requirement when posting offers via this strategy, excluding router requirement. |
+
+### router
+
+```solidity
+function router() public view returns (contract AbstractRouter)
+```
+
+Contract's router getter.
+
+_if contract has a no router, function returns `NO_ROUTER`._
+
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| [0] | contract AbstractRouter | the router. |
 
 ### offerGasreq
 
@@ -143,6 +172,22 @@ _It cannot be overridden but can be customized via the hooks `__posthookSuccess_
 | order | struct MgvLib.SingleOrder | a data structure that recapitulates the taker order and the offer as it was posted on mangrove |
 | result | struct MgvLib.OrderResult | a data structure that gathers information about trade execution |
 
+### logRepostStatus
+
+```solidity
+function logRepostStatus(struct MgvLib.SingleOrder order, bytes32 makerData, bytes32 repostStatus) internal
+```
+
+takes care of status for reposting residual offer in case of a partial fill and logging of potential issues.
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| order | struct MgvLib.SingleOrder | a recap of the taker order |
+| makerData | bytes32 | generated during `makerExecute` so as to log it if necessary |
+| repostStatus | bytes32 | from the posthook that handles residual reposting |
+
 ### setRouter
 
 ```solidity
@@ -158,16 +203,6 @@ _new router needs to be approved by `this` to push funds to reserve (see `activa
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | router_ | contract AbstractRouter | the new router contract that this contract should use. Use `NO_ROUTER` for no router. |
-
-### router
-
-```solidity
-function router() public view returns (contract AbstractRouter)
-```
-
-Contract's router getter.
-
-_if contract has a no router, function returns `NO_ROUTER`._
 
 ### approve
 
@@ -187,41 +222,11 @@ _admin may use this function to revoke specific approvals of `this` that are set
 | spender | address | the approved spender |
 | amount | uint256 | the spending amount |
 
-### reserve
-
-```solidity
-function reserve(address maker) public view returns (address)
-```
-
-getter of the reserve address of `maker`.
-
-_if no reserve is set for maker, default reserve is maker's address. Thus this function never returns `address(0)`._
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| maker | address | the address of the offer maker one wishes to know the reserve of. |
-
 #### Return Values
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| [0] | address | reserve_ the address of the offer maker's reserve of liquidity. |
-
-### __reserve__
-
-```solidity
-function __reserve__(address maker) internal view virtual returns (address)
-```
-
-hook to customize offer owner's reserve for the offer logic
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| maker | address | the offer owner's address whose address is being queried |
+| [0] | bool | result of token approval. |
 
 ### activate
 
@@ -243,9 +248,15 @@ performs the required approvals so as to allow `this` to interact with Mangrove 
 function checkList(contract IERC20[] tokens) external view
 ```
 
-verifies that this contract's current state is ready to be used by `msg.sender` to post offers on Mangrove
+verifies that Mangrove is allowed to pull tokens from this contract.
 
 _throws with a reason if something (e.g. an approval) is missing._
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| tokens | contract IERC20[] | the list of tokens that are traded by this contract |
 
 ### __activate__
 
@@ -253,7 +264,7 @@ _throws with a reason if something (e.g. an approval) is missing._
 function __activate__(contract IERC20 token) internal virtual
 ```
 
-_override conservatively to define strat-specific additional activation steps._
+override conservatively to define strat-specific additional activation steps.
 
 #### Parameters
 
@@ -267,18 +278,18 @@ _override conservatively to define strat-specific additional activation steps._
 function __checkList__(contract IERC20 token) internal view virtual
 ```
 
-_override conservatively to define strat-specific additional check list_
+verifies that Mangrove is allowed to pull tokens from this contract and other strat specific verifications.
 
 #### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| token | contract IERC20 | the ERC20 one wishes this contract to trade on. |
+| token | contract IERC20 | a token that is traded by this contract |
 
 ### withdrawFromMangrove
 
 ```solidity
-function withdrawFromMangrove(uint256 amount, address payable receiver) external
+function withdrawFromMangrove(uint256 amount, address payable receiver) public
 ```
 
 withdraws native tokens from `this` balance on Mangrove.
@@ -363,13 +374,31 @@ ___lastLook__ should revert if trade is to be reneged on. If not, returned `byte
 ### __posthookFallback__
 
 ```solidity
-function __posthookFallback__(struct MgvLib.SingleOrder order, struct MgvLib.OrderResult result) internal virtual returns (bytes32)
+function __posthookFallback__(struct MgvLib.SingleOrder order, struct MgvLib.OrderResult result) internal virtual returns (bytes32 data)
 ```
+
+Post-hook that implements fallback behavior when Taker Order's execution failed unexpectedly.
+
+_`result.mgvData` is Mangrove's verdict about trade success
+`result.makerData` either contains the first 32 bytes of revert reason if `makerExecute` reverted or the returned `bytes32`._
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| order | struct MgvLib.SingleOrder | is a recall of the taker order that is at the origin of the current trade. |
+| result | struct MgvLib.OrderResult | contains information about trade. |
+
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| data | bytes32 | contains verdict and reason about the executed trade. |
 
 ### __residualWants__
 
 ```solidity
-function __residualWants__(struct MgvLib.SingleOrder order) internal virtual returns (uint256 new_wants)
+function __residualWants__(struct MgvLib.SingleOrder order) internal virtual returns (uint256 newWants)
 ```
 
 Given the current taker order that (partially) consumes an offer, this hook is used to declare how much `order.inbound_tkn` the offer wants after it is reposted.
@@ -386,12 +415,12 @@ _default is to require the original amount of tokens minus those that have been 
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| new_wants | uint256 | the new volume of `inbound_tkn` the offer will ask for on Mangrove |
+| newWants | uint256 | the new volume of `inbound_tkn` the offer will ask for on Mangrove |
 
 ### __residualGives__
 
 ```solidity
-function __residualGives__(struct MgvLib.SingleOrder order) internal virtual returns (uint256 new_gives)
+function __residualGives__(struct MgvLib.SingleOrder order) internal virtual returns (uint256 newGives)
 ```
 
 Given the current taker order that (partially) consumes an offer, this hook is used to declare how much `order.outbound_tkn` the offer gives after it is reposted.
@@ -408,7 +437,7 @@ _default is to require the original amount of tokens minus those that have been 
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| new_gives | uint256 | the new volume of `outbound_tkn` the offer will give if fully taken. |
+| newGives | uint256 | the new volume of `outbound_tkn` the offer will give if fully taken. |
 
 ### __handleResidualProvision__
 
@@ -422,12 +451,12 @@ Hook that defines what needs to be done to the part of an offer provision that w
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| order | struct MgvLib.SingleOrder | is a recal of the taker order that failed |
+| order | struct MgvLib.SingleOrder | is a recall of the taker order that failed |
 
 ### __posthookSuccess__
 
 ```solidity
-function __posthookSuccess__(struct MgvLib.SingleOrder order, bytes32 maker_data) internal virtual returns (bytes32 data)
+function __posthookSuccess__(struct MgvLib.SingleOrder order, bytes32 makerData) internal virtual returns (bytes32 data)
 ```
 
 Post-hook that implements default behavior when Taker Order's execution succeeded.
@@ -437,21 +466,34 @@ Post-hook that implements default behavior when Taker Order's execution succeede
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | order | struct MgvLib.SingleOrder | is a recall of the taker order that is at the origin of the current trade. |
-| maker_data | bytes32 | is the returned value of the `__lastLook__` hook, triggered during trade execution. The special value `"lastLook/retract"` should be treated as an instruction not to repost the offer on the book. |
+| makerData | bytes32 | is the returned value of the `__lastLook__` hook, triggered during trade execution. The special value `"lastLook/retract"` should be treated as an instruction not to repost the offer on the book. |
 
 #### Return Values
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| data | bytes32 | can be: * `"posthook/filled"` when offer was completely filled * `"posthook/reposted"` when offer was partially filled and successfully reposted * Mangrove's revert reason (cast to a bytes32) when residual is below density or `this` balance on Mangrove is too low (and thus not reposted) |
+| data | bytes32 | can be: * `COMPLETE_FILL` when offer was completely filled * returned data of `_updateOffer` signalling the status of the reposting attempt. |
 
 ### _updateOffer
 
 ```solidity
-function _updateOffer(struct IOfferLogic.OfferArgs, uint256) internal virtual returns (bytes32)
+function _updateOffer(struct IOfferLogic.OfferArgs args, uint256 offerId) internal virtual returns (bytes32)
 ```
 
-template for start specific update offer function
+Updates the offer specified by `offerId` on Mangrove with the parameters in `args`.
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| args | struct IOfferLogic.OfferArgs | A memory struct containing the offer parameters to update. |
+| offerId | uint256 | An unsigned integer representing the identifier of the offer to be updated. |
+
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| [0] | bytes32 | status a `bytes32` value representing either `REPOST_SUCCESS` if the update is successful, or an error message if an error occurs and `OfferArgs.noRevert` is `true`. If `OfferArgs.noRevert` is `false`, the function reverts with the error message as the reason. |
 
 ### _provisionOf
 
@@ -466,7 +508,7 @@ computes the provision that can be redeemed if deprovisioning a certain offer
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | outbound_tkn | contract IERC20 | the outbound token of the offer list |
-| inbound_tkn | contract IERC20 | the inbound otken of the offer list |
+| inbound_tkn | contract IERC20 | the inbound token of the offer list |
 | offerId | uint256 | the id of the offer |
 
 #### Return Values
@@ -474,30 +516,4 @@ computes the provision that can be redeemed if deprovisioning a certain offer
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | provision | uint256 | the provision that can be redeemed |
-
-### getMissingProvision
-
-```solidity
-function getMissingProvision(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 gasreq, uint256 gasprice, uint256 offerId) public view returns (uint256)
-```
-
-Computes missing provision to repost `offerId` at given `gasreq` and `gasprice` ignoring current contract's balance on Mangrove.
-
-_if `offerId` is not in the Order Book, will simply return how much is needed to post_
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| outbound_tkn | contract IERC20 | the outbound token used to identify the order book |
-| inbound_tkn | contract IERC20 | the inbound token used to identify the order book |
-| gasreq | uint256 | the gas required by the offer. Give > type(uint24).max to use `this.offerGasreq()` |
-| gasprice | uint256 | the upper bound on gas price. Give 0 to use Mangrove's gasprice |
-| offerId | uint256 | the offer id. Set this to 0 if one is not reposting an offer |
-
-#### Return Values
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| [0] | uint256 |  |
 

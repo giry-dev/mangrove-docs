@@ -14,7 +14,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:64
+@mangrovedao/mangrove.js/src/mangrove.ts:86
 
 ___
 
@@ -24,7 +24,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:65
+@mangrovedao/mangrove.js/src/mangrove.ts:87
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:66
+@mangrovedao/mangrove.js/src/mangrove.ts:88
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:67
+@mangrovedao/mangrove.js/src/mangrove.ts:89
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:68
+@mangrovedao/mangrove.js/src/mangrove.ts:90
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:69
+@mangrovedao/mangrove.js/src/mangrove.ts:91
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:70
+@mangrovedao/mangrove.js/src/mangrove.ts:92
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:71
+@mangrovedao/mangrove.js/src/mangrove.ts:93
 
 ___
 
@@ -94,17 +94,17 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:72
+@mangrovedao/mangrove.js/src/mangrove.ts:94
 
 ___
 
 ### <a id="ordercontract" name="ordercontract"></a> orderContract
 
-• **orderContract**: `MangroveOrderEnriched`
+• **orderContract**: `MangroveOrder`
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:75
+@mangrovedao/mangrove.js/src/mangrove.ts:95
 
 ___
 
@@ -114,7 +114,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:76
+@mangrovedao/mangrove.js/src/mangrove.ts:96
 
 ___
 
@@ -131,17 +131,11 @@ ___
 | `goerli` | {} |
 | `kovan` | {} |
 | `ropsten` | {} |
-| `maticmum` | { `DAI_AAVE`: `string` = "0x9A753f0F7886C9fbF63cF59D0D4423C5eFaCE95B"; `USDC_AAVE`: `string` = "0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2"; `USDT_AAVE`: `string` = "0x21c561e551638401b937b03fe5a0a0652b99b7dd"; `WETH_AAVE`: `string` = "0xd575d4047f8c667e064a4ad433d04e25187f40bb"; `aWETH`: `string` = "0x685bF4eab23993E94b4CFb9383599c926B66cF57"; `aDAI`: `string` = "0xDD4f3Ee61466C4158D394d57f3D4C397E91fBc51"; `aUSDC`: `string` = "0xCdc2854e97798AfDC74BC420BD5060e022D14607"; `DAI`: `string` = "0xc87385b5e62099f92d490750fcd6c901a524bbca"; `USDC`: `string` = "0xF61Cffd6071a8DB7cD5E8DF1D3A5450D9903cF1c"; `WETH`: `string` = "0x63e537a69b3f5b03f4f46c5765c82861bd874b6e"; `Multicall2`: `string` = "0xe9939e7Ea7D7fb619Ac57f648Da7B1D425832631" } |
-| `maticmum.DAI_AAVE` | `string` |
-| `maticmum.USDC_AAVE` | `string` |
-| `maticmum.USDT_AAVE` | `string` |
-| `maticmum.WETH_AAVE` | `string` |
-| `maticmum.aWETH` | `string` |
-| `maticmum.aDAI` | `string` |
-| `maticmum.aUSDC` | `string` |
-| `maticmum.DAI` | `string` |
-| `maticmum.USDC` | `string` |
+| `maticmum` | { `WETH`: `string` = "0xD087ff96281dcf722AEa82aCA57E8545EA9e6C96"; `WMATIC`: `string` = "0xf237dE5664D3c2D2545684E76fef02A3A58A364c"; `USDC`: `string` = "0xe9DcE89B076BA6107Bb64EF30678efec11939234"; `DAI`: `string` = "0xF14f9596430931E177469715c591513308244e8F"; `Multicall2`: `string` = "0xe9939e7Ea7D7fb619Ac57f648Da7B1D425832631" } |
 | `maticmum.WETH` | `string` |
+| `maticmum.WMATIC` | `string` |
+| `maticmum.USDC` | `string` |
+| `maticmum.DAI` | `string` |
 | `maticmum.Multicall2` | `string` |
 | `local` | {} |
 | `matic` | { `DAI`: `string` = "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063"; `USDC`: `string` = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"; `WETH`: `string` = "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619"; `Multicall2`: `string` = "0x275617327c958bD06b5D6b871E7f491D76113dd8" } |
@@ -152,17 +146,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:77
-
-___
-
-### <a id="unitcalculations" name="unitcalculations"></a> unitCalculations
-
-• **unitCalculations**: `UnitCalculations`
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/mangrove.ts:78
+@mangrovedao/mangrove.js/src/mangrove.ts:97
 
 ## Methods
 
@@ -201,7 +185,7 @@ Returns an instance mangrove.js
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:102
+@mangrovedao/mangrove.js/src/mangrove.ts:121
 
 ___
 
@@ -215,7 +199,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:137
+@mangrovedao/mangrove.js/src/mangrove.ts:159
 
 ___
 
@@ -240,7 +224,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:199
+@mangrovedao/mangrove.js/src/mangrove.ts:219
 
 ___
 
@@ -262,7 +246,7 @@ Get an OfferLogic object allowing one to monitor and set up an onchain offer log
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:216
+@mangrovedao/mangrove.js/src/mangrove.ts:236
 
 ___
 
@@ -284,7 +268,7 @@ Get a LiquidityProvider object to enable Mangrove's signer to pass buy and sell 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:231
+@mangrovedao/mangrove.js/src/mangrove.ts:251
 
 ___
 
@@ -305,7 +289,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:257
+@mangrovedao/mangrove.js/src/mangrove.ts:279
 
 ___
 
@@ -329,7 +313,7 @@ Note that this reads from the static `Mangrove` address registry which is shared
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:266
+@mangrovedao/mangrove.js/src/mangrove.ts:288
 
 ___
 
@@ -354,23 +338,76 @@ Note that this writes to the static `Mangrove` address registry which is shared 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:275
+@mangrovedao/mangrove.js/src/mangrove.ts:297
+
+___
+
+### <a id="getnamefromaddress" name="getnamefromaddress"></a> getNameFromAddress
+
+▸ **getNameFromAddress**(`address`): `string`
+
+Gets the name of an address on the current network.
+
+Note that this reads from the static `Mangrove` address registry which is shared across instances of this class.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `address` | `string` |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:306
+
+___
+
+### <a id="gettokenandaddress" name="gettokenandaddress"></a> getTokenAndAddress
+
+▸ **getTokenAndAddress**(`address`): `Object`
+
+Gets the token corresponding to the address if it is known; otherwise, null.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `address` | `string` |
+
+#### Returns
+
+`Object`
+
+| Name | Type |
+| :------ | :------ |
+| `address` | `string` |
+| `token` | [`MgvToken`](MgvToken.md) |
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:325
 
 ___
 
 ### <a id="tounits" name="tounits"></a> toUnits
 
-▸ **toUnits**(`amount`, `nameOrDecimals`): `BigNumber`
+▸ `Static` **toUnits**(`amount`, `nameOrDecimals`): `BigNumber`
 
 Convert public token amount to internal token representation.
 
 if `nameOrDecimals` is a string, it is interpreted as a token name. Otherwise
 it is the number of decimals.
 
+For convenience, has a static and an instance version.
+
 **`Example`**
 
 ```
- mgv.toUnits(10,"USDC") // 10e6 as ethers.BigNumber
+ Mangrove.toUnits(10,"USDC") // 10e6 as ethers.BigNumber
  mgv.toUnits(10,6) // 10e6 as ethers.BigNumber
  ```
 
@@ -387,7 +424,28 @@ it is the number of decimals.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:290
+@mangrovedao/mangrove.js/src/mangrove.ts:343
+
+___
+
+### <a id="tounits-1" name="tounits-1"></a> toUnits
+
+▸ **toUnits**(`amount`, `nameOrDecimals`): `BigNumber`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `amount` | `any` |
+| `nameOrDecimals` | `string` \| `number` |
+
+#### Returns
+
+`BigNumber`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:349
 
 ___
 
@@ -420,7 +478,7 @@ it is the number of decimals.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:305
+@mangrovedao/mangrove.js/src/mangrove.ts:364
 
 ___
 
@@ -443,7 +501,7 @@ Provision available at mangrove for address given in argument, in ethers
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:313
+@mangrovedao/mangrove.js/src/mangrove.ts:372
 
 ___
 
@@ -465,7 +523,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:321
+@mangrovedao/mangrove.js/src/mangrove.ts:380
 
 ___
 
@@ -486,22 +544,20 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:330
+@mangrovedao/mangrove.js/src/mangrove.ts:389
 
 ___
 
 ### <a id="approvemangrove" name="approvemangrove"></a> approveMangrove
 
-▸ **approveMangrove**(`tokenName`, `arg?`, `overrides?`): `Promise`<`ContractTransaction`\>
+▸ **approveMangrove**(`tokenName`, `arg?`): `Promise`<`ContractTransaction`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `tokenName` | `string` |
-| `arg` | `Object` |
-| `arg.amount?` | `any` |
-| `overrides` | `Overrides` |
+| `arg` | `any` |
 
 #### Returns
 
@@ -509,7 +565,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:337
+@mangrovedao/mangrove.js/src/mangrove.ts:396
 
 ___
 
@@ -525,7 +581,106 @@ Return global Mangrove config
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:349
+@mangrovedao/mangrove.js/src/mangrove.ts:407
+
+___
+
+### <a id="normalizepermitdata" name="normalizepermitdata"></a> normalizePermitData
+
+▸ **normalizePermitData**(`params`): `Promise`<[`PermitData`](../namespaces/Mangrove-1.md#permitdata)\>
+
+Permit data normalization
+Autofill/convert 'nonce' field of permit data if needd, convert deadline to
+num if needed.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | [`SimplePermitData`](../namespaces/Mangrove-1.md#simplepermitdata) |
+
+#### Returns
+
+`Promise`<[`PermitData`](../namespaces/Mangrove-1.md#permitdata)\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:426
+
+___
+
+### <a id="simplesignpermitdata" name="simplesignpermitdata"></a> simpleSignPermitData
+
+▸ **simpleSignPermitData**(`params`): `Promise`<`string`\>
+
+Sign typed data for permit().
+To set the deadline to +days or +months, you can do
+let date = new Date();
+date.setDate(date.getDate() + days);
+date.setMonth(date.getMonth() + months);
+- Nonce is autoselected if needed and can be a number
+- Date can be a Date or a number
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | [`SimplePermitData`](../namespaces/Mangrove-1.md#simplepermitdata) |
+
+#### Returns
+
+`Promise`<`string`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:457
+
+___
+
+### <a id="signpermitdata" name="signpermitdata"></a> signPermitData
+
+▸ **signPermitData**(`data`): `Promise`<`string`\>
+
+Permit data generator for normalized permit data input
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | [`PermitData`](../namespaces/Mangrove-1.md#permitdata) |
+
+#### Returns
+
+`Promise`<`string`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:463
+
+___
+
+### <a id="permit" name="permit"></a> permit
+
+▸ **permit**(`params`): `Promise`<`ContractTransaction`\>
+
+Give permit to Mangrove.
+Permit params.spender to buy on behalf of owner on the outbound/inbound
+offer list up to value. Default deadline is now + 1 day. Default nonce is
+current owner nonce.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | [`SimplePermitData`](../namespaces/Mangrove-1.md#simplepermitdata) |
+
+#### Returns
+
+`Promise`<`ContractTransaction`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:499
 
 ___
 
@@ -547,7 +702,7 @@ Read all contract addresses on the given network.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:370
+@mangrovedao/mangrove.js/src/mangrove.ts:531
 
 ___
 
@@ -570,7 +725,7 @@ Read a contract address on a given network.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:381
+@mangrovedao/mangrove.js/src/mangrove.ts:542
 
 ___
 
@@ -594,7 +749,7 @@ Set a contract address on the given network.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:396
+@mangrovedao/mangrove.js/src/mangrove.ts:557
 
 ___
 
@@ -617,7 +772,7 @@ To read decimals directly onchain, use `fetchDecimals`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:408
+@mangrovedao/mangrove.js/src/mangrove.ts:569
 
 ___
 
@@ -639,7 +794,7 @@ Read displayed decimals for `tokenName`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:415
+@mangrovedao/mangrove.js/src/mangrove.ts:576
 
 ___
 
@@ -661,7 +816,7 @@ Read displayed decimals for `tokenName` when displayed as a price.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:422
+@mangrovedao/mangrove.js/src/mangrove.ts:583
 
 ___
 
@@ -684,7 +839,7 @@ Set decimals for `tokenName` on current network.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:431
+@mangrovedao/mangrove.js/src/mangrove.ts:592
 
 ___
 
@@ -707,7 +862,7 @@ Set displayed decimals for `tokenName`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:438
+@mangrovedao/mangrove.js/src/mangrove.ts:599
 
 ___
 
@@ -730,7 +885,7 @@ Set displayed decimals for `tokenName` when displayed as a price.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:445
+@mangrovedao/mangrove.js/src/mangrove.ts:606
 
 ___
 
@@ -753,7 +908,7 @@ Read chain for decimals of `tokenName` on current network and save them
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:452
+@mangrovedao/mangrove.js/src/mangrove.ts:613
 
 ___
 
@@ -777,7 +932,7 @@ deploy contracts during execution).
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:471
+@mangrovedao/mangrove.js/src/mangrove.ts:632
 
 ___
 
@@ -807,7 +962,7 @@ If an open market has a token with no/bad decimals/symbol function, this functio
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:499
+@mangrovedao/mangrove.js/src/mangrove.ts:660
 
 ___
 
@@ -833,7 +988,7 @@ Returns open markets according to mangrove reader. Will internally update Mangro
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:608
+@mangrovedao/mangrove.js/src/mangrove.ts:769
 
 ___
 
@@ -854,7 +1009,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:649
+@mangrovedao/mangrove.js/src/mangrove.ts:810
 
 ___
 
@@ -880,7 +1035,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:657
+@mangrovedao/mangrove.js/src/mangrove.ts:818
 
 ## Constructors
 
@@ -899,4 +1054,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:146
+@mangrovedao/mangrove.js/src/mangrove.ts:168

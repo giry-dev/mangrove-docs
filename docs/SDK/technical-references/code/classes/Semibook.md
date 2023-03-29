@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:131
+@mangrovedao/mangrove.js/src/semibook.ts:130
 
 ## Methods
 
@@ -90,7 +90,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:132
+@mangrovedao/mangrove.js/src/semibook.ts:131
 
 ___
 
@@ -106,7 +106,7 @@ Stop listening to events from mangrove
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:146
+@mangrovedao/mangrove.js/src/semibook.ts:145
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:150
+@mangrovedao/mangrove.js/src/semibook.ts:149
 
 ___
 
@@ -148,7 +148,7 @@ Returns struct containing offer details in the current offer list
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:161
+@mangrovedao/mangrove.js/src/semibook.ts:160
 
 ___
 
@@ -174,7 +174,7 @@ fee *remains* in basis points of the token being bought
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:197
+@mangrovedao/mangrove.js/src/semibook.ts:196
 
 ___
 
@@ -194,7 +194,30 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:202
+@mangrovedao/mangrove.js/src/semibook.ts:201
+
+___
+
+### <a id="permit" name="permit"></a> permit
+
+▸ **permit**(`data`): `void`
+
+Sign permit data for buying outbound_tkn with spender's inbound_tkn
+See mangrove.ts.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | `Omit`<[`SimplePermitData`](../namespaces/Mangrove-1.md#simplepermitdata), ``"outbound_tkn"`` \| ``"inbound_tkn"``\> |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:216
 
 ___
 
@@ -210,7 +233,7 @@ Returns the number of offers in the cache.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:216
+@mangrovedao/mangrove.js/src/semibook.ts:231
 
 ___
 
@@ -226,7 +249,7 @@ Returns the id of the best offer in the cache
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:221
+@mangrovedao/mangrove.js/src/semibook.ts:236
 
 ___
 
@@ -242,11 +265,11 @@ Returns an iterator over the offers in the cache.
 
 #### Implementation of
 
-Iterable.\_\_@iterator@88
+Iterable.\_\_@iterator@89
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:226
+@mangrovedao/mangrove.js/src/semibook.ts:241
 
 ___
 
@@ -262,7 +285,7 @@ Convenience method for getting an iterator without having to call `[Symbol.itera
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:231
+@mangrovedao/mangrove.js/src/semibook.ts:246
 
 ___
 
@@ -285,7 +308,7 @@ semibook. If there is no offer with a better price, `undefined` is returned.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:238
+@mangrovedao/mangrove.js/src/semibook.ts:253
 
 ___
 
@@ -326,7 +349,7 @@ traded due to insufficient volume on the book / price becoming bad.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:286
+@mangrovedao/mangrove.js/src/semibook.ts:301
 
 ___
 
@@ -348,7 +371,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:313
+@mangrovedao/mangrove.js/src/semibook.ts:328
 
 ___
 
@@ -371,7 +394,7 @@ Returns `true` if `price` is better than `referencePrice`; Otherwise, `false` is
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:384
+@mangrovedao/mangrove.js/src/semibook.ts:399
 
 ___
 
@@ -394,7 +417,7 @@ Returns `true` if `price` is worse than `referencePrice`; Otherwise, `false` is 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:390
+@mangrovedao/mangrove.js/src/semibook.ts:405
 
 ___
 
@@ -408,7 +431,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:394
+@mangrovedao/mangrove.js/src/semibook.ts:409
 
 ___
 
@@ -429,7 +452,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:892
+@mangrovedao/mangrove.js/src/semibook.ts:907
 
 ___
 
@@ -449,7 +472,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:910
+@mangrovedao/mangrove.js/src/semibook.ts:922
 
 ___
 
@@ -469,7 +492,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:976
+@mangrovedao/mangrove.js/src/semibook.ts:988
 
 ___
 
@@ -489,4 +512,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:985
+@mangrovedao/mangrove.js/src/semibook.ts:997

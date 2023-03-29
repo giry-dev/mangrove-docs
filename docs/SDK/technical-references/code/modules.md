@@ -9,6 +9,7 @@ custom_edit_url: null
 ## Namespaces
 
 - [eth](namespaces/eth.md)
+- [KandelStrategies](namespaces/KandelStrategies-1.md)
 - [LiquidityProvider](namespaces/LiquidityProvider-1.md)
 - [Mangrove](namespaces/Mangrove-1.md)
 - [Market](namespaces/Market-1.md)
@@ -18,6 +19,7 @@ custom_edit_url: null
 
 ## Classes
 
+- [KandelStrategies](classes/KandelStrategies.md)
 - [LiquidityProvider](classes/LiquidityProvider.md)
 - [Mangrove](classes/Mangrove.md)
 - [Market](classes/Market.md)
@@ -78,7 +80,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/constants.ts:31
+@mangrovedao/mangrove.js/src/constants.ts:54
 
 ## References
 
