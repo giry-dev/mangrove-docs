@@ -53,7 +53,7 @@ Changing the price of an offer can change its %%rank|offer-rank%% in the offer b
 
 ### Update offer using OfferLogic
 
-When we updated our offer before, we used a `liquidityProvider` and we created this using Mangrove. This means that when we updated our offer, we did using Mangrove directly. But if you have your own contract with your own update offer logic, you can use that by creating an [`OfferLogic`](../technical-references/code/classes/OfferLogic). This is simply done by calling the constructor with Mangrove, your contracts address and if your contract is a [forwarder](../../strat-lib/background/offer-maker/forwarder.md) (remember to import the type first, e.g., using `const { OfferLogic } = require("@mangrovedao/mangrove.js");`).
+When we updated our offer before, we used a `liquidityProvider` and we created this using Mangrove. This means that when we updated our offer, we did using Mangrove directly. But if you have your own contract with your own update offer logic, you can use that by creating an [`OfferLogic`](../technical-references/code/classes/OfferLogic). This is simply done by calling the constructor with Mangrove (remember to import the type first, e.g., using `const { OfferLogic } = require("@mangrovedao/mangrove.js");`).
 
 ```js reference
 https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95ba097bf5/packages/mangrove.js/examples/how-tos/update-offer.js#L43-L46
