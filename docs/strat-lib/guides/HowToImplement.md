@@ -27,7 +27,7 @@ Functions in offer logic are automatically executed by Mangrove, who is then `ms
 
 The offer logic in `makerExecute` **should** be gas bounded since an out-of-gas exception will lead to Mangrove transferring your whole %%provision|provision%% to the taker as a %%bounty|bounty%%.
 
-**Must** be in `makerPoshtook`:
+**Must** be in `makerPosthook`:
 * any write action to the %%offer list|offer-list%% to which the currently executed offer belongs.
 * any logging of a revert reason raised during `makerExecute`. The (truncated to a bytes32) reason is passed to `makerPosthook` in the `makerData` field.
 
