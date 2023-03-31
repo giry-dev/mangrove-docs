@@ -57,7 +57,7 @@ function approveLender(contract IERC20 token, uint256 amount) public
 ### executeOperation
 
 ```solidity
-function executeOperation(address token, uint256 amount, uint256 fees, address, bytes) external
+function executeOperation(address token, uint256, uint256, address, bytes) external
 ```
 
 ### flashLoan
