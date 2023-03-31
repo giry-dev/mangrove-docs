@@ -250,7 +250,7 @@ function __posthookSuccess__(MgvLib.SingleOrder calldata order, bytes32 makerDat
     ...
 ```
 
-Notice that we call `super`'s implementation of the hook. This ultimately ends up attempting to repost the offer residual (cf. the documentation of [Post trade hooks for MangroveOffer](../background/offer-maker/mangrove-offer.md#post-trade-hooks) and the reference for [Customizing `makerPosthook`](../technical-references/main-hooks.md#customizing-makerposthook)). The return value captured in `repost_status` tells us whether the offer had a residual (in case of a %%maker partial fill|maker-partial-fill%).
+Notice that we call `super`'s implementation of the hook. This ultimately ends up attempting to repost the offer residual (cf. the documentation of [Post trade hooks for MangroveOffer](../background/offer-maker/mangrove-offer.md#post-trade-hooks) and the reference for [Customizing `makerPosthook`](../technical-references/main-hooks.md#customizing-makerposthook)). The return value captured in `repost_status` tells us whether the offer had a residual (in case of a %%maker partial fill|maker-partial-fill%%).
 
 Because both offers should always %%give|gives%% the same volume, we have two cases to handle - either
 
