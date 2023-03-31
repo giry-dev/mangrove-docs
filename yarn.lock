@@ -2900,20 +2900,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove-core@npm:^1.4.6-1":
-  version: 1.4.6-1
-  resolution: "@mangrovedao/mangrove-core@npm:1.4.6-1"
-  checksum: 846e15b88a2b28188ce0f7db94cfcd2e93b66cce6fcc8bb3ebd88299a7cf58b797140038f011b29d2458124abeeab40ce1435352ce0fbe873bbae9f263b82784
+"@mangrovedao/mangrove-core@npm:1.4.6-2":
+  version: 1.4.6-2
+  resolution: "@mangrovedao/mangrove-core@npm:1.4.6-2"
+  checksum: 5570e35cfd30527b111fc747236bacd35d448ce03ba106815310964bdf532838998293d9f61c7202b9dfd8f3dba53e98c98834d5c26a57faa115c5167339da26
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove.js@npm:1.2.4-2":
-  version: 1.2.4-2
-  resolution: "@mangrovedao/mangrove.js@npm:1.2.4-2"
+"@mangrovedao/mangrove.js@npm:1.2.4-3":
+  version: 1.2.4-3
+  resolution: "@mangrovedao/mangrove.js@npm:1.2.4-3"
   dependencies:
     "@ethersproject/experimental": ^5.7.0
     "@mangrovedao/commonlib.js": 1.0.0
-    "@mangrovedao/mangrove-core": ^1.4.6-1
+    "@mangrovedao/mangrove-core": 1.4.6-2
     async-mutex: ^0.4.0
     big.js: ^6.2.1
     esbuild-plugin-resolve: ^1.0.3
@@ -2922,7 +2922,7 @@ __metadata:
     yargs: ^17.3.0
   bin:
     mgv: ./dist/nodejs/cli/mgv.js
-  checksum: 8d91d4a36ced02f2ed14cfb4c46f0bbf3bcf4c363c25323f13794678b3f5b8bc2f02939480b6895ba856a4edf5c5d6b0e9cb2dabcdb9571d16ea69651ad2f2bb
+  checksum: 847a94128234cec5306dadcc03eb50884dd158d5e2d1126ce081e33888d0022410d42f55c72d962645f62136d68d2e3d9ec81c98178be916c54b29f467073b74
   languageName: node
   linkType: hard
 
@@ -12890,8 +12890,8 @@ __metadata:
     "@docusaurus/theme-mermaid": ^2.2.0
     "@ethersproject/abi": ^5.4.7
     "@ethersproject/providers": ^5.4.7
-    "@mangrovedao/mangrove-core": ^1.4.6-1
-    "@mangrovedao/mangrove.js": 1.2.4-2
+    "@mangrovedao/mangrove-core": 1.4.6-2
+    "@mangrovedao/mangrove.js": 1.2.4-3
     "@mdx-js/react": ^1.6.22
     "@nomicfoundation/hardhat-chai-matchers": ^1.0.0
     "@nomicfoundation/hardhat-network-helpers": ^1.0.0

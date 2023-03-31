@@ -19,12 +19,18 @@ custom_edit_url: null
 
 ## Classes
 
+- [KandelDistribution](classes/KandelDistribution.md)
+- [KandelDistributionGenerator](classes/KandelDistributionGenerator.md)
+- [KandelFarm](classes/KandelFarm.md)
+- [KandelInstance](classes/KandelInstance.md)
+- [KandelSeeder](classes/KandelSeeder.md)
 - [KandelStrategies](classes/KandelStrategies.md)
 - [LiquidityProvider](classes/LiquidityProvider.md)
 - [Mangrove](classes/Mangrove.md)
 - [Market](classes/Market.md)
 - [MgvToken](classes/MgvToken.md)
 - [OfferLogic](classes/OfferLogic.md)
+- [OfferMaker](classes/OfferMaker.md)
 - [Semibook](classes/Semibook.md)
 
 ## Variables

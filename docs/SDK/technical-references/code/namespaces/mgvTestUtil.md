@@ -492,7 +492,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:480
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:481
 
 ___
 
@@ -514,7 +514,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:495
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:496
 
 ___
 
@@ -536,7 +536,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:503
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:504
 
 ___
 
@@ -556,7 +556,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:511
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:512
 
 ___
 
@@ -578,49 +578,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:543
-
-___
-
-### <a id="approvemgv" name="approvemgv"></a> approveMgv
-
-▸ **approveMgv**(`token`, `owner`, `amount`): `Promise`<`void`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `token` | [`MgvToken`](../classes/MgvToken.md) |
-| `owner` | [`Account`](mgvTestUtil.md#account) |
-| `amount` | `number` |
-
-#### Returns
-
-`Promise`<`void`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:551
-
-___
-
-### <a id="approve" name="approve"></a> approve
-
-▸ **approve**(`token`, `owner`, `spenderAddress`, `amount`): `Promise`<`void`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `token` | [`MgvToken`](../classes/MgvToken.md) |
-| `owner` | [`Account`](mgvTestUtil.md#account) |
-| `spenderAddress` | `string` |
-| `amount` | `number` |
-
-#### Returns
-
-`Promise`<`void`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:560
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:544
