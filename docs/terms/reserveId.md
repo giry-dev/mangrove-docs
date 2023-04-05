@@ -1,7 +1,7 @@
 ---
 id: reserveId
 title: Offer owner's reserve identifier
-hoverText: An address identifying fund owner when using a router
+hoverText: An immutable address identifying fund owner when using a router
 ---
 
 When using a %%router|router%%'s pull (or push) methods, maker contract's reserveId is passed in order to identify where funds must be pulled from (or pushed to). ReserveId is ignored when contract has no router.

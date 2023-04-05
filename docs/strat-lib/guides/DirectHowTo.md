@@ -22,9 +22,9 @@ The Direct constructor looks like this:
 ```solidity reference title="Direct contract's constructor"
 https://github.com/mangrovedao/mangrove-core/blob/6439b68eb657200192d84cddf094892181c74596/src/strategies/offer_maker/abstract/Direct.sol#L36-L43
 ```
-which provides `mgv` (the address of the Mangrove contract) to MangroveOffer and %%`gasreq`|gasreq%% the gas that is required to execute the %%offer logic|offer-logic%%. The specific arguments of the Direct's constructor are the %%router|router%%'s address and its %%reserveId|reserveId%%. Notice that passing `address(0)` as reserveId is interpreted by Direct as requiring reserveId to be the contract's address.
+which provides `mgv` (the address of the Mangrove contract) to MangroveOffer and %%`gasreq`|gasreq%% the gas that is required to execute the %%offer logic|offer-logic%%. The specific arguments of the Direct's constructor are the %%`router_`|router%%'s address and its %%`reserveId`|reserveId%%. Notice that passing `address(0)` as `reserveId` is interpreted by Direct as requiring `reserveId` to be the contract's address.
 
-The additional formal parameter, which `Direct` requires is called `router_`. This should be either the address of a deployed %%router|router%%, or the zero address, when you wish to build a `Direct` contract that will do its own liquidity routing. (In the latter case, for clarity, you may also use the public constant [`NO_ROUTER`](../technical-references/code/strategies/MangroveOffer.md#no_router) provided by `MangroveOffer`, which is simply an alias for `AbstractRouter(address(0))`.)
+The `router_` argument can be either the address of a deployed %%router|router%%, or the zero address cast to an `AbstractRouter` type, when you wish to build a `Direct` contract that will do its own liquidity routing. (In the latter case, for clarity, you may also use the public constant [`NO_ROUTER`](../technical-references/code/strategies/MangroveOffer.md#no_router) provided by `MangroveOffer`.
 
 We will allow users of `OfferMaker` to supply a %%router|router%%, and use the following constructor for our contract:
 ```solidity
