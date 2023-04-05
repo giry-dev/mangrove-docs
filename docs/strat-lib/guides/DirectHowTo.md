@@ -153,7 +153,7 @@ Let's follow the second design principle as it allows us to illustrate how to us
 
 We modify the simple constructor of `OfferMaker` to take into account the additional gas requirements of `Amplifier`'s logic: To retract (or update) the second offer each time an offer is taken. We also choose to specialize instances of our maker contract to a particular choice of `BASE`, `STABLE1` and `STABLE2` tokens - requiring these to be given as arguments when construing the contract.
 
-In the constructor below, we also show how to instantiate and setup a simple %%router|router%% in order to use the deployer's account as %%reserve|reserve%%.
+In the constructor below, we also show how to instantiate and setup a simple %%router|router%% in order to use the deployer's account as fund reserve.
 
 ```solidity
 pragma solidity ^0.8.10;
