@@ -28,8 +28,10 @@ Referring to the [call sequence diagram](#call-sequence-overview) this maker app
 
 Maker contracts inheriting from [MangroveOffer](../background/offer-maker/mangrove-offer.md) provide two methods to assist with approvals: 
 
-* [`activate`](../technical-references/code/strategies/MangroveOffer.md#activate) performs the required approvals so as to allow the contract itself to interact with Mangrove on a set of assets.
-* [`checklist`](../technical-references/code/strategies/MangroveOffer.md#checklist) verifies that this contract's current state is ready to be used by `msg.sender` to post offers on Mangrove.
+* [`activate`](../technical-references/code/strategies/MangroveOffer.md#activate) performs the required approvals so as to allow the contract itself to interact with Mangrove on a set of assets. 
+* [`checklist`](../technical-references/code/strategies/MangroveOffer.md#checklist) verifies that this contract's current state is ready to be used to post offers on Mangrove.
+
+Both `activate` and `checklist` functions can be customized by hooks to adapt them to a particular strat built on top of the strat library.
 
 
 ### Advanced maker approvals
@@ -38,29 +40,22 @@ As drawn, the [call sequence diagram](#call-sequence-overview) depicts a situati
 
 As an outset, the administrator of the maker contract and any other contracts involved in trade settlement initiated by Mangrove must ensure that the proper approvals for liquidity flow is in place before offers are executed. 
 
-For maker contracts that are built using the Strat Lib, the default behavior of the %%offer logic|offer-logic%% is to assume the funds will come from the offer owner %%reserve|reserve%%. If the address of the reserve is not the maker contract itself, then proper approvals need to be set up so that liquidity can be brought from there. There are two noteworthy cases we comment below.
+For maker contracts that are built using the Strat Lib, the default behavior of the %%offer logic|offer-logic%% is to assume the funds in the maker contract itself. When this is not the case, additional approvals need to be set up so that liquidity can be brought from there. There are two noteworthy cases we comment below.
 
 #### When a Strat Lib router is used to manage the funds of the maker
 
 As described under [Liquidity routing](../technical-references/router.md) the Strat Lib provides building blocks for advanced cash management strategies. The %%router|router%% abstraction is provided for managing transfers of %%outbound|outbound%% and %%inbound|inbound%% token reserves of %%offer owners|offer-owner%%.
 
-For the maker contract it must approve its router for any token it wishes to push to an %%offer owner|offer-owner%%'s reserve. 
-
-Strat Lib routers provide two methods to assist with their approvals:
-
-* [`activate`](../technical-references/router.md#router-activation) performs all router-centric approvals necessary to route liquidity for a given token.
-* [`checklist`](../technical-references/router.md#router-checklist) verifies that router has necessary approvals to route liquidity for a given token and a given reserve (see [below](#when-the-reserve-is-not-directly-on-the-maker-or-the-router) for more on reserve approvals).
+The maker contract should approve its router for any token it wishes to push to an %%offer owner|offer-owner%%'s reserve. 
 
 Please refer to the section on [Routers](../technical-references/router.md) for more details, and refer to the API Reference for [AbstractRouter](../technical-references/code/strategies/routers/AbstractRouter.md) - the base that Strat Lib routers are implemented on top of.
 
 
 #### When a Forwarder-based contract manages offers belonging to several offer owners
 
-The [Forwarder](../background/offer-maker/forwarder.md) building block provides a base for maker contracts that manages offers belonging to several offer owners.
+The [Forwarder](../background/offer-maker/forwarder.md) building block provides a base for maker contracts that manage offers belonging to several offer owners.
 
-A basic Forwarder strategy is to assume that each offer owner's %%reserve|reserve%% is actually the offer owner's address. In such cases, the offer owners need to approve the maker contract or its %%router|router%% (if it has one) for outbound token transfer. 
-
-In particular, for contracts based on the [Forwarder](../background/offer-maker/forwarder.md) building block the usage of a %%liquidity router|router%% is *required*  - so in this case, the offer owners need only consider approval for the router of the `Forwarder` contract.
+A basic Forwarder strategy is to assume that the funds of each offer comes from its owner's addres. In such cases, the offer owners need to approve the maker contract's %%router|router%% for outbound token transfer. 
 
 Please refer to the section on the [Forwarder building block](../background/offer-maker/forwarder.md) and to the API Reference for the [Forwarder](../technical-references/code/strategies/offer_forwarder/abstract/Forwarder.md) base for further reading.
 
@@ -70,7 +65,7 @@ Please refer to the section on the [Forwarder building block](../background/offe
 The schematic diagram below illustrates the case, where a maker contract manages offers with a %%router|router%% and external %%offer reserves|reserve%%. Such a maker contract may be implemented with the [Forwarder](../background/offer-maker/forwarder.md) building block combined with a %%router|router%%.
 
 In this case, 
-* the router needs approval to transfer outbound from the Maker reserve and needs approval to transfer inbound from the maker contract. 
+* the router needs approval to transfer outbound from the offer owner and needs approval to transfer inbound from the maker contract. 
 * Mangrove needs approval to transfer outbound from the Maker contract.
 
 This is illustrated in the diagram below where we only focus on the `transferFrom` calls.
@@ -78,7 +73,7 @@ This is illustrated in the diagram below where we only focus on the `transferFro
 ```mermaid
 sequenceDiagram
 
-    participant Maker as Maker reserve
+    participant Maker as Offer owner
     participant MC as Maker contract
 
     rect grey    
