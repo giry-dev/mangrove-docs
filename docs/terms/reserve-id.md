@@ -1,5 +1,5 @@
 ---
-id: reserveId
+id: reserve-id
 title: Offer owner's reserve identifier
 hoverText: An immutable address identifying fund owner when using a router
 ---

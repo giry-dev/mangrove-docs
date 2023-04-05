@@ -223,7 +223,7 @@ We make sure to impersonate the taker that we setup an address for [above](#test
 
 With these helper methods, the test body amounts to the following steps:
 
-* Approve the %%router|router%% of `Amplifier` to access the WETH of the tester contract, which was given as %%reserveId|reserveId%% when deploying the Amplifier (read more about [Approvals](./approvals.md)).
+* Approve the %%router|router%% of `Amplifier` to access the WETH of the tester contract, which was given as %%reserve-id|reserveId%% when deploying the Amplifier (read more about [Approvals](./approvals.md)).
 * Provide the tester contract with some WETH to be able to successfully %%give|gives%% what the offer promises. (Using another cheatcode from Foundry, [`deal()`](https://book.getfoundry.sh/cheatcodes/deal).)
 * Post and fund offers with [`postAndFundOffers()`](#post-and-fund-offers).
 * Snipe *one* offer with [`takeOffer()`](#taking-a-single-offer).
