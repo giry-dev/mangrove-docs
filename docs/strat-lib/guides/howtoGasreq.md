@@ -36,7 +36,7 @@ Here are some common operations and their approximate gas consumption:
 | Simple [Direct](../background/offer-maker/direct.md) contract   | 30,000   |
 | ERC20 transfer | 25,000 (worst case is when transferring to account with 0 balance)      |
 | AAVE redeem/borrow | 300,000 |
-| [updateOffer](../technical-references/code/strategies/offer_maker/abstract/Direct.md#updateoffer) without changing the price | 20,000 |
+| [updateOffer](../technical-references/code/strategies/offer_maker/abstract/Direct.md#updateoffer) | 20,000 + 5,100*`k` where `k` is the distance between used %%pivot|pivot-id%% and the final position of the offer. |
 | [retractOffer](../technical-references/code/strategies/offer_maker/abstract/Direct.md#retractoffer) without deprovision | 10,000 |
 | [retractOffer](../technical-references/code/strategies/offer_maker/abstract/Direct.md#retractoffer) with deprovision | 50,000 |
 | Ethereum opcodes | [See ethereum documentation](https://ethereum.org/en/developers/docs/evm/opcodes/) |
