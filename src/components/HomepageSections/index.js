@@ -4,6 +4,28 @@ import styles from './styles.module.css';
 
 const TopFeatureList = [
   {
+    title: 'Web App Doc',
+    path: 'web-app-doc',
+    Svg: 'img/',
+    description: (
+      <>
+        Step-by-step explanations on how to use Mangrove DEX.
+      </>
+    ),
+    elementClass: 'frontpage--button',
+  },
+  {
+    title: 'Kandel Doc',
+    path: 'kandel-doc',
+    Svg: 'img/',
+    description: (
+      <>
+        Learn how the Kandel strategy works, configuration parameters and key mechanics.
+      </>
+    ),
+    elementClass: 'frontpage--button',
+  },
+  {
     title: 'Contracts',
     path: 'contracts',
     Svg: 'img/streamlinehq-phone-contact-phone-book-phone.svg',
