@@ -62,7 +62,7 @@ Please refer to the section on the [Forwarder building block](../background/offe
 
 <!-- #### Example -->
 
-The schematic diagram below illustrates the case, where a maker contract manages offers with a %%router|router%% and external %%offer reserves|reserve%%. Such a maker contract may be implemented with the [Forwarder](../background/offer-maker/forwarder.md) building block combined with a %%router|router%%.
+The schematic diagram below illustrates the case, where a maker contract manages offers with a %%router|router%%. Such a maker contract may be implemented with the [Forwarder](../background/offer-maker/forwarder.md) building block combined with a %%router|router%%.
 
 In this case, 
 * the router needs approval to transfer outbound from the offer owner and needs approval to transfer inbound from the maker contract. 
