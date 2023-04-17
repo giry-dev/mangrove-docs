@@ -24,7 +24,7 @@ https://github.com/mangrovedao/mangrove-core/blob/6439b68eb657200192d84cddf09489
 ```
 which provides `mgv` (the address of the Mangrove contract) to MangroveOffer and %%`gasreq`|gasreq%% the gas that is required to execute the %%offer logic|offer-logic%%. The specific arguments of the Direct's constructor are the %%`router_`|router%%'s address and its %%`reserveId`|reserve-id%%. Notice that passing `address(0)` as `reserveId` is interpreted by Direct as requiring `reserveId` to be the contract's address.
 
-The `router_` argument can be either the address of a deployed %%router|router%%, or the zero address cast to an `AbstractRouter` type, when you wish to build a `Direct` contract that will do its own liquidity routing. (In the latter case, for clarity, you may also use the public constant [`NO_ROUTER`](../technical-references/code/strategies/MangroveOffer.md#no_router) provided by `MangroveOffer`.
+The `router_` argument can be either the address of a deployed %%router|router%%, or the zero address cast to an `AbstractRouter` type, when you wish to build a `Direct` contract that will do its own liquidity routing. (In the latter case, for clarity, you may also use the public constant [`NO_ROUTER`](../technical-references/code/strategies/MangroveOffer.md#no_router) provided by `MangroveOffer`.)
 
 We will allow users of `OfferMaker` to supply a %%router|router%%, and use the following constructor for our contract:
 ```solidity
@@ -51,7 +51,7 @@ We use 30K for default %%`gasreq`|gasreq%% of our strat. This does not leave roo
 
 ### Simple offer management
 
-With this constructor in place we have almost a deployable maker contract, because Direct provides the implementation of a default offer logic as well as internal functions to post, update and retract offers posted by our contract.
+With this constructor in place we almost have a deployable maker contract. `Direct` already provides the implementation of a default %%offer logic|offer-logic%% as well as internal functions to post, update and retract offers posted by our contract.
 
 However, `Direct` does not expose any function able to [create new offers](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#posting-a-new-offer) on Mangrove, since the [`_newOffer`](../technical-references/code/strategies/offer_maker/abstract/Direct.md) function of Direct is internal. The requirement in our constructor to implement `ILiquidityProvider` imposes on us to have a public `newOffer` function. Using `ILiquidityProvider` ensures our contract is compatible with the [Mangrove SDK](../../SDK/README.md), which expects the `ILiquidityProvider` ABI.
 
@@ -127,7 +127,7 @@ function retractOffer(IERC20 outbound_tkn, IERC20 inbound_tkn, uint offerId, boo
 Our maker contract is now complete and ready to be [tested](./HowToTest.md) and [deployed](./HowToDeploy.md). 
 
 :::caution Redeeming funds
-We do not provide any method to redeem inbound or outbound tokens from the contract. However, MangroveOffer provides an admin only `approve` function, that allows contract's admin to retreive any token, following a call sequence of the form:
+We do not provide any method to redeem inbound or outbound tokens from the contract. However, `MangroveOffer` provides an admin-only `approve` function, that allows contract's admin to retrieve any token, following a call sequence of the form:
 ```solidity
 makerContract.approve(token, address(this), amount);
 token.transferFrom(address(makerContract), address(this), amount);
@@ -192,7 +192,7 @@ contract Amplifier is Direct {
 
 Note that as we manually construct and configure `router_` and set it as the router of `Amplifier`, we initially send the constant `NO_ROUTER` as argument to the `Direct` constructor.
 
-As in the example above, we need to create a way for the maker contract to post an offer. Here we will not try to comply to the `ILiquidityProvider` interface (and therefore this contract will no longer be fully usable with the SDK) and use a custom way of posting our two offers in the same transaction.
+As in the example above, we need to create a way for the maker contract to post an offer. For this example, we will not try to comply to the `ILiquidityProvider` interface - and therefore this contract will no longer be fully usable with the SDK. We will use a custom way of posting our two offers in the same transaction.
 
 ### Publishing amplified liquidity
 
@@ -278,7 +278,7 @@ function __posthookSuccess__(MgvLib.SingleOrder calldata order, bytes32 makerDat
 Notice that we call `super`'s implementation of the hook. This ultimately ends up attempting to repost the offer residual (cf. the documentation of [Post trade hooks for MangroveOffer](../background/offer-maker/mangrove-offer.md#post-trade-hooks) and the reference for [Customizing `makerPosthook`](../technical-references/main-hooks.md#customizing-makerposthook)). The return value captured in `repost_status` tells us whether the offer had a residual (in case of a %%maker partial fill|maker-partial-fill%).
 
 :::info default reposting policy
-Direct offer that are partially filled are automatically reposted during posthook, adapting %%wants|wants%% to remaining %%gives|gives%% in order to maintain offer's orginial price. Direct's posthook returns the constants REPOST_SUCCESS in case the offer's residual was reposted, or COMPLETE_FILL if the offer was entirely consumed by taker (constants are defined in MangroveOffer). If offer failed to repost, the hook returns Mangrove's reason.
+Direct offers that are partially filled are automatically reposted during posthook, adapting %%wants|wants%% to remaining %%gives|gives%% in order to maintain offer's original price. Direct's posthook returns the constants `REPOST_SUCCESS` in case the offer's residual was reposted, or `COMPLETE_FILL` if the offer was entirely consumed by taker (these constants are defined in `MangroveOffer`). If the offer fails to repost, the hook returns Mangrove's reason.
 :::
 
 #### Implementing case 1: An offer was reposted with a residual

@@ -40,7 +40,7 @@ As drawn, the [call sequence diagram](#call-sequence-overview) depicts a situati
 
 As an outset, the administrator of the maker contract and any other contracts involved in trade settlement initiated by Mangrove must ensure that the proper approvals for liquidity flow is in place before offers are executed. 
 
-For maker contracts that are built using the Strat Lib, the default behavior of the %%offer logic|offer-logic%% is to assume the funds in the maker contract itself. When this is not the case, additional approvals need to be set up so that liquidity can be brought from there. There are two noteworthy cases we comment below.
+For maker contracts that are built using the Strat Lib, the default behavior of the %%offer logic|offer-logic%% is to assume the funds are in the maker contract itself. When this is not the case, additional approvals need to be set up so that liquidity can be brought from there. There are two noteworthy cases we comment below.
 
 #### When a Strat Lib router is used to manage the funds of the maker
 

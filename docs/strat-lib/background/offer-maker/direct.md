@@ -14,7 +14,7 @@ Direct does many of the same things as MangroveOffer with a few key differences.
 
 **How outbound tokens are handled (for the taker):** When transferring the funds from the contract to the taker, Direct first tries to check if it itself has the funds, otherwise tries to get the funds using its %%router|router%% (if any).
 
-**ReserveId:** Direct contracts have an immutable %%reserveId|reserve-id%% that is passed as an argument to its router (if using one) to identify where funds should be tranferred from and to during offer logic's execution. Field is immutable to save gas and to allow a single router to pool liquidity from various maker contracts. It is then sufficient to check that contract's deployer controls the reserveId at deploy time.
+**ReserveId:** Direct contracts have an immutable %%reserveId|reserve-id%% that is passed as an argument to its router (if using one) to identify where funds should be transferred from and to during offer logic's execution. The field is immutable to save gas and to allow a single router to pool liquidity from various maker contracts. It is then sufficient to check that contract's deployer controls the %%reserveId|reserve-id%% at deploy time.
 
 MangroveOffer has no implementations of how to post, update or retract an offer. Direct provides default internal implementations for these methods. 
 
