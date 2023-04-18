@@ -18,7 +18,7 @@ Seeder for creating Kandel instances on-chain.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:16
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:17
 
 ___
 
@@ -30,7 +30,7 @@ Repository for Kandel instances.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:19
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:20
 
 ___
 
@@ -42,7 +42,19 @@ The Mangrove to interact with.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:22
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:23
+
+___
+
+### <a id="configuration" name="configuration"></a> configuration
+
+• **configuration**: `KandelConfiguration`
+
+The recommended configuration values to use for Kandel.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:26
 
 ## Constructors
 
@@ -60,7 +72,7 @@ Constructor
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:27
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:31
 
 ## Methods
 
@@ -90,7 +102,7 @@ A new KandelInstance.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:40
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:45
 
 ___
 
@@ -114,4 +126,4 @@ A new KandelDistributionGenerator.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:65
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:70

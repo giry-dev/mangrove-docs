@@ -49,6 +49,40 @@ ___
 
 ## Methods
 
+### <a id="calculateminimumdistribution" name="calculateminimumdistribution"></a> calculateMinimumDistribution
+
+▸ **calculateMinimumDistribution**(`params`): [`KandelDistribution`](KandelDistribution.md)
+
+Calculates a minimal recommended volume distribution of bids and asks and their base and quote amounts to match the geometric price distribution given by parameters.
+
+**`Remarks`**
+
+The price distribution may not match the priceDistributionParams exactly due to limited precision.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params` | `Object` | The parameters for the geometric distribution. |
+| `params.priceParams` | `PriceDistributionParams` | The parameters for the geometric price distribution. |
+| `params.midPrice` | `any` | The mid-price used to determine when to switch from bids to asks. |
+| `params.constantBase?` | `boolean` | Whether the base amount should be constant for all offers. |
+| `params.constantQuote?` | `boolean` | Whether the quote amount should be constant for all offers. |
+| `params.minimumBasePerOffer` | `any` | The minimum amount of base to give for each offer. Should be at least minimumBasePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market. |
+| `params.minimumQuotePerOffer` | `any` | The minimum amount of quote to give for each offer. Should be at least minimumQuotePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market. |
+
+#### Returns
+
+[`KandelDistribution`](KandelDistribution.md)
+
+The distribution of bids and asks and their base and quote amounts.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:34
+
+___
+
 ### <a id="calculatedistribution" name="calculatedistribution"></a> calculateDistribution
 
 ▸ **calculateDistribution**(`params`): [`KandelDistribution`](KandelDistribution.md)
@@ -66,18 +100,18 @@ The price distribution may not match the priceDistributionParams exactly due to 
 | `params` | `Object` | The parameters for the geometric distribution. |
 | `params.priceParams` | `PriceDistributionParams` | The parameters for the geometric price distribution. |
 | `params.midPrice` | `any` | The mid-price used to determine when to switch from bids to asks. |
-| `params.initialAskGives` | `any` | The initial amount of base to give for all asks. |
-| `params.initialBidGives?` | `any` | The initial amount of quote to give for all bids. If not provided, then initialAskGives is used as base for bids, and the quote the bid gives is set to according to the price. |
+| `params.initialAskGives?` | `any` | The initial amount of base to give for all asks. Should be at least minimumBasePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market. If not provided, then initialBidGives is used as quote for asks, and the base the ask gives is set to according to the price. |
+| `params.initialBidGives?` | `any` | The initial amount of quote to give for all bids. Should be at least minimumQuotePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market. If not provided, then initialAskGives is used as base for bids, and the quote the bid gives is set to according to the price. |
 
 #### Returns
 
 [`KandelDistribution`](KandelDistribution.md)
 
-The distribution of bids and asks and their base and quote amounts along with the required volume of base and quote for the distribution to be fully provisioned.
+The distribution of bids and asks and their base and quote amounts.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:32
+@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:74
 
 ___
 
@@ -90,6 +124,7 @@ Recalculates the gives for offers in the distribution such that the available ba
 **`Remarks`**
 
 The required volume can be slightly less than available due to rounding due to token decimals.
+Note that the resulting offered base volume for each offer should be at least minimumBasePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market - and similar for quote.
 
 #### Parameters
 
@@ -97,18 +132,18 @@ The required volume can be slightly less than available due to rounding due to t
 | :------ | :------ | :------ |
 | `params` | `Object` | The parameters for the recalculation. |
 | `params.distribution` | [`KandelDistribution`](KandelDistribution.md) | The distribution to reset the gives for. |
-| `params.availableBase` | `any` | The available base to consume. |
+| `params.availableBase?` | `any` | The available base to consume. If not provided, then the quote for bids is also used as quote for asks, and the base the ask gives is set to according to the price. |
 | `params.availableQuote?` | `any` | The available quote to consume. If not provided, then the base for asks is also used as base for bids, and the quote the bid gives is set to according to the price. |
 
 #### Returns
 
 [`KandelDistribution`](KandelDistribution.md)
 
-The distribution of bids and asks and their base and quote amounts along with the required volume of base and quote for the distribution to be fully provisioned.
+The distribution of bids and asks and their base and quote amounts.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:62
+@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:105
 
 ___
 
@@ -134,4 +169,4 @@ The new distribution.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:92
+@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:135
