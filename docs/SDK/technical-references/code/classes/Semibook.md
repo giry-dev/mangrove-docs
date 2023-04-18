@@ -332,7 +332,7 @@ if you add a `boundary` field, it either means
 - the minimum amount you want to receive if you spend all `given` (if to:"sell"), or
 - the maximum amount you are ready to spend if you buy all `given` (if to:"buy")
 
-So for instance, if you say {given:10,to:"sell",boundary:"5"}, estimateVolume will return the volume you will be able to receive if selling up to 10 at a min price of 10/5.
+So for instance, if you say `{given:10,to:"sell",boundary:"5"}`, estimateVolume will return the volume you will be able to receive if selling up to 10 at a min price of 10/5.
 
 The returned `givenResidue` is how much of the given token that cannot be
 traded due to insufficient volume on the book / price becoming bad.
@@ -456,6 +456,30 @@ ___
 
 ___
 
+### <a id="getminimumvolume" name="getminimumvolume"></a> getMinimumVolume
+
+▸ **getMinimumVolume**(`gasreq`): `Promise`<`any`\>
+
+Determines the minimum volume required to stay above density limit for the given gasreq.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `gasreq` | `number` | The gas requirement for the offer. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+The minimum volume required to stay above density limit.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:926
+
+___
+
 ### <a id="rawidtoid" name="rawidtoid"></a> rawIdToId
 
 ▸ `Static` **rawIdToId**(`rawId`): `number`
@@ -472,7 +496,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:922
+@mangrovedao/mangrove.js/src/semibook.ts:931
 
 ___
 
@@ -492,7 +516,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:988
+@mangrovedao/mangrove.js/src/semibook.ts:997
 
 ___
 
@@ -512,4 +536,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:997
+@mangrovedao/mangrove.js/src/semibook.ts:1006

@@ -12,17 +12,9 @@ Entrypoint for the Kandel strategies. Kandel is an Automated Market Making strat
 
 ### <a id="seeder" name="seeder"></a> seeder
 
-• **seeder**: `KandelSeeder`
+• **seeder**: [`KandelSeeder`](KandelSeeder.md)
 
-#### Defined in
-
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:16
-
-___
-
-### <a id="farm" name="farm"></a> farm
-
-• **farm**: `KandelFarm`
+Seeder for creating Kandel instances on-chain.
 
 #### Defined in
 
@@ -30,13 +22,39 @@ ___
 
 ___
 
+### <a id="farm" name="farm"></a> farm
+
+• **farm**: [`KandelFarm`](KandelFarm.md)
+
+Repository for Kandel instances.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:20
+
+___
+
 ### <a id="mgv" name="mgv"></a> mgv
 
 • **mgv**: [`Mangrove`](Mangrove.md)
 
+The Mangrove to interact with.
+
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:18
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:23
+
+___
+
+### <a id="configuration" name="configuration"></a> configuration
+
+• **configuration**: `KandelConfiguration`
+
+The recommended configuration values to use for Kandel.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:26
 
 ## Constructors
 
@@ -54,13 +72,13 @@ Constructor
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:23
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:31
 
 ## Methods
 
 ### <a id="instance" name="instance"></a> instance
 
-▸ **instance**(`params`): `Promise`<`KandelInstance`\>
+▸ **instance**(`params`): `Promise`<[`KandelInstance`](KandelInstance.md)\>
 
 Creates a KandelInstance object to interact with a Kandel strategy on Mangrove.
 
@@ -78,19 +96,19 @@ If a factory function is provided for the market, then remember to disconnect ma
 
 #### Returns
 
-`Promise`<`KandelInstance`\>
+`Promise`<[`KandelInstance`](KandelInstance.md)\>
 
 A new KandelInstance.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:36
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:45
 
 ___
 
 ### <a id="generator" name="generator"></a> generator
 
-▸ **generator**(`market`): `KandelDistributionGenerator`
+▸ **generator**(`market`): [`KandelDistributionGenerator`](KandelDistributionGenerator.md)
 
 Creates a generator for generating Kandel distributions for the given market.
 
@@ -102,10 +120,10 @@ Creates a generator for generating Kandel distributions for the given market.
 
 #### Returns
 
-`KandelDistributionGenerator`
+[`KandelDistributionGenerator`](KandelDistributionGenerator.md)
 
 A new KandelDistributionGenerator.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:61
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:70

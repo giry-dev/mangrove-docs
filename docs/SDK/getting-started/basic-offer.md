@@ -11,7 +11,7 @@ Posting a simple offer is also referred to as an %%on-the-fly offer|on-the-fly-o
 
 The tutorial assumes knowledge of JavaScript. Follow [preparation](./preparation.md) to create a new `tutorial` folder.
 
-Make sure to use a chain where Mangrove is live. You can find all all live addresses for Mangrove [here](../../contracts/technical-references/contract-addresses.md)
+Make sure to use a chain where Mangrove is live. You can find all live addresses for Mangrove [here](../../contracts/technical-references/contract-addresses.md)
 
 :::info
 
@@ -53,7 +53,7 @@ Next you need to connect to a market, in order to see the existing offers. This 
 
 1. Connect to the market using `mgv.market`, with a base and a quote.
 2. Console log asks. This outputs table of the 50 best asks.
-3. Console log bidss. This outputs table of the 50 best bids.
+3. Console log bids. This outputs table of the 50 best bids.
 
 ```javascript reference
 https://github.com/mangrovedao/mangrove-ts/blob/83e1d09e0fce20441aa219a71b6cbb95ba097bf5/packages/mangrove.js/examples/tutorials/on-the-fly-offer.js#L14-L19
