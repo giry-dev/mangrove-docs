@@ -16,7 +16,17 @@ Seeder for creating Kandel instances on-chain.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:34
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:35
+
+___
+
+### <a id="configuration" name="configuration"></a> configuration
+
+• **configuration**: `KandelConfiguration`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:36
 
 ___
 
@@ -26,7 +36,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:35
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:37
 
 ___
 
@@ -36,7 +46,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:37
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:39
 
 ___
 
@@ -46,7 +56,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:38
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:40
 
 ## Constructors
 
@@ -64,7 +74,7 @@ Constructor
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:43
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:45
 
 ## Methods
 
@@ -87,7 +97,7 @@ Create a new Kandel instance.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:68
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:70
 
 ___
 
@@ -114,7 +124,7 @@ The Kandel instance created in the transaction.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:103
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:105
 
 ___
 
@@ -138,7 +148,7 @@ The gasreq for the Kandel type.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:143
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:145
 
 ___
 
@@ -162,7 +172,7 @@ The gasprice for the Kandel type multiplied by the buffer factor.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:160
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:162
 
 ___
 
@@ -191,4 +201,31 @@ The provision required for the distribution.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:173
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:175
+
+___
+
+### <a id="getminimumvolume" name="getminimumvolume"></a> getMinimumVolume
+
+▸ **getMinimumVolume**(`params`): `Promise`<`any`\>
+
+Determines the minimum recommended volume for an offer of the given type to avoid density issues.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params` | `Object` | The parameters. |
+| `params.market` | [`Market`](Market.md) | The market the Kandel is deployed to. |
+| `params.offerType` | [`BA`](../namespaces/Market-1.md#ba) | The type of offer. |
+| `params.onAave` | `boolean` | Whether the Kandel is an AaveKandel. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+The minimum recommended volume.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:195

@@ -12,23 +12,13 @@ Management of a single Kandel instance.
 
 ## Properties
 
-### <a id="maxuint256" name="maxuint256"></a> maxUint256
-
-• **maxUint256**: `BigNumber`
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:55
-
-___
-
 ### <a id="kandel" name="kandel"></a> kandel
 
 • **kandel**: `GeometricKandel`
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:57
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:56
 
 ___
 
@@ -38,7 +28,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:58
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:57
 
 ___
 
@@ -48,7 +38,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:59
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:58
 
 ___
 
@@ -58,7 +48,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:60
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:59
 
 ___
 
@@ -68,13 +58,23 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:61
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:60
 
 ___
 
 ### <a id="status" name="status"></a> status
 
 • **status**: `KandelStatus`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:61
+
+___
+
+### <a id="configuration" name="configuration"></a> configuration
+
+• **configuration**: `KandelConfiguration`
 
 #### Defined in
 
@@ -137,7 +137,7 @@ Gets the base of the market Kandel is making
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:140
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:143
 
 ___
 
@@ -153,7 +153,7 @@ Gets the quote of the market Kandel is making
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:145
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:148
 
 ___
 
@@ -169,7 +169,7 @@ Retrieves the identifier of this contract's reserve when using a router
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:150
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:153
 
 ___
 
@@ -197,7 +197,7 @@ The balance of the asset.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:159
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:162
 
 ___
 
@@ -225,7 +225,7 @@ the unpublished liquidity.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:169
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:172
 
 ___
 
@@ -249,7 +249,7 @@ The offered volume.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:178
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:181
 
 ___
 
@@ -265,7 +265,7 @@ Retrieves the current Kandel parameters
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:184
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:187
 
 ___
 
@@ -295,7 +295,7 @@ The new Kandel parameters.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:232
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:235
 
 ___
 
@@ -319,7 +319,7 @@ The outbound token.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:301
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:304
 
 ___
 
@@ -344,7 +344,7 @@ The Mangrove offer id.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:310
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:313
 
 ___
 
@@ -369,7 +369,7 @@ The Kandel index.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:321
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:324
 
 ___
 
@@ -393,7 +393,7 @@ The pivots to use when populating the distribution.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:331
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:334
 
 ___
 
@@ -417,7 +417,7 @@ The internal representation of the Kandel distribution.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:347
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:350
 
 ___
 
@@ -435,7 +435,7 @@ The Mangrove offer ids for all offers along with their offer type and Kandel ind
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:365
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:368
 
 ___
 
@@ -451,7 +451,7 @@ Retrieves all offers for the Kandel instance by querying the market.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:378
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:381
 
 ___
 
@@ -475,7 +475,7 @@ The status of all offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:394
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:397
 
 ___
 
@@ -492,6 +492,9 @@ If no offers are live. At least one live offer is required to determine the stat
 **`Remarks`**
 
 The expected prices is determined by extrapolating from a live offer closest to the mid price.
+Offers are expected to be live bids below the mid price and asks above.
+This may not hold if an offer deep in the book has been sniped in which case a dual offer will exist on the wrong side of mid price but quickly be taken due to a good price (Kandel still earns on the spread).
+Offers are expected to be dead near the mid price due to the spread (step size) between the live bid and ask.
 
 #### Parameters
 
@@ -509,7 +512,7 @@ The status of the Kandel instance.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:419
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:422
 
 ___
 
@@ -534,7 +537,7 @@ The new distribution.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:443
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:446
 
 ___
 
@@ -557,7 +560,7 @@ Approves the Kandel instance for transferring from signer to itself.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:465
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:468
 
 ___
 
@@ -582,7 +585,23 @@ Deposits the amounts on the Kandel instance to be available for offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:481
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:484
+
+___
+
+### <a id="getmostspecificconfig" name="getmostspecificconfig"></a> getMostSpecificConfig
+
+▸ **getMostSpecificConfig**(): `NetworkConfiguration` & `Partial`<`MarketConfiguration`\>
+
+Gets the most specific available recommended configuration for Kandel instances.
+
+#### Returns
+
+`NetworkConfiguration` & `Partial`<`MarketConfiguration`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:499
 
 ___
 
@@ -598,7 +617,7 @@ Splits the distribution into chunks and converts it to internal representation.
 | :------ | :------ | :------ |
 | `params` | `Object` | The parameters. |
 | `params.distribution` | [`KandelDistribution`](KandelDistribution.md) | The distribution to split. |
-| `params.maxOffersInChunk?` | `number` | The maximum number of offers in a chunk. Defaults to 80. |
+| `params.maxOffersInChunk?` | `number` | The maximum number of offers in a chunk. If not provided, then KandelConfiguration is used. |
 
 #### Returns
 
@@ -608,7 +627,7 @@ The raw distributions in internal representation and the index of the first ask.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:501
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:513
 
 ___
 
@@ -632,7 +651,7 @@ If this function is invoked with new ratio, pricePoints, or spread, then first r
 | `params.depositBaseAmount?` | `any` | The amount of base to deposit. If not provided, then no base is deposited. |
 | `params.depositQuoteAmount?` | `any` | The amount of quote to deposit. If not provided, then no quote is deposited. |
 | `params.funds?` | `any` | The amount of funds to provision. If not provided, then the required funds are provisioned according to getRequiredProvision. |
-| `params.maxOffersInChunk?` | `number` | The maximum number of offers to include in a single populate transaction. If not provided, then 80 is used. |
+| `params.maxOffersInChunk?` | `number` | The maximum number of offers to include in a single populate transaction. If not provided, then KandelConfiguration is used. |
 | `overrides` | `Overrides` | The ethers overrides to use when calling the populate and populateChunk functions. |
 
 #### Returns
@@ -643,7 +662,7 @@ The transaction(s) used to populate the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:540
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:553
 
 ___
 
@@ -659,7 +678,7 @@ Populates the offers in the distribution for the Kandel instance. To set paramet
 | :------ | :------ | :------ |
 | `params` | `Object` | The parameters for populating the offers. |
 | `params.distribution` | [`KandelDistribution`](KandelDistribution.md) | The distribution of offers to populate. |
-| `params.maxOffersInChunk?` | `number` | The maximum number of offers to include in a single populate transaction. If not provided, then 80 is used. |
+| `params.maxOffersInChunk?` | `number` | The maximum number of offers to include in a single populate transaction. If not provided, then KandelConfiguration is used. |
 | `overrides` | `Overrides` | The ethers overrides to use when calling the populateChunk function. |
 
 #### Returns
@@ -670,7 +689,7 @@ The transaction(s) used to populate the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:617
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:630
 
 ___
 
@@ -696,7 +715,7 @@ The transaction(s) used to populate the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:637
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:650
 
 ___
 
@@ -721,7 +740,7 @@ Sets the compound rates for the Kandel instance.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:667
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:680
 
 ___
 
@@ -734,6 +753,7 @@ Retracts offers and withdraws tokens and provision
 **`Remarks`**
 
 This function or retractOffers should be used to retract all offers before changing the ratio, pricePoints, or spread using populate.
+If offers are retracted over multiple transactions, then the chunks are retracted in opposite order from the populate function.
 
 #### Parameters
 
@@ -746,7 +766,7 @@ This function or retractOffers should be used to retract all offers before chang
 | `params.withdrawBaseAmount?` | `any` | The amount of base to withdraw. If not provided, then the entire base balance on Kandel is withdrawn. |
 | `params.withdrawQuoteAmount?` | `any` | The amount of quote to withdraw. If not provided, then the entire quote balance on Kandel is withdrawn. |
 | `params.recipientAddress?` | `string` | The address to withdraw the tokens to. If not provided, then the address of the signer is used. |
-| `params.maxOffersInChunk?` | `number` | The maximum number of offers to include in a single retract transaction. If not provided, then 80 is used. |
+| `params.maxOffersInChunk?` | `number` | The maximum number of offers to include in a single retract transaction. If not provided, then KandelConfiguration is used. |
 | `overrides` | `Overrides` | The ethers overrides to use when calling the retractAndWithdraw, and retractOffers functions. |
 
 #### Returns
@@ -757,7 +777,7 @@ The transaction(s) used to retract the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:711
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:724
 
 ___
 
@@ -770,6 +790,7 @@ Retracts offers
 **`Remarks`**
 
 This function or retractAndWithdraw should be used to retract all offers before changing the ratio, pricePoints, or spread using populate.
+If offers are retracted over multiple transactions, then the chunks are retracted in opposite order from the populate function.
 
 #### Parameters
 
@@ -778,7 +799,7 @@ This function or retractAndWithdraw should be used to retract all offers before 
 | `params` | `Object` | The parameters. |
 | `params.startIndex?` | `number` | The start Kandel index of offers to retract. If not provided, then 0 is used. |
 | `params.endIndex?` | `number` | The end index of offers to retract. This is exclusive of the offer the index 'endIndex'. If not provided, then the number of price points is used. |
-| `params.maxOffersInChunk?` | `number` | The maximum number of offers to include in a single retract transaction. If not provided, then 80 is used. |
+| `params.maxOffersInChunk?` | `number` | The maximum number of offers to include in a single retract transaction. If not provided, then KandelConfiguration is used. |
 | `overrides` | `Overrides` | The ethers overrides to use when calling the retractOffers function. |
 
 #### Returns
@@ -789,7 +810,7 @@ The transaction(s) used to retract the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:764
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:777
 
 ___
 
@@ -819,7 +840,7 @@ The transaction(s) used to retract the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:790
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:803
 
 ___
 
@@ -851,4 +872,4 @@ The transaction used to withdraw the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:841
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:855

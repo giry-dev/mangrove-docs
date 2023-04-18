@@ -140,7 +140,7 @@ ___
 
 ### <a id="calculateconstantgivesperoffer" name="calculateconstantgivesperoffer"></a> calculateConstantGivesPerOffer
 
-▸ **calculateConstantGivesPerOffer**(`availableBase`, `availableQuote?`): `Object`
+▸ **calculateConstantGivesPerOffer**(`availableBase?`, `availableQuote?`): `Object`
 
 Calculates the gives for bids and asks based on the available volume for the distribution.
 
@@ -148,7 +148,7 @@ Calculates the gives for bids and asks based on the available volume for the dis
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `availableBase` | `Big` | The available base to consume. |
+| `availableBase?` | `Big` | The available base to consume. |
 | `availableQuote?` | `Big` | The available quote to consume. |
 
 #### Returns
@@ -182,7 +182,7 @@ The index of the first ask in the distribution; or the length of the distributio
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:101
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:103
 
 ___
 
@@ -207,7 +207,7 @@ The chunks.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:112
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:114
 
 ___
 
@@ -225,7 +225,7 @@ The prices in the distribution.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:131
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:133
 
 ___
 
@@ -248,7 +248,7 @@ The offered volume of base and quote for the distribution to be fully provisione
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:143
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:145
 
 ___
 
@@ -261,6 +261,8 @@ Verifies the distribution is valid.
 **`Remarks`**
 
 Throws if the distribution is invalid.
+The verification checks that indices are ascending and bids come before asks.
+The price distribution is not verified.
 
 #### Returns
 
@@ -268,7 +270,7 @@ Throws if the distribution is invalid.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:165
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:167
 
 ___
 
@@ -299,4 +301,4 @@ The provision required for the number of offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:194
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:196
