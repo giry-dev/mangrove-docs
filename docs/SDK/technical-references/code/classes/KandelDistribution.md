@@ -261,8 +261,6 @@ Verifies the distribution is valid.
 **`Remarks`**
 
 Throws if the distribution is invalid.
-The verification checks that indices are ascending and bids come before asks.
-The price distribution is not verified.
 
 #### Returns
 

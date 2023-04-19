@@ -124,7 +124,6 @@ Recalculates the gives for offers in the distribution such that the available ba
 **`Remarks`**
 
 The required volume can be slightly less than available due to rounding due to token decimals.
-Note that the resulting offered base volume for each offer should be at least minimumBasePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market - and similar for quote.
 
 #### Parameters
 
