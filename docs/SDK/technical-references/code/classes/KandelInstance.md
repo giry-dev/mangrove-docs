@@ -492,9 +492,6 @@ If no offers are live. At least one live offer is required to determine the stat
 **`Remarks`**
 
 The expected prices is determined by extrapolating from a live offer closest to the mid price.
-Offers are expected to be live bids below the mid price and asks above.
-This may not hold if an offer deep in the book has been sniped in which case a dual offer will exist on the wrong side of mid price but quickly be taken due to a good price (Kandel still earns on the spread).
-Offers are expected to be dead near the mid price due to the spread (step size) between the live bid and ask.
 
 #### Parameters
 
@@ -753,7 +750,6 @@ Retracts offers and withdraws tokens and provision
 **`Remarks`**
 
 This function or retractOffers should be used to retract all offers before changing the ratio, pricePoints, or spread using populate.
-If offers are retracted over multiple transactions, then the chunks are retracted in opposite order from the populate function.
 
 #### Parameters
 
@@ -790,7 +786,6 @@ Retracts offers
 **`Remarks`**
 
 This function or retractAndWithdraw should be used to retract all offers before changing the ratio, pricePoints, or spread using populate.
-If offers are retracted over multiple transactions, then the chunks are retracted in opposite order from the populate function.
 
 #### Parameters
 
