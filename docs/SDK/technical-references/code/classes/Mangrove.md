@@ -162,7 +162,7 @@ Creates an instance of the Mangrove Typescript object
 const mgv = await require('mangrove.js').connect(options); // web browser
 ```
 
-if options is a string `s`, it is considered to be {provider:s}
+if options is a string `s`, it is considered to be `{provider:s}`
 const mgv = await require('mangrove.js').connect('http://127.0.0.1:8545'); // HTTP provider
 
 Options:
