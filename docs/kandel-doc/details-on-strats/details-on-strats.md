@@ -18,8 +18,10 @@ Kandel, built by Mangrove, is an example of a market making strategy.
 Kandel on AAVE works exactly the same as the standard Kandel strategy, with the exception that the [Strategy reserve](../how-does-kandel-work/strategy-reserve.md) (Unallocated and Published liquidity) is deposited on AAVE, thus earning additional yield.
 When an offer is matched, the liquidity is sourced from the funds deposited on AAVE. After the offer is executed, the received amount is republished and stored on AAVE. 
 
-<u>Note:</u> Kandel and Kandel on AAVE have minimum inventory and gas requirements.<br />
-Here is more information on the inventory:<br />
+> 👆
+> Kandel and Kandel on AAVE have minimum inventory and gas requirements.
+
+Here is more information on the inventory requirements:<br />
 
 * Based on the density value set for each market on Mangrove, offers have a minimum volume requirement
 * Example: let's assume that the ETH/USDC pair has a requirement of at least 0.1 ETH

@@ -15,14 +15,15 @@ Before launching your customized Kandel strategy, you will be asked to set speci
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/price_distribution.PNG')} width="500px"/> <br /><br />
+<img src={useBaseUrl('img/assets/price_distribution.PNG')} width="500px"/><br /><br />
 
 Based on the selected **price range**, the price grid is constructed using a geometric progression. The Min and Max prices of the user inputs are the limits of the grid. 
 
 The increments are calculated using a key metric called **ratio** (of the geometric progression). Kandel starts from the Min price, all the way up to the Max price.
 By default, the ratio is 1%. 
 
-In this example, the user selected an ETH/USDC trading pair.
+> 👆
+> In this example, the user selected an ETH/USDC trading pair.
 
 
 ## Volume distribution
@@ -30,9 +31,9 @@ In this example, the user selected an ETH/USDC trading pair.
 <img src={useBaseUrl('img/assets/volume_distribution.PNG')} width="500px"/><br /><br />
 
 Based on the selected amount of initial liquidity to be deposited, Kandel draws the **volume distribution** (i.e. the initial volume at each price point).
-
 In the example of a uniform volume distribution, the user's liquidity is spread evenly throughout the price grid.<br />
-For this explanation, we are conveniently using a 1 ETH allocation for each increment.
+> 👆
+>For this explanation, we are conveniently using a 1 ETH allocation for each increment.
 
 
 ## Populating Bids and Asks
@@ -58,7 +59,8 @@ When a **<font color="#5cd19b">bid</font>** is taken, the Kandel strategy contra
 
 The received amount of **base tokens** (ETH) is used to post a [dual offer](TO BE ADDED TO GLOSSARY) at a **step size k=1 above**.
 
-Since the volume objective at the relevant index is 1 ETH, all the received liquidity is used to populate corresponding **<font color="#eb525a">ask</font>**. Therefore, no liquidity is transferred to the [unallocated liquidity](./strategy-reserve.md#unallocated-liquidity) reserve.
+> 👆
+> Since the volume objective at the relevant index is 1 ETH, all the received liquidity is used to populate corresponding **<font color="#eb525a">ask</font>**.
 
 
 ## Ask is taken
@@ -76,12 +78,18 @@ The received amount of **quote tokens** (USDC) is used to post a [dual offer](LI
 
 In our example:
 
-* The quantity of quote tokens is 1,300 USDC (we just received 1,300 USDC for sending 1 ETH through our **<font color="#eb525a">ask</font>**)
-* The [compounding rate](LINK HERE) **is set at 0% for quote** (USDC)
+* We just received 1,300 USDC for sending 1 ETH through our **<font color="#eb525a">ask</font>**
+* Previously, we sent 1,287 USDC and received 1 ETH through our **<font color="#5cd19b">bid</font>**
+* The [compounding rate](./compounding.md) is 100%
 
-Therefore, here 100% of the spread (or 13 USDC) is set aside into the [unallocated liquidity](./strategy-reserve.md#unallocated-liquidity) reserve. The remaining amount of 1,287 USDC is used to populate a **<font color="#5cd19b">bid</font>** at a **step size k=1 below**.
+Therefore, 100% of the spread (or 13 USDC) is reinvested into the strategy. A new **<font color="#5cd19b">bid</font>** at k=1 steps below is reposted, and offers 1,300 USDC for 1.01 ETH.
 
-_Calculation: 1,300 USDC - 1,287 USDC = 13 USDC_
+> 👆
+> Calculation:
+* _Profit = 1,300 USDC - 1,287 USDC = 13 USDC_
+* _13 / 1300 = 0.01 = 1%_
+    * i.e. we made a 1% profit on the spread
+* Kandel will repost our **<font color="#5cd19b">bid</font>** to offer _1,287+13 USDC_ for _1*1.01 ETH_, reinvesting the 1% profit we just made
 
 
 ## Another Ask is taken
@@ -96,4 +104,5 @@ When another **<font color="#eb525a">ask</font>** is taken, once again Kandel se
 
 Similarly to our previous **<font color="#5cd19b">bid</font>**, the received amount of **quote tokens** (USDC) is used to post a dual offer **step size k=1 below**.
 
-If an **<font color="#eb525a">ask</font>** was to be taken next, the profit from the spread will be added to the [unallocated liquidity](./strategy-reserve.md#unallocated-liquidity)reserve.
+> 👆
+> If an **<font color="#eb525a">ask</font>** was to be taken next, the profit from the spread would be reinvested into the strategy.

@@ -1,6 +1,6 @@
 ---
 description: Create a strategy
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 
@@ -19,7 +19,8 @@ sidebar_position: 1
     
 3. Choose a market and click on "Next."
 
-_<u>Note:</u> Markets are sorted in three "risk appetite" categories (Low, Medium, High). For more details, hover over the tooltip_ 🛈 _in the UI._
+> 👆
+> Markets are sorted in three "risk appetite" categories (Low, Medium, High).<br />For more details, hover over the tooltip 🛈 in the UI.
 
 ## Step 2/3 - Choose parameters
 

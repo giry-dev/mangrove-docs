@@ -14,4 +14,4 @@ It is a subset of the Strategy reserve - it is the sum of the active offers' liq
 
 ## Unallocated liquidity
 
-It is a subset of the Strategy reserve where profits from the spread and funds of offers that failed to repost are collected. The Unallocated liquidity can be withdrawn or re-invested into the strategy.
+It is a subset of the Strategy reserve where funds of offers that failed to repost are collected. The Unallocated liquidity can be withdrawn or re-invested into the strategy.

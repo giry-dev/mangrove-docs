@@ -1,12 +1,10 @@
 ---
 description: Overview tab
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 
 # Overview tab
-
-Your strategy can have one of three statuses: active, inactive, or closed. Depending on the status, alerts may be displayed for your price range or gas.
 
 
 ## Information cards
@@ -34,7 +32,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img src={useBaseUrl('img/assets/kandel_depth_chart.png')} width="90%"/>
 
-### Strategy's offers
+### List of active offers
 
 Beneath the chart, you'll find your strategy's orders list, displaying:
 

@@ -1,6 +1,6 @@
 ---
 description: History tab
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 
@@ -35,8 +35,8 @@ This list includes:
 * The empty offers that you refilled
 * The funds you moved from your [unallocated inventory](../../../kandel-doc/how-does-kandel-work/strategy-reserve.md#unallocated-liquidity) to your [published inventory](../../../kandel-doc/how-does-kandel-work/strategy-reserve.md#published-liquidity)
 
-<u>Example:</u><br />
-If you deposit an extra 1000 USDC, and move it from the "unallocated inventory" to "published inventory", two entries will be created:<br /><br />
+Example:<br />
+If you deposit an extra 1000 USDC, and move it from the "unallocated inventory" to "published inventory", two entries will be created:<br />
 
 * One in the "Deposit/withdraw" tab
 * One in the "Rebalance" tab
