@@ -14,3 +14,29 @@
 .noColorLink {
   color: inherit;
 }
+
+.linkrows {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2rem 1rem;
+  align-items: start;
+  padding: 2rem 0;
+  width: 80%;
+}
+
+@media screen and (max-width: 1080px) {
+  .linkrows {
+    grid-template-columns: 1fr 1fr;
+  }  
+}
+
+@media screen and (max-width: 760px) {
+  .linkrows {
+    grid-template-columns: 1fr;
+    width: 100%;    
+  }  
+}
+
+.slimbutton {
+  max-width: 70%;
+}

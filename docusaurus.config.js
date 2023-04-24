@@ -128,34 +128,52 @@ const config = {
         },
         items: [
           {
-            to: '/contracts',
+            to: '/concepts',
             position: 'left',
-            label: 'Contracts',
+            label: 'Concepts',
+          },
+          {
+            to: '/web-app-doc',
+            position: 'left',
+            label: 'Web App',
+          },
+          {
+            to: '/kandel-doc',
+            position: 'left',
+            label: 'Kandel',
+          },          
+          {
+            to: '/contracts',
+            // position: 'left',
+            label: 'Protocol',
           },
           {
             to: '/strat-lib',
-            position: 'left',
+            // position: 'left',
             label: 'Strat Lib',
           },
           {
             to: '/SDK',
-            position: 'left',
+            // position: 'left',
             label: 'SDK',
           },
-          {
-            to: '/keeper-bots',
-            position: 'left',
-            label: 'Keeper Bots',
-          },
+
+          // {
+          //   type:'dropdown',
+          //   position: 'left',
+          //   label: 'Developer',
+          //   items: [
+          //     // {
+          //     //   to: '/keeper-bots',
+          //     //   // position: 'left',
+          //     //   label: 'Keeper Bots',
+          //     // },
+          //   ]
+          // },
           {
             to: '/FAQ',
             position: 'right',
             label: 'FAQ',
-          },
-          {
-            href: '/glossary',
-            label: 'Glossary',
-            position: 'right',
           },
           {
             href: 'https://bafybeig62o75bfxssic66w2zwerbo6ezlhb33vsg5idr4uprckn2dxrucy.ipfs.infura-ipfs.io/',
@@ -173,7 +191,20 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'User',
+            items: [
+              {
+                label: 'Web App',
+                to: '/web-app-doc',
+              },
+              {
+                label: 'Kandel',
+                to: '/kandel-doc'
+              },
+            ],
+          },
+          {
+            title: 'Developer',
             items: [
               {
                 label: 'Contracts',
@@ -186,11 +217,7 @@ const config = {
               {
                 label: 'SDK',
                 to: '/SDK',
-              },
-              {
-                label: 'Keeper Bots',
-                to: '/keeper-bots',
-              },
+              }
             ],
           },
           {
@@ -227,6 +254,14 @@ const config = {
             title: 'More',
             items: [
               {
+                label: 'Glossary',
+                to: '/glossary'
+              },
+              {
+                label: 'FAQ',
+                to: '/FAQ'
+              },
+              {
                 label: 'White Paper',
                 href: 'https://bafybeig62o75bfxssic66w2zwerbo6ezlhb33vsg5idr4uprckn2dxrucy.ipfs.infura-ipfs.io/'
               },              
@@ -237,7 +272,7 @@ const config = {
               {
                 label: 'Home',
                 href: 'https://mangrove.exchange'
-              }
+              },
             ]
           }
         ],
