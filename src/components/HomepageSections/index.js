@@ -28,7 +28,7 @@ const TopFeatureList = [
       </>
     ),
     elementClass: 'frontpage--button',
-  },
+  },  
   {
     title: 'Mangrove Protocol',
     path: 'contracts',
