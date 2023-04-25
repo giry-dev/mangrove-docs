@@ -40,17 +40,6 @@ const TopFeatureList = [
     ),
     elementClass: 'frontpage--button',
   },
-  // {
-  //   title: 'Strat Lib',
-  //   path: 'strat-lib',
-  //   Svg: 'img/streamlinehq-money-graph-arrow-increase-money-shopping.svg',
-  //   description: (
-  //     <>
-  //       Read about how to write safe and efficient maker contracts for liquidity providing with the Mangrove Strat Library.
-  //     </>
-  //   ),
-  //   elementClass: 'frontpage--button',
-  // },
   {
     title: 'SDK',
     path: 'SDK',
@@ -62,17 +51,6 @@ const TopFeatureList = [
     ),
     elementClass: 'frontpage--button',
   },
-  // {
-  //   title: 'Keeper Bots',
-  //   path: 'keeper-bots',
-  //   Svg: 'img/streamlinehq-computer-robot-computer-devices.svg',
-  //   description: (
-  //     <>
-  //       Mangrovians who want to contribute to the ecosystem by building and running keeper bots should visit the section on Keeper Bots.
-  //     </>
-  //   ),
-  //   elementClass: 'frontpage--button',
-  // },
 ]
 
 const MessageList = [
@@ -108,15 +86,15 @@ function Section({Svg, title, path = '', description, colStyle = '', elementClas
 
 function BoxLink({title, path, description}) {
   return (
-    <div className={'frontpage--button ' + styles.slimbutton}>    
-      <a href={path} className={styles.noColorLink + ' frontpage--button-link'}>
-        <div className="text--left padding-horiz--md">
-          <b>{title}</b>
-          <p>{description}</p>
-        </div>
-        <img src="img/streamlinehq-interface-arrows-corner-up-right-interface-essential-gray.svg" className='frontpage--button-linkArrow' />
-        </a>
-    </div>
+    <a href={path} className={styles.noColorLink + ' frontpage--button-link'}>    
+      <div className={'frontpage--button ' + styles.slimbutton}>    
+          <div className="text--left padding-horiz--md">
+            <b>{title}</b>
+            <p>{description}</p>
+          </div>
+          <img src="img/streamlinehq-interface-arrows-corner-up-right-interface-essential-gray.svg" className='frontpage--button-linkArrow' />
+      </div>
+    </a>
   );
 }
 
