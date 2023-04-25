@@ -11,7 +11,7 @@ This section is a detailed explanation of how Kandel works, introducing configur
 For a detailed explanation on how to create and manage a Kandel strategy on Mangrove's UI, you can view the [Create a strategy](../../web-app-doc/strategies/create-strat.md) and [Manage a strategy](../../web-app-doc/strategies/manage-strat/statuses-and-alerts.md) pages on our Web App documentation.
 
 > 👆
-> _Kandel is not intended as a "set and forget" strategy, and needs ongoing maintenance and checks._
+> Kandel is not intended as a "set and forget" strategy, and needs ongoing maintenance and checks.
 
 
 ## Vocabulary

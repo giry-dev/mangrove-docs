@@ -32,7 +32,7 @@ sidebar_position: 2
 
 6. Choose a bounty amount.
 
-7. Choose whether or not you want to compound your strategy's revenue and then click on "Review Strategy".
+7. Click on "Review Strategy".
 
 
 ## Step 3/3 - Review strategy

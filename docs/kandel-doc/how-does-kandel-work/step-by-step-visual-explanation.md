@@ -15,7 +15,7 @@ Before launching your customized Kandel strategy, you will be asked to set speci
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/price_distribution.PNG')} width="500px"/><br /><br />
+<img src={useBaseUrl('img/assets/price_distribution.PNG')} width="400px"/><br /><br />
 
 Based on the selected **price range**, the price grid is constructed using a geometric progression. The Min and Max prices of the user inputs are the limits of the grid. 
 
@@ -28,7 +28,7 @@ By default, the ratio is 1%.
 
 ## Volume distribution
 
-<img src={useBaseUrl('img/assets/volume_distribution.PNG')} width="500px"/><br /><br />
+<img src={useBaseUrl('img/assets/volume_distribution.PNG')} width="400px"/><br /><br />
 
 Based on the selected amount of initial liquidity to be deposited, Kandel draws the **volume distribution** (i.e. the initial volume at each price point).
 In the example of a uniform volume distribution, the user's liquidity is spread evenly throughout the price grid.<br />
@@ -38,7 +38,7 @@ In the example of a uniform volume distribution, the user's liquidity is spread 
 
 ## Populating Bids and Asks
 
-<img src={useBaseUrl('img/assets/populating_bids_asks.PNG')} width="500px"/><br /><br />
+<img src={useBaseUrl('img/assets/populating_bids_asks.PNG')} width="400px"/><br /><br />
 
 Afterwards, the Kandel strategy contract populates the price grid by posting offers:
 
@@ -48,14 +48,14 @@ Afterwards, the Kandel strategy contract populates the price grid by posting off
 
 ## Bid is taken
 
-<img src={useBaseUrl('img/assets/bid_is_taken.PNG')} width="500px"/><br /><br />
+<img src={useBaseUrl('img/assets/bid_is_taken.PNG')} width="400px"/><br /><br />
 
 When a **<font color="#5cd19b">bid</font>** is taken, the Kandel strategy contract sends the corresponding amount of **quote tokens** (USDC) and receives a corresponding amount of **base tokens** (ETH). 
 
 
 ## Reposting liquidity as an Ask
 
-<img src={useBaseUrl('img/assets/reposting_liquidity_as_ask.PNG')} width="500px"/><br /><br />
+<img src={useBaseUrl('img/assets/reposting_liquidity_as_ask.PNG')} width="400px"/><br /><br />
 
 The received amount of **base tokens** (ETH) is used to post a [dual offer](TO BE ADDED TO GLOSSARY) at a **step size k=1 above**.
 
@@ -65,14 +65,14 @@ The received amount of **base tokens** (ETH) is used to post a [dual offer](TO B
 
 ## Ask is taken
 
-<img src={useBaseUrl('img/assets/ask_is_taken.PNG')} width="500px"/><br /><br />
+<img src={useBaseUrl('img/assets/ask_is_taken.PNG')} width="400px"/><br /><br />
 
 Inversely to the **<font color="#5cd19b">bid</font>** example, when an ask is taken, the Kandel strategy contract sends the corresponding amount of **base tokens** (ETH) and receives a corresponding amount of **quote tokens** (USDC). 
 
 
 ## Reposting liquidity as an Bid
 
-<img src={useBaseUrl('img/assets/reposting_liquidity_as_bid.PNG')} width="500px"/><br /><br />
+<img src={useBaseUrl('img/assets/reposting_liquidity_as_bid.PNG')} width="400px"/><br /><br />
 
 The received amount of **quote tokens** (USDC) is used to post a [dual offer](LINK HERE) **step size k=1 below**.
 
@@ -94,13 +94,13 @@ Therefore, 100% of the spread (or 13 USDC) is reinvested into the strategy. A ne
 
 ## Another Ask is taken
 
-<img src={useBaseUrl('img/assets/another_ask_is_taken.PNG')} width="500px"/><br /><br />
+<img src={useBaseUrl('img/assets/another_ask_is_taken.PNG')} width="400px"/><br /><br />
 
 When another **<font color="#eb525a">ask</font>** is taken, once again Kandel sends the corresponding amount of **base tokens** (ETH) and receives a corresponding amount of **quote tokens** (USDC). 
 
 ## Reposting liquidity as a Bid #2
 
-<img src={useBaseUrl('img/assets/reposting_liquidity_as_bid_2.PNG')} width="500px"/><br /><br />
+<img src={useBaseUrl('img/assets/reposting_liquidity_as_bid_2.PNG')} width="400px"/><br /><br />
 
 Similarly to our previous **<font color="#5cd19b">bid</font>**, the received amount of **quote tokens** (USDC) is used to post a dual offer **step size k=1 below**.
 
