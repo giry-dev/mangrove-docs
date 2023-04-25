@@ -124,7 +124,7 @@ The Kandel instance created in the transaction.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:105
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:110
 
 ___
 
@@ -148,7 +148,7 @@ The gasreq for the Kandel type.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:145
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:150
 
 ___
 
@@ -172,7 +172,7 @@ The gasprice for the Kandel type multiplied by the buffer factor.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:162
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:167
 
 ___
 
@@ -201,7 +201,7 @@ The provision required for the distribution.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:175
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:180
 
 ___
 
@@ -219,6 +219,8 @@ Determines the minimum recommended volume for an offer of the given type to avoi
 | `params.market` | [`Market`](Market.md) | The market the Kandel is deployed to. |
 | `params.offerType` | [`BA`](../namespaces/Market-1.md#ba) | The type of offer. |
 | `params.onAave` | `boolean` | Whether the Kandel is an AaveKandel. |
+| `params.factor?` | `number` | The factor to multiply the minimum volume by. Defaults to minimumBasePerOfferFactory / minimumQuotePerOfferFactor from KandelConfiguration. |
+| `params.gasreq?` | `number` | The gasreq to use. Defaults to the default gasreq for the Kandel type. |
 
 #### Returns
 
@@ -228,4 +230,4 @@ The minimum recommended volume.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:195
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:202
