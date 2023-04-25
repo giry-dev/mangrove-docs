@@ -9,7 +9,7 @@ import styles from './styles.module.css';
 const TopFeatureList = [
   {
     title: 'What is Mangrove?',
-    path: 'mangrove-high-level-doc',
+    path: 'high-level',
     Svg: 'img/streamlinehq-money-graph-arrow-increase-money-shopping.svg',
     description: (
       <>

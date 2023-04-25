@@ -128,7 +128,7 @@ const config = {
         },
         items: [
           {
-            to: '/mangrove-high-level-doc',
+            to: '/high-level',
             position: 'left',
             label: 'Concepts',
           },
