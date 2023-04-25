@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <Layout
       title={`Welcome to Mangrove Docs`}
-      description="Developer Documentation For Mangrove">
+      description="Documentation For Mangrove">
       <HomepageHeader />
       <main>
         <HomepageSections />
