@@ -3,8 +3,18 @@ description: How to place a limit order
 sidebar_position: 3
 ---
 
-
 # How to place a limit order
+
+
+## Types of limit order
+
+There are two types of limit order:
+
+* Good til time: you can set an expiry date for your limit order (ex: I'd like my order to be live for the next 3 days, after which it is canceled)
+* [Fill or kill](../../SDK/guides/fill-or-kill.md): in this mode, your limit order would be executed immediately **and** completely, or not at all. The order must be filled in its entirety or else canceled (killed).
+
+
+## Steps
 
 1. Choose whether to "Buy" or "Sell" and click on the Limit button.
 2. Select the token pair you want to trade.

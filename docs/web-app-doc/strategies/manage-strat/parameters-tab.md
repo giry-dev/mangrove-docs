@@ -1,6 +1,6 @@
 ---
 description: Parameters tab
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 
@@ -50,8 +50,3 @@ You can perform the following actions:
 
 Use the "Add bounty" button to top up the amount of [bounty](../../../terms/bounty) you leave available to your Kandel strategy.
 The bounty is a provision (in the network's native token) sent to the taker to compensate for a [failure to deliver](../../../kandel-doc/how-does-kandel-work/more-on-failing-offers.md). It is a requirement for all offers published on Mangrove markets.
-
-
-## Settings
-
-You can change your [compounding](../../../kandel-doc/how-does-kandel-work/compounding.md) setting by clicking the "Edit" button in the settings section.

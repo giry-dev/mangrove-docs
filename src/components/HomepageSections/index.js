@@ -4,6 +4,17 @@ import styles from './styles.module.css';
 
 const TopFeatureList = [
   {
+    title: 'What is Mangrove?',
+    path: 'mangrove-high-level-doc',
+    Svg: 'img/',
+    description: (
+      <>
+        High level introduction to Mangrove and its concepts.
+      </>
+    ),
+    elementClass: 'frontpage--button',
+  },
+  {
     title: 'Web App Doc',
     path: 'web-app-doc',
     Svg: 'img/',
