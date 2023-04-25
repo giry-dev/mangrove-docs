@@ -36,7 +36,7 @@
     "@docusaurus/preset-classic": "^2.0.0",
     "@docusaurus/theme-mermaid": "^2.2.0",
     "@mangrovedao/mangrove-core": "1.4.6-2",
-    "@mangrovedao/mangrove.js": "1.2.4-3",
+    "@mangrovedao/mangrove.js": "1.2.4-6",
     "@mdx-js/react": "^1.6.22",
     "@vegaprotocol/docusaurus-theme-github-codeblock": "^0.1.8",
     "clsx": "^1.2.1",

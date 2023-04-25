@@ -670,7 +670,7 @@ ___
 
 Return config local to a market.
 Returned object is of the form
-{bids,asks} where bids and asks are of type `localConfig`
+`{bids,asks}` where bids and asks are of type `localConfig`
 Notes:
 Amounts are converted to plain numbers.
 density is converted to public token units per gas used
