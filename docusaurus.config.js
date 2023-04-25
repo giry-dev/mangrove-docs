@@ -144,32 +144,19 @@ const config = {
           },          
           {
             to: '/contracts',
-            // position: 'left',
+            position: 'left',
             label: 'Protocol',
           },
           {
             to: '/strat-lib',
-            // position: 'left',
+            position: 'left',
             label: 'Strat Lib',
           },
           {
             to: '/SDK',
-            // position: 'left',
+            position: 'left',
             label: 'SDK',
           },
-
-          // {
-          //   type:'dropdown',
-          //   position: 'left',
-          //   label: 'Developer',
-          //   items: [
-          //     // {
-          //     //   to: '/keeper-bots',
-          //     //   // position: 'left',
-          //     //   label: 'Keeper Bots',
-          //     // },
-          //   ]
-          // },
           {
             to: '/FAQ',
             position: 'right',
@@ -217,7 +204,11 @@ const config = {
               {
                 label: 'SDK',
                 to: '/SDK',
-              }
+              },
+              {
+                label: 'Keeper Bots',
+                to: '/keeper-bots',
+              },              
             ],
           },
           {
