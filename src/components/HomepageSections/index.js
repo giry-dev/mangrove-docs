@@ -9,8 +9,8 @@ import styles from './styles.module.css';
 const TopFeatureList = [
   {
     title: 'What is Mangrove?',
-    path: 'mangrove-high-level-doc',
-    Svg: 'img/streamlinehq-money-graph-arrow-increase-money-shopping.svg',
+    path: 'high-level',
+    Svg: 'img/streamlinehq-nature-ecology-leaf-nature-ecology.svg',
     description: (
       <>
         Learn about the core concepts of Mangrove and its ecosystem.
@@ -20,7 +20,7 @@ const TopFeatureList = [
   },  
   {
     title: 'Web App',
-    path: 'web-app-doc',
+    path: 'web-app',
     Svg: 'img/streamlinehq-computer-laptop-computer-devices.svg',
     description: (
       <>
@@ -40,17 +40,6 @@ const TopFeatureList = [
     ),
     elementClass: 'frontpage--button',
   },
-  // {
-  //   title: 'Strat Lib',
-  //   path: 'strat-lib',
-  //   Svg: 'img/streamlinehq-money-graph-arrow-increase-money-shopping.svg',
-  //   description: (
-  //     <>
-  //       Read about how to write safe and efficient maker contracts for liquidity providing with the Mangrove Strat Library.
-  //     </>
-  //   ),
-  //   elementClass: 'frontpage--button',
-  // },
   {
     title: 'SDK',
     path: 'SDK',
@@ -62,51 +51,9 @@ const TopFeatureList = [
     ),
     elementClass: 'frontpage--button',
   },
-  // {
-  //   title: 'Keeper Bots',
-  //   path: 'keeper-bots',
-  //   Svg: 'img/streamlinehq-computer-robot-computer-devices.svg',
-  //   description: (
-  //     <>
-  //       Mangrovians who want to contribute to the ecosystem by building and running keeper bots should visit the section on Keeper Bots.
-  //     </>
-  //   ),
-  //   elementClass: 'frontpage--button',
-  // },
 ]
 
 const MessageList = [
-  {
-    title: 'Soft Launch',
-    Svg: 'img/streamlinehq-nature-ecology-leaf-nature-ecology.svg',
-    description: (
-      <>
-        The core team has just deployed a Soft Launch of the Mangrove DEX. This deployment is an internal milestone with the objective of testing the Mangrove protocol in real conditions, on the <a href="https://polygon.technology/">Polygon Mainnet</a>.
-      </>
-    ),
-    colStyle: 'frontpage--message',
-  },
-  {
-    title: 'Disclaimer',
-    Svg: 'img/streamlinehq-interface-alert-warning-circle-interface-essential.svg',
-    description: (
-      <>
-        This soft launch will only use test tokens, with no monetary value.
-        Please refer to the <a href="./contracts/technical-references/contract-addresses">Deployment Addresses</a> for Mangrove.
-      </>
-    ),
-    colStyle: 'frontpage--message',    
-  },
-  {
-    title: 'What\'s Next?',
-    Svg: 'img/streamlinehq-interface-award-half-star-interface-essential.svg',
-    description: (
-      <>
-        The core team is currently working on the public launch of Mangrove. Stay tuned on <a href="https://twitter.com/mangroveDAO">Twitter</a> or join the <a href="https://discord.gg/rk9Qthz5YE">Mangrove Discord</a>.
-      </>
-    ),
-    colStyle: 'frontpage--message',    
-  },
 ]
 
 
@@ -139,15 +86,15 @@ function Section({Svg, title, path = '', description, colStyle = '', elementClas
 
 function BoxLink({title, path, description}) {
   return (
-    <div className={'frontpage--button ' + styles.slimbutton}>    
-      <a href={path} className={styles.noColorLink + ' frontpage--button-link'}>
-        <div className="text--left padding-horiz--md">
-          <b>{title}</b>
-          <p>{description}</p>
-        </div>
-        <img src="img/streamlinehq-interface-arrows-corner-up-right-interface-essential-gray.svg" className='frontpage--button-linkArrow' />
-        </a>
-    </div>
+    <a href={path} className={styles.noColorLink + ' frontpage--button-link'}>    
+      <div className={'frontpage--button ' + styles.slimbutton}>    
+          <div className="text--left padding-horiz--md">
+            <b>{title}</b>
+            <p>{description}</p>
+          </div>
+          <img src="img/streamlinehq-interface-arrows-corner-up-right-interface-essential-gray.svg" className='frontpage--button-linkArrow' />
+      </div>
+    </a>
   );
 }
 
@@ -180,23 +127,25 @@ export default function HomepageSections() {
           </div>
         </div>
       </section>
+      {renderMessages()}
       <section>
         <div className={styles.linkrows + " container"}>
           <div>
             <h3>Web app</h3>
-            <p>Follow these tutorials and explanations to learn about the functionality available in Mangrove's web app.</p>
-            <BoxLink title={"Connect your wallet"} path="/web-app-doc/how-to-connect-wallet" description={"Follow this tutorial on how to connect your wallet."}/>
-            <BoxLink title={"Place a market order"} path="/web-app-doc/trade/how-to-market-order" description={"Step-by-step instructions on how to place a market order."}/>
-            <BoxLink title={"Place a limit order"} path="/web-app-doc/trade/how-to-limit-order" description={"Step-by-step instructions on how to place a limit order."}/>
-            <BoxLink title={"Provide liquidity via a strategy"} path="/web-app-doc/strategies/create-strat" description={"Step-by-step instructions on how to create a market making strategy."}/>
+            <p>Explore these links to learn about the functionality available in Mangrove's web app.</p>
+            <BoxLink title={"Connect your wallet"} path="/web-app/how-to-connect-wallet" description={"Follow this tutorial on how to connect your wallet."}/>
+            <BoxLink title={"Place a market order"} path="/web-app/trade/how-to-market-order" description={"Step-by-step instructions on how to place a market order."}/>
+            <BoxLink title={"Place a limit order"} path="/web-app/trade/how-to-limit-order" description={"Step-by-step instructions on how to place a limit order."}/>
+            <BoxLink title={"Provide liquidity via a strategy"} path="/web-app/strategies/create-strat" description={"Step-by-step instructions on how to create a market making strategy."}/>
             <br/>
             <h3>Kandel</h3>
             <p>Kandel is the Automated Market Making strategy backing the functionality provided in the web app.</p>
-            <BoxLink title={"The Kandel strategy"} path="/kandel-doc" description={"Visit the dedicated section explaining how Kandel works."}/>
+            <BoxLink title={"The Kandel strategy"} path="/kandel" description={"Visit the dedicated section explaining how Kandel works."}/>
           </div>
           <div>
             <h3>Integrating dApps</h3>
-            <p>Dive into the following sections to learn how to integrate your dApp with Mangrove.</p>
+            <p>If you're a developer looking to integrate your dApp with Mangrove, dive into the sections on the SDK.</p>
+
             <BoxLink title={"SDK"} path="/sdk" description={"Start here for an overview of the Mangrove TypeScript SDK."}/>
             <BoxLink title={"Set up your environment"} path="/sdk/getting-started/preparation" description={"Set up your local dev environment to work with the SDK."}/>
             <BoxLink title={"Post a simple offer"} path="/sdk/getting-started/basic-offer" description={"Start building - follow the tutorial on posting an on-the-fly offer."}/>

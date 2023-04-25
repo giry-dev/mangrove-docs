@@ -24,7 +24,7 @@ Similarly to when you created your strategy, you can edit your price range by ei
 
 ## Unallocated inventory
 
-This is the amount of quote and base token (of your chosen trading pair) deposited into your Kandel strategy, and are not published on the selected market. These funds consist of your deposits, profits from the spread and funds of offers that [failed to repost](../../../kandel-doc/how-does-kandel-work/more-on-failing-offers.md). The [unallocated liquidity](../../../kandel-doc/how-does-kandel-work/strategy-reserve.md#unallocated-liquidity) can be withdrawn or re-invested into the strategy.
+This is the amount of quote and base token (of your chosen trading pair) deposited into your Kandel strategy, and are not published on the selected market. These funds consist of your deposits, profits from the spread and funds of offers that [failed to repost](../../../kandel/how-does-kandel-work/more-on-failing-offers.md). The [unallocated liquidity](../../../kandel/how-does-kandel-work/strategy-reserve.md#unallocated-liquidity) can be withdrawn or re-invested into the strategy.
 
 You can perform the following actions:
 
@@ -49,4 +49,4 @@ You can perform the following actions:
 ## Bounty
 
 Use the "Add bounty" button to top up the amount of [bounty](../../../terms/bounty) you leave available to your Kandel strategy.
-The bounty is a provision (in the network's native token) sent to the taker to compensate for a [failure to deliver](../../../kandel-doc/how-does-kandel-work/more-on-failing-offers.md). It is a requirement for all offers published on Mangrove markets.
+The bounty is a provision (in the network's native token) sent to the taker to compensate for a [failure to deliver](../../../kandel/how-does-kandel-work/more-on-failing-offers.md). It is a requirement for all offers published on Mangrove markets.

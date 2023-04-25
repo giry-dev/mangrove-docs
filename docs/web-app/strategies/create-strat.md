@@ -14,8 +14,8 @@ sidebar_position: 2
 1. Click on the "New Strategy" button on the "Your Strategies" tab and accept the Terms and Conditions after reading them.
 
 2. Choose a strategy type between "Kandel" and "Kandel on AAVE".
-    * [Kandel](../../kandel-doc/README.md) is an automated market-making strategy that utilizes a reserve to place buy and sell orders on Mangrove DEX
-    * [Kandel on AAVE](../../kandel-doc/details-on-strats/#kandel-on-aave) is essentially the same as the Kandel strategy, but it also earns extra yield by depositing the reserve on the AAVE platform until the liquidity is needed to fulfill a trade.
+    * [Kandel](../../kandel/README.md) is an automated market-making strategy that utilizes a reserve to place buy and sell orders on Mangrove DEX
+    * [Kandel on AAVE](../../kandel/details-on-strats/#kandel-on-aave) is essentially the same as the Kandel strategy, but it also earns extra yield by depositing the reserve on the AAVE platform until the liquidity is needed to fulfill a trade.
     
 3. Choose a market and click on "Next."
 

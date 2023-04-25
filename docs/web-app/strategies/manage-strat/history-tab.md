@@ -33,7 +33,7 @@ This sub-tab tracks the parameters changes you made to your Kandel strategy.
 
 This list includes:
 * The empty offers that you refilled
-* The funds you moved from your [unallocated inventory](../../../kandel-doc/how-does-kandel-work/strategy-reserve.md#unallocated-liquidity) to your [published inventory](../../../kandel-doc/how-does-kandel-work/strategy-reserve.md#published-liquidity)
+* The funds you moved from your [unallocated inventory](../../../kandel/how-does-kandel-work/strategy-reserve.md#unallocated-liquidity) to your [published inventory](../../../kandel/how-does-kandel-work/strategy-reserve.md#published-liquidity)
 
 Example:<br />
 If you deposit an extra 1000 USDC, and move it from the "unallocated inventory" to "published inventory", two entries will be created:<br />

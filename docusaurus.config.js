@@ -128,17 +128,17 @@ const config = {
         },
         items: [
           {
-            to: '/mangrove-high-level-doc',
+            to: '/high-level',
             position: 'left',
             label: 'Concepts',
           },
           {
-            to: '/web-app-doc',
+            to: '/web-app',
             position: 'left',
             label: 'Web App',
           },
           {
-            to: '/kandel-doc',
+            to: '/kandel',
             position: 'left',
             label: 'Kandel',
           },          
@@ -195,11 +195,11 @@ const config = {
             items: [
               {
                 label: 'Web App',
-                to: '/web-app-doc',
+                to: '/web-app',
               },
               {
                 label: 'Kandel',
-                to: '/kandel-doc'
+                to: '/kandel'
               },
             ],
           },

@@ -9,7 +9,7 @@ sidebar_position: 1
 It's a Decentralized Exchange (DEX)! On Mangrove, you can trade, swap tokens and create blueprint trading strategies or brand new ones. On Mangrove, we refer to strategies as programs which will run certain trading behavior, whose goal is to make profits (ex: buy low, sell high).
 
 > 👆
-> For a concrete example of strategies on Mangrove, check out the [Kandel strategy](../kandel-doc/README.md) documentation.
+> For a concrete example of strategies on Mangrove, check out the [Kandel strategy](../kandel/README.md) documentation.
 
 
 ## The orderbook model
