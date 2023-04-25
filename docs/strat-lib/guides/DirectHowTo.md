@@ -275,7 +275,7 @@ function __posthookSuccess__(MgvLib.SingleOrder calldata order, bytes32 makerDat
     ...
 ```
 
-Notice that we call `super`'s implementation of the hook. This ultimately ends up attempting to repost the offer residual (cf. the documentation of [Post trade hooks for MangroveOffer](../background/offer-maker/mangrove-offer.md#post-trade-hooks) and the reference for [Customizing `makerPosthook`](../technical-references/main-hooks.md#customizing-makerposthook)). The return value captured in `repost_status` tells us whether the offer had a residual (in case of a %%maker partial fill|maker-partial-fill%).
+Notice that we call `super`'s implementation of the hook. This ultimately ends up attempting to repost the offer residual (cf. the documentation of [Post trade hooks for MangroveOffer](../background/offer-maker/mangrove-offer.md#post-trade-hooks) and the reference for [Customizing `makerPosthook`](../technical-references/main-hooks.md#customizing-makerposthook)). The return value captured in `repost_status` tells us whether the offer had a residual (in case of a %%maker partial fill|maker-partial-fill%%).
 
 :::info default reposting policy
 Direct offers that are partially filled are automatically reposted during posthook, adapting %%wants|wants%% to remaining %%gives|gives%% in order to maintain offer's original price. Direct's posthook returns the constants `REPOST_SUCCESS` in case the offer's residual was reposted, or `COMPLETE_FILL` if the offer was entirely consumed by taker (these constants are defined in `MangroveOffer`). If the offer fails to repost, the hook returns Mangrove's reason.
