@@ -133,7 +133,7 @@ const config = {
             label: 'Concepts',
           },
           {
-            to: '/web-app-doc',
+            to: '/web-app',
             position: 'left',
             label: 'Web App',
           },
@@ -195,7 +195,7 @@ const config = {
             items: [
               {
                 label: 'Web App',
-                to: '/web-app-doc',
+                to: '/web-app',
               },
               {
                 label: 'Kandel',

@@ -7,7 +7,7 @@ sidebar_position: 2
 
 So, what would be a more concrete yet simple illustration of Mangrove key concepts?
 
-Mangrove core protocol is permission-less, and fairly minimalistic: it mainly handles Maker/Taker matching. Features and capabilities outside of that scope plug themselves to the core protocol; [limit orders](../../web-app-doc/trade/how-to-limit-order.md) are a good example.
+Mangrove core protocol is permission-less, and fairly minimalistic: it mainly handles Maker/Taker matching. Features and capabilities outside of that scope plug themselves to the core protocol; [limit orders](../../web-app/trade/how-to-limit-order.md) are a good example.
 
 * From a Web App user's standpoint, it feels like any other limit order
 * From a developer's perspective though, that is where things get hot (see below) 🔥

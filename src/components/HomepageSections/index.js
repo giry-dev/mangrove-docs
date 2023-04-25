@@ -20,7 +20,7 @@ const TopFeatureList = [
   },  
   {
     title: 'Web App',
-    path: 'web-app-doc',
+    path: 'web-app',
     Svg: 'img/streamlinehq-computer-laptop-computer-devices.svg',
     description: (
       <>
@@ -185,10 +185,10 @@ export default function HomepageSections() {
           <div>
             <h3>Web app</h3>
             <p>Follow these tutorials and explanations to learn about the functionality available in Mangrove's web app.</p>
-            <BoxLink title={"Connect your wallet"} path="/web-app-doc/how-to-connect-wallet" description={"Follow this tutorial on how to connect your wallet."}/>
-            <BoxLink title={"Place a market order"} path="/web-app-doc/trade/how-to-market-order" description={"Step-by-step instructions on how to place a market order."}/>
-            <BoxLink title={"Place a limit order"} path="/web-app-doc/trade/how-to-limit-order" description={"Step-by-step instructions on how to place a limit order."}/>
-            <BoxLink title={"Provide liquidity via a strategy"} path="/web-app-doc/strategies/create-strat" description={"Step-by-step instructions on how to create a market making strategy."}/>
+            <BoxLink title={"Connect your wallet"} path="/web-app/how-to-connect-wallet" description={"Follow this tutorial on how to connect your wallet."}/>
+            <BoxLink title={"Place a market order"} path="/web-app/trade/how-to-market-order" description={"Step-by-step instructions on how to place a market order."}/>
+            <BoxLink title={"Place a limit order"} path="/web-app/trade/how-to-limit-order" description={"Step-by-step instructions on how to place a limit order."}/>
+            <BoxLink title={"Provide liquidity via a strategy"} path="/web-app/strategies/create-strat" description={"Step-by-step instructions on how to create a market making strategy."}/>
             <br/>
             <h3>Kandel</h3>
             <p>Kandel is the Automated Market Making strategy backing the functionality provided in the web app.</p>
