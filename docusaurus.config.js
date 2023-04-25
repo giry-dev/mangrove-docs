@@ -138,7 +138,7 @@ const config = {
             label: 'Web App',
           },
           {
-            to: '/kandel-doc',
+            to: '/kandel',
             position: 'left',
             label: 'Kandel',
           },          
@@ -199,7 +199,7 @@ const config = {
               },
               {
                 label: 'Kandel',
-                to: '/kandel-doc'
+                to: '/kandel'
               },
             ],
           },

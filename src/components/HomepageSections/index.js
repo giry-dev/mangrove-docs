@@ -192,7 +192,7 @@ export default function HomepageSections() {
             <br/>
             <h3>Kandel</h3>
             <p>Kandel is the Automated Market Making strategy backing the functionality provided in the web app.</p>
-            <BoxLink title={"The Kandel strategy"} path="/kandel-doc" description={"Visit the dedicated section explaining how Kandel works."}/>
+            <BoxLink title={"The Kandel strategy"} path="/kandel" description={"Visit the dedicated section explaining how Kandel works."}/>
           </div>
           <div>
             <h3>Integrating dApps</h3>
