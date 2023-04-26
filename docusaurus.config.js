@@ -239,6 +239,10 @@ const config = {
                 label: 'SDK and Bots',
                 href: 'https://github.com/mangrovedao/mangrove-ts'
               },
+              {
+                label: 'Docs',
+                href: 'https://github.com/mangrovedao/mangrove-docs'
+              },              
             ],
           },
           {
