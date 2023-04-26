@@ -20,7 +20,9 @@ $ yarn
 $ yarn start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server. 
+
+(Note: This command does not process glossary terms.)
 
 ### Build
 
@@ -28,7 +30,19 @@ This command starts a local development server and opens up a browser window. Mo
 $ yarn build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+This command generates static content into the `build` directory and can be served using any static contents hosting service. 
+
+(Note: This command does not process glossary terms.)
+
+### Process glossary terms and build
+
+`mangrove-docs` uses [docusaurus-terminology](https://github.com/grnet/docusaurus-terminology) for creating handy glossary terms.
+
+```console
+$ yarn run docgen
+```
+
+This command processes glossary terms and replaces (inline) term reference syntax (```%%term|term-id%%```) with references to term-pages as well as `hover` short explanations. Afterwards, it runs a full build (see above).
 
 ### Deployment
 
