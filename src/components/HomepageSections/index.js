@@ -137,7 +137,6 @@ export default function HomepageSections() {
             <BoxLink title={"Place a market order"} path="/web-app/trade/how-to-market-order" description={"Step-by-step instructions on how to place a market order."}/>
             <BoxLink title={"Place a limit order"} path="/web-app/trade/how-to-limit-order" description={"Step-by-step instructions on how to place a limit order."}/>
             <BoxLink title={"Provide liquidity via a strategy"} path="/web-app/strategies/create-strat" description={"Step-by-step instructions on how to create a market making strategy."}/>
-            <br/>
             <h3>Kandel</h3>
             <p>Kandel is the Automated Market Making strategy backing the functionality provided in the web app.</p>
             <BoxLink title={"The Kandel strategy"} path="/kandel" description={"Visit the dedicated section explaining how Kandel works."}/>
@@ -150,7 +149,6 @@ export default function HomepageSections() {
             <BoxLink title={"Set up your environment"} path="/sdk/getting-started/preparation" description={"Set up your local dev environment to work with the SDK."}/>
             <BoxLink title={"Post a simple offer"} path="/sdk/getting-started/basic-offer" description={"Start building - follow the tutorial on posting an on-the-fly offer."}/>
             <BoxLink title={"API Reference"} path="/sdk/technical-references/code/" description={"Find the SDK API Reference here."}/>
-            <br/>
             <h3>Keeper bots</h3>
             <p>Keeper bots are an essential part of Mangrove's ecosystem that ensure a smooth experience for all.</p>
             <BoxLink title={"Keeper Bots"} path="/keeper-bots" description={"Explore the dedicated section on keeper bots."}/>
@@ -161,7 +159,6 @@ export default function HomepageSections() {
             <BoxLink title={"Technical introduction"} path="/contracts/technical-references/overview" description={"Overview of the Mangrove protocol."}/>
             <BoxLink title={"Annotated codebase"} path="/contracts/technical-references/codebase" description={"A comprehensive overview of the Mangrove core codebase."}/>
             <BoxLink title={"Deployment Addresses"} path="/contracts/technical-references/contract-addresses" description={"Find the deployment addresses for protocol contracts"}/>
-            <br/>
             <h3>Strat Lib</h3>
             <p>The Mangrove Strat Library is a repository of Solidity code provided to help you write safe and efficient maker contracts for liquidity providing.</p>
             <BoxLink title={"Strat Lib"} path="/strat-lib" description={"Find the dedicated section on the Strat Lib here."}/>
