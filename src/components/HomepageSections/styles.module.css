@@ -24,6 +24,10 @@
   width: 80%;
 }
 
+.linkrows div h3 {
+ margin-top: 1rem;
+}
+
 @media screen and (max-width: 1080px) {
   .linkrows {
     grid-template-columns: 1fr 1fr;
@@ -38,4 +42,5 @@
 
 .slimbutton {
   max-width: 70%;
+  display:inline-block;
 }
