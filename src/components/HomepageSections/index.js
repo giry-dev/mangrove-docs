@@ -88,7 +88,7 @@ function BoxLink({title, path, description}) {
   return (
     <a href={path} className={styles.noColorLink + ' frontpage--button-link'}>    
       <div className={'frontpage--button ' + styles.slimbutton}>    
-          <div className="text--left padding-horiz--md">
+          <div className="text--left padding-horiz--md padding-top--sm">
             <b>{title}</b>
             <p>{description}</p>
           </div>
