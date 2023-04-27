@@ -58,7 +58,7 @@ table {
   background-color: #1a1f30;
 }
 
-@media screen and (min-width: 996px) and (max-width: 1200px) {
+@media screen and (min-width: 996px) and (max-width: 1239px) {
   /* hide title on small screens, before mobile view kicks in */
   .navbar__title {
     width: 0;
