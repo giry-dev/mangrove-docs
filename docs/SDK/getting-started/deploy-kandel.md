@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Deploy Kandel strategy
 
-This tutorial covers how to deploy a Kandel strategy. For more information about Kandel, see [user documentation](../../kandel-doc/README.md).
+This tutorial covers how to deploy a Kandel strategy. For more information about Kandel, see [user documentation](../../kandel/README.md).
 
 ## Prerequisites
 
