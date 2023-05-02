@@ -22,7 +22,7 @@ Based on the selected **price range**, the price grid is constructed using a geo
 The increments are calculated using a key metric called **ratio** (of the geometric progression). Kandel starts from the Min price, all the way up to the Max price.
 By default, the ratio is 1%. 
 
-> 👆
+> 💡
 > In this example, the user selected an ETH/USDC trading pair.
 
 
@@ -32,7 +32,7 @@ By default, the ratio is 1%.
 
 Based on the selected amount of initial liquidity to be deposited, Kandel draws the **volume distribution** (i.e. the initial volume at each price point).
 In the example of a uniform volume distribution, the user's liquidity is spread evenly throughout the price grid.<br />
-> 👆
+> 💡
 >For this explanation, we are conveniently using a 1 ETH allocation for each increment.
 
 
@@ -57,9 +57,9 @@ When a **<font color="#5cd19b">bid</font>** is taken, the Kandel strategy contra
 
 <img src={useBaseUrl('img/assets/reposting_liquidity_as_ask.PNG')} width="400px"/><br /><br />
 
-The received amount of **base tokens** (ETH) is used to post a [dual offer](TO BE ADDED TO GLOSSARY) at a **step size k=1 above**.
+The received amount of **base tokens** (ETH) is used to post a %%dual offer|dual-offer%% at a **step size k=1 above**.
 
-> 👆
+> 💡
 > Since the volume objective at the relevant index is 1 ETH, all the received liquidity is used to populate corresponding **<font color="#eb525a">ask</font>**.
 
 
@@ -74,7 +74,7 @@ Inversely to the **<font color="#5cd19b">bid</font>** example, when an ask is ta
 
 <img src={useBaseUrl('img/assets/reposting_liquidity_as_bid.PNG')} width="400px"/><br /><br />
 
-The received amount of **quote tokens** (USDC) is used to post a [dual offer](LINK HERE) **step size k=1 below**.
+The received amount of **quote tokens** (USDC) is used to post a %%dual offer|dual-offer%% **step size k=1 below**.
 
 In our example:
 
@@ -84,7 +84,7 @@ In our example:
 
 Therefore, 100% of the spread (or 13 USDC) is reinvested into the strategy. A new **<font color="#5cd19b">bid</font>** at k=1 steps below is reposted, and offers 1,300 USDC for 1.01 ETH.
 
-> 👆
+> 💡
 > Calculation:
 * _Profit = 1,300 USDC - 1,287 USDC = 13 USDC_
 * _13 / 1300 = 0.01 = 1%_
@@ -104,5 +104,5 @@ When another **<font color="#eb525a">ask</font>** is taken, once again Kandel se
 
 Similarly to our previous **<font color="#5cd19b">bid</font>**, the received amount of **quote tokens** (USDC) is used to post a dual offer **step size k=1 below**.
 
-> 👆
+> 💡
 > If an **<font color="#eb525a">ask</font>** was to be taken next, the profit from the spread would be reinvested into the strategy.

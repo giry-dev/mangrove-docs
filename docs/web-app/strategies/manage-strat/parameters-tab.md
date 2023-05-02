@@ -43,7 +43,7 @@ You can perform the following actions:
 
 * **Un-publish**: you can move funds from active offers out to your "Unallocated inventory"
 
-* **Close strategy** [LINK TO STATUS CLOSED]: you can manually stop and close off your Kandel strategy
+* [**Close strategy**](../key-actions-questions/how-to-close-strat.md): you can manually stop and close off your Kandel strategy
 
 
 ## Bounty

@@ -20,7 +20,7 @@ When we talk about an offer "failing", we mean that it could not execute. An off
 * [`makerPosthook()`](../../strat-lib/technical-references/code/strategies/MangroveOffer/#makerposthook): it is the callback function that is called after the offer execution (i.e. after a successful execution of `makerExecute()`).
     * A failure in `makerPosthook()` means the offer cannot update or repost itself after being taken. It does not cancel the trade, since it is called after `makerExecute()`.
 
-> 👆
+> 💡
 > For a more visual explanation, see the [call sequence overview](../../contracts/technical-references/overview#call-sequence-overview) diagram.
 
 ## Kandel and `makerExecute()` failure
@@ -38,7 +38,7 @@ Therefore, since the user is not in charge of writing and maintaining the smart 
 The main failures that Kandel could run into are linked to reposting Bids and Asks. This has little incidence for the user, nor does it affect the behavior of his Kandel strategy.<br />
 Non-reposted liquidity will be placed into the [Unallocated liquidity](./strategy-reserve#unallocated-liquidity) reserve, and the offer will be "empty" for Kandel, until the user replenishes it.<br />
 
-> 👆
+> 💡
 > If too many empty offers stack up, it would diminish Kandel's ability to profit from the spread, and therefore the overall generated yield. Kandel is not intended as a "set and forget" strategy, and needs ongoing maintenance and checks.
 
 <br />

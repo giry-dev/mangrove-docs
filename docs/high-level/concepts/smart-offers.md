@@ -15,7 +15,7 @@ This translates into several disruptive mechanisms:
 * **Last look** 🛡️<br />
     Since an offer contains code, **defensive mechanisms can be baked in** to cancel a promise previously made:
     * For instance, if the market conditions are not anymore satisfactory at the time the offer is taken VS when it was posted
-    * Code can cover any unwanted case scenarios (ex: high volatility), and therefore can mitigate/solve problems of [slippage and arbitrage] (LINKS)
+    * Code can cover any unwanted case scenarios (ex: high volatility), and therefore can mitigate/solve problems of slippage and arbitrage
     * Code helps make zero-latency trading decisions, with as much information as available on-chain at the time the trade occurs
 
 * **Persistence** 🔁<br />

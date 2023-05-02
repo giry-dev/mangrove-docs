@@ -19,7 +19,7 @@ sidebar_position: 2
     
 3. Choose a market and click on "Next."
 
-> 👆
+> 💡
 > Markets are sorted in three "risk appetite" categories (Low, Medium, High).<br />For more details, hover over the tooltip 🛈 in the UI.
 
 ## Step 2/3 - Choose parameters
