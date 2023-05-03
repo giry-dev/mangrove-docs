@@ -4,6 +4,6 @@ sidebar_position: 6
 ---
 
 
-# Swap - TO DO
+# Swap
 
 TBD

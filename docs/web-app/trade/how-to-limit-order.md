@@ -8,6 +8,8 @@ sidebar_position: 3
 
 ## Steps
 
+**[GIF with every step]**
+
 1. Choose whether to "Buy" or "Sell" and click on the Limit button.
 2. Select the token pair you want to trade.
 3. Type in the amount of tokens you want to buy/sell. The amount to be sent will automatically appear.
@@ -26,5 +28,3 @@ sidebar_position: 3
 9. Wait for the notification card to appear, stating that your order has been filled.
 
 Congratulations, you have successfully completed your limit order! 🤓<br />
-
-**[GIF with every step]**

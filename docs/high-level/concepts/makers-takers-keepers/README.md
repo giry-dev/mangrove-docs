@@ -8,6 +8,6 @@ sidebar_position: 1
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-Here is a simplified three-step diagram of Mangrove unlocked assets and offer-is-code approach. It also introduces the three main actors on Mangrove's DEX.
+Here is a simplified three-step diagram of Mangrove unlocked assets and offer-is-code approach. It also introduces the three main actors on Mangrove DEX.
 
 <img src={useBaseUrl('img/assets/maker-taker-keeper.png')} width="100%"/>
