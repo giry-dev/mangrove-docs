@@ -5,6 +5,9 @@ sidebar_position: 4
 
 
 # Parameters tab
+
+**[Strategies page is coming soon]**
+
 Your strategy can have one of three statuses: active, inactive, or closed. Depending on the status, alerts may be displayed for your price range or gas.
 
 

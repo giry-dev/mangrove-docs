@@ -6,6 +6,7 @@ sidebar_position: 3
 
 # Details on strategies
 
+**[Kandel strategy is coming soon]**
 
 ## Market making strategies
 

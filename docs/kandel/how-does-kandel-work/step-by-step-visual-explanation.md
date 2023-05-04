@@ -6,6 +6,8 @@ sidebar_position: 2
 
 # Step-by-step visual explanation
 
+**[Kandel strategy is coming soon]**
+
 ## Setting things up
 
 Before launching your customized Kandel strategy, you will be asked to set specific input parameters. For more information, you can refer to the [Parameters description table](./parameters.md).

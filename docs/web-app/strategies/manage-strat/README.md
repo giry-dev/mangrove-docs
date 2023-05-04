@@ -6,6 +6,8 @@ sidebar_position: 1
 
 # Manage a strategy
 
+**[Strategies page is coming soon]**
+
 This section guides you through managing a Kandel strategy.
 There are a certain actions you can take via the "Manage a strategy" area of the UI:
 

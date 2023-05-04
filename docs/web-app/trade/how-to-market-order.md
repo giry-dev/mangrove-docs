@@ -6,7 +6,7 @@ sidebar_position: 2
 
 # How to place a market order
 
-**[GIF with every step]**
+**[Screenshots coming soon]**
 
 1. Choose whether to "Buy" or "Sell" and click on the "Market" button.
 

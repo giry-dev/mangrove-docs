@@ -8,7 +8,7 @@ sidebar_position: 3
 
 ## Steps
 
-**[GIF with every step]**
+**[Screenshots coming soon]**
 
 1. Choose whether to "Buy" or "Sell" and click on the Limit button.
 2. Select the token pair you want to trade.

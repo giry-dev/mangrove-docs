@@ -6,10 +6,12 @@ sidebar_position: 2
 
 # Create a strategy
 
+**[Strategies page is coming soon]**
+
 
 ## Step 1/3 - Create a strategy
 
-**[GIF with every step]**
+**[Screenshots coming soon]**
 
 1. Click on the "New Strategy" button on the "Your Strategies" tab and accept the Terms and Conditions after reading them.
 
@@ -24,7 +26,7 @@ sidebar_position: 2
 
 ## Step 2/3 - Choose parameters
 
-**[GIF with every step]**
+**[Screenshots coming soon]**
 
 4. Determine your desired price range by dragging the limits on the market depth chart, setting the minimum and maximum price values, or using the percentage inputs. The market depth chart displayed on the strategy page allows you to see the real-time buy (Bids) and sell (Asks) offers on the Mangrove DEX for a given market.
 
@@ -37,7 +39,7 @@ sidebar_position: 2
 
 ## Step 3/3 - Review strategy
 
-**[GIF with every step]**
+**[Screenshots coming soon]**
 
 8. Check your strategy parameters carefully. If you want to edit them, click on "Back." If you agree with them, click on "Launch strategy".
 

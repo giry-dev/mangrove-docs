@@ -6,6 +6,8 @@ sidebar_position: 1
 
 # Strategies
 
+**[Strategies page is coming soon]**
+
 Mangrove allows liquidity providers, traders and strategiests to deploy their own composable strategy. Strategies leverage Mangrove's core principles to incorporate defensive code, post unprovisioned offers, and redisplay liquidity after their offers are taken.
 
 Currently, Mangrove has one available strategy for users: [Kandel](../../kandel/README.md).

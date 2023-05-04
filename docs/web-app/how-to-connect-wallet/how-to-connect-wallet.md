@@ -9,17 +9,19 @@ sidebar_position: 2
 To connect your wallet on the Mangrove DEX, click on "Connect my wallet" and choose a wallet provider.<br />
 We suggest using Metamask as it's currently considered a highly reliable and stable wallet option.
 
-**[GIF clicking on "Connect my wallet" and then waiting on the wallet providers card]**
+**[Screenshots coming soon]**
 
 
 ## Metamask
 
 Step by step desktop<br />
-**[GIF connecting Metamask]**
+
+**[Screenshots coming soon]**
 
 
 ## Trust wallet
 Step by step phone<br />
-**[GIF connecting Trust wallet]**
+
+**[Screenshots coming soon]**
 
 
