@@ -6,6 +6,8 @@ sidebar_position: 7
 
 # How to add additional bounty?
 
+**[Strategies page is coming soon]**
+
 1. Go to the [Mangrove dApp](https://app.mangrove.exchange/) and click on the Strategies tab
 
 2. Select the strategy that you would like to add bounty to

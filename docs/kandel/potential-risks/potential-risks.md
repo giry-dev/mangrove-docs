@@ -6,6 +6,8 @@ sidebar_position: 2
 
 # Potential risks
 
+**[Kandel strategy is coming soon]**
+
 Kandel strategy is subject to some risks that should be taken into consideration.
 By using Kandel, you acknowledge (i) having the necessary knowledge and understanding of the blockchain technology and the tokens, and (ii) comprehended the risks associated with blockchain-based software systems and tokens, as described below and in the disclaimer.
 
@@ -37,7 +39,7 @@ You understands that even though the strategy has been implemented by an experie
 * Risks associated with blockchains  used for the strategy, including but not limited to due to successful attacks from hackers or other criminal groups or organizations or countries, including but not limited to denial of service attacks, Sybil attacks, spoofing, smurfing malware attacks, consensus-based attacks, or phishing, or other new methods that may or may not be known;
 * Lack of transparency in crypto asset management and markets;
 
-That being said, please note that the **Kandel strategy has been thoroughly audited** by ChainSecurity. You can find the audit report [here](LINK HERE).
+That being said, please note that the **Kandel strategy has been thoroughly audited** by ChainSecurity.
 
 
 ## AAVE

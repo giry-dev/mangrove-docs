@@ -6,6 +6,8 @@ sidebar_position: 9
 
 # How to reopen a strategy?
 
+**[Strategies page is coming soon]**
+
 You can reopen a strategy that has been closed previously:
 
 1. Go to the [Mangrove dApp](https://app.mangrove.exchange/) and click on the Strategies tab

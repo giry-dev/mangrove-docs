@@ -5,6 +5,9 @@ sidebar_position: 4
 
 
 # Parameters tab
+
+**[Strategies page is coming soon]**
+
 Your strategy can have one of three statuses: active, inactive, or closed. Depending on the status, alerts may be displayed for your price range or gas.
 
 
@@ -43,7 +46,7 @@ You can perform the following actions:
 
 * **Un-publish**: you can move funds from active offers out to your "Unallocated inventory"
 
-* **Close strategy** [LINK TO STATUS CLOSED]: you can manually stop and close off your Kandel strategy
+* [**Close strategy**](../key-actions-questions/how-to-close-strat.md): you can manually stop and close off your Kandel strategy
 
 
 ## Bounty

@@ -6,6 +6,8 @@ sidebar_position: 2
 
 # Statuses and alerts
 
+**[Strategies page is coming soon]**
+
 Your strategy can have one of three statuses: active, inactive, or closed. Depending on the status, alerts may be displayed for your price range or gas.
 
 
@@ -34,7 +36,7 @@ It means that your strategy is switched off. There are two reasons why your stra
 
 It means that your strategy is shut down.
 
-> 👆
+> 💡
 > What's the difference between an "Inactive" and a "Closed" strategy?<br /><br />
 > If your strategy is "Inactive", it means that you have deposited funds and set its parameters, but either it got out of range or there was insufficient bounty.
 > If you closed your strategy or withdrew all funds from it, then it is considered as "Closed".

@@ -1,6 +1,6 @@
 ---
 description: Bounty
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 

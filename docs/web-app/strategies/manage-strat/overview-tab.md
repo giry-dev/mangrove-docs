@@ -6,10 +6,15 @@ sidebar_position: 3
 
 # Overview tab
 
+**[Strategies page is coming soon]**
+
 
 ## Information cards
 
-* **Return**: TODO
+* **Return**: average monthly return of your Kandel strategy. It is calculated by dividing the [profits from the spread](../../../kandel/README.md) by [published liquidity](../../../kandel/how-does-kandel-work/strategy-reserve.md#published-liquidity) for a period of time. It is then averaged out per day for that period, and extrapolated to obtain the monthly average.
+
+    > 💡
+    > For the sake of this calculation, the published liquidity is converted entirely to USDC.
 
 * **Unrealized PnL**: potential profit or loss that you would earn if you were to close your strategy at the current moment. This figure is calculated by comparing the USD value of your average entry price to the current index price. The difference between these two values determines the size and direction of your unrealized gain or loss.
 
