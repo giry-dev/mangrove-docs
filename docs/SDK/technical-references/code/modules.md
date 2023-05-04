@@ -93,3 +93,17 @@ custom_edit_url: null
 ### <a id="default" name="default"></a> default
 
 Renames and re-exports [Mangrove](classes/Mangrove.md)
+
+## Functions
+
+### <a id="enablelogging" name="enablelogging"></a> enableLogging
+
+▸ **enableLogging**(): `void`
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/util/logger.ts:5

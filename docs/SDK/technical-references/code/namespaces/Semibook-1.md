@@ -26,7 +26,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:16
+@mangrovedao/mangrove.js/src/semibook.ts:27
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:22
+@mangrovedao/mangrove.js/src/semibook.ts:33
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:24
+@mangrovedao/mangrove.js/src/semibook.ts:35
 
 ___
 
@@ -100,7 +100,7 @@ Specification of how much volume to (potentially) trade on the semibook.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:35
+@mangrovedao/mangrove.js/src/semibook.ts:46
 
 ___
 
@@ -124,4 +124,32 @@ If none of these are specfied, the default is `maxOffers` = `Semibook.DEFAULT_MA
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:50
+@mangrovedao/mangrove.js/src/semibook.ts:61
+
+___
+
+### <a id="state" name="state"></a> State
+
+Ƭ **State**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `offerCache` | `Map`<`number`, [`Offer`](Market-1.md#offer)\> |
+| `bestInCache` | `number` \| `undefined` |
+| `worstInCache` | `number` \| `undefined` |
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:107
+
+___
+
+### <a id="fetchofferlistresult" name="fetchofferlistresult"></a> FetchOfferListResult
+
+Ƭ **FetchOfferListResult**: `Result`<[`Offer`](Market-1.md#offer)[], `LogSubscriber.Error`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:113

@@ -14,7 +14,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:34
+@mangrovedao/mangrove.js/src/mangrove.ts:46
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:38
+@mangrovedao/mangrove.js/src/mangrove.ts:50
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:48
+@mangrovedao/mangrove.js/src/mangrove.ts:60
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:57
+@mangrovedao/mangrove.js/src/mangrove.ts:69
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:67
+@mangrovedao/mangrove.js/src/mangrove.ts:79
 
 ___
 
@@ -126,4 +126,14 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:77
+@mangrovedao/mangrove.js/src/mangrove.ts:89
+
+___
+
+### <a id="createoptions" name="createoptions"></a> CreateOptions
+
+Ƭ **CreateOptions**: [`CreateSignerOptions`](../interfaces/eth.CreateSignerOptions.md) & { `blockManagerOptions?`: `BlockManager.Options` ; `reliableWebsocketProviderOptions?`: `ReliableWebsocketProvider.Options` ; `reliableHttpProviderOptions?`: `ReliableHttpProvider.Options`  }
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:96

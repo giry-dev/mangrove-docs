@@ -15,7 +15,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:45
+@mangrovedao/mangrove.js/src/eth.ts:48
 
 ___
 
@@ -25,7 +25,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:46
+@mangrovedao/mangrove.js/src/eth.ts:49
 
 ## Methods
 
@@ -46,7 +46,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:47
+@mangrovedao/mangrove.js/src/eth.ts:50
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:60
+@mangrovedao/mangrove.js/src/eth.ts:63
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:65
+@mangrovedao/mangrove.js/src/eth.ts:68
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:69
+@mangrovedao/mangrove.js/src/eth.ts:72
 
 ## Constructors
 
@@ -123,4 +123,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:52
+@mangrovedao/mangrove.js/src/eth.ts:55
