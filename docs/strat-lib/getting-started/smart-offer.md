@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Post a Smart Offer
 
-In this tutorial you will learn how to post a %%smart offer|smart-offer%% managed by your own %%maker contract|maker-contract%% and which simply transfers tokens to and from your reserve.
+In this tutorial you will learn how to post a %%smart offer|smart-offer%% managed by your own %%maker contract|maker-contract%% that simply stores %%inbound|inbound%% and %%outbound|outbound%% tokens on its balance.
 
 ## Prerequisites
 
@@ -37,22 +37,16 @@ Add the contract and the code for the constructor. We will skip some details her
 https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L12-L22
 ```
 
-### Add offer posting function
+### Add offer management functions
 
-The abstract contract `Direct` has an internal function `_newOffer` for posting offers on Mangrove. We need to expose this, so that we can post offers using our contract. We expose it through functions matching the [`ILiquidityProvider`](../technical-references/code/strategies/interfaces/ILiquidityProvider.md) interface.
+The abstract contract `Direct` has internal functions that allows one to manage offers: `_newOffer` for posting offers, `_updateOffer` for updating existing offers and `_retractOffer` for unpublishing offers from Mangrove. We need to expose these functions in a restricted manner, so that only the administrator of the contract can manage offers. We expose them through functions matching the [`ILiquidityProvider`](../technical-references/code/strategies/interfaces/ILiquidityProvider.md) interface.
 
 See [OfferArgs](../technical-references/code/strategies/interfaces/IOfferLogic.md#offerargs) for an explanation of the parameters for posting an offer.
 
 Also see %%provision|provision%%, %%gasreq|gasreq%%, and %%pivotId|pivot-id%%, and %%offer list|offer-list%%.
 
 ```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L26-L48
-```
-
-To complete the `ILiquidityProvder` interface we also need to provide an `updateOffer` like so (details are not covered in this tutorial, but see [Update Your Offer](../../SDK/guides/update-offer.md) in the SDK for the convenience it provides):
-
-```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L50-L71
+https://github.com/mangrovedao/mangrove-core/blob/57f98197c7b6da15f754e91695aeddbfbef822db/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L31-L86
 ```
 
 ### Emit in Posthook
@@ -60,7 +54,7 @@ https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650
 When using our new contract we can inspect traces and addresses, but for illustrative purposes insert the following to emit an event in the %%posthook|makerPosthook%% when the offer is successfully taken.
 
 ```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L75-L82
+https://github.com/mangrovedao/mangrove-core/blob/57f98197c7b6da15f754e91695aeddbfbef822db/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L88-L102
 ```
 
 There are more hooks to enable the Mangrovian abilities of %%last look|last-look%% and more advanced %%reactive liquidity|reactive-liquidity%%.

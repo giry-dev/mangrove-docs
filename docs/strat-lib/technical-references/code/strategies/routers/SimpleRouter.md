@@ -1,29 +1,26 @@
 ## SimpleRouter
 
-`SimpleRouter` instances pull (push) liquidity directly from (to) the reserve
-
 _Maker contracts using this router must make sure that the reserve approves the router for all asset that will be pulled (outbound tokens)
 Thus a maker contract using a vault that is not an EOA must make sure this vault has approval capacities._
 
 ### __pull__
 
 ```solidity
-function __pull__(contract IERC20 token, address reserve, address maker, uint256 amount, bool strict) internal virtual returns (uint256 pulled)
+function __pull__(contract IERC20 token, address owner, uint256 amount, bool strict) internal virtual returns (uint256 pulled)
 ```
 
 transfers an amount of tokens from the reserve to the maker.
 
-_requires approval from `reserve` for `this` to transfer `token`._
+_requires approval from `owner` for `this` to transfer `token`._
 
 #### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | token | contract IERC20 | Token to be transferred |
-| reserve | address | The address of the reserve, where the tokens will be transferred from |
-| maker | address | Address of the maker, where the tokens will be transferred to |
+| owner | address | The account from which the tokens will be transferred. |
 | amount | uint256 | The amount of tokens to be transferred |
-| strict | bool | wether the caller maker contract wishes to pull at most `amount`. |
+| strict | bool | wether the caller maker contract wishes to pull at most `amount` tokens of owner. |
 
 #### Return Values
 
@@ -34,45 +31,50 @@ _requires approval from `reserve` for `this` to transfer `token`._
 ### __push__
 
 ```solidity
-function __push__(contract IERC20 token, address reserve, address maker, uint256 amount) internal virtual returns (uint256)
+function __push__(contract IERC20 token, address owner, uint256 amount) internal virtual returns (uint256)
 ```
 
-router-dependent implementation of the `push` function
 transfers an amount of tokens from the maker to the reserve.
-
-_requires approval from `maker` for `this` to transfer `token`.
-will revert if transfer fails_
 
 #### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | token | contract IERC20 | Token to be transferred |
-| reserve | address | The address of the reserve, where the tokens will be transferred to |
-| maker | address | Address of the maker, where the tokens will be transferred from |
+| owner | address |  |
 | amount | uint256 | The amount of tokens to be transferred |
 
-### reserveBalance
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| [0] | uint256 |  |
+
+### balanceOfReserve
 
 ```solidity
-function reserveBalance(contract IERC20 token, address reserve) external view returns (uint256)
+function balanceOfReserve(contract IERC20 token, address owner) public view returns (uint256)
 ```
 
-returns the amount of `token`s that can be made available for pulling by the maker contract
-
-_when this router is pulling from a lender, this must return the amount of asset that can be withdrawn from reserve_
+Balance of a reserve
 
 #### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| token | contract IERC20 | is the asset one wishes to know the balance of |
-| reserve | address | is the address identifying the location of the assets |
+| token | contract IERC20 | the asset one wishes to know the balance of |
+| owner | address |  |
+
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| [0] | uint256 | the balance of the reserve |
 
 ### __checkList__
 
 ```solidity
-function __checkList__(contract IERC20 token, address reserve) internal view virtual
+function __checkList__(contract IERC20 token, address owner) internal view virtual
 ```
 
 router-dependent implementation of the `checkList` function
@@ -85,5 +87,5 @@ _`checkList` returns normally if all needed approval are strictly positive. It r
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | token | contract IERC20 | is the asset whose approval must be checked |
-| reserve | address | the reserve that requires asset pulling/pushing |
+| owner | address | the account that requires asset pulling/pushing |
 

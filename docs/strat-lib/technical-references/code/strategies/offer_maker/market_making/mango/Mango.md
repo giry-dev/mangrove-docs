@@ -44,26 +44,6 @@ constructor(contract IMangrove mgv, contract IERC20 base, contract IERC20 quote,
 function initialize(bool reset, uint256 lastBidPosition, uint256 from, uint256 to, uint256[][2] pivotIds, uint256[] tokenAmounts) public
 ```
 
-### setReserve
-
-```solidity
-function setReserve(address reserve_) external
-```
-
-### __reserve__
-
-```solidity
-function __reserve__(address maker) internal view returns (address reserve_)
-```
-
-hook to customize offer owner's reserve for the offer logic
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| maker | address | the offer owner's address whose address is being queried |
-
 ### resetPending
 
 ```solidity

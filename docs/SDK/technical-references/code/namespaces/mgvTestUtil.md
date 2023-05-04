@@ -31,7 +31,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:9
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:10
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:22
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:23
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:30
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:31
 
 ___
 
@@ -85,7 +85,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:32
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:33
 
 ___
 
@@ -104,7 +104,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:89
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:90
 
 ___
 
@@ -123,12 +123,12 @@ ___
 | `gives?` | `ethers.BigNumberish` |
 | `gasreq?` | `ethers.BigNumberish` |
 | `shouldFail?` | `boolean` |
-| `shouldAbort?` | `boolean` |
+| `shouldReturnData?` | `boolean` |
 | `shouldRevert?` | `boolean` |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:223
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:224
 
 ## Variables
 
@@ -138,7 +138,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:28
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:29
 
 ___
 
@@ -148,7 +148,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:235
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:236
 
 ___
 
@@ -160,7 +160,7 @@ Await this when you want to wait for all events corresponding to the last sent t
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:244
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:245
 
 ## Functions
 
@@ -182,7 +182,7 @@ Await this when you want to wait for all events corresponding to the last sent t
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:51
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:52
 
 ___
 
@@ -196,7 +196,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:63
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:64
 
 ___
 
@@ -210,7 +210,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:82
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:83
 
 ___
 
@@ -230,7 +230,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:96
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:97
 
 ___
 
@@ -250,7 +250,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:126
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:127
 
 ___
 
@@ -271,7 +271,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:139
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:140
 
 ___
 
@@ -292,7 +292,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:150
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:151
 
 ___
 
@@ -314,7 +314,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:161
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:162
 
 ___
 
@@ -340,23 +340,20 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:210
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:211
 
 ___
 
-### <a id="waitforbooksforlasttx" name="waitforbooksforlasttx"></a> waitForBooksForLastTx
+### <a id="waitforblock" name="waitforblock"></a> waitForBlock
 
-▸ **waitForBooksForLastTx**(`market?`): `Promise`<`void`\>
-
-Waits for last tx to be generated and optionally the market's books to be synced.
-WARNING: If `market` is given, then `SetGasbase` events (with no actual change to gasbase)
-are provoked to gage semibook-states. Handle accordingly in your test code.
+▸ **waitForBlock**(`mgv`, `blockNumber`): `Promise`<`void`\>
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `market?` | [`Market`](../classes/Market.md) | wait for books in this market to be in sync. |
+| Name | Type |
+| :------ | :------ |
+| `mgv` | [`Mangrove`](../classes/Mangrove.md) |
+| `blockNumber` | `number` |
 
 #### Returns
 
@@ -364,7 +361,7 @@ are provoked to gage semibook-states. Handle accordingly in your test code.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:252
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:249
 
 ___
 
@@ -386,7 +383,7 @@ Call this to enable tracking of whether the last transaction sent by this librar
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:383
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:288
 
 ___
 
@@ -402,7 +399,55 @@ Call this disable tracking of whether the last transaction sent by this library 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:393
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:298
+
+___
+
+### <a id="waitfortransactions" name="waitfortransactions"></a> waitForTransactions
+
+▸ **waitForTransactions**(`txPromises`): `Promise`<`TransactionReceipt`[]\>
+
+Use this to await transactions. In addition to convenience,
+it allows us to track when events for the last tx have been generated.
+NB: Only works when this is awaited before sending more tx's.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `txPromises` | `PromiseOrValue`<`PromiseOrValue`<`ContractTransaction`\>[]\> |
+
+#### Returns
+
+`Promise`<`TransactionReceipt`[]\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:309
+
+___
+
+### <a id="waitforoptionaltransaction" name="waitforoptionaltransaction"></a> waitForOptionalTransaction
+
+▸ **waitForOptionalTransaction**(`txPromise`): `Promise`<`TransactionReceipt` \| `undefined`\>
+
+Use this to await transactions or return immediately if promise returns undefined. In addition to convenience,
+it allows us to track when events for the last tx have been generated.
+NB: Only works when this is awaited before sending more tx's.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `txPromise` | `PromiseOrValue`<`ContractTransaction`\> |
+
+#### Returns
+
+`Promise`<`TransactionReceipt` \| `undefined`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:325
 
 ___
 
@@ -418,7 +463,7 @@ NB: Only works when this is awaited before sending more tx's.
 
 | Name | Type |
 | :------ | :------ |
-| `txPromise` | `Promise`<`ContractTransaction`\> |
+| `txPromise` | `PromiseOrValue`<`ContractTransaction`\> |
 
 #### Returns
 
@@ -426,13 +471,13 @@ NB: Only works when this is awaited before sending more tx's.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:404
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:346
 
 ___
 
 ### <a id="postnewoffer" name="postnewoffer"></a> postNewOffer
 
-▸ **postNewOffer**(`«destructured»`): `Promise`<`void`\>
+▸ **postNewOffer**(`«destructured»`): `Promise`<`TransactionReceipt`\>
 
 #### Parameters
 
@@ -442,17 +487,17 @@ ___
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`<`TransactionReceipt`\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:420
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:357
 
 ___
 
 ### <a id="postnewrevertingoffer" name="postnewrevertingoffer"></a> postNewRevertingOffer
 
-▸ **postNewRevertingOffer**(`market`, `ba`, `maker`): `Promise`<`void`\>
+▸ **postNewRevertingOffer**(`market`, `ba`, `maker`): `Promise`<`TransactionReceipt`\>
 
 #### Parameters
 
@@ -464,17 +509,17 @@ ___
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`<`TransactionReceipt`\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:465
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:399
 
 ___
 
 ### <a id="postnewsucceedingoffer" name="postnewsucceedingoffer"></a> postNewSucceedingOffer
 
-▸ **postNewSucceedingOffer**(`market`, `ba`, `maker`): `Promise`<`void`\>
+▸ **postNewSucceedingOffer**(`market`, `ba`, `maker`): `Promise`<`TransactionReceipt`\>
 
 #### Parameters
 
@@ -486,17 +531,17 @@ ___
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`<`TransactionReceipt`\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:480
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:414
 
 ___
 
 ### <a id="postnewfailingoffer" name="postnewfailingoffer"></a> postNewFailingOffer
 
-▸ **postNewFailingOffer**(`market`, `ba`, `maker`): `Promise`<`void`\>
+▸ **postNewFailingOffer**(`market`, `ba`, `maker`): `Promise`<`TransactionReceipt`\>
 
 #### Parameters
 
@@ -508,11 +553,11 @@ ___
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`<`TransactionReceipt`\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:488
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:422
 
 ___
 
@@ -532,7 +577,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:496
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:430
 
 ___
 
@@ -554,49 +599,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:528
-
-___
-
-### <a id="approvemgv" name="approvemgv"></a> approveMgv
-
-▸ **approveMgv**(`token`, `owner`, `amount`): `Promise`<`void`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `token` | [`MgvToken`](../classes/MgvToken.md) |
-| `owner` | [`Account`](mgvTestUtil.md#account) |
-| `amount` | `number` |
-
-#### Returns
-
-`Promise`<`void`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:536
-
-___
-
-### <a id="approve" name="approve"></a> approve
-
-▸ **approve**(`token`, `owner`, `spenderAddress`, `amount`): `Promise`<`void`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `token` | [`MgvToken`](../classes/MgvToken.md) |
-| `owner` | [`Account`](mgvTestUtil.md#account) |
-| `spenderAddress` | `string` |
-| `amount` | `number` |
-
-#### Returns
-
-`Promise`<`void`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:545
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:462

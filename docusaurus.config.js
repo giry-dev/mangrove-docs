@@ -128,9 +128,24 @@ const config = {
         },
         items: [
           {
+            to: '/high-level',
+            position: 'left',
+            label: 'Concepts',
+          },
+          {
+            to: '/web-app',
+            position: 'left',
+            label: 'Web App',
+          },
+          {
+            to: '/kandel',
+            position: 'left',
+            label: 'Kandel',
+          },          
+          {
             to: '/contracts',
             position: 'left',
-            label: 'Contracts',
+            label: 'Protocol',
           },
           {
             to: '/strat-lib',
@@ -143,19 +158,9 @@ const config = {
             label: 'SDK',
           },
           {
-            to: '/keeper-bots',
-            position: 'left',
-            label: 'Keeper Bots',
-          },
-          {
             to: '/FAQ',
             position: 'right',
             label: 'FAQ',
-          },
-          {
-            href: '/glossary',
-            label: 'Glossary',
-            position: 'right',
           },
           {
             href: 'https://bafybeig62o75bfxssic66w2zwerbo6ezlhb33vsg5idr4uprckn2dxrucy.ipfs.infura-ipfs.io/',
@@ -173,7 +178,20 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'User',
+            items: [
+              {
+                label: 'Web App',
+                to: '/web-app',
+              },
+              {
+                label: 'Kandel',
+                to: '/kandel'
+              },
+            ],
+          },
+          {
+            title: 'Developer',
             items: [
               {
                 label: 'Contracts',
@@ -190,7 +208,7 @@ const config = {
               {
                 label: 'Keeper Bots',
                 to: '/keeper-bots',
-              },
+              },              
             ],
           },
           {
@@ -221,11 +239,23 @@ const config = {
                 label: 'SDK and Bots',
                 href: 'https://github.com/mangrovedao/mangrove-ts'
               },
+              {
+                label: 'Docs',
+                href: 'https://github.com/mangrovedao/mangrove-docs'
+              },              
             ],
           },
           {
             title: 'More',
             items: [
+              {
+                label: 'Glossary',
+                to: '/glossary'
+              },
+              {
+                label: 'FAQ',
+                to: '/FAQ'
+              },
               {
                 label: 'White Paper',
                 href: 'https://bafybeig62o75bfxssic66w2zwerbo6ezlhb33vsg5idr4uprckn2dxrucy.ipfs.infura-ipfs.io/'
@@ -237,7 +267,7 @@ const config = {
               {
                 label: 'Home',
                 href: 'https://mangrove.exchange'
-              }
+              },
             ]
           }
         ],

@@ -10,13 +10,30 @@ event LogIncident(contract IMangrove mangrove, contract IERC20 outbound_tkn, con
 
 Log incident (during post trade execution)
 
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| mangrove | contract IMangrove | The mangrove deployment. |
+| outbound_tkn | contract IERC20 | the outbound token of the offer list. |
+| inbound_tkn | contract IERC20 | the inbound token of the offer list. |
+| offerId | uint256 | the Mangrove offer id. |
+| makerData | bytes32 | from the maker. |
+| mgvData | bytes32 | from Mangrove. |
+
 ### SetRouter
 
 ```solidity
-event SetRouter(contract AbstractRouter)
+event SetRouter(contract AbstractRouter router)
 ```
 
 Logging change of router address
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| router | contract AbstractRouter | the new router address |
 
 ### offerGasreq
 
@@ -31,32 +48,6 @@ Actual gas requirement when posting offers via this strategy. Returned value may
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | total | uint256 | gas cost including router specific costs (if any). |
-
-### getMissingProvision
-
-```solidity
-function getMissingProvision(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 gasreq, uint256 gasprice, uint256 offerId) external view returns (uint256 missingProvision)
-```
-
-Computes missing provision to repost `offerId` at given `gasreq` and `gasprice` ignoring current contract's balance on Mangrove.
-
-_if `offerId` is not in the Order Book, will simply return how much is needed to post_
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| outbound_tkn | contract IERC20 | the outbound token used to identify the order book |
-| inbound_tkn | contract IERC20 | the inbound token used to identify the order book |
-| gasreq | uint256 | the gas required by the offer. Give > type(uint24).max to use `this.offerGasreq()` |
-| gasprice | uint256 | the upper bound on gas price. Give 0 to use Mangrove's gasprice |
-| offerId | uint256 | the offer id. Set this to 0 if one is not reposting an offer |
-
-#### Return Values
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| missingProvision | uint256 | to repost `offerId`. |
 
 ### setRouter
 
@@ -92,6 +83,12 @@ _admin may use this function to revoke specific approvals of `this` that are set
 | spender | address | the approved spender |
 | amount | uint256 | the spending amount |
 
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| [0] | bool | result of token approval. |
+
 ### provisionOf
 
 ```solidity
@@ -120,9 +117,15 @@ computes the amount of native tokens that can be redeemed when deprovisioning a 
 function checkList(contract IERC20[] tokens) external view
 ```
 
-verifies that this contract's current state is ready to be used by `msg.sender` to post offers on Mangrove
+verifies that this contract's current state is ready to be used to post offers on Mangrove
 
 _throws with a reason if something (e.g. an approval) is missing._
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| tokens | contract IERC20[] | the list of tokens that are traded by this contract |
 
 ### activate
 
@@ -171,54 +174,6 @@ struct OfferArgs {
 }
 ```
 
-### retractOffer
-
-```solidity
-function retractOffer(contract IERC20 outbound_tkn, contract IERC20 inbound_tkn, uint256 offerId, bool deprovision) external returns (uint256 received)
-```
-
-Retracts an offer from an Offer List of Mangrove.
-
-_An offer that is retracted without `deprovision` is retracted from the offer list, but still has its provisions locked by Mangrove.
-Calling this function, with the `deprovision` flag, on an offer that is already retracted must be used to retrieve the locked provisions._
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| outbound_tkn | contract IERC20 | the outbound token of the offer list. |
-| inbound_tkn | contract IERC20 | the inbound token of the offer list. |
-| offerId | uint256 | the identifier of the offer in the (`outbound_tkn`,`inbound_tkn`) offer list |
-| deprovision | bool | positioned if `msg.sender` wishes to redeem the offer's provision. |
-
-#### Return Values
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| received | uint256 | the amount of native tokens (in WEI) that have been retrieved by retracting the offer. |
-
-### reserve
-
-```solidity
-function reserve(address maker) external view returns (address)
-```
-
-getter of the reserve address of `maker`.
-
-_if no reserve is set for maker, default reserve is maker's address. Thus this function never returns `address(0)`._
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| maker | address | the address of the offer maker one wishes to know the reserve of. |
-
-#### Return Values
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| [0] | address | reserve_ the address of the offer maker's reserve of liquidity. |
-
 ### router
 
 ```solidity
@@ -228,4 +183,24 @@ function router() external view returns (contract AbstractRouter)
 Contract's router getter.
 
 _if contract has a no router, function returns `NO_ROUTER`._
+
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| [0] | contract AbstractRouter | the router. |
+
+### MGV
+
+```solidity
+function MGV() external view returns (contract IMangrove)
+```
+
+Contract's Mangrove getter
+
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| [0] | contract IMangrove | the Mangrove contract. |
 

@@ -11,6 +11,20 @@ event SetAdmin(address admin)
 
 logs new `admin` of `this`
 
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| admin | address | The new admin. |
+
+### _admin
+
+```solidity
+address _admin
+```
+
+The admin address.
+
 ### constructor
 
 ```solidity
@@ -24,6 +38,14 @@ constructor(address admin_) public
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | admin_ | address | The address of the admin that can access privileged functions and also allowed to change the admin. Cannot be `address(0)`. |
+
+### onlyAdmin
+
+```solidity
+modifier onlyAdmin()
+```
+
+This modifier verifies that `msg.sender` is the admin.
 
 ### onlyCaller
 
@@ -39,21 +61,33 @@ This modifier verifies that `msg.sender` is the caller.
 | ---- | ---- | ----------- |
 | caller | address | The address of the caller that can access the modified function. |
 
+### adminOrCaller
+
+```solidity
+modifier adminOrCaller(address caller)
+```
+
+This modifier verifies that `msg.sender` is either caller or the admin
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| caller | address | The address of a caller that can access the modified function. |
+
 ### admin
 
 ```solidity
-function admin() public view returns (address)
+function admin() public view returns (address current)
 ```
 
 Retrieves the current admin.
 
-### onlyAdmin
+#### Return Values
 
-```solidity
-modifier onlyAdmin()
-```
-
-This modifier verifies that `msg.sender` is the admin.
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| current | address | admin. |
 
 ### setAdmin
 

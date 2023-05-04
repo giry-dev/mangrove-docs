@@ -217,7 +217,7 @@ await liquidity_provider.retractBid(bidId);
 
 # More Code Examples
 
-See the docblock comments above each function definition or the official [mangrove.js Documentation](https://jsdocs.mangrove.exchange/).
+See the docblock comments above each function definition or the official [SDK Documentation](https://docs.mangrove.exchange/).
 
 # Instance Creation (Ethereum provider and signer)
 

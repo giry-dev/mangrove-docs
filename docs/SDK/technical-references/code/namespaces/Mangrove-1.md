@@ -14,7 +14,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:32
+@mangrovedao/mangrove.js/src/mangrove.ts:46
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:36
+@mangrovedao/mangrove.js/src/mangrove.ts:50
 
 ___
 
@@ -57,7 +57,51 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:46
+@mangrovedao/mangrove.js/src/mangrove.ts:60
+
+___
+
+### <a id="simplepermitdata" name="simplepermitdata"></a> SimplePermitData
+
+Ƭ **SimplePermitData**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `outbound_tkn` | `string` |
+| `inbound_tkn` | `string` |
+| `owner` | `string` |
+| `spender` | `string` |
+| `value` | `ethers.BigNumber` |
+| `nonce?` | `number` \| `ethers.BigNumber` |
+| `deadline` | `number` \| `Date` |
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:69
+
+___
+
+### <a id="permitdata" name="permitdata"></a> PermitData
+
+Ƭ **PermitData**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `outbound_tkn` | `string` |
+| `inbound_tkn` | `string` |
+| `owner` | `string` |
+| `spender` | `string` |
+| `value` | `ethers.BigNumber` |
+| `nonce` | `ethers.BigNumber` |
+| `deadline` | `number` |
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:79
 
 ___
 
@@ -82,4 +126,14 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:55
+@mangrovedao/mangrove.js/src/mangrove.ts:89
+
+___
+
+### <a id="createoptions" name="createoptions"></a> CreateOptions
+
+Ƭ **CreateOptions**: [`CreateSignerOptions`](../interfaces/eth.CreateSignerOptions.md) & { `blockManagerOptions?`: `BlockManager.Options` ; `reliableWebsocketProviderOptions?`: `ReliableWebsocketProvider.Options` ; `reliableHttpProviderOptions?`: `ReliableHttpProvider.Options`  }
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:96
