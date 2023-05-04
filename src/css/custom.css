@@ -250,11 +250,12 @@ a.frontpage--button-link:link {
 }
 
 .frontpage--message-container {
-  max-width: 75%;
+  padding-top: 1rem;
+  max-width: 600px;
 }
 
 .frontpage--message {
-  padding-bottom: 10px;
+
 }
 
 .integrate-link-override {

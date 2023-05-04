@@ -54,6 +54,7 @@ const TopFeatureList = [
 ]
 
 const MessageList = [
+
 ]
 
 
@@ -110,7 +111,7 @@ export default function HomepageSections() {
               ))}
             </div>
           </div>
-        </section>      
+        </section>
       )}
       else 
         return;
@@ -118,6 +119,19 @@ export default function HomepageSections() {
 
   return (
     <>
+      <section className={styles.features}>
+        <div className="frontpage--message-container container">
+          <div className="theme-admonition theme-admonition-info alert alert--info admonition_LlT9">
+            <div className="admonitionHeading_tbUL">
+              <strong>Disclaimer</strong>
+            </div>
+            <div className="admonitionContent_S0QG"><p>This documentation is currently work in progress! You might notice several <i>"Coming soon"</i> or <i>"Pre-release"</i> annotations. We are still fine-tuning the corresponding sections, as we launch Mangrove in stages.
+            <br/><br/>
+            Stay tuned for more information on <a href="https://twitter.com/mangrovedao">Twitter</a> and <a href="https://discord.com/invite/rk9Qthz5YE">Discord!</a>.</p>
+            </div>
+          </div>
+        </div>
+      </section>      
       <section className={styles.features}>
         <div className="frontpage--feature-container container">
           <div className="frontpage--feature-row">
@@ -127,7 +141,6 @@ export default function HomepageSections() {
           </div>
         </div>
       </section>
-      {renderMessages()}
       <section>
         <div className={styles.linkrows + " container"}>
           <div>
