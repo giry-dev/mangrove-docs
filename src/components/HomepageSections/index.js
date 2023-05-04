@@ -54,6 +54,19 @@ const TopFeatureList = [
 ]
 
 const MessageList = [
+  {
+    title: 'Disclaimer',
+    Svg: 'img/streamlinehq-interface-alert-warning-circle-interface-essential.svg',
+    description: (
+      <>
+      This documentation is currently work in progress!
+      You might notice several <i>"Coming soon"</i> or <i>"Pre-release"</i> annotations. We are still fine-tuning the corresponding sections, as we launch Mangrove in stages.
+      <br/><br/>
+      Stay tuned for more information on <a href="https://twitter.com/mangrovedao">Twitter</a> and <a href="https://discord.com/invite/rk9Qthz5YE">Discord!</a>.
+      </>
+    ),
+    colStyle: 'frontpage--message',
+  }
 ]
 
 
@@ -110,7 +123,7 @@ export default function HomepageSections() {
               ))}
             </div>
           </div>
-        </section>      
+        </section>
       )}
       else 
         return;
@@ -118,6 +131,7 @@ export default function HomepageSections() {
 
   return (
     <>
+      {renderMessages()}    
       <section className={styles.features}>
         <div className="frontpage--feature-container container">
           <div className="frontpage--feature-row">
@@ -127,7 +141,6 @@ export default function HomepageSections() {
           </div>
         </div>
       </section>
-      {renderMessages()}
       <section>
         <div className={styles.linkrows + " container"}>
           <div>
