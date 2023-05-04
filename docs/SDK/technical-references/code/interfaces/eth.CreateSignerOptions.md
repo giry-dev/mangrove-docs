@@ -19,13 +19,23 @@ custom_edit_url: null
 
 ___
 
+### <a id="providerwsurl" name="providerwsurl"></a> providerWsUrl
+
+• `Optional` **providerWsUrl**: `string`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/eth.ts:25
+
+___
+
 ### <a id="signerindex" name="signerindex"></a> signerIndex
 
 • `Optional` **signerIndex**: `number`
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:24
+@mangrovedao/mangrove.js/src/eth.ts:27
 
 ___
 
@@ -35,7 +45,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:26
+@mangrovedao/mangrove.js/src/eth.ts:29
 
 ___
 
@@ -45,7 +55,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:28
+@mangrovedao/mangrove.js/src/eth.ts:31
 
 ___
 
@@ -55,7 +65,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:30
+@mangrovedao/mangrove.js/src/eth.ts:33
 
 ___
 
@@ -65,7 +75,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:32
+@mangrovedao/mangrove.js/src/eth.ts:35
 
 ___
 
@@ -75,7 +85,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:34
+@mangrovedao/mangrove.js/src/eth.ts:37
 
 ___
 
@@ -85,4 +95,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:36
+@mangrovedao/mangrove.js/src/eth.ts:39

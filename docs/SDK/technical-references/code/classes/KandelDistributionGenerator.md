@@ -18,7 +18,7 @@ Helper for generating Kandel distributions.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:12
+@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:14
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:13
+@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:15
 
 ## Constructors
 
@@ -45,7 +45,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:15
+@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:17
 
 ## Methods
 
@@ -79,7 +79,7 @@ The distribution of bids and asks and their base and quote amounts.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:34
+@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:36
 
 ___
 
@@ -111,7 +111,7 @@ The distribution of bids and asks and their base and quote amounts.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:74
+@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:76
 
 ___
 
@@ -143,7 +143,46 @@ The distribution of bids and asks and their base and quote amounts.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:105
+@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:107
+
+___
+
+### <a id="uniformlychangevolume" name="uniformlychangevolume"></a> uniformlyChangeVolume
+
+▸ **uniformlyChangeVolume**(`params`): `Object`
+
+Creates a new distribution with uniformly changed volume.
+
+**`Remarks`**
+
+The decrease has to respect minimums, and thus may decrease some offers more than others.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params` | `Object` | The parameters for the change. |
+| `params.distribution` | [`KandelDistribution`](KandelDistribution.md) | The distribution to change. |
+| `params.baseDelta?` | `any` | The change in base volume. |
+| `params.quoteDelta?` | `any` | The change in quote volume. |
+| `params.minimumBasePerOffer` | `any` | The minimum amount of base to give for each offer. Should be at least minimumBasePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market. |
+| `params.minimumQuotePerOffer` | `any` | The minimum amount of quote to give for each offer. Should be at least minimumQuotePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market. |
+
+#### Returns
+
+`Object`
+
+The new distribution.
+
+| Name | Type |
+| :------ | :------ |
+| `distribution` | [`KandelDistribution`](KandelDistribution.md) |
+| `totalBaseChange` | `any` |
+| `totalQuoteChange` | `any` |
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:137
 
 ___
 
@@ -158,7 +197,7 @@ Creates a distribution based on an explicit set of offers. Either based on an or
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `params` | `Object` | The parameters for the distribution. |
-| `params.explicitOffers` | { `index`: `number` ; `offerType`: [`BA`](../namespaces/Market-1.md#ba) ; `price`: `any` ; `gives`: `any`  }[] | The explicit offers to use. |
+| `params.explicitOffers` | `OffersWithGives` | The explicit offers to use. |
 | `params.distribution` | [`KandelDistribution`](KandelDistribution.md) \| { `ratio`: `any` ; `pricePoints`: `number`  } | The original distribution or parameters for one. If pricePoints is not provided, then the number of offers is used. |
 
 #### Returns
@@ -169,4 +208,4 @@ The new distribution.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:135
+@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:169

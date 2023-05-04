@@ -220,7 +220,6 @@ Determines the minimum recommended volume for an offer of the given type to avoi
 | `params.offerType` | [`BA`](../namespaces/Market-1.md#ba) | The type of offer. |
 | `params.onAave` | `boolean` | Whether the Kandel is an AaveKandel. |
 | `params.factor?` | `number` | The factor to multiply the minimum volume by. Defaults to minimumBasePerOfferFactory / minimumQuotePerOfferFactor from KandelConfiguration. |
-| `params.gasreq?` | `number` | The gasreq to use. Defaults to the default gasreq for the Kandel type. |
 
 #### Returns
 
@@ -230,4 +229,32 @@ The minimum recommended volume.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:202
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:201
+
+___
+
+### <a id="getminimumvolumeforgasreq" name="getminimumvolumeforgasreq"></a> getMinimumVolumeForGasreq
+
+▸ **getMinimumVolumeForGasreq**(`params`): `Promise`<`any`\>
+
+Determines the minimum recommended volume for an offer of the given type to avoid density issues.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params` | `Object` | The parameters. |
+| `params.market` | [`Market`](Market.md) | The market the Kandel is deployed to. |
+| `params.offerType` | [`BA`](../namespaces/Market-1.md#ba) | The type of offer. |
+| `params.factor?` | `number` | The factor to multiply the minimum volume by. Defaults to minimumBasePerOfferFactory / minimumQuotePerOfferFactor from KandelConfiguration. |
+| `params.gasreq?` | `number` | The gasreq to use. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+The minimum recommended volume.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:219

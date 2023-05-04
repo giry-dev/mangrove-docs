@@ -15,7 +15,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:40
+@mangrovedao/mangrove.js/src/eth.ts:43
 
 ___
 
@@ -25,4 +25,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:41
+@mangrovedao/mangrove.js/src/eth.ts:44

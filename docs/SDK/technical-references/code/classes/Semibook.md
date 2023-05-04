@@ -15,6 +15,12 @@ the same for the market B-A), a `Semibook` depends on the market:
 - Prices are in terms of quote tokens
 - Volumes are in terms of base tokens
 
+## Hierarchy
+
+- `StateLogSubscriber`<[`State`](../namespaces/Semibook-1.md#state), [`BookSubscriptionEvent`](../namespaces/Market-1.md#booksubscriptionevent)\>
+
+  ↳ **`Semibook`**
+
 ## Implements
 
 - `Iterable`<[`Offer`](../namespaces/Market-1.md#offer)\>
@@ -27,7 +33,7 @@ the same for the market B-A), a `Semibook` depends on the market:
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:109
+@mangrovedao/mangrove.js/src/semibook.ts:134
 
 ___
 
@@ -37,7 +43,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:111
+@mangrovedao/mangrove.js/src/semibook.ts:136
 
 ___
 
@@ -47,7 +53,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:112
+@mangrovedao/mangrove.js/src/semibook.ts:137
 
 ___
 
@@ -57,7 +63,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:113
+@mangrovedao/mangrove.js/src/semibook.ts:138
 
 ___
 
@@ -67,7 +73,59 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:130
+@mangrovedao/mangrove.js/src/semibook.ts:145
+
+___
+
+### <a id="optionsidentifier" name="optionsidentifier"></a> optionsIdentifier
+
+• **optionsIdentifier**: `string`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:147
+
+___
+
+### <a id="initializedat" name="initializedat"></a> initializedAt
+
+• `Optional` **initializedAt**: `BlockWithoutParentHash`
+
+#### Inherited from
+
+StateLogSubscriber.initializedAt
+
+#### Defined in
+
+@mangrovedao/reliable-event-subscriber/dist/logSubscriber.d.ts:14
+
+___
+
+### <a id="lastseeneventblock" name="lastseeneventblock"></a> lastSeenEventBlock
+
+• `Optional` **lastSeenEventBlock**: `BlockWithoutParentHash`
+
+#### Inherited from
+
+StateLogSubscriber.lastSeenEventBlock
+
+#### Defined in
+
+@mangrovedao/reliable-event-subscriber/dist/logSubscriber.d.ts:15
+
+___
+
+### <a id="cachelock" name="cachelock"></a> cacheLock
+
+• `Protected` **cacheLock**: `Mutex`
+
+#### Inherited from
+
+StateLogSubscriber.cacheLock
+
+#### Defined in
+
+@mangrovedao/reliable-event-subscriber/dist/stateLogSubscriber.d.ts:12
 
 ## Methods
 
@@ -90,23 +148,31 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:131
+@mangrovedao/mangrove.js/src/semibook.ts:149
 
 ___
 
-### <a id="disconnect" name="disconnect"></a> disconnect
+### <a id="copy" name="copy"></a> copy
 
-▸ **disconnect**(): `void`
+▸ **copy**(`state`): [`State`](../namespaces/Semibook-1.md#state)
 
-Stop listening to events from mangrove
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `state` | [`State`](../namespaces/Semibook-1.md#state) |
 
 #### Returns
 
-`void`
+[`State`](../namespaces/Semibook-1.md#state)
+
+#### Overrides
+
+StateLogSubscriber.copy
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:145
+@mangrovedao/mangrove.js/src/semibook.ts:176
 
 ___
 
@@ -126,7 +192,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:149
+@mangrovedao/mangrove.js/src/semibook.ts:180
 
 ___
 
@@ -148,7 +214,7 @@ Returns struct containing offer details in the current offer list
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:160
+@mangrovedao/mangrove.js/src/semibook.ts:200
 
 ___
 
@@ -174,7 +240,7 @@ fee *remains* in basis points of the token being bought
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:196
+@mangrovedao/mangrove.js/src/semibook.ts:237
 
 ___
 
@@ -194,7 +260,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:201
+@mangrovedao/mangrove.js/src/semibook.ts:242
 
 ___
 
@@ -217,7 +283,7 @@ See mangrove.ts.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:216
+@mangrovedao/mangrove.js/src/semibook.ts:257
 
 ___
 
@@ -233,7 +299,7 @@ Returns the number of offers in the cache.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:231
+@mangrovedao/mangrove.js/src/semibook.ts:272
 
 ___
 
@@ -249,7 +315,7 @@ Returns the id of the best offer in the cache
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:236
+@mangrovedao/mangrove.js/src/semibook.ts:278
 
 ___
 
@@ -269,7 +335,7 @@ Iterable.\_\_@iterator@89
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:241
+@mangrovedao/mangrove.js/src/semibook.ts:284
 
 ___
 
@@ -285,7 +351,7 @@ Convenience method for getting an iterator without having to call `[Symbol.itera
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:246
+@mangrovedao/mangrove.js/src/semibook.ts:291
 
 ___
 
@@ -308,7 +374,7 @@ semibook. If there is no offer with a better price, `undefined` is returned.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:253
+@mangrovedao/mangrove.js/src/semibook.ts:298
 
 ___
 
@@ -349,7 +415,7 @@ traded due to insufficient volume on the book / price becoming bad.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:301
+@mangrovedao/mangrove.js/src/semibook.ts:350
 
 ___
 
@@ -371,7 +437,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:328
+@mangrovedao/mangrove.js/src/semibook.ts:377
 
 ___
 
@@ -394,7 +460,7 @@ Returns `true` if `price` is better than `referencePrice`; Otherwise, `false` is
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:399
+@mangrovedao/mangrove.js/src/semibook.ts:452
 
 ___
 
@@ -417,7 +483,7 @@ Returns `true` if `price` is worse than `referencePrice`; Otherwise, `false` is 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:405
+@mangrovedao/mangrove.js/src/semibook.ts:458
 
 ___
 
@@ -431,7 +497,57 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:409
+@mangrovedao/mangrove.js/src/semibook.ts:462
+
+___
+
+### <a id="stateinitialize" name="stateinitialize"></a> stateInitialize
+
+▸ **stateInitialize**(`block`): `Promise`<`ErrorOrState`<[`State`](../namespaces/Semibook-1.md#state)\>\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `block` | `BlockWithoutParentHash` |
+
+#### Returns
+
+`Promise`<`ErrorOrState`<[`State`](../namespaces/Semibook-1.md#state)\>\>
+
+#### Overrides
+
+StateLogSubscriber.stateInitialize
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:607
+
+___
+
+### <a id="statehandlelog" name="statehandlelog"></a> stateHandleLog
+
+▸ **stateHandleLog**(`state`, `log`, `event?`): [`State`](../namespaces/Semibook-1.md#state)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `state` | [`State`](../namespaces/Semibook-1.md#state) |
+| `log` | `Log` |
+| `event?` | [`BookSubscriptionEvent`](../namespaces/Market-1.md#booksubscriptionevent) |
+
+#### Returns
+
+[`State`](../namespaces/Semibook-1.md#state)
+
+#### Overrides
+
+StateLogSubscriber.stateHandleLog
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:654
 
 ___
 
@@ -452,7 +568,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:907
+@mangrovedao/mangrove.js/src/semibook.ts:980
 
 ___
 
@@ -476,7 +592,7 @@ The minimum volume required to stay above density limit.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:926
+@mangrovedao/mangrove.js/src/semibook.ts:999
 
 ___
 
@@ -496,7 +612,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:931
+@mangrovedao/mangrove.js/src/semibook.ts:1004
 
 ___
 
@@ -516,7 +632,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:997
+@mangrovedao/mangrove.js/src/semibook.ts:1042
 
 ___
 
@@ -536,4 +652,116 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1006
+@mangrovedao/mangrove.js/src/semibook.ts:1051
+
+___
+
+### <a id="checkiflastseeneventblockexists" name="checkiflastseeneventblockexists"></a> checkIfLastSeenEventBlockExists
+
+▸ `Protected` **checkIfLastSeenEventBlockExists**(): `void`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+StateLogSubscriber.checkIfLastSeenEventBlockExists
+
+#### Defined in
+
+@mangrovedao/reliable-event-subscriber/dist/stateLogSubscriber.d.ts:16
+
+___
+
+### <a id="getlateststate" name="getlateststate"></a> getLatestState
+
+▸ **getLatestState**(): [`State`](../namespaces/Semibook-1.md#state)
+
+#### Returns
+
+[`State`](../namespaces/Semibook-1.md#state)
+
+#### Inherited from
+
+StateLogSubscriber.getLatestState
+
+#### Defined in
+
+@mangrovedao/reliable-event-subscriber/dist/stateLogSubscriber.d.ts:17
+
+___
+
+### <a id="initialize" name="initialize"></a> initialize
+
+▸ **initialize**(`wantedBlock`): `Promise`<`InitializeErrorOrBlock`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `wantedBlock` | `BlockWithoutParentHash` |
+
+#### Returns
+
+`Promise`<`InitializeErrorOrBlock`\>
+
+#### Inherited from
+
+StateLogSubscriber.initialize
+
+#### Defined in
+
+@mangrovedao/reliable-event-subscriber/dist/stateLogSubscriber.d.ts:18
+
+___
+
+### <a id="handlelog" name="handlelog"></a> handleLog
+
+▸ **handleLog**(`log`, `event?`): `Promise`<`void`\>
+
+handle received log by creating new cached state if we found a block that is newer
+than our cache. Then let implementation `stateHandleLog` modify the state.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `log` | `Log` |
+| `event?` | [`BookSubscriptionEvent`](../namespaces/Market-1.md#booksubscriptionevent) |
+
+#### Returns
+
+`Promise`<`void`\>
+
+#### Inherited from
+
+StateLogSubscriber.handleLog
+
+#### Defined in
+
+@mangrovedao/reliable-event-subscriber/dist/stateLogSubscriber.d.ts:27
+
+___
+
+### <a id="rollback" name="rollback"></a> rollback
+
+▸ **rollback**(`block`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `block` | `Block` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+StateLogSubscriber.rollback
+
+#### Defined in
+
+@mangrovedao/reliable-event-subscriber/dist/stateLogSubscriber.d.ts:28

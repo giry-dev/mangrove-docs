@@ -228,7 +228,7 @@ To read decimals directly onchain, use `fetchDecimals`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:165
+@mangrovedao/mangrove.js/src/mgvtoken.ts:171
 
 ___
 
@@ -251,7 +251,7 @@ Set decimals for `tokenName` on current network.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:176
+@mangrovedao/mangrove.js/src/mgvtoken.ts:182
 
 ___
 
@@ -259,7 +259,7 @@ ___
 
 ▸ **approveMangrove**(`arg?`): `Promise`<`ContractTransaction`\>
 
-Set approval for Mangrove on `amount`.
+Set approval for Mangrove to `amount`.
 
 #### Parameters
 
@@ -273,7 +273,7 @@ Set approval for Mangrove on `amount`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:183
+@mangrovedao/mangrove.js/src/mgvtoken.ts:189
 
 ___
 
@@ -281,7 +281,7 @@ ___
 
 ▸ **approve**(`spender`, `arg?`): `Promise`<`ContractTransaction`\>
 
-Set approval for `spender` on `amount`.
+Set approval for `spender` to `amount`.
 
 #### Parameters
 
@@ -296,7 +296,53 @@ Set approval for `spender` on `amount`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:190
+@mangrovedao/mangrove.js/src/mgvtoken.ts:196
+
+___
+
+### <a id="approveifhigher" name="approveifhigher"></a> approveIfHigher
+
+▸ **approveIfHigher**(`spender`, `arg?`): `Promise`<`ContractTransaction`\>
+
+Sets the allowance for the spender if it is not already enough.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `spender` | `string` | The spender to approve |
+| `arg` | `any` | The approval arguments |
+
+#### Returns
+
+`Promise`<`ContractTransaction`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mgvtoken.ts:213
+
+___
+
+### <a id="increaseapproval" name="increaseapproval"></a> increaseApproval
+
+▸ **increaseApproval**(`spender`, `arg?`): `Promise`<`ContractTransaction`\>
+
+Increases the allowance for the spender unless it is already max.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `spender` | `string` | The spender to approve |
+| `arg` | `any` | The approval arguments |
+
+#### Returns
+
+`Promise`<`ContractTransaction`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mgvtoken.ts:226
 
 ___
 
@@ -319,7 +365,7 @@ Returns the balance of `account`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:205
+@mangrovedao/mangrove.js/src/mgvtoken.ts:248
 
 ___
 
@@ -343,4 +389,4 @@ Transfers `value` amount of tokens to address `to`
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:216
+@mangrovedao/mangrove.js/src/mgvtoken.ts:259
