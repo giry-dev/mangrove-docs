@@ -65,6 +65,13 @@ table {
   }
 }
 
+@media screen and (min-width: 996px) and (max-width: 1115px) {
+  /* on smaller resolutions (e.g., iPads), before the mobile view kicks in, adjust spacing in navbar */
+  .navbar__item{
+    --ifm-navbar-item-padding-horizontal: 0.5rem;
+  }
+}
+
 .hero__title {
   color: black;
   margin-bottom: 0;
