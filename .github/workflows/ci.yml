@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
   push:
     branches: 
-      - main
+      - master
       - develop
       - 'run-ci/**'
   pull_request_target:
-    branches: [ main, develop, test-pr ]
+    branches: [ master, develop, test-pr ]
     types: [opened, synchronize, reopened, labeled]
 
 concurrency: 
@@ -22,7 +22,7 @@ env:
                    ${{  (   github.event_name != 'pull_request_target'
                          && github.ref )
                       || format('refs/pull/{0}/merge', github.event.number) }}
-  NOTIFY_SLACK_FOR_THIS_WORKFLOW_RUN: ${{ github.ref_name == 'main' && github.event_name != 'pull_request_target' }}
+  NOTIFY_SLACK_FOR_THIS_WORKFLOW_RUN: ${{ github.ref_name == 'master' && github.event_name != 'pull_request_target' }}
 jobs:
   # ==== Job: Security guard ====
   # The security guard job only allows workflows triggered by external PR's to continue
@@ -98,7 +98,7 @@ jobs:
   # ==== Job: Deploy to GitHub pages ====
 
   deploy:
-    if: github.event_name != 'pull_request_target' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request_target' && github.ref == 'refs/heads/master'
     needs: build
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
