@@ -6,7 +6,9 @@ sidebar_position: 6
 
 # How to unpublish inventory?
 
-**[Strategies page is coming soon]**
+:::info
+Strategies page is coming soon!
+:::
 
 1. Go to the [Mangrove dApp](https://app.mangrove.exchange/) and click on the Strategies tab
 

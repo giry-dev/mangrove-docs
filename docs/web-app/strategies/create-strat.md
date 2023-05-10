@@ -6,8 +6,9 @@ sidebar_position: 2
 
 # Create a strategy
 
-**[Strategies page is coming soon]**
-
+:::info
+Strategies page is coming soon!
+:::
 
 ## Step 1/3 - Create a strategy
 

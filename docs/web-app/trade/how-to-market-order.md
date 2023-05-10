@@ -1,12 +1,17 @@
 ---
 description: How to place a market order
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 
 # How to place a market order
 
-**[Screenshots coming soon]**
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<img src={useBaseUrl('img/assets/market-order.gif')} width="100%"/><br /><br />
+
+
+## Steps
 
 1. Choose whether to "Buy" or "Sell" and click on the "Market" button.
 
@@ -22,14 +27,15 @@ sidebar_position: 2
 > * Lower tolerance may mean better prices, but potential for trade not to execute.
 > * Find the right balance for your trade.
 
-5. Click on "Approve 'token' for market order". A card will appear, click on "Allow 'token'" and confirm the transaction on your wallet.
+5. Click on "Approve and buy/sell". A card will appear, click on "Allow 'token'" and confirm the transaction on your wallet.
 
-6. Click on "Buy/Sell 'token'"
+6. Click "Done" to close the pop-up.
 
-7. Verify the information on the confirmation card, click on "Confirm buy/sell" and confirm the transaction on your wallet.
+7. Another card appears: verify the information, click on "Confirm buy/sell" and confirm the transaction on your wallet.
 
 8. Click on "Done".
 
 9. Wait for the notification card to appear, stating that your order has been filled.
 
-Congratulations, you have successfully completed your market order! 🤓<br /> 
+<br />
+Congratulations, you have successfully completed your market order! 🤓
