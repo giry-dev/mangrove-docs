@@ -11,7 +11,7 @@ sidebar_position: 2
 Before your transaction gets executed, you might have to approve the spending of tokens.
 For now, our app offers two ways to complete a transaction:
 
-* **Approve & Buy**: you will successively approve the spending and execute the transaction
+* **Approve and Buy**: you will successively approve the spending and execute the transaction
 
 * **Buy**: you will bypass the approval, and straight away attempt to execute the transaction (useful if you've already done a large approval in the past, for example)
 
