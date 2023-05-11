@@ -6,7 +6,9 @@ sidebar_position: 3
 
 # Parameters
 
-**[Kandel strategy is coming soon]**
+:::info
+Kandel strategy is coming soon!
+:::
 
 This section describes Kandel's parameters. For more contextual information, head over to the [visual explanation](./step-by-step-visual-explanation.md).
 

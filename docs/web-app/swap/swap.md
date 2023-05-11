@@ -6,4 +6,6 @@ sidebar_position: 6
 
 # Swap
 
-**[Swap page is coming soon]**
+:::info
+Swap page is coming soon!
+:::
