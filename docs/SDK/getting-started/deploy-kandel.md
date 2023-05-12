@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Deploy Kandel strategy
 
-This tutorial covers how to deploy a Kandel strategy. For more information about Kandel, see [user documentation](../../kandel/README.md).
+This tutorial covers how to deploy a Kandel strategy from a developer standpoint. For more information about Kandel, see the [Kandel documentation](../../kandel/README.md).
 
 ## Prerequisites
 
@@ -74,10 +74,7 @@ Based on the minimum volumes we calculated, we can select a desired distribution
 ```javascript reference
 https://github.com/mangrovedao/mangrove-ts/blob/ddd1250a619b98503524a5cae429f8fc30145f0c/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L60-L70
 ```
-The last line should give you something like this:
-``` bash
 
-```
 
 ### Deploy Kandel instance
 

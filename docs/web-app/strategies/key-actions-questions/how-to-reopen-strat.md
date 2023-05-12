@@ -6,7 +6,9 @@ sidebar_position: 9
 
 # How to reopen a strategy?
 
-**[Strategies page is coming soon]**
+:::info
+Strategies page is coming soon!
+:::
 
 You can reopen a strategy that has been closed previously:
 

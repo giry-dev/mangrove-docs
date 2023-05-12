@@ -6,7 +6,9 @@ sidebar_position: 1
 
 # Key Actions/Questions
 
-**[Strategies page is coming soon]**
+:::info
+Strategies page is coming soon!
+:::
 
 1. [How to edit your strategy price range?](./how-to-edit-price-range.md)
 

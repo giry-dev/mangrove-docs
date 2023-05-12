@@ -6,7 +6,9 @@ sidebar_position: 5
 
 # Strategy reserve
 
-**[Kandel strategy is coming soon]**
+:::info
+Kandel strategy is coming soon!
+:::
 
 All Kandel instances have a local liquidity source, i.e. the funds deposited in the Strategy reserve. It includes Published liquidity and Unallocated liquidity:
 
