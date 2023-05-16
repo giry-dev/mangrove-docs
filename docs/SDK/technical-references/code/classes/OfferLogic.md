@@ -18,7 +18,7 @@ The OfferLogic class connects to a Maker contract implementing the IOfferLogic i
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:22
+@mangrovedao/mangrove.js/src/offerLogic.ts:13
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:23
+@mangrovedao/mangrove.js/src/offerLogic.ts:14
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:24
+@mangrovedao/mangrove.js/src/offerLogic.ts:15
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:25
+@mangrovedao/mangrove.js/src/offerLogic.ts:16
 
 ## Constructors
 
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:27
+@mangrovedao/mangrove.js/src/offerLogic.ts:18
 
 ## Methods
 
@@ -86,7 +86,7 @@ the router ethers.js contract responding to the `AbstractRouter` abi.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:41
+@mangrovedao/mangrove.js/src/offerLogic.ts:32
 
 ___
 
@@ -104,17 +104,17 @@ True if the offer logic has a router, false otherwise.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:54
+@mangrovedao/mangrove.js/src/offerLogic.ts:45
 
 ___
 
-### <a id="approvetoken" name="approvetoken"></a> approveToken
+### <a id="approve" name="approve"></a> approve
 
-▸ **approveToken**(`tokenName`, `arg?`): `Promise`<`ContractTransaction`\>
+▸ **approve**(`tokenName`, `args?`): `Promise`<`ContractTransaction`\>
 
 **`Note`**
 
-Approves the logic to spend `token`s on signer's behalf.
+logic approves signer or `args.optSpender` to spend a certain token on its behalf
 This has to be done for each token the signer's wishes to ask or bid for.
 
 #### Parameters
@@ -122,7 +122,10 @@ This has to be done for each token the signer's wishes to ask or bid for.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `tokenName` | `string` | - |
-| `arg` | `any` | optional `arg.amount` can be used if one wishes to approve a finite amount |
+| `args?` | `Object` | optional `arg.amount` can be used if one wishes to approve a finite amount |
+| `args.optSpender?` | `string` | - |
+| `args.optAmount?` | `any` | - |
+| `args.optOverrides?` | `Overrides` | - |
 
 #### Returns
 
@@ -130,31 +133,7 @@ This has to be done for each token the signer's wishes to ask or bid for.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:63
-
-___
-
-### <a id="allowance" name="allowance"></a> allowance
-
-▸ **allowance**(`tokenName`): `Promise`<`Big`\>
-
-**`Note`**
-
-returns logic's allowance to trade `tokenName` on signer's behalf
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `tokenName` | `string` |
-
-#### Returns
-
-`Promise`<`Big`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/offerLogic.ts:79
+@mangrovedao/mangrove.js/src/offerLogic.ts:54
 
 ___
 
@@ -178,7 +157,7 @@ a new `OfferLogic` object with a different signer or provider.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:99
+@mangrovedao/mangrove.js/src/offerLogic.ts:83
 
 ___
 
@@ -194,7 +173,7 @@ Retrieves the gasreq necessary for offers of this OfferLogic to execute a trade.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:104
+@mangrovedao/mangrove.js/src/offerLogic.ts:88
 
 ___
 
@@ -219,7 +198,7 @@ The transaction used to set the new admin.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:114
+@mangrovedao/mangrove.js/src/offerLogic.ts:98
 
 ___
 
@@ -237,7 +216,7 @@ The address of the current admin.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:128
+@mangrovedao/mangrove.js/src/offerLogic.ts:112
 
 ___
 
@@ -264,7 +243,7 @@ The transaction used to activate the OfferLogic.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:142
+@mangrovedao/mangrove.js/src/offerLogic.ts:126
 
 ___
 
@@ -280,7 +259,7 @@ Retrieves the provision available on Mangrove for the offer logic, in ethers
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:153
+@mangrovedao/mangrove.js/src/offerLogic.ts:137
 
 ___
 
@@ -305,7 +284,7 @@ The transaction used to fund the offer logic.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:162
+@mangrovedao/mangrove.js/src/offerLogic.ts:146
 
 ___
 
@@ -328,4 +307,4 @@ tx will revert is signer is not the admin of the OfferLogic onchain contract
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:168
+@mangrovedao/mangrove.js/src/offerLogic.ts:152
