@@ -74,8 +74,8 @@ markdownFiles.forEach(file => {
 });
 
 const newHeads = {
-    "mangrovedao/mangrove-core": "89b38bc46a3783ce06072cca744650a77efcb048",
-    "mangrovedao/mangrove-ts": "481e174a4644fa260ce3fa8b09d91aebfc5d0c10"
+    "mangrovedao/mangrove-core": "182eaddc982140667a9d95f3ba957e7d016ed0d1",
+    "mangrovedao/mangrove-ts": "de9f479b3bc741b48757b534345a71b67b0417aa"
 }
 
 async function compareAll() {

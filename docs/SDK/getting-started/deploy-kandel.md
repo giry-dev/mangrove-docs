@@ -33,7 +33,7 @@ anvil --fork-url $RPC_URL
 Start up `node` in a new terminal and issue the following code which performs the initial setup of loading the `.env` you added in [preparation](./preparation.md), importing the Mangrove SDK, and connecting the SDK to the local node for a specific market.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/ddd1250a619b98503524a5cae429f8fc30145f0c/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L1-L19
+https://github.com/mangrovedao/mangrove-ts/blob/de9f479b3bc741b48757b534345a71b67b0417aa/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L1-L19
 ```
 
 ### Generate a minimum distribution
@@ -41,7 +41,7 @@ https://github.com/mangrovedao/mangrove-ts/blob/ddd1250a619b98503524a5cae429f8fc
 Next, create an instance to manage Kandel strategies (`kandelStrategies`), and load the recommended configuration for the market.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/ddd1250a619b98503524a5cae429f8fc30145f0c/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L21-L25
+https://github.com/mangrovedao/mangrove-ts/blob/de9f479b3bc741b48757b534345a71b67b0417aa/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L21-L25
 ```
 
 With this, you can generate a [distribution](../../kandel/how-does-kandel-work/step-by-step-visual-explanation.md#price-distribution) with the minimum recommended amount of liquidity to avoid %%density|density%% issues by:
@@ -52,7 +52,7 @@ With this, you can generate a [distribution](../../kandel/how-does-kandel-work/s
 See the API documentation for [calculateMinimumDistribution](../technical-references/code/classes/KandelDistributionGenerator.md#calculateminimumdistribution) for more details on other `priceParams`. In our example here, `midPrice: 1100` is used to set the [current price](../../kandel/how-does-kandel-work/parameters.md), and decide which offers become bids and which become asks.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/ddd1250a619b98503524a5cae429f8fc30145f0c/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L26-L58
+https://github.com/mangrovedao/mangrove-ts/blob/de9f479b3bc741b48757b534345a71b67b0417aa/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L27-L58
 ```
 
 The last three lines should output something similar to the following (actual volumes may differ due to different configuration for the market):
@@ -72,7 +72,7 @@ Minimum quote volume: 1893.8304
 Based on the minimum volumes we calculated, we can select a desired distribution with volumes above these values. Here we use `3` for base (WETH) and `3000` for quote (USDC).
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/ddd1250a619b98503524a5cae429f8fc30145f0c/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L60-L70
+https://github.com/mangrovedao/mangrove-ts/blob/de9f479b3bc741b48757b534345a71b67b0417aa/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L60-L70
 ```
 
 
@@ -81,7 +81,7 @@ https://github.com/mangrovedao/mangrove-ts/blob/ddd1250a619b98503524a5cae429f8fc
 Now, you can use the `seeder` to [sow](../technical-references/code/classes/KandelSeeder.md#sow) a Kandel instance for a given seed, and retrieve a `kandelInstance` to manage the deployed instance.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/ddd1250a619b98503524a5cae429f8fc30145f0c/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L72-L82
+https://github.com/mangrovedao/mangrove-ts/blob/de9f479b3bc741b48757b534345a71b67b0417aa/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L72-L82
 ```
 
 A brief explanation on the above `seed` parameters:
@@ -98,7 +98,7 @@ A brief explanation on the above `seed` parameters:
 The `kandelInstance` has functions for approving transfers for the base and quote tokens. This is required for the Kandel strategy to be able to transfer tokens from the wallet when depositing funds.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/ddd1250a619b98503524a5cae429f8fc30145f0c/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L84-L89
+https://github.com/mangrovedao/mangrove-ts/blob/de9f479b3bc741b48757b534345a71b67b0417aa/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L84-L89
 ```
 
 ### Populate offers for the distribution
@@ -112,7 +112,7 @@ The offers also need a %%provision|provision%%, hence here the default that we a
 > The population can span multiple transactions due to gas limits. After this step, the Kandel offers are deployed and are ready to be taken!
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/ddd1250a619b98503524a5cae429f8fc30145f0c/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L91-L115
+https://github.com/mangrovedao/mangrove-ts/blob/de9f479b3bc741b48757b534345a71b67b0417aa/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L91-L115
 ```
 
 ### Manage existing Kandel instance
@@ -120,7 +120,7 @@ https://github.com/mangrovedao/mangrove-ts/blob/ddd1250a619b98503524a5cae429f8fc
 Later on, you can also manage an existing Kandel instance. For example, you might want to inspect the status of your offers. For this, the [farm](../technical-references/code/classes/KandelFarm.md) can be used to retrieve Kandel instances you own based on events from the seeder.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/ddd1250a619b98503524a5cae429f8fc30145f0c/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L117-L131
+https://github.com/mangrovedao/mangrove-ts/blob/de9f479b3bc741b48757b534345a71b67b0417aa/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L117-L131
 ```
 
 ### Close Kandel strategy and withdraw funds
@@ -128,5 +128,5 @@ https://github.com/mangrovedao/mangrove-ts/blob/ddd1250a619b98503524a5cae429f8fc
 At some point, you might want to close your Kandel strategy (for instance due to price movements). This can be easily done with the [retractAndWithdraw](../technical-references/code/classes/KandelInstance.md#retractandwithdraw) function. It will withdraw all funds (both tokens and provision) from the Kandel instance and retract all offers.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove-ts/blob/ddd1250a619b98503524a5cae429f8fc30145f0c/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L132-L178
+https://github.com/mangrovedao/mangrove-ts/blob/de9f479b3bc741b48757b534345a71b67b0417aa/packages/mangrove.js/examples/tutorials/deploy-kandel.js#L132-L178
 ```
