@@ -266,7 +266,7 @@ ___
 
 ### <a id="permit" name="permit"></a> permit
 
-▸ **permit**(`data`): `void`
+▸ **permit**(`data`): `Promise`<`ContractTransaction`\>
 
 Sign permit data for buying outbound_tkn with spender's inbound_tkn
 See mangrove.ts.
@@ -279,7 +279,7 @@ See mangrove.ts.
 
 #### Returns
 
-`void`
+`Promise`<`ContractTransaction`\>
 
 #### Defined in
 

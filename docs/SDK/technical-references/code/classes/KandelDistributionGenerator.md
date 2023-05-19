@@ -209,3 +209,35 @@ The new distribution.
 #### Defined in
 
 @mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:169
+
+___
+
+### <a id="getminimumvolumeforindex" name="getminimumvolumeforindex"></a> getMinimumVolumeForIndex
+
+▸ **getMinimumVolumeForIndex**(`params`): `any`
+
+Retrieves the minimum volume for a given offer type at the given index.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params` | `Object` | The parameters for the minimum volume. |
+| `params.offerType` | [`BA`](../namespaces/Market-1.md#ba) | The offer type to get the minimum volume for. |
+| `params.index` | `number` | The Kandel index. |
+| `params.price` | `any` | The price at the index. |
+| `params.ratio` | `any` | The ratio of the geometric progression of prices. |
+| `params.spread` | `number` | The spread used when transporting funds from an offer to its dual. |
+| `params.pricePoints` | `number` | The number of price points. |
+| `params.minimumBasePerOffer` | `any` | The minimum base token volume per offer. If not provided, then the minimum base token volume is used. |
+| `params.minimumQuotePerOffer` | `any` | The minimum quote token volume per offer. If not provided, then the minimum quote token volume is used. |
+
+#### Returns
+
+`any`
+
+The minimum volume for the given offer type and the index.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelDistributionGenerator.ts:203

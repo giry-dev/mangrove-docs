@@ -20,7 +20,7 @@ Recall that `Direct` is an abstract implementation of `MangroveOffer`, which is 
 
 The Direct constructor looks like this:
 ```solidity reference title="Direct contract's constructor"
-https://github.com/mangrovedao/mangrove-core/blob/6439b68eb657200192d84cddf094892181c74596/src/strategies/offer_maker/abstract/Direct.sol#L36-L43
+https://github.com/mangrovedao/mangrove-core/blob/182eaddc982140667a9d95f3ba957e7d016ed0d1/src/strategies/offer_maker/abstract/Direct.sol#L36-L43
 ```
 which provides `mgv` (the address of the Mangrove contract) to MangroveOffer and %%`gasreq`|gasreq%% the gas that is required to execute the %%offer logic|offer-logic%%. The specific arguments of the Direct's constructor are the %%`router_`|router%%'s address and its %%`reserveId`|reserve-id%%. Notice that passing `address(0)` as `reserveId` is interpreted by Direct as requiring `reserveId` to be the contract's address.
 

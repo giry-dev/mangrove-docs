@@ -2528,7 +2528,7 @@ useless in client code.</p>
           <code class="lines"><pre>153
 154
 155</pre></code>
-          <pre>  <span class="token keyword">event</span> <span class="token function">OfferRetract</span><span class="token punctuation">(</span><span class="token builtin">address</span> <span class="token keyword">indexed</span> outbound_tkn<span class="token punctuation">,</span> <span class="token builtin">address</span> <span class="token keyword">indexed</span> inbound_tkn<span class="token punctuation">,</span> <span class="token builtin">uint</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <pre>  <span class="token keyword">event</span> <span class="token function">OfferRetract</span><span class="token punctuation">(</span><span class="token builtin">address</span> <span class="token keyword">indexed</span> outbound_tkn<span class="token punctuation">,</span> <span class="token builtin">address</span> <span class="token keyword">indexed</span> inbound_tkn<span class="token punctuation">,</span> <span class="token builtin">uint</span> id<span class="token punctuation">,</span> <span class="token builtin">bool</span> deprovision<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </pre>
         </div>
@@ -5175,7 +5175,7 @@ In case of emergency, Mangrove can be <code>kill</code>ed. It cannot be resurrec
 194</pre></code>
           <pre>        <span class="token function">creditWei</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>sender<span class="token punctuation">,</span> provision<span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
-      <span class="token keyword">emit</span> <span class="token function">OfferRetract</span><span class="token punctuation">(</span>outbound_tkn<span class="token punctuation">,</span> inbound_tkn<span class="token punctuation">,</span> offerId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">emit</span> <span class="token function">OfferRetract</span><span class="token punctuation">(</span>outbound_tkn<span class="token punctuation">,</span> inbound_tkn<span class="token punctuation">,</span> offerId<span class="token punctuation">,</span> deprovision<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 </pre>
@@ -5533,7 +5533,7 @@ In case of emergency, Mangrove can be <code>kill</code>ed. It cannot be resurrec
 271</pre></code>
           <pre>      <span class="token keyword">emit</span> <span class="token function">OfferWrite</span><span class="token punctuation">(</span>
         ofp<span class="token punctuation">.</span>outbound_tkn<span class="token punctuation">,</span> ofp<span class="token punctuation">.</span>inbound_tkn<span class="token punctuation">,</span> msg<span class="token punctuation">.</span>sender<span class="token punctuation">,</span> ofp<span class="token punctuation">.</span>wants<span class="token punctuation">,</span> ofp<span class="token punctuation">.</span>gives<span class="token punctuation">,</span> ofp<span class="token punctuation">.</span>gasprice<span class="token punctuation">,</span> ofp<span class="token punctuation">.</span>gasreq<span class="token punctuation">,</span> ofp<span class="token punctuation">.</span>id<span class="token punctuation">,</span> prev
-        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </pre>
         </div>
         <div class="focuser">

@@ -24,7 +24,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:23
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:22
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:37
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:36
 
 ___
 
@@ -56,4 +56,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:41
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:40
