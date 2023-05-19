@@ -2877,6 +2877,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mangrovedao/mangrove-core@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@mangrovedao/mangrove-core@npm:1.5.1"
+  checksum: fc9b9313cb674b61e0aec01e1ea3fb5b4c259acb0984b5e12c0aa32b1cfbe858f7a0801eb917fd5388816b3c2239c713e19bb70fb2d065d01bffc76c44f36209
+  languageName: node
+  linkType: hard
+
 "@mangrovedao/mangrove-core@npm:1.5.1-1":
   version: 1.5.1-1
   resolution: "@mangrovedao/mangrove-core@npm:1.5.1-1"
@@ -2884,9 +2891,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove.js@npm:1.2.4-14":
-  version: 1.2.4-14
-  resolution: "@mangrovedao/mangrove.js@npm:1.2.4-14"
+"@mangrovedao/mangrove.js@npm:1.2.5-0":
+  version: 1.2.5-0
+  resolution: "@mangrovedao/mangrove.js@npm:1.2.5-0"
   dependencies:
     "@ethersproject/experimental": ^5.7.0
     "@mangrovedao/commonlib.js": 1.0.0
@@ -2900,7 +2907,7 @@ __metadata:
     yargs: ^17.3.0
   bin:
     mgv: ./dist/nodejs/cli/mgv.js
-  checksum: 981fa5d78c13456968b937e4ca8df902172a0eb3d9a43a225ae094d2950592b15c89bfa25c57a662f547d9eaee7d4f0e4b9302b92c3badf686f35f91d5accfff
+  checksum: 4851d2492d6154a19b9871e124e8923de5fe65ee596187f4c4f69d2fad96dbf56e963b661c55f51ad67137cfc94bc96eac000f51202bd5b6ff910715c959afa6
   languageName: node
   linkType: hard
 
@@ -11769,8 +11776,8 @@ __metadata:
     "@docusaurus/theme-mermaid": ^2.2.0
     "@ethersproject/abi": ^5.4.7
     "@ethersproject/providers": ^5.4.7
-    "@mangrovedao/mangrove-core": 1.5.1-1
-    "@mangrovedao/mangrove.js": 1.2.4-14
+    "@mangrovedao/mangrove-core": 1.5.1
+    "@mangrovedao/mangrove.js": 1.2.5-0
     "@mdx-js/react": ^1.6.22
     "@nomicfoundation/hardhat-chai-matchers": ^1.0.0
     "@nomicfoundation/hardhat-network-helpers": ^1.0.0

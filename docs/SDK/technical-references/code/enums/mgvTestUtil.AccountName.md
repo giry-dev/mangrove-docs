@@ -36,3 +36,13 @@ ___
 #### Defined in
 
 @mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:124
+
+___
+
+### <a id="arbitrager" name="arbitrager"></a> Arbitrager
+
+• **Arbitrager** = ``"arbitrager"``
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:125
