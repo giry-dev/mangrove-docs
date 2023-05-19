@@ -169,18 +169,22 @@ require(mgv.withdraw(wei_balance), "Mangrove failed to transfer funds");
 
 :::
 
-## Balance adjustment when creating/updating offers
+## Provision calculation
 
-Whenever an offer is created or updated, Mangrove applies to following formula to get the offer's required provision in wei:
+The provision is calculated with the following formula (in wei):
 
 $$\textrm{provision} = \max(\textrm{gasprice}_{\textrm{mgv}},\textrm{gasprice}_{\textrm{ofr}}) \times (\textrm{gasreq} + \textrm{gasbase}_{\textrm{mgv}}) \times 10^9$$​
 
 * $$\textrm{gasprice}_{\textrm{mgv}}$$ is the `gasprice` [global governance parameter](../../governance-parameters/global-variables.md#gas-price-and-oracle) (in gwei per gas units)
 * $$\textrm{gasprice}_{\textrm{ofr}}$$ is the `gasprice` argument of the function being called ([`newOffer`](./#posting-a-new-offer) or [`updateOffer`](./#updating-an-existing-offer)) also in gwei per gas units.
-* $$\textrm{gasreq}$$ is the `gasreq` argument of the function being called (in gas units).
-* $$\textrm{gasbase}_{\rm mgv}$$is the `offer_gasbase` [local governance parameter](../../governance-parameters/local-variables.md#offer-gas-base).
+* $$\textrm{gasreq}$$ is the `gasreq` amount of gas units required to execute the offer.
+* $$\textrm{gasbase}_{\rm mgv}$$ is the `offer_gasbase` [local governance parameter](../../governance-parameters/local-variables.md#offer-gas-base).
 
-Mangrove will adjust the balance of the caller to ensure that $$\textrm{provision}$$ wei are available as bounty if the offer fails. If the offer was _already_ provisioned, the adjustment may be small, and the balance may actually increase -- for instance, if the `gasprice` dropped recently.
+## Balance adjustment when creating/updating offers
+
+Whenever an offer is created or updated, Mangrove uses the [Provision formula](./offer-provision.md#provision-calculation) to get the offer's required provision in wei.
+
+Mangrove will adjust the balance of the caller to ensure that _provision wei_ are available as bounty if the offer fails. If the offer was _already_ provisioned, the adjustment may be small, and the balance may actually increase -- for instance, if the `gasprice` dropped recently.
 
 :::info **Incentivized book cleaning**
 
@@ -194,52 +198,16 @@ If you frequently update your offers, we recommend using a consistent, high `gas
 
 :::
 
-## Provision and offer bounty
+## Bounty calculation
 
-<Tabs>
-<TabItem value="soliditiy" label="Solidity" default>
+The bounty is paid to the taker **as compensation for spent gas**. It depends on how much gas the offer uses before failing.
+It is calculated with the following formula, based on the provision [previously calculated](./offer-provision.md#provision-calculation):
 
-```solidity
-import "src/IMangrove.sol";
-import {MgvStructs} from "src/MgvLib.sol";
-//context 
-IMangrove mgv;
-address outbound_tkn;
-address inbound_tkn;
-uint offer_gasreq;
-(MgvStructs.GlobalPacked global32, MgvStructs.LocalPacked local32) = mgv.config(outbound_tkn, inbound_tkn);
+$$\textrm{bounty} = \min(\textrm{offer.provision},(\textrm{gasreq} + \textrm{gasbase}_{\textrm{mgv}}) \times \textrm{gasbase}_{\textrm{mgv}} \times 10^9)$$
 
-// computing minimal provision to cover an offer requiring `offer_gasreq` gas units 
-uint provision = (offer_gasreq + local32.offer_gasbase()) * global32.gasprice() * 10 ** 9;
-```
-
-
-</TabItem>
-<TabItem value="ethersjs" label="ethers.js">
-
-```javascript
-const { ethers } = require("ethers");
-let outTkn; // address of outbound token ERC20
-let inbTkn; // address of inbound token ERC20
-let MGV_reader_address; // address of Mangrove reader
-let MGV_reader_abi; // Mangrove Reader contract's abi
-
-const MangroveReader = new ethers.Contract(
-    MGV_reader_address, 
-    MGV_reader_abi, 
-    ethers.provider
-    );
-
-const ofr_gasreq = ethers.parseUnits("1",5); //100,000 gas units
-const provision = await MangroveReader.getProvision(outTkn, inbTkn, ofr_gasreq,0);
-```
-
-</TabItem>
-</Tabs>
-
-The bounty paid to the taker if an offer fails depends on how much gas the offer uses before failing. The bounty amount is calculated with the following formula:
-
-$$\textrm{bounty} = \min(\textrm{offer.provision}, 
-  (\textrm{gas\_used} + \textrm{local.offer\_gasbase}) \times \textrm{global.gasprice} \times 10^9)$$
+* $$\textrm{offer.provision}$$ is the [provision amount](./offer-provision.md#balance-adjustment-when-creatingupdating-offers) calculated when the offer was posted.
+* $$\textrm{gasreq}$$ is the `gasreq` amount of gas units required to execute the offer.
+* $$\textrm{gasbase}_{\textrm{mgv}}$$ is the `offer_gasbase` [local governance parameter](../../governance-parameters/local-variables.md#offer-gas-base). 
+* $$\textrm{gasbase}_{\textrm{mgv}}$$ is Mangrove's global gasprice at the time of offer execution.
 
 Thus the bounty is capped at the offer's original provision.
