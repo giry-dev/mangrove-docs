@@ -85,11 +85,11 @@ table {
 
 .hero--primary {
   height: 25vh;
-  background-color: white;
+  background-color: #F1F7F6;
 }
 
 [data-theme='dark'] .hero--primary {
-  background-color: #000618;
+  background-color: #021B1A;
 }
 
 .footer {
@@ -104,26 +104,50 @@ table {
   z-index: 0;
 
   width: 100%;
+
   opacity: 1;
 
   object-fit: cover;
 
   -webkit-mask-image: linear-gradient(
-    rgb(0 0 0 / 0.5),
-    rgb(0 0 0 / 0.2),
+    rgb(0 0 0 / 0.7),
+    rgb(0 0 0 / 0.35),
     rgb(0 0 0 / 0)
   );
   mask-image: linear-gradient(
-    rgb(0 0 0 / 0.5),
-    rgb(0 0 0 / 0.2),
+    rgb(0 0 0 / 0.7),
+    rgb(0 0 0 / 0.35),
     rgb(0 0 0 / 0)
   );
 }
 
-@media screen and (min-width: 400px) and (max-width: 996px) {
-  /* optimize background-pic size (and placement) a bit for mobile */
+@media screen and (min-width: 1280px) {
   .hero-image {
     height: 50vh;
+  }
+}
+
+@media screen and (min-width: 1750px) and (max-width: 1699px){
+  .hero-image {
+    width: 90%;
+    left: 5%;
+    right: 5%;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .hero-image {
+    width: 80%;
+    left: 10%;
+    right: 10%;
+  }
+}
+
+@media screen and (min-width: 2200px) {
+  .hero-image {
+    width: 70%;
+    left: 15%;
+    right: 15%;
   }
 }
 
