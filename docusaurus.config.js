@@ -16,7 +16,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
-  favicon: 'img/assets/mangrove_logo.png',
+  favicon: 'img/assets/mangrove_avatar_brightgreen.png',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -124,7 +124,8 @@ const config = {
         title: 'Mangrove Docs',
         logo: {
           alt: 'Mangrove logo',
-          src: 'img/assets/mangrove_logo.png',
+          src: 'img/assets/mangrove_only_logo_dark.png',
+          srcDark: 'img/assets/mangrove_only_logo_white.png',
         },
         items: [
           {
