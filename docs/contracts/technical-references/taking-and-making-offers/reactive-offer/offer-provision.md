@@ -203,10 +203,10 @@ If you frequently update your offers, we recommend using a consistent, high `gas
 The bounty is paid to the taker **as compensation for spent gas**. It depends on how much gas the offer uses before failing.
 It is calculated with the following formula, based on the provision [previously calculated](./offer-provision.md#provision-calculation):
 
-$$\textrm{bounty} = \min(\textrm{offer.provision},(\textrm{gasreq} + \textrm{gasbase}_{\textrm{mgv}}) \times \textrm{gasbase}_{\textrm{mgv}} \times 10^9)$$
+$$\textrm{bounty} = \min(\textrm{offer.provision},(\textrm{gasused} + \textrm{gasbase}_{\textrm{mgv}}) \times \textrm{gasbase}_{\textrm{mgv}} \times 10^9)$$
 
 * $$\textrm{offer.provision}$$ is the [provision amount](./offer-provision.md#balance-adjustment-when-creatingupdating-offers) calculated when the offer was posted.
-* $$\textrm{gasreq}$$ is the `gasreq` amount of gas units required to execute the offer.
+* $$\textrm{gasused}$$ is the `gasused` amount of gas units actually used when executing the offer.
 * $$\textrm{gasbase}_{\textrm{mgv}}$$ is the `offer_gasbase` [local governance parameter](../../governance-parameters/local-variables.md#offer-gas-base). 
 * $$\textrm{gasbase}_{\textrm{mgv}}$$ is Mangrove's global gasprice at the time of offer execution.
 
