@@ -5,7 +5,21 @@ sidebar_position: 1
 
 # Taking available liquidity
 
-![A market order consumes the offers starting from the best price, making sure that the limit price set by the taker is always satisfied.](../../../static/img/assets/takerOrder1.png) ![A taker may snipe a custom set of offers, targeting those that have the lowest required gas for instance.](../../../static/img/assets/takerOrder2.png)
+Offers on Mangrove can be taken in two ways:
+
+* With a market order
+* By sniping individual offers
+
+A market order consumes the offers starting from the best price, making sure that the limit price set by the taker is always satisfied.
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<img src={useBaseUrl('img/assets/takerOrder1.png')} width="500px"/><br /><br />
+
+A taker may snipe a custom set of offers, targeting those that have the lowest required gas for instance.
+
+<img src={useBaseUrl('img/assets/takerOrder2.png')} width="500px"/><br /><br />
+
 
 ### Taking offers
 

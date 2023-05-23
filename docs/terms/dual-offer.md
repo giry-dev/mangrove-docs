@@ -1,7 +1,7 @@
 ---
 id: dual-offer
 title: Dual offer
-hoverText: It's an offer that is posted as a consequence of previous offer being taken.
+hoverText: An offer that is posted as a consequence of previous offer being taken.
 ---
 
 A _dual offer_ is posted by Kandel strategy's [posthook](../strat-lib/technical-references/code/strategies/MangroveOffer#makerposthook) logic. It's an offer that is posted as a consequence of previous offer being taken.
