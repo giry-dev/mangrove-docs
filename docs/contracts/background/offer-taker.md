@@ -21,14 +21,14 @@ A market order consumes the offers starting from the best price, making sure tha
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/takerOrder1.png')} width="400px"/><br /><br />
+<img src={useBaseUrl('img/assets/takerOrder1.png')} width="450px"/><br /><br />
 
 
 ## Offer sniping
 
 A taker may snipe a custom set of offers, targeting those that have the lowest required gas for instance.
 
-<img src={useBaseUrl('img/assets/takerOrder2.png')} width="400px"/><br /><br />
+<img src={useBaseUrl('img/assets/takerOrder2.png')} width="450px"/><br /><br />
 
 
 ## More information on taking offers
