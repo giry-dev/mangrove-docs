@@ -19,7 +19,7 @@ The "Fills" table will list the result of the market order when it is included o
 
 ### Limit order
 
-Aa limit order consists of two parts:
+A limit order consists of two parts:
 
 * "Immediate execution" part (equivalent to a market order): we execute as much of the order as we can immediately. This may result in a zero, partial, or complete fill. This fill will be listed in the "Fills" table.
 
