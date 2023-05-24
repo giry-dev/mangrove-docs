@@ -54,7 +54,7 @@ Let us explain:
 
 * When placing a GTT order, Mangrove will try to fill it entirely at the desired price.
 
-* Instant order: that is the first execution of the order. If it is a match, the fill in full, it will be recorded in the UI.
+* Instant order: that is the first execution of the order. If it is a match and the fill is in full, it will be recorded in the UI.
 
 * Resting order: if it can't be matched just yet, a fill at quantity "0" will be recorded in the UI for the instant order, and a resting order will be created.
     * That allows you to track in the UI that the order was successfully executed, even if no actual quantity was **yet** bought or sold.
