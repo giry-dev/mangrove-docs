@@ -23,9 +23,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
     * For a limit sell order, this is the lowest price you are willing to accept for the tokens, and the order will only execute if the market price is at or above your specified limit.
 
 5. Choose from 3 types of limit orders:
-    * **Immediate or Cancel**: Your order attempts to execute immediately at the desired price. If successful, it's executed; if not, it's canceled.
-    * **Good 'til time**: Set an expiration date for your order (ex: active for 3 days, then canceled).
-    * [**Fill or kill**](../../SDK/guides/fill-or-kill.md): Your order is either executed fully or not executed at all (ex: you place an order for 1 ETH at $9,500; if only 0.8 ETH can be filled, it's canceled; if fully filled, it's executed).
+    * **Immediate or Cancel (IOC)**: Your order attempts to execute immediately at the desired price. If successful, it's executed; if not, it's canceled.
+    * **Good 'til time (GTT)**: Set an expiration date for your order (ex: active for 3 days, then canceled).
+    * [**Fill or Kill (FOK)**](../../SDK/guides/fill-or-kill.md): Your order is either executed fully or not executed at all (ex: you place an order for 1 ETH at $9,500; if only 0.8 ETH can be filled, it's canceled; if fully filled, it's executed).
 
 > 💡
 > If a "Good 'til time" limit order is [partially filled](./how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transactino details, and the remainder will be reposted automatically.
