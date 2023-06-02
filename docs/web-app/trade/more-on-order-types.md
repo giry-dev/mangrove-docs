@@ -1,10 +1,10 @@
 ---
-description: More on orders types
+description: More on order types
 sidebar_position: 6
 ---
 
 
-# More on  orders types
+# More on order types
 
 This section provides an overview of the various order types available on Mangrove:
 
