@@ -8,7 +8,7 @@ sidebar_position: 7
 
 Using our Trade page on testnet, you might encounter a few troubles and hiccups.
 
-While we are working on things (rest assured that we are), here are few tips that might hep make your experience smoother.
+While we are working on things (rest assured that we are), here are a few tips that might help make your experience smoother.
 
 Feel free to browse through the following items!
 
@@ -17,14 +17,14 @@ Why do my transactions keep failing?
 </summary>
 It might be the case that the amount of gas or slippage you selected is too low. We encourage you to tweak those values and find out what works best.
 
-Remember: this is a testnet! We would love to hear your [feedback](./how-to-give-feedback.md) on this as well.
+Remember: this is a testnet! We would love to hear your [feedback](./how-to-give-feedback.md) as well.
 </details>
 
 <details><summary>
 Why do I need to approve every transaction? Is there an "unlimited" token approval?
 </summary>
 
-We are aware that this is not ideal, and are currently collecting users opinions on this.
+We are aware that this is not ideal, and are currently collecting users opinions on the topic.
 Meanwhile, you will find more information [over here](./approve-buy.md).
 </details>
 
