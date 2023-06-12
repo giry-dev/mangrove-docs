@@ -18,11 +18,13 @@ Why do my transactions keep failing?
 It might be the case that the amount of gas or slippage you selected is too low. We encourage you to tweak those values and find out what works best.
 
 Remember: this is a testnet! We would love to hear your [feedback](./how-to-give-feedback.md) as well.
+
 </details>
 
 <details><summary>
 Why do I need to approve every transaction? Is there an "unlimited" token approval?
 </summary>
+
 
 We are aware that this is not ideal, and are currently collecting users opinions on the topic.
 Meanwhile, you will find more information [over here](./approve-buy.md).
