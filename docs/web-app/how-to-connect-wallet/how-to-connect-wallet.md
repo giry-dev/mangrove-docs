@@ -79,17 +79,9 @@ In case you do get a Chain ID error, you'll need to add the network manually. Re
     * Done - a message displays, telling you you should receive your MATIC tokens within 1-2min
 
 
-4. To add WETH, USDC or DAI:
-    * Click on "WETH", "USDC", or "DAI" on the faucet pop-up
-    * A new tab opens - this is AAVE's faucet. Click on "Connect wallet".
-    <img src={useBaseUrl('img/assets/test-tokens-aave-connect.png')} width="500px"/>
-
-    * Select the "Browser wallet" option.
-    <img src={useBaseUrl('img/assets/test-tokens-aave-browser.png')} width="500px"/>
-
-    * Once again, Metamask opens - select the account(s) to connect, and hit "Next", then "Connect".
-    * A list of available test tokens appears. Feel free to select either DAI, USDC, or WETH. Let's goi with DAI - click the corresponding "Faucet" button.
-    <img src={useBaseUrl('img/assets/test-tokens-aave-DAI.png')} width="500px"/>
-
-    * A pop-up appears: click "Faucet DAI".
-    * Done - you can close the pop-up, disconnect your wallet and head back to Mangrove on testnet to start trading!
+4. To add WBTC, WMATIC or USDT:
+    * Click on "WBTC", "WMATIC", or "USDT" on the faucet pop-up
+    * A field appears - type in an amount (or hit "Max"), and click "Mint".
+    * Once again, Metamask opens - click "Confirm".
+    * After a few seconds, a pop-up green success pop-up will appear at the bottom of your screen.
+    * Done - you can now head back to the Trade page and start trading!
