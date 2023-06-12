@@ -1,3 +1,7 @@
+const newHeads = {
+    "mangrovedao/mangrove-core": "54e54fe92e63c10afba0e058f1e51711fa6f512d",
+    "mangrovedao/mangrove-ts": "ba67f9aedef250d4561ebf7eeec8d81883f2b269"
+}
 
 
 /* c.f. @vegaprotocol/docusaurus-theme-github-codeblock/build/theme/ReferenceCodeBlock/index.js
@@ -72,11 +76,6 @@ markdownFiles.forEach(file => {
     });
   }
 });
-
-const newHeads = {
-    "mangrovedao/mangrove-core": "89b38bc46a3783ce06072cca744650a77efcb048",
-    "mangrovedao/mangrove-ts": "481e174a4644fa260ce3fa8b09d91aebfc5d0c10"
-}
 
 async function compareAll() {
     for (i = 0; i < links.length; i++) {

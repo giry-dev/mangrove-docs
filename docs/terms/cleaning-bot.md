@@ -8,4 +8,4 @@ A _cleaning bot_ is a %%keeper bot|keeper-bot%% that snipes failing offers on Ma
 
 ## References
 
-* [The role of cleaning bots in Mangrove](../keeper-bots/background/the-role-of-cleaning-bots-in-mangrove.md).
+* [The role of cleaning bots in Mangrove](../keeper-bots/background/the-role-of-cleaning-bots-in-mangrove.md)

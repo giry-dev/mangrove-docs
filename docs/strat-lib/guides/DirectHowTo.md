@@ -20,7 +20,7 @@ Recall that `Direct` is an abstract implementation of `MangroveOffer`, which is 
 
 The Direct constructor looks like this:
 ```solidity reference title="Direct contract's constructor"
-https://github.com/mangrovedao/mangrove-core/blob/6439b68eb657200192d84cddf094892181c74596/src/strategies/offer_maker/abstract/Direct.sol#L36-L43
+https://github.com/mangrovedao/mangrove-core/blob/54e54fe92e63c10afba0e058f1e51711fa6f512d/src/strategies/offer_maker/abstract/Direct.sol#L26-L33
 ```
 which provides `mgv` (the address of the Mangrove contract) to MangroveOffer and %%`gasreq`|gasreq%% the gas that is required to execute the %%offer logic|offer-logic%%. The specific arguments of the Direct's constructor are the %%`router_`|router%%'s address and its %%`reserveId`|reserve-id%%. Notice that passing `address(0)` as `reserveId` is interpreted by Direct as requiring `reserveId` to be the contract's address.
 
@@ -58,30 +58,30 @@ However, `Direct` does not expose any function able to [create new offers](../..
 Our implementation of `newOffer` is simply to expose the internal `_newOffer` provided by Direct making sure the function is admin restricted (`Direct` provides the appropriate modifier `onlyAdmin`):
 
 ```solidity
-  ///@inheritdoc ILiquidityProvider
-  function newOffer(
-    IERC20 outbound_tkn,
-    IERC20 inbound_tkn,
-    uint wants,
-    uint gives,
-    uint pivotId,
-    uint gasreq
-  ) public payable override onlyAdmin returns (uint offerId) {
-    offerId = _newOffer(
-      OfferArgs({
-        outbound_tkn: outbound_tkn,
-        inbound_tkn: inbound_tkn,
-        wants: wants,
-        gives: gives,
-        gasreq: gasreq,
-        gasprice: 0, // use mangrove's gasprice
-        pivotId: pivotId,
-        fund: msg.value,
-        noRevert: false
-      })
-    );
-  }
+///@inheritdoc ILiquidityProvider
+function newOffer(
+  IERC20 outbound_tkn,
+  IERC20 inbound_tkn,
+  uint wants,
+  uint gives,
+  uint pivotId,
+  uint gasreq
+) public payable override onlyAdmin returns (uint offerId) {
+  offerId = _newOffer(
+    OfferArgs({
+      outbound_tkn: outbound_tkn,
+      inbound_tkn: inbound_tkn,
+      wants: wants,
+      gives: gives,
+      gasreq: gasreq,
+      gasprice: 0, // use mangrove's gasprice
+      pivotId: pivotId,
+      fund: msg.value,
+      noRevert: false
+    })
+  );
 }
+
 ///@inheritdoc ILiquidityProvider
 function updateOffer(
   IERC20 outbound_tkn,
@@ -107,6 +107,7 @@ function updateOffer(
     offerId
   );
 }
+
 ///@inheritdoc ILiquidityProvider
 function retractOffer(IERC20 outbound_tkn, IERC20 inbound_tkn, uint offerId, bool deprovision)
   public

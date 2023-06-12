@@ -164,7 +164,7 @@ The amount of base or quote to give for each offer.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:83
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:90
 
 ___
 
@@ -182,7 +182,7 @@ The index of the first ask in the distribution; or the length of the distributio
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:103
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:110
 
 ___
 
@@ -207,7 +207,7 @@ The chunks.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:114
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:121
 
 ___
 
@@ -225,7 +225,7 @@ The prices in the distribution.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:133
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:140
 
 ___
 
@@ -248,7 +248,7 @@ The offered volume of base and quote for the distribution to be fully provisione
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:145
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:152
 
 ___
 
@@ -270,7 +270,7 @@ The price distribution is not verified.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:167
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:174
 
 ___
 
@@ -301,4 +301,4 @@ The provision required for the number of offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:196
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:203

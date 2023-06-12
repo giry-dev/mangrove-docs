@@ -35,5 +35,5 @@ Mangrove provides learning materials, smart contracts, SDK functions, and an exa
   - A tutorial that walks you through all the steps needed to run an example cleaning bot.
 - SDK: [`mangrove.js`](../../SDK/README.md)
   - The `mangrove.js` SDK makes it easy to monitor order books and to send snipe transactions.
-- Contract: [`MgvCleaner`](https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/src/periphery/MgvCleaner.sol)
+- Contract: [`MgvCleaner`](https://github.com/mangrovedao/mangrove-core/blob/54e54fe92e63c10afba0e058f1e51711fa6f512d/src/periphery/MgvCleaner.sol)
   - The `MgvCleaner` smart contract is deployed together with Mangrove and provides a `collect` function that snipes  offers and reverts if any of the offers don't fail.

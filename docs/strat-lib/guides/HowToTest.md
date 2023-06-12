@@ -309,6 +309,6 @@ With our helper functions for posting and sniping offers, we we can easily add m
 ...
 ```
 
-A full test file for for the `Amplifier` contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/89b38bc46a3783ce06072cca744650a77efcb048/test/toy_strategies/Amplifier.t.sol).
+A full test file for for the `Amplifier` contract can be found [here](https://github.com/mangrovedao/mangrove-core/blob/54e54fe92e63c10afba0e058f1e51711fa6f512d/test/toy_strategies/Amplifier.t.sol).
 
 When you have sufficiently tested your %%maker contract|maker-contract%%, you may want to [deploy your contract](HowToDeploy.md) to a real chain.

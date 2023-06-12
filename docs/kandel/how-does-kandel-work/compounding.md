@@ -6,7 +6,9 @@ sidebar_position: 4
 
 # Compounding
 
-**[Kandel strategy is coming soon]**
+:::info
+Kandel strategy is coming soon!
+:::
 
 The compounding rate is set at 100% for both bids and asks.
 

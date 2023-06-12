@@ -14,7 +14,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:46
+@mangrovedao/mangrove.js/src/mangrove.ts:48
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:50
+@mangrovedao/mangrove.js/src/mangrove.ts:52
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:60
+@mangrovedao/mangrove.js/src/mangrove.ts:62
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:69
+@mangrovedao/mangrove.js/src/mangrove.ts:71
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:79
+@mangrovedao/mangrove.js/src/mangrove.ts:81
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:89
+@mangrovedao/mangrove.js/src/mangrove.ts:91
 
 ___
 
@@ -136,4 +136,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:96
+@mangrovedao/mangrove.js/src/mangrove.ts:98

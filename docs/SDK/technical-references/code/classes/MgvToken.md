@@ -319,7 +319,7 @@ Sets the allowance for the spender if it is not already enough.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:213
+@mangrovedao/mangrove.js/src/mgvtoken.ts:215
 
 ___
 
@@ -342,7 +342,7 @@ Increases the allowance for the spender unless it is already max.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:226
+@mangrovedao/mangrove.js/src/mgvtoken.ts:228
 
 ___
 
@@ -365,7 +365,7 @@ Returns the balance of `account`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:248
+@mangrovedao/mangrove.js/src/mgvtoken.ts:250
 
 ___
 
@@ -389,4 +389,4 @@ Transfers `value` amount of tokens to address `to`
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:259
+@mangrovedao/mangrove.js/src/mgvtoken.ts:261

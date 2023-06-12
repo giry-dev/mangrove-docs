@@ -316,7 +316,7 @@ ___
 
 ### <a id="marketcallback" name="marketcallback"></a> MarketCallback
 
-Ƭ **MarketCallback**<`T`\>: (`cbArg`: [`BookSubscriptionCbArgument`](Market-1.md#booksubscriptioncbargument), `event?`: [`BookSubscriptionEvent`](Market-1.md#booksubscriptionevent), `ethersLog?`: `ethers.providers.Log`) => `T`
+Ƭ **MarketCallback**<`T`\>: (`cbArg`: [`BookSubscriptionCbArgument`](Market-1.md#booksubscriptioncbargument), `event?`: [`BookSubscriptionEvent`](Market-1.md#booksubscriptionevent), `ethersLog?`: `ethers.providers.Log`) => `T` \| `Promise`<`T`\>
 
 #### Type parameters
 
@@ -326,7 +326,7 @@ ___
 
 #### Type declaration
 
-▸ (`cbArg`, `event?`, `ethersLog?`): `T`
+▸ (`cbArg`, `event?`, `ethersLog?`): `T` \| `Promise`<`T`\>
 
 ##### Parameters
 
@@ -338,7 +338,7 @@ ___
 
 ##### Returns
 
-`T`
+`T` \| `Promise`<`T`\>
 
 #### Defined in
 
@@ -358,7 +358,7 @@ ___
 
 ### <a id="marketfilter" name="marketfilter"></a> MarketFilter
 
-Ƭ **MarketFilter**: [`MarketCallback`](Market-1.md#marketcallback)<`boolean` \| `Promise`<`boolean`\>\>
+Ƭ **MarketFilter**: [`MarketCallback`](Market-1.md#marketcallback)<`boolean`\>
 
 #### Defined in
 

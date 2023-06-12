@@ -6,7 +6,9 @@ sidebar_position: 2
 
 # How does Kandel work?
 
-**[Kandel strategy is coming soon]**
+:::info
+Kandel strategy is coming soon!
+:::
 
 This section is a detailed explanation of how Kandel works, introducing configuration parameters and key mechanics. For the sake of simplicity, we have clearly separated the startup steps and picked round numbers.
 

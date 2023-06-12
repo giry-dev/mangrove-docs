@@ -575,6 +575,35 @@ The minimum volume for the given offer type.
 
 ___
 
+### <a id="getminimumvolumeforindex" name="getminimumvolumeforindex"></a> getMinimumVolumeForIndex
+
+▸ **getMinimumVolumeForIndex**(`params`): `Promise`<`any`\>
+
+Retrieves the minimum volume for a given offer type at the given index.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params` | `Object` | The parameters for the minimum volume. |
+| `params.offerType` | [`BA`](../namespaces/Market-1.md#ba) | The offer type to get the minimum volume for. |
+| `params.index` | `number` | The Kandel index. |
+| `params.price` | `any` | The price at the index. |
+| `params.minimumBasePerOffer?` | `any` | The minimum base token volume per offer. If not provided, then the minimum base token volume is used. |
+| `params.minimumQuotePerOffer?` | `any` | The minimum quote token volume per offer. If not provided, then the minimum quote token volume is used. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+The minimum volume for the given offer type.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:457
+
+___
+
 ### <a id="calculatedistributionwithuniformlychangedvolume" name="calculatedistributionwithuniformlychangedvolume"></a> calculateDistributionWithUniformlyChangedVolume
 
 ▸ **calculateDistributionWithUniformlyChangedVolume**(`params`): `Promise`<{ `distribution`: [`KandelDistribution`](KandelDistribution.md) ; `totalBaseChange`: `any` ; `totalQuoteChange`: `any`  }\>
@@ -600,11 +629,44 @@ The base and quote deltas are applied uniformly to all offers, except during dec
 
 `Promise`<{ `distribution`: [`KandelDistribution`](KandelDistribution.md) ; `totalBaseChange`: `any` ; `totalQuoteChange`: `any`  }\>
 
-The new distribution
+The new distribution for the live offers, dead offers are not included.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:458
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:513
+
+___
+
+### <a id="calculateuniformdistributionfromminprice" name="calculateuniformdistributionfromminprice"></a> calculateUniformDistributionFromMinPrice
+
+▸ **calculateUniformDistributionFromMinPrice**(`params`): `Promise`<[`KandelDistribution`](KandelDistribution.md)\>
+
+Calculates a new uniform distribution based on the available base and quote balance and min price and mid price.
+
+**`See`**
+
+ - getOfferStatus or
+ - getOfferStatusFromOffers .
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params` | `Object` | The parameters for the new distribution. |
+| `params.midPrice` | `any` | The current mid price of the market used to discern expected bids from asks. |
+| `params.minPrice` | `any` | The minimum price to generate the distribution from; can be retrieved from the status from |
+| `params.minimumBasePerOffer?` | `any` | The minimum base token volume per offer. If not provided, then the minimum base token volume is used. |
+| `params.minimumQuotePerOffer?` | `any` | The minimum quote token volume per offer. If not provided, then the minimum quote token volume is used. |
+
+#### Returns
+
+`Promise`<[`KandelDistribution`](KandelDistribution.md)\>
+
+The new distribution, which can be used to re-populate the Kandel instance with this exact distribution.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:544
 
 ___
 
@@ -627,7 +689,7 @@ Approves the Kandel instance for transferring from signer to itself if allowance
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:489
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:580
 
 ___
 
@@ -652,7 +714,7 @@ Deposits the amounts on the Kandel instance to be available for offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:505
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:596
 
 ___
 
@@ -668,7 +730,7 @@ Gets the most specific available recommended configuration for Kandel instances.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:520
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:611
 
 ___
 
@@ -694,7 +756,39 @@ The raw distributions in internal representation and the index of the first ask.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:534
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:625
+
+___
+
+### <a id="getrequiredprovision" name="getrequiredprovision"></a> getRequiredProvision
+
+▸ **getRequiredProvision**(`params`): `Promise`<`any`\>
+
+Determines the required provision for the offers in the distribution or the supplied offer count.
+
+**`Remarks`**
+
+This takes into account that each price point can become both an ask and a bid which both require provision. Existing locked provision or balance on Mangrove is not accounted for.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params` | `Object` | The parameters used to calculate the provision. |
+| `params.distribution?` | [`KandelDistribution`](KandelDistribution.md) | The distribution to calculate the provision for. Optional if offerCount is provided. |
+| `params.offerCount?` | `number` | The number of offers to calculate the provision for. Optional if distribution is provided. |
+| `params.gasreq?` | `number` | The gas required to execute a trade. Default is retrieved from Kandel parameters. |
+| `params.gasprice?` | `number` | The gas price to calculate provision for. Default is retrieved from Kandel parameters. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+The provision required for the number of offers.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:662
 
 ___
 
@@ -729,7 +823,7 @@ The transaction(s) used to populate the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:574
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:700
 
 ___
 
@@ -756,7 +850,7 @@ The transaction(s) used to populate the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:651
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:776
 
 ___
 
@@ -782,7 +876,7 @@ The transaction(s) used to populate the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:671
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:796
 
 ___
 
@@ -819,7 +913,7 @@ The transaction(s) used to retract the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:725
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:850
 
 ___
 
@@ -852,7 +946,7 @@ The transaction(s) used to retract the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:778
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:903
 
 ___
 
@@ -882,7 +976,7 @@ The transaction(s) used to retract the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:804
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:929
 
 ___
 
@@ -914,4 +1008,54 @@ The transaction used to withdraw the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:856
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:981
+
+___
+
+### <a id="setgasprice" name="setgasprice"></a> setGasprice
+
+▸ **setGasprice**(`gasprice`, `overrides?`): `Promise`<`ContractTransaction`\>
+
+Sets the gas price used when provisioning offers.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `gasprice` | `number` | The gas price to set. |
+| `overrides` | `Overrides` | The ethers overrides to use when calling the setGasprice function. |
+
+#### Returns
+
+`Promise`<`ContractTransaction`\>
+
+The transaction used to set the gas price.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:1008
+
+___
+
+### <a id="setgasreq" name="setgasreq"></a> setGasreq
+
+▸ **setGasreq**(`gasreq`, `overrides?`): `Promise`<`ContractTransaction`\>
+
+Sets the gas required to execute a trade.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `gasreq` | `number` | The gas requirement to set. |
+| `overrides` | `Overrides` | The ethers overrides to use when calling the setGasreq function. |
+
+#### Returns
+
+`Promise`<`ContractTransaction`\>
+
+The transaction used to set the gas requirement.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelInstance.ts:1017
