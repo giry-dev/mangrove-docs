@@ -10,16 +10,16 @@ The tutorial assumes that you have [Git](https://git-scm.com/), [NodeJS](https:/
 
 
 # Step 1: Clone the repo containing the example cleaning bot
-First, clone the `mangrove-ts` monorepo which contains the example cleaning bot we'll be using:
+First, clone the `mangrove-bots` monorepo which contains the example cleaning bot we'll be using:
 
 ```shell
-git clone https://github.com/mangrovedao/mangrove-ts.git
+git clone https://github.com/mangrovedao/mangrove-bots.git
 ```
 
 Then go into the clone and run `install` to have the necessary npm packages installed:
 
 ```shell
-cd mangrove-ts
+cd mangrove-bots
 yarn install
 ```
 
@@ -41,7 +41,7 @@ This is done via two files:
 Create a `.env.local` file containing a JSON-RPC URL for the Polygon Mumbai testnet and a private key:
 
 ```shell
-# mangrove-ts/packages/bot-cleaning/.env.local
+# mangrove-bots/packages/bot-cleaning/.env.local
 
 # The URL for a Polygon Mumbai JSON-RPC endpoint
 RPC_NODE_URL=https://polygon-mumbai.g.alchemy.com/v2/abcdefg_secret_api_key

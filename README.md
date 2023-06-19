@@ -1,6 +1,6 @@
 # Mangrove documentation
 
-This repo holds both developer and end-user documentation for Mangrove. For developers, sections cater both to interacting directly with the core contracts and for using the strat library in [mangrove-core](https://github.com/mangrovedao/mangrove-core), and for using the SDK or bots in [mangrove-ts](https://github.com/mangrovedao/mangrove-ts).
+This repo holds both developer and end-user documentation for Mangrove. For developers, sections cater both to interacting directly with the core contracts and for using the strat library in [mangrove-core](https://github.com/mangrovedao/mangrove-core), for using the SDK in [mangrove.js](https://github.com/mangrovedao/mangrove.js), and the bots in [mangrove-bots](https://github.com/mangrovedao/mangrove-bots).
 
 The published version is available at https://docs.mangrove.exchange.
 
