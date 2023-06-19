@@ -11,16 +11,16 @@ In this section we will go through how to reuse an offer, that has been taken or
 
 ### Update existing offer
 
-In order to update an offer that is no longer live, we need the ID of an offer that has been taken or failed. In this example we are going to use ID 5573. If you do not have an offer that has been taken you can simply post a completely new offer and then snipe it. The [script](https://github.com/mangrovedao/mangrove-ts/blob/ba67f9aedef250d4561ebf7eeec8d81883f2b269/packages/mangrove.js/examples/how-tos/reuse-offer.js) has some commented out sections that helps with creating a dead offer.
+In order to update an offer that is no longer live, we need the ID of an offer that has been taken or failed. In this example we are going to use ID 5573. If you do not have an offer that has been taken you can simply post a completely new offer and then snipe it. The [script](https://github.com/mangrovedao/mangrove.js/blob/ba67f9aedef250d4561ebf7eeec8d81883f2b269/packages/mangrove.js/examples/how-tos/reuse-offer.js) has some commented out sections that helps with creating a dead offer.
 
 When we have a dead offer, then we can figure out how much %%provision|provision%% is needed when reposting it. This is done by using the [`computeAskProvision`](../technical-references/code/classes/LiquidityProvider#-computeaskprovision) given the offer id. The last thing we need is to give a wants and a gives for the offer. In this case we are going to use `wants: 1000.5` and `gives: 1000.4`.
 
 If we look at the asks before and after we have updated the offer, we now see that our offer has been updated and is at the top of the order book.
 
-<!-- TODO: add better return info description, when this issue is fixed  https://github.com/mangrovedao/mangrove-ts/issues/866 -->
+<!-- TODO: add better return info description, when this issue is fixed  https://github.com/mangrovedao/mangrove.js/issues/866 -->
 
 ```js reference
-https://github.com/mangrovedao/mangrove-ts/blob/ba67f9aedef250d4561ebf7eeec8d81883f2b269/packages/mangrove.js/examples/how-tos/reuse-offer.js#L66-L78
+https://github.com/mangrovedao/mangrove.js/blob/ba67f9aedef250d4561ebf7eeec8d81883f2b269/packages/mangrove.js/examples/how-tos/reuse-offer.js#L66-L78
 ```
 
 ```js title="Asks before update"x
