@@ -14,7 +14,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:55
+@mangrovedao/mangrove.js/src/mgvtoken.ts:54
 
 ___
 
@@ -24,7 +24,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:56
+@mangrovedao/mangrove.js/src/mgvtoken.ts:55
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:57
+@mangrovedao/mangrove.js/src/mgvtoken.ts:56
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:58
+@mangrovedao/mangrove.js/src/mgvtoken.ts:57
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:59
+@mangrovedao/mangrove.js/src/mgvtoken.ts:58
 
 ___
 
@@ -64,13 +64,13 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:61
+@mangrovedao/mangrove.js/src/mgvtoken.ts:60
 
 ## Constructors
 
 ### <a id="constructor" name="constructor"></a> constructor
 
-• **new MgvToken**(`name`, `mgv`, `options`)
+• **new MgvToken**(`name`, `mgv`, `options?`)
 
 #### Parameters
 
@@ -78,13 +78,37 @@ ___
 | :------ | :------ |
 | `name` | `string` |
 | `mgv` | [`Mangrove`](Mangrove.md) |
-| `options` | [`ConstructorOptions`](../namespaces/MgvToken-1.md#constructoroptions) |
+| `options?` | [`ConstructorOptions`](../namespaces/MgvToken-1.md#constructoroptions) |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:62
+@mangrovedao/mangrove.js/src/mgvtoken.ts:61
 
 ## Methods
+
+### <a id="createtoken" name="createtoken"></a> createToken
+
+▸ `Static` **createToken**(`name`, `mgv`, `options?`): `Promise`<[`MgvToken`](MgvToken.md)\>
+
+Create a MgvToken instance, fetching data (decimals) from chain if needed.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+| `mgv` | [`Mangrove`](Mangrove.md) |
+| `options?` | [`ConstructorOptions`](../namespaces/MgvToken-1.md#constructoroptions) |
+
+#### Returns
+
+`Promise`<[`MgvToken`](MgvToken.md)\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mgvtoken.ts:83
+
+___
 
 ### <a id="fromunits" name="fromunits"></a> fromUnits
 
@@ -96,9 +120,9 @@ Uses each token's `decimals` parameter.
 **`Example`**
 
 ```
-const usdc = mgv.token("USDC");
+const usdc = await mgv.token("USDC");
 token.fromUnits("1e7") // 10
-const dai = mgv.token("DAI")
+const dai = await mgv.token("DAI")
 market.fromUnits("1e18") // 1
 ```
 
@@ -114,7 +138,7 @@ market.fromUnits("1e18") // 1
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:105
+@mangrovedao/mangrove.js/src/mgvtoken.ts:136
 
 ___
 
@@ -130,9 +154,9 @@ If `bq` is `"base"`, will convert the base, the quote otherwise.
 **`Example`**
 
 ```
-const usdc = mgv.token("USDC");
+const usdc = await mgv.token("USDC");
 token.toUnits(10) // 10e7 as ethers.BigNumber
-const dai = mgv.token("DAI")
+const dai = await mgv.token("DAI")
 market.toUnits(1) // 1e18 as ethers.BigNumber
 ```
 
@@ -140,7 +164,7 @@ market.toUnits(1) // 1e18 as ethers.BigNumber
 
 | Name | Type |
 | :------ | :------ |
-| `amount` | `any` |
+| `amount` | `BigSource` |
 
 #### Returns
 
@@ -148,7 +172,7 @@ market.toUnits(1) // 1e18 as ethers.BigNumber
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:122
+@mangrovedao/mangrove.js/src/mgvtoken.ts:153
 
 ___
 
@@ -170,7 +194,7 @@ token.toFixed(token.fromUnits("1e7"));
 
 | Name | Type |
 | :------ | :------ |
-| `amount` | `any` |
+| `amount` | `BigSource` |
 | `decimals?` | `number` |
 
 #### Returns
@@ -179,7 +203,7 @@ token.toFixed(token.fromUnits("1e7"));
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:136
+@mangrovedao/mangrove.js/src/mgvtoken.ts:167
 
 ___
 
@@ -205,15 +229,64 @@ If `spender` is not specified, defaults to Mangrove instance.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:148
+@mangrovedao/mangrove.js/src/mgvtoken.ts:179
+
+___
+
+### <a id="allowanceinfinite" name="allowanceinfinite"></a> allowanceInfinite
+
+▸ **allowanceInfinite**(`params?`): `Promise`<`boolean`\>
+
+Returns whether allowance of `owner` given to `spender` is infinite.
+If `owner` is not specified, defaults to current signer.
+If `spender` is not specified, defaults to Mangrove instance.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | `Object` |
+| `params.owner?` | `string` |
+| `params.spender?` | `string` |
+
+#### Returns
+
+`Promise`<`boolean`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mgvtoken.ts:191
 
 ___
 
 ### <a id="getdecimals" name="getdecimals"></a> getDecimals
 
-▸ `Static` **getDecimals**(`tokenName`): `number`
+▸ `Static` **getDecimals**(`tokenName`): `undefined` \| `number`
 
 Read decimals for `tokenName` on given network.
+To read decimals directly onchain, use `fetchDecimals`.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `tokenName` | `string` |
+
+#### Returns
+
+`undefined` \| `number`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mgvtoken.ts:214
+
+___
+
+### <a id="getdecimalsorfail" name="getdecimalsorfail"></a> getDecimalsOrFail
+
+▸ `Static` **getDecimalsOrFail**(`tokenName`): `number`
+
+Read decimals for `tokenName`. Fails if the decimals are not in the configuration.
 To read decimals directly onchain, use `fetchDecimals`.
 
 #### Parameters
@@ -228,7 +301,31 @@ To read decimals directly onchain, use `fetchDecimals`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:171
+@mangrovedao/mangrove.js/src/mgvtoken.ts:222
+
+___
+
+### <a id="getorfetchdecimals" name="getorfetchdecimals"></a> getOrFetchDecimals
+
+▸ `Static` **getOrFetchDecimals**(`tokenName`, `provider`): `Promise`<`number`\>
+
+Read decimals for `tokenName` on given network.
+If not found in the local configuration, fetch them from the current network and save them
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `tokenName` | `string` |
+| `provider` | `Provider` |
+
+#### Returns
+
+`Promise`<`number`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mgvtoken.ts:230
 
 ___
 
@@ -251,7 +348,7 @@ Set decimals for `tokenName` on current network.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:182
+@mangrovedao/mangrove.js/src/mgvtoken.ts:240
 
 ___
 
@@ -265,7 +362,7 @@ Set approval for Mangrove to `amount`.
 
 | Name | Type |
 | :------ | :------ |
-| `arg` | `any` |
+| `arg` | `ApproveArgs` |
 
 #### Returns
 
@@ -273,7 +370,7 @@ Set approval for Mangrove to `amount`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:189
+@mangrovedao/mangrove.js/src/mgvtoken.ts:247
 
 ___
 
@@ -288,7 +385,7 @@ Set approval for `spender` to `amount`.
 | Name | Type |
 | :------ | :------ |
 | `spender` | `string` |
-| `arg` | `any` |
+| `arg` | `ApproveArgs` |
 
 #### Returns
 
@@ -296,13 +393,36 @@ Set approval for `spender` to `amount`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:196
+@mangrovedao/mangrove.js/src/mgvtoken.ts:254
+
+___
+
+### <a id="approveifnotinfinite" name="approveifnotinfinite"></a> approveIfNotInfinite
+
+▸ **approveIfNotInfinite**(`spender`, `arg?`): `Promise`<`undefined` \| `ContractTransaction`\>
+
+Sets the allowance for the spender if it is not infinite. Cannot be used to reduce from infinite.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `spender` | `string` | The spender to approve |
+| `arg` | `ApproveArgs` | The approval arguments |
+
+#### Returns
+
+`Promise`<`undefined` \| `ContractTransaction`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mgvtoken.ts:273
 
 ___
 
 ### <a id="approveifhigher" name="approveifhigher"></a> approveIfHigher
 
-▸ **approveIfHigher**(`spender`, `arg?`): `Promise`<`ContractTransaction`\>
+▸ **approveIfHigher**(`spender`, `arg?`): `Promise`<`undefined` \| `ContractTransaction`\>
 
 Sets the allowance for the spender if it is not already enough.
 
@@ -311,21 +431,21 @@ Sets the allowance for the spender if it is not already enough.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `spender` | `string` | The spender to approve |
-| `arg` | `any` | The approval arguments |
+| `arg` | `ApproveArgs` | The approval arguments |
 
 #### Returns
 
-`Promise`<`ContractTransaction`\>
+`Promise`<`undefined` \| `ContractTransaction`\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:215
+@mangrovedao/mangrove.js/src/mgvtoken.ts:285
 
 ___
 
 ### <a id="increaseapproval" name="increaseapproval"></a> increaseApproval
 
-▸ **increaseApproval**(`spender`, `arg?`): `Promise`<`ContractTransaction`\>
+▸ **increaseApproval**(`spender`, `arg?`): `Promise`<`undefined` \| `ContractTransaction`\>
 
 Increases the allowance for the spender unless it is already max.
 
@@ -334,15 +454,15 @@ Increases the allowance for the spender unless it is already max.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `spender` | `string` | The spender to approve |
-| `arg` | `any` | The approval arguments |
+| `arg` | `ApproveArgs` | The approval arguments |
 
 #### Returns
 
-`Promise`<`ContractTransaction`\>
+`Promise`<`undefined` \| `ContractTransaction`\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:228
+@mangrovedao/mangrove.js/src/mgvtoken.ts:298
 
 ___
 
@@ -365,7 +485,7 @@ Returns the balance of `account`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:250
+@mangrovedao/mangrove.js/src/mgvtoken.ts:320
 
 ___
 
@@ -380,7 +500,7 @@ Transfers `value` amount of tokens to address `to`
 | Name | Type |
 | :------ | :------ |
 | `to` | `string` |
-| `value` | `any` |
+| `value` | `BigSource` |
 | `overrides` | `Overrides` |
 
 #### Returns
@@ -389,4 +509,4 @@ Transfers `value` amount of tokens to address `to`
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mgvtoken.ts:261
+@mangrovedao/mangrove.js/src/mgvtoken.ts:331

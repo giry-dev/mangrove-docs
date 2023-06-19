@@ -37,7 +37,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `iterator` | `any` |
+| `iterator` | `number` |
 | `iterateOn` | ``"index"`` \| ``"change"`` \| ``"account"`` |
 
 #### Returns
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:63
+@mangrovedao/mangrove.js/src/eth.ts:66
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:68
+@mangrovedao/mangrove.js/src/eth.ts:71
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:72
+@mangrovedao/mangrove.js/src/eth.ts:75
 
 ## Constructors
 
@@ -123,4 +123,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/eth.ts:55
+@mangrovedao/mangrove.js/src/eth.ts:58

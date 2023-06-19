@@ -114,7 +114,7 @@ ___
 
 ### <a id="calculateoffergives" name="calculateoffergives"></a> calculateOfferGives
 
-▸ **calculateOfferGives**(`offerType`, `offerCount`, `totalVolume`): `any`
+▸ **calculateOfferGives**(`offerType`, `offerCount`, `totalVolume`): `Big`
 
 Calculates the gives for a single offer of the given type given the total available volume and the count of offers of that type.
 
@@ -128,7 +128,7 @@ Calculates the gives for a single offer of the given type given the total availa
 
 #### Returns
 
-`any`
+`Big`
 
 The amount of base or quote to give for the offer.
 
@@ -159,8 +159,8 @@ The amount of base or quote to give for each offer.
 
 | Name | Type |
 | :------ | :------ |
-| `askGives` | `any` |
-| `bidGives` | `any` |
+| `askGives` | `undefined` \| `Big` |
+| `bidGives` | `undefined` \| `Big` |
 
 #### Defined in
 
@@ -186,6 +186,24 @@ The index of the first ask in the distribution; or the length of the distributio
 
 ___
 
+### <a id="getoffersindexoffirstaskindex" name="getoffersindexoffirstaskindex"></a> getOffersIndexOfFirstAskIndex
+
+▸ **getOffersIndexOfFirstAskIndex**(): `number`
+
+Gets the index of the first ask in the subset of offers in offers for the distribution. If there are no asks, then the length of offers is returned.
+
+#### Returns
+
+`number`
+
+The index of the first ask in the subset of offers in offers for the distribution. If there are no asks, then the length of offers is returned.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:119
+
+___
+
 ### <a id="chunkdistribution" name="chunkdistribution"></a> chunkDistribution
 
 ▸ **chunkDistribution**(`pivots`, `maxOffersInChunk`): { `pivots`: `number`[] ; `distribution`: `OfferDistribution`  }[]
@@ -207,25 +225,25 @@ The chunks.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:121
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:133
 
 ___
 
 ### <a id="getpricesfordistribution" name="getpricesfordistribution"></a> getPricesForDistribution
 
-▸ **getPricesForDistribution**(): `Big`[]
+▸ **getPricesForDistribution**(): (`undefined` \| `Big`)[]
 
-Gets the prices for the distribution for the given subset of offers.
+Gets the prices for the distribution, with undefined for prices not represented by offers in the distribution.
 
 #### Returns
 
-`Big`[]
+(`undefined` \| `Big`)[]
 
 The prices in the distribution.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:140
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:174
 
 ___
 
@@ -243,12 +261,12 @@ The offered volume of base and quote for the distribution to be fully provisione
 
 | Name | Type |
 | :------ | :------ |
-| `requiredBase` | `any` |
-| `requiredQuote` | `any` |
+| `requiredBase` | `Big` |
+| `requiredQuote` | `Big` |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:152
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:186
 
 ___
 
@@ -270,19 +288,19 @@ The price distribution is not verified.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:174
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:208
 
 ___
 
 ### <a id="getrequiredprovision" name="getrequiredprovision"></a> getRequiredProvision
 
-▸ **getRequiredProvision**(`params`): `Promise`<`any`\>
+▸ **getRequiredProvision**(`params`): `Promise`<`Big`\>
 
-Determines the required provision for the offers in the distribution.
+Determines the required provision for the listed offers in the distribution (disregarding the number of price points).
 
 **`Remarks`**
 
-This takes into account that each price point can become both an ask and a bid which both require provision.
+This takes into account that each of the offers represent a price point which can become both an ask and a bid which both require provision.
 
 #### Parameters
 
@@ -295,10 +313,10 @@ This takes into account that each price point can become both an ask and a bid w
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`<`Big`\>
 
 The provision required for the number of offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:203
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:237

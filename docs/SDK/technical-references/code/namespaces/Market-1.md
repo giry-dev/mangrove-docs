@@ -18,7 +18,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:32
+@mangrovedao/mangrove.js/src/market.ts:31
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:33
+@mangrovedao/mangrove.js/src/market.ts:32
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:34
+@mangrovedao/mangrove.js/src/market.ts:33
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:35
+@mangrovedao/mangrove.js/src/market.ts:34
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:41
+@mangrovedao/mangrove.js/src/market.ts:40
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:46
+@mangrovedao/mangrove.js/src/market.ts:45
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:53
+@mangrovedao/mangrove.js/src/market.ts:52
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:63
+@mangrovedao/mangrove.js/src/market.ts:62
 
 ___
 
@@ -137,17 +137,17 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:70
+@mangrovedao/mangrove.js/src/market.ts:69
 
 ___
 
 ### <a id="tradeparams" name="tradeparams"></a> TradeParams
 
-Ƭ **TradeParams**: { `forceRoutingToMangroveOrder?`: `boolean` ; `slippage?`: `number` ; `fillOrKill?`: `boolean` ; `expiryDate?`: `number`  } & { `restingOrder?`: [`RestingOrderParams`](Market-1.md#restingorderparams)  } \| { `offerId?`: `number`  } & { `volume`: `Bigish` ; `price`: `Bigish`  } \| { `total`: `Bigish` ; `price`: `Bigish`  } \| { `wants`: `Bigish` ; `gives`: `Bigish` ; `fillWants?`: `boolean`  }
+Ƭ **TradeParams**: { `forceRoutingToMangroveOrder?`: `boolean` ; `slippage?`: `number` ; `fillOrKill?`: `boolean` ; `expiryDate?`: `number` ; `gasLowerBound?`: `ethers.ethers.BigNumberish`  } & { `restingOrder?`: [`RestingOrderParams`](Market-1.md#restingorderparams)  } \| { `offerId?`: `number`  } & { `volume`: `Bigish` ; `price`: `Bigish`  } \| { `total`: `Bigish` ; `price`: `Bigish`  } \| { `wants`: `Bigish` ; `gives`: `Bigish` ; `fillWants?`: `boolean`  }
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:72
+@mangrovedao/mangrove.js/src/market.ts:71
 
 ___
 
@@ -249,24 +249,30 @@ ___
 
 ___
 
-### <a id="bookoptions" name="bookoptions"></a> BookOptions
+### <a id="cachecontentsoptions" name="cachecontentsoptions"></a> CacheContentsOptions
 
-Ƭ **BookOptions**: `Object`
+Ƭ **CacheContentsOptions**: { `maxOffers?`: `number`  } \| { `desiredPrice`: `Bigish`  } \| { `desiredVolume`: [`VolumeParams`](Market-1.md#volumeparams)  }
 
-Options that control how the book cache behaves.
+Options that specify what the cache fetches and retains.
 
-#### Type declaration
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `maxOffers?` | `number` | The maximum number of offers to store in the cache. `maxOffers` and `desiredPrice` are mutually exclusive. |
-| `chunkSize?` | `number` | The number of offers to fetch in one call. Defaults to `maxOffers` if it is set and positive; Otherwise `Semibook.DEFAULT_MAX_OFFERS` is used. |
-| `desiredPrice?` | `Bigish` | The price that is expected to be used in calls to the market. The cache will initially contain all offers with this price or better. This can be useful in order to ensure a good pivot is readily available. `maxOffers` and `desiredPrice` are mutually exclusive. |
-| `desiredVolume?` | [`VolumeParams`](Market-1.md#volumeparams) | The volume that is expected to be used in trades on the market. |
+`maxOffers`, `desiredPrice`, and `desiredVolume` are mutually exclusive.
+If none of these are specified, the default is `maxOffers` = `Semibook.DEFAULT_MAX_OFFERS`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:134
+@mangrovedao/mangrove.js/src/market.ts:137
+
+___
+
+### <a id="bookoptions" name="bookoptions"></a> BookOptions
+
+Ƭ **BookOptions**: [`CacheContentsOptions`](Market-1.md#cachecontentsoptions) & { `chunkSize?`: `number`  }
+
+Options that control how the book cache behaves.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/market.ts:162
 
 ___
 
@@ -286,11 +292,11 @@ ___
 | `wants` | `Big` |
 | `gives` | `Big` |
 | `volume` | `Big` |
-| `price` | `Big` |
+| `price` | `Big` \| `undefined` |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:157
+@mangrovedao/mangrove.js/src/market.ts:169
 
 ___
 
@@ -300,7 +306,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:169
+@mangrovedao/mangrove.js/src/market.ts:181
 
 ___
 
@@ -310,7 +316,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:184
+@mangrovedao/mangrove.js/src/market.ts:196
 
 ___
 
@@ -342,7 +348,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:202
+@mangrovedao/mangrove.js/src/market.ts:214
 
 ___
 
@@ -352,7 +358,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:207
+@mangrovedao/mangrove.js/src/market.ts:219
 
 ___
 
@@ -362,7 +368,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:208
+@mangrovedao/mangrove.js/src/market.ts:220
 
 ___
 
@@ -372,7 +378,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:209
+@mangrovedao/mangrove.js/src/market.ts:221
 
 ___
 
@@ -389,7 +395,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:218
+@mangrovedao/mangrove.js/src/market.ts:230
 
 ___
 
@@ -406,4 +412,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:220
+@mangrovedao/mangrove.js/src/market.ts:232
