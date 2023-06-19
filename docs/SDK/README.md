@@ -29,5 +29,5 @@ If you just want to find the latest `mangrove.js` package on NPM - go to [@mangr
 
 ## Where is the code?
 
-The code for the `mangrove.js` SDK is available on [GitHub](https://github.com/mangrovedao/mangrove-ts). Pull requests are welcome!
+The code for the `mangrove.js` SDK is available on [GitHub](https://github.com/mangrovedao/mangrove.js). Pull requests are welcome!
 

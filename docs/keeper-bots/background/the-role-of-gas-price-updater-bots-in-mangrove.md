@@ -11,4 +11,4 @@ The role of the gas price updater bot is simply to push up-to-date gas prices to
 
 # Example bot
 
-The [`mangrove-ts`](https://github.com/mangrovedao/mangrove-ts) monorepo on GitHub contains an [example gas price updater bot](https://github.com/mangrovedao/mangrove-ts/tree/master/packages/bot-updategas).
+The [`mangrove-bots`](https://github.com/mangrovedao/mangrove-bots) monorepo on GitHub contains an [example gas price updater bot](https://github.com/mangrovedao/mangrove-bots/tree/master/packages/bot-updategas).

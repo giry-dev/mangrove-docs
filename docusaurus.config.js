@@ -237,8 +237,12 @@ const config = {
                 href: 'https://github.com/mangrovedao/mangrove-core'
               },
               {
-                label: 'SDK and Bots',
-                href: 'https://github.com/mangrovedao/mangrove-ts'
+                label: 'SDK',
+                href: 'https://github.com/mangrovedao/mangrove.js'
+              },
+              {
+                label: 'Bots',
+                href: 'https://github.com/mangrovedao/mangrove-bots'
               },
               {
                 label: 'Docs',
