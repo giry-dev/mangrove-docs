@@ -55,7 +55,7 @@ The above `mgv` object gives you access to the `MgvToken`, `Market` and `OfferLo
 This class provides easy means to interact with a deployed contract on the standard [EIP-20](https://eips.ethereum.org/EIPS/eip-20). To obtain an instance use:
 
 ```javascript
-mgvTkn = mgv.token("<tokenSymbol>"); // e.g "DAI", "WETH", "amDAI", etc.
+mgvTkn = await mgv.token("<tokenSymbol>"); // e.g "DAI", "WETH", "amDAI", etc.
 ```
 
 with the above `MgvT` object one has access to standard calls using human readable input/outputs. For instance:

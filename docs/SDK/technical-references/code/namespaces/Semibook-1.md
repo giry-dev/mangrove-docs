@@ -26,17 +26,17 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:27
+@mangrovedao/mangrove.js/src/semibook.ts:28
 
 ___
 
 ### <a id="eventlistener" name="eventlistener"></a> EventListener
 
-Ƭ **EventListener**: (`e`: [`Event`](Semibook-1.md#event)) => `void`
+Ƭ **EventListener**: (`e`: [`Event`](Semibook-1.md#event)) => `Promise`<`void`\>
 
 #### Type declaration
 
-▸ (`e`): `void`
+▸ (`e`): `Promise`<`void`\>
 
 ##### Parameters
 
@@ -46,21 +46,21 @@ ___
 
 ##### Returns
 
-`void`
+`Promise`<`void`\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:33
+@mangrovedao/mangrove.js/src/semibook.ts:34
 
 ___
 
 ### <a id="blocklistener" name="blocklistener"></a> BlockListener
 
-Ƭ **BlockListener**: (`n`: `number`) => `void`
+Ƭ **BlockListener**: (`n`: `number`) => `Promise`<`void`\>
 
 #### Type declaration
 
-▸ (`n`): `void`
+▸ (`n`): `Promise`<`void`\>
 
 ##### Parameters
 
@@ -70,11 +70,11 @@ ___
 
 ##### Returns
 
-`void`
+`Promise`<`void`\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:35
+@mangrovedao/mangrove.js/src/semibook.ts:36
 
 ___
 
@@ -100,31 +100,46 @@ Specification of how much volume to (potentially) trade on the semibook.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:46
+@mangrovedao/mangrove.js/src/semibook.ts:47
+
+___
+
+### <a id="cachecontentsoptions" name="cachecontentsoptions"></a> CacheContentsOptions
+
+Ƭ **CacheContentsOptions**: { `maxOffers?`: `number`  } \| { `desiredPrice`: `Bigish`  } \| { `desiredVolume`: [`VolumeParams`](Semibook-1.md#volumeparams)  }
+
+Options that specify what the cache fetches and retains.
+
+`maxOffers`, `desiredPrice`, and `desiredVolume` are mutually exclusive.
+If none of these are specified, the default is `maxOffers` = `Semibook.DEFAULT_MAX_OFFERS`.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:62
 
 ___
 
 ### <a id="options" name="options"></a> Options
 
-Ƭ **Options**: `Object`
+Ƭ **Options**: [`CacheContentsOptions`](Semibook-1.md#cachecontentsoptions) & { `chunkSize?`: `number`  }
 
 Options that control how the book cache behaves.
 
-`maxOffers` and `desiredPrice` are mutually exclusive.
-If none of these are specfied, the default is `maxOffers` = `Semibook.DEFAULT_MAX_OFFERS`.
+#### Defined in
 
-#### Type declaration
+@mangrovedao/mangrove.js/src/semibook.ts:87
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `maxOffers?` | `number` | The maximum number of offers to store in the cache. `maxOffers` and `desiredPrice` are mutually exclusive. |
-| `chunkSize?` | `number` | The number of offers to fetch in one call. Defaults to `maxOffers` if it is set and positive; Otherwise `Semibook.DEFAULT_MAX_OFFERS` is used. |
-| `desiredPrice?` | `Bigish` | The price that is expected to be used in calls to the market. The cache will initially contain all offers with this price or better. This can be useful in order to ensure a good pivot is readily available. |
-| `desiredVolume?` | [`VolumeParams`](Semibook-1.md#volumeparams) | The volume that is expected to be used in trades on the market. |
+___
+
+### <a id="resolvedoptions" name="resolvedoptions"></a> ResolvedOptions
+
+Ƭ **ResolvedOptions**: { `maxOffers`: `number`  } \| { `desiredPrice`: `Bigish`  } \| { `desiredVolume`: [`VolumeParams`](Semibook-1.md#volumeparams)  } & { `chunkSize`: `number`  }
+
+Options with defaults resolved
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:61
+@mangrovedao/mangrove.js/src/semibook.ts:97
 
 ___
 
@@ -142,7 +157,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:107
+@mangrovedao/mangrove.js/src/semibook.ts:146
 
 ___
 
@@ -152,4 +167,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:113
+@mangrovedao/mangrove.js/src/semibook.ts:152

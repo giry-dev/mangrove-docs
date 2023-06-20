@@ -14,7 +14,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:48
+@mangrovedao/mangrove.js/src/mangrove.ts:42
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:52
+@mangrovedao/mangrove.js/src/mangrove.ts:46
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:62
+@mangrovedao/mangrove.js/src/mangrove.ts:56
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:71
+@mangrovedao/mangrove.js/src/mangrove.ts:65
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:81
+@mangrovedao/mangrove.js/src/mangrove.ts:75
 
 ___
 
@@ -113,20 +113,22 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `base` | { `address`: `string` ; `symbol`: `string` ; `decimals`: `number`  } |
+| `base` | { `name`: `string` ; `address`: `string` ; `symbol`: `string` ; `decimals`: `number`  } |
+| `base.name` | `string` |
 | `base.address` | `string` |
 | `base.symbol` | `string` |
 | `base.decimals` | `number` |
-| `quote` | { `address`: `string` ; `symbol`: `string` ; `decimals`: `number`  } |
+| `quote` | { `name`: `string` ; `address`: `string` ; `symbol`: `string` ; `decimals`: `number`  } |
+| `quote.name` | `string` |
 | `quote.address` | `string` |
 | `quote.symbol` | `string` |
 | `quote.decimals` | `number` |
-| `asksConfig` | [`LocalConfig`](Mangrove-1.md#localconfig) |
-| `bidsConfig` | [`LocalConfig`](Mangrove-1.md#localconfig) |
+| `asksConfig?` | [`LocalConfig`](Mangrove-1.md#localconfig) |
+| `bidsConfig?` | [`LocalConfig`](Mangrove-1.md#localconfig) |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:91
+@mangrovedao/mangrove.js/src/mangrove.ts:85
 
 ___
 
@@ -136,4 +138,24 @@ ___
 
 #### Defined in
 
+@mangrovedao/mangrove.js/src/mangrove.ts:92
+
+___
+
+### <a id="configuration" name="configuration"></a> Configuration
+
+Ƭ **Configuration**: `MangroveJsConfiguration`
+
+#### Defined in
+
 @mangrovedao/mangrove.js/src/mangrove.ts:98
+
+___
+
+### <a id="partialconfiguration" name="partialconfiguration"></a> PartialConfiguration
+
+Ƭ **PartialConfiguration**: `PartialMangroveJsConfiguration`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:100

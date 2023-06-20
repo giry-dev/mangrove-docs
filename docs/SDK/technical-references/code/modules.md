@@ -33,61 +33,6 @@ custom_edit_url: null
 - [OfferMaker](classes/OfferMaker.md)
 - [Semibook](classes/Semibook.md)
 
-## Variables
-
-### <a id="decimals" name="decimals"></a> decimals
-
-• `Const` **decimals**: `Object` = `tokenDecimals`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `cBAT` | `number` |
-| `cCOMP` | `number` |
-| `cDAI` | `number` |
-| `cETH` | `number` |
-| `cLINK` | `number` |
-| `cREP` | `number` |
-| `cSAI` | `number` |
-| `cTUSD` | `number` |
-| `cUNI` | `number` |
-| `cUSDC` | `number` |
-| `cUSDT` | `number` |
-| `cWBTC` | `number` |
-| `cZRX` | `number` |
-| `BAT` | `number` |
-| `BTC` | `number` |
-| `COMP` | `number` |
-| `DAI` | `number` |
-| `ETH` | `number` |
-| `GRT` | `number` |
-| `KNC` | `number` |
-| `LINK` | `number` |
-| `MGV` | `number` |
-| `REP` | `number` |
-| `SAI` | `number` |
-| `SNX` | `number` |
-| `TUSD` | `number` |
-| `UNI` | `number` |
-| `USDC` | `number` |
-| `USDT` | `number` |
-| `WBTC` | `number` |
-| `XTZ` | `number` |
-| `ZRX` | `number` |
-| `TokenA` | `number` |
-| `TokenB` | `number` |
-| `WETH` | `number` |
-| `aWETH` | `number` |
-| `aDAI` | `number` |
-| `aUSDC` | `number` |
-| `PxUSDC` | `number` |
-| `PxMATIC` | `number` |
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/constants.ts:54
-
 ## References
 
 ### <a id="default" name="default"></a> default
@@ -106,4 +51,4 @@ Renames and re-exports [Mangrove](classes/Mangrove.md)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/logger.ts:5
+@mangrovedao/mangrove.js/src/util/logger.ts:10
