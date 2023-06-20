@@ -72,7 +72,7 @@ Constructor
 
 ### <a id="getkandels" name="getkandels"></a> getKandels
 
-▸ **getKandels**(`filter?`): `Promise`<{ `kandelAddress`: `string` = x.args.kandel; `ownerAddress`: `string` = x.args.owner; `onAave`: `boolean` = false; `baseAddress`: `string` = baseToken.address; `base`: [`MgvToken`](MgvToken.md) = baseToken.token; `quoteAddress`: `string` = quoteToken.address; `quote`: [`MgvToken`](MgvToken.md) = quoteToken.token }[]\>
+▸ **getKandels**(`filter?`): `Promise`<{ `kandelAddress`: `string` = x.args.kandel; `ownerAddress`: `string` = x.args.owner; `onAave`: `boolean` = false; `baseAddress`: `string` = baseToken.address; `base`: `undefined` \| [`MgvToken`](MgvToken.md) = baseToken.token; `quoteAddress`: `string` = quoteToken.address; `quote`: `undefined` \| [`MgvToken`](MgvToken.md) = quoteToken.token }[]\>
 
 Gets all Kandels matching a given filter.
 
@@ -81,14 +81,14 @@ Gets all Kandels matching a given filter.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `filter?` | `Object` | The filter to apply. |
-| `filter.owner?` | `PromiseOrValue`<`string`\> | The Kandel instance owner - the one who invoked sow. |
-| `filter.base?` | `PromiseOrValue`<`string`\> | The base token for the Kandel instance. |
-| `filter.quote?` | `PromiseOrValue`<`string`\> | The quote token for the Kandel instance. |
+| `filter.owner?` | ``null`` \| `PromiseOrValue`<`string`\> | The Kandel instance owner - the one who invoked sow. |
+| `filter.base?` | ``null`` \| `PromiseOrValue`<`string`\> | The base token for the Kandel instance. |
+| `filter.quote?` | ``null`` \| `PromiseOrValue`<`string`\> | The quote token for the Kandel instance. |
 | `filter.onAave?` | `boolean` | Whether the Kandel instance uses the Aave router. |
 
 #### Returns
 
-`Promise`<{ `kandelAddress`: `string` = x.args.kandel; `ownerAddress`: `string` = x.args.owner; `onAave`: `boolean` = false; `baseAddress`: `string` = baseToken.address; `base`: [`MgvToken`](MgvToken.md) = baseToken.token; `quoteAddress`: `string` = quoteToken.address; `quote`: [`MgvToken`](MgvToken.md) = quoteToken.token }[]\>
+`Promise`<{ `kandelAddress`: `string` = x.args.kandel; `ownerAddress`: `string` = x.args.owner; `onAave`: `boolean` = false; `baseAddress`: `string` = baseToken.address; `base`: `undefined` \| [`MgvToken`](MgvToken.md) = baseToken.token; `quoteAddress`: `string` = quoteToken.address; `quote`: `undefined` \| [`MgvToken`](MgvToken.md) = quoteToken.token }[]\>
 
 All kandels matching the filter.
 

@@ -33,7 +33,7 @@ the same for the market B-A), a `Semibook` depends on the market:
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:134
+@mangrovedao/mangrove.js/src/semibook.ts:173
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:136
+@mangrovedao/mangrove.js/src/semibook.ts:175
 
 ___
 
@@ -53,17 +53,17 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:137
+@mangrovedao/mangrove.js/src/semibook.ts:176
 
 ___
 
 ### <a id="options" name="options"></a> options
 
-• `Readonly` **options**: [`Options`](../namespaces/Semibook-1.md#options)
+• `Readonly` **options**: [`ResolvedOptions`](../namespaces/Semibook-1.md#resolvedoptions)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:138
+@mangrovedao/mangrove.js/src/semibook.ts:177
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:145
+@mangrovedao/mangrove.js/src/semibook.ts:184
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:147
+@mangrovedao/mangrove.js/src/semibook.ts:186
 
 ___
 
@@ -148,7 +148,7 @@ StateLogSubscriber.cacheLock
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:149
+@mangrovedao/mangrove.js/src/semibook.ts:188
 
 ___
 
@@ -172,7 +172,47 @@ StateLogSubscriber.copy
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:176
+@mangrovedao/mangrove.js/src/semibook.ts:217
+
+___
+
+### <a id="addeventlistener" name="addeventlistener"></a> addEventListener
+
+▸ **addEventListener**(`listener`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `listener` | [`EventListener`](../namespaces/Semibook-1.md#eventlistener) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:221
+
+___
+
+### <a id="removeeventlistener" name="removeeventlistener"></a> removeEventListener
+
+▸ **removeEventListener**(`listener`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `listener` | [`EventListener`](../namespaces/Semibook-1.md#eventlistener) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:225
 
 ___
 
@@ -192,7 +232,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:180
+@mangrovedao/mangrove.js/src/semibook.ts:229
 
 ___
 
@@ -214,7 +254,7 @@ Returns struct containing offer details in the current offer list
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:200
+@mangrovedao/mangrove.js/src/semibook.ts:249
 
 ___
 
@@ -240,7 +280,7 @@ fee *remains* in basis points of the token being bought
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:237
+@mangrovedao/mangrove.js/src/semibook.ts:286
 
 ___
 
@@ -260,7 +300,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:242
+@mangrovedao/mangrove.js/src/semibook.ts:291
 
 ___
 
@@ -283,7 +323,7 @@ See mangrove.ts.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:257
+@mangrovedao/mangrove.js/src/semibook.ts:306
 
 ___
 
@@ -299,23 +339,23 @@ Returns the number of offers in the cache.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:272
+@mangrovedao/mangrove.js/src/semibook.ts:321
 
 ___
 
 ### <a id="getbestincache" name="getbestincache"></a> getBestInCache
 
-▸ **getBestInCache**(): `number`
+▸ **getBestInCache**(): `undefined` \| `number`
 
 Returns the id of the best offer in the cache
 
 #### Returns
 
-`number`
+`undefined` \| `number`
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:278
+@mangrovedao/mangrove.js/src/semibook.ts:327
 
 ___
 
@@ -331,11 +371,11 @@ Returns an iterator over the offers in the cache.
 
 #### Implementation of
 
-Iterable.\_\_@iterator@89
+Iterable.\_\_@iterator@92
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:284
+@mangrovedao/mangrove.js/src/semibook.ts:333
 
 ___
 
@@ -351,13 +391,13 @@ Convenience method for getting an iterator without having to call `[Symbol.itera
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:291
+@mangrovedao/mangrove.js/src/semibook.ts:340
 
 ___
 
 ### <a id="getpivotid" name="getpivotid"></a> getPivotId
 
-▸ **getPivotId**(`price`): `Promise`<`number`\>
+▸ **getPivotId**(`price`): `Promise`<`undefined` \| `number`\>
 
 Given a price, find the id of the immediately-better offer in the
 semibook. If there is no offer with a better price, `undefined` is returned.
@@ -366,15 +406,15 @@ semibook. If there is no offer with a better price, `undefined` is returned.
 
 | Name | Type |
 | :------ | :------ |
-| `price` | `any` |
+| `price` | `undefined` \| `BigSource` |
 
 #### Returns
 
-`Promise`<`number`\>
+`Promise`<`undefined` \| `number`\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:298
+@mangrovedao/mangrove.js/src/semibook.ts:347
 
 ___
 
@@ -415,13 +455,13 @@ traded due to insufficient volume on the book / price becoming bad.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:350
+@mangrovedao/mangrove.js/src/semibook.ts:402
 
 ___
 
 ### <a id="simulatemarketorder" name="simulatemarketorder"></a> simulateMarketOrder
 
-▸ **simulateMarketOrder**(`initialWants`, `initialGives`, `fillWants`): `Promise`<{ `wants`: `Big` ; `gives`: `Big` ; `totalGot`: `Big` ; `totalGave`: `Big`  }\>
+▸ **simulateMarketOrder**(`initialWants`, `initialGives`, `fillWants`): `Promise`<{ `wants`: `Big` ; `gives`: `Big` ; `totalGot`: `Big` ; `totalGave`: `Big` ; `gas`: `BigNumber`  }\>
 
 #### Parameters
 
@@ -433,11 +473,11 @@ ___
 
 #### Returns
 
-`Promise`<{ `wants`: `Big` ; `gives`: `Big` ; `totalGot`: `Big` ; `totalGave`: `Big`  }\>
+`Promise`<{ `wants`: `Big` ; `gives`: `Big` ; `totalGot`: `Big` ; `totalGave`: `Big` ; `gas`: `BigNumber`  }\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:377
+@mangrovedao/mangrove.js/src/semibook.ts:429
 
 ___
 
@@ -451,8 +491,8 @@ Returns `true` if `price` is better than `referencePrice`; Otherwise, `false` is
 
 | Name | Type |
 | :------ | :------ |
-| `price` | `any` |
-| `referencePrice` | `any` |
+| `price` | `undefined` \| `BigSource` |
+| `referencePrice` | `undefined` \| `BigSource` |
 
 #### Returns
 
@@ -460,7 +500,7 @@ Returns `true` if `price` is better than `referencePrice`; Otherwise, `false` is
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:452
+@mangrovedao/mangrove.js/src/semibook.ts:526
 
 ___
 
@@ -474,8 +514,8 @@ Returns `true` if `price` is worse than `referencePrice`; Otherwise, `false` is 
 
 | Name | Type |
 | :------ | :------ |
-| `price` | `any` |
-| `referencePrice` | `any` |
+| `price` | `undefined` \| `BigSource` |
+| `referencePrice` | `undefined` \| `BigSource` |
 
 #### Returns
 
@@ -483,21 +523,21 @@ Returns `true` if `price` is worse than `referencePrice`; Otherwise, `false` is 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:458
+@mangrovedao/mangrove.js/src/semibook.ts:535
 
 ___
 
 ### <a id="getmaxgasreq" name="getmaxgasreq"></a> getMaxGasReq
 
-▸ **getMaxGasReq**(): `Promise`<`number`\>
+▸ **getMaxGasReq**(): `Promise`<`undefined` \| `number`\>
 
 #### Returns
 
-`Promise`<`number`\>
+`Promise`<`undefined` \| `number`\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:462
+@mangrovedao/mangrove.js/src/semibook.ts:542
 
 ___
 
@@ -521,7 +561,7 @@ StateLogSubscriber.stateInitialize
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:607
+@mangrovedao/mangrove.js/src/semibook.ts:701
 
 ___
 
@@ -547,7 +587,7 @@ StateLogSubscriber.stateHandleLog
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:654
+@mangrovedao/mangrove.js/src/semibook.ts:748
 
 ___
 
@@ -568,15 +608,15 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:980
+@mangrovedao/mangrove.js/src/semibook.ts:1110
 
 ___
 
 ### <a id="getminimumvolume" name="getminimumvolume"></a> getMinimumVolume
 
-▸ **getMinimumVolume**(`gasreq`): `Promise`<`any`\>
+▸ **getMinimumVolume**(`gasreq`): `Promise`<`Big`\>
 
-Determines the minimum volume required to stay above density limit for the given gasreq.
+Determines the minimum volume required to stay above density limit for the given gasreq (with a minimum of 1 unit of outbound, since 0 gives is not allowed).
 
 #### Parameters
 
@@ -586,19 +626,19 @@ Determines the minimum volume required to stay above density limit for the given
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`<`Big`\>
 
 The minimum volume required to stay above density limit.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:999
+@mangrovedao/mangrove.js/src/semibook.ts:1129
 
 ___
 
 ### <a id="rawidtoid" name="rawidtoid"></a> rawIdToId
 
-▸ `Static` **rawIdToId**(`rawId`): `number`
+▸ `Static` **rawIdToId**(`rawId`): `undefined` \| `number`
 
 #### Parameters
 
@@ -608,11 +648,11 @@ ___
 
 #### Returns
 
-`number`
+`undefined` \| `number`
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1004
+@mangrovedao/mangrove.js/src/semibook.ts:1140
 
 ___
 
@@ -632,7 +672,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1042
+@mangrovedao/mangrove.js/src/semibook.ts:1187
 
 ___
 
@@ -652,7 +692,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1051
+@mangrovedao/mangrove.js/src/semibook.ts:1197
 
 ___
 

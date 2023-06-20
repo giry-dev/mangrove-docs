@@ -178,9 +178,9 @@ ___
 
 ### <a id="getrequiredprovision" name="getrequiredprovision"></a> getRequiredProvision
 
-▸ **getRequiredProvision**(`seed`, `distribution`): `Promise`<`any`\>
+▸ **getRequiredProvision**(`seed`, `distribution`): `Promise`<`Big`\>
 
-Determines the required provision for the distribution prior to sowing.
+Determines the required provision for the distribution prior to sowing based on the number of price points.
 
 **`Remarks`**
 
@@ -195,7 +195,7 @@ This takes into account that each price point can become both an ask and a bid w
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`<`Big`\>
 
 The provision required for the distribution.
 
@@ -207,7 +207,7 @@ ___
 
 ### <a id="getminimumvolume" name="getminimumvolume"></a> getMinimumVolume
 
-▸ **getMinimumVolume**(`params`): `Promise`<`any`\>
+▸ **getMinimumVolume**(`params`): `Promise`<`Big`\>
 
 Determines the minimum recommended volume for an offer of the given type to avoid density issues.
 
@@ -223,19 +223,19 @@ Determines the minimum recommended volume for an offer of the given type to avoi
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`<`Big`\>
 
 The minimum recommended volume.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:201
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:202
 
 ___
 
 ### <a id="getminimumvolumeforgasreq" name="getminimumvolumeforgasreq"></a> getMinimumVolumeForGasreq
 
-▸ **getMinimumVolumeForGasreq**(`params`): `Promise`<`any`\>
+▸ **getMinimumVolumeForGasreq**(`params`): `Promise`<`Big`\>
 
 Determines the minimum recommended volume for an offer of the given type to avoid density issues.
 
@@ -247,14 +247,14 @@ Determines the minimum recommended volume for an offer of the given type to avoi
 | `params.market` | [`Market`](Market.md) | The market the Kandel is deployed to. |
 | `params.offerType` | [`BA`](../namespaces/Market-1.md#ba) | The type of offer. |
 | `params.factor?` | `number` | The factor to multiply the minimum volume by. Defaults to minimumBasePerOfferFactory / minimumQuotePerOfferFactor from KandelConfiguration. |
-| `params.gasreq?` | `number` | The gasreq to use. |
+| `params.gasreq` | `number` | The gasreq to use. |
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`<`Big`\>
 
 The minimum recommended volume.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:219
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:220

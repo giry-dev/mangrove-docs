@@ -23,7 +23,7 @@ directly use the constructor. Instead of `new Market(...)`, do
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:237
+@mangrovedao/mangrove.js/src/market.ts:249
 
 ___
 
@@ -33,7 +33,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:238
+@mangrovedao/mangrove.js/src/market.ts:250
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:239
+@mangrovedao/mangrove.js/src/market.ts:251
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:244
+@mangrovedao/mangrove.js/src/market.ts:256
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:245
+@mangrovedao/mangrove.js/src/market.ts:257
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:246
+@mangrovedao/mangrove.js/src/market.ts:258
 
 ## Methods
 
@@ -93,7 +93,21 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:248
+@mangrovedao/mangrove.js/src/market.ts:263
+
+___
+
+### <a id="close" name="close"></a> close
+
+▸ **close**(): `void`
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/market.ts:309
 
 ___
 
@@ -107,7 +121,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:288
+@mangrovedao/mangrove.js/src/market.ts:322
 
 ___
 
@@ -128,7 +142,7 @@ Order is from best to worse from taker perspective.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:373
+@mangrovedao/mangrove.js/src/market.ts:420
 
 ___
 
@@ -150,7 +164,7 @@ Return the asks or bids semibook
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:383
+@mangrovedao/mangrove.js/src/market.ts:433
 
 ___
 
@@ -170,7 +184,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:387
+@mangrovedao/mangrove.js/src/market.ts:440
 
 ___
 
@@ -184,7 +198,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:398
+@mangrovedao/mangrove.js/src/market.ts:454
 
 ___
 
@@ -205,7 +219,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:403
+@mangrovedao/mangrove.js/src/market.ts:459
 
 ___
 
@@ -225,13 +239,13 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:408
+@mangrovedao/mangrove.js/src/market.ts:464
 
 ___
 
 ### <a id="getpivotid" name="getpivotid"></a> getPivotId
 
-▸ **getPivotId**(`ba`, `price`): `Promise`<`number`\>
+▸ **getPivotId**(`ba`, `price`): `Promise`<`undefined` \| `number`\>
 
 Given a price, find the id of the immediately-better offer in the
 book. If there is no offer with a better price, `undefined` is returned.
@@ -241,79 +255,118 @@ book. If there is no offer with a better price, `undefined` is returned.
 | Name | Type |
 | :------ | :------ |
 | `ba` | [`BA`](../namespaces/Market-1.md#ba) |
-| `price` | `any` |
+| `price` | `undefined` \| `BigSource` |
 
 #### Returns
 
-`Promise`<`number`\>
+`Promise`<`undefined` \| `number`\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:418
+@mangrovedao/mangrove.js/src/market.ts:474
 
 ___
 
 ### <a id="getofferprovision" name="getofferprovision"></a> getOfferProvision
 
-▸ **getOfferProvision**(`ba`, `gasreq`, `gasprice`): `Promise`<`Big`\>
+▸ **getOfferProvision**(`ba`, `gasreq`, `gasprice?`): `Promise`<`Big`\>
+
+Gets the amount of ethers necessary to provision an offer on the market.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
-| `gasreq` | `number` |
-| `gasprice` | `number` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) | bids or asks |
+| `gasreq` | `number` | gas required for the offer execution. |
+| `gasprice?` | `number` | gas price to use for the calculation. If undefined, then Mangrove's current gas price is used. |
 
 #### Returns
 
 `Promise`<`Big`\>
 
+the amount of ethers necessary to provision the offer.
+
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:422
+@mangrovedao/mangrove.js/src/market.ts:487
 
 ___
 
 ### <a id="getbidprovision" name="getbidprovision"></a> getBidProvision
 
-▸ **getBidProvision**(`gasreq`, `gasprice`): `Promise`<`Big`\>
+▸ **getBidProvision**(`gasreq`, `gasprice?`): `Promise`<`Big`\>
+
+Gets the amount of ethers necessary to provision a bid on the market.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `gasreq` | `number` |
-| `gasprice` | `number` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `gasreq` | `number` | gas required for the offer execution. |
+| `gasprice?` | `number` | gas price to use for the calculation. If undefined, then Mangrove's current gas price is used. |
 
 #### Returns
 
 `Promise`<`Big`\>
 
+the amount of ethers necessary to provision the offer.
+
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:434
+@mangrovedao/mangrove.js/src/market.ts:506
 
 ___
 
 ### <a id="getaskprovision" name="getaskprovision"></a> getAskProvision
 
-▸ **getAskProvision**(`gasreq`, `gasprice`): `Promise`<`Big`\>
+▸ **getAskProvision**(`gasreq`, `gasprice?`): `Promise`<`Big`\>
+
+Gets the amount of ethers necessary to provision a bid on the market.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `gasreq` | `number` |
-| `gasprice` | `number` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `gasreq` | `number` | gas required for the offer execution. |
+| `gasprice?` | `number` | gas price to use for the calculation. If undefined, then Mangrove's current gas price is used. |
 
 #### Returns
 
 `Promise`<`Big`\>
 
+the amount of ethers necessary to provision the offer.
+
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:437
+@mangrovedao/mangrove.js/src/market.ts:515
+
+___
+
+### <a id="getmissingprovision" name="getmissingprovision"></a> getMissingProvision
+
+▸ **getMissingProvision**(`ba`, `lockedProvision`, `gasreq`, `gasprice?`): `Promise`<`Big`\>
+
+Gets the missing provision in ethers for an offer with the given parameters
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) | bids or asks |
+| `lockedProvision` | `BigSource` | the provision already locked with the offer |
+| `gasreq` | `number` | gas required for the offer execution. |
+| `gasprice?` | `number` | gas price to use for the calculation. If undefined, then Mangrove's current gas price is used. |
+
+#### Returns
+
+`Promise`<`Big`\>
+
+the additional required provision, in ethers.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/market.ts:526
 
 ___
 
@@ -333,7 +386,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:441
+@mangrovedao/mangrove.js/src/market.ts:543
 
 ___
 
@@ -353,7 +406,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:445
+@mangrovedao/mangrove.js/src/market.ts:547
 
 ___
 
@@ -376,7 +429,7 @@ Returns struct containing offer details in the current market
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:450
+@mangrovedao/mangrove.js/src/market.ts:552
 
 ___
 
@@ -401,7 +454,7 @@ token. See mangrove.ts.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:457
+@mangrovedao/mangrove.js/src/market.ts:559
 
 ___
 
@@ -444,7 +497,7 @@ market.buy({volume: 100, price: '1.01'}) //use strings to be exact
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:501
+@mangrovedao/mangrove.js/src/market.ts:603
 
 ___
 
@@ -487,7 +540,59 @@ market.sell({volume: 100, price: 1})
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:533
+@mangrovedao/mangrove.js/src/market.ts:635
+
+___
+
+### <a id="gasestimatebuy" name="gasestimatebuy"></a> gasEstimateBuy
+
+▸ **gasEstimateBuy**(`params`): `Promise`<`BigNumber`\>
+
+Estimate amount of gas for buy. Can be passed as overrides.gasLimit or params.gasLowerBound of
+
+**`See`**
+
+buy with same params.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | [`TradeParams`](../namespaces/Market-1.md#tradeparams) |
+
+#### Returns
+
+`Promise`<`BigNumber`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/market.ts:646
+
+___
+
+### <a id="gasestimatesell" name="gasestimatesell"></a> gasEstimateSell
+
+▸ **gasEstimateSell**(`params`): `Promise`<`BigNumber`\>
+
+Estimate amount of gas for sell. Can be passed as overrides.gasLimit or params.gasLowerBound of
+
+**`See`**
+
+sell with same params.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | [`TradeParams`](../namespaces/Market-1.md#tradeparams) |
+
+#### Returns
+
+`Promise`<`BigNumber`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/market.ts:653
 
 ___
 
@@ -521,7 +626,7 @@ Params are:
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:557
+@mangrovedao/mangrove.js/src/market.ts:673
 
 ___
 
@@ -553,7 +658,7 @@ Params are:
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:579
+@mangrovedao/mangrove.js/src/market.ts:695
 
 ___
 
@@ -574,7 +679,36 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:586
+@mangrovedao/mangrove.js/src/market.ts:702
+
+___
+
+### <a id="simulategas" name="simulategas"></a> simulateGas
+
+▸ **simulateGas**(`ba`, `gives`, `wants`, `fillWants`): `Promise`<`BigNumber`\>
+
+Uses the
+
+**`See`**
+
+semibook.simulateMarketOrder to simulate the gas required for a market order. An overhead of 50% is added to account for changes to the book and failing offers.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
+| `gives` | `BigNumber` |
+| `wants` | `BigNumber` |
+| `fillWants` | `boolean` |
+
+#### Returns
+
+`Promise`<`BigNumber`\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/market.ts:731
 
 ___
 
@@ -606,7 +740,7 @@ order to spend 10 quote tokens.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:616
+@mangrovedao/mangrove.js/src/market.ts:771
 
 ___
 
@@ -626,7 +760,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:630
+@mangrovedao/mangrove.js/src/market.ts:785
 
 ___
 
@@ -646,7 +780,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:637
+@mangrovedao/mangrove.js/src/market.ts:792
 
 ___
 
@@ -668,7 +802,7 @@ fee *remains* in basis points of the token being bought
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:654
+@mangrovedao/mangrove.js/src/market.ts:809
 
 ___
 
@@ -690,7 +824,7 @@ Pretty prints the current state of the asks of the market
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:667
+@mangrovedao/mangrove.js/src/market.ts:822
 
 ___
 
@@ -712,7 +846,7 @@ Pretty prints the current state of the bids of the market
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:672
+@mangrovedao/mangrove.js/src/market.ts:827
 
 ___
 
@@ -735,7 +869,7 @@ Pretty prints the current state of the asks or bids of the market
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:677
+@mangrovedao/mangrove.js/src/market.ts:832
 
 ___
 
@@ -792,7 +926,7 @@ Only one subscription may be active at a time.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:717
+@mangrovedao/mangrove.js/src/market.ts:872
 
 ___
 
@@ -821,7 +955,7 @@ Returns a promise which is fulfilled after execution of the callback.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:724
+@mangrovedao/mangrove.js/src/market.ts:879
 
 ___
 
@@ -841,7 +975,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:738
+@mangrovedao/mangrove.js/src/market.ts:893
 
 ___
 
@@ -868,7 +1002,7 @@ Determine which token will be Mangrove's outbound/inbound depending on whether y
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:743
+@mangrovedao/mangrove.js/src/market.ts:898
 
 ___
 
@@ -897,7 +1031,7 @@ Determine which token will be Mangrove's outbound/inbound depending on whether y
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:751
+@mangrovedao/mangrove.js/src/market.ts:906
 
 ___
 
@@ -926,15 +1060,15 @@ Determine whether gives or wants will be baseVolume/quoteVolume depending on whe
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:766
+@mangrovedao/mangrove.js/src/market.ts:921
 
 ___
 
 ### <a id="getprice" name="getprice"></a> getPrice
 
-▸ `Static` **getPrice**(`ba`, `gives`, `wants`): `Big`
+▸ `Static` **getPrice**(`ba`, `gives`, `wants`): `undefined` \| `Big`
 
-Determine the price from gives or wants depending on whether you're working with bids or asks.
+Determine the price from dividing offer gives with wants depending on whether you're working with bids or asks.
 
 #### Parameters
 
@@ -946,11 +1080,11 @@ Determine the price from gives or wants depending on whether you're working with
 
 #### Returns
 
-`Big`
+`undefined` \| `Big`
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:778
+@mangrovedao/mangrove.js/src/market.ts:933
 
 ___
 
@@ -974,7 +1108,7 @@ Determine the wants from gives and price depending on whether you're working wit
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:788
+@mangrovedao/mangrove.js/src/market.ts:943
 
 ___
 
@@ -998,7 +1132,7 @@ Determine the gives from wants and price depending on whether you're working wit
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:793
+@mangrovedao/mangrove.js/src/market.ts:948
 
 ___
 
@@ -1027,7 +1161,7 @@ Determine gives and wants from a volume (in base) and a price depending on wheth
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:798
+@mangrovedao/mangrove.js/src/market.ts:953
 
 ___
 
@@ -1043,7 +1177,7 @@ Determine the first decimal place where the smallest price difference between ne
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:812
+@mangrovedao/mangrove.js/src/market.ts:967
 
 ___
 
@@ -1065,4 +1199,4 @@ Determine the first decimal place where the smallest price difference between ne
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:820
+@mangrovedao/mangrove.js/src/market.ts:976

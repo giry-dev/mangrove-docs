@@ -22,7 +22,7 @@ function collect(
 
 ### Source Code
 
-The [`MgvCleaner` source](https://github.com/mangrovedao/mangrove-core/blob/54e54fe92e63c10afba0e058f1e51711fa6f512d/src/periphery/MgvCleaner.sol) is available.
+The [`MgvCleaner` source](https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5ffcd5abb02/src/periphery/MgvCleaner.sol) is available.
 
 :::danger Deployment Address
 

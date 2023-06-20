@@ -54,3 +54,24 @@ Returns the asset price in the base currency
 | ---- | ---- | ----------- |
 | [0] | uint256 | The price of the asset |
 
+### getAssetsPrices
+
+```solidity
+function getAssetsPrices(address[] assets) external view returns (uint256[] prices)
+```
+
+mangrove edit - missing in the originial interface
+Returns the assets prices in the base currency.
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| assets | address[] | The addresses of the assets |
+
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| prices | uint256[] | of the asset |
+

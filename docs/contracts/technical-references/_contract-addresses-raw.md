@@ -4,37 +4,55 @@
 ### Mangrove
 
 ```txt
-0x2f5a51B09044754C7C8b1A9deE29E046b5432038
+0x9a58de548212F65c5406e46563372Ee6DcC0aC43
 ```
 
 ### MgvOracle
 
 ```txt
-0x09f8b6E32DB426aa477ad815544d0573FeFdBeEF
+0x692c15efcA8AABCda9511641F6ed9702d3f4cfb4
 ```
 
 ### MgvReader
 
 ```txt
-0xb2C51219745BDA3c812A6A144c8F78699d278810
+0x07e5a2DCf82D7b5b8ab684d9b40842E174e49908
 ```
 
 ### MgvCleaner
 
 ```txt
-0x673b35A107a1299D0CaC48b9b25Ba1E3e9f9B54f
+0xa52ba5E5199bE4fD363B163bDe567606589eD2E2
 ```
 
-### MgvGovernance
+### MangroveOrder
 
 ```txt
-0x0813Ec5f3b54003197d8B40A36Ed570E803cfBF7
+0xcf4ec117bc38d7D0fE8678B511Ff6a212c76d60B
 ```
 
-### MangroveOrderEnriched
+### MangroveOrder-Router
 
 ```txt
-0x61e4e74ab24D7e136E375C8DDD9758F0793076E5
+0x6b08Cc8290302CB4659D7cEDa7016BEa20852D59
+```
+
+### KandelSeeder
+
+```txt
+0xA48B36E01919472fcdA56CAD574433BeCB7A87C5
+```
+
+### AaveKandelSeeder
+
+```txt
+0xded8E2fac702646dafE51d496d1217A837b0a424
+```
+
+### AavePooledRouter
+
+```txt
+0xa92737e6917d4d76Fed72027Ccbf1E06094d65Bd
 ```
 
 ### ERC20 addresses
@@ -99,6 +117,24 @@
 
 ```txt
 0xB3ba79DB150E8650efa5c534EEaf6404a25Fdf00
+```
+
+### WMATIC
+
+```txt
+0x193163EeFfc795F9d573b171aB12cCDdE10392e8
+```
+
+### WBTC
+
+```txt
+0xf402f6197d979F0A4cba61596921a3d762520570
+```
+
+### USDT
+
+```txt
+0xe8099699aa4A79d89dBD20A63C50b7d35ED3CD9e
 ```
 
 ### ERC20 addresses

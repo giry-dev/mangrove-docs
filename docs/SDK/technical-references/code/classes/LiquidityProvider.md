@@ -17,7 +17,7 @@ It posts onchain offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:56
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:57
 
 ___
 
@@ -27,7 +27,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:57
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:58
 
 ___
 
@@ -37,7 +37,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:58
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:59
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:59
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:60
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:60
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:61
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:61
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:62
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:62
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:63
 
 ## Constructors
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:64
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:65
 
 ## Methods
 
@@ -118,7 +118,7 @@ A LiquidityProvider.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:89
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:90
 
 ___
 
@@ -126,23 +126,27 @@ ___
 
 ▸ **computeOfferProvision**(`ba`, `opts?`): `Promise`<`Big`\>
 
+Gets the missing provision in ethers for an offer to be posted or updated with the given parameters, while taking already locked provision into account.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
-| `opts` | `Object` |
-| `opts.id?` | `number` |
-| `opts.gasreq?` | `number` |
-| `opts.gasprice?` | `number` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) | bids or asks |
+| `opts` | `Object` | optional parameters for the calculation. |
+| `opts.id?` | `number` | the id of the offer to update. If undefined, then the offer is a new offer and nothing is locked. |
+| `opts.gasreq?` | `number` | gas required for the offer execution. If undefined, the liquidity provider's gasreq. |
+| `opts.gasprice?` | `number` | gas price to use for the calculation. If undefined, then Mangrove's current gas price is used. |
 
 #### Returns
 
 `Promise`<`Big`\>
 
+the additional required provision, in ethers.
+
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:116
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:125
 
 ___
 
@@ -150,6 +154,12 @@ ___
 
 ▸ **computeBidProvision**(`opts?`): `Promise`<`Big`\>
 
+Gets the missing provision in ethers for a bid using
+
+**`See`**
+
+computeOfferProvision.
+
 #### Parameters
 
 | Name | Type |
@@ -165,7 +175,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:123
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:156
 
 ___
 
@@ -173,6 +183,12 @@ ___
 
 ▸ **computeAskProvision**(`opts?`): `Promise`<`Big`\>
 
+Gets the missing provision in ethers for an ask using
+
+**`See`**
+
+computeOfferProvision.
+
 #### Parameters
 
 | Name | Type |
@@ -188,37 +204,13 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:129
-
-___
-
-### <a id="getmissingprovision" name="getmissingprovision"></a> getMissingProvision
-
-▸ **getMissingProvision**(`ba`, `opts?`): `Promise`<`Big`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `ba` | [`BA`](../namespaces/Market-1.md#ba) |
-| `opts` | `Object` |
-| `opts.id?` | `number` |
-| `opts.gasreq?` | `number` |
-| `opts.gasprice?` | `number` |
-
-#### Returns
-
-`Promise`<`Big`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:135
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:163
 
 ___
 
 ### <a id="getbidpivotid" name="getbidpivotid"></a> getBidPivotId
 
-▸ **getBidPivotId**(`price`): `Promise`<`number`\>
+▸ **getBidPivotId**(`price`): `Promise`<`undefined` \| `number`\>
 
 Given a price, find the id of the immediately-better offer in the
 semibook. If there is no offer with a better price, `undefined` is returned.
@@ -227,11 +219,11 @@ semibook. If there is no offer with a better price, `undefined` is returned.
 
 | Name | Type |
 | :------ | :------ |
-| `price` | `any` |
+| `price` | `BigSource` |
 
 #### Returns
 
-`Promise`<`number`\>
+`Promise`<`undefined` \| `number`\>
 
 #### Defined in
 
@@ -241,17 +233,17 @@ ___
 
 ### <a id="getaskpivotid" name="getaskpivotid"></a> getAskPivotId
 
-▸ **getAskPivotId**(`price`): `Promise`<`number`\>
+▸ **getAskPivotId**(`price`): `Promise`<`undefined` \| `number`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `price` | `any` |
+| `price` | `BigSource` |
 
 #### Returns
 
-`Promise`<`number`\>
+`Promise`<`undefined` \| `number`\>
 
 #### Defined in
 
@@ -359,7 +351,7 @@ Given offer params (bids/asks + price info as wants&gives or price&volume),
 | `gives` | `Big` |
 | `gasreq?` | `number` |
 | `gasprice?` | `number` |
-| `fund?` | `any` |
+| `fund?` | `BigSource` |
 
 #### Defined in
 
@@ -376,7 +368,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `overrides` | `Overrides` |
-| `fund?` | `any` |
+| `fund?` | `BigSource` |
 
 #### Returns
 
@@ -545,7 +537,7 @@ Cancel an ask. If deprovision is true, will return the offer's provision to the 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:465
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:468
 
 ___
 
@@ -569,7 +561,7 @@ Cancel a bid. If deprovision is true, will return the offer's provision to the m
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:474
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:477
 
 ___
 
@@ -592,4 +584,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:483
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:486

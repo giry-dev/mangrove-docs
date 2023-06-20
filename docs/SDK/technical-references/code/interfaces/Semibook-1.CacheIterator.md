@@ -35,13 +35,13 @@ Filter the offers in the cache using a predicate.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:91
+@mangrovedao/mangrove.js/src/semibook.ts:130
 
 ___
 
 ### <a id="find" name="find"></a> find
 
-▸ **find**(`predicate`): [`Offer`](../namespaces/Market-1.md#offer)
+▸ **find**(`predicate`): `undefined` \| [`Offer`](../namespaces/Market-1.md#offer)
 
 Returns the value of the first element in the provided array that
 satisfies the provided predicate. If no values satisfy the testing function,
@@ -51,15 +51,15 @@ satisfies the provided predicate. If no values satisfy the testing function,
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`offer`: [`Offer`](../namespaces/Market-1.md#offer)) => `boolean` | Function is a predicate, to test each element of the array. The firs offer that satisifies the predicate is returned; otherwise `undefined` is returned. |
+| `predicate` | (`offer`: [`Offer`](../namespaces/Market-1.md#offer)) => `boolean` | Function is a predicate, to test each element of the array. The firs offer that satisfies the predicate is returned; otherwise `undefined` is returned. |
 
 #### Returns
 
-[`Offer`](../namespaces/Market-1.md#offer)
+`undefined` \| [`Offer`](../namespaces/Market-1.md#offer)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:101
+@mangrovedao/mangrove.js/src/semibook.ts:140
 
 ___
 
@@ -75,7 +75,7 @@ Returns the elements in an array.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:104
+@mangrovedao/mangrove.js/src/semibook.ts:143
 
 ___
 
@@ -161,7 +161,7 @@ ___
 
 #### Inherited from
 
-IterableIterator.\_\_@iterator@89
+IterableIterator.\_\_@iterator@92
 
 #### Defined in
 

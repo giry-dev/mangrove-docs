@@ -50,7 +50,7 @@ ___
 
 • **configuration**: `KandelConfiguration`
 
-The recommended configuration values to use for Kandel.
+The default configuration values to use for Kandel.
 
 #### Defined in
 
@@ -108,7 +108,7 @@ ___
 
 ### <a id="generator" name="generator"></a> generator
 
-▸ **generator**(`market`): [`KandelDistributionGenerator`](KandelDistributionGenerator.md)
+▸ **generator**(`market`, `precision?`): [`KandelDistributionGenerator`](KandelDistributionGenerator.md)
 
 Creates a generator for generating Kandel distributions for the given market.
 
@@ -117,6 +117,7 @@ Creates a generator for generating Kandel distributions for the given market.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `market` | [`Market`](Market.md) | The market to calculate for. |
+| `precision?` | `number` | The precision used for Kandel instances. Must match the deployed Kandel contract's PRECISION() value. |
 
 #### Returns
 
@@ -126,4 +127,4 @@ A new KandelDistributionGenerator.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:70
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:80
