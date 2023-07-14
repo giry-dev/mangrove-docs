@@ -9,6 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img src={useBaseUrl('img/assets/limit-order.gif')} width="100%"/><br /><br />
 
+[GIF to be changed]
 
 ## Steps
 
@@ -30,7 +31,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 > 💡
 > If a "Good 'til time" limit order is [partially filled](./how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transactino details, and the remainder will be reposted automatically.
 
-6. Click on "Approve and buy/sell". A card will appear, click on "Allow 'token'" and confirm the transaction on your wallet.
+6. Click on "Approve and buy/sell". A card will appear, tick the infinite approval box, click on "Allow 'token'" and confirm the transaction on your wallet.
 
 7. Click "Done" to close the pop-up.
 
