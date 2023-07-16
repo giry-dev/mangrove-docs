@@ -8,7 +8,7 @@ sidebar_position: 3
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/market-order.gif')} width="100%"/><br /><br />
+<img src={useBaseUrl('img/assets/market-order.gif')} width="70%"/><br /><br />
 
 
 ## Steps
@@ -27,7 +27,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 > * Lower tolerance may mean better prices, but potential for trade not to execute.
 > * Find the right balance for your trade.
 
-5. Click on "Approve and buy/sell". A card will appear, click on "Allow 'token'" and confirm the transaction on your wallet.
+5. Click on "Approve and buy/sell". A card will appear, tick the infinite approval box, click on "Allow 'token'" and confirm the transaction on your wallet.
 
 6. Click "Done" to close the pop-up.
 

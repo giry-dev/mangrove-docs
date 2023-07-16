@@ -8,16 +8,17 @@ sidebar_position: 2
 
 We suggest using Metamask as it's currently considered a highly reliable and stable wallet option.
 Down below, you will find detailed steps to:
-* [Connect to Mangrove testnet](./how-to-connect-wallet.md#steps-to-connect-to-mangrove-testnet)
-* [Get some test tokens](./how-to-connect-wallet.md#steps-to-get-some-test-tokens) to spend on Mangrove testnet
+* [Connect to Mangrove mainnet](./how-to-connect-wallet.md#steps-to-connect-to-mangrove-mainnet-and-testnet) (and testnet)
+* [Get some test tokens](./how-to-connect-wallet.md#steps-to-get-some-test-tokens-testnet) to spend on Mangrove testnet
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img src={useBaseUrl('img/assets/connect-metamask.gif')} width="70%"/>
 
-## Steps to connect to Mangrove testnet
 
-1. To connect your wallet on the Mangrove DEX, click on "Connect my wallet" and choose Metamask.
+## Steps to connect to Mangrove mainnet and testnet
+
+1. Go to our [testnet app](https://testnet.mangrove.exchange/), and connect your wallet by clicking on "Connect my wallet" - choose Metamask.
 
 <img src={useBaseUrl('img/assets/connect-wallet-metamask.png')} width="500px"/><br /><br />
 
@@ -25,11 +26,21 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img src={useBaseUrl('img/assets/connect-wallet-account.png')} width="500px"/><br /><br />
 
-3. To use our Testnet, you need to be connected to the Polygon Mumbai test network. If you see a "Unsupported Network" pop-up, click "Switch network".
+3. Mangrove is live on both Polygon mainnet, and Polygon Mumbai testnet.
+* **Polygon mainnet**: you need to be connected to the Polygon mainnet. If you see a "Unsupported Network" pop-up, click "Switch network".
+* **Polygon Mumbai testnet**: you need to be connected to the Polygon Mumbai test network.
+
+:::info
+ If you see a "Unsupported Network" pop-up, click "Switch network".
+:::
 
 <img src={useBaseUrl('img/assets/connect-wallet-switch-network.png')} width="500px"/><br /><br />
 
-4. If you do not yet have the Mumbai test network registered, a pop-up asking you to approve its addition will show up. Click "Approve".
+4. Once connected, the offers in the order book will appear - you can now start using Mangrove app!
+
+### Adding the networks manually
+
+5. If you do not yet have the Mumbai test network registered, a pop-up asking you to approve its addition will show up. Click "Approve".
 
 <img src={useBaseUrl('img/assets/connect-wallet-switch-approve-network.png')} width="300px"/><br /><br />
 
@@ -59,10 +70,8 @@ In case you do get a Chain ID error, you'll need to add the network manually. Re
 
     * You're done! You can now head back to Mangrove app.
 
-5. Once connected, the offers in the order book will appear - you can now start using Mangrove app!
 
-
-## Steps to get some test tokens
+## Steps to get some test tokens (testnet)
 
 1. Click on the three dots on the top right corner, and click 'Faucet".
 <img src={useBaseUrl('img/assets/test-tokens-faucet-list.png')} width="500px"/>
