@@ -12,7 +12,7 @@ Before your transaction gets processed, you will have to approve the token's spe
 
 1. After keying your parameters, you will have to click the "Approve and Buy" or "Approve and Sell" button.
 
-2. It will trigger the approval process, starting with a pop-up - make sure to tick the box allowing the infinite approval, and click "Allow [token]".
+2. It will trigger the approval process, starting with a pop-up (the box allowing the infinite approval is ticked by default). Then click "Allow [token]".
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 

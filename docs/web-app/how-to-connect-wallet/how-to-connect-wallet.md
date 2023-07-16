@@ -15,13 +15,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img src={useBaseUrl('img/assets/connect-metamask.gif')} width="70%"/>
 
-[This GIF will be changed]
-
-
 
 ## Steps to connect to Mangrove mainnet and testnet
 
-1. To connect your wallet on the Mangrove DEX, click on "Connect my wallet" and choose Metamask.
+1. Go to our [testnet app](https://testnet.mangrove.exchange/), and connect your wallet by clicking on "Connect my wallet" - choose Metamask.
 
 <img src={useBaseUrl('img/assets/connect-wallet-metamask.png')} width="500px"/><br /><br />
 

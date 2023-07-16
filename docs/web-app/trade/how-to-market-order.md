@@ -8,9 +8,8 @@ sidebar_position: 3
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/market-order.gif')} width="100%"/><br /><br />
+<img src={useBaseUrl('img/assets/market-order.gif')} width="70%"/><br /><br />
 
-[GIF to be changed]
 
 ## Steps
 

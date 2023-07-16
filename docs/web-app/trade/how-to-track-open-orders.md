@@ -38,7 +38,6 @@ The "Open orders" and "History" tabs are market-specific. You will only see tran
 
 <img src={useBaseUrl('img/assets/partial-fill.png')} width="300px"/><br /><br />
 
-[Screenshot to be changed]
 
 If a "[Good 'til time](./how-to-limit-order.md#steps)" limit order is partially filled, a green message will display the transaction details, and the remainder will be reposted automatically.
 
@@ -46,7 +45,6 @@ If a "[Good 'til time](./how-to-limit-order.md#steps)" limit order is partially 
 
 <img src={useBaseUrl('img/assets/order-not-filled.png')} width="300px"/><br /><br />
 
-[Screenshot to be changed]
 
 In case your order isn't filled, an orange message will be displayed, and and shows a "0" line item in the "History" tab (for the currently selected market).
 
@@ -60,12 +58,11 @@ In case your order isn't filled, an orange message will be displayed, and and sh
 
 <img src={useBaseUrl('img/assets/order-error.png')} width="300px"/><br /><br />
 
-[Screenshot to be changed]
 
 This message could appear if there are issues with the blockchain, or gas problems.
 
 ## Unable to return your data
 
-In some rare busy cases, due to excessive demand, the UI might temporarily not be able to fetch your data. Rest assured, it would only be for a shirt while.
+In some rare busy cases, due to excessive demand, the UI might temporarily not be able to fetch your data. Rest assured, it would only be for a short while.
 
 <img src={useBaseUrl('img/assets/history-excessive-demand.png')} width="100%"/>
