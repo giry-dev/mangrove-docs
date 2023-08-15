@@ -6,9 +6,6 @@ sidebar_position: 1
 
 # Manage a strategy
 
-:::info
-Strategies page is coming soon!
-:::
 
 This section guides you through managing a Kandel strategy.
 There are certain actions you can take by clicking the "Manage strategy" button of your Kandel:

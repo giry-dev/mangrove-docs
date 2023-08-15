@@ -8,7 +8,7 @@ sidebar_position: 7
 
 Using our Trade page on testnet, you might encounter a few troubles and hiccups.
 
-While we are working on things (rest assured that we are), here are a few tips that might help make your experience smoother.
+We are committed to improve the user experience, and while we do that, here are a few tips that might help make your interaction smoother.
 
 Feel free to browse through the following items!
 
@@ -17,12 +17,12 @@ Why do my transactions keep failing?
 </summary>
 It might be the case that the amount of gas or slippage you selected is too low. We encourage you to tweak those values and find out what works best.
 
-Remember: this is a testnet! We would love to hear your [feedback](./how-to-give-feedback.md) as well.
+We would love to hear your [feedback](./how-to-give-feedback.md) as well.
 
 </details>
 
 <details><summary>
-The approval amount for my limit orders seem odd - what is going on?
+The approval amount for my limit orders seems odd - what is going on?
 </summary>
 
 :::note TL;DR
@@ -37,9 +37,9 @@ Let's clarify the difference between the "Max" and "Use default" approval values
 
 * If you have unticked the "allow infinite approval" on Mangrove app, "Use default" will give you the maximum amount available in your wallet based on what you've keyed in. That amount differs **whether you are executing a market order or a limit order**.
 
-**Example**
+**Example (no infinite approval)**
 
-* Market order: if you want to buy some WMATIC with let's say 20 USDT, "Use default" will set the approval amout at _20 + slippage_. For a 2% slippage, the amount to approve would be 20.4 USDT.
+* Market order: if you want to buy some WMATIC with let's say 20 USDT, "Use default" will set the approval amount at _20 + slippage_. For a 2% slippage, the amount to approve would be 20.4 USDT.
 
 * Limit order: if you want to buy some WMATIC for 20 USDT of worth with a limit order (ex: Good til time), "Use default" will set the approval amout at _40 (20 * 2)_.
     * If you have multiple open limit orders for the same token, the approvals then need to compound.

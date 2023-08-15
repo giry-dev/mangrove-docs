@@ -6,10 +6,6 @@ sidebar_position: 3
 
 # Overview tab
 
-:::info
-Strategies page is coming soon!
-:::
-
 
 ## Information cards
 

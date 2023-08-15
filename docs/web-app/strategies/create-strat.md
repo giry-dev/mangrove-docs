@@ -6,9 +6,6 @@ sidebar_position: 2
 
 # Create a strategy
 
-:::info
-Strategies page is coming soon!
-:::
 
 ## Step 1/3 - Create strategy
 
@@ -85,7 +82,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 10. "Waiting for confirmation": you will be asked to sign 4 transactions in a row, including the deployment of your Kandel contract, the spending approvals of your pair's tokens, and the native token amount to be deposited for [bounty](../../glossary.md#bounty).
 > 💡
-> Select "Use default" to set the appropriate amount of Approval.
+> when signing on Metmamask, select "Use default" to set the appropriate amount of Approval.
 
 11. Select on 'View strategy' to manage your strategy, or click 'Done' to go back to the Strategies page.
 
