@@ -84,7 +84,7 @@ In our example:
 
 * We just received 1,300 USDC for sending 1 ETH through our **<font color="#eb525a">ask</font>**
 * Previously, we sent 1,287 USDC and received 1 ETH through our **<font color="#5cd19b">bid</font>**
-* The [compounding rate](./compounding.md) is 100%
+* The [compounding rate](./parameters.md) is 100%
 
 Therefore, 100% of the spread (or 13 USDC) is reinvested into the strategy. A new **<font color="#5cd19b">bid</font>** at k=1 steps below is reposted, and offers 1,300 USDC for 1.01 ETH.
 
