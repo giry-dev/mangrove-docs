@@ -6,12 +6,17 @@ sidebar_position: 3
 
 # Overview tab
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<img src={useBaseUrl('img/assets/overview_tab.png')} width="70%"/><br /><br />
 
 ## Information cards
 
-* **Return**: see [Strategy parameters](../../../web-app/strategies/create-strat.md#step-23---strategy-parameters) for more information.
+* **Return**: the average monthly return of your Kandel strategy. It is calculated by dividing the [profits from the spread](../../../kandel/README.md) by [published liquidity](../../../kandel/how-does-kandel-work/strategy-reserve.md#published-liquidity) for a period of time. It is then averaged out per day for that period, and extrapolated to obtain the monthly average.
+> 💡
+> For the sake of this calculation, the published liquidity is converted entirely to USDC.
 
-* **Unrealized PnL**: potential profit or loss that you would earn if you were to close your strategy at the current moment. This figure is calculated by comparing the USD value of your average entry price to the current index price. The difference between these two values determines the size and direction of your unrealized gain or loss.
+* **Unrealized PnL**: potential profit or loss that you would earn if you were to close your strategy right now. It is calculated by comparing the USD value of your average entry price to the current index price. The difference between these two values determines the size and direction of your unrealized gain or loss.
 
 * **Total "token A/B" inventory**: amount of base tokens and quote tokens that must be deposited into the strategy.
 
@@ -28,9 +33,8 @@ The strategy management page showcases a dynamic market depth chart for a specif
 * <font color="#eb525a">Red dots</font>: active asks
 * <font color="#a7adcd">Grey dots</font>: empty offers
 
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/kandel_depth_chart.png')} width="90%"/>
+<img src={useBaseUrl('img/assets/kandel_depth_chart.png')} width="70%"/>
 
 ### List of active offers
 
@@ -43,7 +47,7 @@ Beneath the chart, you'll find your strategy's orders list, displaying:
 
 In the screenshot below, Token A is WETH and Token B is USDC (WETH/USDC market).
 
-<img src={useBaseUrl('img/assets/kandel_offers_list.png')} width="90%"/><br /><br />
+<img src={useBaseUrl('img/assets/kandel_offers_list.png')} width="70%"/><br /><br />
 
 
 👉 **More about <font color="#5cd19b">green</font> / <font color="#eb525a">red</font> / <font color="#a7adcd">grey</font> dots:**

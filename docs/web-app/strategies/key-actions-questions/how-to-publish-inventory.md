@@ -10,7 +10,7 @@ sidebar_position: 5
 
 1. Go to the [Mangrove dApp](https://app.mangrove.exchange/) and click on the Strategies tab
 
-2. Select "Manage" for the strategy that you would like to publish inventory
+2. Select "Manage" for the strategy that you would like to publish inventory to
 
 3. Choose the "Parameters" tab
 

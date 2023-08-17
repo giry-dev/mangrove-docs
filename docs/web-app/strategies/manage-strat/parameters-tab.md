@@ -6,6 +6,9 @@ sidebar_position: 4
 
 # Parameters tab
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<img src={useBaseUrl('img/assets/parameters_tab.png')} width="70%"/><br /><br />
 
 Your strategy can have one of three statuses: active, inactive, or closed. Depending on the status, alerts may be displayed for your price range or gas.
 

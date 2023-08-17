@@ -9,7 +9,7 @@ sidebar_position: 4
 
 1. Go to the [Mangrove dApp](https://app.mangrove.exchange/) and click on the Strategies tab
 
-2. Select "Manage" for the strategy that you would like to withdraw inventory
+2. Select "Manage" for the strategy that you would like to withdraw inventory from
 
 3. Choose the "Parameters" tab
 

@@ -9,7 +9,7 @@ sidebar_position: 8
 
 1. Go to the [Mangrove dApp](https://app.mangrove.exchange/) and click on the Strategies tab
 
-2. Select "Manage" for the strategy that you would like to close.
+2. Select "Manage" for the strategy that you would like to close
 
 3. Click on the "Close strategy" button in the top right corner
 

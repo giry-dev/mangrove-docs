@@ -8,7 +8,7 @@ sidebar_position: 2
 
 1. Go to the [Mangrove dApp](https://app.mangrove.exchange/) and click on the Strategies tab
 
-2. Select "Manage" for the strategy that you would like to modify the [price range](../../../kandel/how-does-kandel-work/step-by-step-visual-explanation.md#price-distribution)
+2. Select "Manage" for the strategy that you would like to modify the [price range](../../../kandel/how-does-kandel-work/step-by-step-visual-explanation.md#price-distribution) of
 
 3. Choose the "Parameters" tab
 

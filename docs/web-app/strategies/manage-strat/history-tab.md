@@ -6,6 +6,9 @@ sidebar_position: 5
 
 # History tab
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<img src={useBaseUrl('img/assets/history_tab.png')} width="70%"/>
 
 ## Deposit/withdraw
 
