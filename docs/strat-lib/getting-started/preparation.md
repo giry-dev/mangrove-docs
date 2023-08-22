@@ -19,17 +19,17 @@ import Preamble from '../../SDK/getting-started/_preparation-pre.md';
 ```bash
 # To create Solidity smart contracts
 # Install NPM package with strat library
-npm install --save @mangrovedao/mangrove-core@next
+npm install --save @mangrovedao/mangrove-core@latest
 # Prepare Foundry's forge
 forge init --force
 # Set up remappings to use the strat library
-echo "mgv_src/=node_modules/@mangrovedao/mangrove-core/src/
-mgv_lib/=node_modules/@mangrovedao/mangrove-core/lib/
-mgv_test/=node_modules/@mangrovedao/mangrove-core/test/
-mgv_script/=node_modules/@mangrovedao/mangrove-core/script/
+echo "mgv_src/=src/
+mgv_lib/=lib/
+mgv_test/=test/
+mgv_script/=script/
 
-ds-test/=node_modules/@mangrovedao/mangrove-core/lib/forge-std/lib/ds-test/src/
-forge-std/=node_modules/@mangrovedao/mangrove-core/lib/forge-std/src/
+ds-test/=lib/forge-std/lib/ds-test/src/
+forge-std/=lib/forge-std/src/
 " > remappings.txt
 ```
 
