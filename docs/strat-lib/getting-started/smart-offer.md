@@ -59,7 +59,7 @@ https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5
 When using our new contract, we can inspect traces and addresses but illustrative purposes, let's insert the following to emit an event in the %%posthook|makerPosthook%% when the offer is successfully taken.
 
 ```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5ffcd5abb02/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L88-L102
+https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5ffcd5abb02/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L90-L101
 ```
 
 There are more hooks to enable the Mangrovian abilities of %%last look|last-look%% and more advanced %%reactive liquidity|reactive-liquidity%%.
@@ -110,6 +110,7 @@ export MANGROVE=<contract address> # 0xabcd....
 ```bash
 forge create "OfferMakerTutorial" --private-key "$PRIVATE_KEY" --rpc-url $LOCAL_URL --constructor-args "$MANGROVE" "$ADMIN_ADDRESS"
 ```
+
 > Note: you might need to add the `--legacy` argument.
 
 <br />
@@ -150,7 +151,7 @@ cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "activate(address[])" "[$WBTC]" --
 ### Post an offer
 
 Now that the contract is ready, we can use it to post an offer - note that we have to %%provision|provision%% the offer, and we do that by sending some native tokens to `newOffer`.<br />
-In our example, we are offering 1 WTBC (outbound) in exchange for 26,000 USDT (inbound).
+In our example, we are offering 1 WBTC (outbound) in exchange for 26,000 USDT (inbound).
 
 ```bash
 cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "newOffer(address, address, uint, uint, uint, uint)(uint)" "$WBTC" "$USDT" 100000000 26000000000 0 100000 --private-key "$PRIVATE_KEY" --value 0.01ether
@@ -175,6 +176,18 @@ Gas used: 168639
 
 `0x0000000000000000000000000000000000000000000000000000000000000235` is the offer id.
 
+### Locked liquidity
+
+If the offer is now taken, it will fail to deliver the promised liquidity. It promises up to 1 WBTC, but the contract has no WBTC to deliver. We can fix this by sending some WBTC to the contract:
+
+```bash
+cast send --rpc-url $LOCAL_URL "$WBTC" "transfer(address,uint)" "$OFFER_MAKER" 100000000
+```
+
+If you do not have the liquidity, then see [mint](#mint) below.
+
+However, one of the benefits of Mangrove is that liquidity does not have to be locked, we get back to that further below.
+
 ### Update an offer
 
 In a similar fashion, we can make use of the `updateOffer` function inside our contract. Let's change the amount of tokens we want for our WBTC to 25,000:
@@ -191,13 +204,57 @@ We can also remove our offer from the book, using `retractOffer`. Note that we d
 cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "retractOffer(address, address, uint, bool)(uint)" "$WBTC" "$USDT" "$OFFER_ID" 1 --private-key "$PRIVATE_KEY
 ```
 
-
-
 ### Unlocked liquidity (%%reactive liquidity|reactive-liquidity%%)
 
-Notice that the offer was posted without transferring tokens from the admin to Mangrove or the `OfferMakerTutorial`. This way the tokens are pulled just-in-time when the offer is taken and can thus be made available for other purposes.
+When the offer was posted we had to transfer liquidity for it to succeed when taken. Now we instead want to post the offer without transferring tokens from the admin to Mangrove or the `OfferMakerTutorial`. This way the tokens are pulled just-in-time when the offer is taken and can thus be made available for other purposes.
 
-For this to work, we need to let the `OfferMakerTutorial` pull funds from the admin's reserve of WBTC.
+For this to work, we use a so-called %%router|router%% that is a contract that can be used to route tokens from the admin to the `OfferMakerTutorial` when the offer is taken. First add the following import at the top of the file:
+
+```solidity
+import {SimpleRouter} from "mgv_src/strategies/routers/SimpleRouter.sol";
+```
+
+and then replace the `NO_ROUTER` with `new SimpleRouter()` in the constructor definition and the following to the constructor body:
+
+```solidity
+    router().bind(address(this));
+    router().setAdmin(deployer);
+```
+
+Thus the beginning of the tutorial should look like this:
+
+```solidity
+import {Direct} from "mgv_src/strategies/offer_maker/abstract/Direct.sol";
+import {ILiquidityProvider} from "mgv_src/strategies/interfaces/ILiquidityProvider.sol";
+import {IMangrove} from "mgv_src/IMangrove.sol";
+import {IERC20, MgvLib} from "mgv_src/MgvLib.sol";
+import {SimpleRouter} from "mgv_src/strategies/routers/SimpleRouter.sol";
+
+/// @title An example offer maker used in tutorials
+contract OfferMakerTutorial is Direct, ILiquidityProvider {
+  ///@notice Constructor
+  ///@param mgv The core Mangrove contract
+  ///@param deployer The address of the deployer
+  constructor(IMangrove mgv, address deployer)
+    // Pass on the reference to the core mangrove contract
+    Direct(
+      mgv,
+      // Use a router - i.e., transfer tokens to and from deployer
+      new SimpleRouter(),
+      // Store total gas requirement of this strategy
+      100_000,
+      deployer
+    )
+  {
+    router().bind(address(this));
+    router().setAdmin(deployer);
+  }
+```
+
+You can now redeploy the contract, activate it, and post an offer as before - remember to update the `$OFFER_MAKER` environment variable.
+
+For this to work, we also need to let the `OfferMakerTutorial` pull funds from the admin's reserve of WBTC.
+
 Let's also make sure that the admin and/or taker have enough funds on their wallet.
 
 #### Mint
@@ -213,18 +270,28 @@ cast send --rpc-url $LOCAL_URL "$WBTC" "mint(uint)" 500000000 --private-key "$PR
 If the admin acts as taker and takes the offer (see [snipe guide](../guides/howToSnipe.md)), you will also need USDT.
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$USDT" "mint(uint)" 1000000000000 --private-key "$PRIVATE_KEY"
+cast send --rpc-url $LOCAL_URL "$USDT" "mint(uint)" 100000000000 --private-key "$PRIVATE_KEY"
 ```
 
 #### Approving the contract to pull the funds
 
+The router needs to be able to pull funds from the admin. First we need to get the address of the router:
+
 ```bash
-cast send --rpc-url $LOCAL_URL "$WBTC" "approve(address, uint)" "$OFFER_MAKER" 100000000 --private-key "$PRIVATE_KEY"
+cast call --rpc-url $LOCAL_URL "$OFFER_MAKER" "router()(address)"
 ```
 
-Alternatively, the admin could transfer tokens to the contract and lock them until the offer is taken or the tokens are withdrawn.
+and put that in an environment variables:
 
-The `OfferMakerTutorial` uses the approval to transfer funds from the admin, but this could also involve a %%router|router%% and require additional approvals depending on the scenario. See [approvals](../guides/approvals.md) for more details.
+```bash
+export ROUTER=<contract address> # 0xabcd..., the address of the router returned by the previous command
+```
+
+```bash
+cast send --rpc-url $LOCAL_URL "$WBTC" "approve(address, uint)" "$ROUTER" 100000000 --private-key "$PRIVATE_KEY"
+```
+
+The `OfferMakerTutorial` now uses the uses the approval of the `SimpleRouter` to transfer funds from the admin. If you wonder where the approval of the transfers from `OfferMakerTutorial` happens, then its the `activate` call. See [approvals](../guides/approvals.md) for more details on that topic.
 
 ### Next steps
 
