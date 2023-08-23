@@ -191,11 +191,32 @@ We can also remove our offer from the book, using `retractOffer`. Note that we d
 cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "retractOffer(address, address, uint, bool)(uint)" "$WBTC" "$USDT" "$OFFER_ID" 1 --private-key "$PRIVATE_KEY
 ```
 
+
+
 ### Unlocked liquidity (%%reactive liquidity|reactive-liquidity%%)
 
 Notice that the offer was posted without transferring tokens from the admin to Mangrove or the `OfferMakerTutorial`. This way the tokens are pulled just-in-time when the offer is taken and can thus be made available for other purposes.
 
-For this to work, we need to let the `OfferMakerTutorial` pull funds from the admin's reserve of WETH.
+For this to work, we need to let the `OfferMakerTutorial` pull funds from the admin's reserve of WBTC.
+Let's also make sure that the admin and/or taker have enough funds on their wallet.
+
+#### Mint
+
+If the admin (acting as a maker) does not have required WBTC tokens then the smart offer will fail when taken (but note that it could still be posted - a smart offer can source liquidity on-chain).
+
+If you don't have any WBTC you can use this to mint some tokens:
+
+```bash
+cast send --rpc-url $LOCAL_URL "$WBTC" "mint(uint)" 500000000 --private-key "$PRIVATE_KEY"
+```
+
+If the admin acts as taker and takes the offer (see [snipe guide](../guides/howToSnipe.md)), you will also need USDT.
+
+```bash
+cast send --rpc-url $LOCAL_URL "$USDT" "mint(uint)" 1000000000000 --private-key "$PRIVATE_KEY"
+```
+
+#### Approving the contract to pull the funds
 
 ```bash
 cast send --rpc-url $LOCAL_URL "$WBTC" "approve(address, uint)" "$OFFER_MAKER" 100000000 --private-key "$PRIVATE_KEY"
