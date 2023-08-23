@@ -5,21 +5,20 @@ sidebar_position: 2
 
 # Post a Smart Offer
 
-In this tutorial you will learn how to post a %%smart offer|smart-offer%% managed by your own %%maker contract|maker-contract%% that simply stores %%inbound|inbound%% and %%outbound|outbound%% tokens on its balance.
+In this tutorial, you will learn how to post a %%smart offer|smart-offer%% managed by your own %%maker contract|maker-contract%% that simply stores %%inbound|inbound%% and %%outbound|outbound%% tokens on its balance.
 
 ## Prerequisites
 
-The tutorial assumes knowledge of solidity development. Follow [preparation](./preparation.md) to create a new `tutorial` folder.
-
-Open your favorite solidity editor inside that folder.
-
-It is assumed that the `ADMIN_ADDRESS` has enough native tokens to complete the steps.
+* The tutorial assumes knowledge of solidity development.
+* Follow [preparation](./preparation.md) to create a new `tutorial` folder.
+* Open your favorite solidity editor inside that folder.
+* It is assumed that the `ADMIN_ADDRESS` has enough native tokens to complete the steps.
 
 ## Simple maker contract (offer logic)
 
 We want to create a new contract `OfferMakerTutorial` to implement %%offer logic|offer-logic%% and utilize the `Direct` contract in our strat-library for this purpose. `Direct` provides a safety harness to make it easier to correctly interact with Mangrove, you can read more about it [here](../background/offer-maker/direct.md).
 
-Create a new `OfferMakerTutorial.sol` file in the `src` folder and add the following pieces.
+Start by creating a new `OfferMakerTutorial.sol` file in the `src` folder, and add the following pieces:
 
 ### Imports
 
@@ -31,19 +30,25 @@ https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5
 
 ### Constructor
 
-Add the contract and the code for the constructor. We will skip some details here, which you can read more about later; %%routers|router%%, %%gas requirements|gasreq%%, and [deployment scripts](../guides/HowToDeploy.md). Note, we also implement the `ILiquidityProvider` interface which makes the contract compatible with what the [SDK](../../SDK/README.md) expects.
+Next, add the contract and the code for the constructor.
+
+We will skip some details here, which you can read more about later; %%routers|router%%, %%gas requirements|gasreq%%, and [deployment scripts](../guides/HowToDeploy.md).<br />
+> Note: we also implement the `ILiquidityProvider` interface which makes the contract compatible with what the [SDK](../../SDK/README.md) expects.
+
 
 ```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5ffcd5abb02/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L12-L22
+https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5ffcd5abb02/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L12-L27
 ```
 
 ### Add offer management functions
 
 The abstract contract `Direct` has internal functions that allows one to manage offers: `_newOffer` for posting offers, `_updateOffer` for updating existing offers and `_retractOffer` for unpublishing offers from Mangrove. We need to expose these functions in a restricted manner, so that only the administrator of the contract can manage offers. We expose them through functions matching the [`ILiquidityProvider`](../technical-references/code/strategies/interfaces/ILiquidityProvider.md) interface.
 
-See [OfferArgs](../technical-references/code/strategies/interfaces/IOfferLogic.md#offerargs) for an explanation of the parameters for posting an offer.
+> See [OfferArgs](../technical-references/code/strategies/interfaces/IOfferLogic.md#offerargs) for an explanation of the parameters for posting an offer.
 
-Also see %%provision|provision%%, %%gasreq|gasreq%%, and %%pivotId|pivot-id%%, and %%offer list|offer-list%%.
+> Also see %%provision|provision%%, %%gasreq|gasreq%%, and %%pivotId|pivot-id%%, and %%offer list|offer-list%%.
+
+Add the below code to your contract.
 
 ```solidity reference title="OfferMakerTutorial.sol"
 https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5ffcd5abb02/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L31-L86
@@ -51,7 +56,7 @@ https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5
 
 ### Emit in Posthook
 
-When using our new contract we can inspect traces and addresses, but for illustrative purposes insert the following to emit an event in the %%posthook|makerPosthook%% when the offer is successfully taken.
+When using our new contract, we can inspect traces and addresses but illustrative purposes, let's insert the following to emit an event in the %%posthook|makerPosthook%% when the offer is successfully taken.
 
 ```solidity reference title="OfferMakerTutorial.sol"
 https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5ffcd5abb02/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L88-L102
@@ -63,7 +68,7 @@ There are more hooks to enable the Mangrovian abilities of %%last look|last-look
 
 The contract is now complete - you can see the full example by following the links to github.
 
-Before deploying it on-chain we should test it.
+But before deploying it on-chain, we should test it!
 
 ### Compilation
 
@@ -95,7 +100,8 @@ Start another terminal and import environment variables again
 source .env
 ```
 
-Now, create the `OfferMakerTutorial` contract on the `anvil` node with your private key by pointing to its local `rpc-url`, and supplying the parameters for Mangrove core contract (get it from [Addresses](../../contracts/technical-references/contract-addresses.md) for the network you have forked)
+Now, create the `OfferMakerTutorial` contract on the `anvil` node with your private key by pointing to its local `rpc-url`, and supplying the parameters for Mangrove core contract (get it from [Addresses](../../contracts/technical-references/contract-addresses.md) for the network you have forked).
+You can also add it to your `.env` file.
 
 ```bash
 export MANGROVE=<contract address> # 0xabcd.... 
@@ -104,8 +110,10 @@ export MANGROVE=<contract address> # 0xabcd....
 ```bash
 forge create "OfferMakerTutorial" --private-key "$PRIVATE_KEY" --rpc-url $LOCAL_URL --constructor-args "$MANGROVE" "$ADMIN_ADDRESS"
 ```
+> Note: you might need to add the `--legacy` argument.
 
-The output should look like
+<br />
+The output should look like:
 
 ```bash
 [⠒] Compiling...
@@ -123,22 +131,29 @@ export OFFER_MAKER=<contract address> # 0xabcd..., the address of the newly depl
 
 ### Activate the contract
 
-In this tutorial we will use the WETH, DAI market (the example token addresses are for the Polygon Mumbai testnet).
+In this tutorial, we will use the WBTC/USDT market.
+Make sure to set variables with the tokens address into your `.env` file.
 
-We have to let Mangrove pull the outbound token from our new contract, and we can use the `activate` function for that.
+> Note: the example token addresses are for the Polygon Mumbai testnet.
 
 ```bash
-export WETH=0x63e537a69b3f5b03f4f46c5765c82861bd874b6e
-cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "activate(address[])" "[$WETH]" --private-key "$PRIVATE_KEY"
+export WBTC=0xf402f6197d979F0A4cba61596921a3d762520570
+export USDT=0xe8099699aa4A79d89dBD20A63C50b7d35ED3CD9e
+```
+
+We have to let Mangrove pull the outbound token from our new contract - we can use the `activate` function for that.
+
+```bash
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "activate(address[])" "[$WBTC]" --private-key "$PRIVATE_KEY"
 ```
 
 ### Post an offer
 
-Now that the contract is ready, we can use it to post an offer - note that we have to %%provision|provision%% the offer, and we do that by sending some native tokens to `newOffer`.
+Now that the contract is ready, we can use it to post an offer - note that we have to %%provision|provision%% the offer, and we do that by sending some native tokens to `newOffer`.<br />
+In our example, we are offering 1 WTBC (outbound) in exchange for 26,000 USDT (inbound).
 
 ```bash
-export DAI=0xc87385b5e62099f92d490750fcd6c901a524bbca
-cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "newOffer(address, address, uint, uint, uint)(uint)" "$WETH" "$DAI" 1000000000000000000 1700000000000000000000 0 --private-key "$PRIVATE_KEY" --value 0.01ether
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "newOffer(address, address, uint, uint, uint, uint)(uint)" "$WBTC" "$USDT" 100000000 26000000000 0 100000 --private-key "$PRIVATE_KEY" --value 0.01ether
 ```
 
 Instead of trying to parse the logs, we can make a note of the `transactionHash` at the end of the output and use local execution to see the `offerId` returned by `newOffer`.
@@ -160,6 +175,22 @@ Gas used: 168639
 
 `0x0000000000000000000000000000000000000000000000000000000000000235` is the offer id.
 
+### Update an offer
+
+In a similar fashion, we can make use of the `updateOffer` function inside our contract. Let's change the amount of tokens we want for our WBTC to 25,000:
+
+```bash
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "updateOffer(address, address, uint, uint, uint, uint, uint)(uint)" "$WBTC" "$USDT" 100000000 25000000000 0 "$OFFER_ID" 100000 --private-key "$PRIVATE_KEY" --value 0.01ether
+```
+
+### Retract an offer
+
+We can also remove our offer from the book, using `retractOffer`. Note that we don't need to provide a provision in this case, since we are pulling the offer off the market. We will actually get back our provision with that configuration.
+
+```bash
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "retractOffer(address, address, uint, bool)(uint)" "$WBTC" "$USDT" "$OFFER_ID" 1 --private-key "$PRIVATE_KEY
+```
+
 ### Unlocked liquidity (%%reactive liquidity|reactive-liquidity%%)
 
 Notice that the offer was posted without transferring tokens from the admin to Mangrove or the `OfferMakerTutorial`. This way the tokens are pulled just-in-time when the offer is taken and can thus be made available for other purposes.
@@ -167,74 +198,19 @@ Notice that the offer was posted without transferring tokens from the admin to M
 For this to work, we need to let the `OfferMakerTutorial` pull funds from the admin's reserve of WETH.
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$WETH" "approve(address, uint)" "$OFFER_MAKER" 1000000000000000000 --private-key "$PRIVATE_KEY"
+cast send --rpc-url $LOCAL_URL "$WBTC" "approve(address, uint)" "$OFFER_MAKER" 100000000 --private-key "$PRIVATE_KEY"
 ```
 
 Alternatively, the admin could transfer tokens to the contract and lock them until the offer is taken or the tokens are withdrawn.
 
 The `OfferMakerTutorial` uses the approval to transfer funds from the admin, but this could also involve a %%router|router%% and require additional approvals depending on the scenario. See [approvals](../guides/approvals.md) for more details.
 
-#### Mint
-
-A brief side step - if the admin (acting as a maker) does not have required WETH tokens then the smart offer will fail when taken (but note that it could still be posted - a smart offer can source liquidity on-chain).
-
-If you don't have any WETH you can use this to mint some tokens:
-
-```bash
-cast send --rpc-url $LOCAL_URL "$WETH" "mint(uint)" 1000000000000000000000000000000 --private-key "$PRIVATE_KEY"
-```
-
-Shortly the admin will act as taker and take the offer, and therefore DAI are also needed.
-
-```bash
-cast send --rpc-url $LOCAL_URL "$DAI" "mint(uint)" 1000000000000000000000000000000 --private-key "$PRIVATE_KEY"
-```
-
-### Snipe the offer
-
-Before being able to take an offer we need to approve Mangrove to pull funds from the taker's DAI reserve:
-
-```bash
-cast send --rpc-url $LOCAL_URL "$DAI" "approve(address, uint)" "$MANGROVE" 1700000000000000000000 --private-key "$PRIVATE_KEY"
-```
-
-Now we ensure that we have set everything up correctly for the offer to be successfully taken. We use Mangrove's `snipes` functionality to ensure it is exactly our own posted offer that we take, and not some other one in the order book. Takers would normally make market orders instead.
-
-```bash
-export OFFER_ID_HEX=<0xabcd...> # the hexadecimal offer ID captured when posting the offer
-```
-
-```bash
-export OFFER_ID=$(($OFFER_ID_HEX)) # the decimal ID of the offer captured above
-cast send --rpc-url $LOCAL_URL "$MANGROVE" "snipes(address, address, uint[4][], bool)" "$WETH" "$DAI" "[[$OFFER_ID,1000000000000000000,1700000000000000000000,100000000000000000]]" 1 --private-key "$PRIVATE_KEY"
-```
-
-Now, run the resulting transaction via
-
-```bash
-cast run <transactionHash>
-```
-
-Towards the end of the trace you can find the function of `makerPosthook` being called and emits an event with the data `42` as specified in the `__posthookSuccess__` of your new `OfferMakerTutorial` contract.
-
-```bash
-   ├─ [8280] 0xabc...::makerPosthook(...) 
-   │   ├─  emit topic 0: 0xefg...
-   │   │           data: 0x000000000000000000000000000000000000000000000000000000000000002a
-```
-
 ### Next steps
 
-The next step could be to publish the contract on mainnet by stopping Anvil and replacing the `--rpc-url $LOCAL_URL` in the above `create`, `activate`, and `approve` commands with `--rpc-url $RPC_URL` - and finally, the `newOffer` with sensible prices.
+* You could publish the contract on mainnet by stopping Anvil and replacing the `--rpc-url $LOCAL_URL` in the above `create`, `activate`, and `approve` commands with `--rpc-url $RPC_URL` - and finally, the `newOffer` with sensible prices.
 
-To get a view of the order book, the Mangrove UI can be used, or you can use the [SDK](../../SDK/getting-started/basic-offer.md).
+* To get a view of the order book, the Mangrove UI can be used, or you can use the [SDK](../../SDK/getting-started/basic-offer.md).
 
-To get a better understanding of how tokens flow between taker, maker, Mangrove, and maker contracts like `OfferMakerTutorial`, see [Mangrove Offer](../background/offer-maker/mangrove-offer.md).
+* To get a better understanding of how tokens flow between taker, maker, Mangrove, and maker contracts like `OfferMakerTutorial`, see [Mangrove Offer](../background/offer-maker/mangrove-offer.md).
 
-### Troubleshooting
-
-If you get errors when taking the offer then it is probably missing approvals or (native) tokens.
-
-* `mgv/takerTransferFail` - missing DAI tokens or approval of transfer of DAI from taker to Mangrove.
-* No `__posthookSuccess__` but `makerExecute` is red in the trace - missing WETH tokens of approval of transfer of WETH from maker to Mangrove.
-
+* You can also add more features to your smart offer by looking at the next sections of this doc!
