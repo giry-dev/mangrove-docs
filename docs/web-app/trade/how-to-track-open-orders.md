@@ -1,6 +1,6 @@
 ---
 description: How to track open and past orders
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 
