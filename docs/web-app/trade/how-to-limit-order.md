@@ -1,6 +1,6 @@
 ---
 description: How to place a limit order
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # How to place a limit order
