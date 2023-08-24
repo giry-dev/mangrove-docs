@@ -204,18 +204,8 @@ cast send --rpc-url $LOCAL_URL "$WBTC" "mint(uint)" 500000000 --private-key "$PR
 If the admin acts as taker and takes the offer (see [snipe guide](../guides/howToSnipe.md)), you will also need USDT.
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$USDT" "mint(uint)" 1000000000000 --private-key "$PRIVATE_KEY"
+cast send --rpc-url $LOCAL_URL "$USDT" "mint(uint)" 10000000000 --private-key "$PRIVATE_KEY"
 ```
-
-#### Approving the contract to pull the funds
-
-```bash
-cast send --rpc-url $LOCAL_URL "$WBTC" "approve(address, uint)" "$OFFER_MAKER" 100000000 --private-key "$PRIVATE_KEY"
-```
-
-Alternatively, the admin could transfer tokens to the contract and lock them until the offer is taken or the tokens are withdrawn.
-
-The `OfferMakerTutorial` uses the approval to transfer funds from the admin, but this could also involve a %%router|router%% and require additional approvals depending on the scenario. See [approvals](../guides/approvals.md) for more details.
 
 
 ### Update an offer
