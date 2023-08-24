@@ -20,7 +20,7 @@ First add the following import at the top of the file:
 import {SimpleRouter} from "mgv_src/strategies/routers/SimpleRouter.sol";
 ```
 
-Then, replace the `NO_ROUTER` with `new SimpleRouter()` in the constructor definition and the following to the constructor body:
+Then, replace the `NO_ROUTER` with `new SimpleRouter()` in the constructor definition and insert the following to the constructor body:
 
 ```solidity
     router().bind(address(this));
