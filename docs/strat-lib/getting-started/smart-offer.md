@@ -175,34 +175,24 @@ Gas used: 168639
 
 `0x0000000000000000000000000000000000000000000000000000000000000235` is the offer id.
 
-### Update an offer
+### Locking liquidity
 
-In a similar fashion, we can make use of the `updateOffer` function inside our contract. Let's change the amount of tokens we want for our WBTC to 25,000:
-
-```bash
-cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "updateOffer(address, address, uint, uint, uint, uint, uint)(uint)" "$WBTC" "$USDT" 100000000 25000000000 0 "$OFFER_ID" 100000 --private-key "$PRIVATE_KEY" --value 0.01ether
-```
-
-### Retract an offer
-
-We can also remove our offer from the book, using `retractOffer`. Note that we don't need to provide a provision in this case, since we are pulling the offer off the market. We will actually get back our provision with that configuration.
+If the offer was now taken, it will fail to deliver the promised liquidity. It promises up to 1 WBTC, but the contract has no WBTC to deliver. We can fix this by sending some WBTC to the contract:
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "retractOffer(address, address, uint, bool)(uint)" "$WBTC" "$USDT" "$OFFER_ID" 1 --private-key "$PRIVATE_KEY
+cast send --rpc-url $LOCAL_URL "$WBTC" "transfer(address,uint)" "$OFFER_MAKER" 100000000
 ```
 
+If you do not have the liquidity, then see [mint](#mint) below.
 
-
-### Unlocked liquidity (%%reactive liquidity|reactive-liquidity%%)
-
-Notice that the offer was posted without transferring tokens from the admin to Mangrove or the `OfferMakerTutorial`. This way the tokens are pulled just-in-time when the offer is taken and can thus be made available for other purposes.
-
-For this to work, we need to let the `OfferMakerTutorial` pull funds from the admin's reserve of WBTC.
-Let's also make sure that the admin and/or taker have enough funds on their wallet.
+:::info Note
+One of the big benefits of Mangrove is that **liquidity does not have to be locked in** - we will have a look at that in the [Unlocking Liquidity](../guides/howToUnlockLiquidity.md) guide.
+:::
 
 #### Mint
 
-If the admin (acting as a maker) does not have required WBTC tokens then the smart offer will fail when taken (but note that it could still be posted - a smart offer can source liquidity on-chain).
+If the admin (acting as a maker) does not have required WBTC tokens then the smart offer will fail when taken.
+> Note: this true in this particular case where we need to lock liquidity in our contract - that's how we designed it. Using a %%router|router%%, you can [unlock your funds](../guides/howToUnlockLiquidity.md), and your offer **could still be posted** - your smart offer can source liquidity elsewhere on-chain.
 
 If you don't have any WBTC you can use this to mint some tokens:
 
@@ -226,6 +216,24 @@ Alternatively, the admin could transfer tokens to the contract and lock them unt
 
 The `OfferMakerTutorial` uses the approval to transfer funds from the admin, but this could also involve a %%router|router%% and require additional approvals depending on the scenario. See [approvals](../guides/approvals.md) for more details.
 
+
+### Update an offer
+
+In a similar fashion, we can make use of the `updateOffer` function inside our contract. Let's change the amount of tokens we want for our WBTC to 25,000:
+
+```bash
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "updateOffer(address, address, uint, uint, uint, uint, uint)(uint)" "$WBTC" "$USDT" 100000000 25000000000 0 "$OFFER_ID" 100000 --private-key "$PRIVATE_KEY" --value 0.01ether
+```
+
+### Retract an offer
+
+We can also remove our offer from the book, using `retractOffer`. Note that we don't need to provide a provision in this case, since we are pulling the offer off the market. We will actually get back our provision with that configuration.
+
+```bash
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "retractOffer(address, address, uint, bool)(uint)" "$WBTC" "$USDT" "$OFFER_ID" 1 --private-key "$PRIVATE_KEY
+```
+
+
 ### Next steps
 
 * You could publish the contract on mainnet by stopping Anvil and replacing the `--rpc-url $LOCAL_URL` in the above `create`, `activate`, and `approve` commands with `--rpc-url $RPC_URL` - and finally, the `newOffer` with sensible prices.
@@ -236,4 +244,4 @@ The `OfferMakerTutorial` uses the approval to transfer funds from the admin, but
 
 * To get a better understanding of how tokens flow between taker, maker, Mangrove, and maker contracts like `OfferMakerTutorial`, see [Mangrove Offer](../background/offer-maker/mangrove-offer.md).
 
-* You can also add more features to your smart offer by looking at the next sections of this doc!
+* You can also add more features (such as [reneging trades](../guides/howToRenege.md) or [unlocking/reactive liquidity](../guides/howToUnlockLiquidity.md)) to your smart offer by looking at the next sections of this doc!

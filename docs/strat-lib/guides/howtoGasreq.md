@@ -1,6 +1,6 @@
 ---
 description: How to determine gas requirements.
-sidebar_position: 1
+sidebar_position: 4
 ---
 
 # Determining gas requirements
