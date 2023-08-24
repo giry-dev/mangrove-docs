@@ -1,6 +1,6 @@
 ---
 description: How to snipe an offer
-sidebar_position: 9
+sidebar_position: 10
 
 ---
 
