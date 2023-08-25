@@ -29,7 +29,7 @@ export OFFER_ID=$(($OFFER_ID_HEX)) # the decimal ID of the offer captured above
 ## Sniping the offer
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$MANGROVE" "snipes(address, address, uint[4][], bool)" "$WBTC" "$USDT" "[[$OFFER_ID,100000000,26000000000,100000000000000000]]" 1 --private-key "$PRIVATE_KEY"
+cast send --rpc-url $LOCAL_URL "$MANGROVE" "snipes(address, address, uint[4][], bool)" "$WBTC" "$USDT" "[[$OFFER_ID,26000000000,100000000,100000000000000000]]" 1 --private-key "$PRIVATE_KEY"
 ```
 
 Now, run the resulting transaction via:
