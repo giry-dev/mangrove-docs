@@ -181,7 +181,7 @@ Gas used: 168639
 If the offer was now taken, it will fail to deliver the promised liquidity. It promises up to 1 WBTC, but the contract has no WBTC to deliver. We can fix this by sending some WBTC to the contract:
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$WBTC" "transfer(address,uint)" "$OFFER_MAKER" 100000000
+cast send --rpc-url $LOCAL_URL "$WBTC" "transfer(address,uint)" "$OFFER_MAKER" 100000000 --private-key "$PRIVATE_KEY"
 ```
 
 If you do not have the liquidity, then see [mint](#mint) below.
@@ -204,13 +204,20 @@ cast send --rpc-url $LOCAL_URL "$WBTC" "mint(uint)" 500000000 --private-key "$PR
 If the admin acts as taker and takes the offer (see [snipe guide](../guides/howToSnipe.md)), you will also need USDT.
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$USDT" "mint(uint)" 10000000000 --private-key "$PRIVATE_KEY"
+cast send --rpc-url $LOCAL_URL "$USDT" "mint(uint)" 100000000000 --private-key "$PRIVATE_KEY"
 ```
 
 
 ### Update an offer
 
-In a similar fashion, we can make use of the `updateOffer` function inside our contract. Let's change the amount of tokens we want for our WBTC to 25,000:
+In a similar fashion, we can make use of the `updateOffer` function inside our contract. We will need the offer ID from earlier - let's add it in a variable:
+
+```bash
+export OFFER_ID_HEX=<0xabcd...> # the hexadecimal offer ID captured when posting the offer
+export OFFER_ID=$(($OFFER_ID_HEX)) # the decimal ID of the offer captured above
+```
+
+Now, we can update our offer, for example by changing the amount of USDT we want to 25,000:
 
 ```bash
 cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "updateOffer(address, address, uint, uint, uint, uint, uint)(uint)" "$WBTC" "$USDT" 100000000 25000000000 0 "$OFFER_ID" 100000 --private-key "$PRIVATE_KEY" --value 0.01ether
@@ -221,7 +228,7 @@ cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "updateOffer(address, address, uin
 We can also remove our offer from the book, using `retractOffer`. Note that we don't need to provide a provision in this case, since we are pulling the offer off the market. We will actually get back our provision with that configuration.
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "retractOffer(address, address, uint, bool)(uint)" "$WBTC" "$USDT" "$OFFER_ID" 1 --private-key "$PRIVATE_KEY
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "retractOffer(address, address, uint, bool)(uint)" "$WBTC" "$USDT" "$OFFER_ID" 1 --private-key "$PRIVATE_KEY"
 ```
 
 
