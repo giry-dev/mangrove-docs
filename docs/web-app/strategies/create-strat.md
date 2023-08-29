@@ -24,13 +24,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 ## Step 2/3 - Strategy parameters
 
 :::info
-* Average return: the average monthly return of kandels for this market
+Average return: the average monthly return of kandels for this market
 :::
 :::info
-* Risk appetite
-    * Low: corresponds to a low volatily pair (ex: stable/stable, such as USDC/USDT)
-    * Medium: corresponds to a medium volatily pair (ex: volatile/stable, such as WBTC/USDT)
-    * High: corresponds to a high volatily pair (ex: volatile/volatile, such as WBTC/WMATIC)
+Risk appetite:
+* Low: corresponds to a low volatily pair (ex: stable/stable, such as USDC/USDT)
+* Medium: corresponds to a medium volatily pair (ex: volatile/stable, such as WBTC/USDT)
+* High: corresponds to a high volatily pair (ex: volatile/volatile, such as WBTC/WMATIC)
 :::
 <br />
 

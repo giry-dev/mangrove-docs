@@ -41,7 +41,7 @@ Let's clarify the difference between the "Max" and "Use default" approval values
 
 * Market order: if you want to buy some WMATIC with let's say 20 USDT, "Use default" will set the approval amount at _20 + slippage_. For a 2% slippage, the amount to approve would be 20.4 USDT.
 
-* Limit order: if you want to buy some WMATIC for 20 USDT of worth with a limit order (ex: Good til time), "Use default" will set the approval amout at _40 (20 * 2)_.
+* Limit order: if you want to buy some WMATIC for 20 USDT of worth with a limit order (ex: Good til time), "Use default" will set the approval amount at _40 (20 * 2)_.
     * If you have multiple open limit orders for the same token, the approvals then need to compound.
     * Example: if you create another Good til time limit order for 20 USDT of worth, the approval amount will be 40 (previous limit order) + 40 (new limit order) = 80 USDT.
 

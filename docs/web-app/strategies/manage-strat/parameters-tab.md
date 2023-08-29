@@ -26,6 +26,15 @@ You can find descriptions of these in the [Overview tab](./overview-tab.md#infor
 
 Similarly to when you created your strategy, you can edit your price range by either dragging the limits on the market depth chart or using the percentage inputs. The market depth chart displayed on the strategy page allows you to see the real-time buy (Bids) and sell (Asks) offers on the Mangrove DEX for a given market.
 
+## Settings
+
+You can also edit the strategy's settings, which include:
+* Number of price points
+* Ratio
+* Step size
+
+> 💡
+> More information in the [Kandel documentation](../../../kandel/how-does-kandel-work/parameters.md).
 
 ## Unallocated inventory
 
