@@ -1,7 +1,7 @@
 ---
 title: Approvals
 description: What and when to approve
-sidebar_position: 8
+sidebar_position: 9
 ---
 
 # Approvals
