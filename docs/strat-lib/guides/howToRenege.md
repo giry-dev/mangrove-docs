@@ -8,7 +8,7 @@ sidebar_position: 3
 
 A maker can %%renege|renege%% on a trade if the market conditions are no longer favorable. This can be done in [multiple ways](../../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md), but the strat lib has made it easy by adding a [`__lastLook__`](../technical-references/code/strategies/MangroveOffer.md#lastlook) function which can be overridden.
 
-You can follow the [smart offer tutorial](../getting-started/smart-offer.md) and extend it with the following function
+You can follow the [smart offer tutorial](../getting-started/smart-offer.md), and extend it with the following function:
 
 ```solidity reference title="OfferMakerTutorial.sol"
 https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5ffcd5abb02/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorialResidual.sol#L93-L96

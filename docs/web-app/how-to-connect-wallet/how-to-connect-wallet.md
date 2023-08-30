@@ -40,7 +40,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ### Adding the networks manually
 
-5. If you do not yet have the Mumbai test network registered, a pop-up asking you to approve its addition will show up. Click "Approve".
+1. If you do not yet have the Mumbai test network registered, a pop-up asking you to approve its addition will show up. Click "Approve".
 
 <img src={useBaseUrl('img/assets/connect-wallet-switch-approve-network.png')} width="300px"/><br /><br />
 
@@ -48,7 +48,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 In case you do get a Chain ID error, you'll need to add the network manually. Rest assured, it's super easy - just follow the below steps.
 :::
 
-5. Add Mumbai testnet manually
+2. Add Mumbai testnet manually
     * First, click "Cancel".
     * Then, open Metamask again.
     * Click on your current network at the top, then on "Add network" at the bottom.

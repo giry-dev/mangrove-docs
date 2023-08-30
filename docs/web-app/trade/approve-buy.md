@@ -31,6 +31,10 @@ On the following pages, you will find more details on how to execute a [Market](
 
 ## About Approvals
 
+:::info Note
+You can read some more about approvals in the [Common issues](./common-issues-resolution.md) section.
+:::
+
 Here are a few rule of thumbs when it comes to approvals:
 
 1. An approval is valid for a specific order type of a specific market.
