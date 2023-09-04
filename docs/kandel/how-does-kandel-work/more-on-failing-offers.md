@@ -1,14 +1,11 @@
 ---
 description: How does Kandel work
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 
 # More on failing offers
 
-:::info
-Kandel strategy is coming soon!
-:::
 
 This section explains the reasons why some offers might fail using Kandel.
 

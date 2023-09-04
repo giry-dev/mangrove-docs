@@ -6,10 +6,6 @@ sidebar_position: 2
 
 # Potential risks
 
-:::info
-Kandel strategy is coming soon!
-:::
-
 Kandel strategy is subject to some risks that should be taken into consideration.
 By using Kandel, you acknowledge (i) having the necessary knowledge and understanding of the blockchain technology and the tokens, and (ii) comprehended the risks associated with blockchain-based software systems and tokens, as described below and in the disclaimer.
 

@@ -1,14 +1,11 @@
 ---
 description: How does Kandel work
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 
 # Strategy reserve
 
-:::info
-Kandel strategy is coming soon!
-:::
 
 All Kandel instances have a local liquidity source, i.e. the funds deposited in the Strategy reserve. It includes Published liquidity and Unallocated liquidity:
 

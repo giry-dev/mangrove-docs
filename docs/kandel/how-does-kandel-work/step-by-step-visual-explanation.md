@@ -6,9 +6,6 @@ sidebar_position: 2
 
 # Step-by-step visual explanation
 
-:::info
-Kandel strategy is coming soon!
-:::
 
 ## Setting things up
 
