@@ -9,7 +9,7 @@ sidebar_position: 1
 In the previous [smart offer tutorial](../getting-started/smart-offer.md), the offer we posted had to receive a transfer liquidity for it to succeed when taken. Now, we want instead to post the offer without transferring tokens from the admin to Mangrove or the `OfferMakerTutorial` (unlocked or %%reactive liquidity|reactive-liquidity%%). This way, the tokens are pulled just-in-time when the offer is taken and can thus be made available for other purposes (ex: generating extra yield in another DeFi protocol).
 
 :::info Note
-Since you are not committing your liquidity to your smart offer, you can post multiple offers with "unlocked liqudity". We call that [liquidity amplification](../../terms/amplified-liquidity.md).
+Since you are not committing your liquidity to your smart offer, you can post multiple offers with "unlocked liquidity". We call that [liquidity amplification](../../terms/amplified-liquidity.md).
 :::
 
 For this to work, we use a so-called %%router|router%%: it is a contract that can be used to route tokens from the admin to the `OfferMakerTutorial` when the offer is taken.<br />
@@ -101,4 +101,4 @@ cast send --rpc-url $LOCAL_URL "$WBTC" "approve(address, uint)" "$ROUTER" 100000
 ```
 
 
-The `OfferMakerTutorial` now uses the uses the approval of the `SimpleRouter` to transfer funds from the admin. If you wonder where the approval of the transfers from `OfferMakerTutorial` happens, then its the `activate` call. See [approvals](../guides/approvals.md) for more details on that topic.
+The `OfferMakerTutorial` now uses the approval of the `SimpleRouter` to transfer funds from the admin. If you wonder where the approval of the transfers from `OfferMakerTutorial` happens, then its the `activate` call. See [approvals](../guides/approvals.md) for more details on that topic.

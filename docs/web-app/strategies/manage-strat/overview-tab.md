@@ -12,7 +12,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Information cards
 
-* **Return**: the average monthly return of your Kandel strategy. It is calculated by dividing the [profits from the spread](../../../kandel/README.md) by [published liquidity](../../../kandel/how-does-kandel-work/strategy-reserve.md#published-liquidity) for a period of time. It is then averaged out per day for that period, and extrapolated to obtain the monthly average.
+* **Return**: the average monthly return of your Kandel strategy (or in other word, the growth rate of your wealth). It is calculated by dividing the [profits from the spread](../../../kandel/README.md) and the impermanent loss by the [published liquidity](../../../kandel/how-does-kandel-work/strategy-reserve.md#published-liquidity) for a period of time. It is then averaged out per day for that period, and extrapolated to obtain the monthly average.
+    * Return = (profit from spread + impermanent loss) / published liquidity
 > 💡
 > For the sake of this calculation, the published liquidity is converted entirely to USDC.
 

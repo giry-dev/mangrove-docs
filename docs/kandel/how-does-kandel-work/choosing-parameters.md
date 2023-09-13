@@ -7,7 +7,7 @@ sidebar_position: 4
 # Choosing Kandel parameters
 
 
-This section aims to help you develop an intuition to choose your Kandel parameters. It should be taken as an explanation on how the various parameters can impact your Kandel, and how the market conditions (ex: volatility) could be taken into account. It is **not** a trading advice.
+This section goal is to help you develop an intuition to choose your Kandel parameters. It should be taken as an explanation on how the various parameters can impact your Kandel, and how the market conditions (ex: volatility) could be taken into account. It is **not** a trading advice.
 
 > 💡
 > As a reminder, Kandel is not intended as a "set and forget" strategy, and needs ongoing maintenance and checks.
