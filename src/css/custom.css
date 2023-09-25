@@ -55,7 +55,7 @@ table {
 }
 
 [data-theme='dark'] .navbar {
-  background-color: #051817;
+  background-color: #051b1a;
 }
 
 @media screen and (min-width: 996px) and (max-width: 1239px) {
@@ -89,11 +89,11 @@ table {
 }
 
 [data-theme='dark'] .hero--primary {
-  background-color: #072221;
+  background-color: #051b1a;
 }
 
 .footer {
-  background-color: #051817;
+  background-color: #051b1a;
 }
 
 .hero-image {

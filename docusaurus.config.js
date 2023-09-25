@@ -129,49 +129,19 @@ const config = {
         },
         items: [
           {
-            to: '/high-level',
-            position: 'left',
-            label: 'Concepts',
-          },
-          {
-            to: '/web-app',
-            position: 'left',
-            label: 'Web App',
-          },
-          {
-            to: '/kandel',
-            position: 'left',
-            label: 'Kandel',
-          },          
-          {
-            to: '/contracts',
-            position: 'left',
-            label: 'Protocol',
-          },
-          {
-            to: '/strat-lib',
-            position: 'left',
-            label: 'Strat Lib',
-          },
-          {
-            to: '/SDK',
-            position: 'left',
-            label: 'SDK',
-          },
-          {
-            to: '/FAQ',
+            to: 'https://app.mangrove.exchange/',
             position: 'right',
-            label: 'FAQ',
+            label: '🌳 App',
           },
           {
-            href: 'https://bafybeig62o75bfxssic66w2zwerbo6ezlhb33vsg5idr4uprckn2dxrucy.ipfs.infura-ipfs.io/',
-            label: 'White Paper',
+            to: 'https://github.com/mangrovedao',
             position: 'right',
+            label: '👾 GitHub',
           },
           {
-            href: 'https://github.com/mangrovedao',
-            label: 'GitHub',
+            to: 'https://twitter.com/MangroveDAO',
             position: 'right',
+            label: '🐦 Twitter',
           },
         ],
       },
