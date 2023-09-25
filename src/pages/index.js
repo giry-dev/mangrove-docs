@@ -13,7 +13,7 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <img src={useBaseUrl('/img/assets/mangrove-art.jpg')} className="hero-image" />
+        <img src={useBaseUrl('/img/assets/Twitter_dark.png')} className="hero-image" />
         <h1 className="hero__title">Welcome to Mangrove Docs</h1>
       </div>
     </header>
