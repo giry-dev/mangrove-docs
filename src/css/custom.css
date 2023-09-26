@@ -28,9 +28,29 @@
   --ifm-color-primary-lightest: #8de6af;
   background-color: #072221;
   --ifm-font-size-base: 15px;
-
-  
 }
+
+.theme-doc-sidebar-menu {
+  font-size: 14px;
+}
+
+.theme-doc-sidebar-item-category-level-1 {
+  font-weight: bold;
+}
+
+.theme-doc-sidebar-item-category-level-2 {
+  font-weight: 400 !important
+}
+
+.theme-doc-sidebar-item-category-level-3 {
+  font-weight: 400 !important
+}
+
+.theme-doc-sidebar-item-link-level-2 {
+  font-weight: 400 !important
+}
+
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Exo', sans-serif;
