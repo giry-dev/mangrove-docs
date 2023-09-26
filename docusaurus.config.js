@@ -12,7 +12,7 @@ const config = {
   
   title: 'Mangrove',
   tagline: 'Developer documentation for all things Mangrove',
-  url: 'https://testnet.mangrove.exchange',
+  url: 'https://app.mangrove.exchange',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
@@ -126,129 +126,22 @@ const config = {
           alt: 'Mangrove logo',
           src: 'img/assets/mangrove_only_logo_dark.png',
           srcDark: 'img/assets/mangrove_only_logo_white.png',
+          href: '/homepage',
+          target: '_self',
         },
         items: [
           {
-            to: 'https://app.mangrove.exchange/',
+            to: '/homepage',
             position: 'right',
-            label: '🌳 App',
+            label: 'General',
           },
           {
-            to: 'https://github.com/mangrovedao',
+            to: '/contracts',
             position: 'right',
-            label: '👾 GitHub',
-          },
-          {
-            to: 'https://twitter.com/MangroveDAO',
-            position: 'right',
-            label: '🐦 Twitter',
+            label: 'Developers',
           },
         ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'User',
-            items: [
-              {
-                label: 'Web App',
-                to: '/web-app',
-              },
-              {
-                label: 'Kandel',
-                to: '/kandel'
-              },
-            ],
-          },
-          {
-            title: 'Developer',
-            items: [
-              {
-                label: 'Contracts',
-                to: '/contracts',
-              },
-              {
-                label: 'Strat Library',
-                to: '/strat-lib'
-              },
-              {
-                label: 'SDK',
-                to: '/SDK',
-              },
-              {
-                label: 'Keeper Bots',
-                to: '/keeper-bots',
-              },              
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Discord',
-                href: 'https://discord.mangrove.exchange'
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/MangroveDAO'
-              },
-              {
-                label: 'LinkedIn',
-                href: 'https://www.linkedin.com/company/mangrovedao/'
-              }          
-            ],
-          },
-          {
-            title: 'GitHub',
-            items: [
-              {
-                label: 'Contracts and Strat Lib',
-                href: 'https://github.com/mangrovedao/mangrove-core'
-              },
-              {
-                label: 'SDK',
-                href: 'https://github.com/mangrovedao/mangrove.js'
-              },
-              {
-                label: 'Bots',
-                href: 'https://github.com/mangrovedao/mangrove-bots'
-              },
-              {
-                label: 'Docs',
-                href: 'https://github.com/mangrovedao/mangrove-docs'
-              },              
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Glossary',
-                to: '/glossary'
-              },
-              {
-                label: 'FAQ',
-                to: '/FAQ'
-              },
-              {
-                label: 'White Paper',
-                href: 'https://bafybeig62o75bfxssic66w2zwerbo6ezlhb33vsg5idr4uprckn2dxrucy.ipfs.infura-ipfs.io/'
-              },              
-              {
-                label: 'Blog',
-                href: 'https://blog.mangrove.exchange/'
-              },
-              {
-                label: 'Home',
-                href: 'https://mangrove.exchange'
-              },
-            ]
-          }
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} ADDMA. All rights reserved.`,
-      },
-      
+      },      
     }),
 };
 

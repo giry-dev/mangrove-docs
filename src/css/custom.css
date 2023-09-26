@@ -7,13 +7,14 @@
 /* You can override the default Infima variables here. */
 :root {
   --ifm-font-family-base: 'Inter';
-  --ifm-color-primary: #2e4285;
-  --ifm-color-primary-dark: #293c78;
-  --ifm-color-primary-darker: #273971;
-  --ifm-color-primary-darkest: #202f5d;
-  --ifm-color-primary-light: #334a92;
-  --ifm-color-primary-lighter: #354d99;
-  --ifm-color-primary-lightest: #3c57ad;
+  --ifm-color-primary: #1eb759;
+  --ifm-color-primary-dark: #195644;
+  --ifm-color-primary-darker: #185240;
+  --ifm-color-primary-darkest: #144335;
+  --ifm-color-primary-light: #1f6a53;
+  --ifm-color-primary-lighter: #206e56;
+  --ifm-color-primary-lightest: #247d62;
+  --ifm-font-size-base: 15px;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -26,6 +27,9 @@
   --ifm-color-primary-lighter: #6adf96;
   --ifm-color-primary-lightest: #8de6af;
   background-color: #072221;
+  --ifm-font-size-base: 15px;
+
+  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -51,7 +55,7 @@ table {
 
 .navbar {
   /* make room for headings that break in two lines */
-  min-height: 70px;
+  min-height: 50px;
 }
 
 [data-theme='dark'] .navbar {
