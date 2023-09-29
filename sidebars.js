@@ -32,14 +32,14 @@ const sidebars = {
           ]
         },
         {
-          type: 'link',
+          type: 'doc',
+          id: 'glossary',
           label: '🔤 Glossary',
-          href: '/glossary',
         },
         {
-          type: 'link',
+          type: 'doc',
+          id: 'FAQ/README',
           label: '❓ FAQ',
-          href: '/FAQ',
         },
         {
           type: 'category',
