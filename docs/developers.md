@@ -14,7 +14,7 @@ The order book of Mangrove lists promises to trade, instead of locked commitment
 * [Governance](./contracts/technical-references/governance-parameters/README.md) adjusts Mangrove parameters, sets fees, and opens and closes new markets.
 
 > 💡
-> For non technical information about Mangrove, check out the [Concepts](./homepage.md) section.
+> For non technical information about Mangrove, check out the [Concepts](./general.md) section.
 
 ## Where do I start?
 
