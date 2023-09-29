@@ -126,12 +126,12 @@ const config = {
           alt: 'Mangrove logo',
           src: 'img/assets/mangrove_only_logo_dark.png',
           srcDark: 'img/assets/mangrove_only_logo_white.png',
-          href: '/homepage',
+          href: '/general',
           target: '_self',
         },
         items: [
           {
-            to: '/homepage',
+            to: '/general',
             position: 'right',
             label: 'General',
           },

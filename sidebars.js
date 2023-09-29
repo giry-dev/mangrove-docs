@@ -19,7 +19,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Getting started',
-      link: {type: 'doc', id: 'homepage'},
+      link: {type: 'doc', id: 'general'},
       items: [
         {
           type: 'category',
