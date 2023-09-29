@@ -136,7 +136,7 @@ const config = {
             label: 'General',
           },
           {
-            to: '/contracts',
+            to: '/developers',
             position: 'right',
             label: 'Developers',
           },

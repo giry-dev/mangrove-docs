@@ -46,6 +46,10 @@
   font-weight: 400 !important
 }
 
+.theme-doc-sidebar-item-link-level-1 {
+  font-weight: bold;
+}
+
 .theme-doc-sidebar-item-link-level-2 {
   font-weight: 400 !important
 }

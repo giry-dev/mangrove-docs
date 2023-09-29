@@ -134,6 +134,11 @@ const sidebars = {
 
   developerSidebar: [
     {
+      type: 'doc',
+      id: 'developers',
+      label: 'Welcome',
+    },
+    {
       type: 'category',
       label: 'Contracts',
       items: [
@@ -174,9 +179,9 @@ const sidebars = {
       ],
     },
     {
-      type: 'link',
+      type: 'doc',
+      id: 'glossary',
       label: 'Glossary',
-      href: '/glossary',
     },
   ],  
 };
