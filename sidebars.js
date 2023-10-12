@@ -33,11 +33,6 @@ const sidebars = {
         },
         {
           type: 'doc',
-          id: 'glossary',
-          label: '🔤 Glossary',
-        },
-        {
-          type: 'doc',
           id: 'FAQ/README',
           label: '❓ FAQ',
         },
@@ -85,6 +80,11 @@ const sidebars = {
         type: 'link',
         label: '🕸️ Website', // The link label
         href: 'https://mangrove.exchange/',
+      },
+      {
+        type: 'link',
+        href: '/glossary',
+        label: '🔤 Glossary',
       },
       {
         type: 'link',

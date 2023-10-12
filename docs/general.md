@@ -1,6 +1,7 @@
 ---
 title: Homepage
 sidebar_position: 0
+slug: /
 ---
 
 # What is Mangrove?
