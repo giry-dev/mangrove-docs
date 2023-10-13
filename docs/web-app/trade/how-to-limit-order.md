@@ -28,7 +28,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
     * [**Fill or Kill (FOK)**](../../developers/SDK/guides/fill-or-kill.md): Your order is either executed fully or not executed at all (ex: you place an order for 1 ETH at $9,500; if only 0.8 ETH can be filled, it's canceled; if fully filled, it's executed).
 
 > 💡
-> If a "Good 'til time" limit order is [partially filled](./how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transactino details, and the remainder will be reposted automatically.
+> If a "Good 'til time" limit order is [partially filled](./how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transaction details, and the remainder will be reposted automatically.
 
 6. Click on "Approve and buy/sell". A card will appear, tick the infinite approval box, click on "Allow 'token'" and confirm the transaction on your wallet.
 
