@@ -38,7 +38,8 @@ const config = {
     ['@docusaurus-terminology/parser',
     {
       "termsUrl": "/developers/terms/",
-      "termsDir": "./docs/developers/terms/"
+      "termsDir": "./docs/developers/terms/",
+      glossaryFilepath: './docs/developers/glossary.md'
     }
     ],
     require.resolve('docusaurus-lunr-search'),
