@@ -30,6 +30,11 @@
   --ifm-font-size-base: 15px;
 }
 
+.alert--info{
+  --ifm-alert-background-color: #03624C;
+  --ifm-alert-border-color: #DEDEDE;
+}
+
 .theme-doc-sidebar-menu {
   font-size: 14px;
 }
