@@ -17,4 +17,4 @@ For a detailed explanation on how to create and manage a Kandel strategy on Mang
 
 ## Vocabulary
 
-If some keywords and concepts are new to you, feel free to check our [Glossary](../../glossary.md) and [FAQ](../../FAQ/README.md).
+If some keywords and concepts are new to you, feel free to check our [Glossary](../../developers/glossary.md) and [FAQ](../../FAQ/README.md).

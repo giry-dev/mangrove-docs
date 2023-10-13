@@ -87,10 +87,10 @@ https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f
 A brief explanation on the above `seed` parameters:
 * `onAave` indicates whether or not the liquidity to be used by Kandel is sitting on AAVE - here, it is not the case (it will be fetched from a wallet)
 * `market`: this is the WETH/USDC pair that we previously chose
-* `liquiditySharing` indicates whether you are using shared liquidity or not (SDK only, not available via the UI). This refers to the concept [amplified liquidity](../../../terms/amplified-liquidity.md).
+* `liquiditySharing` indicates whether you are using shared liquidity or not (SDK only, not available via the UI). This refers to the concept [amplified liquidity](/docs/developers/terms/amplified-liquidity.md).
 * `gaspriceFactor`:
     * By using the `recommendedConfig.gaspriceFactor`, we make sure to select the right amount of gas for our Kandel strategy
-    * This is also connected to the amount of [bounty](../../../terms/bounty.md) to be paid in case of a failure to deliver
+    * This is also connected to the amount of [bounty](/docs/developers/terms/bounty.md) to be paid in case of a failure to deliver
 
 
 ### Approve transfers

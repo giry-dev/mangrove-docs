@@ -82,8 +82,8 @@ const sidebars = {
         href: 'https://mangrove.exchange/',
       },
       {
-        type: 'doc',
-        id: 'glossary',
+        type: 'link',
+        href: '/developers/glossary',
         label: '🔤 Glossary',
       },
       {
@@ -194,8 +194,8 @@ const sidebars = {
           href: 'https://mangrove.exchange/',
         },
         {
-          type: 'link',
-          href: '/glossary',
+          type: 'doc',
+          id: 'developers/glossary',
           label: '🔤 Glossary',
         },
         {

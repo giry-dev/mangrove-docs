@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # Smart offers
 
-The main difference between Mangrove and other DEXs is the ability to attach code to offers (check out [Smart Offers](../../terms/smart-offer.md) for more information).
+The main difference between Mangrove and other DEXs is the ability to attach code to offers (check out [Smart Offers](/docs/developers/terms/smart-offer.md) for more information).
 This translates into several disruptive mechanisms:
 
 * **Reactive liquidity**⚡<br />

@@ -25,7 +25,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 5. Choose from 3 types of limit orders:
     * **Immediate or Cancel (IOC)**: Your order attempts to execute immediately at the desired price. If successful, it's executed; if not, it's canceled.
     * **Good 'til time (GTT)**: Set an expiration date for your order (ex: active for 3 days, then canceled).
-    * [**Fill or Kill (FOK)**](../../SDK/guides/fill-or-kill.md): Your order is either executed fully or not executed at all (ex: you place an order for 1 ETH at $9,500; if only 0.8 ETH can be filled, it's canceled; if fully filled, it's executed).
+    * [**Fill or Kill (FOK)**](../../developers/SDK/guides/fill-or-kill.md): Your order is either executed fully or not executed at all (ex: you place an order for 1 ETH at $9,500; if only 0.8 ETH can be filled, it's canceled; if fully filled, it's executed).
 
 > 💡
 > If a "Good 'til time" limit order is [partially filled](./how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transactino details, and the remainder will be reposted automatically.

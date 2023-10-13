@@ -37,8 +37,8 @@ const config = {
   plugins: [
     ['@docusaurus-terminology/parser',
     {
-      "termsUrl": "/terms/",
-      "termsDir": "./docs/terms/"
+      "termsUrl": "/developers/terms/",
+      "termsDir": "./docs/developers/terms/"
     }
     ],
     require.resolve('docusaurus-lunr-search'),
@@ -50,7 +50,7 @@ const config = {
       {
         "entryPoints": ["node_modules/@mangrovedao/mangrove.js/src/index.ts"],
         "tsconfig": "node_modules/@mangrovedao/mangrove.js/tsconfig.json",
-        "out": "SDK/technical-references/code",
+        "out": "developers/SDK/technical-references/code",
         "cleanOutputDir": true,
         "excludePrivate": true,
         "excludeInternal": true,
