@@ -89,7 +89,7 @@ const sidebars = {
       {
         type: 'link',
         label: '🏗️ Developers', // The link label
-        href: '/developers/README',
+        href: 'developers/README',
       },
     ],
   },
