@@ -15,7 +15,7 @@ Mangrove has been thoroughly audited. You will find here official reports of the
 * <a target="\_blank" href={require('../../static/img/assets/ChainSecurity_Mangrove_Association_ADDMA_Kandel_Strats_audit.pdf').default}>Kandel audit</a>
 
 :::note
-* [MangroveOrder](../strat-lib/technical-references/code/strategies/MangroveOrder.md) is a peripheral contract for the Mangrove core protocol which allows users to submit limit orders such as:
+* [MangroveOrder](../developers/strat-lib/technical-references/code/strategies/MangroveOrder.md) is a peripheral contract for the Mangrove core protocol which allows users to submit limit orders such as:
     * [Good-til-cancelled](../web-app/trade/more-on-order-types.md#good-til-time-gtt) (GTC, or GTT)
     * [Fill-or-kill](../web-app/trade/more-on-order-types.md#fill-or-kill-fok) (FOK)
 

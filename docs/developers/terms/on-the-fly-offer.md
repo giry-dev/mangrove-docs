@@ -8,7 +8,7 @@ An *on-the-fly offer* is posted by an EOA (i.e., an Externally-Owned Account, cf
 
 An on-the-fly offer can be listed on Mangrove but is not equipped with any on-chain [logic](../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md) that executes when the offer is taken.
 
-Whenever an on-the-fly offer is matched by a [taker order](contracts/background/offer-taker.md#taking-offers), the offer sources its liquidity on the EOA.
+Whenever an on-the-fly offer is matched by a [taker order](../contracts/background/offer-taker.md#taking-offers), the offer sources its liquidity on the EOA.
 
 :::caution
 

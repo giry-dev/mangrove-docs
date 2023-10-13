@@ -8,7 +8,7 @@ sidebar_position: 1
 
 The illustration below depicts a bird's-eye view of the Mangrove ecosystem. The main actors are depicted as well as their most important interactions.
 
-![A bird's-eye view of Mangrove ecosystem.](../../../static/img/assets/contactMap.png)
+![A bird's-eye view of Mangrove ecosystem.](/img/assets/contactMap.png)
 
 The Mangrove contract is depicted in the middle, with the three most important actors interacting with Mangrove around it:
 
@@ -55,7 +55,7 @@ This allows makers, for instance, to post another offer to redisplay their liqui
 
 The diagram below summarizes the call sequence induced by a taker order. Notice that first the `makerExecute` functions is executed for all offers, and only subsequently are the `makerPosthook` functions of the offers executed.
 
-![Mangrove call sequence induced by a taker order](../../../static/img/assets/execution.png)
+![Mangrove call sequence induced by a taker order](/img/assets/execution.png)
 
 ## Where can I read more?
 

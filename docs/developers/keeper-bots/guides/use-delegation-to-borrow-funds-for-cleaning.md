@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Using borrowed funds for cleaning via Mangrove's delegation mechanism
 
-Cleaners can use Mangrove's [delegation mechanism](/docs/contracts/technical-references/taking-and-making-offers/taker-order/delegate-takers.md) to borrow funds for cleaning: Mangrove will allow an account to call `snipesFor` on behalf of a taker that has not approved that account, as long as all sniped offers fail. This enables borrowing of funds from any taker that has approved Mangrove for some token.
+Cleaners can use Mangrove's [delegation mechanism](../../contracts/technical-references/taking-and-making-offers/taker-order/delegate-takers.md) to borrow funds for cleaning: Mangrove will allow an account to call `snipesFor` on behalf of a taker that has not approved that account, as long as all sniped offers fail. This enables borrowing of funds from any taker that has approved Mangrove for some token.
 
 The Mangrove periphery contract `MgvCleaner` provides a utility method to make this easy: `collectByImpersonation`. The method is identical to the `collect` method except it takes an extra argument, which is the taker to impersonate/borrow funds from.
 

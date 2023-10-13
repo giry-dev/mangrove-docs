@@ -18,4 +18,4 @@ Direct does many of the same things as MangroveOffer with a few key differences.
 
 MangroveOffer has no implementations of how to post, update or retract an offer. Direct provides default internal implementations for these methods. 
 
-![Flow of taking a offer made by Direct](../../../../static/img/assets/Direct.png)
+![Flow of taking a offer made by Direct](/img/assets/Direct.png)

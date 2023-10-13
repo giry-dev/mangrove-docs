@@ -59,4 +59,4 @@ Besides MangroveOffer contract giving approvals, the offer makers reserve needs 
 
 Mangrove has 2 default implementations of MangroveOffer, they can be found here, [Direct](direct.md) and [Forwarder](forwarder.md).
 
-![Flow of taking a offer made by MangroveOffer](../../../../static/img/assets/MangroveOffer.png)
+![Flow of taking a offer made by MangroveOffer](/img/assets/MangroveOffer.png)

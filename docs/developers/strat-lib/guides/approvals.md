@@ -14,7 +14,7 @@ In the following, we shall refer to the diagram depicting an [overview of the ca
 
 Refer to [Contracts -> Technical Reference -> Overview](../../contracts/technical-references/overview.md) and the pages linked there for more details on trade execution on Mangrove.
 
-![Mangrove call sequence induced by a taker order](../../../static/img/assets/execution.png)
+![Mangrove call sequence induced by a taker order](/img/assets/execution.png)
 
 ## Maker approvals
 

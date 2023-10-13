@@ -34,4 +34,4 @@ Here is more information on the inventory requirements:<br />
 
 ## Build your own strategy
 
-Our [Strategy Library](../../strat-lib/README.md) contains a set of contracts and building blocks that can be used to implement custom market making strategies.
+Our [Strategy Library](../../developers/strat-lib/README.md) contains a set of contracts and building blocks that can be used to implement custom market making strategies.
