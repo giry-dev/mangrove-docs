@@ -15,7 +15,7 @@ Your strategy can have one of three statuses: active, inactive, or closed. Depen
 It means that your strategy is running, profiting from the spread. You may see one of these alert messages while your strategy is active:
 
 * **"About to be out of bounty" button** <br />
-Your trategy will soon run out of [bounty](/docs/developers/terms/bounty.md) to pay for the taker's compensation in case an [offer fails to execute](../../../kandel/how-does-kandel-work/more-on-failing-offers.md).
+Your trategy will soon run out of [bounty](/developers/terms/bounty.md) to pay for the taker's compensation in case an [offer fails to execute](../../../kandel/how-does-kandel-work/more-on-failing-offers.md).
 
 * **"About to be out of price range" button**<br />
 Your strategy's price range is close to being out of range.
