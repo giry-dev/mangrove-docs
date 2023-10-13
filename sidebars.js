@@ -86,11 +86,6 @@ const sidebars = {
         href: '/developers/glossary',
         label: '🔤 Glossary',
       },
-      {
-        type: 'link',
-        label: '🏗️ Developers', // The link label
-        href: 'developers/README',
-      },
     ],
   },
   {
