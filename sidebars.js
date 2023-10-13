@@ -86,6 +86,11 @@ const sidebars = {
         href: '/developers/glossary',
         label: '🔤 Glossary',
       },
+      {
+        type: 'link',
+        href: '/developers/',
+        label: '🏗️ Developers',
+      },
     ],
   },
   {
@@ -192,11 +197,6 @@ const sidebars = {
           type: 'doc',
           id: 'developers/glossary',
           label: '🔤 Glossary',
-        },
-        {
-          type: 'doc',
-          label: '🏗️ Developers',
-          id: 'developers/README',
         },
       ],
     },
