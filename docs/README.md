@@ -49,6 +49,10 @@ Smart contracts [can be attached to offers](./general/high-level/concepts/smart-
 
 </div>
 
+<div>
+<a class="button button--primary" href="./developers/strat-lib/getting-started/smart-offer">Post a smart offer</a>
+</div>
+
 ## Deploy your own composable strategy
 
 <div class="text--justify">
@@ -67,6 +71,10 @@ Mangrove enables liquidity providers to incorporate defensive code, post unprovi
 
 * [**Run AMMs strategies:**](./developers/strat-lib/README.md) provide liquidity on Mangrove’s order book in order to maximize your liquidity potential.
 
+</div>
+
+<div>
+<a class="button button--primary" href="./developers/strat-lib/README">Create your strategy</a>
 </div>
 
 ## Kandel strategy
@@ -92,6 +100,10 @@ Mangrove enables liquidity providers to incorporate defensive code, post unprovi
 
 * **<font color="#47d77d">Earn extra yield on AAVE:</font>** since the liquidity on offer is not locked on the Mangrove order book, it can generate yield elsewhere on the chain. With Kandel, when an offer is taken, your liquidity can be sourced and redeposited on AAVE.
 
+</div>
+
+<div>
+<a class="button button--primary" href="./general/">Deploy your Kandel</a>
 </div>
 
 ## Mangrove is a secure protocol

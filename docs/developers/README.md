@@ -3,12 +3,15 @@ title: Developers
 sidebar_position: 1
 ---
 
-# Welcome to the Developers Doc
+# Welcome to the Developers doc
 
-In here, we will cover in details:
-* the [core protocol](./contracts/README.md)
-* the [Strategies Library](./strat-lib/README.md)
-* our [SDK](./SDK/README.md)
-* [Keeper and Cleaning bots](./keeper-bots/).
+The purpose of the Mangrove Developers doc is to:
 
-We suggest you start by reading [this introduction](./contracts/README.md)!
+* learn about Mangrove [core protocol](./contracts/README.md),
+* understand how trading [strategies](./strat-lib/README.md) can be created and plugged in,
+* use and integrate our [SDK](./SDK/README.md),
+* set up [Keeper and Cleaning bots](./keeper-bots/).
+
+
+We suggest you start by reading [this introduction](./contracts/README.md).
+If there's anything that is missing, or if you have questions, feel free to reach out to us via [Discord](https://discord.gg/rk9Qthz5YE).

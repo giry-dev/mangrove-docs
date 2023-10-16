@@ -35,7 +35,6 @@ sidebar_position: 0
     * [How to track open and past orders](./web-app/trade/how-to-track-open-orders.md)
     * [Common issues and resolution](./web-app/trade/common-issues-resolution.md)
     * [More on order types](./web-app/trade/approve-buy.md)
-* [Swap](./web-app/swap/swap.md)
 * [Strategies](./web-app/strategies/README.md)
     * [Create a strategy](./web-app/strategies/create-strat.md)
     * [Manage a strategy](./web-app/strategies/manage-strat/README.md)
