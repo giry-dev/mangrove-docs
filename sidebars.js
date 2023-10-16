@@ -19,8 +19,13 @@ const sidebars = {
     {
       type: 'category',
       label: 'Getting started',
-      link: {type: 'doc', id: 'general/README'},
+      link: {type: 'doc', id: 'README'},
       items: [
+        {
+          type: 'doc',
+          id: 'general/table-content',
+          label: '🌿 Table of Content',
+        },
         {
           type: 'category',
           label: '💡 Concepts',
@@ -80,6 +85,11 @@ const sidebars = {
         type: 'link',
         label: '🕸️ Website', // The link label
         href: 'https://mangrove.exchange/',
+      },
+      {
+        type: 'link',
+        label: '💬 Feedback', // The link label
+        href: 'https://tally.so/r/w54D5Q',
       },
       {
         type: 'link',
@@ -184,6 +194,16 @@ const sidebars = {
       collapsed: false,
       items: [
         {
+          type: 'doc',
+          id: 'developers/contracts/technical-references/contract-addresses',
+          label: '🚁 Deployment addresses',
+        },
+        {
+          type: 'doc',
+          id: 'developers/glossary',
+          label: '🔤 Glossary',
+        },
+        {
           type: 'link',
           label: '📃 Whitepaper', // The link label
           href: 'https://bafybeig62o75bfxssic66w2zwerbo6ezlhb33vsg5idr4uprckn2dxrucy.ipfs.dweb.link/',
@@ -192,11 +212,6 @@ const sidebars = {
           type: 'link',
           label: '🕸️ Website', // The link label
           href: 'https://mangrove.exchange/',
-        },
-        {
-          type: 'doc',
-          id: 'developers/glossary',
-          label: '🔤 Glossary',
         },
       ],
     },

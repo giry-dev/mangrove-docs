@@ -17,7 +17,6 @@ Why do my transactions keep failing?
 </summary>
 It might be the case that the amount of gas or slippage you selected is too low. We encourage you to tweak those values and find out what works best.
 
-We would love to hear your [feedback](./how-to-give-feedback.md) as well.
 
 </details>
 
