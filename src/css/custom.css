@@ -9,7 +9,7 @@
   --ifm-font-family-base: 'Inter';
   --ifm-color-primary: #2FA98C;
   --ifm-color-primary-dark: #195644;
-  --ifm-color-primary-darker: #185240;
+  --ifm-color-primary-darker: #185340;
   --ifm-color-primary-darkest: #144335;
   --ifm-color-primary-light: #1f6a53;
   --ifm-color-primary-lighter: #206e56;
@@ -31,6 +31,11 @@
 }
 
 .alert--info{
+  --ifm-alert-background-color: #DEDEDE;
+  --ifm-alert-border-color: #193c47;
+}
+
+html[data-theme='dark'] .alert--info{
   --ifm-alert-background-color: #03624C;
   --ifm-alert-border-color: #DEDEDE;
 }
