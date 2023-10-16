@@ -74,7 +74,7 @@ Mangrove enables liquidity providers to incorporate defensive code, post unprovi
 </div>
 
 <div>
-<a class="button button--primary" href="../developers/strat-lib/README">Create your strategy</a>
+<a class="button button--primary" href="./developers/strat-lib">Create your strategy</a>
 </div>
 
 ## Kandel strategy
@@ -103,7 +103,7 @@ Mangrove enables liquidity providers to incorporate defensive code, post unprovi
 </div>
 
 <div>
-<a class="button button--primary" href="./general/kandel/README.md">Deploy your Kandel</a>
+<a class="button button--primary" href="./general/kandel">Deploy your Kandel</a>
 </div>
 
 ## Mangrove is a secure protocol
