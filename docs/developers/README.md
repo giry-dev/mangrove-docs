@@ -10,7 +10,7 @@ The purpose of the Mangrove Developers doc is to:
 * learn about Mangrove [core protocol](./contracts/README.md),
 * understand how trading [strategies](./strat-lib/README.md) can be created and plugged in,
 * use and integrate our [SDK](./SDK/README.md),
-* set up [Keeper and Cleaning bots](./keeper-bots/).
+* set up [Keeper and Cleaning bots](./keeper-bots/README.md).
 
 
 We suggest you start by reading [this introduction](./contracts/README.md).
