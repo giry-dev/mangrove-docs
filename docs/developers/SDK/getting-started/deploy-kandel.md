@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Deploy Kandel strategy
 
-This tutorial covers how to deploy a Kandel strategy from a developer standpoint. For more information about Kandel, see the [Kandel documentation](../../../kandel/README.md).
+This tutorial covers how to deploy a Kandel strategy from a developer standpoint. For more information about Kandel, see the [Kandel documentation](../../../general/kandel/README.md).
 
 ## Prerequisites
 
@@ -44,12 +44,12 @@ Next, create an instance to manage Kandel strategies (`kandelStrategies`), and l
 https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f1381dcd1/examples/tutorials/deploy-kandel.js#L21-L25
 ```
 
-With this, you can generate a [distribution](../../../kandel/how-does-kandel-work/step-by-step-visual-explanation.md#price-distribution) with the minimum recommended amount of liquidity to avoid %%density|density%% issues by:
+With this, you can generate a [distribution](../../../general/kandel/how-does-kandel-work/step-by-step-visual-explanation.md#price-distribution) with the minimum recommended amount of liquidity to avoid %%density|density%% issues by:
 * Creating a generator
 * Calculating minimums per offer
 * Calculating the distribution for the given price parameters of `minPrice: 900`, `maxPrice: 1100`, and default ratio
 
-See the API documentation for [calculateMinimumDistribution](../technical-references/code/classes/KandelDistributionGenerator.md#calculateminimumdistribution) for more details on other `priceParams`. In our example here, `midPrice: 1100` is used to set the [current price](../../../kandel/how-does-kandel-work/parameters.md), and decide which offers become bids and which become asks.
+See the API documentation for [calculateMinimumDistribution](../technical-references/code/classes/KandelDistributionGenerator.md#calculateminimumdistribution) for more details on other `priceParams`. In our example here, `midPrice: 1100` is used to set the [current price](../../../general/kandel/how-does-kandel-work/parameters.md), and decide which offers become bids and which become asks.
 
 ```javascript reference
 https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f1381dcd1/examples/tutorials/deploy-kandel.js#L27-L58
@@ -103,7 +103,7 @@ https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f
 
 ### Populate offers for the distribution
 
-Now that our Kandel instance is deployed, we can [populate the offers](../../../kandel/how-does-kandel-work/step-by-step-visual-explanation.md#populating-bids-and-asks) for the distribution.
+Now that our Kandel instance is deployed, we can [populate the offers](../../../general/kandel/how-does-kandel-work/step-by-step-visual-explanation.md#populating-bids-and-asks) for the distribution.
 This will create offers for the base and quote tokens, and deposit the required amounts of tokens into the Kandel instance.
 
 The offers also need a %%provision|provision%%, hence here the default that we are using can be inspected.

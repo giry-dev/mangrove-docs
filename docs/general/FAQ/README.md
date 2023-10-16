@@ -11,7 +11,7 @@ sidebar_position: 2
 ## Where can I get Mangrove’s addresses?
 </summary>
 
-The deployment addresses for the core contract for Mangrove, as well as the most important periphery contracts are available at [Contracts → Deployment Addresses](../developers/contracts/technical-references/contract-addresses.md).
+The deployment addresses for the core contract for Mangrove, as well as the most important periphery contracts are available at [Contracts → Deployment Addresses](../../developers/contracts/technical-references/contract-addresses.md).
 </details>
 
 <details><summary>
@@ -20,7 +20,7 @@ The deployment addresses for the core contract for Mangrove, as well as the most
 </summary>
 Fees on Mangrove are paid by the taker: The fee is taken from the tokens that the taker has bought.
 
-Read more about fees here: [Taker fees](../developers/contracts/technical-references/governance-parameters/local-variables.md#taker-fees).
+Read more about fees here: [Taker fees](../../developers/contracts/technical-references/governance-parameters/local-variables.md#taker-fees).
 </details>
 
 <details><summary>
@@ -28,7 +28,7 @@ Read more about fees here: [Taker fees](../developers/contracts/technical-refere
 ## Who pays the gas on Mangrove?
 </summary>
 
-If the offer succeeds, the gas costs for the [execution of the trade](../developers/contracts/technical-references/taking-and-making-offers/reactive-offer/executing-offers.md) are paid by the offer taker. If the offer fails the taker is compensated for these gas costs - see [What happens when an offer fails?](#what-happens-when-an-offer-fails)
+If the offer succeeds, the gas costs for the [execution of the trade](../../developers/contracts/technical-references/taking-and-making-offers/reactive-offer/executing-offers.md) are paid by the offer taker. If the offer fails the taker is compensated for these gas costs - see [What happens when an offer fails?](#what-happens-when-an-offer-fails)
 </details>
 
 <details><summary>
@@ -36,7 +36,7 @@ If the offer succeeds, the gas costs for the [execution of the trade](../develop
 ## What happens when an offer fails?
 </summary>
 
-Offers in the order book may fail when taken, either because the maker consciously chose to [renege on the offer to trade](../developers/contracts/background/taker-compensation.md), or because the maker contract reverted for other reasons. In that case, the taker has wasted some gas and will be compensated using the [offer provision](../developers/contracts/technical-references/taking-and-making-offers/reactive-offer/offer-provision.md) (in native token) that the maker has deposited in Mangrove.
+Offers in the order book may fail when taken, either because the maker consciously chose to [renege on the offer to trade](../../developers/contracts/background/taker-compensation.md), or because the maker contract reverted for other reasons. In that case, the taker has wasted some gas and will be compensated using the [offer provision](../../developers/contracts/technical-references/taking-and-making-offers/reactive-offer/offer-provision.md) (in native token) that the maker has deposited in Mangrove.
 </details>
 
 <details><summary>
@@ -44,7 +44,7 @@ Offers in the order book may fail when taken, either because the maker conscious
 ## Are Mangrove market orders the same as traditional market orders?
 </summary>
 
-Mangrove's [market orders](../developers/contracts/technical-references/taking-and-making-offers/taker-order/README.md) are DeFi market orders - which are different from market orders in TradFi:
+Mangrove's [market orders](../../developers/contracts/technical-references/taking-and-making-offers/taker-order/README.md) are DeFi market orders - which are different from market orders in TradFi:
 
 In TradFi, a market order is an order to buy or sell immediately at the best available price.
 

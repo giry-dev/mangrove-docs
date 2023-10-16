@@ -73,7 +73,7 @@ Risk appetite:
 <img src={useBaseUrl('img/assets/strat_parameters_4.png')} width="70%"/>
 <br />
 
-10. "Waiting for confirmation": you will be asked to sign 4 transactions in a row, including the deployment of your Kandel contract, the spending approvals of your pair's tokens, and the native token amount to be deposited for [bounty](../../developers/glossary.md#bounty).
+10. "Waiting for confirmation": you will be asked to sign 4 transactions in a row, including the deployment of your Kandel contract, the spending approvals of your pair's tokens, and the native token amount to be deposited for [bounty](../../../developers/glossary.md#bounty).
 > 💡
 > when signing on Metmamask, select "Use default" to set the appropriate amount of Approval.
 
