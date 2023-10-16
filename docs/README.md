@@ -5,22 +5,37 @@ sidebar_position: 0
 
 # Overview
 
+<div class="text--justify">
+
 Mangrove is an on-chain order book DEX that allows liquidity providers to post arbitrary smart contracts as offers.
+
+</div>
+
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/home_page.png')} width="70%"/>
+<img src={useBaseUrl('img/assets/home_page.png')} width="100%"/>
 
 ## Total control over your offers
 
+<div class="text--justify">
+
 Mangrove's order book-based DEX [lists promises instead of locked commitments](./general/high-level/concepts/makers-takers-keepers/README.md). Liquidity can be shared, borrowed, lent somewhere and at the same time displayed on Mangrove, ready to be sourced when (and only when) an offer is taken.
+
+</div>
 
 
 ## Smart offers
 
+<div class="text--justify">
+
 Smart contracts [can be attached to offers](./general/high-level/concepts/smart-offers.md), which gives the Maker total freedom in setting his sourcing trade parameters.
 
+</div>
+
 #### Powerful applications of smart offers
+
+<div class="text--justify">
 
 * [**Reactive liquidity:**](./developers/terms/reactive-liquidity.md) liquidity on offer is not locked on the Mangrove order book. As long as an offer posted on Mangrove is not taken, it can generate yield elsewhere on the chain.
 
@@ -32,26 +47,40 @@ Smart contracts [can be attached to offers](./general/high-level/concepts/smart-
 
 * **<font color="#47d77d">Non-custodial:</font>** Mangrove users retain full control over their funds - the exchange does not hold custody of their assets.
 
+</div>
 
 ## Deploy your own composable strategy
 
+<div class="text--justify">
+
 Mangrove enables liquidity providers to incorporate defensive code, post unprovisioned offers, and redisplay liquidity after their offers are taken.
+</div>
+
 
 #### Full control over your strategy parameters
+
+<div class="text--justify">
 
 * [**Amplified liquidity:**](./developers/terms/amplified-liquidity.md) optimize your trading potential by leveraging your liquidity across multiple pairs. For instance, you can create offers on WETH/USDC, WMATIC/USDC and WBTC/USDC pairs with an equal amount of USDC liquidity.
 
 * [**Multi-liquidity sourcing:**](./developers/terms/reactive-liquidity.md) your smart offer on Mangrove can take advantage of liquidity sourcing from other sources and offering it to the taker, allowing for profitable arbitrage opportunities.
 
-* **<font color="#47d77d">Price sensors:</font>** in your smart offer, you can dynamically trigger actions based on Mangrove DEX’s asset prices. It enables instantaneous stop loss and ensures that your offer remains attractive to potential takers in changing market conditions.
-
 * [**Run AMMs strategies:**](./developers/strat-lib/README.md) provide liquidity on Mangrove’s order book in order to maximize your liquidity potential.
+
+</div>
 
 ## Kandel strategy
 
+<div class="text--justify">
+
+
 [Kandel](./general/kandel/README.md) is an on-chain Automated Market Making strategy that focuses on order flow rather than price. It automatically posts Bids and Asks within your chosen market and price range to buy low and sell high, making a profit through the spread.
 
+</div>
+
 #### Features
+
+<div class="text--justify">
 
 * **<font color="#47d77d">On-chain market making bot</font>** Kandel is a market-making bot equivalent that operates solely on the blockchain. Unlike off-chain market making bots that experience delays, Kandel uses on-chain order flow to repost offers instantly, without any latency.
 
@@ -63,6 +92,12 @@ Mangrove enables liquidity providers to incorporate defensive code, post unprovi
 
 * **<font color="#47d77d">Earn extra yield on AAVE:</font>** since the liquidity on offer is not locked on the Mangrove order book, it can generate yield elsewhere on the chain. With Kandel, when an offer is taken, your liquidity can be sourced and redeposited on AAVE.
 
+</div>
+
 ## Mangrove is a secure protocol
 
+<div class="text--justify">
+
 Mangrove is an open-source protocol that has been rigorously [audited](./general/high-level/audits.md) by the highly reputable and expert firm, ChainSec, ensuring the utmost security and reliability.
+
+</div>
