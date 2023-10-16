@@ -50,7 +50,7 @@ Smart contracts [can be attached to offers](./general/high-level/concepts/smart-
 </div>
 
 <div>
-<a class="button button--primary" href="./developers/strat-lib/getting-started/smart-offer">Post a smart offer</a>
+<a class="button button--primary" href="../developers/strat-lib/getting-started/smart-offer">Post a smart offer</a>
 </div>
 
 ## Deploy your own composable strategy
@@ -74,7 +74,7 @@ Mangrove enables liquidity providers to incorporate defensive code, post unprovi
 </div>
 
 <div>
-<a class="button button--primary" href="./developers/strat-lib/README">Create your strategy</a>
+<a class="button button--primary" href="../developers/strat-lib/README">Create your strategy</a>
 </div>
 
 ## Kandel strategy
@@ -103,7 +103,7 @@ Mangrove enables liquidity providers to incorporate defensive code, post unprovi
 </div>
 
 <div>
-<a class="button button--primary" href="./general/">Deploy your Kandel</a>
+<a class="button button--primary" href="./general/kandel/README.md">Deploy your Kandel</a>
 </div>
 
 ## Mangrove is a secure protocol
