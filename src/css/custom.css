@@ -15,6 +15,7 @@
   --ifm-color-primary-lighter: #206e56;
   --ifm-color-primary-lightest: #247d62;
   --ifm-font-size-base: 15px;
+  text-align: justify;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -28,6 +29,7 @@
   --ifm-color-primary-lightest: #8de6af;
   background-color: #072221;
   --ifm-font-size-base: 15px;
+  text-align: justify;
 }
 
 .alert--info{

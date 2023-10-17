@@ -60,7 +60,7 @@ const sidebars = {
     items: [
       {
         type: 'category',
-        label: '🕯️ Kandel',
+        label: '♟️ Kandel',
         collapsed: false,
         items: [
           {
