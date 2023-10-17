@@ -30,12 +30,11 @@ Example: I will look at the market volatility for the past 24h, and decide on th
 
 ## Ratio
 
-This is the ratio of the progression used to calculate the price grid. You would logically bet on intra-day volatility (few min or hours):
+This is the ratio of the progression used to calculate the price grid. You would logically bet on intra-day volatility (few min or hours). If the volatility is increasing, you might want to increase the grid size (space between price points).
  
-* High volatility: better to have spaced out price points
-* Low volatility: narrow price points
+* High volatility: spaced out price points (less price points in the chosen range) -> higher ratio
+* Low volatility: narrow price points (more price points in the chosen range) -> smaller ratio
 
-If the volatility is increasing, you can increase the grid size (space between price points).
 
 ## Step size
 
