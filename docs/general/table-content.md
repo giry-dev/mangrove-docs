@@ -52,6 +52,7 @@ sidebar_position: 0
 * [How does Kandel work?](./kandel/how-does-kandel-work/how-does-kandel-work.md)
     * [Step-by-step visual explanation](./kandel/how-does-kandel-work/step-by-step-visual-explanation.md)
     * [Parameters](./kandel/how-does-kandel-work/parameters.md)
+    * [Choose the right parameters](./kandel/how-does-kandel-work/choosing-parameters.md)
     * [Strategy reserve](./kandel/how-does-kandel-work/strategy-reserve.md)
     * [More on failing offers](./kandel/how-does-kandel-work/more-on-failing-offers.md)
 * [Details on strategies](./kandel/details-on-strats/details-on-strats.md)

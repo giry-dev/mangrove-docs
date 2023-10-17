@@ -14,4 +14,4 @@ The purpose of the Mangrove Developers doc is to:
 
 
 We suggest you start by reading [this introduction](./contracts/README.md).
-If there's anything that is missing, or if you have questions, feel free to reach out to us via [Discord](https://discord.gg/rk9Qthz5YE).
+If there's anything that is missing, or if you have questions, feel free to reach out via [Discord](https://discord.gg/rk9Qthz5YE).

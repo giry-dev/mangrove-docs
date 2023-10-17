@@ -111,7 +111,7 @@ const config = {
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: false,
-        respectPrefersColorScheme: true,
+        respectPrefersColorScheme: false,
       },
       docs: {
         sidebar: {
@@ -127,7 +127,7 @@ const config = {
           alt: 'Mangrove logo',
           src: 'img/assets/mangrove_only_logo_dark.png',
           srcDark: 'img/assets/mangrove_only_logo_white.png',
-          href: '/general/table-content',
+          href: '/',
           target: '_self',
         },
         items: [
