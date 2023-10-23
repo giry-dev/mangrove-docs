@@ -41,7 +41,7 @@ Smart contracts [can be attached to offers](./general/high-level/concepts/smart-
 
 * [**Last look:**](./developers/terms/last-look.md) smart offers allow you to code defensive mechanisms that adjust for market condition changes between offer posting and execution.
 
-* [**Bounty:**](./general/high-level/concepts/bounty.md) every single failed offer is compensated with a bounty,; Keeper bots can make money, and Takers don't lose any.
+* [**Bounty:**](./general/high-level/concepts/bounty.md) every single failed offer is compensated with a bounty; Keeper bots can make money, and Takers don't lose any.
 
 * **<font color="#47d77d">Permissionless:</font>** everyone can interact with the core protocol without having to ask permission nor risking to be censored.
 

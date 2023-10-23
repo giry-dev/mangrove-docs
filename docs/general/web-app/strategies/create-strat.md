@@ -23,10 +23,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Step 2/3 - Strategy parameters
 
-:::info
+:::info note
 Average return: the average monthly return of kandels for this market
 :::
-:::info
+
+:::info Note
 Risk appetite:
 * Low: corresponds to a low volatily pair (ex: stable/stable, such as USDC/USDT)
 * Medium: corresponds to a medium volatily pair (ex: volatile/stable, such as WBTC/USDT)

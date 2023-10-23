@@ -25,5 +25,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 5. After a few seconds, the targeted entry should disappear from the UI - you're done!
 
-> 💡
-> Revoking means changing the Approval amount back to 0 - it's a transaction you'll have to sign, and it'll therefore consume some gas.
+:::info Note
+Revoking means changing the Approval amount back to 0 - it's a transaction you'll have to sign, and it'll therefore consume some gas.
+:::

@@ -30,7 +30,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 * **Polygon mainnet**: you need to be connected to the Polygon mainnet. If you see a "Unsupported Network" pop-up, click "Switch network".
 * **Polygon Mumbai testnet**: you need to be connected to the Polygon Mumbai test network.
 
-:::info
+:::info Note
  If you see a "Unsupported Network" pop-up, click "Switch network".
 :::
 
