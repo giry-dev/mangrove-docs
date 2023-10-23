@@ -32,7 +32,7 @@ On the following pages, you will find more details on how to execute a [Market](
 ## About Approvals
 
 :::info Note
-You can read some more about approvals in the [Common issues](./common-issues-resolution.md) section.
+You can read some more about approvals in the [FAQ](../../FAQ/README.md#the-approval-amount-for-my-limit-orders-seems-odd---what-is-going-on) section.
 :::
 
 Here are a few rule of thumbs when it comes to approvals:
