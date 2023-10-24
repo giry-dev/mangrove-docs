@@ -12,10 +12,10 @@ When a trade occur on Mangrove, a small fee is charged to the Taker taking an of
 
 ## Current markets and fees
 
-Market | Fee
----|---
-USDC/USDT | 0%
-WETH/USDC | 0.05%
+Market | Fee | Minimum volume
+---|---|---
+USDC/USDT | 0% | 21 USDC / 21 USDT
+WETH/USDC | 0.05% | 0.010 WETH / 18 USDC
 
 :::info Example
 * Taker buys 2 WETH at a unit price of 1100 USDC/WETH
