@@ -31,6 +31,15 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 If a "Good 'til time" limit order is [partially filled](./how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transaction details, and the remainder will be reposted automatically.
 :::
 
+:::info Important
+Due to the [density](../../../developers/terms/density.md) on each market, there is a minimum token requirement when placing limit orders (except for [IOC orders](./more-on-order-types.md#immediate-or-cancel-ioc)). You can read more about why your transactions might be failing in the [FAQ](../../FAQ/README.md#why-do-my-transactions-keep-failing).
+
+Market | Minimum volume
+---|---
+USDC/USDT | 21 USDC / 21 USDT
+WETH/USDC | 0.010 WETH / 18 USDC
+:::
+
 6. Click on "Approve and buy/sell". A card will appear, tick the infinite approval box, click on "Allow 'token'" and confirm the transaction on your wallet.
 
 7. Click "Done" to close the pop-up.
