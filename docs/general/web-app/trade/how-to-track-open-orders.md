@@ -4,7 +4,7 @@ sidebar_position: 7
 ---
 
 
-# How to track open and past orders
+# How to track open/past orders
 
 
 Once you've created a Market or Limit order, tracking entries will start appearing in the "Open orders" and "History" tabs at the bottom of the page. Here is what you can expect, based on the order type you execute.
@@ -25,9 +25,9 @@ A limit order consists of two parts:
 
 * Resting order: We post an offer on the book with the part of the order that was not filled by the immediate execution. Any time the offer is taken, an entry is added to the "History" tab.
 
-
-> 💡
-> For example, if your Good 'til time limit order could not be immediately filled (fully or partially), an entry in "Open order" will show up, as well as an empty line (set at "0") in the "History" tab.
+:::info Example
+If your Good 'til time limit order could not be immediately filled (fully or partially), an entry in "Open order" will show up, as well as an empty line (set at "0") in the "History" tab.
+:::
 
 
 ## Open and past orders are market-specific

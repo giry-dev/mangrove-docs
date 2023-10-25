@@ -20,12 +20,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 3. Type in the amount of tokens you want to buy/sell. The amount to be sent will automatically appear.
 
 4. Choose your slippage tolerance.
-> 💡
-> Slippage is the difference between expected and actual trade prices.
-> * Setting a tolerance allows trades to execute within a certain price range.
-> * Higher tolerance may mean quicker execution, but less favorable prices.
-> * Lower tolerance may mean better prices, but potential for trade not to execute.
-> * Find the right balance for your trade.
+
+:::info Note
+Slippage is the difference between expected and actual trade prices.
+* Setting a tolerance allows trades to execute within a certain price range.
+* Higher tolerance may mean quicker execution, but less favorable prices.
+* Lower tolerance may mean better prices, but potential for trade not to execute.
+* Find the right balance for your trade.
+:::
 
 5. Click on "Approve and buy/sell". A card will appear, tick the infinite approval box, click on "Allow 'token'" and confirm the transaction on your wallet.
 

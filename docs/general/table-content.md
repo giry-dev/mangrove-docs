@@ -33,7 +33,6 @@ sidebar_position: 0
     * [How to place a market order](./web-app/trade/how-to-market-order.md)
     * [How to place a limit order](./web-app/trade/how-to-limit-order.md)
     * [How to track open and past orders](./web-app/trade/how-to-track-open-orders.md)
-    * [Common issues and resolution](./web-app/trade/common-issues-resolution.md)
     * [More on order types](./web-app/trade/approve-buy.md)
 * [Strategies](./web-app/strategies/README.md)
     * [Create a strategy](./web-app/strategies/create-strat.md)

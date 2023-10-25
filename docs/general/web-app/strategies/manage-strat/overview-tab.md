@@ -51,8 +51,9 @@ In the screenshot below, Token A is WETH and Token B is USDC (WETH/USDC market).
 <img src={useBaseUrl('img/assets/kandel_offers_list.png')} width="70%"/><br /><br />
 
 
-👉 **More about <font color="#5cd19b">green</font> / <font color="#eb525a">red</font> / <font color="#a7adcd">grey</font> dots:**
+:::info 👉 **More about <font color="#5cd19b">green</font> / <font color="#eb525a">red</font> / <font color="#a7adcd">grey</font> dots:**
 
 1. If you navigate on a green/red dot, the relevant offer is highlighted on the list. You can check the price at which an offer is posted, as well as the base and quote amounts.
 
 2. You are also able to refill empty offers (grey dots) by hovering over them and selecting "Refill offer".
+:::

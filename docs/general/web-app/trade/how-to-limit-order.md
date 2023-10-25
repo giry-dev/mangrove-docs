@@ -27,8 +27,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
     * **Good 'til time (GTT)**: Set an expiration date for your order (ex: active for 3 days, then canceled).
     * [**Fill or Kill (FOK)**](../../../developers/SDK/guides/fill-or-kill.md): Your order is either executed fully or not executed at all (ex: you place an order for 1 ETH at $9,500; if only 0.8 ETH can be filled, it's canceled; if fully filled, it's executed).
 
-> 💡
-> If a "Good 'til time" limit order is [partially filled](./how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transaction details, and the remainder will be reposted automatically.
+:::info Note
+If a "Good 'til time" limit order is [partially filled](./how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transaction details, and the remainder will be reposted automatically.
+:::
+
+:::info Important
+Due to the [density](../../../developers/terms/density.md) on each market, there is a minimum token requirement when placing limit orders (except for [IOC orders](./more-on-order-types.md#immediate-or-cancel-ioc)). You can read more about why your transactions might be failing in the [FAQ](../../FAQ/README.md#why-do-my-transactions-keep-failing).
+
+Market | Minimum volume
+---|---
+USDC/USDT | 21 USDC / 21 USDT
+WETH/USDC | 0.010 WETH / 18 USDC
+:::
 
 6. Click on "Approve and buy/sell". A card will appear, tick the infinite approval box, click on "Allow 'token'" and confirm the transaction on your wallet.
 
