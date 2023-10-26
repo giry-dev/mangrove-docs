@@ -7,26 +7,66 @@
 /* You can override the default Infima variables here. */
 :root {
   --ifm-font-family-base: 'Inter';
-  --ifm-color-primary: #2e4385;
-  --ifm-color-primary-dark: #293c78;
-  --ifm-color-primary-darker: #273971;
-  --ifm-color-primary-darkest: #202f5d;
-  --ifm-color-primary-light: #334a92;
-  --ifm-color-primary-lighter: #354d99;
-  --ifm-color-primary-lightest: #3c57ad;
+  --ifm-color-primary: #2FA98C;
+  --ifm-color-primary-dark: #195644;
+  --ifm-color-primary-darker: #185340;
+  --ifm-color-primary-darkest: #144335;
+  --ifm-color-primary-light: #1f6a53;
+  --ifm-color-primary-lighter: #206e56;
+  --ifm-color-primary-lightest: #247d62;
+  --ifm-font-size-base: 15px;
+  text-align: justify;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #477fdd;
-  --ifm-color-primary-dark: #2e6ed8;
-  --ifm-color-primary-darker: #2766d1;
-  --ifm-color-primary-darkest: #2054ad;
-  --ifm-color-primary-light: #6090e2;
-  --ifm-color-primary-lighter: #6c99e4;
-  --ifm-color-primary-lightest: #91b2eb;
-  background-color: #000618;
+  --ifm-color-primary: #47d77d;
+  --ifm-color-primary-dark: #30d26c;
+  --ifm-color-primary-darker: #2bc866;
+  --ifm-color-primary-darkest: #24a454;
+  --ifm-color-primary-light: #5edc8e;
+  --ifm-color-primary-lighter: #6adf96;
+  --ifm-color-primary-lightest: #8de6af;
+  background-color: #072221;
+  --ifm-font-size-base: 15px;
+  text-align: justify;
 }
+
+.alert--info{
+  --ifm-alert-background-color: #DEDEDE;
+  --ifm-alert-border-color: #193c47;
+}
+
+html[data-theme='dark'] .alert--info{
+  --ifm-alert-background-color: #03624C;
+  --ifm-alert-border-color: #DEDEDE;
+}
+
+.theme-doc-sidebar-menu {
+  font-size: 14px;
+}
+
+.theme-doc-sidebar-item-category-level-1 {
+  font-weight: bold;
+}
+
+.theme-doc-sidebar-item-category-level-2 {
+  font-weight: 400 !important
+}
+
+.theme-doc-sidebar-item-category-level-3 {
+  font-weight: 400 !important
+}
+
+.theme-doc-sidebar-item-link-level-1 {
+  font-weight: bold;
+}
+
+.theme-doc-sidebar-item-link-level-2 {
+  font-weight: 400 !important
+}
+
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Exo', sans-serif;
@@ -51,11 +91,11 @@ table {
 
 .navbar {
   /* make room for headings that break in two lines */
-  min-height: 70px;
+  min-height: 50px;
 }
 
 [data-theme='dark'] .navbar {
-  background-color: #1a1f30;
+  background-color: #051b1a;
 }
 
 @media screen and (min-width: 996px) and (max-width: 1239px) {
@@ -89,11 +129,11 @@ table {
 }
 
 [data-theme='dark'] .hero--primary {
-  background-color: #000618;
+  background-color: #051b1a;
 }
 
 .footer {
-  background-color: #1f263b;
+  background-color: #051b1a;
 }
 
 .hero-image {
@@ -108,16 +148,7 @@ table {
 
   object-fit: cover;
 
-  -webkit-mask-image: linear-gradient(
-    rgb(0 0 0 / 0.5),
-    rgb(0 0 0 / 0.2),
-    rgb(0 0 0 / 0)
-  );
-  mask-image: linear-gradient(
-    rgb(0 0 0 / 0.5),
-    rgb(0 0 0 / 0.2),
-    rgb(0 0 0 / 0)
-  );
+
 }
 
 @media screen and (min-width: 400px) and (max-width: 996px) {
