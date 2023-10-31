@@ -170,7 +170,7 @@ bool accumulate
 
 ## Source Code
 
-The [`MgvReader` source](https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5ffcd5abb02/src/periphery/MgvReader.sol) is available.
+The [`MgvReader` source](https://github.com/mangrovedao/mangrove-core/blob/a1acdb6038382e78616fbb00503ccbdb11e23d62/src/periphery/MgvReader.sol) is available.
 
 :::danger Deployment Address
 

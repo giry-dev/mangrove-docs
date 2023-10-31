@@ -11,7 +11,7 @@ A maker can %%renege|renege%% on a trade if the market conditions are no longer 
 You can follow the [smart offer tutorial](../getting-started/smart-offer.md), and extend it with the following function:
 
 ```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5ffcd5abb02/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorialResidual.sol#L93-L96
+https://github.com/mangrovedao/mangrove-strats/blob/f668a492212b4d2d844f4469f54f04b0e9e83f07/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorialResidual.sol#L93-L96
 ```
 
 This override of the `__lastLook__` will renege if the offer is not fully taken. Note that since the %%provision|provision%% is lost as a %%bounty|bounty%% to the taker, care must be taken to select the right circumstances to renege. This uses the mechanisms for compensating the taker on failure, and therefore the maker should [renege early](../../contracts/background/taker-compensation.md#encouraging-early-renege).
