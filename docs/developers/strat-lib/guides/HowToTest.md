@@ -25,7 +25,7 @@ We also import the `Amplifier` contract - the contract that we wish to test. The
 The console import is not strictly needed - however, it can be very useful, if we want to log something to the console while we are developing the test. Let us import it for now.
 
 ```solidity reference title="Amplifier.t.sol - Imports"
-https://github.com/mangrovedao/mangrove-strats/blob/f668a492212b4d2d844f4469f54f04b0e9e83f07/test/toy_strategies/Amplifier.t.sol#L1-L10
+https://github.com/mangrovedao/mangrove-strats/blob/59015a5e4d5abbaeee73f198d08614648efff0ec/test/toy_strategies/Amplifier.t.sol#L1-L10
 ```
 
 
@@ -48,7 +48,7 @@ In the implementation, we use standard *cheatcodes*, `startPrank(<address>)`, `s
 We also use a helper function `$()` provided by the Mangrove testing library offering a shorthand for writing `address()` and casting the contract to its address.
 
 ```solidity reference title="Amplifier.t.sol - Contract and Setup"
-https://github.com/mangrovedao/mangrove-strats/blob/f668a492212b4d2d844f4469f54f04b0e9e83f07/test/toy_strategies/Amplifier.t.sol#L12-L53
+https://github.com/mangrovedao/mangrove-strats/blob/59015a5e4d5abbaeee73f198d08614648efff0ec/test/toy_strategies/Amplifier.t.sol#L12-L58
 ```
 
 
@@ -66,7 +66,7 @@ Breaking the problem down, for this test, we need to
 We implement these two steps as separate functions (we need to deploy the contract for other tests, also).
 
 ```solidity reference title="Amplifier.t.sol - Testing a successful fill"
-https://github.com/mangrovedao/mangrove-strats/blob/f668a492212b4d2d844f4469f54f04b0e9e83f07/test/toy_strategies/Amplifier.t.sol#L55-L59
+https://github.com/mangrovedao/mangrove-strats/blob/59015a5e4d5abbaeee73f198d08614648efff0ec/test/toy_strategies/Amplifier.t.sol#L60-L64
 ```
 
 Now, of course, we need to implement `deployStrat()` and `execTraderStratWithFillSuccess()`.
@@ -80,7 +80,7 @@ After deployment, we use the [`activate()`](../background/offer-maker/mangrove-o
 Before calling `activate()` we also take the opportunity to demonstrate the related helper, [`checkList()`](../background/offer-maker/mangrove-offer.md#other-maker-contracts-hooks), which *checks* whether necessary approvals have been setup, and, if not, reverts (recall that `expectRevert(<message>)` is a [Foundry cheatcode](https://book.getfoundry.sh/forge/cheatcodes])).
 
 ```solidity reference title="Amplifier.t.sol - Deploying on a fork"
-https://github.com/mangrovedao/mangrove-strats/blob/f668a492212b4d2d844f4469f54f04b0e9e83f07/test/toy_strategies/Amplifier.t.sol#L85-L110
+https://github.com/mangrovedao/mangrove-strats/blob/59015a5e4d5abbaeee73f198d08614648efff0ec/test/toy_strategies/Amplifier.t.sol#L90-L117
 ```
 
 With this, we have a function that can deploy a new `Amplifier` contract on our local chain. Let us turn to writing the actual test. 
@@ -105,7 +105,7 @@ Posting offers with `Amplifier` is simply a call to [`newAmplifiedOffers`](./Dir
 
 
 ```solidity reference title="Amplifier.t.sol - Post and fund offers"
-https://github.com/mangrovedao/mangrove-strats/blob/f668a492212b4d2d844f4469f54f04b0e9e83f07/test/toy_strategies/Amplifier.t.sol#L112-L123
+https://github.com/mangrovedao/mangrove-strats/blob/59015a5e4d5abbaeee73f198d08614648efff0ec/test/toy_strategies/Amplifier.t.sol#L119-L129
 ```
 
 
@@ -116,7 +116,7 @@ Mangrove provides [snipe](../../contracts/technical-references/taking-and-making
 We make sure to impersonate the taker that we setup an address for [above](#test-contract-and-setup). (Recall that Foundry provides [`vm.prank()`](https://book.getfoundry.sh/cheatcodes/prank) for this exact purpose.)
 
 ```solidity reference title="Amplifier.t.sol - Take a single offer"
-https://github.com/mangrovedao/mangrove-strats/blob/f668a492212b4d2d844f4469f54f04b0e9e83f07/test/toy_strategies/Amplifier.t.sol#L125-L137
+https://github.com/mangrovedao/mangrove-strats/blob/59015a5e4d5abbaeee73f198d08614648efff0ec/test/toy_strategies/Amplifier.t.sol#L131-L141
 ```
 
 #### And Finally, The Test
@@ -131,7 +131,7 @@ With these helper methods, the test body amounts to the following steps:
 
 
 ```solidity reference title="Amplifier.t.sol - Putting it all together"
-https://github.com/mangrovedao/mangrove-strats/blob/f668a492212b4d2d844f4469f54f04b0e9e83f07/test/toy_strategies/Amplifier.t.sol#L165-L187
+https://github.com/mangrovedao/mangrove-strats/blob/59015a5e4d5abbaeee73f198d08614648efff0ec/test/toy_strategies/Amplifier.t.sol#L171-L194
 ```
 
 In verifying, we use a few helper functions provided by `MangroveTest`
@@ -149,13 +149,13 @@ In Foundry tests are run with the Forge tool, typically invoking something like 
 
 With our helper functions for posting and sniping offers, we we can easily add more tests. For instance, testing that an offer was correctly handled for a %%partial fill|maker-partial-fill%% looks like this:
 
-```solidity reference title="Amplifier.t.sol - Test function"
-https://github.com/mangrovedao/mangrove-strats/blob/f668a492212b4d2d844f4469f54f04b0e9e83f07/test/toy_strategies/Amplifier.t.sol#L67-L71
+```solidity reference title="Amplifier.t.sol - Testing partial fill"
+https://github.com/mangrovedao/mangrove-strats/blob/59015a5e4d5abbaeee73f198d08614648efff0ec/test/toy_strategies/Amplifier.t.sol#L72-L76
 ```
 ```solidity reference title="Amplifier.t.sol - Helper function"
-https://github.com/mangrovedao/mangrove-strats/blob/f668a492212b4d2d844f4469f54f04b0e9e83f07/test/toy_strategies/Amplifier.t.sol#L139-L163
+https://github.com/mangrovedao/mangrove-strats/blob/59015a5e4d5abbaeee73f198d08614648efff0ec/test/toy_strategies/Amplifier.t.sol#L143-L169
 ```
 
-A full test file for for the `Amplifier` contract can be found [here](https://github.com/mangrovedao/mangrove-strats/blob/f668a492212b4d2d844f4469f54f04b0e9e83f07/test/toy_strategies/Amplifier.t.sol).
+A full test file for for the `Amplifier` contract can be found [here](https://github.com/mangrovedao/mangrove-strats/blob/59015a5e4d5abbaeee73f198d08614648efff0ec/test/toy_strategies/Amplifier.t.sol).
 
 When you have sufficiently tested your %%maker contract|maker-contract%%, you may want to [deploy your contract](HowToDeploy.md) to a real chain.

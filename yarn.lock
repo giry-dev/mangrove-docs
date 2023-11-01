@@ -2866,26 +2866,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove-core@npm:2.0.0-3":
+"@mangrovedao/mangrove-core@npm:2.0.0-3, @mangrovedao/mangrove-core@npm:next":
   version: 2.0.0-3
   resolution: "@mangrovedao/mangrove-core@npm:2.0.0-3"
   checksum: 7072e48bd78e9e784d4b07d50eb86ae459e63a884c3999ed6d5c0567c95ab6c00d60ba50800feb117c15641eb207026ca59076f15005c0e2ba44ef20b4bbdacb
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove-core@npm:^1.5.8-1":
-  version: 1.5.13
-  resolution: "@mangrovedao/mangrove-core@npm:1.5.13"
-  checksum: d87ff00f99f3379dc53803be8f4c155f0c18242035176f013f64c8001c9d153c82e5306ffa355fd2e3e73db0693c2cb8a98416eedd8bd47c5a7c818a8c660974
-  languageName: node
-  linkType: hard
-
-"@mangrovedao/mangrove-strats@npm:0.0.2-0":
-  version: 0.0.2-0
-  resolution: "@mangrovedao/mangrove-strats@npm:0.0.2-0"
+"@mangrovedao/mangrove-strats@npm:0.0.2-1":
+  version: 0.0.2-1
+  resolution: "@mangrovedao/mangrove-strats@npm:0.0.2-1"
   dependencies:
-    "@mangrovedao/mangrove-core": ^1.5.8-1
-  checksum: 2eca98d7f087a01480ae85b1bf1905495f5f64efd11d3f0fbb10d7118e40bf8fd5fbdd063a80100903d9e46581d2448cf2b81a5fde11d1cd3b61a3f783174fcc
+    "@mangrovedao/mangrove-core": next
+  checksum: 72c14de0cbc1487cf14b42e45d93e14813acec5c6df1907ab656a069c9b62ee91d2ad2c9869297fcc3263b836622a08a48185fadddb713a8b14f1faeb73aa4e9
   languageName: node
   linkType: hard
 
@@ -11840,7 +11833,7 @@ __metadata:
     "@ethersproject/abi": ^5.4.7
     "@ethersproject/providers": ^5.4.7
     "@mangrovedao/mangrove-core": 2.0.0-3
-    "@mangrovedao/mangrove-strats": 0.0.2-0
+    "@mangrovedao/mangrove-strats": 0.0.2-1
     "@mangrovedao/mangrove.js": ^1.4.0
     "@mdx-js/react": ^1.6.22
     "@nomicfoundation/hardhat-chai-matchers": ^1.0.0
