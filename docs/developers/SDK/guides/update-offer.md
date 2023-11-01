@@ -59,7 +59,7 @@ When we updated our offer before, we used a `liquidityProvider` and we created t
 https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f1381dcd1/examples/how-tos/update-offer.js#L43-L46
 ```
 
-When you have a OfferLogic you can the call update offer directly on the underlying contract (which is assumed to implement the [`ILiquidityProvider` interface](../../strat-lib/technical-references/code/strategies/interfaces/ILiquidityProvider.md), but this requires a lot more info and unit conversions.
+When you have a OfferLogic you can the call update offer directly on the underlying contract (which is assumed to implement the [`ILiquidityProvider` interface](../../strat-lib/technical-references/code/strats/src/strategies/interfaces/ILiquidityProvider.md), but this requires a lot more info and unit conversions.
 
 ```js reference
 https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f1381dcd1/examples/how-tos/update-offer.js#L49-L60

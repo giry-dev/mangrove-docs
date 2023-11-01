@@ -1,7 +1,7 @@
-@mgv/src/=contracts/core-src/
-@mgv/lib/=contracts/core-lib/
-@mgv/forge-std/=contracts/core-lib/forge-std/src/
+@mgv/src/=contracts/core/src/
+@mgv/lib/=contracts/core/lib/
+@mgv/forge-std/=contracts/core/lib/forge-std/src/
 
-ds-test/=contracts/core-lib/forge-std/lib/ds-test/src/
+ds-test/=contracts/core/lib/forge-std/lib/ds-test/src/
 
-@mgv-strats/src/=contracts/strats-src/
+@mgv-strats/src/=contracts/strats/src/

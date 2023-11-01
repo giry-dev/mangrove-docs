@@ -9,4 +9,4 @@ _Routers_ are a kind of building block for smart contracts provided by the [Stra
 ## References
 
 * [Strat Lib -> Routers](../strat-lib/technical-references/router.md)
-* [Strat Lib -> AbstractRouter API Reference](../strat-lib/technical-references/code/strategies/routers/AbstractRouter)
+* [Strat Lib -> AbstractRouter API Reference](../strat-lib/technical-references/code/strats/src/strategies/routers/abstract/AbstractRouter)

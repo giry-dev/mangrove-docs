@@ -14,7 +14,7 @@ This section will go through two implementations of a %%maker contract|maker-con
 
 Below, we start by going through a fairly simple implementation of the abstract [Direct](../background/offer-maker/direct.md) contract. 
 
-Recall that `Direct` is an abstract implementation of `MangroveOffer`, which is itself a partial implementation of [`IOfferLogic`](../technical-references/code/strategies/interfaces/IOfferLogic.md) - the basic interface for maker contracts built with the Strat Library.
+Recall that `Direct` is an abstract implementation of `MangroveOffer`, which is itself a partial implementation of [`IOfferLogic`](../technical-references/code/strats/src/strategies/interfaces/IOfferLogic.md) - the basic interface for maker contracts built with the Strat Library.
 
 ### Constructor
 
@@ -26,7 +26,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ad
 
 which provides `mgv` (the address of the Mangrove contract) to MangroveOffer and %%`gasreq`|gasreq%% the gas that is required to execute the %%offer logic|offer-logic%%. The specific arguments of the Direct's constructor are the %%`router_`|router%%'s address and its %%`reserveId`|reserve-id%%. Notice that passing `address(0)` as `reserveId` is interpreted by Direct as requiring `reserveId` to be the contract's address.
 
-The `router_` argument can be either the address of a deployed %%router|router%%, or the zero address cast to an `AbstractRouter` type, when you wish to build a `Direct` contract that will do its own liquidity routing. (In the latter case, for clarity, you may also use the public constant [`NO_ROUTER`](../technical-references/code/strategies/MangroveOffer.md#no_router) provided by `MangroveOffer`.)
+The `router_` argument can be either the address of a deployed %%router|router%%, or the zero address cast to an `AbstractRouter` type, when you wish to build a `Direct` contract that will do its own liquidity routing. (In the latter case, for clarity, you may also use the public constant [`NO_ROUTER`](../technical-references/code/strats/src/strategies/MangroveOffer.md#no_router) provided by `MangroveOffer`.)
 
 We will allow users of `OfferMaker` to supply a %%router|router%%, and use the following constructor for our contract:
 
@@ -42,7 +42,7 @@ We use 30K for default %%`gasreq`|gasreq%% of our strat. This does not leave roo
 
 With this constructor in place we almost have a deployable maker contract. `Direct` already provides the implementation of a default %%offer logic|offer-logic%% as well as internal functions to post, update and retract offers posted by our contract.
 
-However, `Direct` does not expose any function able to [create new offers](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#posting-a-new-offer) on Mangrove, since the [`_newOffer`](../technical-references/code/strategies/offer_maker/abstract/Direct.md) function of Direct is internal. The requirement in our constructor to implement `ILiquidityProvider` imposes on us to have a public `newOffer` function. Using `ILiquidityProvider` ensures our contract is compatible with the [Mangrove SDK](../../SDK/README.md), which expects the `ILiquidityProvider` ABI.
+However, `Direct` does not expose any function able to [create new offers](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#posting-a-new-offer) on Mangrove, since the [`_newOffer`](../technical-references/code/strats/src/strategies/offer_maker/abstract/Direct.md) function of Direct is internal. The requirement in our constructor to implement `ILiquidityProvider` imposes on us to have a public `newOffer` function. Using `ILiquidityProvider` ensures our contract is compatible with the [Mangrove SDK](../../SDK/README.md), which expects the `ILiquidityProvider` ABI.
 
 Our implementation of `newOffer` is simply to expose the internal `_newOffer` provided by Direct making sure the function is admin restricted (`Direct` provides the appropriate modifier `onlyAdmin`):
 
@@ -135,9 +135,9 @@ We continue our implementation of the `__posthookSuccess__` hook by handling cas
 https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/Amplifier.sol#L132-L167
 ```
 
-Notice the use of the hook [`__residualGives__`](../technical-references/code/strategies/MangroveOffer.md#residualgives) in the code snippet above. For the offer currently being executed, it returns the %%give|gives%% at that offer when it is reposted. By default, this is calculated by subtracting what the taker took during %%`makerExecute`|makerExecute%% from what the offer originally gave.
+Notice the use of the hook [`__residualGives__`](../technical-references/code/strats/src/strategies/MangroveOffer.md#residualgives) in the code snippet above. For the offer currently being executed, it returns the %%give|gives%% at that offer when it is reposted. By default, this is calculated by subtracting what the taker took during %%`makerExecute`|makerExecute%% from what the offer originally gave.
 
-Also notice that we go through a slightly more complex calculation to compute the updated wants for the *other* offer: We cannot use [`__residualWants__`](../technical-references/code/strategies/MangroveOffer.md#residualwants) to deduce the amount of tokens the *other* offer should %%want|wants%%, because we cannot assume both `STABLE1` and `STABLE2` have the same decimals. (For this example, we only assume that they have the same value with respect to `BASE`.) We could zero-pad or truncate, but it is more elegant to compute the new %%wants|wants%% based on the new %%gives|gives%% - we set the constraint that we wish to preserve the %%entailed price|offer-entailed-price%%.
+Also notice that we go through a slightly more complex calculation to compute the updated wants for the *other* offer: We cannot use [`__residualWants__`](../technical-references/code/strats/src/strategies/MangroveOffer.md#residualwants) to deduce the amount of tokens the *other* offer should %%want|wants%%, because we cannot assume both `STABLE1` and `STABLE2` have the same decimals. (For this example, we only assume that they have the same value with respect to `BASE`.) We could zero-pad or truncate, but it is more elegant to compute the new %%wants|wants%% based on the new %%gives|gives%% - we set the constraint that we wish to preserve the %%entailed price|offer-entailed-price%%.
 
 ### Retracting the uncollateralized offer on the fly
 

@@ -42,9 +42,9 @@ https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ad
 
 ### Add offer management functions
 
-The abstract contract `Direct` has internal functions that allows one to manage offers: `_newOffer` for posting offers, `_updateOffer` for updating existing offers and `_retractOffer` for unpublishing offers from Mangrove. We need to expose these functions in a restricted manner, so that only the administrator of the contract can manage offers. We expose them through functions matching the [`ILiquidityProvider`](../technical-references/code/strategies/interfaces/ILiquidityProvider.md) interface.
+The abstract contract `Direct` has internal functions that allows one to manage offers: `_newOffer` for posting offers, `_updateOffer` for updating existing offers and `_retractOffer` for unpublishing offers from Mangrove. We need to expose these functions in a restricted manner, so that only the administrator of the contract can manage offers. We expose them through functions matching the [`ILiquidityProvider`](../technical-references/code/strats/src/strategies/interfaces/ILiquidityProvider.md) interface.
 
-> See [OfferArgs](../technical-references/code/strategies/interfaces/IOfferLogic.md#offerargs) for an explanation of the parameters for posting an offer.
+> See [OfferArgs](../technical-references/code/strats/src/strategies/interfaces/IOfferLogic.md#offerargs) for an explanation of the parameters for posting an offer.
 
 > Also see %%provision|provision%%, %%gasreq|gasreq%%, and %%pivotId|pivot-id%%, and %%offer list|offer-list%%.
 
