@@ -2873,12 +2873,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove-strats@npm:0.0.2-1":
-  version: 0.0.2-1
-  resolution: "@mangrovedao/mangrove-strats@npm:0.0.2-1"
+"@mangrovedao/mangrove-strats@npm:0.0.2-2":
+  version: 0.0.2-2
+  resolution: "@mangrovedao/mangrove-strats@npm:0.0.2-2"
   dependencies:
     "@mangrovedao/mangrove-core": next
-  checksum: 72c14de0cbc1487cf14b42e45d93e14813acec5c6df1907ab656a069c9b62ee91d2ad2c9869297fcc3263b836622a08a48185fadddb713a8b14f1faeb73aa4e9
+  checksum: 2fa3d17b78860eaed0c5d13aa4d89d6df7346ef83680e92f405c397b8eaefd1b655a006f4753c9365c35b80d657e9e48bada6b9c45b13d4be953e8144b716dcc
   languageName: node
   linkType: hard
 
@@ -11833,7 +11833,7 @@ __metadata:
     "@ethersproject/abi": ^5.4.7
     "@ethersproject/providers": ^5.4.7
     "@mangrovedao/mangrove-core": 2.0.0-3
-    "@mangrovedao/mangrove-strats": 0.0.2-1
+    "@mangrovedao/mangrove-strats": 0.0.2-2
     "@mangrovedao/mangrove.js": ^1.4.0
     "@mdx-js/react": ^1.6.22
     "@nomicfoundation/hardhat-chai-matchers": ^1.0.0
