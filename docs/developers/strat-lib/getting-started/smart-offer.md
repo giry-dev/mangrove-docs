@@ -24,8 +24,8 @@ Start by creating a new `OfferMakerTutorial.sol` file in the `src` folder, and a
 
 Add the imports we are going to need, along with a standard solidity preamble.
 
-```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5ffcd5abb02/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L1-L8
+```solidity reference title="OfferMakerTutorial.sol - Preamble"
+https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L1-L9
 ```
 
 ### Constructor
@@ -36,30 +36,30 @@ We will skip some details here, which you can read more about later; %%routers|r
 > Note: we also implement the `ILiquidityProvider` interface which makes the contract compatible with what the [SDK](../../SDK/README.md) expects.
 
 
-```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5ffcd5abb02/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L12-L27
+```solidity reference title="OfferMakerTutorial.sol - Contract and constructor"
+https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L13-L26
 ```
 
 ### Add offer management functions
 
-The abstract contract `Direct` has internal functions that allows one to manage offers: `_newOffer` for posting offers, `_updateOffer` for updating existing offers and `_retractOffer` for unpublishing offers from Mangrove. We need to expose these functions in a restricted manner, so that only the administrator of the contract can manage offers. We expose them through functions matching the [`ILiquidityProvider`](../technical-references/code/strategies/interfaces/ILiquidityProvider.md) interface.
+The abstract contract `Direct` has internal functions that allows one to manage offers: `_newOffer` for posting offers, `_updateOffer` for updating existing offers and `_retractOffer` for unpublishing offers from Mangrove. We need to expose these functions in a restricted manner, so that only the administrator of the contract can manage offers. We expose them through functions matching the [`ILiquidityProvider`](../technical-references/code/strats/src/strategies/interfaces/ILiquidityProvider.md) interface.
 
-> See [OfferArgs](../technical-references/code/strategies/interfaces/IOfferLogic.md#offerargs) for an explanation of the parameters for posting an offer.
+> See [OfferArgs](../technical-references/code/strats/src/strategies/interfaces/IOfferLogic.md#offerargs) for an explanation of the parameters for posting an offer.
 
 > Also see %%provision|provision%%, %%gasreq|gasreq%%, and %%pivotId|pivot-id%%, and %%offer list|offer-list%%.
 
 Add the below code to your contract.
 
-```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5ffcd5abb02/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L31-L86
+```solidity reference title="OfferMakerTutorial.sol - Offer management functions"
+https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L30-L70
 ```
 
 ### Emit in Posthook
 
 When using our new contract, we can inspect traces and addresses but illustrative purposes, let's insert the following to emit an event in the %%posthook|makerPosthook%% when the offer is successfully taken.
 
-```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-core/blob/d6a2aae336a7ea89abe2479ab797b5ffcd5abb02/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L90-L101
+```solidity reference title="OfferMakerTutorial.sol - Emit in Posthook"
+https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L74-L83
 ```
 
 There are more hooks to enable the Mangrovian abilities of %%last look|last-look%% and more advanced %%reactive liquidity|reactive-liquidity%%.

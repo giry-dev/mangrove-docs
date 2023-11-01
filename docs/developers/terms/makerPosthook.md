@@ -8,4 +8,4 @@ The callback function of an %%offer logic|offer-logic%% that is called by Mangro
 
 ## Reference
 * Technical reference for [trade post-hook](../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md#trade-posthook)
-* [Strat Lib -> MangroveOffer code](../strat-lib/technical-references/code/strategies/MangroveOffer.md#makerposthook)
+* [Strat Lib -> MangroveOffer code](../strat-lib/technical-references/code/strats/src/strategies/MangroveOffer.md#makerposthook)

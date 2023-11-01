@@ -5,7 +5,9 @@ sidebar_label: Using the MgvCleaner contract to clean failing offers
 
 # Using the `MgvCleaner` contract to clean failing offers
 
-Mangrove provides a [cleaner contract](../../contracts/technical-references/periphery/cleaner.md) called `MgvCleaner` to ease cleaning. This contract provides a `collect` method that calls [Mangrove.snipes](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#offer-sniping) (forwarding the parameters unchanged) but will revert if any offer in the `targets` array succeed. Thus, cleaning via the cleaner contract guards you from offers unexpectedly succeeding when you try to snipe them to collect a bounty.
+FIXME Update the following text to reference `Mangrove.cleanByImpersonation` instead of `MgvCleaner`
+
+Mangrove provides a cleaner contract called `MgvCleaner` to ease cleaning. This contract provides a `collect` method that calls [Mangrove.snipes](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#offer-sniping) (forwarding the parameters unchanged) but will revert if any offer in the `targets` array succeed. Thus, cleaning via the cleaner contract guards you from offers unexpectedly succeeding when you try to snipe them to collect a bounty.
 
 The prerequisites and steps needed to use the `MgvCleaner.collect` function are:
 

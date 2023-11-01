@@ -8,5 +8,5 @@ Liquidity providers can incorporate defensive code, called _lastLook_, to cancel
 
 ## References
 * [Strat Lib -> Maker contracts' hooks: last look](../strat-lib/technical-references/main-hooks.md#last-look-before-trade)
-* [Strat Lib -> MangroveOffer's code: `lastLook`](../strat-lib/technical-references/code/strategies/MangroveOffer.md#lastlook)
+* [Strat Lib -> MangroveOffer's code: `lastLook`](../strat-lib/technical-references/code/strats/src/strategies/MangroveOffer.md#lastlook)
 * %%Reneging on offers|renege%%.
