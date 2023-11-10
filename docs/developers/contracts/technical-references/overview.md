@@ -20,7 +20,7 @@ The Mangrove contract is depicted in the middle, with the three most important a
 
 ## Takers
 
-As a taker on Mangrove you take offers published by makers as liquidity promises. Offers can be taken using general [market orders](taking-and-making-offers/taker-order/README.md#market-order) or [sniped](taking-and-making-offers/taker-order/README.md#offer-sniping) individually.
+As a taker on Mangrove you take offers published by makers as liquidity promises. Offers can be taken using general [market orders](taking-and-making-offers/taker-order/README.md#market-order) or [clean](../../keeper-bots/guides/use-mgvcleaner-to-clean-offers) them individually.
 
 Takers may typically operate via a web front-end or with the help of the TypeScript [SDK](../../SDK/README.md) for developing off-chain apps to interact with Mangrove ecosystem.
 
@@ -55,7 +55,12 @@ This allows makers, for instance, to post another offer to redisplay their liqui
 
 The diagram below summarizes the call sequence induced by a taker order. Notice that first the `makerExecute` functions is executed for all offers, and only subsequently are the `makerPosthook` functions of the offers executed.
 
-![Mangrove call sequence induced by a taker order](/img/assets/execution.png)
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="text--center">
+<img src={useBaseUrl('/img/assets/execution.png')} width="60%"/>
+</div>
 
 ## Where can I read more?
 
