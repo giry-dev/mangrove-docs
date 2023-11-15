@@ -7,25 +7,28 @@ sidebar_position: 1
 
 ## General structure
 
-The offer list is the basic Mangrove data structure. It contains offers (created by offer makers) that promise an **%%outbound|outbound%% token**, and request an **%%inbound|inbound%% token** in return (offer takers execute these offers by providing the **inbound token**, and receive **outbound tokens** in return).
+The offer list is the basic Mangrove data structure. Mangrove holds offer lists for **%%outbound|outbound%% token** (`outbound_tnk`), **%%inbound|inbound%% token** (`inbound_tkn`) pairs with a given **%%tick spacing|tickSpacing%%** (`tickSpacing`).
+Offers are sorted in a tree (the “[tick tree](#tick-tree)") where each available price point (a [bin](#bins-doubly-linked-lists)) holds a doubly linked list of offers. Each offer promises `outbound_tkn` and requests `inbound_tkn`.
 
-For example in a DAI-wETH offer list, DAI is the outbound token (i.e., to be sent by the offer) and wETH the inbound token (i.e., wanted by the offer).
+For example in a DAI-WETH offer list, DAI is the outbound token (i.e., to be sent by the offer) and WETH the inbound token (i.e., wanted by the offer).
 
 :::info Relationship to markets
 
-A full market will always feature two offer lists. For instance, a wETH/DAI **market** has one DAI-wETH offer list (where wETH is requested and DAI is offered), and a wETH-DAI offer list (where DAI is requested and wETH is offered).
+A full market will always feature two offer lists. For instance, a WETH/DAI **market** has one DAI-WETH offer list (where wETH is requested and DAI is offered), and a WETH-DAI offer list (where DAI is requested and WETH is offered).
 
 [Mangrove's SDK ](../../../SDK/README.md) offers Market abstractions that allows liquidity providers and takers to interact with Mangrove using standard trading _base_ and _quote_ denominations.
 
 :::
 
-Here's a sample DAI-wETH offer list with two offers. Only the main characteristics of the offers are shown (see the [offer data structure](reactive-offer/offer-data-structures.md#mgvlib-offer)).
+Here's a sample DAI-WETH offer list with two offers. Only the main characteristics of the offers are shown (see the [offer data structure](reactive-offer/offer-data-structures.md#mgvlib-offer)).
 
 
-| Rank | Offer ID | Wants (wETH) | Gives (DAI) | Gas required | Maker Contract | Offer Gas Price |
-| ---- | -------- | ------------ | ----------- | ------------ | -------------- | --------------- |
-| #1   | 77       | 1            | 2 925.26    | 250,000      | 0x5678def      | 150             |
-| #2   | 42       | 0.3          | 871.764     | 300,000      | 0x1234abc      | 200             |
+|  Tick   | Ratio (WETH/DAI) | Offer ID | Gives (DAI) | Gas required | Maker Contract | Offer Gas Price |
+| ------- | ---------------- | -------- | ----------- | ------------ | -------------- | --------------- |
+| -79815  | 0.0003419        | 77       | 925.26      | 250,000      | 0x5678def      | 150             |
+|         |                  | 177      | 916.47      | 270,000      | 0x9101ghi      | 170             |   
+| -79748  | 0.0003442        | 42       | 871.76      | 300,000      | 0x1234abc      | 200             |
+
 
 :::caution **Decimals**
 
@@ -35,15 +38,25 @@ We display human-readable values in the examples, but Mangrove stores raw token 
 
 ## Some terminology
 
-### Offer rank
+### Tick tree
 
-Offers are ordered from best to worst. Offers are compared based on _price_, and subsequently ranked based on delivering more volume per [_gas required_](#gas-required), if they have the same price.
+Offers are stored in a tree we call a “tick tree”. Thanks to this tree structure, offer operations (insert, update, and retract) take constant time (the height of the tree is fixed).
 
-:::info **Example**
+### Bins (doubly linked lists)
 
-The price of the offer with ID 42 is ~0.0003441298 wETH per DAI while the price of offer with ID 77 is ~0.00034185 wETH per DAI. The offer with ID 77 is therefore the best offer (lowest price) of this offer list, and is ranked first.
+Below the bottom of the tree are bins.
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="text--center">
+<img src={useBaseUrl('/img/assets/bin.png')} width="60%"/>
+</div>
+
+:::caution **Note**
+All offers in a bin have the same tick. During a market order, offers in a bin are executed in order, from the first to the last. Inserted offers are always appended at the end of a bin.
 :::
+
+Bins are laid in sequence. In the context of an offer list, each bin has an associated tick (and a tick determines a price). If a bin has tick `t`, the following bin has tick `t+tickSpacing`.
 
 ### Offer ID
 
@@ -51,18 +64,22 @@ The identifier of the offer in the offer list.
 
 :::danger **Important**
 
-Two offers may have the same ID as long as they belong to different offer lists. For instance, there may be an offer with ID 42 on the wETH-DAI offer list with different volumes, gas required, maker contract, etc., than the offer with ID 42 in the DAI-wETH offer list shown above.
+Two offers may have the same ID as long as they belong to different offer lists. For instance, there may be an offer with ID 42 on the WETH-DAI offer list with different volumes, gas required, maker contract, etc., than the offer with ID 42 in the DAI-WETH offer list shown above.
 
 :::
 
-### Wants, gives and entailed price
+### Gives, ratio and entailed price
 
-Taken together, the **wants** and **gives** values define 1) a max volume, 2) a price. The **entailed price** `p` is `p = wants/gives`, and an offer promises delivery of up to **gives** %%outbound|outbound%% tokens at a price of `p` tokens delivered per %%inbound|inbound%% token received.
+Taken together, the **gives** and **ratio** values define 1) a max volume, 2) a price. The **entailed price** `p` is `p = ratio`:
+* An offer promises to deliver up to **gives** %%outbound|outbound%% tokens at a price of `p` tokens delivered per %%inbound|inbound%% token received.
+* How much an offer wants can be simply calculated by multiplying the Gives by the ratio (ex: `offer ID 77 wants = 925.26 * 0.0003419 = 0.316 WETH`).
 
 :::info **Examples**
 
-* The offer with ID 42 _wants_ 0.3 wETH to deliver its promised 871.764 DAI.
-* If the offer with ID 77 is executed and receives 0.5 wETH, it _gives_ 1462.63 DAI.
+Based on the above table:
+* The offer with ID 77 promises 925.26 DAI at a ratio of 0.0003419, i.e. it wants `925.26 * 0.0003419 = 0.316` WETH.
+* The offer with ID 177 is part of the same bin as offer 77, hence has a similar tick and ratio. It promises 916.47 DAI at a ratio of 0.0003419, i.e. it wants `916.47 * 0.0003419 = 0.313` WETH.
+* The offer with ID 42 is in a different bin, and has a different tick and ratio. It promises 871.76 DAI at a ratio of 0.0003442, i.e. it wants `871.76 * 0.0003442 = 0.300` WETH.
 
 :::
 

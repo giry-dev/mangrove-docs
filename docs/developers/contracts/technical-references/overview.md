@@ -16,11 +16,13 @@ The Mangrove contract is depicted in the middle, with the three most important a
     
 * [Takers](#takers) use Mangrove to [find liquidity](../background/offer-taker.md) by executing offers published on Mangrove.
 
+* Cleaners can target offers that would likely fail individually to [clean](../../keeper-bots/guides/use-mgvcleaner-to-clean-offers) them, i.e. remove them from the book in exchange for a bounty.
+
 * [Governance](#governance) adjusts Mangrove [parameters](./governance-parameters/README.md) such as setting fees or opening and closing markets.
 
 ## Takers
 
-As a taker on Mangrove you take offers published by makers as liquidity promises. Offers can be taken using general [market orders](taking-and-making-offers/taker-order/README.md#market-order) or [clean](../../keeper-bots/guides/use-mgvcleaner-to-clean-offers) them individually.
+As a taker on Mangrove you take offers published by makers as liquidity promises. Offers are taken using general [market orders](taking-and-making-offers/taker-order/README.md#market-order).
 
 Takers may typically operate via a web front-end or with the help of the TypeScript [SDK](../../SDK/README.md) for developing off-chain apps to interact with Mangrove ecosystem.
 

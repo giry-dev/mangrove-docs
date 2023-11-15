@@ -9,11 +9,11 @@ Mangrove provides a number of getter functions providing views on offers and %%o
 
 ## Public getters
 
-### `best(address outbound, address inbound)`
+### `best(address outbound, address inbound, uint tickSpacing)`
 
 :::info
 
-Returns the offer identifier that occupies the best %%rank|offer-rank%% in the `(outbound, inbound)` %%offer list|offer-list%%.
+Returns the `offerId` of the best offer in the %%offer list|offer-list%%.
 
 :::
 
@@ -30,8 +30,9 @@ import "src/IMangrove.sol";
 IMangrove mgv;
 address outbound_tkn;
 address inbound_tkn;
+uint tickSpacing;
 
-uint best = mgv.best(outbound_tkn, inbound_tkn); 
+uint best = mgv.best(outbound_tkn, inbound_tkn, tickSpacing); 
 ```
 
 </TabItem>
@@ -42,6 +43,7 @@ const { ethers } = require("ethers");
 // context
 let outboundTkn; // address of outbound token ERC20
 let inboundTkn; // address of inbound token ERC20
+let tickSpacing; // number of ticks that should be jumped between available price points
 let MGV_address;
 let MGV_abi; // Mangrove contract's abi
 
@@ -52,13 +54,13 @@ const mgv = new ethers.Contract(
     );
 
 // getting best offer of the (outTkn,inbTk) market
-const best = await mgv.best(outboundTkn, inboundTkn); 
+const best = await mgv.best(outboundTkn, inboundTkn, tickSpacing); 
 ```
 
 </TabItem>
 </Tabs>
 
-### `offers(address, address)` and `offerDetails(address, address, uint)`
+### `offers(address, address, uint, uint )` and `offerDetails(address, address, uint, uint)`
 
 :::info
 
@@ -77,18 +79,19 @@ import {MgvStructs} "src/MgvLib.sol";
 address MGV;
 address outTkn; 
 address inbTkn;
+uint tickSpacing;
 uint offerId; // the id of the offer one wishes to get the data of
 
 // if one wishes to get the totally unpacked data (gas costly!):
 (MgvStructs.OfferUnpacked memory offer, MgvStructs.OfferDetailUnpacked memory offerDetail) = Mangrove(MGV)
-.offerInfo(outTkn,inbTkn,offerId);
+.offerInfo(outTkn, inbTkn, tickSpacing, offerId);
 
 // if one wishes to access a few particular fields, say `wants`, `gives` and `gasreq` parameters of the offer: 
-// 1. getting packed (outTkn, inbTkn) Offer List data
+// 1. getting packed (outTkn, inbTkn, tickSpacing) Offer List data
 MgvStructs.OfferPacked memory offer32 = Mangrove(MGV)
-.offers(outTkn, inbTkn, offerId);
+.offers(outTkn, inbTkn, tickSpacing, offerId);
 MgvStructs.OfferDetailPacked memory offerDetail32 = Mangrove(MGV)
-.offerDetails(outTkn, inbTkn, offerId);
+.offerDetails(outTkn, inbTkn, tickSpacing, offerId);
 
 // for all fields f of OfferUnpacked
 // offer.f == offer32.f()
@@ -105,6 +108,7 @@ const { ethers } = require("ethers");
 // context
 let outTkn; // address of outbound token ERC20
 let inbTkn; // address of inbound token ERC20
+let tickSpacing; // number of ticks that should be jumped between available price points
 let MGV_address; // address of Mangrove
 let MGV_abi; // Mangrove contract's abi
 
@@ -115,7 +119,7 @@ const Mangrove = new ethers.Contract(
     );
 
 // getting offer data in an abi compatible format
-const [offer, offerDetail] = await Mangrove.offerInfo(outTkn,inbTkn,offerId);
+const [offer, offerDetail] = await Mangrove.offerInfo(outTkn, inbTkn, tickSpacing, offerId);
 
 // now one can access any field, say wants, gives and gasprice of the offer:
 const wants = offer.wants;
@@ -126,11 +130,11 @@ const gasreq = offerDetail.gasreq;
 </TabItem>
 </Tabs>
 
-### `isLive(address, address, uint)`
+### `isLive(address, address, uint, uint)`
 
 :::info
 
-An offer is **live** in a given [Offer List](offer-list.md) if it can be matched during a [market order](taker-order/). The view function `isLive` can be used to verify whether `offerId` identifies a **live** offer in a (`outboundToken`,`inboundToken`) offer List of Mangrove.
+An offer is **live** in a given [Offer List](offer-list.md) if it can be matched during a [market order](taker-order/). The view function `isLive` can be used to verify whether `offerId` identifies a **live** offer in a (`outboundToken`,`inboundToken`, `tickSpacing`) offer List of Mangrove.
 
 :::
 
@@ -144,10 +148,11 @@ import "src/IMangrove.sol";
 IMangrove mgv;
 address outTkn;
 address inbTkn;
-address offerId;
+uint tickSpacing;
+uint offerId;
 
 // checking whether offerId is live in the (outTkn, inbTkn) order book.
-bool isLive = mgv.isLive(outTkn,inbTkn,offerId);
+bool isLive = mgv.isLive(outTkn, inbTkn, tickSpacing, offerId);
 ```
 
 </TabItem>
@@ -159,6 +164,7 @@ const { ethers } = require("ethers");
 // context
 let outTkn; // address of outbound token ERC20
 let inbTkn; // address of inbound token ERC20
+let tickSpacing; // number of ticks that should be jumped between available price points
 let offerId; // offer id
 let MGV_address; // address of Mangrove
 let MGV_abi; // Mangrove contract's abi
@@ -170,7 +176,7 @@ const Mangrove = new ethers.Contract(
     );
 
 // checking whether offerId is live on (outTkn, inbTkn) Offer List.
-const isLive = await Mangrove.isLive(outTkn,outTkn,offerId);
+const isLive = await Mangrove.isLive(outTkn, outTkn, tickSpacing, offerId);
 ```
 
 </TabItem>
@@ -188,18 +194,17 @@ Offer data is split between  [`OfferUnpacked`](#mgvlibmgvstructsofferunpacked) a
 
 | Type     | Field   | Comments                                                                   |
 | -------- | ------- | -------------------------------------------------------------------------- |
-| `uint32` | `prev`  | Predecessor offer id (better price)                                        |
-| `uint32` | `next`  | Successor offer id (worst price)                                           |
-| `uint96` | `gives` | What the offer gives (in _wei_ units of base token of the offer's market)  |
-| `uint96` | `wants` | What the offer wants (in _wei_ units of quote token of the offer's market) |
+| `uint` | `prev`  | Predecessor offer id (better price)                                        |
+| `uint` | `next`  | Successor offer id (worst price)                                           |
+| `Tick`   | `tick` | Tick number associated with the offer  |
+| `uint` | `gives` | What the offer gives (in _wei_ units of base token of the offer's market)  |
 
 ### `MgvLib.OfferDetailUnpacked`
 
 | Type      | Field           | Comments                                                                                                                                  |
 | --------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `address` | `maker`         | address of the offer's [Maker Contract](reactive-offer/maker-contract.md)                                                                 |
-| `uint24`  | `gasreq`        | Gas required by the offer (in gas units)                                                                                                  |
-| `uint16`  | `gasprice`      | The gas price covered by the offer bounty (in _gwei_ per gas units)                                                                       |
-| `uint24`  | `offer_gasbase` | Mangrove's [gasbase](../governance-parameters/mangrove-configuration.md#local-parameters) at the time the offer was posted (in gas units) |
+| `address` | `maker`         | Address of the offer's [Maker Contract](reactive-offer/maker-contract.md)                                                                 |
+| `uint`  | `gasreq`        | Gas required by the offer (in gas units)                                                                                                  |
+| `uint`  | `kilo_offer_gasbase` | Mangrove's [gasbase](../governance-parameters/mangrove-configuration.md#local-parameters) at the time the offer was posted (in gas units) |
+| `uint`  | `gasprice`      | The gas price covered by the offer bounty (in _gwei_ per gas units)                                                                       |
 
-##
