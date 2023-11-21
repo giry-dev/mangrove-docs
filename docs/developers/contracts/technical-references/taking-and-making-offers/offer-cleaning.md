@@ -257,6 +257,35 @@ For offer #2, we will *not* attempt to execute this offer, as the %%entailed pri
 
 :::
 
+## Cleaning delegation
+
+Once a Delegate Taker is approved or permitted by a taker, she can use the delegated Taker Orders variants `marketOrderFor` and `snipesFor` which work similarly to [`marketOrder`](README.md#market-order) and [`clean`](README.md#offer-sniping) but require an additional `taker` address.
+
+<Tabs>
+<TabItem value="function" label="Function" default>
+
+```solidity
+// Delegated snipes
+function snipesFor(
+    address outbound_tkn,
+    address inbound_tkn,
+    uint[4][] memory targets,
+    bool fillWants,
+    // highlight-next-line
+    address taker
+  )
+    external
+    returns (
+      uint successes,
+      uint takerGot,
+      uint takerGave,
+      uint bounty,
+      uint fee
+    );
+    
+```
+</TabItem>
+</Tabs>
 
 ## Bounties for taking failing offers
 If an offer fails to deliver, the taker gets a %%bounty|bounty%% in native token to compensate for the gas spent on executing the offer. The bounty is paid by the %%offer owner|offer-owner%% and are taken from the %%provision|provision%% they deposited with Mangrove when posting the offer. 

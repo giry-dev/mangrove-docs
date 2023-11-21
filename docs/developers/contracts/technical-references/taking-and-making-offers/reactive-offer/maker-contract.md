@@ -16,6 +16,8 @@ and [trade posthook](#trade-posthook).
 
 The logic associated with an offer **must** be implemented in the `makerExecute` callback function. (See [data structures](offer-data-structures.md#mgvlib.singleorder) for `SingleOrder` type).
 
+!!![code Offer Logic TBD]!!!
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -23,8 +25,8 @@ import TabItem from '@theme/TabItem';
 <TabItem value="signature" label="Signature" default>
 
 ```solidity
-function makerExecute(MgvLib.SingleOrder calldata order)
-external returns (bytes32 makerData);
+function makerExecute(MgvLib.SingleOrder calldata sor)
+internal returns (uint gasused, bytes32 makerData);
 ```
 
 </TabItem>

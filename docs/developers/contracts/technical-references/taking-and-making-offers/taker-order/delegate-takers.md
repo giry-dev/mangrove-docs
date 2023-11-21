@@ -11,10 +11,13 @@ A **Taker** **Order** on Mangrove can be sent on behalf of a taker, in which cas
 :::info
 
 Approving a Delegate Taker for inbound tokens MUST be done via the standard `approve` function of the ERC20 managing the inbound token of the offer list. The approval MUST be enough to cover `takerGives` amount of inbound tokens of the `snipesFor` or `marketOrderFor` calls.
-
 :::
 
 Alternatively, Mangrove allows the taker to `permit` a delegate taker to act on their behalf.
+
+:::danger Important
+Approval are made for all offer lists, regardless of `tickSpacing`.
+:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -48,7 +51,9 @@ function permit(
 
 ## Delegated Order Taking
 
-Once a Delegate Taker is approved or permitted by a taker, she can use the delegated Taker Orders variants `marketOrderFor` and `snipesFor` which work similarly to [`marketOrder`](README.md#market-order) and [`snipes`](README.md#offer-sniping) but require an additional `taker` address.
+[To edit paragraph]
+
+Once a Delegate Taker is approved or permitted by a taker, she can use the delegated Taker Orders variant `marketOrderFor` which work similarly to [`marketOrder`](README.md#market-order) but require an additional `taker` address.
 
 <Tabs>
 <TabItem value="function" label="Function" default>
@@ -64,27 +69,8 @@ function marketOrderFor(
     // highlight-next-line
     address taker
   ) external returns (uint takerGot, uint takerGave, uint bounty, uint fee);
- 
-// Delegated snipes
-function snipesFor(
-    address outbound_tkn,
-    address inbound_tkn,
-    uint[4][] memory targets,
-    bool fillWants,
-    // highlight-next-line
-    address taker
-  )
-    external
-    returns (
-      uint successes,
-      uint takerGot,
-      uint takerGave,
-      uint bounty,
-      uint fee
-    );
     
 ```
-
 </TabItem>
 </Tabs>
 

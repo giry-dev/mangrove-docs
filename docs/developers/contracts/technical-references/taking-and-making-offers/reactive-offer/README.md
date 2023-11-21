@@ -11,13 +11,15 @@ New offers should mostly be posted by [maker contracts](maker-contract.md) able 
 
 Offers posted via maker contracts are called %%smart offers|smart-offer%% - as opposed to %%on-the-fly offers|on-the-fly-offer%% made from EOA's.
 
-All offers on Mangrove are posted via Mangrove's `newOffer` function.
+All offers on Mangrove are posted via Mangrove's `newOfferByVolume` function.
 
 :::info 
 
-`newOffer` is payable and can be used to credit the maker contract's balance on Mangrove on the fly. A non zero `msg.value` will allow Mangrove to credit the maker contract's balance prior to locking the %%provision|provision%% of the newly posted offer.
+`newOfferByVolume` is payable and can be used to credit the maker contract's balance on Mangrove on the fly. A non zero `msg.value` will allow Mangrove to credit the maker contract's balance prior to locking the %%provision|provision%% of the newly posted offer.
 
 :::
+
+!![SOLY and JS TBD]!!
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -26,14 +28,12 @@ import TabItem from '@theme/TabItem';
 <TabItem value="signature" label="Signature" default>
 
 ```solidity
-function newOffer(
-    address outboundTkn,
-    address inboundTkn,
+function newOfferByVolume(
+    OKLKEY memory olkey,
     uint wants, // amount of inbound Tokens
     uint gives, // amount of outbound Tokens
     uint gasreq,
     uint gasprice,
-    uint pivotId
 ) external payable returns (uint offerId);
 ```
 
@@ -43,15 +43,13 @@ function newOffer(
 ```solidity
 // logging new offer's data 
 event OfferWrite(
-      address outboundTkn,
-      address inboundTkn,
-      address maker, // account that created the offer, will be called upon execution
-      uint wants,
+      bytes32 indexed olKeyHash,
+      address indexed maker, // account that created the offer, will be called upon execution
+      int tick,
       uint gives,
       uint gasprice, // gasprice that was used to compute the offer bounty
       uint gasreq,
-      uint offerId, // id of the new offer
-      uint prev // offer id of the closest best offer at the time of insertion 
+      uint id // id of the new offer
     );
  // `maker` balance on Mangrove (who is `msg.sender`) is debited of `amount` WEIs to provision the offer
  event DebitWei(address maker, uint amount);
@@ -72,14 +70,14 @@ event OfferWrite(
 "mgv/offerIdOverflow" // Unlikely as max offer id is 2**24
 
 // Overflow
-"mgv/writeOffer/gasprice/16bits"
-"mgv/writeOffer/gives/96bits"
-"mgv/writeOffer/wants/96bits"
+"mgv/writeOffer/gasprice/tooBig"
+"mgv/writeOffer/gives/tooBig"
 
 // Invalid values
 "mgv/writeOffer/gasreq/tooHigh" // gasreq above gasmax
 "mgv/writeOffer/gives/tooLow"   // gives should be greater than 0
 "mgv/writeOffer/density/tooLow" // wants / (gasreq + overhead) below density
+"mgv/writeOffer/tick/outOfRange"
 
 // Insufficient provision
 "mgv/insufficientProvision" // provision of `msg.sender` should cover offer bounty
@@ -190,13 +188,14 @@ await tx.wait();
 
 **Inputs**
 
-* `outbound_tkn` address of the %%outbound|outbound%% token (that the offer will provide).
-* `inbound_tkn` address of the %%inbound|inbound%% token (that the offer will receive).
+* `olkey` struct containing:
+  * `outbound_tkn` address of the _outbound_ token (that the taker will buy).
+  * `inbound_tkn` address of the _inbound_ token (that the taker will spend).
+  * `tickSpacing` number of ticks that should be jumped between available price points.
 * `wants` amount of inbound tokens requested by the offer. **Must** fit in a `uint96`.
 * `gives` amount of outbound tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t. to `gasreq` and offer list's %%density|density%% parameter.
 * `gasreq` amount of gas that will be given to the offer's account. **Must** fit in a `uint24` and be lower than [`gasmax`](../../governance-parameters/mangrove-configuration.md#mgvlibmgvstructsglobalunpacked). Should be sufficient to cover all calls to the maker contract's %%offer logic|offer-logic%% (%%`makerExecute`|makerExecute%%) and %%`makerPosthook`|makerPosthook%%). **Must** be compatible with the offered volume `gives` and the offer list's %%density|density%% parameter. (See also %%gasreq|gasreq%%.)
 * `gasprice` gas price override used to compute the order %%provision|provision%% (see also [offer bounties](offer-provision.md)). Any value lower than Mangrove's current %%gasprice|gasprice%% will be ignored (thus 0 means "use Mangrove's current %%gasprice|gasprice%%"). **Must** fit in a `uint16`.
-* `pivotId` where to start the insertion process in the offer list. If %%pivotId|pivot-id%% is not in the offer list at the time the transaction is processed, the new offer will be inserted starting from the offer list's [best](./#getting-current-best-offer-of-a-market) offer. Should be the id of the existing live offer with the price closest to the price of the offer being posted.
 
 **Outputs**
 
@@ -206,7 +205,7 @@ await tx.wait();
 
 Since offers can fail, Mangrove requires each offer to be %%provisioned|provision%% in native token. If an offer fails, part of that provision will be sent to the caller that executed the offer, as compensation.
 
-Make sure that your offer is [well-provisioned](offer-provision.md#checking-an-account-balance) before calling `newOffer`, otherwise the call will fail. The easiest way to go is to send a comfortable amount of native token to Mangrove from your offer-posting contract. Mangrove will remember your balance and use it when necessary.
+Make sure that your offer is [well-provisioned](offer-provision.md#checking-an-account-balance) before calling `newOfferByVolume`, otherwise the call will fail. The easiest way to go is to send a comfortable amount of native token to Mangrove from your offer-posting contract. Mangrove will remember your balance and use it when necessary.
 
 :::
 
@@ -222,18 +221,18 @@ Make sure that your offer is [well-provisioned](offer-provision.md#checking-an-a
 
 Offers are updated through the `updateOffer` function described below.
 
+!![SOLY TBD]!!
+
 <Tabs>
 <TabItem value="signature" label="Signature" default>
 
 ```solidity
-function updateOffer( 
-    address outboundToken, 
-    address inboundToken, 
+function updateOfferByVolume( 
+    OLKEY memory olkey,
     uint wants, 
     uint gives, 
     uint gasreq, 
     uint gasprice, 
-    uint pivotId, 
     uint offerId
 ) external payable;
 ```
@@ -243,15 +242,13 @@ function updateOffer(
 
 ```solidity
 event OfferWrite(
-      address outboundToken,
-      address inboundToken,
-      address maker, // account that created the offer, will be called upon execution
-      uint wants,
+      bytes32 indexed olKeyHash,
+      address indexed maker, // account that created the offer, will be called upon execution
+      int tick,
       uint gives,
       uint gasprice, // gasprice that was used to compute the offer bounty
       uint gasreq,
-      uint offerId, // id of the updated offer
-      uint prev // offer id of the closest best offer at the time of update
+      uint id // id of the new offer
     );
 // if old offer bounty is insufficient to cover the update, 
 // `maker` is debited of `amount` WEIs to complement the bounty
@@ -273,14 +270,14 @@ event CreditWei(address maker, uint amount);
 "mgv/inactive" // Trying to update an offer in an inactive market
 
 // Type error in the arguments
-"mgv/writeOffer/gasprice/16bits"
-"mgv/writeOffer/gives/96bits"
-"mgv/writeOffer/wants/96bits"
+"mgv/writeOffer/gasprice/tooBig"
+"mgv/writeOffer/gives/tooBig"
 
 // Invalid values
 "mgv/writeOffer/gasreq/tooHigh" // gasreq above gasmax
-"mgv/writeOffer/gives/tooLow"   // gives should be > 0
-"mgv/writeOffer/density/tooLow" // wants / (gasreq + overhead) < density
+"mgv/writeOffer/gives/tooLow"   // gives should be greater than 0
+"mgv/writeOffer/density/tooLow" // wants / (gasreq + overhead) below density
+"mgv/writeOffer/tick/outOfRange"
 
 // Invalid caller
 "mgv/updateOffer/unauthorized" // caller must be the account that created the offer
@@ -322,7 +319,7 @@ IMangrove(MGV).updateOffer(
 #### Inputs
 
 * `offerId` is the %%offer id|offer-id%% of the offer to be updated.
-* All other parameters are exactly like for `newOffer` - see [above](#posting-a-new-offer).
+* All other parameters are exactly like for `newOfferByVolume` - see [above](#posting-a-new-offer).
 
 #### Outputs
 
@@ -343,16 +340,17 @@ After being executed or [retracted](#retracting-an-offer), an offer is moved out
 
 An offer can be withdrawn from the order book via the `retractOffer` function described below.
 
+!!![SOLY TBD]
+
 <Tabs>
 <TabItem value="signature" label="Signature" default>
 
 ```solidity
 function retractOffer(
-    address outboundToken,
-    address inboundToken,
+    OLKey memory olKey,
     uint offerId,
     bool deprovision
-  ) external;
+  ) external returns (uint provision);
 ```
 
 </TabItem>
@@ -361,9 +359,10 @@ function retractOffer(
 ```solidity
 // emitted on all successful retractions
 event OfferRetract(
-    address outboundToken, // address of the outbound token ERC of the offer
-    address inboundToken, // address of the inbound token ERC of the offer
-    uint offerId // the id of the offer that has been removed from the offer list
+    bytes32 indexed olKeyHash,
+    address indexed maker,
+    uint id, // the id of the offer that has been removed from the offer list
+    bool deprovision
     );
 
 // emitted if offer is deprovisioned
@@ -421,4 +420,8 @@ function myRetractOffer(uint offerId) external {
 
 #### Outputs
 
-None.
+* `provision` amount of provision to be refunded
+
+:::info Note
+If `deprovision == true`, then the provision associated with the offer is refunded.
+:::
