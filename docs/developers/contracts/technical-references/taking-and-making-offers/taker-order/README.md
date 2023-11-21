@@ -48,6 +48,8 @@ Execution works as follows:
 
 Any failed [offer](../reactive-offer/) execution results in a [bounty](../reactive-offer/offer-provision.md#computing-the-provision-and-offer-bounty) being sent to the caller as compensation for the wasted gas.
 
+!!! [Revert strings, Soly and JS TBD] !!!
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -56,9 +58,7 @@ import TabItem from '@theme/TabItem';
 
 ```solidity
 function marketOrderForByVolume(
-    address outbound_tkn,
-    address inbound_tkn,
-    uint tickSpacing,
+    OLKey memory olKey,
     uint takerWants,
     uint takerGives,
     bool fillWants
@@ -256,6 +256,7 @@ At the end of a Market Order the following is guaranteed to hold:
 :::
 
 #### Example
+[TO BE EDITED]
 
 Consider the offer list below. As is usual for %%offer lists|offer-list%%, offers are ordered in the table by %%rank|offer-rank%%.
 
@@ -307,271 +308,7 @@ A regular limit order with `takerWants` set to 3 A and `takerGives` set to 6 B w
 
 In Mangrove, a "market order" with the same parameters will however consume offers #1 and #2 completely and #3 partially (for 3 Bs only), and result in the taker spending 6 (1+2+6/2) and receiving (1+1+2/2), which corresponds to a volume-weighted price of 2, complying with the Taker Order.
 
-## Offer sniping
 
-It is also possible to target specific offer IDs in the [offer list](../offer-list.md). This is called **Offer Sniping**.
-
-:::info 
-
-Offer sniping can be used by off-chain bots and price aggregators to build their own optimized market order, targeting for instance offers with a higher volume or less gas requirements in order to optimize the gas cost of filling the order.
-
-:::
-
-<Tabs>
-  <TabItem value="signature" label="Signature" default>
-
-```solidity
-function snipes(
-    address outbound_tkn,
-    address inbound_tkn,
-    uint[4][] memory targets, 
-    bool fillWants
-  )
-    external
-    returns (
-      uint successes, 
-      uint takerGot,
-      uint takerGave,
-      uint bounty,
-      uint fee
-    );
-```
-
-</TabItem>
-  <TabItem value="events" label="Events">
-
-```solidity
-// Since the contracts that are called during the order may be partly reentrant, more logs could be emitted by Mangrove.
-// we list here only the main expected logs.
-
-// For each offer successfully sniped:
-event OfferSuccess(
-    address indexed outbound_tkn,
-    address indexed inbound_tkn,
-    uint id, // offer Id
-    address taker, // address of the market order caller
-    uint takerWants, // original wants of the order
-    uint takerGives // original gives of the order
-  );
-  
-// For each offer cleaned by the snipe:
-event OfferFail(
-    address indexed outbound_tkn,
-    address indexed inbound_tkn,
-    uint id,
-    address taker,
-    uint takerWants,
-    uint takerGives,
-    // `statusCode` may only be `"mgv/makerAbort"`, `"mgv/makerRevert"`, `"mgv/makerTransferFail"` or `"mgv/makerReceiveFail"`
-    bytes32 statusCode,
-    // revert data sent by offer's associated account
-    bytes32 makerData
-  );
-  
-// If a sniped offer's posthook reverted during second callback:
-// 1. Loging offer failure
-event PosthookFail(
-    address indexed outbound_tkn,
-    address indexed inbound_tkn,
-    uint offerId,
-    bytes32 makerData
-  );
- // 2. Debiting maker from Offer Bounty
-event Debit(address indexed maker, uint amount);
-
-// Logging at the end of all snipes:
-event OrderComplete(
-    address indexed outbound_tkn,
-    address indexed inbound_tkn,
-    address taker,
-    uint takerGot, // net amount of outbound tokens received by taker
-    uint takerGave // total amount of inbound tokens sent by taker
- );
-```
-
-</TabItem>
-<TabItem value="revert" label="Revert strings">
-
-```javascript
-// Gatekeeping
-"mgv/dead" // Trying to take offers on a terminated Mangrove
-"mgv/inactive" // Trying to take offers on an inactive offer list
-
-// Overflow
-"mgv/snipes/takerWants/96bits" // takerWants for snipe overflows
-"mgv/snipes/takerGives/96bits" // takerGives for snipe overflows
-
-// Panic reverts
-"mgv/sendPenaltyReverted" // Mangrove could not send Offer Bounty to taker
-"mgv/feeTransferFail" // Mangrove could not collect fees from the taker
-"mgv/MgvFailToPayTaker" // Mangrove was unable to transfer outbound_tkn to taker (Taker blacklisted?)
-```
-
-</TabItem>
-
-<TabItem value="solidity" label="Solidity">
-
-```solidity
-import "src/IMangrove.sol";
-import {IERC20} from "src/MgvLib.sol";
-
-// context of the call
-address MGV;
-address outTkn; // address offer's outbound token
-address inbTkn; // address of offer's inbound token
-uint offer1; // first offer one wishes to snipe
-uint offer2; // second offer one wishes to snipe
-
-// if Mangrove is not approved yet for inbound token transfer.
-IERC20(inbTkn).approve(MGV, type(uint).max);
-
-// sniping the offers to check whether they fail
-(uint successes, uint takerGot, uint takerGave, uint bounty, uint fee) = Mangrove(MGV).snipes(
-    outTkn,
-    inbTkn,
-    [
-        [offer1, 1 ether, 1 ether, 100000], // first snipe (price of 1 / 1 )
-        [offer2, 1.5 ether, 1 ether, 50000] // second snipe (price of 1.5 / 1)
-    ],
-    true // fillwants
-);
-//we have: `successes < 2 <=> bounty > 0`
-```
-
-</TabItem>
-<TabItem value="ethersjs" label="ethers.js">
-
-```javascript
-// context
-<strong>// outTkn: address of outbound token ERC20
-</strong>// inbTkn: address of inbound token ERC20
-// ERC20_abi: ERC20 abi
-// MGV_address: address of Mangrove
-// MGV_abi: Mangrove contract's abi
-// signer: transaction signer 
-
-// loading ether.js contracts
-const Mangrove = new ethers.Contract(
-    MGV_address, 
-    MGV_abi, 
-    ethers.provider
-    );
-
-const InboundTkn = new ethers.Contract(
-    inbTkn, 
-    ERC20_abi, 
-    ethers.provider
-    );
-    
-const OutboundTkn = new ethers.Contract(
-    outTkn, 
-    ERC20_abi, 
-    ethers.provider
-    );
-    
-// if Mangrove is not approved yet for inbound token transfer.
-await InboundTkn.connect(signer).approve(MGV_address, ethers.constant.MaxUint256);
-
-// preparing snipes data
-const outDecimals = await OutboundTkn.decimals();
-const inbDecimals = await InboundTkn.decimals();
-
-const snipe1 = [ // first snipe spec
-         offer1, //offer id
-         ethers.parseUnits("1.5",outDecimals), //takerWants from offer1
-         ethers.parseUnits("2.0",inbDecimals), //takerGives to offer1
-         100000 // 100,000 gas units to execute
-     ];
-const snipe2 = [ // second snipe spec
-         offer2, //offer id
-         ethers.parseUnits("1.5",outDecimals), //takerWants from offer1
-         ethers.parseUnits("2.2",inbDecimals), //takerGives to offer1
-         50000
-     ];
-     
-// triggering snipes
-await Mangrove.connect(signer).snipes(
-    outTkn,
-    inbTkn,
-    [snipe1, snipe2],
-    true // fillwants
-    );
-```
-
-  </TabItem>
-</Tabs>
-
-
-### Inputs
-
-* `outbound_tkn` _outbound_ token address (received by the taker)
-* `inbound_tkn` _inbound_ token address (sent by the taker)
-* `targets` an array of offers to take. Each element of `targets` is a `uint[4]`'s of the form `[offerId, takerWants, takerGives, gasreq_permitted]` where:
-  * `offerId` is the ID of an [offer](../reactive-offer/) that should be taken.
-  * `takerWants` the amount of outbound tokens the taker wants from that [offer](../reactive-offer/). **Must fit in a `uint96`.**
-  * `takerGives` the amount of inbound tokens the taker is willing to give to that [offer](../reactive-offer/). **Must fit in a `uint96`.**
-  * `gasreq_permitted` is the maximum `gasreq` the taker will tolerate for that [offer](../reactive-offer/). If the offer's `gasreq` is higher than `gasreq_permitted`, the offer will not be sniped.
-* `fillWants` is a flag:
-    * `fillWants = true` specifies that you are acting as a buyer of **outbound tokens**, in which case you will buy at most `takerWants`. 
-    * `fillWants = false` specifies that you are a seller of **inbound tokens**, in which case you will buy as many tokens as possible as long as you don't spend more than `takerGives`.
-
-:::caution **Protection against malicious offer updates**
-
-Offers can be updated, so if `targets` was just an array of `offerId`s, there would be no way to protect against a malicious offer update mined right before a snipe. The offer could suddenly have a worse price, or require a lot more gas.
-
-If you only want to take offers without any checks on the offer contents, you can simply:
-
-* Set `takerWants` to `0`,
-* Set `takerGives` to `type(uint96).max`,
-* Set `gasreq_permitted` to `type(uint).max`, and
-* Set `fillWants` to `false`.
-
-:::
-
-### Outputs
-
-* `successes` is the number of sniped offers that transferred the expected volume to the taker (in particular, `successes < target.length` if and only if some of the sniped offers reneged on their trade and `bounty > 0`).
-* `takerGot, takerGet, bounty, fee` as in [`marketOrder`](#market-order).
-
-#### Example
-
-| ID | Wants (USDC) | Gives (DAI) | Gas required |
-| -- | ----- | ----- | ------------ |
-| 13 | 10    | 10    | 80\_000      |
-| 2  | 1     | 2     | 250\_000     |
-
-:::info **Example**
-
-Consider the offers above on the DAI-USDC offer list. Let us construct a `snipes` call. 
-
-We start by specifying that the `fillWants` flag is `true`. This means, that we ask
-
-* to act as a buyer of %%inbound|inbound%% tokens, i.e., DAI, and, 
-* to buy *at most* what we specify for `takerWants` in `targets`.
-
-Now let us construct the following `targets` array:
-
-* `targets[0] = [13, 8, 10, 80_000]`
-* `targets[1] = [2, 10, 2, 250_000]`
-
-Taking into account that we have set `fillWants = true`, this means that we are:
-
-* targeting offer #13, willing to give 10 USDC for at most 8 DAI, and,
-* targeting offer #2, willing to give 2 USDC for at most 10 DAI
-
-accepting a gas cost of up to `80_000` gas units and `250_000`, respectively.
-
-Let `DAI_addr` and `USDC_addr` be the addresses for the relevant tokens. Putting it together, the call to `snipes` looks like this:
-
-    snipes(DAI_addr, USDC_addr, [[13, 8, 10, 80_000],[2, 10, 2, 250_000]], true)
-
-With the DAI-USDC offer list as given above, the result will be that:
-
-For offer #13, we will successfully buy 8 DAI for 8 USDC, as the %%entailed price|offer-entailed-price%% for offer #13 is `10/10 = 1` USDC per DAI. This is below the price we were willing to pay: `10/8 = 1.25` USDC per DAI for this offer, so the offer is executed, resulting in a %%partial fill|maker-partial-fill%%.
-
-For offer #2, we will *not* attempt to execute this offer, as the %%entailed price|offer-entailed-price%% for offer #2 is `1/2 = 0.5` USDC per DAI, above the price that we were are willing to pay: `2/10 = 0.2` USDC per DAI for this offer.
-
-:::
 
 
 ## Bounties for taking failing offers

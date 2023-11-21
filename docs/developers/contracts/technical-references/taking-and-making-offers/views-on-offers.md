@@ -9,7 +9,9 @@ Mangrove provides a number of getter functions providing views on offers and %%o
 
 ## Public getters
 
-### `best(address outbound, address inbound, uint tickSpacing)`
+### `best(OLKey memory olKey)`
+
+[JS TBD]
 
 :::info
 
@@ -28,11 +30,9 @@ import "src/IMangrove.sol";
 
 // context of the call
 IMangrove mgv;
-address outbound_tkn;
-address inbound_tkn;
-uint tickSpacing;
+OLKey public olkey;
 
-uint best = mgv.best(outbound_tkn, inbound_tkn, tickSpacing); 
+uint best = mgv.best(olkey);
 ```
 
 </TabItem>
@@ -60,7 +60,9 @@ const best = await mgv.best(outboundTkn, inboundTkn, tickSpacing);
 </TabItem>
 </Tabs>
 
-### `offers(address, address, uint, uint )` and `offerDetails(address, address, uint, uint)`
+### `offers(OLKey memory olKey, uint offerId)` and `offerDetails(OLKey memory olKey, uint offerId)`
+
+[SOLY & JS TBD]
 
 :::info
 
@@ -130,11 +132,13 @@ const gasreq = offerDetail.gasreq;
 </TabItem>
 </Tabs>
 
-### `isLive(address, address, uint, uint)`
+### `isLive(Offer offer)`
+
+[JS TBD]
 
 :::info
 
-An offer is **live** in a given [Offer List](offer-list.md) if it can be matched during a [market order](taker-order/). The view function `isLive` can be used to verify whether `offerId` identifies a **live** offer in a (`outboundToken`,`inboundToken`, `tickSpacing`) offer List of Mangrove.
+An offer is **live** in a given [Offer List](offer-list.md) if it can be matched during a [market order](taker-order/). The view function `isLive` can be used to verify whether an identifies as a **live** offer (i.e. `gives` is not zero) in its offer list.
 
 :::
 
@@ -145,14 +149,10 @@ An offer is **live** in a given [Offer List](offer-list.md) if it can be matched
 import "src/IMangrove.sol";
 
 // context of the call
-IMangrove mgv;
-address outTkn;
-address inbTkn;
-uint tickSpacing;
-uint offerId;
+Offer offer;
 
-// checking whether offerId is live in the (outTkn, inbTkn) order book.
-bool isLive = mgv.isLive(outTkn, inbTkn, tickSpacing, offerId);
+// checking whether the offer is live in the order book.
+bool isLive = offer.isLive();
 ```
 
 </TabItem>
