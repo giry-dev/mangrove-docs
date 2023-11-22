@@ -65,11 +65,14 @@ contract MyOffer is IMaker {
 
 ### Inputs
 
-* `order` is a [data structure](../../taking-and-making-offers/reactive-offer/offer-data-structures.md#public-data-structures) containing a recap of the [taker order](offer-data-structures.md#mgvlib.singleorder) and Mangrove's current configuration state. The protocol guarantees that `order.gives/order.wants` will match the price of the offer that is being executed up to a small precision.
+* `sor` is a [data structure](../../taking-and-making-offers/reactive-offer/offer-data-structures.md#public-data-structures) containing a recap of the taker order and Mangrove's current configuration state.
+    * It also contains `olKey`, which concerns the entire market order, because it will be sent to the maker, who needs that information.
+    * The protocol guarantees that `order.gives/order.wants` will match the price of the offer that is being executed up to a small precision.
 
 ### Outputs
 
-* `makerData` is an arbitrary `bytes32` that will be passed to `makerPosthoook` in the `makerData` field.
+* `gasused` is the gas consumed by the execution.
+* `makerData` is an arbitrary `bytes32` returned after executing the offer. It will be passed to `makerPosthoook` in the `makerData` field.
 
 :::danger **Security concerns**
 

@@ -269,7 +269,7 @@ await tx.wait();
 * `takerWants` raw amount of outbound token the taker wants. Must fit on 160 bits.
 * `takerGives` raw amount of _inbound_ token the taker gives. Must fit on 160 bits.
 * `fillWants` same as previously.
-* `taker` asame as previously.
+* `taker` same as previously.
 
 #### Outputs
 
