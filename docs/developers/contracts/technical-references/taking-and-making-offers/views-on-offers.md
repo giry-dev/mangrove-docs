@@ -11,8 +11,6 @@ Mangrove provides a number of getter functions providing views on offers and %%o
 
 ### `best(OLKey memory olKey)`
 
-[JS TBD]
-
 :::info
 
 Returns the `offerId` of the best offer in the %%offer list|offer-list%%.
@@ -36,6 +34,8 @@ uint best = mgv.best(olkey);
 ```
 
 </TabItem>
+
+<!-- ethers.js removed for now
 <TabItem value="ethersjs" label="ethers.js">
 
 ```javascript
@@ -57,12 +57,13 @@ const mgv = new ethers.Contract(
 const best = await mgv.best(outboundTkn, inboundTkn, tickSpacing); 
 ```
 
-</TabItem>
+</TabItem> -->
+
 </Tabs>
 
 ### `offers(OLKey memory olKey, uint offerId)` and `offerDetails(OLKey memory olKey, uint offerId)`
 
-[SOLY & JS TBD]
+[SOLY TBD]
 
 :::info
 
@@ -103,6 +104,9 @@ MgvStructs.OfferDetailPacked memory offerDetail32 = Mangrove(MGV)
 ```
 
 </TabItem>
+
+<!-- ethers.js removed for now
+
 <TabItem value="ethersjs" label="ethers.js">
 
 ```javascript
@@ -129,12 +133,12 @@ const gives = offer.gives;
 const gasreq = offerDetail.gasreq;
 ```
 
-</TabItem>
+</TabItem> -->
+
 </Tabs>
 
 ### `isLive(Offer offer)`
 
-[JS TBD]
 
 :::info
 
@@ -156,6 +160,8 @@ bool isLive = offer.isLive();
 ```
 
 </TabItem>
+
+<!-- ethers.js removed for now
 
 <TabItem value="ethersjs" label="ethers.js">
 
@@ -180,6 +186,8 @@ const isLive = await Mangrove.isLive(outTkn, outTkn, tickSpacing, offerId);
 ```
 
 </TabItem>
+-->
+
 </Tabs>
 
 ## Custom types

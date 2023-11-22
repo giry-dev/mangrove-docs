@@ -8,12 +8,13 @@ sidebar_position: 6
 It is also possible to target specific offer IDs in the [offer list](./offer-list.md). This is called **Offer Cleaning**.
 
 :::info 
+[Is this still true? I'm thinking to remove that banner since the intent with `clean` is different?]
 
-Offer sniping can be used by off-chain bots and price aggregators to build their own optimized market order, targeting for instance offers with a higher volume or less gas requirements in order to optimize the gas cost of filling the order.
+Offer cleaning can be used by off-chain bots and price aggregators to build their own optimized market order, targeting for instance offers with a higher volume or less gas requirements in order to optimize the gas cost of filling the order.
 
 :::
 
-!!! [Revert strings, Soly and JS TBD] !!!
+!!! [Revert strings and Soly TBD] !!!
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -89,14 +90,20 @@ event OrderComplete(
 // Gatekeeping
 "mgv/dead" // Trying to take offers on a terminated Mangrove
 "mgv/inactive" // Trying to take offers on an inactive offer list
+"mgv/clean/protected" //?
+"mgv/clean/offerNotLive" //?
 
 // Overflow
-"mgv/snipes/takerWants/96bits" // takerWants for snipe overflows
-"mgv/snipes/takerGives/96bits" // takerGives for snipe overflows
+"mgv/clean/takerWants/tooBig" // takerWants for clean overflows
+
+// Wrong inputs
+'mgv/clean/tick/outOfRange' //?
+"mgv/clean/tickMismatch" //?
+"mgv/clean/gasreqTooLow" //?
+
 
 // Panic reverts
 "mgv/sendPenaltyReverted" // Mangrove could not send Offer Bounty to taker
-"mgv/feeTransferFail" // Mangrove could not collect fees from the taker
 "mgv/MgvFailToPayTaker" // Mangrove was unable to transfer outbound_tkn to taker (Taker blacklisted?)
 ```
 
@@ -132,6 +139,8 @@ IERC20(inbTkn).approve(MGV, type(uint).max);
 ```
 
 </TabItem>
+
+<!-- ethers.js removed for now
 <TabItem value="ethersjs" label="ethers.js">
 
 ```javascript
@@ -191,13 +200,13 @@ await Mangrove.connect(signer).snipes(
     );
 ```
 
-  </TabItem>
+  </TabItem> -->
 </Tabs>
 
 
 ### Inputs
 
-* `leaf` TBD
+* `leaf`: at the bottom of the tick tree, leaves contain information about 4 bins: their first and last offer. 
 
 [CAUTION TO BE EDITED?]
 :::caution **Protection against malicious offer updates**
@@ -257,35 +266,6 @@ For offer #2, we will *not* attempt to execute this offer, as the %%entailed pri
 
 :::
 
-## Cleaning delegation
-
-Once a Delegate Taker is approved or permitted by a taker, she can use the delegated Taker Orders variants `marketOrderFor` and `snipesFor` which work similarly to [`marketOrder`](README.md#market-order) and [`clean`](README.md#offer-sniping) but require an additional `taker` address.
-
-<Tabs>
-<TabItem value="function" label="Function" default>
-
-```solidity
-// Delegated snipes
-function snipesFor(
-    address outbound_tkn,
-    address inbound_tkn,
-    uint[4][] memory targets,
-    bool fillWants,
-    // highlight-next-line
-    address taker
-  )
-    external
-    returns (
-      uint successes,
-      uint takerGot,
-      uint takerGave,
-      uint bounty,
-      uint fee
-    );
-    
-```
-</TabItem>
-</Tabs>
 
 ## Bounties for taking failing offers
 If an offer fails to deliver, the taker gets a %%bounty|bounty%% in native token to compensate for the gas spent on executing the offer. The bounty is paid by the %%offer owner|offer-owner%% and are taken from the %%provision|provision%% they deposited with Mangrove when posting the offer. 

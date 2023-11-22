@@ -11,15 +11,17 @@ New offers should mostly be posted by [maker contracts](maker-contract.md) able 
 
 Offers posted via maker contracts are called %%smart offers|smart-offer%% - as opposed to %%on-the-fly offers|on-the-fly-offer%% made from EOA's.
 
-All offers on Mangrove are posted via Mangrove's `newOfferByVolume` function.
+similarly to [taking offers](../taker-order/README.md), offers on Mangrove can be posted in two ways:
+* Via the `newOfferByTick` function (preferred way).
+* Via the `newOfferByVolume` function.
 
 :::info 
 
-`newOfferByVolume` is payable and can be used to credit the maker contract's balance on Mangrove on the fly. A non zero `msg.value` will allow Mangrove to credit the maker contract's balance prior to locking the %%provision|provision%% of the newly posted offer.
+`newOfferByTick` and `newOfferByVolume` are payable and can be used to credit the maker contract's balance on Mangrove on the fly. A non zero `msg.value` will allow Mangrove to credit the maker contract's balance prior to locking the %%provision|provision%% of the newly posted offer.
 
 :::
 
-!![SOLY and JS TBD]!!
+!![SOLY TBD]!!
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -28,6 +30,14 @@ import TabItem from '@theme/TabItem';
 <TabItem value="signature" label="Signature" default>
 
 ```solidity
+ function newOfferByTick(
+    OLKey memory olKey,
+    Tick tick, 
+    uint gives, 
+    uint gasreq, 
+    uint gasprice
+) public payable returns (uint offerId);
+
 function newOfferByVolume(
     OKLKEY memory olkey,
     uint wants, // amount of inbound Tokens
@@ -126,6 +136,8 @@ IMangrove(MGV).newOffer{value: provision}(
 ```
 
 </TabItem>
+
+<!-- ether.js removed for now
 <TabItem value="ethersjs" label="ethers.js">
 
 ```typescript
@@ -183,23 +195,35 @@ await tx.wait();
 
 ```
 
-</TabItem>
+</TabItem> -->
 </Tabs>
 
-**Inputs**
+### `newOfferByTick()`
+
+#### Inputs
 
 * `olkey` struct containing:
   * `outbound_tkn` address of the _outbound_ token (that the taker will buy).
   * `inbound_tkn` address of the _inbound_ token (that the taker will spend).
   * `tickSpacing` number of ticks that should be jumped between available price points.
 * `wants` amount of inbound tokens requested by the offer. **Must** fit in a `uint96`.
-* `gives` amount of outbound tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t. to `gasreq` and offer list's %%density|density%% parameter.
 * `gasreq` amount of gas that will be given to the offer's account. **Must** fit in a `uint24` and be lower than [`gasmax`](../../governance-parameters/mangrove-configuration.md#mgvlibmgvstructsglobalunpacked). Should be sufficient to cover all calls to the maker contract's %%offer logic|offer-logic%% (%%`makerExecute`|makerExecute%%) and %%`makerPosthook`|makerPosthook%%). **Must** be compatible with the offered volume `gives` and the offer list's %%density|density%% parameter. (See also %%gasreq|gasreq%%.)
 * `gasprice` gas price override used to compute the order %%provision|provision%% (see also [offer bounties](offer-provision.md)). Any value lower than Mangrove's current %%gasprice|gasprice%% will be ignored (thus 0 means "use Mangrove's current %%gasprice|gasprice%%"). **Must** fit in a `uint16`.
 
-**Outputs**
+#### Outputs
 
 * `offerId` the %%id|offer-id%% of the newly created offer. Note that offer ids are scoped to %%offer lists|offer-list%%, so many offers can share the same id.
+
+### `newOfferByVolume()`
+
+#### Inputs
+
+* Same as previously, except that `tick` is not used; `gives` is.
+* `gives` is the amount of outbound tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t. to `gasreq` and offer list's %%density|density%% parameter.
+
+#### Outputs
+
+* Same as previously.
 
 :::danger **Provisioning**
 
@@ -219,7 +243,7 @@ Make sure that your offer is [well-provisioned](offer-provision.md#checking-an-a
 
 ### Updating an existing offer
 
-Offers are updated through the `updateOffer` function described below.
+Offers are updated through the `updateOfferByTick` or `updateOfferByVolume` functions described below.
 
 !![SOLY TBD]!!
 
@@ -227,6 +251,15 @@ Offers are updated through the `updateOffer` function described below.
 <TabItem value="signature" label="Signature" default>
 
 ```solidity
+function updateOfferByTick( 
+    OLKEY memory olkey,
+    Tick tick, 
+    uint gives, 
+    uint gasreq, 
+    uint gasprice, 
+    uint offerId
+) external payable;
+
 function updateOfferByVolume( 
     OLKEY memory olkey,
     uint wants, 
@@ -319,7 +352,7 @@ IMangrove(MGV).updateOffer(
 #### Inputs
 
 * `offerId` is the %%offer id|offer-id%% of the offer to be updated.
-* All other parameters are exactly like for `newOfferByVolume` - see [above](#posting-a-new-offer).
+* All other parameters are the same as `newOfferByTick` and `newOfferByVolume` - see [above](#posting-a-new-offer).
 
 #### Outputs
 

@@ -74,29 +74,32 @@ contract MyOffer is IMaker {
 * `gasused` is the gas consumed by the execution.
 * `makerData` is an arbitrary `bytes32` returned after executing the offer. It will be passed to `makerPosthoook` in the `makerData` field.
 
-:::danger **Security concerns**
 
-Your contract should ensure that only Mangrove can call `makerExecute` to avoid unwanted state change.
+### Important notes
 
-:::
 
-:::tip **How to succeed**
+#### Security concerns
 
-To successfully execute, the logic **must** not revert during the call to `makerExecute` and have at least `wants` %%outbound|outbound%% tokens available for Mangrove to transfer by the end of the function's execution.
+* Your contract should ensure that **only Mangrove** can call `makerExecute` to avoid unwanted state change.
+* The prev/next pointers from an offer are removed before sending it to the maker. This ensures that the maker has no information about the state of the book when it gets called. More information in the [data structure](../../taking-and-making-offers/reactive-offer/offer-data-structures.md#public-data-structures) table.
 
-**How to renege on trade**
+#### How to succeed
 
-The proper way to renege on an offer is to make the execution of `makerExecute` throw with a reason that can be cast to a `bytes32`. Having a balance of outbound tokens that is lower than `order.wants` will also make trade fail, but with a higher incurred gas cost and thus a higher [bounty](offer-provision.md#provision-and-offer-bounty).
+* To successfully execute, the logic **must** not revert during the call to `makerExecute` and have at least `wants` %%outbound|outbound%% tokens available for Mangrove to transfer by the end of the function's execution.
 
-:::
+#### How to renege on trade
 
-:::caution **Better fail early!**
+* The proper way to renege on an offer is to make the execution of `makerExecute` throw with a reason that can be cast to a `bytes32`.
+* Having a balance of outbound tokens that is lower than `order.wants` will also make trade fail, but with a higher incurred gas cost and thus a higher [bounty](offer-provision.md#provision-and-offer-bounty).
 
-The [bounty](offer-provision.md#computing-the-provision-and-offer-bounty) taken from the offer maker's provision is [proportional](offer-provision.md#computing-the-provision-and-offer-bounty) to the gas consumed by `makerExecute`. To minimize costs, try to fail as early as possible.
+#### Better fail early
 
-:::
+* The [bounty](offer-provision.md#computing-the-provision-and-offer-bounty) taken from the offer maker's provision is [proportional](offer-provision.md#computing-the-provision-and-offer-bounty) to the gas consumed by `makerExecute`. To minimize costs, try to fail as early as possible.
+
 
 :::danger **Mangrove is guarded against reentrancy during `makerExecute`**
+
+[ADD details about READ not being possible]
 
 The offer list for the outbound / %%inbound|inbound%% token pair is temporarily locked during calls to `makerExecute`. Its offers cannot be modified in any way. The offer logic must use `makerPosthook` to repost/update its offers, since the offer list will unlocked by then.
 
@@ -105,6 +108,8 @@ The offer list for the outbound / %%inbound|inbound%% token pair is temporarily 
 ## Trade posthook
 
 The logic associated with an offer may include a `makerPosthook` callback function. Its intended use is to update offers in the [offer list](../offer-list.md) containing the [offer](./) that was just executed.
+
+!!![code Offer Logic TBD]!!!
 
 <Tabs>
 <TabItem value="signature" label="Signature" default>
@@ -158,8 +163,8 @@ abstract contract MakerContract is IMaker {
 
 ### Inputs
 
-* `order` same as in `makerExecute`.
-* `result` A [struct](offer-data-structures.md#mgvlib-orderresult) containing:
+* `sor` is the same as in `makerExecute`.
+* `result` is a [struct](offer-data-structures.md#mgvlib-orderresult) containing:
   * the return value of `makerExecute`
   * additional data sent by Mangrove, more info [available here](offer-data-structures.md#mgvlib.orderresult).
 
@@ -167,24 +172,19 @@ abstract contract MakerContract is IMaker {
 
 None.
 
-:::danger **Security concerns**
+### Important notes
 
-Your contract should ensure that only Mangrove can call `makerPosthook` to avoid unwanted state change.
+#### Security concerns
 
-:::
+* Your contract should ensure that only Mangrove can call `makerPosthook` to avoid unwanted state change.
 
-:::caution **Gas management**
+#### Gas management
 
-`MakerPosthook` is given the executed offer's `gasreq` minus the gas used by `makerExecute`.&#x20;
+* `MakerPosthook` is given the executed offer's `gasreq` minus the gas used by `makerExecute`.&#x20;
 
-**Updating offers during posthook**
+* **Updating offers during posthook:** during the execution of a posthook, the executed offer's list is unlocked. This feature can be used to repost an [offer](./) (even the one that was just executed), possibly at a different price.
 
-During the execution of a posthook, the executed offer's list is unlocked. This feature can be used to repost an [offer](./) (even the one that was just executed), possibly at a different price.
 
-:::
+#### Reverting**
 
-:::caution **Reverting**
-
-Reverting during `makerPosthook` does not renege on trade, which is settled at the end of `makerExecute`.
-
-:::
+* Reverting during `makerPosthook` does not renege on trade, which is settled at the end of `makerExecute`.

@@ -65,6 +65,8 @@ require(noRevert, "transfer failed");
 ```
 
 </TabItem>
+
+<!-- ethers.js removed for now
 <TabItem value="ethersjs" label="ethers.js">
 
 ```javascript
@@ -85,7 +87,7 @@ let overrides = { value: ethers.parseUnits("0.1", 18) };
 await Mangrove["fund(address)"](maker_contract_address, overrides);
 ```
 
-</TabItem>
+</TabItem> -->
 </Tabs>
 
 ### Inputs
@@ -102,16 +104,16 @@ Upon receiving funds, Mangrove will credit the amount sent to `maker` (or `msg.s
 ## Checking an account balance
 
 ```solidity
-function balanceOf(address who) external view returns (uint balance);
+function balanceOf(address maker) external view returns (uint balance);
 ```
 
 ### Inputs
 
-* `who` The account of which you want to read the balance.
+* `maker` is the account of which you want to read the balance.
 
 ### Outputs
 
-* `balance` The available balance of `who`.
+* `balance` is the available balance of `maker`.
 
 ## Withdrawing
 

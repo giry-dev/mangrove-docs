@@ -49,11 +49,11 @@ Execution works as follows:
 Any failed [offer](../reactive-offer/) execution results in a [bounty](../reactive-offer/offer-provision.md#computing-the-provision-and-offer-bounty) being sent to the caller as compensation for the wasted gas.
 
 Market orders come in two versions:
-* `marketOrderForByTick` includes the concept of ticks
-* `marketOrderForByVolume` mimics a previous version of Mangrove's API
+* `marketOrderByTick` includes the concept of ticks (the preferred way to use market orders)
+* `marketOrderByVolume` mimics a previous version of Mangrove's API
 
 
-!!! [Soly and JS TBD] !!!
+!!! [Soly TBD] !!!
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -62,20 +62,18 @@ import TabItem from '@theme/TabItem';
 <TabItem value="signature" label="Signature" default>
 
 ```solidity
-function marketOrderForByTick(
+function marketOrderByTick(
   OLKey memory olKey,
   Tick maxTick,
   uint fillVolume,
   bool fillWants,
-  address taker
   ) public returns (uint takerGot, uint takerGave, uint bounty, uint feePaid);
 
-function marketOrderForByVolume(
+function marketOrderByVolume(
     OLKey memory olKey,
     uint takerWants,
     uint takerGives,
     bool fillWants
-    address taker
   ) external returns (uint takerGot, uint takerGave, uint bounty, uint feePaid);
 ```
 
@@ -183,6 +181,9 @@ IERC20(inbTkn).approve(MGV, type(uint).max);
 ```
 
   </TabItem>
+
+<!-- ethers.js removed for now
+
   <TabItem value="ethersjs" label="ethers.js">
 
 ```javascript
@@ -235,7 +236,8 @@ const tx = await Mangrove.connect(signer).marketOrder(
 await tx.wait();
 ```
 
-  </TabItem>
+  </TabItem> -->
+
 </Tabs>
 
 ### `marketOrderForByTick()`
@@ -251,7 +253,7 @@ await tx.wait();
   * If `true`, the market order will stop as soon as `takerWants` _outbound_ tokens have been bought. It is conceptually similar to a _buy order_.
   * If `false`, the market order will continue until `takerGives` _inbound_ tokens have been spent. It is conceptually similar to _sell order_.
   * Note that market orders can stop for other reasons, such as the price being too high.
-* `taker` address of the taker placing the market order
+
 
 #### Outputs
 
@@ -269,7 +271,6 @@ await tx.wait();
 * `takerWants` raw amount of outbound token the taker wants. Must fit on 160 bits.
 * `takerGives` raw amount of _inbound_ token the taker gives. Must fit on 160 bits.
 * `fillWants` same as previously.
-* `taker` same as previously.
 
 #### Outputs
 
@@ -277,10 +278,10 @@ await tx.wait();
 
 :::tip **Specification**
 
-At the end of a Market Order the following is guaranteed to hold:
-
-* The taker will not spend more than `takerGives`.
-* The price paid `takerGave/(`takerGot + fee`)` will be maximally close to `takerGives/takerWants:`for each offer taken, the amount paid will be $$\leq$$ the expected amount + 1.
+* The market order stops when the price exceeds (an approximation of) 1.0001^`maxTick`, or when the end of the book has been reached, or:
+  * If `fillWants` is true, the market order stops when `fillVolume` units of `olKey.outbound_tkn` have been obtained.
+  * If `fillWants` is false, the market order stops when `fillVolume` units of `olKey.inbound_tkn` have been paid.
+* At the end of a Market Order, the taker will not spend more than `takerGives`.
 
 :::
 
