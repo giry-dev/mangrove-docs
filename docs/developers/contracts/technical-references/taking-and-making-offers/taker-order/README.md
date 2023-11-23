@@ -287,9 +287,8 @@ await tx.wait();
 :::
 
 #### Example
-[TO BE EDITED]
 
-Consider the following offer lists below. As is usual for %%offer lists|offer-list%%, offers are ordered in the table by %%rank|offer-rank%%.
+Let's consider the following offer lists below (with no fee), and the following two examples:
 
 ##### DAI/WETH
 | Tick    | Ratio (WETH/DAI) | Offer ID | Gives (WETH) |
@@ -307,10 +306,8 @@ Consider the following offer lists below. As is usual for %%offer lists|offer-li
 
 :::info **Example**
 
-Let's consider the WETH/DAI offer list (with no fee) above, and the following two examples:
-
 **Example 1**
-* If a taker calls `marketOrderbyTick` on this offer list with:
+* A taker calls `marketOrderByTick` on the offer DAI/WETH offer list with:
   * `fillWants` = true
   * `fillVolume` is a number of DAI
   * `takerWants` = 1000 DAI
@@ -322,16 +319,16 @@ Let's consider the WETH/DAI offer list (with no fee) above, and the following tw
   * 0.0264 WETH for `0.0264 * 0.0003419 = 77.21` DAI from offer #45 (which has been partially taken, and will be updated)
 
 **Example 2**
-* Same as above, except that `fillWants` = false:
+* Same as above, except that `fillWants` = false, hence the order will use the WETH/DAI offer list:
   * `fillVolume` is number of WETH
   * `takerWants` = 1 WETH
   * `maxTick` = -79790
   * `maxRatio` (WETH/DAI) = 0.0003427
 * That taker is ready to give up to 1 WETH in order to get 2,918 DAI.
-* Since `fillWants = true`, the market order will provide 2,713.49 DAI as follows:
+* Since `fillWants = true`, the market order will provide 1,841.73 DAI as follows:
   * 925.26 DAI for `925.26 * 0.0003419 = 0.3163` WETH from offer #77 (which is now empty)
   * 916.47 DAI for `916.47 * 0.0003419 = 0.3133` WETH from offer #177 (which is now empty as well)
-  * The order stops here since the taker's limit price (`maxRatio`) is reached. The next available offer's tick/ratio is greater than the order's (0.0003427 < 0.0003442). The taker got `0.3163 + 0.3133 = 0.6296` WETH out of the 1 WETH that was asked.
+  * The order stops here since the taker's limit price (`maxRatio`) is reached. The next available offer's tick/ratio is greater than the order's (0.0003427 < 0.0003442). The taker got `925.26 + 916.47 = 1,841.73` DAI out of the 2,918 DAI that were asked.
 
 :::
 
