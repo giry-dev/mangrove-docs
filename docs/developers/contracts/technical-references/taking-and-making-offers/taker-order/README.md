@@ -286,18 +286,20 @@ await tx.wait();
 
 :::
 
-#### Example
+### Example
 
 Let's consider the following offer lists below (with no fee), and the following two examples:
 
-##### DAI/WETH
+#### DAI-WETH
+
 | Tick    | Ratio (WETH/DAI) | Offer ID | Gives (WETH) |
 | ------- | ---------------- | -------- |------------- |
 | -79815  | 0.0003419        | 13       | 0.3163       |
 |         |                  | 45       | 0.3133       |
 | -79748  | 0.0003442        | 42       | 0.3000       |
 
-##### WETH/DAI
+#### WETH-DAI
+
 | Tick    | Ratio (WETH/DAI) | Offer ID | Gives (DAI)  |
 | ------- | ---------------- | -------- |------------- |
 | -79815  | 0.0003419        | 77       | 925.26       |
@@ -307,40 +309,38 @@ Let's consider the following offer lists below (with no fee), and the following 
 :::info **Example**
 
 **Example 1**
-* A taker calls `marketOrderByTick` on the offer DAI/WETH offer list with:
+* A taker calls `marketOrderByTick` on the offer DAI-WETH offer list with:
   * `fillWants` = true
-  * `fillVolume` is a number of DAI
-  * `takerWants` = 1000 DAI
+  * `fillVolume` = 1 WETH
   * `maxTick` = -79790
-  * `maxRatio` (WETH/DAI) = 0.0003427
+  * max ratio (WETH/DAI) = 0.0003427
 * That taker is ready to give up to 1000 DAI in order to get 0.3427 WETH.
 * Since `fillWants = true`, the market order will provide 0.3427 WETH as follows:
   * 0.3163 WETH for `0.3163 * 0.0003419 = 925.12` DAI from offer #13 (which is now empty)
   * 0.0264 WETH for `0.0264 * 0.0003419 = 77.21` DAI from offer #45 (which has been partially taken, and will be updated)
 
 **Example 2**
-* Same as above, except that `fillWants` = false, hence the order will use the WETH/DAI offer list:
-  * `fillVolume` is number of WETH
-  * `takerWants` = 1 WETH
+* Same as above, except that `fillWants` = false, hence the order will use the WETH-DAI offer list instead:
+  * `fillVolume` = 2,918 DAI
   * `maxTick` = -79790
-  * `maxRatio` (WETH/DAI) = 0.0003427
+  * max ratio (WETH/DAI) = 0.0003427
 * That taker is ready to give up to 1 WETH in order to get 2,918 DAI.
 * Since `fillWants = true`, the market order will provide 1,841.73 DAI as follows:
   * 925.26 DAI for `925.26 * 0.0003419 = 0.3163` WETH from offer #77 (which is now empty)
   * 916.47 DAI for `916.47 * 0.0003419 = 0.3133` WETH from offer #177 (which is now empty as well)
-  * The order stops here since the taker's limit price (`maxRatio`) is reached. The next available offer's tick/ratio is greater than the order's (0.0003427 < 0.0003442). The taker got `925.26 + 916.47 = 1,841.73` DAI out of the 2,918 DAI that were asked.
+  * The order stops here since the taker's limit price (max ratio) is reached. The next available offer's tick/ratio is greater than the order's (0.0003427 < 0.0003442). The taker got `925.26 + 916.47 = 1,841.73` DAI out of the 2,918 DAI that were asked.
 
 :::
 
 
 ### More on market order behaviour
 
-Mangrove's market orders are configurable using the three parameters `takerWants`, `takerGives` and `fillWants.` 
+Mangrove's market orders are configurable using the parameters `olkey`, `maxTick`, `fillVolume` and `fillWants.` 
 
 Suppose one wants to buy or sell some token `B` (base), using token `Q` (quote) as payment.
 
-* **Market buy:** A limit **buy** order for x tokens B, corresponds to a `marketOrder` on the (`B`,`Q`) offer list with `takerWants=x` (the volume one wishes to buy) and with `takerGives` such that `takerGives/x` is the limit price cap, and setting `fillWants` to `true`.
-* **Market sell:** A limit **sell** order for x tokens B, corresponds to a `marketOrder` on the (`Q`, `B`) offer list with `takerGives=x` (the volume one wishes to sell) and with `takerWants` such that `takerGives/x` is the limit price cap, and setting `fillWants` to `false`.
+* **Market buy:** A limit **buy** order for x tokens B, corresponds to a `marketOrderByTick` on the (`B`,`Q`) offer list with `fillVolume = olKey.outbound_tkn` (the volume one wishes to buy), with `maxTick` such that the max ratio is the limit price cap, and setting `fillWants` to `true`.
+* **Market sell:** A limit **sell** order for x tokens B, corresponds to a `marketOrderByTick` on the (`Q`, `B`) offer list with `fillVolume = olKey.inbound_tkn` (the volume one wishes to sell), with `maxTick` such that the max ratio is the limit price cap, and setting `fillWants` to `false`.
 
 :::caution **On order residuals**
 

@@ -12,14 +12,15 @@ Offers are sorted in a tree (the “[tick tree](#tick-tree)") where each availab
 
 For example in a DAI-WETH offer list, DAI is the outbound token (i.e., to be sent by the offer) and WETH the inbound token (i.e., wanted by the offer).
 
-:::info Relationship to markets
+:::danger There are 2 offer lists per market
 
-A full market will always feature two offer lists. For instance, a WETH/DAI **market** has one DAI-WETH offer list (where wETH is requested and DAI is offered), and a WETH-DAI offer list (where DAI is requested and WETH is offered).
+A full market will always feature two offer lists. For instance, a WETH/DAI **market** has one DAI-WETH offer list (where WETH is requested and DAI is offered), and a WETH-DAI offer list (where DAI is requested and WETH is offered).
 
 [Mangrove's SDK ](../../../SDK/README.md) offers Market abstractions that allows liquidity providers and takers to interact with Mangrove using standard trading _base_ and _quote_ denominations.
 
 :::
-
+ ### Example
+ 
 Here's a sample DAI-WETH offer list with two offers. Only the main characteristics of the offers are shown (see the [offer data structure](reactive-offer/offer-data-structures.md#mgvlib-offer)).
 
 

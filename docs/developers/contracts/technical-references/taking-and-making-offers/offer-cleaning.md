@@ -23,7 +23,11 @@ import TabItem from '@theme/TabItem';
   <TabItem value="signature" label="Signature" default>
 
 ```solidity
-function clean(DirtyLeaf leaf) internal pure returns (Leaf)
+function cleanByImpersonation(
+  OLKey memory olKey, 
+  MgvLib.CleanTarget[] calldata targets, 
+  address taker
+  ) external returns (uint successes, uint bounty);
 ```
 
 </TabItem>
@@ -206,12 +210,17 @@ await Mangrove.connect(signer).snipes(
 
 ### Inputs
 
-* `leaf`: at the bottom of the tick tree, leaves contain information about 4 bins: their first and last offer. 
+* `olkey` struct containing:
+  * `outbound_tkn` is the address of the outbound token (that the taker will buy).
+  * `inbound_tkn` is the address of the inbound token (that the taker will spend).
+  * `tickSpacing` is the number of ticks that should be jumped between available price points.
+* `targets` is a `CleanTarget[]` with each `CleanTarget` identifying an offer to clean and the execution parameters that will make it fail.
+* `taker` is the address of the taker placing the order
 
 [CAUTION TO BE EDITED?]
 :::caution **Protection against malicious offer updates**
 
-Offers can be updated, so if `targets` was just an array of `offerId`s, there would be no way to protect against a malicious offer update mined right before a snipe. The offer could suddenly have a worse price, or require a lot more gas.
+Offers can be updated, so if `targets` was just an array of `offerId`s, there would be no way to protect against a malicious offer update mined right before a `clean`. The offer could suddenly have a worse price, or require a lot more gas.
 
 If you only want to take offers without any checks on the offer contents, you can simply:
 
@@ -224,7 +233,8 @@ If you only want to take offers without any checks on the offer contents, you ca
 
 ### Outputs
 
-* `Leaf` 
+* `successes` is the number of successfully cleaned offers.
+* `bounty` is the total bounty received.
 
 #### Example
 
