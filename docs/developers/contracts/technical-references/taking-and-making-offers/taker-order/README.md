@@ -288,15 +288,7 @@ await tx.wait();
 
 ### Example
 
-Let's consider the following offer lists below (with no fee), and the following two examples:
-
-#### DAI-WETH
-
-| Tick    | Ratio (WETH/DAI) | Offer ID | Gives (WETH) |
-| ------- | ---------------- | -------- |------------- |
-| -79815  | 0.0003419        | 13       | 0.3163       |
-|         |                  | 45       | 0.3133       |
-| -79748  | 0.0003442        | 42       | 0.3000       |
+Let's consider the following WETH-DAI offer list below (with no fee), and the following two examples:
 
 #### WETH-DAI
 
@@ -309,26 +301,30 @@ Let's consider the following offer lists below (with no fee), and the following 
 :::info **Example**
 
 **Example 1**
-* A taker calls `marketOrderByTick` on the offer DAI-WETH offer list with:
+* A taker calls `marketOrderByTick` on the offer list with:
   * `fillWants` = true
-  * `fillVolume` = 1 WETH
+  * `fillVolume` = 2,918 DAI (`olKey.outbound_tkn`)
   * `maxTick` = -79790
   * max ratio (WETH/DAI) = 0.0003427
-* That taker is ready to give up to 1000 DAI in order to get 0.3427 WETH.
-* Since `fillWants = true`, the market order will provide 0.3427 WETH as follows:
-  * 0.3163 WETH for `0.3163 * 0.0003419 = 925.12` DAI from offer #13 (which is now empty)
-  * 0.0264 WETH for `0.0264 * 0.0003419 = 77.21` DAI from offer #45 (which has been partially taken, and will be updated)
+  * That taker is ready to give up to 1 WETH in order to get 2,918 DAI.
+* Since `fillWants = true`, the market order **will ask for 2,918 DAI** as follows:
+  * Got 925.26 DAI for `925.26 * 0.0003419 = 0.3163` WETH from offer #77 (which is now empty)
+  * Got 916.47 DAI for `916.47 * 0.0003419 = 0.3133` WETH from offer #177 (which is now empty as well)
+  * The order stops here since the taker's limit price (max ratio) is reached. The next available offer's tick/ratio is greater than the order's (0.0003427 < 0.0003442).
+  * The taker got `925.26 + 916.47 = 1,841.73` DAI out of the 2,918 DAI that were asked.
+
 
 **Example 2**
-* Same as above, except that `fillWants` = false, hence the order will use the WETH-DAI offer list instead:
-  * `fillVolume` = 2,918 DAI
+* Same as above, except that `fillWants = false`:
+  * `fillVolume` = 1 WETH (`olKey.inbound_tkn`)
   * `maxTick` = -79790
   * max ratio (WETH/DAI) = 0.0003427
-* That taker is ready to give up to 1 WETH in order to get 2,918 DAI.
-* Since `fillWants = true`, the market order will provide 1,841.73 DAI as follows:
-  * 925.26 DAI for `925.26 * 0.0003419 = 0.3163` WETH from offer #77 (which is now empty)
-  * 916.47 DAI for `916.47 * 0.0003419 = 0.3133` WETH from offer #177 (which is now empty as well)
-  * The order stops here since the taker's limit price (max ratio) is reached. The next available offer's tick/ratio is greater than the order's (0.0003427 < 0.0003442). The taker got `925.26 + 916.47 = 1,841.73` DAI out of the 2,918 DAI that were asked.
+  * Same taker, willing to give up to 1 WETH in order to get 2,918 DAI.
+* Since `fillWants = false`, the market order **will pay 1 WETH** as follows:
+  * Paid 0.3163 WETH for 925.26 DAI from offer #77 (which is now empty)
+  * Paid 0.3133 WETH for 916.47 DAI from offer #177 (which is now empty as well)
+  * The order stops here since the taker's limit price (max ratio) is reached. The next available offer's tick/ratio is greater than the order's (0.0003427 < 0.0003442).
+  * Taker got `925.26 + 916.47 = 1,841.73` DAI out of the 2,918 DAI that were asked.
 
 :::
 
