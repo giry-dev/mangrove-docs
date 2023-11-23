@@ -248,10 +248,11 @@ await tx.wait();
   * `outbound_tkn` address of the _outbound_ token (that the taker will buy).
   * `inbound_tkn` address of the _inbound_ token (that the taker will spend).
   * `tickSpacing` number of ticks that should be jumped between available price points.
-* `maxTick` limit price the order is ready to pay (the log base 1.0001 of the price)
+* `maxTick` is the limit price the market order is ready to pay (the log base 1.0001 of the price)
+* `fillvolume` volume of tokens based on `fillWants` (see below)
 * `fillWants`
-  * If `true`, the market order will stop as soon as `takerWants` _outbound_ tokens have been bought. It is conceptually similar to a _buy order_.
-  * If `false`, the market order will continue until `takerGives` _inbound_ tokens have been spent. It is conceptually similar to _sell order_.
+  * If `true`, `fillVolume` is the amount of `olKey.outbound_tkn` the taker wants to buy. 
+  * If `false`, `fillVolume` is the amount of `olKey.inbound_tkn` the taker wants to sell.
   * Note that market orders can stop for other reasons, such as the price being too high.
 
 
@@ -268,8 +269,8 @@ await tx.wait();
 #### Inputs
 
 * `olkey` same as previously.
-* `takerWants` raw amount of outbound token the taker wants. Must fit on 160 bits.
-* `takerGives` raw amount of _inbound_ token the taker gives. Must fit on 160 bits.
+* `takerWants` raw amount of _outbound_ token the taker wants. Must fit on 160 bits. The market order will stop as soon as `takerWants` _outbound_ tokens have been bought. It is conceptually similar to a _buy order_.
+* `takerGives` raw amount of _inbound_ token the taker gives. Must fit on 160 bits. The market order will continue until `takerGives` _inbound_ tokens have been spent. It is conceptually similar to _sell order_.
 * `fillWants` same as previously.
 
 #### Outputs
@@ -288,23 +289,49 @@ await tx.wait();
 #### Example
 [TO BE EDITED]
 
-Consider the offer list below. As is usual for %%offer lists|offer-list%%, offers are ordered in the table by %%rank|offer-rank%%.
+Consider the following offer lists below. As is usual for %%offer lists|offer-list%%, offers are ordered in the table by %%rank|offer-rank%%.
 
-| ID | wants (USDC) | gives (DAI) |
-| -- | ------------ | ----------- |
-| 2  | 0.98         | 1           |
-| 1  | 9.9          | 10          |
+##### DAI/WETH
+| Tick    | Ratio (WETH/DAI) | Offer ID | Gives (WETH) |
+| ------- | ---------------- | -------- |------------- |
+| -79815  | 0.0003419        | 13       | 0.3163       |
+|         |                  | 45       | 0.3133       |
+| -79748  | 0.0003442        | 42       | 0.3000       |
+
+##### WETH/DAI
+| Tick    | Ratio (WETH/DAI) | Offer ID | Gives (DAI)  |
+| ------- | ---------------- | -------- |------------- |
+| -79815  | 0.0003419        | 77       | 925.26       |
+|         |                  | 177      | 916.47       |
+| -79748  | 0.0003442        | 42       | 871.76       |
 
 :::info **Example**
 
-Consider the DAI-USDC offer list (with no fee) above. If a taker calls `marketOrder`on this offer list with`takerWants=2` and `takerGives = 2.2` she is ready to give away up to 2.2 USDC in order to get 2 DAI.
+Let's consider the WETH/DAI offer list (with no fee) above, and the following two examples:
 
-* If `fillWants` is `true` the market order will provide 2 DAI for 1.97 USDC.
-  1. 1 DAI for 0.98 USDC from offer #2
-  2. 1 DAI for 0.99 from offer #1
-* If `fillWants` is `false` the market order will provide 2.2078 DAI for 2 USDC.
-  1. 1 DAI for 0.98 USDC from offer #1
-  2. 1.2078 DAI for the remaining 1.22 USDC from offer #2
+**Example 1**
+* If a taker calls `marketOrderbyTick` on this offer list with:
+  * `fillWants` = true
+  * `fillVolume` is a number of DAI
+  * `takerWants` = 1000 DAI
+  * `maxTick` = -79790
+  * `maxRatio` (WETH/DAI) = 0.0003427
+* That taker is ready to give up to 1000 DAI in order to get 0.3427 WETH.
+* Since `fillWants = true`, the market order will provide 0.3427 WETH as follows:
+  * 0.3163 WETH for `0.3163 * 0.0003419 = 925.12` DAI from offer #13 (which is now empty)
+  * 0.0264 WETH for `0.0264 * 0.0003419 = 77.21` DAI from offer #45 (which has been partially taken, and will be updated)
+
+**Example 2**
+* Same as above, except that `fillWants` = false:
+  * `fillVolume` is number of WETH
+  * `takerWants` = 1 WETH
+  * `maxTick` = -79790
+  * `maxRatio` (WETH/DAI) = 0.0003427
+* That taker is ready to give up to 1 WETH in order to get 2,918 DAI.
+* Since `fillWants = true`, the market order will provide 2,713.49 DAI as follows:
+  * 925.26 DAI for `925.26 * 0.0003419 = 0.3163` WETH from offer #77 (which is now empty)
+  * 916.47 DAI for `916.47 * 0.0003419 = 0.3133` WETH from offer #177 (which is now empty as well)
+  * The order stops here since the taker's limit price (`maxRatio`) is reached. The next available offer's tick/ratio is greater than the order's (0.0003427 < 0.0003442). The taker got `0.3163 + 0.3133 = 0.6296` WETH out of the 1 WETH that was asked.
 
 :::
 
@@ -323,23 +350,6 @@ Suppose one wants to buy or sell some token `B` (base), using token `Q` (quote) 
 Contrary to [GTC orders](https://www.investopedia.com/terms/g/gtc.asp) on regular [order book](https://www.investopedia.com/terms/o/order-book.asp) based exchanges, the residual of your order (i.e., the volume you were not able to buy/sell due to hitting your price limit) will _not_ be put on the market as an offer. Instead, the market order will simply end partially filled.
 
 :::
-
-### Market order prices are volume-weighted
-
-Consider the following A-B offer list:
-
-| ID | Wants (B) | Gives (A) | Price (B per A) |
-| -- | --------- | --------- | --------------- |
-| 1  | 1         | 1         | 1               |
-| 2  | 2         | 1         | 2               |
-| 3  | 6         | 2         | 3               |
-
-A regular limit order with `takerWants` set to 3 A and `takerGives` set to 6 B would consume offers until it hits an offer with a price above 2, so it would consume offers #1 and #2, but not offer #3.
-
-In Mangrove, a "market order" with the same parameters will however consume offers #1 and #2 completely and #3 partially (for 3 Bs only), and result in the taker spending 6 (1+2+6/2) and receiving (1+1+2/2), which corresponds to a volume-weighted price of 2, complying with the Taker Order.
-
-
-
 
 ## Bounties for taking failing offers
 If an offer fails to deliver, the taker gets a %%bounty|bounty%% in native token to compensate for the gas spent on executing the offer. The bounty is paid by the %%offer owner|offer-owner%% and are taken from the %%provision|provision%% they deposited with Mangrove when posting the offer. 

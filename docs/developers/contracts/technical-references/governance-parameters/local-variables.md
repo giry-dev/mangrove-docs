@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
 
 ```solidity
 // Governance sets the fee for the `(outbound_tkn, inbound_tkn)` offer list
-function setFee(address outbound_tkn, address inbound_tkn, uint fee) public;
+function setFee(OLKey memory olKey, uint fee) public;
 
 ```
 
