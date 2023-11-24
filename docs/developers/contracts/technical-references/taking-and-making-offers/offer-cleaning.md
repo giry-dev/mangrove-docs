@@ -7,12 +7,6 @@ sidebar_position: 6
 
 It is also possible to target specific offer IDs in the [offer list](./offer-list.md). This is called **Offer Cleaning**.
 
-:::info 
-[Is this still true? I'm thinking to remove that banner since the intent with `clean` is different?]
-
-Offer cleaning can be used by off-chain bots and price aggregators to build their own optimized market order, targeting for instance offers with a higher volume or less gas requirements in order to optimize the gas cost of filling the order.
-
-:::
 
 !!! [Revert strings and Soly TBD] !!!
 

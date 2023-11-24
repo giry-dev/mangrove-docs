@@ -16,17 +16,16 @@ Returns two uints (`startId`, `length`). `startId` is the id of the best live of
 
 ```solidity
 function offerListEndPoints(
-        address outbound_tkn, 
-        address inbound_tkn, 
-        uint fromId, 
-        uint maxOffer
+    OLKey memory olKey, 
+    uint fromId, 
+    uint maxOffers
 ) public view returns (uint startId, uint length)
 ```
 
 ### Function `packedOfferList`
 
-Returns the order book for the `outbound_tkn`/`inbound_tkn` pair in packed form: 
-`(uint nextOfferId, uint[] memory offerIds, MgvStructs.OfferPacked[] memory offers, MgvStructs.OfferDetailPacked[] memory offerDetails)`.
+Returns the order book for the `outbound_tkn`/`inbound_tkn`/`tickSpacing` (`olkey`) pair in packed form: 
+`(uint nextOfferId, uint[] memory offerIds, Offer[] memory offers, OfferDetail[] memory offerDetails)`.
 
 * `nextOfferId` is the id of next offer (0 means this is the last offer)
 * `offerIds` is an array of offerIds in the order book 
@@ -39,20 +38,19 @@ Refer to the [Annotated Code for Mangrove Core](../codebase.md) for more informa
 
 ```solidity
 function packedOfferList(
-    address outbound_tkn, 
-    address inbound_tkn, 
+    OLKey memory olKey, 
     uint fromId, 
     uint maxOffers
 ) public view returns (
     uint, 
     uint[] memory, 
-    MgvStructs.OfferPacked[] memory, 
-    MgvStructs.OfferDetailPacked[] memory)
+    Offer[] memory, 
+    OfferDetail[] memory)
 ```
 
 ### Function `offerList`
 
-Returns the order book for the `outbound_tkn/inbound_tkn` pair in unpacked form: `(uint nextOfferId, uint[] memory offerIds, MgvStructs.OfferUnpacked[] memory offers, MgvStructs.OfferDetailUnpacked[] memory offerDetails)`.
+Returns the order book for the `outbound_tkn`/`inbound_tkn`/`tickSpacing` (`olkey`) pair in unpacked form: `(uint nextOfferId, uint[] memory offerIds, OfferUnpacked[] memory offers, OfferDetailUnpacked[] memory offerDetails)`.
 
 * `nextOfferId` is the id of next offer (0 means this is the last offer)
 * `offerIds` is an array of offerIds in the order book
@@ -65,49 +63,45 @@ Refer to the [Annotated Code for Mangrove Core](../codebase.md) for more informa
 
 ```solidity
 function offerList(
-    address outbound_tkn, 
-    address inbound_tkn, 
+    OLKey memory olKey, 
     uint fromId, 
     uint maxOffers
 ) public view returns (
     uint, 
     uint[] memory, 
-    MgvStructs.OfferUnpacked[] memory, 
-    MgvStructs.OfferDetailUnpacked[] memory
-)
+    OfferUnpacked[] memory, 
+    OfferDetailUnpacked[] memory)
 ```
 
 ### Function `minVolume`
 
-Returns the minimum `outbound_tkn` volume to give on the `outbound_tkn/inbound_tkn` offer list for an offer that requires `gasreq` gas.
+Returns the minimum `outbound_tkn` volume to give on the `outbound_tkn`/`inbound_tkn`/`tickSpacing` (`olkey`) offer list for an offer that requires `gasreq` gas.
 
 ```solidity
 function minVolume(
-    address outbound_tkn, 
-    address inbound_tkn, 
+    OLKey memory olKey, 
     uint gasreq
 ) public view returns (uint)
 ```
 
 ### Function `getProvision`
 
-Returns the provision necessary to post an offer on the `outbound_tkn/inbound_tkn` offer list. You can set `gasprice=0` or use the second overload of `getProvision` to use Mangrove's internal gasprice estimate.
+Returns the provision necessary to post an offer on the `outbound_tkn`/`inbound_tkn`/`tickSpacing` (`olkey`) offer list. You can set `gasprice=0` or use the second function `getProvisionWithDefaultGasPrice` to use Mangrove's internal gasprice estimate.
 
 ```solidity
 function getProvision(
-    address outbound_tkn, 
-    address inbound_tkn, 
+    OLKey memory olKey, 
     uint ofr_gasreq, 
     uint ofr_gasprice
 ) public view returns (uint)
 ```
 
 ```solidity
-function getProvision(
-    address outbound_tkn, 
-    address inbound_tkn, 
-    uint gasreq
+  function getProvisionWithDefaultGasPrice(
+    OLKey memory olKey, 
+    uint ofr_gasreq
 ) public view returns (uint)
+
 ```
 
 ### Function `isEmptyOB`
@@ -115,35 +109,39 @@ function getProvision(
 The view function `isEmptyOB` is a sugar function for checking whether a offer list is empty. There is no offer with id 0, so if the id of the offer list's best offer is 0, it means the offer list is empty.
 
 ```solidity
-function isEmptyOB(address outbound_tkn, address inbound_tkn) public view returns (bool)
+function isEmptyOB(OLKey memory olKey) external view returns (bool)
 ```
 
 ### Function `getFee`
 
-Returns the fee that would be extracted from the given volume of `outbound_tkn` tokens on Mangrove's `outbound_tkn/inbound_tkn` offer list.
+Returns the fee that would be extracted from the given volume of `outbound_tkn` tokens on Mangrove's `outbound_tkn`/`inbound_tkn`/`tickSpacing` (`olkey`) offer list.
 
 ```solidity
-function getFee(address outbound_tkn, address inbound_tkn, uint outVolume) public view returns (uint)
+function getFee(OLKey memory olKey, uint outVolume) external view returns (uint)
 ```
 
 ### Function `minusFee`
 
-Returns the given amount of `outbound_tkn` tokens minus the fee on Mangrove's `outbound_tkn/inbound_tkn` offer list.
+Returns the given amount of `outbound_tkn` tokens minus the fee on Mangrove's `outbound_tkn`/`inbound_tkn`/`tickSpacing` (`olkey`) offer list.
 
 ```solidity
-function minusFee(address outbound_tkn, address inbound_tkn, uint outVolume) public view returns (uint) 
+function minusFee(OLKey memory olKey, uint outVolume) external view returns (uint)
+
 ```
 
 ### Functions `global` and `local`
 
-View functions `global` and `local` are sugar functions for getting only the `global` or `local` (specific to the `outbound_tkn/inbound_tkn` offer list) configuration for Mangrove.
+View functions `global` and `local` are sugar functions for getting only the `global` or `local` (specific to the `outbound_tkn`/`inbound_tkn`/`tickSpacing` (`olkey`) offer list) configuration for Mangrove.
 
 ```solidity
-function global() public view returns (MgvStructs.GlobalPacked)
-function local(address outbound_tkn, address inbound_tkn) public view returns (MgvStructs.LocalPacked)
+function global() external view returns (Global _global)
+
+  function local(OLKey memory olKey) external view returns (Local _local)
 ```
 
 ### Function `marketOrder`
+
+[TO BE EDITED]
 
 The `marketOrder` function simulates a market order on Mangrove and returns the cumulative `totalGot`, `totalGave` and `totalGasreq` for each offer traversed. 
 
