@@ -11,7 +11,7 @@ New offers should mostly be posted by [maker contracts](maker-contract.md) able 
 
 Offers posted via maker contracts are called %%smart offers|smart-offer%% - as opposed to %%on-the-fly offers|on-the-fly-offer%% made from EOA's.
 
-similarly to [taking offers](../taker-order/README.md), offers on Mangrove can be posted in two ways:
+Similarly to [taking offers](../taker-order/README.md), offers on Mangrove can be posted in two ways:
 * Via the `newOfferByTick` function (preferred way).
 * Via the `newOfferByVolume` function.
 

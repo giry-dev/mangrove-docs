@@ -5,7 +5,7 @@ sidebar_position: 6
 
 # Cleaning offers
 
-It is also possible to target specific offer IDs in the [offer list](./offer-list.md). This is called **Offer Cleaning**.
+It is also possible to target specific offer IDs in the [offer list](./offer-list.md). This is called **Offer Cleaning**. This [section](../../../keeper-bots/guides/use-mgvcleaner-to-clean-offers.md) provides details on how to safely trigger failing offers and make a profit doing so.
 
 
 !!! [Revert strings and Soly TBD] !!!
