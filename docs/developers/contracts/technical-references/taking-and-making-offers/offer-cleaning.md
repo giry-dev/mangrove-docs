@@ -211,17 +211,14 @@ await Mangrove.connect(signer).snipes(
 * `targets` is a `CleanTarget[]` with each `CleanTarget` identifying an offer to clean and the execution parameters that will make it fail.
 * `taker` is the address of the taker placing the order
 
-[CAUTION TO BE EDITED?]
 :::caution **Protection against malicious offer updates**
 
 Offers can be updated, so if `targets` was just an array of `offerId`s, there would be no way to protect against a malicious offer update mined right before a `clean`. The offer could suddenly have a worse price, or require a lot more gas.
 
 If you only want to take offers without any checks on the offer contents, you can simply:
 
-* Set `takerWants` to `0`,
-* Set `takerGives` to `type(uint96).max`,
-* Set `gasreq_permitted` to `type(uint).max`, and
-* Set `fillWants` to `false`.
+* Set `gasreq` to `type(uint).max`, and
+* Set `tick` to `maxTick`.
 
 :::
 
@@ -232,42 +229,34 @@ If you only want to take offers without any checks on the offer contents, you ca
 
 #### Example
 
-| ID | Wants (USDC) | Gives (DAI) | Gas required |
-| -- | ----- | ----- | ------------ |
-| 13 | 10    | 10    | 80\_000      |
-| 2  | 1     | 2     | 250\_000     |
+| Tick    | Ratio (WETH/DAI) | Offer ID | Gives (DAI)  | Gas required |
+| ------- | ---------------- | -------- |------------- | ------------ |
+| -79815  | 0.0003419        | 77       | 925.26       | 250,000      |
+|         |                  | 177      | 916.47       | 270,000      |
+| -79748  | 0.0003442        | 42       | 871.76       | 300,000      |
 
 :::info **Example**
 
-Consider the offers above on the DAI-USDC offer list. Let us construct a `snipes` call. 
+Consider the offers above on the DAI-WETH offer list. Let's construct a `clean` call. 
 
-We start by specifying that the `fillWants` flag is `true`. This means, that we ask
+First, we'll construct the following `targets` array. As a reminder, `targets` is an array of `CleanTarget[]`. The `CleanTarget` struct holds the following:
+  * `uint offerId`
+  * `Tick tick`
+  * `uint gasreq`
+  * `uint takerWants` // can be retrieved using Gives and the Ratio.
 
-* to act as a buyer of %%inbound|inbound%% tokens, i.e., DAI, and, 
-* to buy *at most* what we specify for `takerWants` in `targets`.
+Declaring some `targets` using the above table:
+* `targets[0] = [77, -79815, 250_000, 0.3163]`
+* `targets[1] = [42, -79748, 300,000, 0.3000]`
 
-Now let us construct the following `targets` array:
+Here, `mgv` is the core Mangrove contract and `olkey` is the struct containing the token addresses and `tickSPacing` parameters corresponding to an offer list. Putting it together, the call to `cleanByImpersonation` would look like this:
 
-* `targets[0] = [13, 8, 10, 80_000]`
-* `targets[1] = [2, 10, 2, 250_000]`
-
-Taking into account that we have set `fillWants = true`, this means that we are:
-
-* targeting offer #13, willing to give 10 USDC for at most 8 DAI, and,
-* targeting offer #2, willing to give 2 USDC for at most 10 DAI
-
-accepting a gas cost of up to `80_000` gas units and `250_000`, respectively.
-
-Let `DAI_addr` and `USDC_addr` be the addresses for the relevant tokens. Putting it together, the call to `snipes` looks like this:
-
-    snipes(DAI_addr, USDC_addr, [[13, 8, 10, 80_000],[2, 10, 2, 250_000]], true)
-
-With the DAI-USDC offer list as given above, the result will be that:
-
-For offer #13, we will successfully buy 8 DAI for 8 USDC, as the %%entailed price|offer-entailed-price%% for offer #13 is `10/10 = 1` USDC per DAI. This is below the price we were willing to pay: `10/8 = 1.25` USDC per DAI for this offer, so the offer is executed, resulting in a %%partial fill|maker-partial-fill%%.
-
-For offer #2, we will *not* attempt to execute this offer, as the %%entailed price|offer-entailed-price%% for offer #2 is `1/2 = 0.5` USDC per DAI, above the price that we were are willing to pay: `2/10 = 0.2` USDC per DAI for this offer.
-
+```
+MgvLib.CleanTarget[] memory targets = new MgvLib.CleanTarget[](1);
+targets[0] = MgvLib.CleanTarget(77, -79815, 250_000, 0.3163);
+targets[1] = MgvLib.CleanTarget(42, -79748, 300,000, 0.3000);
+mgv.cleanByImpersonation(olKey, targets, address(this));
+```
 :::
 
 
