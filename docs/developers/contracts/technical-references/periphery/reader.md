@@ -141,9 +141,8 @@ function global() external view returns (Global _global)
 
 ### Function `marketOrder`
 
-[TO BE EDITED]
 
-The `marketOrder` function simulates a market order on Mangrove and returns the cumulative `totalGot`, `totalGave` and `totalGasreq` for each offer traversed. 
+The `marketOrderByTick` and `marketOrderByVolume` functions simulate a market order on Mangrove and returns the cumulative `totalGot`, `totalGave` and `totalGasreq` for each offer traversed. 
 
 Please refer to the section [Market Order in Taking Offers](../taking-and-making-offers/taker-order/README.md) for more information on market orders.
 
@@ -156,14 +155,22 @@ The simulation does not account for `gasbase`. Furthermore,
 * If `!accumulate` is set, only return the total cumulative volume.
 
 ```solidity
-function marketOrder(
-address outbound_tkn,
-address inbound_tkn,
-uint takerWants,
-uint takerGives,
-bool fillWants,
-bool accumulate
+function simulateMarketOrderByTick(
+    OLKey memory olKey, 
+    Tick maxTick, 
+    uint fillVolume, 
+    bool fillWants
+    )public view returns (VolumeData[] memory)
+
+function simulateMarketOrderByVolume(
+    OLKey memory olKey,
+    uint takerWants,
+    uint takerGives,
+    bool fillWants,
+    bool accumulate
 ) public view returns (VolumeData[] memory)
+
+
 ```
 
 ## Source Code
