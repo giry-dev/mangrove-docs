@@ -206,7 +206,8 @@ await tx.wait();
   * `outbound_tkn` address of the _outbound_ token (that the taker will buy).
   * `inbound_tkn` address of the _inbound_ token (that the taker will spend).
   * `tickSpacing` number of ticks that should be jumped between available price points.
-* `wants` amount of inbound tokens requested by the offer. **Must** fit in a `uint96`.
+* `tick` is the tick number at which the offer is to be inserted.
+* `gives` is the amount of outbound tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t. to `gasreq` and offer list's %%density|density%% parameter.
 * `gasreq` amount of gas that will be given to the offer's account. **Must** fit in a `uint24` and be lower than [`gasmax`](../../governance-parameters/mangrove-configuration.md#mgvlibmgvstructsglobalunpacked). Should be sufficient to cover all calls to the maker contract's %%offer logic|offer-logic%% (%%`makerExecute`|makerExecute%%) and %%`makerPosthook`|makerPosthook%%). **Must** be compatible with the offered volume `gives` and the offer list's %%density|density%% parameter. (See also %%gasreq|gasreq%%.)
 * `gasprice` gas price override used to compute the order %%provision|provision%% (see also [offer bounties](offer-provision.md)). Any value lower than Mangrove's current %%gasprice|gasprice%% will be ignored (thus 0 means "use Mangrove's current %%gasprice|gasprice%%"). **Must** fit in a `uint16`.
 
@@ -218,8 +219,8 @@ await tx.wait();
 
 #### Inputs
 
-* Same as previously, except that `tick` is not used; `gives` is.
-* `gives` is the amount of outbound tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t. to `gasreq` and offer list's %%density|density%% parameter.
+* Same as previously, except that `tick` is not used; `wants` is.
+* `wants` is the amount of inbound tokens requested by the offer.
 
 #### Outputs
 
@@ -446,8 +447,7 @@ function myRetractOffer(uint offerId) external {
 
 #### Inputs
 
-* `outbound_tkn` address of the %%outbound|outbound%% token (like for [`newOffer`](#posting-a-new-offer)).
-* `inbound_tkn` address of the %%inbound|inbound%% token (like for [`newOffer`](#posting-a-new-offer)).
+* `olkey` is the same as above.
 * `offerId` is the %%offer id|offer-id%% of the offer to be retracted.
 * `deprovision` if true, will free the offer's %%provision|provision%% so that you can [withdraw](offer-provision.md#withdrawing) them. Otherwise, will leave the provision in the offer.
 

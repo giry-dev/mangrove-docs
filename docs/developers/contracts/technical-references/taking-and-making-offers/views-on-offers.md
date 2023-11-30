@@ -24,11 +24,16 @@ import TabItem from '@theme/TabItem';
 <TabItem value="solidity" label="Solidity" default>
 
 ```solidity
-import "src/IMangrove.sol";
-
+import {IMangrove} from "@mgv/src/IMangrove.sol";
 // context of the call
-IMangrove mgv;
-OLKey public olkey;
+
+// IMangrove mgv = IMangrove(payable(<address of Mangrove>));
+// Mangrove contract
+IMangrove mgv = IMangrove(payable(mgv));
+
+// OLKey olkey = OLKey(<address of outbound token>, <address of inbound token>, <tick spacing>);
+// struct containing outbound_tkn, inbound_tkn and tickSpacing
+OLKey memory olkey = OLKey(address(base), address(quote), 1);
 
 uint best = mgv.best(olkey);
 ```
@@ -61,7 +66,11 @@ const best = await mgv.best(outboundTkn, inboundTkn, tickSpacing);
 
 </Tabs>
 
-### `offers(OLKey memory olKey, uint offerId)` and `offerDetails(OLKey memory olKey, uint offerId)`
+### `offers()` , `offerDetails()` and `offerData()`
+
+* `offers(OLKey memory olKey, uint offerId)`: get an offer in packed format.
+* `offerDetails(OLKey memory olKey, uint offerId)`: get an offer detail in packed format.
+* `offerData(OLKey memory olKey, uint offerId)`: get both offer and offer detail in packed format.
 
 [SOLY TBD]
 
@@ -79,28 +88,35 @@ import "src/IMangrove.sol";
 import {MgvStructs} "src/MgvLib.sol";
 
 // context of the call
-address MGV;
-address outTkn; 
-address inbTkn;
-uint tickSpacing;
-uint offerId; // the id of the offer one wishes to get the data of
 
-// if one wishes to get the totally unpacked data (gas costly!):
+// IMangrove mgv = IMangrove(payable(<address of Mangrove>));
+// Mangrove contract
+IMangrove mgv = IMangrove(payable(mgv));
+
+// OLKey olkey = OLKey(<address of outbound token>, <address of inbound token>, <tick spacing>);
+// struct containing outbound_tkn, inbound_tkn and tickSpacing
+OLKey memory olkey = OLKey(address(base), address(quote), 1);
+
+// Tick tick = TickLib.tickFromRatio(mantissa,exponent);
+// ratios are represented as a (mantissa,exponent) pair which represents the number `mantissa * 2**-exponent`
+// calculates the tick from a desired 1.25 ratio (1.25 = 20 * 2^(-4))
+Tick tick = TickLib.tickFromRatio(20, 4);
+
+// creates an offer at `tick` and store its ID in ofrId
+uint ofrId = mgv.newOfferByTick(olKey, tick, 1 ether, 10_000, 0);
+
+// ???if one wishes to get the totally unpacked data (gas costly!):??? To be edited?
 (MgvStructs.OfferUnpacked memory offer, MgvStructs.OfferDetailUnpacked memory offerDetail) = Mangrove(MGV)
 .offerInfo(outTkn, inbTkn, tickSpacing, offerId);
 
-// if one wishes to access a few particular fields, say `wants`, `gives` and `gasreq` parameters of the offer: 
-// 1. getting packed (outTkn, inbTkn, tickSpacing) Offer List data
-MgvStructs.OfferPacked memory offer32 = Mangrove(MGV)
-.offers(outTkn, inbTkn, tickSpacing, offerId);
-MgvStructs.OfferDetailPacked memory offerDetail32 = Mangrove(MGV)
-.offerDetails(outTkn, inbTkn, tickSpacing, offerId);
+// getting packed (outTkn, inbTkn, tickSpacing) offer list data
+Offer offer = mgv.offers(olKey, ofrId);
+OfferDetail detail = mgv.offerDetails(olKey, ofrId);
 
 // for all fields f of OfferUnpacked
 // offer.f == offer32.f()
 // for all fields f of OfferDetailUnpacked
 // offerDetail.f == offerDetail32.f()
-
 ```
 
 </TabItem>
@@ -150,13 +166,28 @@ An offer is **live** in a given [Offer List](offer-list.md) if it can be matched
 <TabItem value="solidity" label="Solidity">
 
 ```solidity
-import "src/IMangrove.sol";
+import {IMangrove} from "@mgv/src/IMangrove.sol";
 
 // context of the call
-Offer offer;
+
+// IMangrove mgv = IMangrove(payable(<address of Mangrove>));
+// Mangrove contract
+IMangrove mgv = IMangrove(payable(mgv));
+
+// OLKey olkey = OLKey(<address of outbound token>, <address of inbound token>, <tick spacing>);
+// struct containing outbound_tkn, inbound_tkn and tickSpacing
+OLKey memory olkey = OLKey(address(base), address(quote), 1);
+
+// Tick tick = TickLib.tickFromRatio(mantissa,exponent);
+// ratios are represented as a (mantissa,exponent) pair which represents the number `mantissa * 2**-exponent`
+// calculates the tick from a desired 1.25 ratio (1.25 = 20 * 2^(-4))
+Tick tick = TickLib.tickFromRatio(20, 4);
+
+// Create an offer using our previous tick and store its ID in ofrId
+uint ofrId = mgv.newOfferByTick(olKey, tick, 1 ether, 10_000, 0);
 
 // checking whether the offer is live in the order book.
-bool isLive = offer.isLive();
+bool isLive = mgv.offers(olKey, ofrId).isLive();
 ```
 
 </TabItem>

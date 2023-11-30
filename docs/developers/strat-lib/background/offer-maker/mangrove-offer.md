@@ -69,9 +69,6 @@ Here is list of all approval needed for MangroveOffer contract:
 Besides MangroveOffer contract giving approvals, the offer makers reserve needs to give this approval:
 
 * The offer makers reserve of MangroveOffer contract must approve the router for outbound token transfer.
-
-**CheckReserveApproval** is a hook that should check whether the reserve has approved the maker to use it. This is needed so that a maker don't use the reserve without the approval of the owner of the reserve. If this was allowed, it would be possible to set your reserve to the same as someone with a large amount of tokens and steal there tokens, when offers a taken. MangroveOffer has no default implementation. The hook is used, when the a maker tries to set their reserve.
-
 * [routers](../../technical-references/router.md) are contracts, which can handle more comprehensive transfers. E.g. if you want to lend the money, when the offer is taken, then a router would be able to handle this. A more comprehensive description of Routers can be found here LINK.
 
 Mangrove has 2 default implementations of MangroveOffer, they can be found here, [Direct](direct.md) and [Forwarder](forwarder.md).

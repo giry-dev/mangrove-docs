@@ -153,13 +153,22 @@ event OrderComplete(
   <TabItem value="solidity" label="Solidity">
 
 ```solidity
-import "src/IMangrove.sol";
-import {IERC20} from "src/MgvLib.sol";
+import {IMangrove} from "@mgv/src/IMangrove.sol";
+import "@mgv/src/core/MgvLib.sol";
 
 // context of the call
-address mgv; // address of Mangrove contract
-OLKey olkey; // struct containing outbound_tkn, inbound_tkn and tickSpacing
-Tick maxTick; // limit price the market order is ready to pay
+
+// IMangrove mgv = IMangrove(payable(<address of Mangrove>));
+// Mangrove contract
+IMangrove mgv = IMangrove(payable(mgv));
+
+ // OLKey olkey = OLKey(<address of outbound token>, <address of inbound token>, <tick spacing>);
+ // struct containing outbound_tkn, inbound_tkn and tickSpacing
+OLKey memory olkey = OLKey(address(base), address(quote), 1);
+
+// Tick maxTick = TickLib.tickFromVolumes(<raw amount of inbound token>, <raw amount of outbound token>);
+// constructs max tick from a ratio between inbound and outbound token amounts
+Tick maxTick = TickLib.tickFromVolumes(1_000_000, 1_000);
 
 // marketOrderByTick
 (uint takerGot, uint takerGave, uint bounty, uint feePaid) = mgv.marketOrderByTick(olKey, maxTick, 1 ether, true);
