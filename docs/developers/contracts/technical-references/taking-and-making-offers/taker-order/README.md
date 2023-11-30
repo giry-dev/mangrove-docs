@@ -53,8 +53,6 @@ Market orders come in two versions:
 * `marketOrderByVolume` mimics a previous version of Mangrove's API
 
 
-!!! [Soly TBD] !!!
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -159,25 +157,16 @@ import "src/IMangrove.sol";
 import {IERC20} from "src/MgvLib.sol";
 
 // context of the call
-address MGV;
-address outTkn; // address offer's outbound token
-address inbTkn; // address of offer's inbound token
+address mgv; // address of Mangrove contract
+OLKey olkey; // struct containing outbound_tkn, inbound_tkn and tickSpacing
+Tick maxTick; // limit price the market order is ready to pay
 
-uint outDecimals = IERC20(outTkn).decimals();
-uint inbDecimals = IERC20(inbTkn).decimals();
+// marketOrderByTick
+(uint takerGot, uint takerGave, uint bounty, uint feePaid) = mgv.marketOrderByTick(olKey, maxTick, 1 ether, true);
 
-// if Mangrove is not approved yet for inbound token transfer.
-IERC20(inbTkn).approve(MGV, type(uint).max);
+// marketOrderByVolume
+(uint takerGot, uint takerGave, uint bounty, uint feePaid) = mgv.marketOrderByVolume(olKey, 1.1 ether, 1.9 ether, true);
 
-// a market order of 5 outbound tokens (takerWants) in exchange of 8 inbound tokens (takerGives)
-(uint takerGot, uint takerGave, uint bounty, uint fee) = IMangrove(MGV)
-.marketOrder({
-    outbound_tkn: outTkn,
-    inbound_tkn: inbTkn,
-    takerWants: 5*10**outDecimals,
-    takerGive: 8*10**inbDecimals,
-    true
-});
 ```
 
   </TabItem>

@@ -29,11 +29,11 @@ https://github.com/mangrovedao/mangrove-strats/blob/82d730230ed2457b4f7bcdbaa7ef
 
 * **Input**: 
   * `token` is the asset the maker contract wishes to push
-  * `reserveId` of the offer owner whose funds are being pushed
+  * `reserveId` is the address of the offer owner whose funds are being pushed
   * `amount` is the amount of asset that should be transferred from the calling maker contract
-* **Output**: fraction of `amount` that was successfully `pushed` to offer owner's `reserve`.
+* **Output**: fraction of `amount` that was successfully `pushed` to offer owner's `reserveId`.
 * **Usage**: transfer funds from the maker contracts to an offer owner's reserve. For instance if the reserve is an account on a lender, the router will have a custom `push` that will take care of calling the proper deposit function.   
-* **SimpleRouter behavior**: transfer funds from `msg.sender` to `reserve`. Returns 0 if transfer failed, returns `amount` otherwise.
+* **SimpleRouter behavior**: transfer funds from `msg.sender` to `reserveId`. Returns 0 if transfer failed, returns `amount` otherwise.
 
 ### Pull request
 
@@ -42,12 +42,12 @@ https://github.com/mangrovedao/mangrove-strats/blob/82d730230ed2457b4f7bcdbaa7ef
 ```
 * **Input**: 
   * `token` is the asset the maker contract wishes to pull
-  * `reserveId` of the offer owner where the funds need to be pulled from
-  * `amount` is the amount of asset that should be transferred from `reserve` to the calling maker contract
+  * `reserveId` is the address of the offer owner where the funds need to be pulled from
+  * `amount` is the amount of asset that should be transferred from `reserveId` to the calling maker contract
   * `strict` is used when the calling maker contract accepts to receive more funds from reserve than required (this may happen for gas optimization)
 * **Output**: fraction of `amount` that was successfully `pulled` to `msg.sender`.
 * **Usage**: transfer funds from an offer owner's reserve to the calling maker contracts. For instance if the reserve is an account on a lender, the router will have a custom `pull` that will take care of calling the proper redeem function.   
-* **SimpleRouter behavior**: transfer funds from `reserve` to `msg.sender`. Returns 0 if transfer failed, returns `amount` otherwise.
+* **SimpleRouter behavior**: transfer funds from `reserveId` to `msg.sender`. Returns 0 if transfer failed, returns `amount` otherwise.
 
 
 ## Gatekeeping
