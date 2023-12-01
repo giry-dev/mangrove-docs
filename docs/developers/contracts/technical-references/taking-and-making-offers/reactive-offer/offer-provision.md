@@ -48,10 +48,13 @@ event Credit(address maker, uint amount);
 <TabItem value="solidity" label="Solidity">
 
 ```solidity
-import "src/IMangrove.sol";
+import {IMangrove} from "@mgv/src/IMangrove.sol";
+
 //context 
-IMangrove mgv; // Mangrove contract address
+// IMangrove mgv = IMangrove(payable(<address of Mangrove>));
+IMangrove mgv = IMangrove(payable(mgv)); // Mangrove contract
 address maker_contract; // address of the maker contract one is willing to provision
+
 // funding maker_contract
 mgv.fund{value: 0.1 ether}(maker_contract);
 
@@ -145,9 +148,11 @@ event Debit(address maker, uint amount);
 <TabItem value="solidity" label="Solidity">
 
 ```solidity
-import "src/IMangrove.sol";
+import {IMangrove} from "@mgv/src/IMangrove.sol";
+
 //context 
-IMangrove mgv; // Mangrove contract
+// IMangrove mgv = IMangrove(payable(<address of Mangrove>));
+IMangrove mgv = IMangrove(payable(mgv)); // Mangrove contract
 
 uint wei_balance = mgv.balanceOf(address(this));
 require(mgv.withdraw(wei_balance), "Mangrove failed to transfer funds");

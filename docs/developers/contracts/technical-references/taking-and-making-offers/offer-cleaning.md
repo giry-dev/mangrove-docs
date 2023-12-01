@@ -8,8 +8,6 @@ sidebar_position: 6
 It is also possible to target specific offer IDs in the [offer list](./offer-list.md). This is called **Offer Cleaning**. This [section](../../../keeper-bots/guides/use-mgvcleaner-to-clean-offers.md) provides details on how to safely trigger failing offers and make a profit doing so.
 
 
-!!! [Revert strings and Soly TBD] !!!
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -110,30 +108,32 @@ event OrderComplete(
 <TabItem value="solidity" label="Solidity">
 
 ```solidity
-import "src/IMangrove.sol";
-import {IERC20} from "src/MgvLib.sol";
+import {IMangrove} from "@mgv/src/IMangrove.sol";
+import "@mgv/src/core/MgvLib.sol";
 
 // context of the call
-address MGV;
-address outTkn; // address offer's outbound token
-address inbTkn; // address of offer's inbound token
-uint offer1; // first offer one wishes to snipe
-uint offer2; // second offer one wishes to snipe
+
+// IMangrove mgv = IMangrove(payable(<address of Mangrove>));
+// Mangrove contract
+IMangrove mgv = IMangrove(payable(mgv));
+
+// OLKey olkey = OLKey(<address of outbound token>, <address of inbound token>, <tick spacing>);
+// struct containing outbound_tkn, inbound_tkn and tickSpacing
+OLKey memory olkey = OLKey(address(base), address(quote), 1);
 
 // if Mangrove is not approved yet for inbound token transfer.
 IERC20(inbTkn).approve(MGV, type(uint).max);
 
-// sniping the offers to check whether they fail
-(uint successes, uint takerGot, uint takerGave, uint bounty, uint fee) = Mangrove(MGV).snipes(
-    outTkn,
-    inbTkn,
-    [
-        [offer1, 1 ether, 1 ether, 100000], // first snipe (price of 1 / 1 )
-        [offer2, 1.5 ether, 1 ether, 50000] // second snipe (price of 1.5 / 1)
-    ],
-    true // fillwants
+MgvLib.CleanTarget[] memory targets = new MgvLib.CleanTarget[](1);
+targets[0] = MgvLib.CleanTarget(77, -79815, 250_000, 0.3163);
+targets[1] = MgvLib.CleanTarget(42, -79748, 300_000, 0.3000);
+
+// cleaning the offer using olkey, the previous array of target offers and this contract's address as taker
+(uint successes, uint bounty) = mgv.cleanByImpersonation(
+  olkey, 
+  targets,
+  address(this)
 );
-//we have: `successes < 2 <=> bounty > 0`
 ```
 
 </TabItem>
@@ -247,7 +247,7 @@ First, we'll construct the following `targets` array. As a reminder, `targets` i
 
 Declaring some `targets` using the above table:
 * `targets[0] = [77, -79815, 250_000, 0.3163]`
-* `targets[1] = [42, -79748, 300,000, 0.3000]`
+* `targets[1] = [42, -79748, 300_000, 0.3000]`
 
 Here, `mgv` is the core Mangrove contract and `olkey` is the struct containing the token addresses and `tickSPacing` parameters corresponding to an offer list. Putting it together, the call to `cleanByImpersonation` would look like this:
 

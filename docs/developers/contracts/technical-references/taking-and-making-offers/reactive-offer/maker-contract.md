@@ -16,8 +16,6 @@ and [trade posthook](#trade-posthook).
 
 The logic associated with an offer **must** be implemented in the `makerExecute` callback function. (See [data structures](offer-data-structures.md#mgvlib.singleorder) for `SingleOrder` type).
 
-!!![code Offer Logic TBD]!!!
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -131,29 +129,28 @@ import {IERC20, IMaker, SingleOrder, OrderResult, MgvStructs} from "@mgv/src/cor
 
 abstract contract MakerContract is IMaker {
     // context 
-    address MGV; // address of Mangrove contract
+    // IMangrove mgv = IMangrove(payable(<address of Mangrove>));
+    // Mangrove contract
+    IMangrove mgv = IMangrove(payable(mgv));
     
     // Example of post-hook
     // if taker order was a success, try to repost residual offer at the same price
-    function makerPosthook(
-        SingleOrder calldata order,
-        OrderResult calldata result
-    ) external {
-        require (msg.sender == MGV, "posthook/invalid_caller");
+    function makerPosthook(MgvLib.SingleOrder calldata order, MgvLib.OrderResult calldata result) external {
+        require (msg.sender == mgv, "posthook/invalid_caller");
         if (result.mgvData == "mgv/tradeSuccess") {
             // retrieving offer data
-            // the following call to updateOffer will revert if:
-            // * `this` MakerContract doesn't have enough provision on Mangrove for the offer
-            // * the residual/(GASREQ+offer_gasbase) is below Mangrove's minimal density
-            // NB : a reverting posthook does not revert the offer execution
-            Mangrove(MGV).updateOffer(
-                order.outbound_tkn, // same offer List
-                order.inbound_tkn,
-                order.offer.wants() - order.gives, // what the offer wanted, minus what the taker order gave 
-                order.offer.gives() - order.wants, // what the offer was giving, minus what the taker took
-                order.offerDetail.gasreq(), // keeping with the same gasreq
-                order.offer.next(), // using next offer as pivot
-                order.offerId // reposting the offer that was consumed
+            // the following call to updateOfferByTick will revert if:
+            //    * `this` MakerContract doesn't have enough provision on Mangrove for the offer
+            //    * the residual/(GASREQ+offer_gasbase) is below Mangrove's minimal density
+            //    * NB : a reverting posthook does not revert the offer execution
+            // update the offer with the "ByTick" version
+            mgv.updateOfferByTick(
+                order.olkey, // same offer list
+                order.offer.tick, // same tick
+                order.offer.gives() - TickLib.inboundFromOutbound(order.offer.ticktick, order.takerWants()), // what the offer was giving, minus what the taker took (wants)
+                order.offerDetail.gasreq(), // keep offer's current gasreq 
+                order.offerDetail.gasprice(), // keep offer's current gasprice
+                order.offerId // ID of the offer to be updated 
             );
         }
     }
