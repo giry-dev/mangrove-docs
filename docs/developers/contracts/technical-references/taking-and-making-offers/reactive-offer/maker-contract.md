@@ -34,26 +34,28 @@ internal returns (uint gasused, bytes32 makerData);
 <TabItem value="offerLogic" label="Offer logic">
 
 ```solidity
-import {IERC20, IMaker, SingleOrder} "src/MgvLib.sol";
+import {IERC20, IMaker, SingleOrder} from "@mgv/src/core/MgvLib.sol";
+
 
 contract MyOffer is IMaker {
-    address MGV; // address of Mangrove
+    // IMangrove mgv = IMangrove(payable(<address of Mangrove>));
+    // Mangrove contract
+    IMangrove mgv = IMangrove(payable(mgv));
     address reserve; // token reserve for inbound tokens
     
     // an example of offer execution that simply verifies that `this` contract has enough outbound tokens to satisfy the taker Order.
-    function makerExecute(SingleOrder calldata order) 
-    external returns (bytes32 makerData){
+    function makerExecute(MgvLib.SingleOrder calldata order) external returns (bytes32 makerData) {
         // revert below (in case of insufficient funds) to signal mangrove we renege on trade
         // reverting as soon as early to minimize bounty
         require(
-           IERC20(order.outbound_tkn).balanceOf(address(this)) >= order.wants),
-           "MyOffer/NotEnoughFunds";
-        );
+            IERC20(order.offer.gives()).balanceOf(address(this)) >= order.offer.wants(),
+            "MyOffer/NotEnoughFunds");
+    
         // do not perform any state changing call if caller is not Mangrove!
-        require(msg.sender == MGV, "MyOffer/OnlyMangroveCanCallMe");
+        require(msg.sender == mgv, "MyOffer/OnlyMangroveCanCallMe");
         // `order.gives` has been transfered by Mangrove to `this` balance
         // sending incoming tokens to reserve
-        IERC20(order.inbound_tkn).transfer(reserve, order.gives);
+        IERC20(order.offer.wants()).transfer(reserve, order.offer.gives());
         // this string will be passed to `makerPosthook`
         return "MyOffer/tradeSuccess";
     }
@@ -125,7 +127,7 @@ function makerPosthook(
 <TabItem value="offerLogic" label="Offer logic">
 
 ```solidity
-import {IERC20, IMaker, SingleOrder, OrderResult, MgvStructs} from "src/MgvLib.sol";
+import {IERC20, IMaker, SingleOrder, OrderResult, MgvStructs} from "@mgv/src/core/MgvLib.sol";
 
 abstract contract MakerContract is IMaker {
     // context 

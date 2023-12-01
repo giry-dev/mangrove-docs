@@ -72,7 +72,6 @@ const best = await mgv.best(outboundTkn, inboundTkn, tickSpacing);
 * `offerDetails(OLKey memory olKey, uint offerId)`: get an offer detail in packed format.
 * `offerData(OLKey memory olKey, uint offerId)`: get both offer and offer detail in packed format.
 
-[SOLY TBD]
 
 :::info
 
@@ -84,8 +83,8 @@ The data pertaining to a particular offer is contained in the [`OfferUnpacked`](
 <TabItem value="solidity" label="Solidity">
 
 ```solidity
-import "src/IMangrove.sol";
-import {MgvStructs} "src/MgvLib.sol";
+import {IMangrove} from "@mgv/src/IMangrove.sol";
+import "@mgv/src/core/MgvLib.sol";
 
 // context of the call
 

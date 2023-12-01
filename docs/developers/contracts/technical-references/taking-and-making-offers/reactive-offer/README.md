@@ -21,8 +21,6 @@ Similarly to [taking offers](../taker-order/README.md), offers on Mangrove can b
 
 :::
 
-!![SOLY TBD]!!
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -97,42 +95,29 @@ event OfferWrite(
 <TabItem value="solidity" label="Solidity">
 
 ```solidity
-import "src/IMangrove.sol";
-import {IERC20, MgvStructs} "src/MgvLib.sol";
+import {IMangrove} from "@mgv/src/IMangrove.sol";
+import "@mgv/src/core/MgvLib.sol";
 
 // context of the call
-address MGV;
-address outTkn; // address offer's outbound token
-address inbTkn; // address of offer's inbound token
-address admin; // admin address of this contract
-uint pivotId; // offer id whose price is the closest to this new offer (observed offchain)
 
-// Approve Mangrove for outbound token transfer if not done already
-IERC20(outTkn).approve(MGV, type(uint).max);
-uint outDecimals = IERC20(outTkn).decimals();
-uint inbDecimals = IERC20(inbTkn).decimals();
+// IMangrove mgv = IMangrove(payable(<address of Mangrove>));
+// Mangrove contract
+IMangrove mgv = IMangrove(payable(mgv));
 
-// importing global and local (pertaining to the (outTkn, inTkn) offer list) parameters.
-(MgvStructs.GlobalPacked global, MgvStructs.LocalPacked local) = IMangrove(MGV)
-.config(outTkn, inTkn);
+// OLKey olkey = OLKey(<address of outbound token>, <address of inbound token>, <tick spacing>);
+// struct containing outbound_tkn, inbound_tkn and tickSpacing
+OLKey memory olkey = OLKey(address(base), address(quote), 1);
 
-uint gasprice = global.gasprice() * 10**9; // Mangrove's gasprice is in gwei units
-uint gasbase = local.offer_gasbase() ; // gas necessary to process a market order
-uint gasreq = 500_000; // assuming this logic requires 30K units of gas to execute
+// Tick tick = TickLib.tickFromRatio(mantissa,exponent);
+// ratios are represented as a (mantissa,exponent) pair which represents the number `mantissa * 2**-exponent`
+// calculates the tick from a desired 1.25 ratio (1.25 = 20 * 2^(-4))
+Tick tick = TickLib.tickFromRatio(20, 4);
 
-uint provision = (gasreq + gasbase) * gasprice; // minimal provision in wei
+// creates an offer at `tick`
+mgv.newOfferByTick(olKey, tick, 1 ether, 10_000, 0);
 
-// calling mangrove with `pivotId` for initial positioning.
-// sending `provision` amount of native tokens to cover for the bounty of the offer
-IMangrove(MGV).newOffer{value: provision}(
-        outTkn, // reposting on the same market
-        inbTkn, 
-        5.0*10**inbDecimals, // maker wants 5 inbound tokens
-        7.0*10**outDecimals, // maker gives 7 outbound tokens
-        30_000, // maker requires 500_000 gas units to comply 
-        0, // use mangrove's gasprice oracle  
-        pivotId // heuristic: tries to insert this offer after pivotId
-);  
+// creates an offer using gives and wants
+mgv.newOfferByVolume(olkey, 1 ether, 1 ether, 10_000, 0);
 ```
 
 </TabItem>
@@ -246,8 +231,6 @@ Make sure that your offer is [well-provisioned](offer-provision.md#checking-an-a
 
 Offers are updated through the `updateOfferByTick` or `updateOfferByVolume` functions described below.
 
-!![SOLY TBD]!!
-
 <Tabs>
 <TabItem value="signature" label="Signature" default>
 
@@ -324,26 +307,42 @@ event CreditWei(address maker, uint amount);
 <TabItem value="soldity" label="Solidity">
 
 ```solidity
-import "src/IMangrove.sol";
-import {MgvStructs} form "src/MgvLib.sol";
+import {IMangrove} from "@mgv/src/IMangrove.sol";
+import "@mgv/src/core/MgvLib.sol";
 
-// context of the call
-// MGV: address of Mangrove's deployment 
-// outTkn, inbTkn: addresses of the offer list in which the updated offer is
-// offerId: offer identifier in the (outTkn, inbTkn) offer list
+// continuing from the previous example for the creation of new offers
+// context of the call:
+    // mgv: address of Mangrove's deployment 
+    // olkey struct containing outbound_tkn, inbound_tkn and tickSpacing
 
-MgvStruct.OfferPacked memory offer32 = IMangrove(MGV).offers(outTkn, inbTkn, offerId);
-MgvStruct.OfferPacked memory offerDetail32 = IMangrove(MGV).offerDetails(outTkn, inbTkn, offerId);
+// creates an offer at `tick` and store its ID in ofrId_1
+uint ofrId_1 = mgv.newOfferByTick(olKey, tick, 1 ether, 10_000, 0);
 
-IMangrove(MGV).updateOffer(
-   outTkn, 
-   inbTkn, 
-   offer32.wants(), // do not update what the offer wants
-   offer32.gives() * 0.9, // decrease what offer gives by 10%
-   offerDetail32.gasreq(), // keep offer's current gasreq 
-   offerDetail32.gasprice(), // keep offer's current gasprice
-   offer32.next(), // heuristic: use next offer as pivot since offerId might be off the book
-   offerId // id of the offer to be updated
+// getting packed (outTkn, inbTkn, tickSpacing) offer list data
+Offer offer_1 = mgv.offers(olKey, ofrId_1);
+OfferDetail detail_1 = mgv.offerDetails(olKey, ofrId_1);
+
+// update the offer with the "ByTick" version
+mgv.updateOfferByTick(
+  olkey,
+  tick,
+  offer_1.gives() * 9 / 10, // decrease what offer gives by 10%
+  detail_1.gasreq(), // keep offer's current gasreq 
+  detail_1.gasprice(), // keep offer's current gasprice
+  ofrId_1 // id of the offer to be updated 
+);
+
+// retrieves the amount of wants from the tick and gives
+uint wants = TickLib.inboundFromOutbound(tick, offer_1.gives());
+
+// update the offer with the "ByVolume" version
+mgv.updateOfferByVolume(
+  olkey,
+  wants, // keep what the offer wants
+  offer_1.gives() * 12 / 10, // increase what offer gives by 20%
+  detail_1.gasreq(), // keep offer's current gasreq 
+  detail_1.gasprice(), // keep offer's current gasprice
+  ofrId_1 // id of the offer to be updated 
 );
 ```
 
@@ -373,8 +372,6 @@ After being executed or [retracted](#retracting-an-offer), an offer is moved out
 ### Retracting an offer
 
 An offer can be withdrawn from the order book via the `retractOffer` function described below.
-
-!!![SOLY TBD]
 
 <Tabs>
 <TabItem value="signature" label="Signature" default>
@@ -417,25 +414,23 @@ event Credit(
 <TabItem value="solidity" label="Solidity">
 
 ```solidity
-import "./Mangrove.sol";
+import {IMangrove} from "@mgv/src/IMangrove.sol";
 
-// context of the call
-address MGV;
-address outTkn; // address of market's base token
-address inbTkn; // address of market's quote token
-address admin; // admin address of this contract
-...
-...
+// continuing from the previous example for the creation of new offers
+// context of the call:
+    // mgv: address of Mangrove's deployment 
+    // olkey struct containing outbound_tkn, inbound_tkn and tickSpacing
+    // ofrId_1: offer identifier of the offer created in the examples for new offer creation
+
 // external function to update an offer
 // assuming this contract has enough provision on Mangrove to repost the offer if need be 
-function myRetractOffer(uint offerId) external {
-        require(msg.sender == admin, "Invalid caller");
-        // calling mangrove with offerId as pivot (assuming price update will not change much the position of the offer)
-        Mangrove(MGV).retractOffer(
-                outTkn, // reposting on the same market
-                inbTkn, 
-                offerId, // id of the offer to be updated
-                false // do not deprovision offer, saves gas if one wishes to repost the offer later
+function myRetractOffer(OLKEY olkey, uint offerId) external {
+    require(msg.sender == admin, "Invalid caller");
+    // retracting offer with ID = ofrId_1
+    mgv.retractOffer(
+        olKey,
+        ofrId_1, // id of the offer to be retracted
+        false // no deprovision of the offer, saves gas if one wishes to repost the offer later
         );
 }
 ...
