@@ -7,7 +7,7 @@ sidebar_position: 1
 
 ## General structure
 
-The offer list is the basic Mangrove data structure. Mangrove holds offer lists for **%%outbound|outbound%% token** (`outbound_tnk`), **%%inbound|inbound%% token** (`inbound_tkn`) pairs with a given **%%tick spacing|tickSpacing%%** (`tickSpacing`).
+The offer list is the basic Mangrove data structure. Mangrove holds offer lists for **%%outbound|outbound%% token** (`outbound_tkn`), **%%inbound|inbound%% token** (`inbound_tkn`) pairs with a given **%%tick spacing|tickSpacing%%** (`tickSpacing`).
 Offers are sorted in a tree (the “[tick tree](#tick-tree)") where each available price point (a [bin](#bins-doubly-linked-lists)) holds a doubly linked list of offers. Each offer promises `outbound_tkn` and requests `inbound_tkn`.
 
 For example in a DAI-WETH offer list, DAI is the outbound token (i.e., to be sent by the offer) and WETH the inbound token (i.e., wanted by the offer).
@@ -106,4 +106,4 @@ Gas price that was used to compute the %%offer provision|provision%%. If the off
 
 ## Offer list configuration
 
-Several [configuration](../governance-parameters/mangrove-configuration.md) parameters determine how new offers are inserted. Some are [global](../governance-parameters/global-variables.md) to Mangrove, some are [offer list specifics.](../governance-parameters/local-variables.md) See [Governance](../governance-parameters/README.md) section for details.
+Several [configuration](../governance-parameters/mangrove-configuration.md) parameters determine how new offers are inserted. Some are [global](../governance-parameters/global-variables.md) to Mangrove, some are [offer list specific.](../governance-parameters/local-variables.md) See [Governance](../governance-parameters/README.md) section for details.
