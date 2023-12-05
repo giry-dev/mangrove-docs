@@ -19,18 +19,18 @@ forge init --force
 # Set up remappings to use the strat library
 cd node_modules/@mangrovedao/mangrove-strats
 
-echo "@mgv/src/=../mangrove-core/src/
-@mgv/lib/=../mangrove-core/lib/
-@mgv/test/=../mangrove-core/test/
-@mgv/script/=../mangrove-core/script/
-@mgv/forge-std/=../mangrove-core/lib/forge-std/src/
+echo "@mgv/src/=node_modules/@mangrovedao/mangrove-core/src/
+@mgv/src/=node_modules/@mangrovedao/mangrove-core/src/
+@mgv/lib/=node_modules/@mangrovedao/mangrove-core/lib/
+@mgv/test/=node_modules/@mangrovedao/mangrove-core/test/
+@mgv/script/=node_modules/@mangrovedao/mangrove-core/script/
+@mgv/forge-std/=node_modules/@mangrovedao/mangrove-core/lib/forge-std/src/
+ds-test/=node_modules/@mangrovedao/mangrove-core/lib/forge-std/lib/ds-test/src
 
-ds-test/=../mangrove-core/lib/forge-std/lib/ds-test/src
-
-@mgv-strats/src/=src/
-@mgv-strats/lib/=lib/
-@mgv-strats/test/=test/
-@mgv-strats/script/=script/
+@mgv-strats/src/=node_modules/@mangrovedao/mangrove-strats/src/
+@mgv-strats/lib/=node_modules/@mangrovedao/mangrove-strats/lib/
+@mgv-strats/test/=node_modules/@mangrovedao/mangrove-strats/test/
+@mgv-strats/script/=node_modules/@mangrovedao/mangrove-strats/script/
 " > remappings.txt
 ```
 

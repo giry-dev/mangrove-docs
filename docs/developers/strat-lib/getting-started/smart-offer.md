@@ -86,7 +86,7 @@ Before proceeding, import the environment variables made as part of the preparat
 source .env
 ```
 
-Start Foundry's local node `anvil` to test things locally before broadcasting to the real chain, with `$RPC_URL` coming from `.env` and pointing, for instance, to the Polygon Mumbai testnet.
+Start Foundry's local node `anvil` to test things locally before broadcasting to the real chain, with `$RPC_URL` coming from `.env` and pointing, for instance, to the Polygon network.
 
 ```bash
 anvil --fork-url $RPC_URL
@@ -132,14 +132,14 @@ export OFFER_MAKER=<contract address> # 0xabcd..., the address of the newly depl
 
 ### Activate the contract
 
-In this tutorial, we will use the WBTC/USDT market.
+In this tutorial, we will use the WBTC/DAI market.
 Make sure to set variables with the tokens address into your `.env` file.
 
 > Note: the example token addresses are for the Polygon Mumbai testnet.
 
 ```bash
-export WBTC=0xf402f6197d979F0A4cba61596921a3d762520570
-export USDT=0xe8099699aa4A79d89dBD20A63C50b7d35ED3CD9e
+export WBTC=0x2Fa2e7a6dEB7bb51B625336DBe1dA23511914a8A
+export DAI=0xc8c0Cf9436F4862a8F60Ce680Ca5a9f0f99b5ded
 ```
 
 We have to let Mangrove pull the outbound token from our new contract - we can use the `activate` function for that.
@@ -151,10 +151,10 @@ cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "activate(address[])" "[$WBTC]" --
 ### Post an offer
 
 Now that the contract is ready, we can use it to post an offer - note that we have to %%provision|provision%% the offer, and we do that by sending some native tokens to `newOffer`.<br />
-In our example, we are offering 1 WBTC (outbound) in exchange for 26,000 USDT (inbound).
+In our example, we are offering 1 WBTC (gives) at tick 50 (note: tick 50 means the price ratio is `1.0001^50`).
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "newOffer(address, address, uint, uint, uint, uint)(uint)" "$WBTC" "$USDT" 100000000 26000000000 0 100000 --private-key "$PRIVATE_KEY" --value 0.01ether
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "newOffer((address, address, uint), int, uint, uint)(uint)" "($WBTC,$DAI,1)" 50 10000000 0  --private-key "$PRIVATE_KEY" --value 0.01ether
 ```
 
 Instead of trying to parse the logs, we can make a note of the `transactionHash` at the end of the output and use local execution to see the `offerId` returned by `newOffer`.
@@ -167,14 +167,14 @@ Which would output the following tail:
 
 ```bash
 ...
-    └─ ← 0x0000000000000000000000000000000000000000000000000000000000000235
+    └─ ← 0x0000000000000000000000000000000000000000000000000000000000000002     
 
 
 Transaction successfully executed.
-Gas used: 168639
+Gas used: 200843
 ```
 
-`0x0000000000000000000000000000000000000000000000000000000000000235` is the offer id.
+`0x0000000000000000000000000000000000000000000000000000000000000002` is the offer id.
 
 ### Locking liquidity
 
@@ -184,27 +184,29 @@ If the offer was now taken, it will fail to deliver the promised liquidity. It p
 cast send --rpc-url $LOCAL_URL "$WBTC" "transfer(address,uint)" "$OFFER_MAKER" 100000000 --private-key "$PRIVATE_KEY"
 ```
 
-If you do not have the liquidity, then see [mint](#mint) below.
+If you do not have the liquidity, then see [Getting tokens](#mint) below.
 
 :::info Note
 One of the big benefits of Mangrove is that **liquidity does not have to be locked in** - we will have a look at that in the [Unlocking Liquidity](../guides/howToUnlockLiquidity.md) guide.
 :::
 
-#### Mint
+#### Getting tokens
 
 If the admin (acting as a maker) does not have required WBTC tokens then the smart offer will fail when taken.
 > Note: this true in this particular case where we need to lock liquidity in our contract - that's how we designed it. Using a %%router|router%%, you can [unlock your funds](../guides/howToUnlockLiquidity.md), and your offer **could still be posted** - your smart offer can source liquidity elsewhere on-chain.
 
-If you don't have any WBTC you can use this to mint some tokens:
+If you don't have any WBTC, you can get some by using the following commands (taken from [foundry documentation](https://book.getfoundry.sh/tutorials/forking-mainnet-with-cast-anvil)), or the corresponding faucet. Just look for a token holder with large amounts of WBTC - you can check the list on Polygonscan.
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$WBTC" "mint(uint)" 500000000 --private-key "$PRIVATE_KEY"
-```
+# Display the amount of WBTC in the admin wallet 
+cast call $WBTC "balanceOf(address)(uint256)" $ADMIN_ADDRESS
 
-If the admin acts as taker and takes the offer (see [snipe guide](../guides/howToSnipe.md)), you will also need USDT.
+# Impersonate the LUCKY_USER before making a transfer to our admin wallet
+cast rpc anvil_impersonateAccount $LUCKY_USER
+cast send $WBTC --unlocked --from $LUCKY_USER "transfer(address,uint256)(bool)" $ADMIN_ADDRESS 100000000
 
-```bash
-cast send --rpc-url $LOCAL_URL "$USDT" "mint(uint)" 100000000000 --private-key "$PRIVATE_KEY"
+# Verify that the transfer was successful
+cast call $WBTC "balanceOf(address)(uint256)" $ADMIN_ADDRESS
 ```
 
 
@@ -217,10 +219,10 @@ export OFFER_ID_HEX=<0xabcd...> # the hexadecimal offer ID captured when posting
 export OFFER_ID=$(($OFFER_ID_HEX)) # the decimal ID of the offer captured above
 ```
 
-Now, we can update our offer, for example by changing the amount of USDT we want to 25,000:
+Now, we can update our offer, for example by changing the amount of WBTC we give to 0.1:
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "updateOffer(address, address, uint, uint, uint, uint, uint)(uint)" "$WBTC" "$USDT" 100000000 25000000000 0 "$OFFER_ID" 100000 --private-key "$PRIVATE_KEY" --value 0.01ether
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "updateOffer((address, address, uint), int, uint, uint, uint)(uint)" "($WBTC,$DAI,1)" 50 100000 "$OFFER_ID" 0 --private-key "$PRIVATE_KEY" --value 0.01ether
 ```
 
 ### Retract an offer
@@ -228,15 +230,13 @@ cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "updateOffer(address, address, uin
 We can also remove our offer from the book, using `retractOffer`. Note that we don't need to provide a provision in this case, since we are pulling the offer off the market. We will actually get back our provision with that configuration.
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "retractOffer(address, address, uint, bool)(uint)" "$WBTC" "$USDT" "$OFFER_ID" 1 --private-key "$PRIVATE_KEY"
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "retractOffer((address, address, uint), uint, bool)(uint)" "($WBTC,$DAI,1)" "$OFFER_ID" 1 --private-key "$PRIVATE_KEY"
 ```
 
 
 ### Next steps
 
 * You could publish the contract on mainnet by stopping Anvil and replacing the `--rpc-url $LOCAL_URL` in the above `create`, `activate`, and `approve` commands with `--rpc-url $RPC_URL` - and finally, the `newOffer` with sensible prices.
-
-* You could try [taking](../guides/howToSnipe.md) your own offer.
 
 * To get a view of the order book, the Mangrove UI can be used, or you can use the [SDK](../../SDK/getting-started/basic-offer.md).
 
