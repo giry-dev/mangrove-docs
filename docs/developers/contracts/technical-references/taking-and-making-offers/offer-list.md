@@ -7,18 +7,21 @@ sidebar_position: 1
 
 ## General structure
 
+:::danger There are 2 offer lists per market
+An "offer list" corresponds to either the "asks" or "bids" side of an order book. Mangrove being fully on-chain, there is no actual concept of an order book, only offer lists.
+
+Hence, a full market will always feature two offer lists. For instance, a WETH/DAI **market** has one DAI-WETH offer list (where WETH is requested and DAI is offered), and a WETH-DAI offer list (where DAI is requested and WETH is offered).
+
+[Mangrove's SDK ](../../../SDK/README.md) offers Market abstractions that allows liquidity providers and takers to interact with Mangrove using standard trading _base_ and _quote_ denominations.
+:::
+
 The offer list is the basic Mangrove data structure. Mangrove holds offer lists for **%%outbound|outbound%% token** (`outbound_tkn`), **%%inbound|inbound%% token** (`inbound_tkn`) pairs with a given **%%tick spacing|tickSpacing%%** (`tickSpacing`).
 Offers are sorted in a tree (the “[tick tree](#tick-tree)") where each available price point (a [bin](#bins-doubly-linked-lists)) holds a doubly linked list of offers. Each offer promises `outbound_tkn` and requests `inbound_tkn`.
 
 For example in a DAI-WETH offer list, DAI is the outbound token (i.e., to be sent by the offer) and WETH the inbound token (i.e., wanted by the offer).
 
-:::danger There are 2 offer lists per market
 
-A full market will always feature two offer lists. For instance, a WETH/DAI **market** has one DAI-WETH offer list (where WETH is requested and DAI is offered), and a WETH-DAI offer list (where DAI is requested and WETH is offered).
 
-[Mangrove's SDK ](../../../SDK/README.md) offers Market abstractions that allows liquidity providers and takers to interact with Mangrove using standard trading _base_ and _quote_ denominations.
-
-:::
  ### Example
  
 Here's a sample DAI-WETH offer list with two offers. Only the main characteristics of the offers are shown (see the [offer data structure](reactive-offer/offer-data-structures.md#mgvlib-offer)).

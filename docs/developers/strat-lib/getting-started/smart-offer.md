@@ -184,7 +184,7 @@ If the offer was now taken, it will fail to deliver the promised liquidity. It p
 cast send --rpc-url $LOCAL_URL "$WBTC" "transfer(address,uint)" "$OFFER_MAKER" 100000000 --private-key "$PRIVATE_KEY"
 ```
 
-If you do not have the liquidity, then see [Getting tokens](#mint) below.
+If you do not have the liquidity, check [Getting tokens](#getting-tokens) below, and come back to this step afterwards.
 
 :::info Note
 One of the big benefits of Mangrove is that **liquidity does not have to be locked in** - we will have a look at that in the [Unlocking Liquidity](../guides/howToUnlockLiquidity.md) guide.
@@ -195,13 +195,13 @@ One of the big benefits of Mangrove is that **liquidity does not have to be lock
 If the admin (acting as a maker) does not have required WBTC tokens then the smart offer will fail when taken.
 > Note: this true in this particular case where we need to lock liquidity in our contract - that's how we designed it. Using a %%router|router%%, you can [unlock your funds](../guides/howToUnlockLiquidity.md), and your offer **could still be posted** - your smart offer can source liquidity elsewhere on-chain.
 
-If you don't have any WBTC, you can get some by using the following commands (taken from [foundry documentation](https://book.getfoundry.sh/tutorials/forking-mainnet-with-cast-anvil)), or the corresponding faucet. Just look for a token holder with large amounts of WBTC - you can check the list on Polygonscan.
+If you don't have any WBTC, you can get some by using the following commands (taken from [foundry documentation](https://book.getfoundry.sh/tutorials/forking-mainnet-with-cast-anvil)), or the corresponding faucet. Just look for a token holder with large amounts of WBTC - you can check the list on Polygonscan. Also, remember to add the chosen address under `$LUCKY_USER` in your `.env` file. 
 
 ```bash
 # Display the amount of WBTC in the admin wallet 
 cast call $WBTC "balanceOf(address)(uint256)" $ADMIN_ADDRESS
 
-# Impersonate the LUCKY_USER before making a transfer to our admin wallet
+# Impersonate the LUCKY_USER before making a transfer of 1 WBTC to our admin wallet
 cast rpc anvil_impersonateAccount $LUCKY_USER
 cast send $WBTC --unlocked --from $LUCKY_USER "transfer(address,uint256)(bool)" $ADMIN_ADDRESS 100000000
 

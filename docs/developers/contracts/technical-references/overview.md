@@ -61,7 +61,7 @@ The diagram below summarizes the call sequence induced by a taker order. Notice 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="text--center">
-<img src={useBaseUrl('/img/assets/execution.png')} width="60%"/>
+<img src={useBaseUrl('/img/assets/execution.png')} width="75%"/>
 </div>
 
 ## Where can I read more?

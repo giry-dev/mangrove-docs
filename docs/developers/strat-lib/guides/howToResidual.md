@@ -20,7 +20,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ad
 When writing posthooks to repost residuals there are both caveats and points to be aware:
 
 * Use [`_updateOffer`](../technical-references/code/strats/src/strategies/offer_maker/abstract/Direct.md#_updateoffer) instead of posting a new offer. The old offer is not alive and can be reused (and the storage is possibly hot during the execution of the offer logic), this is [cheaper](./howtoGasreq.md) than using [`_newOffer`](../technical-references/code/strats/src/strategies/offer_maker/abstract/Direct.md#_newoffer).
-* Use the helper  methods [`__residualGives__`](../technical-references/code/strats/src/strategies/MangroveOffer.md#residualgives) and [`__residualWants__`](../technical-references/code/strats/src/strategies/MangroveOffer.md#residualwants) supplied to calculate the residual (see example below).
+* Use the helper method [`__residualvalues__`](../technical-references/code/strats/src/strategies/MangroveOffer.md#residualvalues) supplied to calculate the residual (see example below).
 * Beware that updates can fail, e.g., due to too low density.
 * Make sure to refer to the guidelines on [Safe offer logic guidelines](./HowToImplement.md).
 * Note that the parameters to `__posthookSuccess__` already point out the old offer. This can save storage since we do not have to store %%IDs|offer-id%% of posted offers.
