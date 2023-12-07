@@ -1,6 +1,6 @@
 ---
 description: Introducing Mangrove's Offer Lists a low level representation of (half) an order book.
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Offer Lists
@@ -54,14 +54,12 @@ We can illustrate this with the following sample WETH-DAI offer list with three 
 
 ##### Understanding the table
 * **Tick**: a number derived from the ratio (price), pointing to a [bin](#bins-doubly-linked-lists). All offers in a bin have the same tick.
-* **Ratio**: we often use the word ‘price’ to refer to the ratio between the amount promised by an offer and the amount it requests.
-    * In the code however, we use the generic word `ratio` to avoid confusion with notions of price based on concepts such as ‘quote’ and ‘base’ tokens.
-    * In the table, the ratio tells you how much WETH (quote) you get per DAI (base).
-* **Offer ID**: more information [below](#offer-id)
-* **Gives**: more information [below](#gives-ratio-and-entailed-price)
-* **Gas required**: the amount of gas needed to cover all calls to the maker contract's [offer logic](./reactive-offer/maker-contract.md)
-* **Maker contract**: the address of the [maker contract](./reactive-offer/README.md) (smart offer)
-* **Offer gas price**: gas price override used to compute the order's %%provision|provision%% (see also [offer bounties](../taking-and-making-offers/reactive-offer/offer-provision.md#bounty-calculation))
+* **Ratio**: tells us how much WETH (base) we get per DAI (quote).
+* **Offer ID**: more information [below](#offer-id).
+* **Gives**: more information [below](#gives-ratio-and-entailed-price).
+* **Gas required**: the amount of gas needed to cover all calls to the maker contract's [offer logic](./reactive-offer/maker-contract.md).
+* **Maker contract**: the address of the [maker contract](./reactive-offer/README.md) (smart offer).
+* **Offer gas price**: gas price override used to compute the order's %%provision|provision%% (see also [offer bounties](../taking-and-making-offers/reactive-offer/offer-provision.md#bounty-calculation)).
 
 :::caution **Decimals**
 We display human-readable values in the examples, but Mangrove stores raw token values and never uses the `decimals` field of a token.
@@ -84,63 +82,14 @@ This is the mirrored offer list, where:
 
 ## Some terminology
 
-### Tick tree
-
-Offers are stored in a tree we call a “tick tree”. Thanks to this tree structure, offer operations (insert, update, and retract) take constant gas (the height of the tree is fixed).
-
-### Bins (doubly linked lists)
-
-Below the bottom of the tree are bins.
-
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
-<div class="text--center">
-<img src={useBaseUrl('/img/assets/bin.png')} width="60%"/>
-</div>
-
-:::caution **Note**
-All offers in a bin have the same tick. During a market order, offers in a bin are executed in order, from the first to the last. Inserted offers are always appended at the end of a bin.
-:::
-
-Bins are laid in sequence. In the context of an offer list, each bin has an associated tick (and a tick determines a price). If a bin has tick `t`, the following bin has tick `t+tickSpacing`.
-
 ### Offer ID
 
 The identifier of the offer in the offer list.
 
 :::danger **Important**
-
 Two offers may have the same ID as long as they belong to different offer lists. For instance, there may be an offer with ID 42 on the WETH-DAI offer list with different volumes, gas required, maker contract, etc., than the offer with ID 42 in the DAI-WETH offer list shown above.
-
 :::
 
-### Gives, ratio and entailed price
-
-e
-
-Taken together, the **gives** and **ratio** values define 1) a max volume, 2) a price.
-
-#### Ratio
-
-In order to translate 'ratio' to 'price', one must decide which of the tokens is the base and which is the quote. In our WETH and DAI example, it would be more natural to say that WETH is base and DAI is quote which means prices would be DAI/WETH. 
-- And thus, since the ratio is in WETH/DAI, price is ratio^(-1).
-- 
-- Maybe easiest to focus on ratio in the section and then have a paragraph which translates to price. Or maybe just refer to the new "Ticks and ratios" pag
-
-#### Price
-
-The **entailed price** `p` is `p = ratio`:
-* An offer promises to deliver up to **gives** %%outbound|outbound%% tokens at a price of `p` tokens delivered per %%inbound|inbound%% token received.
-* How much an offer wants can be simply calculated by multiplying the Gives by the ratio (ex: `offer ID 77 wants = 925.26 * 0.0003419 = 0.316 WETH`).
-
-:::info **Examples**
-
-Based on the above table:
-* The offer with ID 77 promises 925.26 DAI at a ratio of 0.0003419, i.e. it wants `925.26 * 0.0003419 = 0.316` WETH.
-* The offer with ID 177 is part of the same bin as offer 77, hence has a similar tick and ratio. It promises 916.47 DAI at a ratio of 0.0003419, i.e. it wants `916.47 * 0.0003419 = 0.313` WETH.
-* The offer with ID 42 is in a different bin, and has a different tick and ratio. It promises 871.76 DAI at a ratio of 0.0003442, i.e. it wants `871.76 * 0.0003442 = 0.300` WETH.
-
-:::
 
 ### Gas required
 

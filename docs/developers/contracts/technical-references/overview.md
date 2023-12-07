@@ -66,6 +66,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Where can I read more?
 
+* The concepts of ticks and ratio are crucial in Mangrove - you'll want to [get familiar with them](./tick-ratio.md) first.
 * Refer to the section on [Creating and Updating Offers](taking-and-making-offers/reactive-offer/README.md).
 * Read more about [Offer Execution](taking-and-making-offers/reactive-offer/executing-offers.md) on Mangrove.
 * Read about the freely available [Strat Library](../../strat-lib/README.md) - a repository of Solidity code to help write your own custom maker contract.
