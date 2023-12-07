@@ -225,6 +225,13 @@ Now, we can update our offer, for example by changing the amount of WBTC we give
 cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "updateOffer((address, address, uint), int, uint, uint, uint)(uint)" "($WBTC,$DAI,1)" 50 100000 "$OFFER_ID" 0 --private-key "$PRIVATE_KEY" --value 0.01ether
 ```
 
+:::info Note
+To update an offer, here's something to keep in mind:
+1. To change the volume offered => change `gives` (example above)
+2. To change the price of the offer => change `tick`
+3. To change both volume and price => change `gives` and `tick`
+:::
+
 ### Retract an offer
 
 We can also remove our offer from the book, using `retractOffer`. Note that we don't need to provide a provision in this case, since we are pulling the offer off the market. We will actually get back our provision with that configuration.
