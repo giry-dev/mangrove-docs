@@ -17,7 +17,7 @@ Hence, a full market will always feature two offer lists. For instance, a WETH/D
 
 ### Dealing with offer lists
 
-For more information on ticks, head over the [previous section](LINK_HERE).
+For more information on ticks, head over the [previous section](../tick-ratio.md).
 
 1. An offer list is identified by a tuple of (`outbound_tkn`, `inbound_tkn`, `tickSpacing`). For example in a WETH-DAI offer list:
     * `outbound_tkn` is the address of the WETH token (i.e., sent by the offer)
