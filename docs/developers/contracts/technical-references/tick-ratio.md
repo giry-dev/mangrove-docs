@@ -25,7 +25,7 @@ Let's break it down a bit.
 
 ### 1. Order book basics
 
-Mangrove's order book contains real-time, continuously updated lists of buy and sell orders for assets ([markets](./taking-and-making-offers/offer-list.md)). The book is organized by price levels (ticks), with the highest bid (buy order) and the lowest ask (sell order) sitting at the top of their respective side of the book ([offer lists](./taking-and-making-offers/offer-list.md)).
+Mangrove's order book contains real-time, continuously updated lists of offers for trading pairs ([markets](./taking-and-making-offers/offer-list.md)). The book is organized by price levels (ticks), with the highest bid (buy order) and the lowest ask (sell order) sitting at the top of their respective side of the book ([offer lists](./taking-and-making-offers/offer-list.md)).
 
 ### 2. Tick tree
 
@@ -47,15 +47,15 @@ As previously said, each tick points to a single tick bin, where all offers with
 :::info Note
 * A larger `tickSpacing` means the jumps in tick (i.e. price) are bigger.
 * A smaller `tickSpacing` means the jumps in tick are narrower.
-    * Example: a high-volatility market would require a larger `tickSpacing` compared to a more stable market
+    * Example: a high-volatility market would require a larger `tickSpacing` compared to a more stable one.
 :::
 
 ### 5. Our approach to ticks
 
 Our approach to ticks is inspired from Uniswap’s, with the following notable changes:
 * Directly computing ticks base 1.0001 (not base `sqrt(1.0001)`)
-* Directly computing ratios (not `sqrt(ratio)` - simpler code elsewhere when dealing with actual ratios and logs of ratios)
-* Ratios are floating-point numbers, not fixed-point numbers (increases precision when computing amounts)
+* Directly computing ratios (not `sqrt(ratio)` - it makes the code simpler when dealing with actual ratios and logs of ratios)
+* Ratios are floating-point numbers, not fixed-point numbers (it increases the precision when computing amounts)
 
 The available prices in an offer list are `1.0001^i` for all `MIN_TICK <= i <= MAX_TICK` such that `i % tickSpacing = 0`.
 
@@ -74,7 +74,7 @@ Now that it is said, it's important to note that a tick does correspond to a giv
 
 [??? To add a reference to function `tickFromRatio` ??]
 
-In order to translate 'ratio' to 'price', one must decide which of the tokens is the base and which is the quote. You will see in the coming "[offer lists](./taking-and-making-offers/offer-list.md)" section that a given market (ex: WETH/DAI) is present on the two side of the book (bids and asks).
+In order to translate 'ratio' to 'price', one must decide which of the tokens is the base and which is the quote. You will see in the coming "[offer lists](./taking-and-making-offers/offer-list.md)" section that a given market (ex: WETH/DAI) is present on the two sides of the book (bids and asks).
 
 It means that **depending on which side** you are looking at, the ratio will be **inverted**. Let's illustrate that:
 
@@ -84,12 +84,12 @@ On a WETH/DAI market:
 * The bids side would be DAI-WETH (buying WETH)
     * The price therefore equals to the `ratio` (how many WETH can I get per DAI)
 * The asks side would be WETH-DAI (selling WETH, or buying DAI)
-    * The price then equals to the `ratio^(-1)` (how many DAI cant I get per WETH)
+    * The price then equals to the `ratio^(-1)` (how many DAI can I get per WETH)
 :::
 
 ### Price & Wants
 
-Later, you will learn that [posting offers](./taking-and-making-offers/reactive-offer/README.md) requires you to provide (among other things) a `tick` and a `gives` amount (how much the offer sends). However, it's not using "wants" (how much the offer requests). That is where the ratio comes in handy!
+Later, you will learn that [posting offers](./taking-and-making-offers/reactive-offer/README.md) requires you to provide (among other things) a `tick` and a `gives` amount (how much the offer sends). However, it's not using how much the offer requests. But we can retrieve it with our handy ratio!
 
 How much an offer wants can be simply calculated for the two sides of the book (assuming here that both offers have an identical ratio):
 * Bids side (buying WETH)
