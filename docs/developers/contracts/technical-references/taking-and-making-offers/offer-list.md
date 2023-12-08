@@ -37,7 +37,7 @@ We will repeat ourselves a bit here, but grasping the concept of offer lists is 
 
 #### Offer list #1 - WETH-DAI
 
-In order to translate 'ratio' to 'price', one must decide which of the tokens is the base and which is the quote. In this WETH-DAI offer list:
+In this WETH-DAI offer list:
 * WETH is the base token
 * DAI the quote token
 * Thus, since the ratio is in WETH/DAI (WETH per DAI), **the price in this offer list is `ratio^(-1)` (DAI per WETH)**

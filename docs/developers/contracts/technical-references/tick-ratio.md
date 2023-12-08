@@ -42,7 +42,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 
 :::danger Important
-All offers in a bin have the same tick. During a [market order](./taking-and-making-offers/taker-order/README.md), **offers in a tick bin are executed in order**, from the first to the last. Inserted offers are always **appended at the end of a tick bin**.
+All offers in a bin have the same tick. During a [market order](./taking-and-making-offers/taker-order/README.md), **offers in a tick bin are executed in order**, from the first to the last. Inserted offers are **always appended at the end of a tick bin**.
 :::
 
 
@@ -82,23 +82,25 @@ Now that it is said, it's important to note that a tick does correspond to a giv
 
 In order to translate 'ratio' to 'price', one must decide which of the tokens is the base and which is the quote. You will see in the coming "[offer lists](./taking-and-making-offers/offer-list.md)" section that a given market (ex: WETH/DAI) is present on the two side of the book (bids and asks).
 
-It means that **depending on which side** you are looking at, the ratio (price, or tick) will be **inverted**. Let's illustrate that:
+It means that **depending on which side** you are looking at, the ratio will be **inverted**. Let's illustrate that:
 
 :::info Example
 On a WETH/DAI market:
 * The ratio would be expressed in WETH per DAI (WETH/DAI)
-* The bids side would be WETH-DAI (buying WETH)
-    * The price is therefore `ratio^(-1)` (how many DAI per WETH)
-* The asks side would be DAI-WETH (selling WETH, or buying DAI)
-    * The price then equals to the `ratio` (how many WETH per DAI)
+* The bids side would be DAI-WETH (buying WETH)
+    * The price therefore equals to the `ratio` (how many WETH can I get per DAI)
+* The asks side would be WETH-DAI (selling WETH, or buying DAI)
+    * The price then equals to the `ratio^(-1)` (how many DAI cant I get per WETH)
 :::
 
 ### Price
 
-Later, you will learn that [posting offers](./taking-and-making-offers/reactive-offer/README.md) requires you to provide (among other things) a `tick` and a `gives` amount (how much the offer sends). But no "wants" (how much the offer requests). That is where the ratio comes in handy!
+Later, you will learn that [posting offers](./taking-and-making-offers/reactive-offer/README.md) requires you to provide (among other things) a `tick` and a `gives` amount (how much the offer sends). However, it's not using "wants" (how much the offer requests). That is where the ratio comes in handy!
 
 How much an offer wants can be simply calculated for the two sides of the book (assuming here that both offers have an identical ratio):
 * Bids side (buying WETH)
-    * Offer XYZ is requesting `gives * ratio = 1000 * 0.00035 = 0.35` WETH
+    * Offer XYZ is giving `1000` DAI, at a ratio of `0.00035`
+    * It wants `gives * ratio = 1000 * 0.00035 = 0.35` WETH
 * Asks side (selling WETH)
-    * Offer ABC is requesting `gives * ratio^(-1) = 0.25 * (1 / 0.00035) = 714.28` DAI
+    * Offer ABC is giving `0.25` WETH, at a similar ratio
+    * It wants `gives * ratio^(-1) = 0.25 * (1 / 0.00035) = 714.28` DAI
