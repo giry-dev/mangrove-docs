@@ -24,25 +24,61 @@ For more information on ticks, head over the [previous section](../tick-ratio.md
     * `inbound_tkn` is the address of the DAI token (i.e., wanted by the offer)
     * `tickSpacing` corresponds to the space between [bins](#bins-doubly-linked-lists)
 
-2. Offers are grouped by tick into "[bins](#bins-doubly-linked-lists)", one bin per valid tick. Within a bin, the offers are stored in a FIFO doubly linked-list.
+2. Offers are grouped by tick into "[tick bins](../tick-ratio.md#3-tick-bins)" - one bin per valid tick. Within a tick bin, the offers are stored in a FIFO doubly linked-list (an offer points to the previous **and** to the next one).
 
-3. Posting and updating offers are done with constant gas thanks to the bins being organized internally in a tree structure called the "tick tree".
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="text--center">
+<img src={useBaseUrl('/img/assets/bin.png')} width="60%"/>
+</div>
+
+3. Posting and updating offers are done with constant gas thanks to tick bins being organized internally in a [tree structure](../tick-ratio.md#2-tick-tree).
 
 
  ### Example
 
-We will repeat ourselves a bit here, but grasping the concept of offer lists is very important for you to interact with Mangrove. Let's take our WETH/DAI market, and look at its 2 corresponding offer lists:
-* WETH-DAI
+We will repeat ourselves a bit here, but grasping the concept of offer lists is very important for you to interact with Mangrove. Let's take our WETH/DAI market, and look at its two corresponding offer lists:
 * DAI-WETH
+* WETH-DAI
 
-#### Offer list #1 - WETH-DAI
+:::caution Note
+If you haven't done it yet, we strongly suggest that you first get familiar with the [Ticks and ratio](../tick-ratio.md#price--wants) page.
+:::
 
-In this WETH-DAI offer list:
+#### Offer list #1 - DAI-WETH
+
+In this DAI-WETH offer list:
 * WETH is the base token
-* DAI the quote token
+* DAI the quote token (giving DAI to buy WETH)
+* Thus, since the ratio is in WETH/DAI, **the price is the `ratio`**
+
+We can illustrate this with the following sample DAI-WETH offer list with three offers. Only the main characteristics of the offers are shown (see the [offer data structure](reactive-offer/offer-data-structures.md#mgvlib-offer)).
+
+
+|  Tick   | Ratio (WETH/DAI) | Offer ID | Gives (DAI) | Gas required | Maker Contract | Offer Gas Price |
+| ------- | ---------------- | -------- | ----------- | ------------ | -------------- | --------------- |
+| -79815  | 0.0003419        | 77       | 925.26      | 250,000      | 0x5678def      | 150             |
+|         |                  | 177      | 916.47      | 270,000      | 0x9101ghi      | 170             |   
+| -79748  | 0.0003442        | 42       | 871.76      | 300,000      | 0x1234abc      | 200             |
+
+
+##### Understanding the table
+* **Tick**: a number derived from the ratio (price), pointing to a [tick bin](../tick-ratio.md#3-tick-bins). All offers in a bin have the same tick.
+* **Ratio**: tells us how much WETH (base) we get per DAI (quote).
+* **Offer ID**: more information [below](#offer-id).
+* **Gives**: more information on the [Ticks and ratio](../tick-ratio.md#price--wants) page.
+* **Gas required**: the amount of gas needed to cover all calls to the maker contract's [offer logic](./reactive-offer/maker-contract.md).
+* **Maker contract**: the address of the [maker contract](./reactive-offer/README.md) (smart offer).
+* **Offer gas price**: gas price override used to compute the order's %%provision|provision%% (see also [offer bounties](../taking-and-making-offers/reactive-offer/offer-provision.md#bounty-calculation)).
+
+
+#### Offer list #2 - WETH-DAI
+
+This is the mirrored offer list, where:
+* DAI is the base token
+* WETH the quote token (giving WETH to buy DAI)
 * Thus, since the ratio is in WETH/DAI (WETH per DAI), **the price in this offer list is `ratio^(-1)` (DAI per WETH)**
 
-We can illustrate this with the following sample WETH-DAI offer list with three offers. Only the main characteristics of the offers are shown (see the [offer data structure](reactive-offer/offer-data-structures.md#mgvlib-offer)).
 
 [TO RECALCULATE TICKS WITH DIFFERENT RATIO?]
 
@@ -52,32 +88,11 @@ We can illustrate this with the following sample WETH-DAI offer list with three 
 |         |                  | 96       | 1.3          | 280,000      | 0x1357klm      | 140             |   
 | -79748  | 0.0003442        | 7        | 0.6          | 210,000      | 0x3287opq      | 190             |
 
-##### Understanding the table
-* **Tick**: a number derived from the ratio (price), pointing to a [bin](#bins-doubly-linked-lists). All offers in a bin have the same tick.
-* **Ratio**: tells us how much WETH (base) we get per DAI (quote).
-* **Offer ID**: more information [below](#offer-id).
-* **Gives**: more information [below](#gives-ratio-and-entailed-price).
-* **Gas required**: the amount of gas needed to cover all calls to the maker contract's [offer logic](./reactive-offer/maker-contract.md).
-* **Maker contract**: the address of the [maker contract](./reactive-offer/README.md) (smart offer).
-* **Offer gas price**: gas price override used to compute the order's %%provision|provision%% (see also [offer bounties](../taking-and-making-offers/reactive-offer/offer-provision.md#bounty-calculation)).
 
 :::caution **Decimals**
 We display human-readable values in the examples, but Mangrove stores raw token values and never uses the `decimals` field of a token.
 :::
 
-#### Offer list #2 - DAI-WETH
-
-This is the mirrored offer list, where:
-* DAI is the base
-* WETH the quote
-* Thus, since the ratio is in WETH/DAI, **the price is the `ratio`**
-
-
-|  Tick   | Ratio (WETH/DAI) | Offer ID | Gives (DAI) | Gas required | Maker Contract | Offer Gas Price |
-| ------- | ---------------- | -------- | ----------- | ------------ | -------------- | --------------- |
-| -79815  | 0.0003419        | 77       | 925.26      | 250,000      | 0x5678def      | 150             |
-|         |                  | 177      | 916.47      | 270,000      | 0x9101ghi      | 170             |   
-| -79748  | 0.0003442        | 42       | 871.76      | 300,000      | 0x1234abc      | 200             |
 
 
 ## Some terminology

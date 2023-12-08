@@ -35,12 +35,6 @@ As previously said, offers are stored in bins, which are sorted in a "tick tree"
 
 Below the bottom of the tree are tick bins - they are laid in sequence. In the context of an [offer list](./taking-and-making-offers/offer-list.md), each tick bin has an associated tick (and a tick determines a price).
 
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
-<div class="text--center">
-<img src={useBaseUrl('/img/assets/bin.png')} width="60%"/>
-</div>
-
 :::danger Important
 All offers in a bin have the same tick. During a [market order](./taking-and-making-offers/taker-order/README.md), **offers in a tick bin are executed in order**, from the first to the last. Inserted offers are **always appended at the end of a tick bin**.
 :::
@@ -93,14 +87,14 @@ On a WETH/DAI market:
     * The price then equals to the `ratio^(-1)` (how many DAI cant I get per WETH)
 :::
 
-### Price
+### Price & Wants
 
 Later, you will learn that [posting offers](./taking-and-making-offers/reactive-offer/README.md) requires you to provide (among other things) a `tick` and a `gives` amount (how much the offer sends). However, it's not using "wants" (how much the offer requests). That is where the ratio comes in handy!
 
 How much an offer wants can be simply calculated for the two sides of the book (assuming here that both offers have an identical ratio):
 * Bids side (buying WETH)
-    * Offer XYZ is giving `1000` DAI, at a ratio of `0.00035`
+    * Offer A is giving `1000` DAI, at a ratio of `0.00035`
     * It wants `gives * ratio = 1000 * 0.00035 = 0.35` WETH
 * Asks side (selling WETH)
-    * Offer ABC is giving `0.25` WETH, at a similar ratio
+    * Offer B is giving `0.25` WETH, at a similar ratio
     * It wants `gives * ratio^(-1) = 0.25 * (1 / 0.00035) = 714.28` DAI
