@@ -151,10 +151,14 @@ cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "activate(address[])" "[$WBTC]" --
 ### Post an offer
 
 Now that the contract is ready, we can use it to post an offer - note that we have to %%provision|provision%% the offer, and we do that by sending some native tokens to `newOffer`.<br />
-In our example, we are offering 1 WBTC (gives) at tick 50 (note: tick 50 means the price ratio is `1.0001^50`).
+In our example, we are offering 1 WBTC (gives) at tick 50 (tick 50 means the price ratio is `1.0001^50`).
+
+:::info Note
+Later, if you'd like to take your own offer with a [market order](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#market-order) for testing purpose, it would be handy to have your offer at the very top of the book (i.e. with the best price possible). To do this, you could post your offer with the smallest tick (`-887272`), or use the [`MIN_TICK`](https://github.com/mangrovedao/mangrove-core/blob/699762b0f3801151cee1a6b64c5396a4304996b0/lib/core/Constants.sol#L52) constant in your test contract.
+:::
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "newOffer((address, address, uint), int, uint, uint)(uint)" "($WBTC,$DAI,1)" 50 10000000 0  --private-key "$PRIVATE_KEY" --value 0.01ether
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "newOffer((address, address, uint), int, uint, uint)(uint)" "($WBTC,$DAI,1)" 50 100000000 0  --private-key "$PRIVATE_KEY" --value 0.01ether
 ```
 
 Instead of trying to parse the logs, we can make a note of the `transactionHash` at the end of the output and use local execution to see the `offerId` returned by `newOffer`.
@@ -222,7 +226,7 @@ export OFFER_ID=$(($OFFER_ID_HEX)) # the decimal ID of the offer captured above
 Now, we can update our offer, for example by changing the amount of WBTC we give to 0.1:
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "updateOffer((address, address, uint), int, uint, uint, uint)(uint)" "($WBTC,$DAI,1)" 50 100000 "$OFFER_ID" 0 --private-key "$PRIVATE_KEY" --value 0.01ether
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "updateOffer((address, address, uint), int, uint, uint, uint)(uint)" "($WBTC,$DAI,1)" 50 10000000 "$OFFER_ID" 0 --private-key "$PRIVATE_KEY" --value 0.01ether
 ```
 
 :::info Note
@@ -250,3 +254,5 @@ cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "retractOffer((address, address, u
 * To get a better understanding of how tokens flow between taker, maker, Mangrove, and maker contracts like `OfferMakerTutorial`, see [Mangrove Offer](../background/offer-maker/mangrove-offer.md).
 
 * You can also add more features (such as [reneging trades](../guides/howToRenege.md) or [unlocking/reactive liquidity](../guides/howToUnlockLiquidity.md)) to your smart offer by looking at the next sections of this doc!
+
+* At some point, you will need to measure the gas requirements of your smart offers - [this page](../guides/howtoGasreq.md) will give you pointers on how to do this.

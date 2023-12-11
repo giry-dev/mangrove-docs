@@ -10,7 +10,9 @@ sidebar_position: 2
 :::danger There are 2 offer lists per market
 An "offer list" corresponds to either the "asks" or "bids" side of an order book. Mangrove being fully on-chain, there is no actual concept of an order book, only offer lists.
 
-Hence, a full market will always feature two offer lists. For instance, a WETH/DAI market has one DAI-WETH offer list (where WETH is requested and DAI is offered), and a WETH-DAI offer list (where DAI is requested and WETH is offered).
+Hence, a full market will always feature **two offer lists**. For instance, a WETH/DAI market has:
+* The DAI-WETH offer list (where DAI is offered in exchange for WETH)
+* The WETH-DAI offer list (where WETH is offered in exchange for DAI)
 
 [Mangrove's SDK ](../../../SDK/README.md) offers Market abstractions that allows liquidity providers and takers to interact with Mangrove using standard trading _base_ and _quote_ denominations.
 :::

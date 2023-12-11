@@ -15,12 +15,16 @@ sidebar_position: 0
     * [Makers](./high-level/concepts/makers-takers-keepers/makers.md)
     * [Takers](./high-level/concepts/makers-takers-keepers/takers.md)
     * [Keepers](./high-level/concepts/makers-takers-keepers/keepers.md)
-* [Audits](./high-level/audits.md)
 
 
 ### FAQ
 
 * [Link to FAQ](./FAQ/README.md)
+
+
+### Audits
+
+* [Link to audits](./audits.md)
 
 ### App Guide
 
