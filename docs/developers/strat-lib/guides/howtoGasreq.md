@@ -5,11 +5,11 @@ sidebar_position: 4
 
 # Determining gas requirements
 
-Determining %%gas requirements (gasreq)|gasreq%% for your offer logic in a maker contract is important to avoid failures, save on provision, and make offers as attractable as possible.
+Determining %%gas requirements (gasreq)|gasreq%% for your offer logic in a maker contract is important to avoid failures, save on provision, and make offers as attractable as possible. There is a lot that can be said and calculated about gas requirements - we will focus on the essential here, and give you pointers for your own assessments.
 
 ## What to test
 
-To determine the gasreq, you need to measure the **worst case gas usage **when %%`makerExecute`|makerExecute%% and %%`makerPosthook`|makerPosthook%% are called. There could be exception cases which are very gas costly, where you simply want the offer to fail instead (and you could skip those).
+To determine the `gasreq`, you need to measure the **worst case gas usage **when %%`makerExecute`|makerExecute%% and %%`makerPosthook`|makerPosthook%% are called. There could be exception cases which are very gas costly, where you simply want the offer to fail instead (and you could skip those).
 
 As a strat builder, you should **verify your gas usage** in some specific scenarios, and **compare deltas to other scenarios** tested [here](https://github.com/mangrovedao/mangrove-core/blob/develop/test/core/gas/README.md#scenarios). You should then use the results to set a `gasreq` for your strat which covers the desired worst-case scenarios. The gas measurements are for the inner-most operation.
 
@@ -39,8 +39,8 @@ When using the Strat lib, then the gas usage from the %%router|router%% is autom
 [ADD RESULT OF TRACE/EXAMPLE ONCE I FIGURE OUT MARKET ORDERS]
 
 Here's a recap of our case scenario:
-* makerExecute gas: `45,658`
-* makerPosthook gas: `1,659`
+* `makerExecute` gas: `45,658`
+* `makerPosthook` gas: `1,659`
 * Since no router was used, we don't have any special code in [`posthookFallback`](../technical-references/code/strats/src/strategies/MangroveOffer.md#posthookfallback) for this strat.
 * We also have to account for a small overhead in Mangrove for gas accounting, and to consider as well the bits of gas [unaccounted for](https://book.getfoundry.sh/forge/traces#understanding-traces) in Foundry's traces.
 * Therefore, setting the gasreq to `70,000` for this contract is a good choice. However, note that the default [`posthookSuccess`](../technical-references/code/strats/src/strategies/MangroveOffer.md#posthooksuccess) can repost an offer for the residual if not fully taken and that would require some gas.
@@ -83,21 +83,42 @@ The gasreq should be taken into account when [provisioning](../../contracts/tech
 
 ### MangroveOrder
 
+Here, we will calculate the optimum `gasreq` to use [MangroveOrder](../technical-references/code/strats/src/strategies/MangroveOrder.md), a Forwarder logic with a [simple router](../technical-references/router.md):
+
 * MangroveOrder's most expensive case is `148451` (more details [here](https://github.com/mangrovedao/mangrove-strats/blob/350223c0c9766b526d4883fab5f4f904382878c4/test/strategies/MgvOrder.gasreq.t.sol#L18))
-
 * SimpleRouter is hardcoded to `70000` gas (see contract [here](https://github.com/mangrovedao/mangrove-strats/blob/350223c0c9766b526d4883fab5f4f904382878c4/src/strategies/routers/SimpleRouter.sol#L4))
-    * Hence `gasreq` for MangroveOrder should be `148451 - 70000 = 78451` (see the note [above](#result) regarding gas usage from routers)
+    * `gasreq` for MangroveOrder should be `148451 - 70000 = 78451` (see the note [above](#result) regarding gas usage from routers)
 
-This is assuming, that the code in this test hits the worst case. However, looking at core runs that is not entirely the case:
+It's worth mentioning as well that there is a slightly more expensive path going through Mangrove core, which should be taken into account:
 * `19675` is the comparable case for core (see [here](https://github.com/mangrovedao/mangrove-strats/blob/350223c0c9766b526d4883fab5f4f904382878c4/test/strategies/kandel/Kandel.gasreq.t.sol#L27))
-* `22841` would be if an offer existed in the same bin as the reposted offer (see [here](https://github.com/mangrovedao/mangrove-strats/blob/350223c0c9766b526d4883fab5f4f904382878c4/test/strategies/kandel/Kandel.gasreq.t.sol#L28))
+* `22841` is the more expensive path, which would be if an offer existed in the same bin as the reposted offer (see [here](https://github.com/mangrovedao/mangrove-strats/blob/350223c0c9766b526d4883fab5f4f904382878c4/test/strategies/kandel/Kandel.gasreq.t.sol#L28))
 
-The difference is just above 3000, so we add that and round up to get 82000. This is then used in MangroveOrderDeployer.
+The difference between the two is just above `3000`, hence we add that and round up to get an optimum `gasreq` of `82000` for MangroveOrder.
 
-Note that for instance for polygon with WETH/DAI the numbers are lower due to the A/B test tokens being expensive contracts, so it should cover that, especially with optimization.
-
-In addition, wrt density then gasbase is 271276 (c.f. test/strategies/CoreOfferGasbase.gasreq.t.sol:OfferGasBaseTest_Generic_A_B:test_gasbase_to_empty_book_base_quote_success())
 
 
 ### Kandel
 
+#### Standard Kandel
+
+Here, we will calculate the optimum `gasreq` to use the [Kandel](/docs/general/kandel/README.md) strategy:
+
+* Kandel's most expensive case is `121413` (see [here](https://github.com/mangrovedao/mangrove-strats/blob/350223c0c9766b526d4883fab5f4f904382878c4/test/strategies/kandel/Kandel.gasreq.t.sol#L21))
+
+Similarly to [MangroveOrder](#mangroveorder), there is a more expensive path going through Mangrove core to be taken into account:
+* `44339` is the comparable case for core (see [here](https://github.com/mangrovedao/mangrove-strats/blob/350223c0c9766b526d4883fab5f4f904382878c4/test/strategies/kandel/Kandel.gasreq.t.sol#L23))
+* `45090` is the more expensive path, if another offer existed on the dual offer's bin (see [here](https://github.com/mangrovedao/mangrove-strats/blob/350223c0c9766b526d4883fab5f4f904382878c4/test/strategies/kandel/Kandel.gasreq.t.sol#L24))
+* The difference is below `1000`.
+
+Similarly for the primary offer:
+* `19675` is the comparable case for core (see [here](https://github.com/mangrovedao/mangrove-strats/blob/350223c0c9766b526d4883fab5f4f904382878c4/test/strategies/kandel/Kandel.gasreq.t.sol#L27))
+* `22841` is the more expensive path, if an offer existed in the same bin as the reposted offer (see [here](https://github.com/mangrovedao/mangrove-strats/blob/350223c0c9766b526d4883fab5f4f904382878c4/test/strategies/kandel/Kandel.gasreq.t.sol#L28))
+* The difference is just above `3000`, so we add both (`4000`) and round it up to get `126000`.
+
+#### Kandel-Aave
+
+With [Kandel-Aave](/docs/general/kandel/details-on-strats/details-on-strats.md), the Strategy reserve (Unallocated and Published liquidity) is deposited on Aave:
+
+* The most expensive case is `624677` (see [here](https://github.com/mangrovedao/mangrove-strats/blob/350223c0c9766b526d4883fab5f4f904382878c4/test/strategies/kandel/Kandel.gasreq.t.sol#L33-L34))
+* However, that is with a specific pair of tokens, so it's not an upper bound.
+* With the additional `4000` previously calculated and some rounding up, we amount to `629000`.
