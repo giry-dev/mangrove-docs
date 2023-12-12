@@ -23,8 +23,16 @@ The Direct constructor looks like this:
 ```solidity reference title="Direct contract's constructor"
 https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/strategies/offer_maker/abstract/Direct.sol#L28-L35
 ```
+Details:
 
-which provides `mgv` (the address of the Mangrove contract) to MangroveOffer and %%`gasreq`|gasreq%% the gas that is required to execute the %%offer logic|offer-logic%%. The specific arguments of the Direct's constructor are the %%`router_`|router%%'s address and its %%`reserveId`|reserve-id%%. Notice that passing `address(0)` as `reserveId` is interpreted by Direct as requiring `reserveId` to be the contract's address.
+* `mgv` (the address of the Mangrove contract) is provided to MangroveOffer.
+* The specific arguments of the Direct's constructor are:
+    * the %%`router_`|router%%'s address, and
+    * its %%`reserveId`|reserve-id%%.
+
+:::info Note
+Passing `address(0)` as `reserveId` is interpreted by Direct as requiring `reserveId` to be the contract's address.
+:::
 
 The `router_` argument can be either the address of a deployed %%router|router%%, or the zero address cast to an `AbstractRouter` type, when you wish to build a `Direct` contract that will do its own liquidity routing. (In the latter case, for clarity, you may also use the public constant [`NO_ROUTER`](../technical-references/code/strats/src/strategies/MangroveOffer.md#no_router) provided by `MangroveOffer`.)
 
