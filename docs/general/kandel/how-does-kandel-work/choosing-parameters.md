@@ -35,7 +35,7 @@ I will look at the market volatility for the past 24h, and decide on the price r
 
 ## Ratio
 
-This is the ratio of the progression used to calculate the price grid. You would logically bet on intra-day volatility (few min or hours). If the volatility is increasing, you might want to increase the grid size (space between price points).
+This is the ratio of the progression used to calculate the price grid. You would logically bet on intra-day volatility (few min or hours). If the volatility is increasing, you might want to increase the grid size (space between price points). You will find more information about its calculation in the [previous table](./parameters.md).
 
 :::info Note 
 * High volatility: spaced out price points (less price points in the chosen range) -> higher ratio
