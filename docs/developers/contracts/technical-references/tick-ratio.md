@@ -9,7 +9,7 @@ On Mangrove, markets (and therefore [offer lists](./taking-and-making-offers/off
 
 ## Ticks
 
-To put it simply, ticks are a way of sorting offers by price (into [tick bins](#tick-bins-doubly-linked-lists)). All the offers in a tick bin have the same tick. We also need a way to know where are the previous and next best bins: that's what [`tickSpacing`](#tickspacing) is for.
+To put it simply, ticks are a way of sorting offers by price (into [tick bins](#3-tick-bins)). All the offers in a tick bin have the same tick. We also need a way to know where are the previous and next best bins: that's what [`tickSpacing`](#4-tickspacing) is for.
 
 :::danger Important
 Ticks are derived from the [ratio](#ratio).
