@@ -46,7 +46,7 @@ The abstract contract `Direct` has internal functions that allows one to manage 
 
 > See [OfferArgs](../technical-references/code/strats/src/strategies/interfaces/IOfferLogic.md#offerargs) for an explanation of the parameters for posting an offer.
 
-> Also see %%provision|provision%%, %%gasreq|gasreq%%, and %%pivotId|pivot-id%%, and %%offer list|offer-list%%.
+> Also see %%provision|provision%%, %%gasreq|gasreq%%, and TODO:%pivotId|pivot-id%, and %%offer list|offer-list%%.
 
 Add the below code to your contract.
 
