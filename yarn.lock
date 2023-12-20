@@ -2859,6 +2859,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mangrovedao/context-addresses@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@mangrovedao/context-addresses@npm:1.0.0"
+  dependencies:
+    semver: ^7.5.4
+  checksum: 5936896f7da364458b38b7281f618334fd4d5b09a9df80a56993fddd2d106774d3f47e66401479275afbf18464d34c72642c0c46a513c8790cabe2bb24bba89a
+  languageName: node
+  linkType: hard
+
 "@mangrovedao/mangrove-core@npm:1.5.4":
   version: 1.5.4
   resolution: "@mangrovedao/mangrove-core@npm:1.5.4"
@@ -2870,6 +2879,15 @@ __metadata:
   version: 2.0.0-3
   resolution: "@mangrovedao/mangrove-core@npm:2.0.0-3"
   checksum: 7072e48bd78e9e784d4b07d50eb86ae459e63a884c3999ed6d5c0567c95ab6c00d60ba50800feb117c15641eb207026ca59076f15005c0e2ba44ef20b4bbdacb
+  languageName: node
+  linkType: hard
+
+"@mangrovedao/mangrove-deployments@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@mangrovedao/mangrove-deployments@npm:1.0.0"
+  dependencies:
+    semver: ^7.5.4
+  checksum: f14ee79993b4efb9d7b3aea00f858d67d1eaf765f4ef9cf3faa8662a98772c038fcff81b2c0f6631b0785d39cfcf055cb1c02ae0f9c887729a1652f205464866
   languageName: node
   linkType: hard
 
@@ -11832,7 +11850,9 @@ __metadata:
     "@docusaurus/theme-mermaid": ^2.2.0
     "@ethersproject/abi": ^5.4.7
     "@ethersproject/providers": ^5.4.7
+    "@mangrovedao/context-addresses": ^1.0.0
     "@mangrovedao/mangrove-core": 2.0.0-3
+    "@mangrovedao/mangrove-deployments": ^1.0.0
     "@mangrovedao/mangrove-strats": 0.0.2-2
     "@mangrovedao/mangrove.js": ^1.4.0
     "@mdx-js/react": ^1.6.22
@@ -15184,6 +15204,17 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: ba9c7cbbf2b7884696523450a61fee1a09930d888b7a8d7579025ad93d459b2d1949ee5bbfeb188b2be5f4ac163544c5e98491ad6152df34154feebc2cc337c1
+  languageName: node
+  linkType: hard
+
+"semver@npm:^7.5.4":
+  version: 7.5.4
+  resolution: "semver@npm:7.5.4"
+  dependencies:
+    lru-cache: ^6.0.0
+  bin:
+    semver: bin/semver.js
+  checksum: 12d8ad952fa353b0995bf180cdac205a4068b759a140e5d3c608317098b3575ac2f1e09182206bf2eb26120e1c0ed8fb92c48c592f6099680de56bb071423ca3
   languageName: node
   linkType: hard
 

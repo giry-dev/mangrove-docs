@@ -67,6 +67,8 @@
     "@docusaurus/module-type-aliases": "^2.0.0",
     "@ethersproject/abi": "^5.4.7",
     "@ethersproject/providers": "^5.4.7",
+    "@mangrovedao/context-addresses": "^1.0.0",
+    "@mangrovedao/mangrove-deployments": "^1.0.0",
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.0",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
