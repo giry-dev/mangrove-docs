@@ -60,6 +60,7 @@ const main = async () => {
   md += contractsVersionDeploymentsToTable(getStratsContractsVersionDeployments());
 
   md += "\n\n## Token addresses";
+  md += "\nMangrove's web app and other tools use the following token addresses which are pulled from `@mangrovedao/context-addresses`.";
 
   // chain name -> [symbol -> [instanceId -> Erc20NetworkInstance]]
   const tokensPerNetwork = {};

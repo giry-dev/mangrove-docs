@@ -22,6 +22,7 @@
 
 
 ## Token addresses
+Mangrove's web app and other tools use the following token addresses which are pulled from `@mangrovedao/context-addresses`.
 
 ### Arbitrum One
 
