@@ -9,13 +9,13 @@ Mangrove uses [Offer Provisions](../technical-references/taking-and-making-offer
 
 Consider an offer that promises 100WETH for 100DAI and requires 300k for execution. That gas will be paid for by the taker. If the 100WETH are delivered, all is well.
 
-If they are not, the taker must be compensated for the wasted gas. This is why, when creating an offer, market makers must [provision](../technical-references/taking-and-making-offers/reactive-offer/offer-provision.md) for a potential [bounty](../technical-references/taking-and-making-offers/reactive-offer/offer-provision.md#computing-the-provision-and-offer-bounty) in ETH. That [bounty](../technical-references/taking-and-making-offers/reactive-offer/offer-provision.md#computing-the-provision-and-offer-bounty) depends on :
+If they are not, the taker must be compensated for the wasted gas. This is why, when creating an offer, market makers must [provision](../technical-references/taking-and-making-offers/reactive-offer/offer-provision.md) for a potential [bounty](../technical-references/taking-and-making-offers/reactive-offer/offer-provision.md#bounty-calculation) in ETH. The bounty depends on :
 
 * The average gas price, as estimated by Mangrove itself. Let's name it `gasprice`.
 * The amount of gas requested by the offer. Let's name it `gasreq`.
-* A minimum gas expense determined by Mangrove. Let's name it `gas_overhead`.
+* A minimum gas expense determined by Mangrove. Let's name it `offer_gasbase`.
 
-To post their offer, the maker must lock `gasprice * (gasreq + gas_overhead)` WEI in Mangrove.
+To post their offer, the maker must lock `gasprice * (gasreq + offer_gasbase)` WEI in Mangrove.
 
 * If the maker retracts their offer, the ETH will be available to the maker for withdrawal.
 * If the offer is successfully executed, the ETH stays locked inside the offer.
@@ -34,7 +34,7 @@ During the lifecycle of a market order, makers of executed offers are called twi
 
 ### Don't update gasprice
 
-A small tip: an implementation detail means that as a maker, you can save a write if you make sure that the gas price associated with your offer does not change between offer updates. The best way to do that is to radically overestimate the gasprice when calling `newOffer` and to then maintain that gasprice on every subsequent call to `updateOffer`.
+A small tip: an implementation detail means that as a maker, you can save a write if you make sure that the gas price associated with your offer does not change between offer updates. The best way to do that is to radically overestimate the gasprice when calling `newOfferByTick` / `newOfferByVolume` and to then maintain that gasprice on every subsequent call to `updateOfferByTick` / `updateOfferByVolume`.
 
 ### Overestimate gasprice
 

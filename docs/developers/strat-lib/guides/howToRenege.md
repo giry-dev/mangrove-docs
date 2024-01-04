@@ -6,6 +6,8 @@ sidebar_position: 3
 
 # Using last look to renege trades
 
+## Example
+
 A maker can %%renege|renege%% on a trade if the market conditions are no longer favorable. This can be done in [multiple ways](../../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md), but the strat lib has made it easy by adding a [`__lastLook__`](../technical-references/code/strats/src/strategies/MangroveOffer.md#lastlook) function which can be overridden.
 
 You can follow the [smart offer tutorial](../getting-started/smart-offer.md), and extend it with the following function:
@@ -16,9 +18,17 @@ https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ad
 
 This override of the `__lastLook__` will renege if the offer is not fully taken. Note that since the %%provision|provision%% is lost as a %%bounty|bounty%% to the taker, care must be taken to select the right circumstances to renege. This uses the mechanisms for compensating the taker on failure, and therefore the maker should [renege early](../../contracts/background/taker-compensation.md#encouraging-early-renege).
 
-As an exercise, try posting an offer with a %%maker contract|maker-contract%% with the implementation of `__lastlook__` above. Now try out targeting this offer with a [snipe](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#offer-sniping) that takes only _part_ of the tokens that the offer %%gives|gives%%. The result should be a `makerExecute` fail with the reason that the offer must be fully taken. 
+## Exercises
 
-In a [Foundry](https://book.getfoundry.sh/getting-started/installation) trace this might look something like this:
+1. Try posting an offer with a %%maker contract|maker-contract%% with the above implementation of `__lastlook__` above.
+
+2. Then, try out targeting this offer with a [market order](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#market-order) that takes only _part_ of the tokens that the offer %%gives|gives%%. The result should be a `makerExecute` fail with the reason that the offer must be fully taken. 
+
+:::info Note
+For your offer to be targeted by a market order, it needs to sit at the top of the order book. Make sure to choose a very favorable price (i.e. tick) when posting your offer. For an example of how to calculate a tick from a ratio, check the Solidity snippets of [Posting a new offer](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md).
+:::
+
+In a [Foundry](https://book.getfoundry.sh/getting-started/installation) trace, it would look like this:
 
 ```js
     │   │   └─ ← 0x0000000000000000000000000000000000000000000000000000000000000001

@@ -9,6 +9,10 @@ The Mangrove strat library is a repository of Solidity code that will help you w
 
 The strat library provides several good starting points for writing your own custom maker contract for providing liquidity on Mangrove, but the library should be used responsibly.
 
+:::info Note
+The [`mangrove-strats`](https://github.com/mangrovedao/mangrove-strats) repository is separate from [`mangrove-core`](https://github.com/mangrovedao/mangrove-core).
+:::
+
 
 ## Open source and free to use - on your own responsibility
 

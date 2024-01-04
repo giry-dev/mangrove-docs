@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## Offer execution
 
-Offers are created with an associated account (a %%maker contract|maker-contract%% or EOA) and listed on Mangrove [offer lists](../offer-list.md#offer-lists)
+Offers are created with an associated account (a %%maker contract|maker-contract%% or EOA) and listed on Mangrove [offer lists](../offer-list.md#offer-lists).
 
 * If the account is an EOA, no logic will be associated to the offer. These %%on-the-fly|on-the-fly-offer%% offers should have the promised liquidity on the EOA when the offer is matched during a taker order.
 * If the account is a maker contract, it should implement the offer logic through the [IMaker interface](https://github.com/mangrovedao/mangrove-core/blob/a1acdb6038382e78616fbb00503ccbdb11e23d62/src/core/MgvLib.sol#L420-L430). It must at least implement the `makerExecute` function, otherwise all offer executions will fail.

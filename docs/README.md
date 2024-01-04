@@ -110,6 +110,6 @@ Mangrove enables liquidity providers to incorporate defensive code, post unprovi
 
 <div class="text--justify">
 
-Mangrove is an open-source protocol that has been rigorously [audited](./general/high-level/audits.md) by the highly reputable and expert firm, ChainSec, ensuring the utmost security and reliability.
+Mangrove is an open-source protocol that has been rigorously [audited](./general/audits.md) by the highly reputable and expert firm, ChainSec, ensuring the utmost security and reliability.
 
 </div>

@@ -18,15 +18,14 @@ import TabItem from '@theme/TabItem';
 
 ```solidity
 // Governance sets the fee for the `(outbound_tkn, inbound_tkn)` offer list
-function setFee(address outbound_tkn, address inbound_tkn, uint fee) public;
-
+function setFee(OLKey memory olKey, uint fee) public;
 ```
 
 </TabItem>
 <TabItem value="events" label="Events">
 
 ```solidity
-event SetFee(address outbound_tkn, address inbound_tkn, uint fee); // emitted when fee is set
+event SetFee(bytes32 indexed olKeyHash, uint value); // Emitted when fee is set.
 ```
 
 </TabItem>
@@ -35,7 +34,7 @@ event SetFee(address outbound_tkn, address inbound_tkn, uint fee); // emitted wh
 ### Offer gas base
 :::info **Offer gas base**
 **Offer gas base** is an over-approximation of the gas overhead associated with processing one offer. 
-The Mangrove considers that a failed offer has used at least this amount of gas. 
+Mangrove considers that a failed offer has used at least this amount of gas. 
 The parameter is offer list specific since the costs of calling outbound and inbound `transferFrom` are part of the **offer gasbase**. 
 :::
 
@@ -49,15 +48,14 @@ This parameter may aslo be used to increase/decrease [bounty](../taking-and-maki
 
 ```solidity
 // Governance sets the gas overhead for the `(outbound_tkn, inbound_tkn)` offer list
-function setGasbase(address outbound_tkn, address inbound_tkn, uint offer_gasbase) public;
-
+function setGasbase(OLKey memory olKey, uint offer_gasbase) public;
 ```
 
 </TabItem>
 <TabItem value="events" label="Events">
 
 ```solidity
-event setGasbase(address outbound_tkn, address inbound_tkn, uint offer_gasbase); // emitted when gasbase is set
+event SetGasbase(bytes32 indexed olKeyHash, uint offer_gasbase); // Emitted when gasbase is set.
 ```
 
 </TabItem>
@@ -69,7 +67,7 @@ event setGasbase(address outbound_tkn, address inbound_tkn, uint offer_gasbase);
 The offer list's **density** corresponds to a "dust" parameter, which constraints the volume of outbound tokens an offer must deliver w.r.t the gas it requires to be executed. 
 An offer cannot be posted on an offer list if its density is below the offer list's density.
 :::
-The **density** of an offer in a `(outbound, inbound)` offer list with an [offer gasbase](./local-variables#offer-gas-base) set to $\beta$ is defined as:
+The **density** of an offer in an (`outbound`, `inbound` and `tickspacing`, contained in `olkey`) [offer list](../taking-and-making-offers/offer-list.md)  with an [offer gasbase](./local-variables#offer-gas-base) set to $\beta$ is defined as:
 $$
 \delta = \frac{V}{\beta + \gamma}
 $$
@@ -79,15 +77,15 @@ where $V$ is the volume of outbound tokens given by the offer and $\gamma$ is th
 <TabItem value="signature" label="Signature" default>
 
 ```solidity
-// Governance sets density for the `(outbound_tkn, inbound_tkn)` offer list
-function setDensity(address outbound_tkn, address inbound_tkn, uint density) public;
+// Governance sets density for the `(outbound_tkn, inbound_tkn, tickSpacing)` offer list
+function setDensity96X32(OLKey memory olKey, uint density96X32) public;
 
 ```
 </TabItem>
 <TabItem value="events" label="Events">
 
 ```solidity
-event SetDensity(address outbound_tkn, address inbound_tkn, uint density); // emitted when density is set
+event SetGasbase(bytes32 indexed olKeyHash, uint offer_gasbase); // Emitted when density is set.
 ```
 </TabItem>
 </Tabs>
@@ -101,7 +99,7 @@ with $p_{out}$ being the unit price of outbound tokens in ETH and $C\geq 1$ insu
 
 ### (De)activating an Offer List
 :::info **(De)Activating offer lists**
-An `(outbound_tkn,inbound_tkn)` offer list is inactive by default, but may be activated/deactivated by governance. Only offer removals (and deprovision) are possible on innactive offer lists.
+An `(outbound_tkn, inbound_tkn, tickSpacing)` offer list is inactive by default, but may be activated/deactivated by governance. Only offer removals (and deprovision) are possible on innactive offer lists.
 :::
 
 <Tabs>
@@ -109,16 +107,23 @@ An `(outbound_tkn,inbound_tkn)` offer list is inactive by default, but may be ac
 
 ```solidity
 // Governance activates the `(outbound_tkn, inbound_tkn)` offer list
-function activate(address outbound_tkn, address inbound_tkn) public;
+function activate(OLKey memory olKey, uint fee, uint density96X32, uint offer_gasbase) public;
+
 // Governance deactivates the `(outbound_tkn, inbound_tkn)` offer list
-function deactivate(address outbound_tkn, address inbound_tkn) public;
+function deactivate(OLKey memory olKey) public;
 
 ```
 </TabItem>
 <TabItem value="events" label="Events">
 
 ```solidity
-event SetActive(address outbound_tkn, address inbound_tkn, bool isActive); // emitted when activation status changes
+event SetActive(
+    bytes32 indexed olKeyHash,
+    address indexed outbound_tkn,
+    address indexed inbound_tkn,
+    uint tickSpacing,
+    bool value
+);
 ```
 </TabItem>
 </Tabs>
