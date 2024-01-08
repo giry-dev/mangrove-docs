@@ -14,7 +14,11 @@ In the following, we shall refer to the diagram depicting an [overview of the ca
 
 Refer to [Contracts -> Technical Reference -> Overview](../../contracts/technical-references/overview.md) and the pages linked there for more details on trade execution on Mangrove.
 
-![Mangrove call sequence induced by a taker order](/img/assets/execution.png)
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="text--center">
+<img src={useBaseUrl('/img/assets/execution.png')} width="75%"/>
+</div>
 
 ## Maker approvals
 

@@ -11,7 +11,8 @@ An on-the-fly offer can be listed on Mangrove but is not equipped with any on-ch
 Whenever an on-the-fly offer is matched by a [taker order](../contracts/background/offer-taker.md#taking-offers), the offer sources its liquidity on the EOA.
 
 :::caution
-
-An on-the-fly offer is not reactive (it has no code) and therefore cannot repost its residual if any. For example, an on-the-fly offer of 1500 DAI (outbound) for 1 wETH (inbound) that is matched by a taker order of 750 DAI for 0.5 wETH will be removed from the book after it has been partially filled.
-
+An on-the-fly offer is not reactive (it has no code) and therefore cannot repost its residual if any.
+* For example, let's consider a WETH/DAI market with an on-the-fly offer giving 1500 DAI (`gives`) at a [ratio](../contracts/technical-references/tick-ratio.md#ratio) of 0.0006.
+* This offer is then matched by a taker order consuming only 750 DAI.
+* After this transaction, it will be removed from the book since it has been partially filled.
 :::

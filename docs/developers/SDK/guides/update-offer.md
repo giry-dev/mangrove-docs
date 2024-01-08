@@ -49,7 +49,7 @@ https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f
 │    3    │ 1669 │ '0x4326Ab97823d7509C1f0CB3bF68151081B26c970' │ 1376.6273438550415 │ 1.00346478817687987934 │
 ```
 
-Changing the price of an offer can change its %%rank|offer-rank%% in the offer book.
+Changing the price of an offer can change its TODO:%rank|offer-rank% in the offer book.
 
 ### Update offer using OfferLogic
 

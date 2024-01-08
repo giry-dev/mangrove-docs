@@ -10,14 +10,14 @@ As described in the section [Governance -> Global Variables](../governance-param
 The `MgvOracle` contract is a simple contract that implements the Monitor interface and can be deployed by Mangrove governance to serve as a Monitor Contract. It serves as a bridge to an off-chain oracle for gas price and density. When deployed, this contract is configured with the address of a specified permissioned sender that is allowed to call the external functions to update the values for gas price and density that the oracle reports to Mangrove.
 
 ```solidity
-  function setGasPrice(uint gasPrice) external
-  function setDensity(uint density) external
+function setGasPrice(uint gasPrice) external
+function setDensity96X32(uint density96X32) external
 ```
 
 A method is also provided for governance to change the permissioned sender.
 
 ```solidity
-  function setMutator(address mutator_) external
+function setMutator(address mutator_) external
 ```
 
 ## Source Code

@@ -22,23 +22,23 @@ import TabItem from '@theme/TabItem';
     <TabItem value="signature" label="Signature" default>
 
 ```solidity
-// Governance lets the monitor determine gasprice
-function setUseOracle(bool useOracle) public;
+// Sets whether Mangrove uses the monitor as oracle for `gasprice` and `density` values.
+function setUseOracle(bool useOracle) external;
 
-// Governance sets the fallback gasprice value (in GWEI)
-function setGasprice(uint gasprice) public;
+// Sets the gasprice (in Mwei, 26 bits).
+function setGasprice(uint gasprice) external;
 
-// Governance sets a new monitor
-function setMonitor(address monitor) public;
+// Sets the monitor/oracle. The `monitor/oracle` can provide real-time values for `gasprice` and `density` to Mangrove. It can also receive liquidity event notifications.
+function setMonitor(address monitor) external;
 ```
 
 </TabItem>
 <TabItem value="events" label="Events">
 
 ```solidity
-event SetGasprice(uint gasprice); // emitted when gas price is updated
-event SetMonitor(address monitor); // emitted when a new monitor is set
-event SetUseOracle(bool value); // logs `true` if Mangrove is set to use an external monitor to read gasprice. Logs `false` otherwise
+event SetGasprice(uint value); // Emitted when gas price is updated.
+event SetMonitor(address value); // Emitted when a new monitor is set.
+event SetUseOracle(bool value); // Logs `true` if Mangrove is set to use an external monitor to read gasprice. Logs `false` otherwise.
 ```
 
 </TabItem>
@@ -56,18 +56,23 @@ If allowing the monitor to act as a gas price Oracle, Governance **must** have p
 <TabItem value="signature" label="Signature" default>
 
 ```solidity
-// Governance sets maximum allowed gas per offer
-function setGasmax(uint gasmax) public;
-// Changing governance address
-function setGovernance(address value);
-// Changing treasury address
-function setVault(address value);
-// (de)activates sending trade notification to governance contract (e.g. for rewards programs)
-function setNotify(bool value);
-// set maximum gas amount an offer may require to execute
-function setGasmax(uint value);
-// permanently puts mangrove into a killed state (Mangrove rejects all taker and maker orders, only retracting offer is possible)
-function kill();
+// Sets the gasmax for Mangrove, the maximum amount of gas an offer can require to execute.
+function setGasmax(uint gasmax) external;
+
+// Sets a new governance address.
+function setGovernance(address governanceAddress) external;
+
+// Sets whether Mangrove notifies the Monitor when and offer is taken.
+function setNotify(bool notify) external;
+
+// Sets the maximum number of times a market order can recursively execute offers. This is a protection against stack overflows.
+function setMaxRecursionDepth(uint maxRecursionDepth) external;
+
+// Sets the maximum cumulative `gasreq` for failing offers during a market order before doing a partial fill.
+function setMaxGasreqForFailingOffers(uint maxGasreqForFailingOffers) external;
+
+// Kills the Mangrove instance. A dead instance cannot have offers executed or funds received, but offers can be retracted and funds can be withdrawn.
+function kill() external;
 ```
 
 </TabItem>

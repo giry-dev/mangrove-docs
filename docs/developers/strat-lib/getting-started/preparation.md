@@ -12,18 +12,25 @@ import Preamble from '../../SDK/getting-started/_preparation-pre.md';
 
 ```bash
 # To create Solidity smart contracts
-# Install NPM package with strat library
-npm install --save @mangrovedao/mangrove-core@latest
+# Install NPM package with Mangrove core and Strat library
+npm install --save @mangrovedao/mangrove-strats@next
 # Prepare Foundry's forge
 forge init --force
 # Set up remappings to use the strat library
-echo "mgv_src/=node_modules/@mangrovedao/mangrove-core/src/
-mgv_lib/=node_modules/@mangrovedao/mangrove-core/lib/
-mgv_test/=node_modules/@mangrovedao/mangrove-core/test/
-mgv_script/=node_modules/@mangrovedao/mangrove-core/script/
+cd node_modules/@mangrovedao/mangrove-strats
 
-ds-test/=node_modules/@mangrovedao/mangrove-core/lib/forge-std/lib/ds-test/src/
-forge-std/=node_modules/@mangrovedao/mangrove-core/lib/forge-std/src/
+echo "@mgv/src/=node_modules/@mangrovedao/mangrove-core/src/
+@mgv/src/=node_modules/@mangrovedao/mangrove-core/src/
+@mgv/lib/=node_modules/@mangrovedao/mangrove-core/lib/
+@mgv/test/=node_modules/@mangrovedao/mangrove-core/test/
+@mgv/script/=node_modules/@mangrovedao/mangrove-core/script/
+@mgv/forge-std/=node_modules/@mangrovedao/mangrove-core/lib/forge-std/src/
+ds-test/=node_modules/@mangrovedao/mangrove-core/lib/forge-std/lib/ds-test/src
+
+@mgv-strats/src/=node_modules/@mangrovedao/mangrove-strats/src/
+@mgv-strats/lib/=node_modules/@mangrovedao/mangrove-strats/lib/
+@mgv-strats/test/=node_modules/@mangrovedao/mangrove-strats/test/
+@mgv-strats/script/=node_modules/@mangrovedao/mangrove-strats/script/
 " > remappings.txt
 ```
 

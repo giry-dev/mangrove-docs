@@ -17,7 +17,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 2. Choose a strategy type between "Kandel" and "Kandel on AAVE".
     * [Kandel](../../kandel/README.md) is an automated market-making strategy that utilizes a reserve to place buy and sell orders on Mangrove DEX
-    * [Kandel on AAVE](../../kandel/details-on-strats/#kandel-on-aave) is essentially the same as the Kandel strategy, but it also earns extra yield by depositing the reserve on the AAVE platform until the liquidity is needed to fulfill a trade.
+    * [Kandel on AAVE](../../kandel/kandel-aave/kandel-aave.md) is essentially the same as the Kandel strategy, but it also earns extra yield by depositing the reserve on the AAVE platform until the liquidity is needed to fulfill a trade.
     
 3. Choose a market and click on "Next."
 

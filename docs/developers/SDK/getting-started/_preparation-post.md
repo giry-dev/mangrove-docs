@@ -36,6 +36,6 @@ The demo RPC URLs are unstable, so if you cannot connect then create your own or
 ``` bash title=".env file"
 export PRIVATE_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 # The first anvil private key
 export ADMIN_ADDRESS=0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 # The matching public key, to the first anvil private key
-export RPC_URL=https://polygon-mumbai.g.alchemy.com/v2/demo # Demo RPC provided by alchemy
+export RPC_URL=https://polygon-mumbai.blockpi.network/v1/rpc/public # Public RPC provided by Block Pi
 export LOCAL_URL=http://127.0.0.1:8545 # Url for the local chan that anvil starts
 ```

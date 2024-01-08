@@ -7,11 +7,15 @@ sidebar_position: 2
 
 An offer on Mangrove usually points to a contract containing the [offer logic](../technical-references/taking-and-making-offers/reactive-offer/maker-contract.md) and specifies what it is ready to deliver and its price. Offer are stored in [offer lists](../technical-references//taking-and-making-offers/offer-list.md).
 
-![When a reactive Offer is matched, the contract implementing its logic is called by Mangrove](/img/assets/MakerOffer.png)
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="text--center">
+<img src={useBaseUrl('/img/assets/MakerOffer.png')} width="70%"/>
+</div>
 
 ### Creating & Updating offers
 
-Any Ethereum account can offer liquidity on Mangrove. New offers are created through a `newOffer` function, and updated through `updateOffer`. The [Creating & Updating offers](../technical-references/taking-and-making-offers/reactive-offer/README.md) section details how to use those Mangrove functions. 
+Any Ethereum account can offer liquidity on Mangrove. New offers are created through a `newOfferByTick` or `newOfferByVolume`functions, and updated through `updateOfferByTick` or `updateOfferByVolume`. The [Creating & Updating offers](../technical-references/taking-and-making-offers/reactive-offer/README.md) section details how to use those Mangrove functions. 
 
 The Mangrove [Strat Lib](../../strat-lib/README.md) has a standard implementation of [offer logic](../technical-references//taking-and-making-offers/reactive-offer/maker-contract.md) called `MangroveOffer`, that automatically reposts the residual of your offer, if the offer was not fully taken.
 

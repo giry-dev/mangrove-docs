@@ -35,12 +35,17 @@ const sidebars = {
               dirName: 'general/high-level', // Generate sidebar slice from docs/high-level
             },
           ]
-        },
+        },     
         {
           type: 'doc',
           id: 'general/FAQ/README',
           label: '❓ FAQ',
         },
+        {
+          type: 'doc',
+          id: 'general/audits',
+          label: '🔍 Audits',
+        },  
         {
           type: 'category',
           label: '💻 App guide',

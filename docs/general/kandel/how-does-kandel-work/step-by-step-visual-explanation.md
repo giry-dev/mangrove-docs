@@ -16,7 +16,7 @@ Before launching your customized Kandel strategy, you will be asked to set speci
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/price_distribution.PNG')} width="400px"/><br /><br />
+<img src={useBaseUrl('img/assets/price_distribution.PNG')} width="500px"/><br /><br />
 
 Based on the selected **price range**, the price grid is constructed using a geometric progression. The Min and Max prices of the user inputs are the limits of the grid. 
 
@@ -29,7 +29,7 @@ In this example, the user selected an ETH/USDC trading pair.
 
 ## Volume distribution
 
-<img src={useBaseUrl('img/assets/volume_distribution.PNG')} width="400px"/><br /><br />
+<img src={useBaseUrl('img/assets/volume_distribution.PNG')} width="500px"/><br /><br />
 
 Based on the selected amount of initial liquidity to be deposited, Kandel draws the **volume distribution** (i.e. the initial volume at each price point).
 In the example of a uniform volume distribution, the user's liquidity is spread evenly throughout the price grid.<br />
