@@ -72,7 +72,7 @@ This means that the price increments are $1.0001^{tickSpacing} - 1$.
 
 
 :::info Example
-For a market with `tickSpacing = 5`, the allowed ticks are `..., -15, -10, -5, 0, 5, 10, 15, ...` and the price increments price increments are $1.0001^{5} - 1 = 0.0005001 = 0,05001\%$.
+For a market with `tickSpacing = 5`, the allowed ticks are `..., -15, -10, -5, 0, 5, 10, 15, ...` and the price increments are $1.0001^{5} - 1 = 0.0005001 = 0,05001\%$.
 :::
 
 
