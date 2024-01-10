@@ -95,23 +95,28 @@ $$
 
 ## Converting a price to a tick
 
-Since the price space is discretized, not all prices can be represented exactly. Converting a price to a tick may therefore require rounding and one should take care to round appropriately; We'll discuss this in detail below.
+Since the price space is discretized, not all prices and ratios can be represented exactly. Converting a price or ratio to a tick may therefore require rounding and one should take care to round appropriately; We'll discuss this in detail below.
 
 First, calculate an exact but possibly non-representable `tick'` which may have a real component:
 
 $$
-tick`_{side \in \{asks, bids\}}(price) = \begin{cases}
+\begin{array}{rcl}
+tick'_{side \in \{asks, bids\}}(price) & = & \begin{cases}
    log_{1.0001}(price) &\text{if } side \equiv asks \\
    -log_{1.0001}(price) &\text{if } side \equiv bids.
-\end{cases}
+\end{cases} \\ \\
+tick'(ratio) & = & log_{1.0001}(ratio)
+\end{array}
 $$
 
-Next, round this value to an integer to get a representable tick. One will typically want to round down or up depending on whether the price is used in a maker or taker context:
+Next, round this value to an integer to get a representable tick. One will typically want to round down or up depending on whether the price or ratio is used in a maker or taker context:
 
 | Role           | Tick rounding | Explanation |
 | -------------- | ------------- | ----------- |
-| Taker          | Round down    | Takers specify a max price they're willing to pay. Rounding down the tick corresponds to choosing the tick closest to but not exceeding the specified price. This ensures the taker doesn't pay too much. |
-| Maker          | Round up      | Makers specify the price they're willing to accept. Rounding up the tick corresponds to choosing the tick closest to but not below the specified price. This ensures the maker doesn't receive too little. |
+| Taker          | Round down    | Takers specify a max price when buying and min price when selling. In both cases, this price corresponds to a _max_ ratio they're willing to accept. Rounding down the tick corresponds to choosing the tick closest to but not exceeding that ratio. This ensures the taker doesn't get a worse price than specified. |
+| Maker          | Round up      | Makers specify the price they're willing to accept. This price corresponds to a ratio as discussed above. Rounding up the tick corresponds to choosing the tick closest to but not below that ratio. This ensures the maker doesn't receive too little. |
+
+
 
 
 ## `tickSpacing`: Markets with bigger price increments
