@@ -23,17 +23,22 @@ In other words, the possibility of offers failing is a necessity for the power o
 # Why should community members run cleaning bots?
 While we have to accept that offers may fail, we don't have to accept that they accumulate and degrade the order book. Mangrove therefore has a built-in incentive for removing failing offers: %%Bounties|bounty%%.
 
-When an offer fails, the taker receives a bounty in native token. The bounty is bigger than the gas used to make the offer fail and thus the taker is compensated for the wasted gas. But more importantly, it can be profitable to identify and snipe offers that will fail.
+When an offer fails, the taker receives a bounty in native token. The bounty is bigger than the gas used to make the offer fail and thus the taker is compensated for the wasted gas. But more importantly, it can be profitable to identify and clean offers that will fail.
 
-This means that it can be profitable to run so-called %%cleaning bots|cleaning-bot%% that monitor Mangrove order books and snipe any offer that will fail. Community members are encouraged to run such cleaning bots and thereby contribute to keeping Mangrove working optimally.
+This means that it can be profitable to run so-called %%cleaning bots|cleaning-bot%% that monitor Mangrove order books and clean any offer that will fail. Community members are encouraged to run such cleaning bots and thereby contribute to keeping Mangrove working optimally.
 
 
 # Getting started with cleaning bots
-Mangrove provides learning materials, smart contracts, SDK functions, and an example cleaning bot, that make it easy to write and run cleaning bots:
+Mangrove provides learning materials, SDK functions, and an example cleaning bot, that make it easy to write and run cleaning bots:
 
 - Tutorial: [Run a simple cleaning bot](../getting-started/run-a-simple-cleaning-bot)
   - A tutorial that walks you through all the steps needed to run an example cleaning bot.
 - SDK: [`mangrove.js`](../../SDK/README.md)
+<<<<<<< HEAD
   - The `mangrove.js` SDK makes it easy to monitor order books and to send snipe transactions.
 - [Cleaning offers](../../contracts/technical-references/taking-and-making-offers/offer-cleaning.md)
   - The `cleanByImpersonation` function can be usef to clean failing offers. Details in [this section](../guides/use-cleanbyimpersonation-to-clean-offers.md) as well.
+=======
+  - The `mangrove.js` SDK makes it easy to monitor order books and to send clean transactions.
+ 
+>>>>>>> 00711896e800d76a8c02573909761d54fbaa91e1
