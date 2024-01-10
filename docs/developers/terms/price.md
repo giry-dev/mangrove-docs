@@ -19,5 +19,13 @@ Thus, a _price_ corresponds the $wants/gives$ %%ratio|ratio%% of an offer in the
 On a WETH/DAI market, prices are expressed in DAI per WETH (DAI/WETH), eg. 2,224 DAI/WETH.
 :::
 
+:::warning Beware decimals!
+As always when dealing with ERC-20 tokens, care must be taken to handle decimals appropriately.
+
+Just as for token *amounts*, ratios and prices have both raw and user representations.
+
+See the [Ticks, ratios, and prices](../contracts/technical-references/tick-ratio.md) page for a detailed explanation, including formulae for converting between these representations.
+:::
+
 ## References
 * Technical reference for [ticks, ratios, and prices](../contracts/technical-references/tick-ratio.md)
