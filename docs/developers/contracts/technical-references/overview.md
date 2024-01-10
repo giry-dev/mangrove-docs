@@ -16,7 +16,7 @@ The Mangrove contract is depicted in the middle, with the three most important a
     
 * [Takers](#takers) use Mangrove to [find liquidity](../background/offer-taker.md) by executing offers published on Mangrove.
 
-* Cleaners identify offers that will fail to deliver the promised liquidity and [clean](../../keeper-bots/guides/use-mgvcleaner-to-clean-offers) them, i.e. remove them from the book in exchange for a bounty.
+* Cleaners identify offers that will fail to deliver the promised liquidity and [clean](../../keeper-bots/guides/use-borrowed-funds-for-cleaning) them, i.e. remove them from the book in exchange for a bounty.
 
 * [Governance](#governance) adjusts Mangrove [parameters](./governance-parameters/README.md) such as setting fees or opening and closing markets.
 
