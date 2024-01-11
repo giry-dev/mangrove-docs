@@ -24,17 +24,17 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:23
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:20
 
 ___
 
 ### <a id="offerparams" name="offerparams"></a> OfferParams
 
-Ƭ **OfferParams**: { `price`: `Bigish` ; `volume`: `Bigish`  } & `OptParams` \| { `wants`: `Bigish` ; `gives`: `Bigish`  } & `OptParams`
+Ƭ **OfferParams**: { `price`: `Bigish` ; `volume`: `Bigish`  } & `OptParams` \| { `tick`: `number` ; `gives`: `Bigish`  } & `OptParams` \| { `wants`: `Bigish` ; `gives`: `Bigish`  } & `OptParams`
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:37
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:34
 
 ___
 
@@ -56,4 +56,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:41
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:39

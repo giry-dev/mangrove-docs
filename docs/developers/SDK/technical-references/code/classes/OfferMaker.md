@@ -12,14 +12,14 @@ The OfferMaker class connects to a simple OfferMaker contract
 
 ### <a id="deploy" name="deploy"></a> deploy
 
-▸ `Static` **deploy**(`mgv`, `gasreq?`): `Promise`<`string`\>
+▸ `Static` **deploy**(`mgvAddress`, `signer`): `Promise`<`string`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `mgv` | [`Mangrove`](Mangrove.md) |
-| `gasreq?` | `number` |
+| `mgvAddress` | `string` |
+| `signer` | `Signer` |
 
 #### Returns
 
@@ -27,7 +27,7 @@ The OfferMaker class connects to a simple OfferMaker contract
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerMaker.ts:11
+@mangrovedao/mangrove.js/src/offerMaker.ts:8
 
 ## Constructors
 

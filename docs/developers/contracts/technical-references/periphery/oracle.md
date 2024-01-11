@@ -22,7 +22,7 @@ function setMutator(address mutator_) external
 
 ## Source Code
 
-The [`MgvOracle` source](https://github.com/mangrovedao/mangrove-core/blob/a1acdb6038382e78616fbb00503ccbdb11e23d62/src/periphery/MgvOracle.sol) is available.
+The [`MgvOracle` source](https://github.com/mangrovedao/mangrove-core/blob/2ae172805fd8b309c30b2dc877dba66245abbb3e/src/periphery/MgvOracle.sol) is available.
 
 :::danger Deployment Address
 

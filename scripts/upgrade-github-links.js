@@ -1,7 +1,7 @@
 const newHeads = {
-    "mangrovedao/mangrove-core": "a1acdb6038382e78616fbb00503ccbdb11e23d62",
-    "mangrovedao/mangrove-strats": "fc2c2058414ff5fc76dab340a2ada48a95d0f6b2",
-    "mangrovedao/mangrove.js": "2753b3148231a2541d0055a77a169f8f1381dcd1"
+    "mangrovedao/mangrove-core": "2ae172805fd8b309c30b2dc877dba66245abbb3e",
+    "mangrovedao/mangrove-strats": "a265abeb96a053e386d346c7c9e431878382749c",
+    "mangrovedao/mangrove.js": "2eb3f76f120831a48c577d930fcffc7d55d75c51"
 }
 
 

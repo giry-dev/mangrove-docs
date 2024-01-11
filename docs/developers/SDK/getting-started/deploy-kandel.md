@@ -49,7 +49,7 @@ With this, you can generate a [distribution](../../../general/kandel/how-does-ka
 * Calculating minimums per offer
 * Calculating the distribution for the given price parameters of `minPrice: 900`, `maxPrice: 1100`, and default ratio
 
-See the API documentation for [calculateMinimumDistribution](../technical-references/code/classes/KandelDistributionGenerator.md#calculateminimumdistribution) for more details on other `priceParams`. In our example here, `midPrice: 1100` is used to set the [current price](../../../general/kandel/how-does-kandel-work/parameters.md), and decide which offers become bids and which become asks.
+See the API documentation for [calculateMinimumDistribution](../technical-references/code/classes/GeometricKandelDistributionGenerator.md#calculateminimumdistribution) for more details on other `priceParams`. In our example here, `midPrice: 1100` is used to set the [current price](../../../general/kandel/how-does-kandel-work/parameters.md), and decide which offers become bids and which become asks.
 
 ```javascript reference
 https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f1381dcd1/examples/tutorials/deploy-kandel.js#L27-L58
@@ -125,7 +125,7 @@ https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f
 
 ### Close Kandel strategy and withdraw funds
 
-At some point, you might want to close your Kandel strategy (for instance due to price movements). This can be easily done with the [retractAndWithdraw](../technical-references/code/classes/KandelInstance.md#retractandwithdraw) function. It will withdraw all funds (both tokens and provision) from the Kandel instance and retract all offers.
+At some point, you might want to close your Kandel strategy (for instance due to price movements). This can be easily done with the [retractAndWithdraw](../technical-references/code/classes/GeometricKandelInstance.md#retractandwithdraw) function. It will withdraw all funds (both tokens and provision) from the Kandel instance and retract all offers.
 
 ```javascript reference
 https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f1381dcd1/examples/tutorials/deploy-kandel.js#L132-L178

@@ -2859,54 +2859,50 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mangrovedao/context-addresses@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@mangrovedao/context-addresses@npm:1.0.0"
+"@mangrovedao/context-addresses@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@mangrovedao/context-addresses@npm:1.0.1"
   dependencies:
     semver: ^7.5.4
-  checksum: 5936896f7da364458b38b7281f618334fd4d5b09a9df80a56993fddd2d106774d3f47e66401479275afbf18464d34c72642c0c46a513c8790cabe2bb24bba89a
+  checksum: b719e4ff4e071680d34d61deb42481c24de2218a035ecad25492f43458f810b9562e2a6667fba0ecefec5aa57c9c7ce1c2dc9ede8673a8a096fb1042832e3e86
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove-core@npm:1.5.4":
-  version: 1.5.4
-  resolution: "@mangrovedao/mangrove-core@npm:1.5.4"
-  checksum: f3e44124d3cd05a96ecceffe777989adf5acc39a0f02e0b89ad7a33127361c85f5e00937cea609833d00b4ac9a86217b2ad3e23caa4ce75d01727d38ef593514
+"@mangrovedao/mangrove-core@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@mangrovedao/mangrove-core@npm:2.0.3"
+  checksum: 846354cf6ad4a4781fb3b251eaadcfdf5751272edfa97fef1766b9ac6c8071daf1c2e19365d981123565d328baf8c72cb3bb18266ea663bc6c4472507e2efe1b
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove-core@npm:2.0.0-3, @mangrovedao/mangrove-core@npm:next":
-  version: 2.0.0-3
-  resolution: "@mangrovedao/mangrove-core@npm:2.0.0-3"
-  checksum: 7072e48bd78e9e784d4b07d50eb86ae459e63a884c3999ed6d5c0567c95ab6c00d60ba50800feb117c15641eb207026ca59076f15005c0e2ba44ef20b4bbdacb
-  languageName: node
-  linkType: hard
-
-"@mangrovedao/mangrove-deployments@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@mangrovedao/mangrove-deployments@npm:1.0.0"
+"@mangrovedao/mangrove-deployments@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@mangrovedao/mangrove-deployments@npm:1.0.3"
   dependencies:
     semver: ^7.5.4
-  checksum: f14ee79993b4efb9d7b3aea00f858d67d1eaf765f4ef9cf3faa8662a98772c038fcff81b2c0f6631b0785d39cfcf055cb1c02ae0f9c887729a1652f205464866
+  checksum: fa31875a93735309913a3fbb597c1f0546ad71216681a8d947e9d1f6316051a0fd8ca930d50c11e3e002db20c0bb595324b6e71b9bfd16a37d9a6e320267bc59
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove-strats@npm:0.0.2-2":
-  version: 0.0.2-2
-  resolution: "@mangrovedao/mangrove-strats@npm:0.0.2-2"
+"@mangrovedao/mangrove-strats@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@mangrovedao/mangrove-strats@npm:1.0.2"
   dependencies:
-    "@mangrovedao/mangrove-core": next
-  checksum: 2fa3d17b78860eaed0c5d13aa4d89d6df7346ef83680e92f405c397b8eaefd1b655a006f4753c9365c35b80d657e9e48bada6b9c45b13d4be953e8144b716dcc
+    "@mangrovedao/mangrove-core": ^2.0.3
+  checksum: 1a9d679e3bd8838bbcbdcbdf1be5128ff0989589ec055989207f00675c2630986b1299fef5472f442c05eb05e74eac24b7273c85ece2c71e91b616061af0e5b9
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove.js@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "@mangrovedao/mangrove.js@npm:1.4.0"
+"@mangrovedao/mangrove.js@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@mangrovedao/mangrove.js@npm:2.0.1"
   dependencies:
     "@ethersproject/experimental": ^5.7.0
-    "@mangrovedao/mangrove-core": 1.5.4
-    "@mangrovedao/reliable-event-subscriber": 1.1.19
+    "@mangrovedao/context-addresses": ^1.0.1
+    "@mangrovedao/mangrove-core": ^2.0.3
+    "@mangrovedao/mangrove-deployments": ^1.0.3
+    "@mangrovedao/mangrove-strats": ^1.0.2
+    "@mangrovedao/reliable-event-subscriber": 1.1.29
     "@types/object-inspect": ^1.8.1
     "@types/triple-beam": ^1.3.2
     async-mutex: ^0.4.0
@@ -2919,18 +2915,19 @@ __metadata:
     loglevel: ^1.8.1
     node-cleanup: ^2.1.2
     object-inspect: ^1.12.3
+    semver: ^7.5.4
     triple-beam: ^1.3.0
     util: ^0.12.5
     yargs: ^17.3.0
   bin:
     mgv: ./dist/nodejs/cli/mgv.js
-  checksum: a623fea8c0ff2337670a14c1e6d73e15dfaa957764927b427d2caef526411493a6b791309fd8d8ee6c6a025c9f4410e172b8eaa171c460fea126b22f03ddeacf
+  checksum: f4ded9e43c026e34422c44b8d3d3aab146706f1845539c49e75f949fdb96a28c343335a6186cc140623a3ebed8198249f69ed96120cf2b0bd2d478bafc8f17ea
   languageName: node
   linkType: hard
 
-"@mangrovedao/reliable-event-subscriber@npm:1.1.19":
-  version: 1.1.19
-  resolution: "@mangrovedao/reliable-event-subscriber@npm:1.1.19"
+"@mangrovedao/reliable-event-subscriber@npm:1.1.29":
+  version: 1.1.29
+  resolution: "@mangrovedao/reliable-event-subscriber@npm:1.1.29"
   dependencies:
     "@ethersproject/providers": ^5.7.2
     async-mutex: ^0.4.0
@@ -2938,7 +2935,7 @@ __metadata:
     ethers: ^5.7.2
     isomorphic-ws: ^5.0.0
     ws: ^8.13.0
-  checksum: 936f39d69bafc5d3e3e325f5f78cdaa4238171072933c7dc80c0c9d07d5cacd3f9fa2cc17493f1661211b2e7502a7b684c1d1bf52e3a7bfdef5b2efc2458c4cc
+  checksum: 94c27e49fd3e1e181821b25f30e74a91a975b05424f647a0aabb2c56c5c8af086b1902a794104142fd6f60f159dc887f5d8a7cd944d383421fe3f7c4ec4b0ae9
   languageName: node
   linkType: hard
 
@@ -4406,6 +4403,13 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: 1bd10b9afa724084b655dc81b7b315def3d2d0e272014ef16009fa76e17537411c07c0695fdea412bc7b36d2a02687f5fea33522d55b8ef29eda42992f812913
+  languageName: node
+  linkType: hard
+
+"@types/semver@npm:^7.5.6":
+  version: 7.5.6
+  resolution: "@types/semver@npm:7.5.6"
+  checksum: 563a0120ec0efcc326567db2ed920d5d98346f3638b6324ea6b50222b96f02a8add3c51a916b6897b51523aad8ac227d21d3dcf8913559f1bfc6c15b14d23037
   languageName: node
   linkType: hard
 
@@ -11850,11 +11854,11 @@ __metadata:
     "@docusaurus/theme-mermaid": ^2.2.0
     "@ethersproject/abi": ^5.4.7
     "@ethersproject/providers": ^5.4.7
-    "@mangrovedao/context-addresses": ^1.0.0
-    "@mangrovedao/mangrove-core": 2.0.0-3
-    "@mangrovedao/mangrove-deployments": ^1.0.0
-    "@mangrovedao/mangrove-strats": 0.0.2-2
-    "@mangrovedao/mangrove.js": ^1.4.0
+    "@mangrovedao/context-addresses": ^1.0.1
+    "@mangrovedao/mangrove-core": ^2.0.3
+    "@mangrovedao/mangrove-deployments": ^1.0.3
+    "@mangrovedao/mangrove-strats": ^1.0.2
+    "@mangrovedao/mangrove.js": ^2.0.1
     "@mdx-js/react": ^1.6.22
     "@nomicfoundation/hardhat-chai-matchers": ^1.0.0
     "@nomicfoundation/hardhat-network-helpers": ^1.0.0
@@ -11868,6 +11872,7 @@ __metadata:
     "@types/mocha": ^9.1.0
     "@types/node": ">=12.0.0"
     "@types/node-cleanup": ^2.1.2
+    "@types/semver": ^7.5.6
     "@types/shelljs": ^0.8.12
     "@vegaprotocol/docusaurus-theme-github-codeblock": ^0.1.8
     chai: ^4.2.0

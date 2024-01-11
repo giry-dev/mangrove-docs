@@ -8,6 +8,7 @@ const chainNames = {
   137: "Polygon Mainnet",
   42161: "Arbitrum One",
   80001: "Polygon Testnet - Mumbai",
+  11155111: "Sepolia Testnet",
 };
 
 function contractsVersionDeploymentsToTable(contractsVersionDeployments) {

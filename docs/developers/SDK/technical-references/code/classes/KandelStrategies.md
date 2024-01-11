@@ -18,7 +18,7 @@ Seeder for creating Kandel instances on-chain.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:17
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:20
 
 ___
 
@@ -30,7 +30,7 @@ Repository for Kandel instances.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:20
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:23
 
 ___
 
@@ -42,7 +42,7 @@ The Mangrove to interact with.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:23
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:26
 
 ___
 
@@ -54,7 +54,7 @@ The default configuration values to use for Kandel.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:26
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:29
 
 ## Constructors
 
@@ -72,13 +72,13 @@ Constructor
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:31
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:34
 
 ## Methods
 
 ### <a id="instance" name="instance"></a> instance
 
-▸ **instance**(`params`): `Promise`<[`KandelInstance`](KandelInstance.md)\>
+▸ **instance**(`params`): `Promise`<[`GeometricKandelInstance`](GeometricKandelInstance.md)\>
 
 Creates a KandelInstance object to interact with a Kandel strategy on Mangrove.
 
@@ -92,23 +92,23 @@ If a factory function is provided for the market, then remember to disconnect ma
 | :------ | :------ | :------ |
 | `params` | `Object` | The parameters for creating the KandelInstance. |
 | `params.address` | `string` | The address of the Kandel strategy. |
-| `params.market` | [`Market`](Market.md) \| (`baseAddress`: `string`, `quoteAddress`: `string`) => `Promise`<[`Market`](Market.md)\> | The market used by the Kandel instance or a factory function to create the market. |
+| `params.market` | [`Market`](Market.md) \| (`baseAddress`: `string`, `quoteAddress`: `string`, `tickSpacing`: `number`) => `Promise`<[`Market`](Market.md)\> | The market used by the Kandel instance or a factory function to create the market. |
 
 #### Returns
 
-`Promise`<[`KandelInstance`](KandelInstance.md)\>
+`Promise`<[`GeometricKandelInstance`](GeometricKandelInstance.md)\>
 
 A new KandelInstance.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:45
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:48
 
 ___
 
 ### <a id="generator" name="generator"></a> generator
 
-▸ **generator**(`market`, `precision?`): [`KandelDistributionGenerator`](KandelDistributionGenerator.md)
+▸ **generator**(`market`): [`GeometricKandelDistributionGenerator`](GeometricKandelDistributionGenerator.md)
 
 Creates a generator for generating Kandel distributions for the given market.
 
@@ -117,14 +117,13 @@ Creates a generator for generating Kandel distributions for the given market.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `market` | [`Market`](Market.md) | The market to calculate for. |
-| `precision?` | `number` | The precision used for Kandel instances. Must match the deployed Kandel contract's PRECISION() value. |
 
 #### Returns
 
-[`KandelDistributionGenerator`](KandelDistributionGenerator.md)
+[`GeometricKandelDistributionGenerator`](GeometricKandelDistributionGenerator.md)
 
 A new KandelDistributionGenerator.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:80
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:93

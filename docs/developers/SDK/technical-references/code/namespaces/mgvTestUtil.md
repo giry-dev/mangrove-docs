@@ -23,8 +23,8 @@ custom_edit_url: null
 | `name` | `string` |
 | `address` | `string` |
 | `signer` | `ethers.Signer` |
-| `connectedContracts` | { `mangrove`: `typechain.Mangrove` ; `testMaker`: `typechain.SimpleTestMaker` ; `tokenA`: `typechain.TestToken` ; `tokenB`: `typechain.TestToken`  } |
-| `connectedContracts.mangrove` | `typechain.Mangrove` |
+| `connectedContracts` | { `mangrove`: `typechain.IMangrove` ; `testMaker`: `typechain.SimpleTestMaker` ; `tokenA`: `typechain.TestToken` ; `tokenB`: `typechain.TestToken`  } |
+| `connectedContracts.mangrove` | `typechain.IMangrove` |
 | `connectedContracts.testMaker` | `typechain.SimpleTestMaker` |
 | `connectedContracts.tokenA` | `typechain.TestToken` |
 | `connectedContracts.tokenB` | `typechain.TestToken` |
@@ -97,14 +97,14 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `mangrove` | `typechain.Mangrove` |
+| `mangrove` | `typechain.IMangrove` |
 | `testMaker` | `typechain.SimpleTestMaker` |
 | `tokenA` | `typechain.TestToken` |
 | `tokenB` | `typechain.TestToken` |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:90
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:89
 
 ___
 
@@ -119,7 +119,7 @@ ___
 | `market` | [`Market`](../classes/Market.md) |
 | `ba` | [`BA`](Market-1.md#ba) |
 | `maker` | [`Account`](mgvTestUtil.md#account) |
-| `wants?` | `ethers.BigNumberish` |
+| `tick?` | `ethers.BigNumberish` |
 | `gives?` | `ethers.BigNumberish` |
 | `gasreq?` | `ethers.BigNumberish` |
 | `shouldFail?` | `boolean` |
@@ -128,7 +128,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:232
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:218
 
 ## Variables
 
@@ -142,13 +142,33 @@ ___
 
 ___
 
+### <a id="rawmingivesbase" name="rawmingivesbase"></a> rawMinGivesBase
+
+• `Const` **rawMinGivesBase**: `BigNumber`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:46
+
+___
+
+### <a id="rawmingivesquote" name="rawmingivesquote"></a> rawMinGivesQuote
+
+• `Const` **rawMinGivesQuote**: `BigNumber`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:47
+
+___
+
 ### <a id="istrackingpolls" name="istrackingpolls"></a> isTrackingPolls
 
 • **isTrackingPolls**: `boolean` = `false`
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:244
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:230
 
 ___
 
@@ -160,13 +180,13 @@ Await this when you want to wait for all events corresponding to the last sent t
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:253
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:239
 
 ## Functions
 
 ### <a id="setconfig" name="setconfig"></a> setConfig
 
-▸ **setConfig**(`_mgv`, `accounts`, `_mgvAdmin`): `void`
+▸ **setConfig**(`_mgv`, `accounts`): `void`
 
 #### Parameters
 
@@ -174,7 +194,6 @@ Await this when you want to wait for all events corresponding to the last sent t
 | :------ | :------ |
 | `_mgv` | [`Mangrove`](../classes/Mangrove.md) |
 | `accounts` | `any` |
-| `_mgvAdmin` | [`Mangrove`](../classes/Mangrove.md) |
 
 #### Returns
 
@@ -182,7 +201,7 @@ Await this when you want to wait for all events corresponding to the last sent t
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:52
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:55
 
 ___
 
@@ -196,7 +215,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:64
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:62
 
 ___
 
@@ -210,7 +229,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:83
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:82
 
 ___
 
@@ -230,7 +249,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:97
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:96
 
 ___
 
@@ -250,7 +269,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:128
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:127
 
 ___
 
@@ -271,7 +290,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:141
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:140
 
 ___
 
@@ -292,7 +311,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:152
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:151
 
 ___
 
@@ -314,33 +333,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:163
-
-___
-
-### <a id="gettokens" name="gettokens"></a> getTokens
-
-▸ **getTokens**(`market`, `ba`): `Object`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `market` | [`Market`](../classes/Market.md) |
-| `ba` | [`BA`](Market-1.md#ba) |
-
-#### Returns
-
-`Object`
-
-| Name | Type |
-| :------ | :------ |
-| `inboundToken` | [`MgvToken`](../classes/MgvToken.md) |
-| `outboundToken` | [`MgvToken`](../classes/MgvToken.md) |
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:219
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:162
 
 ___
 
@@ -361,7 +354,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:257
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:243
 
 ___
 
@@ -383,7 +376,7 @@ Call this to enable tracking of whether the last transaction sent by this librar
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:296
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:282
 
 ___
 
@@ -399,7 +392,7 @@ Call this disable tracking of whether the last transaction sent by this library 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:306
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:292
 
 ___
 
@@ -415,7 +408,7 @@ NB: Only works when this is awaited before sending more tx's.
 
 | Name | Type |
 | :------ | :------ |
-| `txPromises` | `PromiseOrValue`<`PromiseOrValue`<`ContractTransaction`\>[]\> |
+| `txPromises` | (`undefined` \| `ContractTransaction` \| `Promise`<`undefined` \| `ContractTransaction`\>)[] \| `Promise`<(`undefined` \| `ContractTransaction` \| `Promise`<`undefined` \| `ContractTransaction`\>)[]\> |
 
 #### Returns
 
@@ -423,7 +416,7 @@ NB: Only works when this is awaited before sending more tx's.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:317
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:303
 
 ___
 
@@ -439,7 +432,7 @@ NB: Only works when this is awaited before sending more tx's.
 
 | Name | Type |
 | :------ | :------ |
-| `txPromise` | `PromiseOrValue`<`undefined` \| `ContractTransaction`\> |
+| `txPromise` | `undefined` \| `ContractTransaction` \| `Promise`<`undefined` \| `ContractTransaction`\> |
 
 #### Returns
 
@@ -447,7 +440,7 @@ NB: Only works when this is awaited before sending more tx's.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:333
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:331
 
 ___
 
@@ -463,7 +456,7 @@ NB: Only works when this is awaited before sending more tx's.
 
 | Name | Type |
 | :------ | :------ |
-| `txPromise` | `PromiseOrValue`<`ContractTransaction`\> |
+| `txPromise` | `ContractTransaction` \| `Promise`<`ContractTransaction`\> |
 
 #### Returns
 
@@ -471,7 +464,7 @@ NB: Only works when this is awaited before sending more tx's.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:354
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:355
 
 ___
 
@@ -491,7 +484,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:365
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:366
 
 ___
 
@@ -513,7 +506,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:407
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:408
 
 ___
 
@@ -535,7 +528,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:422
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:423
 
 ___
 
@@ -557,7 +550,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:430
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:431
 
 ___
 
@@ -577,7 +570,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:438
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:439
 
 ___
 
@@ -589,7 +582,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `token` | [`MgvToken`](../classes/MgvToken.md) |
+| `token` | [`Token`](../classes/Token.md) |
 | `receiver` | [`Account`](mgvTestUtil.md#account) |
 | `amount` | `number` |
 
@@ -599,4 +592,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:476
+@mangrovedao/mangrove.js/src/util/test/mgvIntegrationTestUtil.ts:477

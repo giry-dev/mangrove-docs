@@ -71,6 +71,12 @@ Forwarder constructor
 | mgv | contract IMangrove | the deployed Mangrove contract on which this contract will post offers. |
 | router | contract AbstractRouter | the router that this contract will use to pull/push liquidity from offer maker's reserve. This must not be `NO_ROUTER`. |
 
+### setRouter
+
+```solidity
+function setRouter(contract AbstractRouter router) public virtual
+```
+
 ### offerOwners
 
 ```solidity
