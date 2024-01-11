@@ -363,6 +363,22 @@ Returns the id of the best offer in the cache
 
 ___
 
+### <a id="getbest" name="getbest"></a> getBest
+
+▸ **getBest**(): `Promise`<`undefined` \| [`Offer`](../namespaces/Market-1.md#offer)\>
+
+Returns the best offer if any
+
+#### Returns
+
+`Promise`<`undefined` \| [`Offer`](../namespaces/Market-1.md#offer)\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:419
+
+___
+
 ### <a id="[iterator]" name="[iterator]"></a> [iterator]
 
 ▸ **[iterator]**(): [`CacheIterator`](../interfaces/Semibook-1.CacheIterator.md)
@@ -379,7 +395,7 @@ Iterable.\_\_@iterator@93
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:419
+@mangrovedao/mangrove.js/src/semibook.ts:443
 
 ___
 
@@ -395,7 +411,7 @@ Convenience method for getting an iterator without having to call `[Symbol.itera
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:430
+@mangrovedao/mangrove.js/src/semibook.ts:454
 
 ___
 
@@ -436,7 +452,7 @@ traded due to insufficient volume on the book / price becoming bad.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:456
+@mangrovedao/mangrove.js/src/semibook.ts:480
 
 ___
 
@@ -464,7 +480,7 @@ with the exception of:
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:489
+@mangrovedao/mangrove.js/src/semibook.ts:513
 
 ___
 
@@ -487,7 +503,7 @@ Returns `true` if `price` is better than `referencePrice`; Otherwise, `false` is
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:647
+@mangrovedao/mangrove.js/src/semibook.ts:671
 
 ___
 
@@ -510,7 +526,7 @@ Returns `true` if `price` is worse than `referencePrice`; Otherwise, `false` is 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:656
+@mangrovedao/mangrove.js/src/semibook.ts:680
 
 ___
 
@@ -534,7 +550,7 @@ The minimum volume required to stay above density limit.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:667
+@mangrovedao/mangrove.js/src/semibook.ts:691
 
 ___
 
@@ -548,7 +564,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:677
+@mangrovedao/mangrove.js/src/semibook.ts:701
 
 ___
 
@@ -572,7 +588,7 @@ StateLogSubscriber.stateInitialize
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:849
+@mangrovedao/mangrove.js/src/semibook.ts:873
 
 ___
 
@@ -598,7 +614,7 @@ StateLogSubscriber.stateHandleLog
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:898
+@mangrovedao/mangrove.js/src/semibook.ts:922
 
 ___
 
@@ -618,7 +634,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1339
+@mangrovedao/mangrove.js/src/semibook.ts:1363
 
 ___
 
@@ -639,7 +655,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1346
+@mangrovedao/mangrove.js/src/semibook.ts:1370
 
 ___
 
@@ -659,7 +675,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1365
+@mangrovedao/mangrove.js/src/semibook.ts:1389
 
 ___
 
@@ -679,7 +695,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1388
+@mangrovedao/mangrove.js/src/semibook.ts:1412
 
 ___
 
@@ -699,7 +715,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1393
+@mangrovedao/mangrove.js/src/semibook.ts:1417
 
 ___
 
@@ -719,7 +735,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1430
+@mangrovedao/mangrove.js/src/semibook.ts:1454
 
 ___
 
@@ -739,7 +755,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1441
+@mangrovedao/mangrove.js/src/semibook.ts:1465
 
 ___
 

@@ -40,7 +40,7 @@ The tick spacing of the market.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:38
+@mangrovedao/mangrove.js/src/market.ts:39
 
 ___
 
@@ -64,7 +64,7 @@ Values needed for converting between ticks/prices/volumes, is a subset of
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:45
+@mangrovedao/mangrove.js/src/market.ts:46
 
 ___
 
@@ -96,7 +96,7 @@ The tick spacing of the market.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:57
+@mangrovedao/mangrove.js/src/market.ts:58
 
 ___
 
@@ -108,7 +108,7 @@ Identifies the bids or asks offer list.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:66
+@mangrovedao/mangrove.js/src/market.ts:67
 
 ___
 
@@ -120,7 +120,7 @@ Identifies a type of order.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:71
+@mangrovedao/mangrove.js/src/market.ts:72
 
 ___
 
@@ -130,7 +130,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:73
+@mangrovedao/mangrove.js/src/market.ts:74
 
 ___
 
@@ -152,7 +152,7 @@ Result type for trade failures.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:78
+@mangrovedao/mangrove.js/src/market.ts:79
 
 ___
 
@@ -172,7 +172,7 @@ Result type for trade successes.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:89
+@mangrovedao/mangrove.js/src/market.ts:90
 
 ___
 
@@ -202,7 +202,7 @@ A summary of the result of a trade.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:98
+@mangrovedao/mangrove.js/src/market.ts:99
 
 ___
 
@@ -224,7 +224,7 @@ A summary of the result of cleaning.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:117
+@mangrovedao/mangrove.js/src/market.ts:118
 
 ___
 
@@ -250,7 +250,7 @@ Order results, with a summary field that may not be set.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:128
+@mangrovedao/mangrove.js/src/market.ts:129
 
 ___
 
@@ -262,7 +262,7 @@ Order results, with a definite summary.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:143
+@mangrovedao/mangrove.js/src/market.ts:144
 
 ___
 
@@ -274,7 +274,7 @@ Cleaning results, with a definite summary.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:153
+@mangrovedao/mangrove.js/src/market.ts:154
 
 ___
 
@@ -288,7 +288,7 @@ No data is returned, but the transaction may fail.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:165
+@mangrovedao/mangrove.js/src/market.ts:166
 
 ___
 
@@ -302,7 +302,7 @@ No data is returned, but the transaction may fail.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:172
+@mangrovedao/mangrove.js/src/market.ts:173
 
 ___
 
@@ -330,7 +330,7 @@ low-level transaction that has been submitted as well as the result of the marke
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:180
+@mangrovedao/mangrove.js/src/market.ts:181
 
 ___
 
@@ -340,7 +340,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:193
+@mangrovedao/mangrove.js/src/market.ts:194
 
 ___
 
@@ -385,7 +385,7 @@ The remaining parameters specify the kind of trade to be executed in one of the 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:214
+@mangrovedao/mangrove.js/src/market.ts:215
 
 ___
 
@@ -404,7 +404,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:233
+@mangrovedao/mangrove.js/src/market.ts:234
 
 ___
 
@@ -416,7 +416,7 @@ Parameters for updating an existing resting order.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:241
+@mangrovedao/mangrove.js/src/market.ts:242
 
 ___
 
@@ -452,7 +452,7 @@ the taker to impersonate, if not specified, the caller of the function will be u
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:265
+@mangrovedao/mangrove.js/src/market.ts:266
 
 ___
 
@@ -471,7 +471,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:276
+@mangrovedao/mangrove.js/src/market.ts:277
 
 ___
 
@@ -487,7 +487,7 @@ Specification of how much volume to (potentially) trade on the market.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:290
+@mangrovedao/mangrove.js/src/market.ts:291
 
 ___
 
@@ -499,7 +499,7 @@ Specification of how much volume to (potentially) trade on the market, without s
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:298
+@mangrovedao/mangrove.js/src/market.ts:299
 
 ___
 
@@ -518,7 +518,7 @@ Optional parameters for connecting to a Mangrove market - gives optional paramet
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:303
+@mangrovedao/mangrove.js/src/market.ts:304
 
 ___
 
@@ -533,7 +533,7 @@ If none of these are specified, the default is `targetNumberOfTicks` = `Semibook
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:314
+@mangrovedao/mangrove.js/src/market.ts:315
 
 ___
 
@@ -545,7 +545,7 @@ Options that control how the book cache behaves.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:340
+@mangrovedao/mangrove.js/src/market.ts:341
 
 ___
 
@@ -571,7 +571,7 @@ Offers in the book cache.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:350
+@mangrovedao/mangrove.js/src/market.ts:351
 
 ___
 
@@ -585,7 +585,7 @@ offer is first or last at the tick.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:367
+@mangrovedao/mangrove.js/src/market.ts:368
 
 ___
 
@@ -597,7 +597,7 @@ Type for events emitted by the Mangrove market.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:386
+@mangrovedao/mangrove.js/src/market.ts:387
 
 ___
 
@@ -609,7 +609,7 @@ The arguments passed to a an order book event callback function - see [subscribe
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:401
+@mangrovedao/mangrove.js/src/market.ts:402
 
 ___
 
@@ -643,7 +643,7 @@ A callback function that is called when an order book event occurs.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:458
+@mangrovedao/mangrove.js/src/market.ts:459
 
 ___
 
@@ -655,7 +655,7 @@ A type for [MarketCallback](Market-1.md#marketcallback) that is stored in a map.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:467
+@mangrovedao/mangrove.js/src/market.ts:468
 
 ___
 
@@ -667,7 +667,7 @@ A filter function that can be used to filter order book events.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:472
+@mangrovedao/mangrove.js/src/market.ts:473
 
 ___
 
@@ -679,7 +679,7 @@ A subscription parameter that specifies how a subscription to order book events 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:477
+@mangrovedao/mangrove.js/src/market.ts:478
 
 ___
 
@@ -698,7 +698,7 @@ Order books - an asks semibook and a bids semibook.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:489
+@mangrovedao/mangrove.js/src/market.ts:490
 
 ___
 
@@ -719,4 +719,4 @@ A volume estimate for a trade.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:494
+@mangrovedao/mangrove.js/src/market.ts:495
