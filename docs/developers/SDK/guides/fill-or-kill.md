@@ -9,7 +9,7 @@ sidebar_position: 3
 
 This section will go through how to create a Fill or Kill ([FOK](https://www.investopedia.com/terms/f/fok.asp)) order using mangrove.js.
 
-We assume you know how to connect to Mangrove. We are going to be buying 2000 USDC at a maximum avg. price of 1.3. It is a requirement for this script to have enough USDC. If you do not have enough USDC, you can use a testnet and mint some USDC. This can either be done by going to our [dApp](https://testnet.mangrove.exchange/faucet) or by minting directly in the [script](https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f1381dcd1/examples/how-tos/fill-or-kill.js) (see the commented lines in the script about minting).
+We assume you know how to connect to Mangrove. We are going to be buying 2000 USDC at a maximum avg. price of 1.3. It is a requirement for this script to have enough USDC. If you do not have enough USDC, you can use a testnet and mint some USDC. This can either be done by going to our [dApp](https://testnet.mangrove.exchange/faucet) or by minting directly in the [script](https://github.com/mangrovedao/mangrove.js/blob/2eb3f76f120831a48c577d930fcffc7d55d75c51/examples/how-tos/fill-or-kill.js) (see the commented lines in the script about minting).
 
 ### Approvals
 
@@ -18,7 +18,7 @@ After having connected to Mangrove, we then have to make sure that we have the c
 In this case we are not going to be using the Mangrove protocol directly. Instead we are going to be using a different contract, provided by the [Mangrove strat lib](../../strat-lib/README.md) - the [MangroveOrder](../../strat-lib/technical-references/code/strats/src/strategies/MangroveOrder) contract. This contract makes it possible to make a real FoK order and not just a normal market order. This means that we need to approve the MangroveOrder contract to handle all our USDC transfers. One way of doing this, would be to just call approve directly on the USDC token, with the MangroveOrder contract as spender. But because strategies made with the Mangrove strat lib, can be using a more complex way of dealing with transfers, we should not rely on calling approve directly on the token. Instead we will create an %%OfferLogic|offer-logic%% using the MangroveOrder contract. This will provide us with an 'approveToken' function. This function will handle all the necessary approvals in order to use a token with the contract.
 
 ```js reference
-https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f1381dcd1/examples/how-tos/fill-or-kill.js#L27
+https://github.com/mangrovedao/mangrove.js/blob/2eb3f76f120831a48c577d930fcffc7d55d75c51/examples/how-tos/fill-or-kill.js#L27
 ```
 
 ### Buying with MangroveOrder
@@ -26,7 +26,7 @@ https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f
 We are now ready to buy some DAI using a FoK order. It is very simple to do. Using the same method as for a market order (`buy`), we just give it an extra parameter `fillOrKill` which we set to true. This way we use the [MangroveOrder](../../strat-lib/technical-references/code/strats/src/strategies/MangroveOrder) contract to buy.
 
 ```js reference
-https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f1381dcd1/examples/how-tos/fill-or-kill.js#L29-L37
+https://github.com/mangrovedao/mangrove.js/blob/2eb3f76f120831a48c577d930fcffc7d55d75c51/examples/how-tos/fill-or-kill.js#L29-L37
 ```
 
 Here we show logs asks for the market before buying and after buying, you will see that the first 3 offers were taken. Offers 1669, 3344 and 1157 were all taken. But when we look at the result of the Fill or Kill order, we see that we got a %%bounty|bounty%%. This means that one of the offers failed and we got a bounty for making the offer fail.

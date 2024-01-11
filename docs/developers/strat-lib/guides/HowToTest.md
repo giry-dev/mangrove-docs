@@ -66,7 +66,7 @@ Breaking the problem down, for this test, we need to
 We implement these two steps as separate functions (we need to deploy the contract for other tests, also).
 
 ```solidity reference title="Amplifier.t.sol - Testing a successful fill"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/test/toy_strategies/Amplifier.t.sol#L60-L64
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/toy_strategies/Amplifier.t.sol#L60-L64
 ```
 
 Now, of course, we need to implement `deployStrat()` and `execTraderStratWithFillSuccess()`.
@@ -105,7 +105,7 @@ Posting offers with `Amplifier` is simply a call to [`newAmplifiedOffers`](./Dir
 
 
 ```solidity reference title="Amplifier.t.sol - Post and fund offers"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/test/toy_strategies/Amplifier.t.sol#L119-L129
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/toy_strategies/Amplifier.t.sol#L119-L129
 ```
 
 
@@ -116,7 +116,7 @@ Mangrove provides [snipe](../../contracts/technical-references/taking-and-making
 We make sure to impersonate the taker that we setup an address for [above](#test-contract-and-setup). (Recall that Foundry provides [`vm.prank()`](https://book.getfoundry.sh/cheatcodes/prank) for this exact purpose.)
 
 ```solidity reference title="Amplifier.t.sol - Take a single offer"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/test/toy_strategies/Amplifier.t.sol#L131-L141
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/toy_strategies/Amplifier.t.sol#L131-L141
 ```
 
 #### And Finally, The Test
@@ -131,7 +131,7 @@ With these helper methods, the test body amounts to the following steps:
 
 
 ```solidity reference title="Amplifier.t.sol - Putting it all together"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/test/toy_strategies/Amplifier.t.sol#L171-L194
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/toy_strategies/Amplifier.t.sol#L171-L194
 ```
 
 In verifying, we use a few helper functions provided by `MangroveTest`
@@ -150,12 +150,12 @@ In Foundry tests are run with the Forge tool, typically invoking something like 
 With our helper functions for posting and sniping offers, we we can easily add more tests. For instance, testing that an offer was correctly handled for a %%partial fill|maker-partial-fill%% looks like this:
 
 ```solidity reference title="Amplifier.t.sol - Testing partial fill"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/test/toy_strategies/Amplifier.t.sol#L72-L76
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/toy_strategies/Amplifier.t.sol#L72-L76
 ```
 ```solidity reference title="Amplifier.t.sol - Helper function"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/test/toy_strategies/Amplifier.t.sol#L143-L169
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/toy_strategies/Amplifier.t.sol#L143-L169
 ```
 
-A full test file for for the `Amplifier` contract can be found [here](https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/test/toy_strategies/Amplifier.t.sol).
+A full test file for for the `Amplifier` contract can be found [here](https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/toy_strategies/Amplifier.t.sol).
 
 When you have sufficiently tested your %%maker contract|maker-contract%%, you may want to [deploy your contract](HowToDeploy.md) to a real chain.
