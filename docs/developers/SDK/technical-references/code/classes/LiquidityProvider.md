@@ -17,7 +17,7 @@ It posts onchain offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:57
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:55
 
 ___
 
@@ -27,7 +27,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:58
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:56
 
 ___
 
@@ -37,7 +37,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:59
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:57
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:60
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:58
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:61
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:59
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:62
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:60
 
 ___
 
@@ -77,7 +77,17 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:63
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:61
+
+___
+
+### <a id="trade" name="trade"></a> trade
+
+• **trade**: `Trade`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:62
 
 ## Constructors
 
@@ -93,13 +103,13 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:65
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:64
 
 ## Methods
 
 ### <a id="connect" name="connect"></a> connect
 
-▸ `Static` **connect**(`offerLogic`, `p`): `Promise`<[`LiquidityProvider`](LiquidityProvider.md)\>
+▸ `Static` **connect**(`offerLogic`, `offerGasreq`, `p`): `Promise`<[`LiquidityProvider`](LiquidityProvider.md)\>
 
 Connects the logic to a Market in order to pass market orders. This assumes the underlying contract of offer logic is an ILiquidityProvider.
 
@@ -108,7 +118,8 @@ Connects the logic to a Market in order to pass market orders. This assumes the 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `offerLogic` | [`OfferLogic`](OfferLogic.md) | The offer logic. |
-| `p` | [`Market`](Market.md) \| { `base`: `string` ; `quote`: `string` ; `bookOptions?`: [`BookOptions`](../namespaces/Market-1.md#bookoptions)  } | The market to connect to. Can be a Market object or a market descriptor. |
+| `offerGasreq` | `number` | The gas required for the offer execution on the offer logic. |
+| `p` | [`Market`](Market.md) \| { `base`: `string` ; `quote`: `string` ; `tickSpacing`: `number` ; `bookOptions?`: [`BookOptions`](../namespaces/Market-1.md#bookoptions)  } | The market to connect to. Can be a Market object or a market descriptor. |
 
 #### Returns
 
@@ -146,7 +157,7 @@ the additional required provision, in ethers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:125
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:127
 
 ___
 
@@ -175,7 +186,7 @@ computeOfferProvision.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:156
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:157
 
 ___
 
@@ -204,50 +215,7 @@ computeOfferProvision.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:163
-
-___
-
-### <a id="getbidpivotid" name="getbidpivotid"></a> getBidPivotId
-
-▸ **getBidPivotId**(`price`): `Promise`<`undefined` \| `number`\>
-
-Given a price, find the id of the immediately-better offer in the
-semibook. If there is no offer with a better price, `undefined` is returned.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `price` | `BigSource` |
-
-#### Returns
-
-`Promise`<`undefined` \| `number`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:172
-
-___
-
-### <a id="getaskpivotid" name="getaskpivotid"></a> getAskPivotId
-
-▸ **getAskPivotId**(`price`): `Promise`<`undefined` \| `number`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `price` | `BigSource` |
-
-#### Returns
-
-`Promise`<`undefined` \| `number`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:177
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:164
 
 ___
 
@@ -263,7 +231,7 @@ List all of the maker's asks in the cache
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:183
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:171
 
 ___
 
@@ -279,7 +247,7 @@ List all of the maker's bids in the cache
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:193
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:181
 
 ___
 
@@ -301,7 +269,7 @@ Pretty prints the current state of the asks for the maker
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:203
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:191
 
 ___
 
@@ -323,22 +291,23 @@ Pretty prints the current state of the bids for the maker
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:208
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:196
 
 ___
 
 ### <a id="normalizeofferparams" name="normalizeofferparams"></a> normalizeOfferParams
 
-▸ `Static` **normalizeOfferParams**(`p`): `Object`
+▸ `Static` **normalizeOfferParams**(`p`, `market`): `Object`
 
 Given offer params (bids/asks + price info as wants&gives or price&volume),
- return `{price,wants,gives}`
+ return `{tick,gives,fund}`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `p` | `Object` |
+| `market` | [`KeyResolvedForCalculation`](../namespaces/Market-1.md#keyresolvedforcalculation) |
 
 #### Returns
 
@@ -346,37 +315,13 @@ Given offer params (bids/asks + price info as wants&gives or price&volume),
 
 | Name | Type |
 | :------ | :------ |
-| `price` | `Big` |
-| `wants` | `Big` |
+| `tick` | `number` |
 | `gives` | `Big` |
-| `gasreq?` | `number` |
-| `gasprice?` | `number` |
 | `fund?` | `BigSource` |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:216
-
-___
-
-### <a id="optvaluetopayableoverride" name="optvaluetopayableoverride"></a> optValueToPayableOverride
-
-▸ `Static` **optValueToPayableOverride**(`overrides`, `fund?`): `PayableOverrides`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `overrides` | `Overrides` |
-| `fund?` | `BigSource` |
-
-#### Returns
-
-`PayableOverrides`
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:247
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:204
 
 ___
 
@@ -399,7 +344,7 @@ Post a new ask
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:259
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:239
 
 ___
 
@@ -422,13 +367,13 @@ Post a new bid
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:267
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:247
 
 ___
 
 ### <a id="newoffer" name="newoffer"></a> newOffer
 
-▸ **newOffer**(`p`, `overrides?`): `Promise`<{ `id`: `number` ; `pivot`: `number` ; `event`: `Log`  }\>
+▸ **newOffer**(`p`, `overrides?`): `Promise`<{ `id`: `number` ; `event`: `Log`  }\>
 
 #### Parameters
 
@@ -439,11 +384,11 @@ ___
 
 #### Returns
 
-`Promise`<{ `id`: `number` ; `pivot`: `number` ; `event`: `Log`  }\>
+`Promise`<{ `id`: `number` ; `event`: `Log`  }\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:288
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:268
 
 ___
 
@@ -467,7 +412,7 @@ to change volume and price of the offer, and update its gas requirement and fund
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:377
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:354
 
 ___
 
@@ -491,7 +436,7 @@ Update an existing offer
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:386
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:363
 
 ___
 
@@ -513,7 +458,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:398
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:375
 
 ___
 
@@ -537,7 +482,7 @@ Cancel an ask. If deprovision is true, will return the offer's provision to the 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:468
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:444
 
 ___
 
@@ -561,7 +506,7 @@ Cancel a bid. If deprovision is true, will return the offer's provision to the m
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:477
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:453
 
 ___
 
@@ -584,4 +529,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:486
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:462

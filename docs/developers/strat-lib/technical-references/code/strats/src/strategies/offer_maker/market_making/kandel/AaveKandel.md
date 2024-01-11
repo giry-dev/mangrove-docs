@@ -73,6 +73,12 @@ Sets the AaveRouter as router and activates router for base and quote
 | router_ | contract AavePooledRouter | the Aave router to use. |
 | gasreq | uint256 | the gas required to execute an offer of this Kandel strat |
 
+### setRouter
+
+```solidity
+function setRouter(contract AbstractRouter router) public virtual
+```
+
 ### depositFunds
 
 ```solidity

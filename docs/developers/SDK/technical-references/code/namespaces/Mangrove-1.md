@@ -10,11 +10,11 @@ custom_edit_url: null
 
 ### <a id="rawconfig" name="rawconfig"></a> RawConfig
 
-Ƭ **RawConfig**: `Awaited`<`ReturnType`<`typechain.Mangrove`[``"functions"``][``"configInfo"``]\>\>
+Ƭ **RawConfig**: `Awaited`<`ReturnType`<`typechain.MgvReader`[``"functions"``][``"configInfo"``]\>\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:42
+@mangrovedao/mangrove.js/src/mangrove.ts:41
 
 ___
 
@@ -28,15 +28,22 @@ ___
 | :------ | :------ |
 | `active` | `boolean` |
 | `fee` | `number` |
-| `density` | `Big` |
+| `density` | `Density` |
 | `offer_gasbase` | `number` |
-| `lock` | `boolean` |
-| `best` | `number` \| `undefined` |
-| `last` | `number` \| `undefined` |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:46
+@mangrovedao/mangrove.js/src/mangrove.ts:45
+
+___
+
+### <a id="localconfigfull" name="localconfigfull"></a> LocalConfigFull
+
+Ƭ **LocalConfigFull**: [`LocalConfig`](Mangrove-1.md#localconfig) & { `lock`: `boolean` ; `last`: `number` \| `undefined` ; `binPosInLeaf`: `number` ; `root`: `number` ; `level1`: `ethers.BigNumber` ; `level2`: `ethers.BigNumber` ; `level3`: `ethers.BigNumber`  }
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:52
 
 ___
 
@@ -54,10 +61,12 @@ ___
 | `gasprice` | `number` |
 | `gasmax` | `number` |
 | `dead` | `boolean` |
+| `maxRecursionDepth` | `number` |
+| `maxGasreqForFailingOffers` | `number` |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:56
+@mangrovedao/mangrove.js/src/mangrove.ts:62
 
 ___
 
@@ -79,7 +88,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:65
+@mangrovedao/mangrove.js/src/mangrove.ts:73
 
 ___
 
@@ -101,44 +110,27 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:75
+@mangrovedao/mangrove.js/src/mangrove.ts:83
 
 ___
 
 ### <a id="openmarketinfo" name="openmarketinfo"></a> OpenMarketInfo
 
-Ƭ **OpenMarketInfo**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `base` | { `name`: `string` ; `address`: `string` ; `symbol`: `string` ; `decimals`: `number`  } |
-| `base.name` | `string` |
-| `base.address` | `string` |
-| `base.symbol` | `string` |
-| `base.decimals` | `number` |
-| `quote` | { `name`: `string` ; `address`: `string` ; `symbol`: `string` ; `decimals`: `number`  } |
-| `quote.name` | `string` |
-| `quote.address` | `string` |
-| `quote.symbol` | `string` |
-| `quote.decimals` | `number` |
-| `asksConfig?` | [`LocalConfig`](Mangrove-1.md#localconfig) |
-| `bidsConfig?` | [`LocalConfig`](Mangrove-1.md#localconfig) |
+Ƭ **OpenMarketInfo**: [`KeyResolved`](Market-1.md#keyresolved) & { `asksConfig?`: [`LocalConfig`](Mangrove-1.md#localconfig) ; `bidsConfig?`: [`LocalConfig`](Mangrove-1.md#localconfig)  }
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:85
+@mangrovedao/mangrove.js/src/mangrove.ts:93
 
 ___
 
 ### <a id="createoptions" name="createoptions"></a> CreateOptions
 
-Ƭ **CreateOptions**: [`CreateSignerOptions`](../interfaces/eth.CreateSignerOptions.md) & { `blockManagerOptions?`: `BlockManager.Options` ; `reliableWebsocketProviderOptions?`: `ReliableWebsocketProvider.Options` ; `reliableHttpProviderOptions?`: `ReliableHttpProvider.Options`  }
+Ƭ **CreateOptions**: [`CreateSignerOptions`](../interfaces/eth.CreateSignerOptions.md) & { `shouldNotListenToNewEvents?`: `boolean` ; `blockManagerOptions?`: `BlockManager.Options` ; `reliableWebsocketProviderOptions?`: `ReliableWebsocketProvider.Options` ; `reliableHttpProviderOptions?`: `ReliableHttpProvider.Options`  }
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:92
+@mangrovedao/mangrove.js/src/mangrove.ts:98
 
 ___
 
@@ -148,7 +140,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:98
+@mangrovedao/mangrove.js/src/mangrove.ts:105
 
 ___
 
@@ -158,4 +150,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:100
+@mangrovedao/mangrove.js/src/mangrove.ts:107

@@ -4406,6 +4406,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/semver@npm:^7.5.6":
+  version: 7.5.6
+  resolution: "@types/semver@npm:7.5.6"
+  checksum: 563a0120ec0efcc326567db2ed920d5d98346f3638b6324ea6b50222b96f02a8add3c51a916b6897b51523aad8ac227d21d3dcf8913559f1bfc6c15b14d23037
+  languageName: node
+  linkType: hard
+
 "@types/serve-index@npm:^1.9.1":
   version: 1.9.1
   resolution: "@types/serve-index@npm:1.9.1"
@@ -11865,6 +11872,7 @@ __metadata:
     "@types/mocha": ^9.1.0
     "@types/node": ">=12.0.0"
     "@types/node-cleanup": ^2.1.2
+    "@types/semver": ^7.5.6
     "@types/shelljs": ^0.8.12
     "@vegaprotocol/docusaurus-theme-github-codeblock": ^0.1.8
     chai: ^4.2.0

@@ -16,7 +16,7 @@ Seeder for creating Kandel instances on-chain.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:35
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:27
 
 ___
 
@@ -26,7 +26,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:36
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:28
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:37
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:29
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:39
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:31
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:40
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:32
 
 ## Constructors
 
@@ -74,13 +74,13 @@ Constructor
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:45
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:37
 
 ## Methods
 
 ### <a id="sow" name="sow"></a> sow
 
-▸ **sow**(`seed`, `overrides?`): `Promise`<{ `response`: `Promise`<`ContractTransaction`\> ; `kandelPromise`: `Promise`<[`KandelInstance`](KandelInstance.md)\>  }\>
+▸ **sow**(`seed`, `overrides?`): `Promise`<[`Transaction`](../namespaces/Market-1.md#transaction)<[`GeometricKandelInstance`](GeometricKandelInstance.md)\>\>
 
 Create a new Kandel instance.
 
@@ -93,17 +93,17 @@ Create a new Kandel instance.
 
 #### Returns
 
-`Promise`<{ `response`: `Promise`<`ContractTransaction`\> ; `kandelPromise`: `Promise`<[`KandelInstance`](KandelInstance.md)\>  }\>
+`Promise`<[`Transaction`](../namespaces/Market-1.md#transaction)<[`GeometricKandelInstance`](GeometricKandelInstance.md)\>\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:70
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:62
 
 ___
 
 ### <a id="getkandelfromreceipt" name="getkandelfromreceipt"></a> getKandelFromReceipt
 
-▸ **getKandelFromReceipt**(`params`): `Promise`<[`KandelInstance`](KandelInstance.md)\>
+▸ **getKandelFromReceipt**(`params`): `Promise`<[`GeometricKandelInstance`](GeometricKandelInstance.md)\>
 
 Gets the Kandel instance created in a transaction via sow.
 
@@ -118,13 +118,13 @@ Gets the Kandel instance created in a transaction via sow.
 
 #### Returns
 
-`Promise`<[`KandelInstance`](KandelInstance.md)\>
+`Promise`<[`GeometricKandelInstance`](GeometricKandelInstance.md)\>
 
 The Kandel instance created in the transaction.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:110
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:105
 
 ___
 
@@ -148,13 +148,13 @@ The gasreq for the Kandel type.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:150
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:145
 
 ___
 
 ### <a id="getbufferedgasprice" name="getbufferedgasprice"></a> getBufferedGasprice
 
-▸ **getBufferedGasprice**(`seed`): `Promise`<`number`\>
+▸ **getBufferedGasprice**(`gaspriceFactor`, `gasprice?`): `Promise`<`number`\>
 
 Retrieves the gasprice for the Kandel type multiplied by the buffer factor.
 
@@ -162,7 +162,8 @@ Retrieves the gasprice for the Kandel type multiplied by the buffer factor.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `seed` | `KandelSeed` | The parameters for sowing the Kandel instance. |
+| `gaspriceFactor` | `number` | The factor to multiply the gasprice by. This is used to ensure that the Kandel offers do not fail to be reposted even if Mangrove's gasprice increases up to this. |
+| `gasprice?` | `number` | The gasprice (in Mwei) to use for the Kandel (before multiplying with the factor). If null, then Mangrove's global gasprice will be used. |
 
 #### Returns
 
@@ -172,13 +173,13 @@ The gasprice for the Kandel type multiplied by the buffer factor.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:167
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:159
 
 ___
 
 ### <a id="getrequiredprovision" name="getrequiredprovision"></a> getRequiredProvision
 
-▸ **getRequiredProvision**(`seed`, `distribution`): `Promise`<`Big`\>
+▸ **getRequiredProvision**(`seed`, `distribution`, `gaspriceFactor?`, `gasprice?`, `gasreq?`): `Promise`<`Big`\>
 
 Determines the required provision for the distribution prior to sowing based on the number of price points.
 
@@ -192,6 +193,9 @@ This takes into account that each price point can become both an ask and a bid w
 | :------ | :------ | :------ |
 | `seed` | `KandelSeed` | The parameters for sowing the Kandel instance. |
 | `distribution` | [`KandelDistribution`](KandelDistribution.md) | The distribution to determine the provision for. |
+| `gaspriceFactor?` | `number` | The factor to multiply the gasprice by. This is used to ensure that the Kandel offers do not fail to be reposted even if Mangrove's gasprice increases up to this. If null, then the default gaspriceFactor for the market will be used. |
+| `gasprice?` | `number` | The gasprice (in Mwei) to use for the Kandel (before multiplying with the factor). If null, then Mangrove's global gasprice will be used. |
+| `gasreq?` | `number` | The gasreq to use for the Kandel. If null, then the default gasreq for the Kandel type will be used. |
 
 #### Returns
 
@@ -201,7 +205,7 @@ The provision required for the distribution.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:180
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:172
 
 ___
 
@@ -229,13 +233,13 @@ The minimum recommended volume.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:202
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:198
 
 ___
 
 ### <a id="getminimumvolumeforgasreq" name="getminimumvolumeforgasreq"></a> getMinimumVolumeForGasreq
 
-▸ **getMinimumVolumeForGasreq**(`params`): `Promise`<`Big`\>
+▸ **getMinimumVolumeForGasreq**(`params`): `Big`
 
 Determines the minimum recommended volume for an offer of the given type to avoid density issues.
 
@@ -251,10 +255,10 @@ Determines the minimum recommended volume for an offer of the given type to avoi
 
 #### Returns
 
-`Promise`<`Big`\>
+`Big`
 
 The minimum recommended volume.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:220
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:216

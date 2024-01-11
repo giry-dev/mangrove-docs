@@ -23,8 +23,7 @@ address RESERVE_ID
 
 identifier of this contract's reserve when using a router
 
-_RESERVE_ID==address(0) will pass address(this) to the router for the id field.
-two contracts using the same RESERVE_ID will share funds, therefore strat builder must make sure this contract is allowed to pull into the given reserve Id.
+_two contracts using the same RESERVE_ID will share funds, therefore strat builder must make sure this contract is allowed to pull into the given reserve Id.
 a safe value for `RESERVE_ID` is `address(this)` in which case the funds will never be shared with another maker contract._
 
 ### constructor
@@ -34,6 +33,8 @@ constructor(contract IMangrove mgv, contract AbstractRouter router_, address res
 ```
 
 `Direct`'s constructor.
+
+_reserveId==address(0) will set RESERVE_ID to address(this)._
 
 #### Parameters
 
