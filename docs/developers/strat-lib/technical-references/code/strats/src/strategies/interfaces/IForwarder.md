@@ -1,3 +1,5 @@
+# Solidity API
+
 ## IForwarder
 
 Interface for contracts that manage liquidity on Mangrove on behalf of multiple offer makers

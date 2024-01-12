@@ -1,3 +1,5 @@
+# Solidity API
+
 ## AbstractKandelSeeder
 
 This seeder deploys Kandel strats on demand and binds them to an AAVE router if needed.

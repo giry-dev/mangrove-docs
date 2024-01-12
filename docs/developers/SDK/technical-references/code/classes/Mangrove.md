@@ -6,6 +6,43 @@ sidebar_position: 0
 custom_edit_url: null
 ---
 
+## Constructors
+
+### <a id="constructor" name="constructor"></a> constructor
+
+• **new Mangrove**(`params`): [`Mangrove`](Mangrove.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | `Object` |
+| `params.signer` | `Signer` |
+| `params.network` | [`ProviderNetwork`](../interfaces/eth.ProviderNetwork.md) |
+| `params.readOnly` | `boolean` |
+| `params.blockManagerOptions` | `Options` |
+| `params.reliableHttpProvider` | `Options` |
+| `params.getLogsTimeout` | `number` |
+| `params.eventEmitter` | `EventEmitter` |
+| `params.reliableWebSocketOptions?` | `Object` |
+| `params.reliableWebSocketOptions.options` | `Options` |
+| `params.reliableWebSocketOptions.wsUrl` | `string` |
+| `params.shouldNotListenToNewEvents?` | `boolean` |
+| `params.multicallContract` | `Multicall2` |
+| `params.address` | `string` |
+| `params.contract` | `IMangrove` |
+| `params.readerContract` | `MgvReader` |
+| `params.orderContract` | `MangroveOrder` |
+| `params.config` | [`GlobalConfig`](../namespaces/Mangrove-1.md#globalconfig) |
+
+#### Returns
+
+[`Mangrove`](Mangrove.md)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:294
+
 ## Properties
 
 ### <a id="provider" name="provider"></a> provider
@@ -200,9 +237,21 @@ ___
 
 ### <a id="connect" name="connect"></a> connect
 
-▸ `Static` **connect**(`options?`): `Promise`<[`Mangrove`](Mangrove.md)\>
+▸ **connect**(`options?`): `Promise`<[`Mangrove`](Mangrove.md)\>
 
 Creates an instance of the Mangrove Typescript object
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `options?` | `string` \| [`CreateOptions`](../namespaces/Mangrove-1.md#createoptions) | Optional provider options |
+
+#### Returns
+
+`Promise`<[`Mangrove`](Mangrove.md)\>
+
+Returns an instance mangrove.js
 
 **`Example`**
 
@@ -221,19 +270,7 @@ Options:
 
 **`See`**
 
-[CreateOptions](../namespaces/Mangrove-1.md#createoptions) for more details on optional provider parameters.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `options?` | `string` \| [`CreateOptions`](../namespaces/Mangrove-1.md#createoptions) | Optional provider options |
-
-#### Returns
-
-`Promise`<[`Mangrove`](Mangrove.md)\>
-
-Returns an instance mangrove.js
+[Mangrove.CreateOptions](../namespaces/Mangrove-1.md#createoptions) for more details on optional provider parameters.
 
 #### Defined in
 
@@ -325,6 +362,16 @@ ___
 
 Update the configuration by providing a partial configuration containing only the values that should be changed/added.
 
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `config?` | `RecursivePartial`<`Configuration`\> | Partial configuration that should be merged into the existing configuration. |
+
+#### Returns
+
+`void`
+
 **`Example`**
 
 ```
@@ -337,16 +384,6 @@ updateConfiguration({
 })
 ```
 This adds configuration for a new token with symbol "SYM". Or, if "SYM" was already configured, ensures that its `decimals` is set to 18.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `config?` | `RecursivePartial`<`Configuration`\> | Partial configuration that should be merged into the existing configuration. |
-
-#### Returns
-
-`void`
 
 #### Defined in
 
@@ -380,7 +417,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `params` | [`Key`](../namespaces/Market-1.md#key) & { `bookOptions?`: [`BookOptions`](../namespaces/Market-1.md#bookoptions)  } |
+| `params` | [`Key`](../namespaces/Market-1.md#key) & \{ `bookOptions?`: [`BookOptions`](../namespaces/Market-1.md#bookoptions)  } |
 
 #### Returns
 
@@ -424,7 +461,7 @@ Get a LiquidityProvider object to enable Mangrove's signer to pass buy and sell 
 
 | Name | Type |
 | :------ | :------ |
-| `p` | [`Market`](Market.md) \| { `base`: `string` ; `quote`: `string` ; `tickSpacing`: `number` ; `bookOptions?`: [`BookOptions`](../namespaces/Market-1.md#bookoptions)  } |
+| `p` | [`Market`](Market.md) \| \{ `base`: `string` ; `quote`: `string` ; `tickSpacing`: `number` ; `bookOptions?`: [`BookOptions`](../namespaces/Market-1.md#bookoptions)  } |
 
 #### Returns
 
@@ -744,7 +781,7 @@ Calculates the provision required or locked for offers based on the given parame
 
 | Name | Type |
 | :------ | :------ |
-| `offers` | { `gasprice`: `number` ; `gasreq`: `number` ; `gasbase`: `number`  }[] |
+| `offers` | \{ `gasprice`: `number` ; `gasreq`: `number` ; `gasbase`: `number`  }[] |
 
 #### Returns
 
@@ -817,7 +854,7 @@ ___
 
 ### <a id="rawconfigtoconfig" name="rawconfigtoconfig"></a> rawConfigToConfig
 
-▸ `Static` **rawConfigToConfig**(`rawConfig`): [`GlobalConfig`](../namespaces/Mangrove-1.md#globalconfig)
+▸ **rawConfigToConfig**(`rawConfig`): [`GlobalConfig`](../namespaces/Mangrove-1.md#globalconfig)
 
 #### Parameters
 
@@ -936,7 +973,7 @@ ___
 
 ### <a id="getalladdresses" name="getalladdresses"></a> getAllAddresses
 
-▸ `Static` **getAllAddresses**(`network`): [`string`, `string`][]
+▸ **getAllAddresses**(`network`): [`string`, `string`][]
 
 Read all contract addresses on the given network.
 
@@ -958,7 +995,7 @@ ___
 
 ### <a id="getaddress-1" name="getaddress-1"></a> getAddress
 
-▸ `Static` **getAddress**(`name`, `network`): `string`
+▸ **getAddress**(`name`, `network`): `string`
 
 Read a contract address on a given network.
 
@@ -981,7 +1018,7 @@ ___
 
 ### <a id="setaddress-1" name="setaddress-1"></a> setAddress
 
-▸ `Static` **setAddress**(`name`, `address`, `network`): `void`
+▸ **setAddress**(`name`, `address`, `network`): `void`
 
 Set a contract address on the given network.
 
@@ -1005,7 +1042,7 @@ ___
 
 ### <a id="initandlistentodevnode" name="initandlistentodevnode"></a> initAndListenToDevNode
 
-▸ `Static` **initAndListenToDevNode**(`devNode`): `Promise`<`void`\>
+▸ **initAndListenToDevNode**(`devNode`): `Promise`<`void`\>
 
 Setup dev node necessary contracts if needed, register dev Multicall2
 address, listen to future additions (a script external to mangrove.js may
@@ -1033,10 +1070,6 @@ ___
 
 Returns open markets data according to MgvReader.
 
-**`Note`**
-
-If an open market has a token with no/bad decimals/symbol function, this function will revert.
-
 #### Parameters
 
 | Name | Type |
@@ -1049,6 +1082,10 @@ If an open market has a token with no/bad decimals/symbol function, this functio
 #### Returns
 
 `Promise`<[`OpenMarketInfo`](../namespaces/Mangrove-1.md#openmarketinfo)[]\>
+
+**`Note`**
+
+If an open market has a token with no/bad decimals/symbol function, this function will revert.
 
 #### Defined in
 
@@ -1079,36 +1116,3 @@ ___
 #### Defined in
 
 @mangrovedao/mangrove.js/src/mangrove.ts:972
-
-## Constructors
-
-### <a id="constructor" name="constructor"></a> constructor
-
-• **new Mangrove**(`params`)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `params` | `Object` |
-| `params.signer` | `Signer` |
-| `params.network` | [`ProviderNetwork`](../interfaces/eth.ProviderNetwork.md) |
-| `params.readOnly` | `boolean` |
-| `params.blockManagerOptions` | `Options` |
-| `params.reliableHttpProvider` | `Options` |
-| `params.getLogsTimeout` | `number` |
-| `params.eventEmitter` | `EventEmitter` |
-| `params.reliableWebSocketOptions?` | `Object` |
-| `params.reliableWebSocketOptions.options` | `Options` |
-| `params.reliableWebSocketOptions.wsUrl` | `string` |
-| `params.shouldNotListenToNewEvents?` | `boolean` |
-| `params.multicallContract` | `Multicall2` |
-| `params.address` | `string` |
-| `params.contract` | `IMangrove` |
-| `params.readerContract` | `MgvReader` |
-| `params.orderContract` | `MangroveOrder` |
-| `params.config` | [`GlobalConfig`](../namespaces/Mangrove-1.md#globalconfig) |
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/mangrove.ts:294

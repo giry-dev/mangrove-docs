@@ -23,7 +23,7 @@ custom_edit_url: null
 | `name` | `string` |
 | `address` | `string` |
 | `signer` | `ethers.Signer` |
-| `connectedContracts` | { `mangrove`: `typechain.IMangrove` ; `testMaker`: `typechain.SimpleTestMaker` ; `tokenA`: `typechain.TestToken` ; `tokenB`: `typechain.TestToken`  } |
+| `connectedContracts` | \{ `mangrove`: `typechain.IMangrove` ; `testMaker`: `typechain.SimpleTestMaker` ; `tokenA`: `typechain.TestToken` ; `tokenB`: `typechain.TestToken`  } |
 | `connectedContracts.mangrove` | `typechain.IMangrove` |
 | `connectedContracts.testMaker` | `typechain.SimpleTestMaker` |
 | `connectedContracts.tokenA` | `typechain.TestToken` |

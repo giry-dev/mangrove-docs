@@ -20,7 +20,7 @@ A general distribution of bids and ask for Kandel fully specified as bids and as
 
 ### <a id="constructor" name="constructor"></a> constructor
 
-• **new GeneralKandelDistribution**(`params`)
+• **new GeneralKandelDistribution**(`params`): [`GeneralKandelDistribution`](GeneralKandelDistribution.md)
 
 Constructor
 
@@ -34,6 +34,10 @@ Constructor
 | `params.offers` | `OfferDistribution` | The distribution of bids and asks. |
 | `params.market` | [`KeyResolvedForCalculation`](../namespaces/Market-1.md#keyresolvedforcalculation) | The key data about the market. |
 
+#### Returns
+
+[`GeneralKandelDistribution`](GeneralKandelDistribution.md)
+
 #### Overrides
 
 [KandelDistribution](KandelDistribution.md).[constructor](KandelDistribution.md#constructor)
@@ -41,6 +45,76 @@ Constructor
 #### Defined in
 
 @mangrovedao/mangrove.js/src/kandel/generalKandelDistribution.ts:17
+
+## Properties
+
+### <a id="offers" name="offers"></a> offers
+
+• **offers**: `OfferDistribution`
+
+#### Inherited from
+
+[KandelDistribution](KandelDistribution.md).[offers](KandelDistribution.md#offers)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:27
+
+___
+
+### <a id="market" name="market"></a> market
+
+• **market**: [`KeyResolvedForCalculation`](../namespaces/Market-1.md#keyresolvedforcalculation)
+
+#### Inherited from
+
+[KandelDistribution](KandelDistribution.md).[market](KandelDistribution.md#market)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:28
+
+___
+
+### <a id="pricepoints" name="pricepoints"></a> pricePoints
+
+• **pricePoints**: `number`
+
+#### Inherited from
+
+[KandelDistribution](KandelDistribution.md).[pricePoints](KandelDistribution.md#pricepoints)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:29
+
+___
+
+### <a id="stepsize" name="stepsize"></a> stepSize
+
+• **stepSize**: `number`
+
+#### Inherited from
+
+[KandelDistribution](KandelDistribution.md).[stepSize](KandelDistribution.md#stepsize)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:30
+
+___
+
+### <a id="helper" name="helper"></a> helper
+
+• **helper**: `KandelDistributionHelper`
+
+#### Inherited from
+
+[KandelDistribution](KandelDistribution.md).[helper](KandelDistribution.md#helper)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:31
 
 ## Methods
 
@@ -128,7 +202,7 @@ ___
 
 ### <a id="getliveoffers" name="getliveoffers"></a> getLiveOffers
 
-▸ **getLiveOffers**(`offerType`): { `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
+▸ **getLiveOffers**(`offerType`): \{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
 
 Gets all live offers of the given type (offers with non-zero gives)
 
@@ -140,7 +214,7 @@ Gets all live offers of the given type (offers with non-zero gives)
 
 #### Returns
 
-{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
+\{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
 
 All live offers of the given type (offers with non-zero gives)
 
@@ -156,7 +230,7 @@ ___
 
 ### <a id="getdeadoffers" name="getdeadoffers"></a> getDeadOffers
 
-▸ **getDeadOffers**(`offerType`): { `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
+▸ **getDeadOffers**(`offerType`): \{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
 
 Gets all dead offers of the given type (offers with 0 gives)
 
@@ -168,7 +242,7 @@ Gets all dead offers of the given type (offers with 0 gives)
 
 #### Returns
 
-{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
+\{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
 
 All dead offers of the given type (offers with 0 gives)
 
@@ -184,7 +258,7 @@ ___
 
 ### <a id="getofferatindex" name="getofferatindex"></a> getOfferAtIndex
 
-▸ **getOfferAtIndex**(`offerType`, `index`): `undefined` \| { `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }
+▸ **getOfferAtIndex**(`offerType`, `index`): `undefined` \| \{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }
 
 Gets the offer at the given index for the given offer type
 
@@ -197,7 +271,7 @@ Gets the offer at the given index for the given offer type
 
 #### Returns
 
-`undefined` \| { `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }
+`undefined` \| \{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }
 
 The offer at the given index for the given offer type.
 
@@ -225,8 +299,8 @@ An offer distribution adorned with prices of offers.
 
 | Name | Type |
 | :------ | :------ |
-| `bids` | { `index`: `number` ; `gives`: `Big` ; `tick`: `number` ; `price`: `Big`  }[] |
-| `asks` | { `index`: `number` ; `gives`: `Big` ; `tick`: `number` ; `price`: `Big`  }[] |
+| `bids` | \{ `index`: `number` ; `gives`: `Big` ; `tick`: `number` ; `price`: `Big`  }[] |
+| `asks` | \{ `index`: `number` ; `gives`: `Big` ; `tick`: `number` ; `price`: `Big`  }[] |
 
 #### Inherited from
 
@@ -349,15 +423,15 @@ ___
 
 Verifies the distribution is valid.
 
+#### Returns
+
+`void`
+
 **`Remarks`**
 
 Throws if the distribution is invalid.
 The verification checks that indices are ascending and bids come before asks.
 The price distribution is not verified, except that the tick of each offer is a multiple of the tick spacing.
-
-#### Returns
-
-`void`
 
 #### Inherited from
 
@@ -375,10 +449,6 @@ ___
 
 Determines the required provision for the price points in the distribution.
 
-**`Remarks`**
-
-This takes into account that each of the offers represent a price point which can become both an ask and a bid which both require provision.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -393,6 +463,10 @@ This takes into account that each of the offers represent a price point which ca
 `Promise`<`Big`\>
 
 The provision required for the number of offers.
+
+**`Remarks`**
+
+This takes into account that each of the offers represent a price point which can become both an ask and a bid which both require provision.
 
 #### Inherited from
 
@@ -440,7 +514,7 @@ ___
 
 ### <a id="mapasyncoffers" name="mapasyncoffers"></a> mapAsyncOffers
 
-▸ `Static` **mapAsyncOffers**<`T`, `R`\>(`offers`, `f`): `Promise`<{ `bids`: `Awaited`<`R`\>[] ; `asks`: `Awaited`<`R`\>[]  }\>
+▸ **mapAsyncOffers**<`T`, `R`\>(`offers`, `f`): `Promise`<\{ `bids`: `Awaited`<`R`\>[] ; `asks`: `Awaited`<`R`\>[]  }\>
 
 Maps bids and asks arrays to a new value using an async function
 
@@ -462,7 +536,7 @@ Maps bids and asks arrays to a new value using an async function
 
 #### Returns
 
-`Promise`<{ `bids`: `Awaited`<`R`\>[] ; `asks`: `Awaited`<`R`\>[]  }\>
+`Promise`<\{ `bids`: `Awaited`<`R`\>[] ; `asks`: `Awaited`<`R`\>[]  }\>
 
 #### Inherited from
 
@@ -476,7 +550,7 @@ ___
 
 ### <a id="mapoffers" name="mapoffers"></a> mapOffers
 
-▸ `Static` **mapOffers**<`T`, `R`\>(`offers`, `f`): `Object`
+▸ **mapOffers**<`T`, `R`\>(`offers`, `f`): `Object`
 
 Maps bids and asks arrays to a new value using a function
 
@@ -512,73 +586,3 @@ Maps bids and asks arrays to a new value using a function
 #### Defined in
 
 @mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:293
-
-## Properties
-
-### <a id="offers" name="offers"></a> offers
-
-• **offers**: `OfferDistribution`
-
-#### Inherited from
-
-[KandelDistribution](KandelDistribution.md).[offers](KandelDistribution.md#offers)
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:27
-
-___
-
-### <a id="market" name="market"></a> market
-
-• **market**: [`KeyResolvedForCalculation`](../namespaces/Market-1.md#keyresolvedforcalculation)
-
-#### Inherited from
-
-[KandelDistribution](KandelDistribution.md).[market](KandelDistribution.md#market)
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:28
-
-___
-
-### <a id="pricepoints" name="pricepoints"></a> pricePoints
-
-• **pricePoints**: `number`
-
-#### Inherited from
-
-[KandelDistribution](KandelDistribution.md).[pricePoints](KandelDistribution.md#pricepoints)
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:29
-
-___
-
-### <a id="stepsize" name="stepsize"></a> stepSize
-
-• **stepSize**: `number`
-
-#### Inherited from
-
-[KandelDistribution](KandelDistribution.md).[stepSize](KandelDistribution.md#stepsize)
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:30
-
-___
-
-### <a id="helper" name="helper"></a> helper
-
-• **helper**: `KandelDistributionHelper`
-
-#### Inherited from
-
-[KandelDistribution](KandelDistribution.md).[helper](KandelDistribution.md#helper)
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:31

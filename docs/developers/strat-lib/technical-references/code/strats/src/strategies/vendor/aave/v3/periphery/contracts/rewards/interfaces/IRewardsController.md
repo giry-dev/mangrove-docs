@@ -1,3 +1,5 @@
+# Solidity API
+
 ## IRewardsController
 
 Defines the basic interface for a Rewards Controller.

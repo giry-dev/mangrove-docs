@@ -1,3 +1,5 @@
+# Solidity API
+
 ## HasAaveBalanceMemoizer
 
 _the memoizer works in the context of a single token and therefore should not be used across multiple tokens._

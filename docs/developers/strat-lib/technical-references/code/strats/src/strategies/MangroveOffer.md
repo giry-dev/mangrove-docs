@@ -1,3 +1,5 @@
+# Solidity API
+
 ## MangroveOffer
 
 It contains the mandatory interface expected by Mangrove (`IOfferLogic` is `IMaker`) and enforces additional functions implementations (via `IOfferLogic`).
@@ -22,14 +24,6 @@ contract AbstractRouter NO_ROUTER
 ```
 
 constant for no router
-
-### __router
-
-```solidity
-contract AbstractRouter __router
-```
-
-The router to use for this strategy.
 
 ### REPOST_SUCCESS
 

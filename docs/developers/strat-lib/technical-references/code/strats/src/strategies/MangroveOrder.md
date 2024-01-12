@@ -1,3 +1,5 @@
+# Solidity API
+
 ## MangroveOrder
 
 A GTC order is a buy (sell) limit order complemented by a bid (ask) limit order, called a resting order, that occurs when the buy (sell) order was partially filled.

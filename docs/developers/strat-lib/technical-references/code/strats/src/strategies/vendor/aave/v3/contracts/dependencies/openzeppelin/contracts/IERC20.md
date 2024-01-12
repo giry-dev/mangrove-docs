@@ -1,3 +1,5 @@
+# Solidity API
+
 ## IERC20
 
 _Interface of the ERC20 standard as defined in the EIP._

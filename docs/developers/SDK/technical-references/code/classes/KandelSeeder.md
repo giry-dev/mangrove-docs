@@ -8,6 +8,28 @@ custom_edit_url: null
 
 Seeder for creating Kandel instances on-chain.
 
+## Constructors
+
+### <a id="constructor" name="constructor"></a> constructor
+
+• **new KandelSeeder**(`mgv`): [`KandelSeeder`](KandelSeeder.md)
+
+Constructor
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `mgv` | [`Mangrove`](Mangrove.md) | The Mangrove to deploy to. |
+
+#### Returns
+
+[`KandelSeeder`](KandelSeeder.md)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:37
+
 ## Properties
 
 ### <a id="mgv" name="mgv"></a> mgv
@@ -57,24 +79,6 @@ ___
 #### Defined in
 
 @mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:32
-
-## Constructors
-
-### <a id="constructor" name="constructor"></a> constructor
-
-• **new KandelSeeder**(`mgv`)
-
-Constructor
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `mgv` | [`Mangrove`](Mangrove.md) | The Mangrove to deploy to. |
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:37
 
 ## Methods
 
@@ -183,10 +187,6 @@ ___
 
 Determines the required provision for the distribution prior to sowing based on the number of price points.
 
-**`Remarks`**
-
-This takes into account that each price point can become both an ask and a bid which both require provision.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -202,6 +202,10 @@ This takes into account that each price point can become both an ask and a bid w
 `Promise`<`Big`\>
 
 The provision required for the distribution.
+
+**`Remarks`**
+
+This takes into account that each price point can become both an ask and a bid which both require provision.
 
 #### Defined in
 

@@ -106,7 +106,7 @@ ___
 
 ### <a id="cachecontentsoptions" name="cachecontentsoptions"></a> CacheContentsOptions
 
-Ƭ **CacheContentsOptions**: { `targetNumberOfTicks?`: `number`  } \| { `desiredPrice`: `Bigish`  } \| { `desiredVolume`: [`VolumeParams`](Semibook-1.md#volumeparams)  }
+Ƭ **CacheContentsOptions**: \{ `targetNumberOfTicks?`: `number`  } \| \{ `desiredPrice`: `Bigish`  } \| \{ `desiredVolume`: [`VolumeParams`](Semibook-1.md#volumeparams)  }
 
 Options that specify what the cache fetches and retains.
 
@@ -121,7 +121,7 @@ ___
 
 ### <a id="options" name="options"></a> Options
 
-Ƭ **Options**: [`CacheContentsOptions`](Semibook-1.md#cachecontentsoptions) & { `chunkSize?`: `number`  }
+Ƭ **Options**: [`CacheContentsOptions`](Semibook-1.md#cachecontentsoptions) & \{ `chunkSize?`: `number`  }
 
 Options that control how the book cache behaves.
 
@@ -133,7 +133,7 @@ ___
 
 ### <a id="resolvedoptions" name="resolvedoptions"></a> ResolvedOptions
 
-Ƭ **ResolvedOptions**: { `targetNumberOfTicks`: `number`  } \| { `desiredPrice`: `Bigish`  } \| { `desiredVolume`: [`VolumeParams`](Semibook-1.md#volumeparams)  } & { `chunkSize`: `number`  }
+Ƭ **ResolvedOptions**: \{ `targetNumberOfTicks`: `number`  } \| \{ `desiredPrice`: `Bigish`  } \| \{ `desiredVolume`: [`VolumeParams`](Semibook-1.md#volumeparams)  } & \{ `chunkSize`: `number`  }
 
 Options with defaults resolved
 
@@ -201,7 +201,7 @@ ___
 
 ### <a id="fetchofferlistresult" name="fetchofferlistresult"></a> FetchOfferListResult
 
-Ƭ **FetchOfferListResult**: `Result`<{ `bins`: `Map`<`number`, [`Offer`](Market-1.md#offer)[]\> ; `endOfListReached`: `boolean`  }, `LogSubscriber.Error`\>
+Ƭ **FetchOfferListResult**: `Result`<\{ `bins`: `Map`<`number`, [`Offer`](Market-1.md#offer)[]\> ; `endOfListReached`: `boolean`  }, `LogSubscriber.Error`\>
 
 #### Defined in
 

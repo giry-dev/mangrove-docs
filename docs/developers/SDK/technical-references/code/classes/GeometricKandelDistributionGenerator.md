@@ -10,6 +10,28 @@ custom_edit_url: null
 
 Helper for generating geometric Kandel distributions.
 
+## Constructors
+
+### <a id="constructor" name="constructor"></a> constructor
+
+• **new GeometricKandelDistributionGenerator**(`geometricDistributionHelper`, `generalDistributionHelper`, `geometricKandelLib`): [`GeometricKandelDistributionGenerator`](GeometricKandelDistributionGenerator.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `geometricDistributionHelper` | `GeometricKandelDistributionHelper` |
+| `generalDistributionHelper` | `GeneralKandelDistributionHelper` |
+| `geometricKandelLib` | `GeometricKandelLib` |
+
+#### Returns
+
+[`GeometricKandelDistributionGenerator`](GeometricKandelDistributionGenerator.md)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:17
+
 ## Properties
 
 ### <a id="geometricdistributionhelper" name="geometricdistributionhelper"></a> geometricDistributionHelper
@@ -39,24 +61,6 @@ ___
 #### Defined in
 
 @mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:15
-
-## Constructors
-
-### <a id="constructor" name="constructor"></a> constructor
-
-• **new GeometricKandelDistributionGenerator**(`geometricDistributionHelper`, `generalDistributionHelper`, `geometricKandelLib`)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `geometricDistributionHelper` | `GeometricKandelDistributionHelper` |
-| `generalDistributionHelper` | `GeneralKandelDistributionHelper` |
-| `geometricKandelLib` | `GeometricKandelLib` |
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:17
 
 ## Methods
 
@@ -96,10 +100,6 @@ ___
 
 Calculates the tick of the lowest priced price point and the index of the first ask. It is assumed the parameters are sensible based on, e.g., a call to getTickDistributionParams.
 
-**`Dev`**
-
-if midBaseQuoteTick becomes a tick, then it is arbitrarily chosen to be a bid to simplify the math. So, if mid==min then firstAskIndex is 1. To have no bids, mid should be strictly less than min.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -122,6 +122,10 @@ The tick of the lowest priced price point and the index of the first ask
 | `baseQuoteTickIndex0` | `number` |
 | `firstAskIndex` | `number` |
 
+**`Dev`**
+
+if midBaseQuoteTick becomes a tick, then it is arbitrarily chosen to be a bid to simplify the math. So, if mid==min then firstAskIndex is 1. To have no bids, mid should be strictly less than min.
+
 #### Defined in
 
 @mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:69
@@ -133,10 +137,6 @@ ___
 ▸ **calculateMinimumDistribution**(`params`): `Promise`<[`GeometricKandelDistribution`](GeometricKandelDistribution.md)\>
 
 Calculates a minimal recommended volume distribution of bids and asks and their base and quote amounts to match the geometric price distribution given by parameters.
-
-**`Remarks`**
-
-The price distribution may not match the distributionParams exactly due to limited precision.
 
 #### Parameters
 
@@ -155,6 +155,10 @@ The price distribution may not match the distributionParams exactly due to limit
 
 The distribution of bids and asks and their base and quote amounts.
 
+**`Remarks`**
+
+The price distribution may not match the distributionParams exactly due to limited precision.
+
 #### Defined in
 
 @mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:111
@@ -166,10 +170,6 @@ ___
 ▸ **calculateDistribution**(`params`): `Promise`<[`GeometricKandelDistribution`](GeometricKandelDistribution.md)\>
 
 Calculates distribution of bids and asks and their base and quote amounts to match the geometric price distribution given by parameters.
-
-**`Remarks`**
-
-The price distribution may not match the priceDistributionParams exactly due to limited precision.
 
 #### Parameters
 
@@ -186,6 +186,10 @@ The price distribution may not match the priceDistributionParams exactly due to 
 
 The distribution of bids and asks and their base and quote amounts.
 
+**`Remarks`**
+
+The price distribution may not match the priceDistributionParams exactly due to limited precision.
+
 #### Defined in
 
 @mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:154
@@ -197,10 +201,6 @@ ___
 ▸ **calculateDistributionFromGeometricParams**(`params`): `Promise`<[`GeometricKandelDistribution`](GeometricKandelDistribution.md)\>
 
 Calculates distribution of bids and asks and their base and quote amounts to match the geometric price distribution given by parameters.
-
-**`Remarks`**
-
-The price distribution may not match the priceDistributionParams exactly due to limited precision.
 
 #### Parameters
 
@@ -222,6 +222,10 @@ The price distribution may not match the priceDistributionParams exactly due to 
 
 The distribution of bids and asks and their base and quote amounts.
 
+**`Remarks`**
+
+The price distribution may not match the priceDistributionParams exactly due to limited precision.
+
 #### Defined in
 
 @mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:183
@@ -233,11 +237,6 @@ ___
 ▸ **recalculateDistributionFromAvailable**(`params`): `Promise`<[`GeometricKandelDistribution`](GeometricKandelDistribution.md)\>
 
 Recalculates the gives for offers in the distribution such that the available base and quote is consumed uniformly, while preserving the price distribution.
-
-**`Remarks`**
-
-The required volume can be slightly less than available due to rounding due to token decimals.
-Note that the resulting offered base volume for each offer should be at least minimumBasePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market - and similar for quote.
 
 #### Parameters
 
@@ -253,6 +252,11 @@ Note that the resulting offered base volume for each offer should be at least mi
 `Promise`<[`GeometricKandelDistribution`](GeometricKandelDistribution.md)\>
 
 The distribution of bids and asks and their base and quote amounts.
+
+**`Remarks`**
+
+The required volume can be slightly less than available due to rounding due to token decimals.
+Note that the resulting offered base volume for each offer should be at least minimumBasePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market - and similar for quote.
 
 #### Defined in
 

@@ -1,3 +1,5 @@
+# Solidity API
+
 ## ExponentialNoError
 
 Exp is a struct which stores decimals with a fixed precision of 18 decimal places.

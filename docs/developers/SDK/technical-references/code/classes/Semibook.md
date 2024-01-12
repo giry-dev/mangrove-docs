@@ -161,7 +161,7 @@ StateLogSubscriber.cacheLock
 
 ### <a id="connect" name="connect"></a> connect
 
-▸ `Static` **connect**(`market`, `ba`, `eventListener`, `options`): `Promise`<[`Semibook`](Semibook.md)\>
+▸ **connect**(`market`, `ba`, `eventListener`, `options`): `Promise`<[`Semibook`](Semibook.md)\>
 
 #### Parameters
 
@@ -391,7 +391,7 @@ Returns an iterator over the offers in the cache.
 
 #### Implementation of
 
-Iterable.\_\_@iterator@93
+Iterable.[iterator]
 
 #### Defined in
 
@@ -458,7 +458,7 @@ ___
 
 ### <a id="simulatemarketorder" name="simulatemarketorder"></a> simulateMarketOrder
 
-▸ **simulateMarketOrder**(`maxTick`, `fillVolume`, `fillWants`): `Promise`<{ `totalGot`: `Big` ; `totalGave`: `Big` ; `feePaid`: `Big` ; `fillVolume`: `Big` ; `maxTickMatched?`: `number` ; `gas`: `BigNumber`  }\>
+▸ **simulateMarketOrder**(`maxTick`, `fillVolume`, `fillWants`): `Promise`<\{ `totalGot`: `Big` ; `totalGave`: `Big` ; `feePaid`: `Big` ; `fillVolume`: `Big` ; `maxTickMatched?`: `number` ; `gas`: `BigNumber`  }\>
 
 Reproduces the logic of Mangrove's generalMarketOrder function faithfully
 with the exception of:
@@ -476,7 +476,7 @@ with the exception of:
 
 #### Returns
 
-`Promise`<{ `totalGot`: `Big` ; `totalGave`: `Big` ; `feePaid`: `Big` ; `fillVolume`: `Big` ; `maxTickMatched?`: `number` ; `gas`: `BigNumber`  }\>
+`Promise`<\{ `totalGot`: `Big` ; `totalGave`: `Big` ; `feePaid`: `Big` ; `fillVolume`: `Big` ; `maxTickMatched?`: `number` ; `gas`: `BigNumber`  }\>
 
 #### Defined in
 
@@ -640,7 +640,7 @@ ___
 
 ### <a id="rawlocalconfigtolocalconfig-1" name="rawlocalconfigtolocalconfig-1"></a> rawLocalConfigToLocalConfig
 
-▸ `Static` **rawLocalConfigToLocalConfig**(`local`, `outboundDecimals`): [`LocalConfigFull`](../namespaces/Mangrove-1.md#localconfigfull)
+▸ **rawLocalConfigToLocalConfig**(`local`, `outboundDecimals`): [`LocalConfigFull`](../namespaces/Mangrove-1.md#localconfigfull)
 
 #### Parameters
 
@@ -681,7 +681,7 @@ ___
 
 ### <a id="rawidtoid" name="rawidtoid"></a> rawIdToId
 
-▸ `Static` **rawIdToId**(`rawId`): `undefined` \| `number`
+▸ **rawIdToId**(`rawId`): `undefined` \| `number`
 
 #### Parameters
 
@@ -701,7 +701,7 @@ ___
 
 ### <a id="idtorawid" name="idtorawid"></a> idToRawId
 
-▸ `Static` **idToRawId**(`id`): `BigNumber`
+▸ **idToRawId**(`id`): `BigNumber`
 
 #### Parameters
 
@@ -721,7 +721,7 @@ ___
 
 ### <a id="getisvolumedesiredforasks" name="getisvolumedesiredforasks"></a> getIsVolumeDesiredForAsks
 
-▸ `Static` **getIsVolumeDesiredForAsks**(`opts`): `boolean`
+▸ **getIsVolumeDesiredForAsks**(`opts`): `boolean`
 
 #### Parameters
 
@@ -741,7 +741,7 @@ ___
 
 ### <a id="getisvolumedesiredforbids" name="getisvolumedesiredforbids"></a> getIsVolumeDesiredForBids
 
-▸ `Static` **getIsVolumeDesiredForBids**(`opts`): `boolean`
+▸ **getIsVolumeDesiredForBids**(`opts`): `boolean`
 
 #### Parameters
 
@@ -761,7 +761,7 @@ ___
 
 ### <a id="checkiflastseeneventblockexists" name="checkiflastseeneventblockexists"></a> checkIfLastSeenEventBlockExists
 
-▸ `Protected` **checkIfLastSeenEventBlockExists**(): `void`
+▸ **checkIfLastSeenEventBlockExists**(): `void`
 
 #### Returns
 

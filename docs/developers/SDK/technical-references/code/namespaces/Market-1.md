@@ -244,7 +244,7 @@ Order results, with a summary field that may not be set.
 | `successes` | [`Success`](Market-1.md#success)[] |
 | `tradeFailures` | [`Failure`](Market-1.md#failure)[] |
 | `posthookFailures` | [`Failure`](Market-1.md#failure)[] |
-| `offerWrites` | { `ba`: [`BA`](Market-1.md#ba) ; `offer`: [`OfferSlim`](Market-1.md#offerslim)  }[] |
+| `offerWrites` | \{ `ba`: [`BA`](Market-1.md#ba) ; `offer`: [`OfferSlim`](Market-1.md#offerslim)  }[] |
 | `restingOrder?` | [`OfferSlim`](Market-1.md#offerslim) |
 | `restingOrderId?` | `number` |
 
@@ -256,7 +256,7 @@ ___
 
 ### <a id="orderresult" name="orderresult"></a> OrderResult
 
-Ƭ **OrderResult**: `Omit`<[`DirtyOrderResult`](Market-1.md#dirtyorderresult), ``"summary"`` \| ``"cleanSummary"``\> & { `summary`: [`OrderSummary`](Market-1.md#ordersummary)  }
+Ƭ **OrderResult**: `Omit`<[`DirtyOrderResult`](Market-1.md#dirtyorderresult), ``"summary"`` \| ``"cleanSummary"``\> & \{ `summary`: [`OrderSummary`](Market-1.md#ordersummary)  }
 
 Order results, with a definite summary.
 
@@ -268,7 +268,7 @@ ___
 
 ### <a id="cleanresult" name="cleanresult"></a> CleanResult
 
-Ƭ **CleanResult**: `Omit`<[`DirtyOrderResult`](Market-1.md#dirtyorderresult), ``"summary"`` \| ``"cleanSummary"``\> & { `summary`: [`CleanSummary`](Market-1.md#cleansummary)  }
+Ƭ **CleanResult**: `Omit`<[`DirtyOrderResult`](Market-1.md#dirtyorderresult), ``"summary"`` \| ``"cleanSummary"``\> & \{ `summary`: [`CleanSummary`](Market-1.md#cleansummary)  }
 
 Cleaning results, with a definite summary.
 
@@ -346,7 +346,7 @@ ___
 
 ### <a id="tradeparams" name="tradeparams"></a> TradeParams
 
-Ƭ **TradeParams**: { `forceRoutingToMangroveOrder?`: `boolean` ; `slippage?`: `number` ; `fillOrKill?`: `boolean` ; `expiryDate?`: `number` ; `gasLowerBound?`: `ethers.BigNumberish`  } & { `restingOrder?`: [`RestingOrderParams`](Market-1.md#restingorderparams)  } & { `volume`: `Bigish` ; `limitPrice`: `Bigish`  } \| { `total`: `Bigish` ; `limitPrice`: `Bigish`  } \| { `maxTick`: `number` ; `fillVolume`: `Bigish` ; `fillWants?`: `boolean`  } \| { `gives`: `Bigish` ; `wants`: `Bigish` ; `fillWants?`: `boolean`  }
+Ƭ **TradeParams**: \{ `forceRoutingToMangroveOrder?`: `boolean` ; `slippage?`: `number` ; `fillOrKill?`: `boolean` ; `expiryDate?`: `number` ; `gasLowerBound?`: `ethers.BigNumberish`  } & \{ `restingOrder?`: [`RestingOrderParams`](Market-1.md#restingorderparams)  } & \{ `volume`: `Bigish` ; `limitPrice`: `Bigish`  } \| \{ `total`: `Bigish` ; `limitPrice`: `Bigish`  } \| \{ `maxTick`: `number` ; `fillVolume`: `Bigish` ; `fillWants?`: `boolean`  } \| \{ `gives`: `Bigish` ; `wants`: `Bigish` ; `fillWants?`: `boolean`  }
 
 Parameters for trading on a market.
 
@@ -410,7 +410,7 @@ ___
 
 ### <a id="updaterestingorderparams" name="updaterestingorderparams"></a> UpdateRestingOrderParams
 
-Ƭ **UpdateRestingOrderParams**: { `offerId`: `number`  } & { `gives`: `Bigish`  } \| { `tick`: `number`  } \| { `gives`: `Bigish` ; `tick`: `number`  } \| { `price`: `Bigish`  } \| { `volume`: `Bigish`  } \| { `total`: `Bigish`  } \| { `price`: `Bigish` ; `volume`: `Bigish`  } \| { `price`: `Bigish` ; `total`: `Bigish`  } & `Omit`<[`RestingOrderParams`](Market-1.md#restingorderparams), ``"offerId"``\>
+Ƭ **UpdateRestingOrderParams**: \{ `offerId`: `number`  } & \{ `gives`: `Bigish`  } \| \{ `tick`: `number`  } \| \{ `gives`: `Bigish` ; `tick`: `number`  } \| \{ `price`: `Bigish`  } \| \{ `volume`: `Bigish`  } \| \{ `total`: `Bigish`  } \| \{ `price`: `Bigish` ; `volume`: `Bigish`  } \| \{ `price`: `Bigish` ; `total`: `Bigish`  } & `Omit`<[`RestingOrderParams`](Market-1.md#restingorderparams), ``"offerId"``\>
 
 Parameters for updating an existing resting order.
 
@@ -446,7 +446,7 @@ the taker to impersonate, if not specified, the caller of the function will be u
 
 | Name | Type |
 | :------ | :------ |
-| `targets` | { `offerId`: `number` ; `takerWants`: `Bigish` ; `tick`: `number` ; `gasreq`: `number`  }[] |
+| `targets` | \{ `offerId`: `number` ; `takerWants`: `Bigish` ; `tick`: `number` ; `gasreq`: `number`  }[] |
 | `ba` | [`BA`](Market-1.md#ba) |
 | `taker?` | `string` |
 
@@ -477,7 +477,7 @@ ___
 
 ### <a id="volumeparams" name="volumeparams"></a> VolumeParams
 
-Ƭ **VolumeParams**: [`VolumeParams`](Semibook-1.md#volumeparams) & { `what`: ``"base"`` \| ``"quote"``  }
+Ƭ **VolumeParams**: [`VolumeParams`](Semibook-1.md#volumeparams) & \{ `what`: ``"base"`` \| ``"quote"``  }
 
 Specification of how much volume to (potentially) trade on the market.
 
@@ -507,7 +507,7 @@ ___
 
 Ƭ **OptionalParams**: `Object`
 
-Optional parameters for connecting to a Mangrove market - gives optional parameters for how the book cache behaves (see [BookOptions](Market-1.md#bookoptions)), and the timing of when the market is initialized.
+Optional parameters for connecting to a Mangrove market - gives optional parameters for how the book cache behaves (see [Market.BookOptions](Market-1.md#bookoptions)), and the timing of when the market is initialized.
 
 #### Type declaration
 
@@ -524,7 +524,7 @@ ___
 
 ### <a id="cachecontentsoptions" name="cachecontentsoptions"></a> CacheContentsOptions
 
-Ƭ **CacheContentsOptions**: { `targetNumberOfTicks?`: `number`  } \| { `desiredPrice`: `Bigish`  } \| { `desiredVolume`: [`VolumeParams`](Market-1.md#volumeparams)  }
+Ƭ **CacheContentsOptions**: \{ `targetNumberOfTicks?`: `number`  } \| \{ `desiredPrice`: `Bigish`  } \| \{ `desiredVolume`: [`VolumeParams`](Market-1.md#volumeparams)  }
 
 Options that specify what the cache fetches and retains.
 
@@ -539,7 +539,7 @@ ___
 
 ### <a id="bookoptions" name="bookoptions"></a> BookOptions
 
-Ƭ **BookOptions**: [`CacheContentsOptions`](Market-1.md#cachecontentsoptions) & { `chunkSize?`: `number`  }
+Ƭ **BookOptions**: [`CacheContentsOptions`](Market-1.md#cachecontentsoptions) & \{ `chunkSize?`: `number`  }
 
 Options that control how the book cache behaves.
 
@@ -577,7 +577,7 @@ ___
 
 ### <a id="offer" name="offer"></a> Offer
 
-Ƭ **Offer**: [`OfferSlim`](Market-1.md#offerslim) & { `nextAtTick`: `number` \| `undefined` ; `prevAtTick`: `number` \| `undefined` ; `gasbase`: `number`  }
+Ƭ **Offer**: [`OfferSlim`](Market-1.md#offerslim) & \{ `nextAtTick`: `number` \| `undefined` ; `prevAtTick`: `number` \| `undefined` ; `gasbase`: `number`  }
 
 Offers in the book cache, with a given gasbase and pointers to the next and
 previous offer at the same tick; `undefined` means no such offer, ie, the
@@ -591,7 +591,7 @@ ___
 
 ### <a id="booksubscriptionevent" name="booksubscriptionevent"></a> BookSubscriptionEvent
 
-Ƭ **BookSubscriptionEvent**: { `name`: ``"OfferWrite"``  } & `TCM.OfferWriteEvent` \| { `name`: ``"OfferFail"``  } & `TCM.OfferFailEvent` \| { `name`: ``"OfferFailWithPosthookData"``  } & `TCM.OfferFailEvent` \| { `name`: ``"OfferSuccess"``  } & `TCM.OfferSuccessEvent` \| { `name`: ``"OfferSuccessWithPosthookData"``  } & `TCM.OfferSuccessEvent` \| { `name`: ``"OfferRetract"``  } & `TCM.OfferRetractEvent` \| { `name`: ``"SetActive"``  } & `TCM.SetActiveEvent` \| { `name`: ``"SetFee"``  } & `TCM.SetFeeEvent` \| { `name`: ``"SetGasbase"``  } & `TCM.SetGasbaseEvent` \| { `name`: ``"SetDensity96X32"``  } & `TCM.SetDensity96X32Event`
+Ƭ **BookSubscriptionEvent**: \{ `name`: ``"OfferWrite"``  } & `TCM.OfferWriteEvent` \| \{ `name`: ``"OfferFail"``  } & `TCM.OfferFailEvent` \| \{ `name`: ``"OfferFailWithPosthookData"``  } & `TCM.OfferFailEvent` \| \{ `name`: ``"OfferSuccess"``  } & `TCM.OfferSuccessEvent` \| \{ `name`: ``"OfferSuccessWithPosthookData"``  } & `TCM.OfferSuccessEvent` \| \{ `name`: ``"OfferRetract"``  } & `TCM.OfferRetractEvent` \| \{ `name`: ``"SetActive"``  } & `TCM.SetActiveEvent` \| \{ `name`: ``"SetFee"``  } & `TCM.SetFeeEvent` \| \{ `name`: ``"SetGasbase"``  } & `TCM.SetGasbaseEvent` \| \{ `name`: ``"SetDensity96X32"``  } & `TCM.SetDensity96X32Event`
 
 Type for events emitted by the Mangrove market.
 
@@ -603,9 +603,9 @@ ___
 
 ### <a id="booksubscriptioncbargument" name="booksubscriptioncbargument"></a> BookSubscriptionCbArgument
 
-Ƭ **BookSubscriptionCbArgument**: { `ba`: [`BA`](Market-1.md#ba)  } & { `type`: ``"SetActive"`` ; `active`: `boolean`  } \| { `type`: ``"SetFee"`` ; `fee`: `number`  } \| { `type`: ``"SetGasbase"`` ; `offerGasbase`: `number`  } \| { `type`: ``"SetDensity96X32"`` ; `density`: `Density`  } \| { `offerId?`: `number` ; `offer?`: [`Offer`](Market-1.md#offer)  } & { `type`: ``"OfferWrite"``  } \| { `type`: ``"OfferFail"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big` ; `mgvData`: `string`  } \| { `type`: ``"OfferFailWithPosthookData"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big` ; `mgvData`: `string`  } \| { `type`: ``"OfferSuccess"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big`  } \| { `type`: ``"OfferSuccessWithPosthookData"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big`  } \| { `type`: ``"OfferRetract"``  }
+Ƭ **BookSubscriptionCbArgument**: \{ `ba`: [`BA`](Market-1.md#ba)  } & \{ `type`: ``"SetActive"`` ; `active`: `boolean`  } \| \{ `type`: ``"SetFee"`` ; `fee`: `number`  } \| \{ `type`: ``"SetGasbase"`` ; `offerGasbase`: `number`  } \| \{ `type`: ``"SetDensity96X32"`` ; `density`: `Density`  } \| \{ `offerId?`: `number` ; `offer?`: [`Offer`](Market-1.md#offer)  } & \{ `type`: ``"OfferWrite"``  } \| \{ `type`: ``"OfferFail"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big` ; `mgvData`: `string`  } \| \{ `type`: ``"OfferFailWithPosthookData"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big` ; `mgvData`: `string`  } \| \{ `type`: ``"OfferSuccess"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big`  } \| \{ `type`: ``"OfferSuccessWithPosthookData"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big`  } \| \{ `type`: ``"OfferRetract"``  }
 
-The arguments passed to a an order book event callback function - see [subscribe](../classes/Market.md#subscribe).
+The arguments passed to a an order book event callback function - see [Market.subscribe](../classes/Market.md#subscribe).
 
 #### Defined in
 
@@ -617,6 +617,8 @@ ___
 
 Ƭ **MarketCallback**<`T`\>: (`cbArg`: [`BookSubscriptionCbArgument`](Market-1.md#booksubscriptioncbargument), `event?`: [`BookSubscriptionEvent`](Market-1.md#booksubscriptionevent), `ethersLog?`: `ethers.providers.Log`) => `T` \| `Promise`<`T`\>
 
+A callback function that is called when an order book event occurs.
+
 #### Type parameters
 
 | Name |
@@ -626,8 +628,6 @@ ___
 #### Type declaration
 
 ▸ (`cbArg`, `event?`, `ethersLog?`): `T` \| `Promise`<`T`\>
-
-A callback function that is called when an order book event occurs.
 
 ##### Parameters
 
@@ -673,7 +673,7 @@ ___
 
 ### <a id="subscriptionparam" name="subscriptionparam"></a> SubscriptionParam
 
-Ƭ **SubscriptionParam**: { `type`: ``"multiple"``  } \| { `type`: ``"once"`` ; `ok`: (...`a`: `any`[]) => `any` ; `ko`: (...`a`: `any`[]) => `any` ; `filter?`: (...`a`: `any`[]) => `boolean` \| `Promise`<`boolean`\>  }
+Ƭ **SubscriptionParam**: \{ `type`: ``"multiple"``  } \| \{ `type`: ``"once"`` ; `ok`: (...`a`: `any`[]) => `any` ; `ko`: (...`a`: `any`[]) => `any` ; `filter?`: (...`a`: `any`[]) => `boolean` \| `Promise`<`boolean`\>  }
 
 A subscription parameter that specifies how a subscription to order book events should behave.
 
