@@ -14,7 +14,7 @@ When creating a script you always need a `run()` function, this is the function 
 
 
 ```solidity reference title="AmplifierDeployer.s.sol - Preamble and run function"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/script/toy/deployers/AmplifierDeployer.s.sol#L1-L26
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/script/toy/deployers/AmplifierDeployer.s.sol#L1-L26
 ```
 
 Next we create an `innerRun` function, that does the actual deployment. We get the current Mangrove instance on chain, again by using `fork.get()`. When you deploy a new contract it is always good to consider that you maybe already have a instance of the contract deployed. In this case we would like to see if we have an address for "Amplifier" saved already and if so we would like to withdraw everything from Mangrove and retract all offers. This way we know that Amplifier no longer has any funds or offers and we can just leave it. The reason we do `try fork.get("Amplifier")` is that, if it can't find any address for Amplifier, then it will throw an exception. When writing your deployment script using Foundry, there is one command that is essential, which is `broadcast()`. Everything done in the script is just simulation, expect if you use broadcast right before a call, then that specific call is broadcasted to the actual chain. This way you can do many calls, to e.g. figure out the admin of a contract, without you actually having to use any gas on it. And only broadcast the actual thing you want done on chain.
@@ -36,7 +36,7 @@ After having saved all the new addresses, we then need to activate the Amplifier
 Everything is now approved correctly and we check that by calling the checklist function on Amplifier. Notice we use `prank`, because we want to call the function, as if we were calling from the amplifier contract. We don't use broadcast here, because we do not need the call to be on chain. Had we done the call without `prank` or `broadcast` we would be calling as the `this` which is the script contract, the checklist we then check if the script had the right approvals, but that is not what we wanted to check.
 
 ```solidity reference title="AmplifierDeployer.s.sol - Deploy new Amplifier"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/script/toy/deployers/AmplifierDeployer.s.sol#L60-L80
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/script/toy/deployers/AmplifierDeployer.s.sol#L60-L80
 ```
 
 The full version of the deployer contract can be found [here](https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/script/toy/deployers/AmplifierDeployer.s.sol).

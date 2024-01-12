@@ -39,7 +39,7 @@ The `router_` argument can be either the address of a deployed %%router|router%%
 We will allow users of `OfferMaker` to supply a %%router|router%%, and use the following constructor for our contract:
 
 ```solidity reference title="Preamble and constructor"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/OfferMaker.sol#L1-L22
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/OfferMaker.sol#L1-L22
 ```
 
 :::caution `gasreq`
@@ -92,7 +92,7 @@ We modify the simple constructor of `OfferMaker` to take into account the additi
 In the constructor below, we also show how to instantiate and setup a simple %%router|router%% in order to use the deployer's account as fund reserve.
 
 ```solidity reference title="Amplifier - Preamble and constructor"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/Amplifier.sol#L1-L49
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/Amplifier.sol#L1-L49
 ```
 
 Note that as we manually construct and configure `router_` and set it as the router of `Amplifier`, we initially send the constant `NO_ROUTER` as argument to the `Direct` constructor.

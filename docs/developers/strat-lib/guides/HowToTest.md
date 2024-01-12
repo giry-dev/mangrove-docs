@@ -25,7 +25,7 @@ We also import the `Amplifier` contract - the contract that we wish to test. The
 The console import is not strictly needed - however, it can be very useful, if we want to log something to the console while we are developing the test. Let us import it for now.
 
 ```solidity reference title="Amplifier.t.sol - Imports"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/test/toy_strategies/Amplifier.t.sol#L1-L10
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/toy_strategies/Amplifier.t.sol#L1-L10
 ```
 
 
@@ -48,7 +48,7 @@ In the implementation, we use standard *cheatcodes*, `startPrank(<address>)`, `s
 We also use a helper function `$()` provided by the Mangrove testing library offering a shorthand for writing `address()` and casting the contract to its address.
 
 ```solidity reference title="Amplifier.t.sol - Contract and Setup"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/test/toy_strategies/Amplifier.t.sol#L12-L58
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/toy_strategies/Amplifier.t.sol#L12-L58
 ```
 
 
@@ -80,7 +80,7 @@ After deployment, we use the [`activate()`](../background/offer-maker/mangrove-o
 Before calling `activate()` we also take the opportunity to demonstrate the related helper, [`checkList()`](../background/offer-maker/mangrove-offer.md#other-maker-contracts-hooks), which *checks* whether necessary approvals have been setup, and, if not, reverts (recall that `expectRevert(<message>)` is a [Foundry cheatcode](https://book.getfoundry.sh/forge/cheatcodes])).
 
 ```solidity reference title="Amplifier.t.sol - Deploying on a fork"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/test/toy_strategies/Amplifier.t.sol#L90-L117
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/toy_strategies/Amplifier.t.sol#L90-L117
 ```
 
 With this, we have a function that can deploy a new `Amplifier` contract on our local chain. Let us turn to writing the actual test. 
