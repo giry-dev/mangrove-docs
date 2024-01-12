@@ -29,7 +29,7 @@
     "copy-strats-solidity": "mkdir -p ./contracts/strats && cp -R node_modules/@mangrovedao/mangrove-strats/src ./contracts/strats/src",
     "doccore": "rm -rf static/MgvDoc && cp -r node_modules/@mangrovedao/mangrove-core/doc/ static/MgvDoc && rm static/MgvDoc/index.html && mv static/MgvDoc/MgvDoc.html static/MgvDoc/index.html",
     "remove-solidity": "rm -rf ./contracts",
-    "remove-natspec": "rm -rf docs/strat-lib/technical-references/code"
+    "remove-natspec": "rm -rf docs/developers/strat-lib/technical-references/code"
   },
   "dependencies": {
     "@akebifiky/remark-simple-plantuml": "^1.0.2",
