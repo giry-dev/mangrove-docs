@@ -94,7 +94,7 @@ Mangrove enables liquidity providers to incorporate defensive code, post unprovi
 
 * **<font color="#47d77d">Profit from the spread:</font>** Kandel follows your configuration parameters to populate Bids and Asks offers. When those are taken, the profits are generated from the difference between the two, known as the spread.”
 
-* **<font color="#47d77d">Compounding:</font>** you have the opportunity to accumulate profits generated from spreads and reinvest them back into your offers, a process commonly known as compounding. On Kandel strategy, you can set the compounding rate.
+* **<font color="#47d77d">Compounding:</font>** you have the opportunity to accumulate profits generated from spreads and reinvest them back into your offers, a process commonly known as compounding.
 
 * **<font color="#47d77d">Price range:</font>** since Kandel is an automated market-making strategy, the price range needs to be set. It consists of the lowest and highest prices in the price grid at which the market maker is willing to post its bids and asks on Mangrove DEX.
 

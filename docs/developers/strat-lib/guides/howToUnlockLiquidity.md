@@ -61,7 +61,7 @@ You can now redeploy the contract, activate it, and post an offer as before - re
 
 We will also need:
 * To let the `OfferMakerTutorial` pull funds from the admin's reserve of WBTC.
-* To make sure that the admin and/or taker have enough funds on their wallet (we can [mint](#mint) tokens if needed).
+* To make sure that the admin and/or taker have enough funds on their wallet (we can [mint](#Getting tokens) tokens if needed).
 
 #### Getting tokens
 
