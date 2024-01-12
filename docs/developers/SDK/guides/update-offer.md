@@ -56,13 +56,13 @@ Changing the price of an offer can change its TODO:%rank|offer-rank% in the offe
 When we updated our offer before, we used a `liquidityProvider` and we created this using Mangrove. This means that when we updated our offer, we did using Mangrove directly. But if you have your own contract with your own update offer logic, you can use that by creating an [`OfferLogic`](../technical-references/code/classes/OfferLogic). This is simply done by calling the constructor with Mangrove (remember to import the type first, e.g., using `const { OfferLogic } = require("@mangrovedao/mangrove.js");`).
 
 ```js reference
-https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f1381dcd1/examples/how-tos/update-offer.js#L43-L46
+https://github.com/mangrovedao/mangrove.js/blob/2eb3f76f120831a48c577d930fcffc7d55d75c51/examples/how-tos/update-offer.js#L43-L46
 ```
 
 When you have a OfferLogic you can the call update offer directly on the underlying contract (which is assumed to implement the [`ILiquidityProvider` interface](../../strat-lib/technical-references/code/strats/src/strategies/interfaces/ILiquidityProvider.md), but this requires a lot more info and unit conversions.
 
 ```js reference
-https://github.com/mangrovedao/mangrove.js/blob/2753b3148231a2541d0055a77a169f8f1381dcd1/examples/how-tos/update-offer.js#L49-L60
+https://github.com/mangrovedao/mangrove.js/blob/2eb3f76f120831a48c577d930fcffc7d55d75c51/examples/how-tos/update-offer.js#L49-L60
 ```
 
 To keep things more simple you can create a `liquidityProvider` with your offerLogic and a market. This way the LiquidityProvider will make sure to update your offer using your offerLogic. This saves you for taking any other decisions than `wants` and `gives` or `volume` and `price`.

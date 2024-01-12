@@ -86,7 +86,7 @@ async function compareAll() {
         const newHead = newHeads[ref.org+"/"+ref.repo];
         if (ref.toLine == Infinity) {
             // entire file
-            if (ref.branch && newHead && newHead != ref.branch && ref.branch.length > 6) {
+            if (ref.branch && newHead && newHead != ref.branch && ref.branch.length > 9) {
                 console.log(`SAFE: ${ref.branch} -> ${newHead}`);
             }
         } else {

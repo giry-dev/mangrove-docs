@@ -25,7 +25,7 @@ Start by creating a new `OfferMakerTutorial.sol` file in the `src` folder, and a
 Add the imports we are going to need, along with a standard solidity preamble.
 
 ```solidity reference title="OfferMakerTutorial.sol - Preamble"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L1-L9
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L1-L9
 ```
 
 ### Constructor
