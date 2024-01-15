@@ -1,5 +1,3 @@
-# Solidity API
-
 ## AccessControlled
 
 The contract stores an admin address which is checked against `msg.sender` in the `onlyAdmin` modifier.

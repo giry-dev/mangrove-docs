@@ -25,7 +25,7 @@ directly use the constructor. Instead of `new Market(...)`, do `await Market.con
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:514
+@mangrovedao/mangrove.js/src/market.ts:505
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:515
+@mangrovedao/mangrove.js/src/market.ts:506
 
 ___
 
@@ -45,7 +45,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:516
+@mangrovedao/mangrove.js/src/market.ts:507
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:517
+@mangrovedao/mangrove.js/src/market.ts:508
 
 ___
 
@@ -67,7 +67,7 @@ The OLKey for the base, quote offer list
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:519
+@mangrovedao/mangrove.js/src/market.ts:510
 
 ___
 
@@ -79,27 +79,27 @@ The OLKey for the quote, base offer list
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:521
+@mangrovedao/mangrove.js/src/market.ts:512
 
 ___
 
 ### <a id="trade" name="trade"></a> trade
 
-• **trade**: `Trade`
+• **trade**: [`Trade`](Trade.md)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:526
+@mangrovedao/mangrove.js/src/market.ts:517
 
 ___
 
 ### <a id="tradeeventmanagement" name="tradeeventmanagement"></a> tradeEventManagement
 
-• **tradeEventManagement**: `TradeEventManagement`
+• **tradeEventManagement**: [`TradeEventManagement`](TradeEventManagement.md)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:527
+@mangrovedao/mangrove.js/src/market.ts:518
 
 ___
 
@@ -109,7 +109,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:528
+@mangrovedao/mangrove.js/src/market.ts:519
 
 ___
 
@@ -119,7 +119,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:533
+@mangrovedao/mangrove.js/src/market.ts:524
 
 ___
 
@@ -129,7 +129,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:534
+@mangrovedao/mangrove.js/src/market.ts:525
 
 ## Methods
 
@@ -153,7 +153,7 @@ A promise that resolves to a Market instance.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:541
+@mangrovedao/mangrove.js/src/market.ts:532
 
 ___
 
@@ -169,7 +169,7 @@ Close a Market instance.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:620
+@mangrovedao/mangrove.js/src/market.ts:611
 
 ___
 
@@ -185,7 +185,7 @@ Initialize the market.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:636
+@mangrovedao/mangrove.js/src/market.ts:627
 
 ___
 
@@ -209,7 +209,7 @@ The configuration of the specified offer list of the market.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:701
+@mangrovedao/mangrove.js/src/market.ts:692
 
 ___
 
@@ -230,7 +230,7 @@ Offers are ordered from best to worse from the taker perspective.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:743
+@mangrovedao/mangrove.js/src/market.ts:734
 
 ___
 
@@ -252,7 +252,7 @@ Return the bids or asks semibook.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:756
+@mangrovedao/mangrove.js/src/market.ts:747
 
 ___
 
@@ -276,7 +276,7 @@ The asks and bids semibooks, with the offers that match the options.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:768
+@mangrovedao/mangrove.js/src/market.ts:759
 
 ___
 
@@ -292,7 +292,7 @@ Gets the absolute, relative, and tick spread between bids and asks on the market
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:785
+@mangrovedao/mangrove.js/src/market.ts:776
 
 ___
 
@@ -320,7 +320,7 @@ Gets the absolute, relative, and tick spread between a bid and an ask on the mar
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:797
+@mangrovedao/mangrove.js/src/market.ts:788
 
 ___
 
@@ -338,7 +338,7 @@ Whether the market is active, i.e., whether both the asks and bids semibooks are
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:822
+@mangrovedao/mangrove.js/src/market.ts:813
 
 ___
 
@@ -363,7 +363,7 @@ True, if a corresponding live offer was found, else false.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:833
+@mangrovedao/mangrove.js/src/market.ts:824
 
 ___
 
@@ -387,7 +387,7 @@ True, if the offer is live, else false.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:843
+@mangrovedao/mangrove.js/src/market.ts:834
 
 ___
 
@@ -413,7 +413,7 @@ the amount of ethers necessary to provision the offer.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:853
+@mangrovedao/mangrove.js/src/market.ts:844
 
 ___
 
@@ -438,7 +438,7 @@ the amount of ethers necessary to provision the offer.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:873
+@mangrovedao/mangrove.js/src/market.ts:864
 
 ___
 
@@ -463,7 +463,7 @@ the amount of ethers necessary to provision the offer.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:882
+@mangrovedao/mangrove.js/src/market.ts:873
 
 ___
 
@@ -490,7 +490,7 @@ the additional required provision, in ethers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:893
+@mangrovedao/mangrove.js/src/market.ts:884
 
 ___
 
@@ -514,7 +514,7 @@ the offer info for the given offerId.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:915
+@mangrovedao/mangrove.js/src/market.ts:906
 
 ___
 
@@ -538,7 +538,7 @@ the offer info for the given offerId.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:924
+@mangrovedao/mangrove.js/src/market.ts:915
 
 ___
 
@@ -563,7 +563,7 @@ the offer info for the given offerId.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:933
+@mangrovedao/mangrove.js/src/market.ts:924
 
 ___
 
@@ -594,7 +594,7 @@ a promise that resolves to the permit signature.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:946
+@mangrovedao/mangrove.js/src/market.ts:937
 
 ___
 
@@ -633,7 +633,7 @@ market.buy({volume: 100, price: '1.01'}) //use strings to be exact
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:988
+@mangrovedao/mangrove.js/src/market.ts:979
 
 ___
 
@@ -672,7 +672,7 @@ market.sell({volume: 100, price: 1})
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1015
+@mangrovedao/mangrove.js/src/market.ts:1006
 
 ___
 
@@ -701,7 +701,7 @@ a gas estimate for the trade.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1028
+@mangrovedao/mangrove.js/src/market.ts:1019
 
 ___
 
@@ -730,7 +730,7 @@ a gas estimate for the trade.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1039
+@mangrovedao/mangrove.js/src/market.ts:1030
 
 ___
 
@@ -756,7 +756,7 @@ a promise that resolves to the transaction response and the result of the update
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1051
+@mangrovedao/mangrove.js/src/market.ts:1042
 
 ___
 
@@ -781,7 +781,7 @@ Retract a resting order posted by MangroveOrder.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1066
+@mangrovedao/mangrove.js/src/market.ts:1057
 
 ___
 
@@ -796,7 +796,7 @@ Clean a set of given offers.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `params` | [`CleanParams`](../namespaces/Market-1.md#cleanparams) | Parameters for the cleaning, specifying the target offers, the side of the market to clean, and optionally the taker to impersonate. |
-| `overrides` | `Overrides` | - |
+| `overrides` | `Overrides` | ethers overrides for the transaction. |
 
 #### Returns
 
@@ -810,7 +810,7 @@ a promise that resolves to the transasction response and the result of the clean
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1083
+@mangrovedao/mangrove.js/src/market.ts:1074
 
 ___
 
@@ -822,9 +822,9 @@ Gets parameters to send to function `market.mgv.cleanerContract.cleanByImpersona
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `params` | [`CleanParams`](../namespaces/Market-1.md#cleanparams) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params` | [`CleanParams`](../namespaces/Market-1.md#cleanparams) | Parameters for the cleaning, specifying the target offers, the side of the market to clean, and optionally the taker to impersonate |
 
 #### Returns
 
@@ -845,7 +845,7 @@ In more detail, the parameters should be an object with the following fields:
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1111
+@mangrovedao/mangrove.js/src/market.ts:1102
 
 ___
 
@@ -870,7 +870,7 @@ an estimate of the gas required for the trade
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1123
+@mangrovedao/mangrove.js/src/market.ts:1114
 
 ___
 
@@ -885,8 +885,8 @@ Uses [Semibook.simulateMarketOrder](Semibook.md#simulatemarketorder) to simulate
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `ba` | [`BA`](../namespaces/Market-1.md#ba) | bids or asks |
-| `maxTick` | `number` | - |
-| `fillVolume` | `BigNumber` | - |
+| `maxTick` | `number` | the maximum to reach for the market order. |
+| `fillVolume` | `BigNumber` | the amount to fill (wants or gives) |
 | `fillWants` | `boolean` | whether to fill wants or gives |
 
 #### Returns
@@ -895,7 +895,7 @@ Uses [Semibook.simulateMarketOrder](Semibook.md#simulatemarketorder) to simulate
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1150
+@mangrovedao/mangrove.js/src/market.ts:1141
 
 ___
 
@@ -927,7 +927,7 @@ a promise that resolves to the volume estimation.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1190
+@mangrovedao/mangrove.js/src/market.ts:1181
 
 ___
 
@@ -955,7 +955,7 @@ a promise that resolves to the volume estimation.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1210
+@mangrovedao/mangrove.js/src/market.ts:1201
 
 ___
 
@@ -983,7 +983,7 @@ a promise that resolves to the volume estimation.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1223
+@mangrovedao/mangrove.js/src/market.ts:1214
 
 ___
 
@@ -1012,7 +1012,7 @@ The config for the asks and bids side of the market.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1239
+@mangrovedao/mangrove.js/src/market.ts:1230
 
 ___
 
@@ -1026,7 +1026,7 @@ Pretty prints the current state of the asks of the market
 
 | Name | Type |
 | :------ | :------ |
-| `filter?` | `prettyPrintFilter` |
+| `filter?` | [`prettyPrintFilter`](../modules.md#prettyprintfilter) |
 
 #### Returns
 
@@ -1034,7 +1034,7 @@ Pretty prints the current state of the asks of the market
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1250
+@mangrovedao/mangrove.js/src/market.ts:1241
 
 ___
 
@@ -1048,7 +1048,7 @@ Pretty prints the current state of the bids of the market
 
 | Name | Type |
 | :------ | :------ |
-| `filter?` | `prettyPrintFilter` |
+| `filter?` | [`prettyPrintFilter`](../modules.md#prettyprintfilter) |
 
 #### Returns
 
@@ -1056,7 +1056,7 @@ Pretty prints the current state of the bids of the market
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1255
+@mangrovedao/mangrove.js/src/market.ts:1246
 
 ___
 
@@ -1071,7 +1071,7 @@ Pretty prints the current state of the asks or bids of the market
 | Name | Type |
 | :------ | :------ |
 | `ba` | [`BA`](../namespaces/Market-1.md#ba) |
-| `filter` | `prettyPrintFilter` |
+| `filter` | [`prettyPrintFilter`](../modules.md#prettyprintfilter) |
 
 #### Returns
 
@@ -1079,7 +1079,7 @@ Pretty prints the current state of the asks or bids of the market
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1260
+@mangrovedao/mangrove.js/src/market.ts:1251
 
 ___
 
@@ -1138,7 +1138,7 @@ Only one subscription may be active at a time.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1304
+@mangrovedao/mangrove.js/src/market.ts:1295
 
 ___
 
@@ -1167,7 +1167,7 @@ Returns a promise which is fulfilled after execution of the callback.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1311
+@mangrovedao/mangrove.js/src/market.ts:1302
 
 ___
 
@@ -1189,7 +1189,7 @@ Stop calling a user-provided callback function on book-related events.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1325
+@mangrovedao/mangrove.js/src/market.ts:1316
 
 ___
 
@@ -1218,7 +1218,7 @@ the outbound and inbound tokens.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1333
+@mangrovedao/mangrove.js/src/market.ts:1324
 
 ___
 
@@ -1255,7 +1255,7 @@ the outbound and inbound tokens.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1346
+@mangrovedao/mangrove.js/src/market.ts:1337
 
 ___
 
@@ -1286,7 +1286,7 @@ the base and quote volumes.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1366
+@mangrovedao/mangrove.js/src/market.ts:1357
 
 ___
 
@@ -1310,7 +1310,7 @@ Determine the wants from gives and price depending on whether you're working wit
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1378
+@mangrovedao/mangrove.js/src/market.ts:1369
 
 ___
 
@@ -1334,7 +1334,7 @@ Determine the gives from wants and price depending on whether you're working wit
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1383
+@mangrovedao/mangrove.js/src/market.ts:1374
 
 ___
 
@@ -1365,7 +1365,7 @@ the gives and wants
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1393
+@mangrovedao/mangrove.js/src/market.ts:1384
 
 ___
 
@@ -1381,7 +1381,7 @@ Determine the first decimal place where the smallest price difference between ne
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1407
+@mangrovedao/mangrove.js/src/market.ts:1398
 
 ___
 
@@ -1405,4 +1405,4 @@ the first decimal place where the smallest price difference between neighboring 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:1419
+@mangrovedao/mangrove.js/src/market.ts:1410

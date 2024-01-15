@@ -22,7 +22,7 @@ Management of a single Kandel instance.
 
 • **new CoreKandelInstance**(`params`): [`CoreKandelInstance`](CoreKandelInstance.md)
 
-Constructor.
+Constructor. See [createCoreParams](CoreKandelInstance.md#createcoreparams)
 
 #### Parameters
 
@@ -32,23 +32,19 @@ Constructor.
 | `params.address` | `string` |
 | `params.kandel` | `CoreKandel` |
 | `params.market` | [`Market`](Market.md) |
-| `params.distributionHelper` | `KandelDistributionHelper` |
+| `params.distributionHelper` | [`KandelDistributionHelper`](KandelDistributionHelper.md) |
 | `params.offerLogic` | [`OfferLogic`](OfferLogic.md) |
-| `params.configuration` | `KandelConfiguration` |
+| `params.configuration` | [`KandelConfiguration`](KandelConfiguration.md) |
 | `params.seeder` | [`KandelSeeder`](KandelSeeder.md) |
-| `params.generalKandelDistributionGenerator` | `GeneralKandelDistributionGenerator` |
+| `params.generalKandelDistributionGenerator` | [`GeneralKandelDistributionGenerator`](GeneralKandelDistributionGenerator.md) |
 
 #### Returns
 
 [`CoreKandelInstance`](CoreKandelInstance.md)
 
-**`See`**
-
-create
-
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:116
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:117
 
 ## Properties
 
@@ -58,7 +54,7 @@ create
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:57
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:58
 
 ___
 
@@ -68,7 +64,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:58
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:59
 
 ___
 
@@ -78,23 +74,13 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:59
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:60
 
 ___
 
 ### <a id="distributionhelper" name="distributionhelper"></a> distributionHelper
 
-• **distributionHelper**: `KandelDistributionHelper`
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:60
-
-___
-
-### <a id="generalkandeldistributiongenerator" name="generalkandeldistributiongenerator"></a> generalKandelDistributionGenerator
-
-• **generalKandelDistributionGenerator**: `GeneralKandelDistributionGenerator`
+• **distributionHelper**: [`KandelDistributionHelper`](KandelDistributionHelper.md)
 
 #### Defined in
 
@@ -102,13 +88,23 @@ ___
 
 ___
 
-### <a id="configuration" name="configuration"></a> configuration
+### <a id="generalkandeldistributiongenerator" name="generalkandeldistributiongenerator"></a> generalKandelDistributionGenerator
 
-• **configuration**: `KandelConfiguration`
+• **generalKandelDistributionGenerator**: [`GeneralKandelDistributionGenerator`](GeneralKandelDistributionGenerator.md)
 
 #### Defined in
 
 @mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:62
+
+___
+
+### <a id="configuration" name="configuration"></a> configuration
+
+• **configuration**: [`KandelConfiguration`](KandelConfiguration.md)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:63
 
 ___
 
@@ -118,7 +114,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:63
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:64
 
 ___
 
@@ -130,13 +126,13 @@ Expose logic relevant for all offer logic implementations, including Kandel.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:66
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:67
 
 ## Methods
 
 ### <a id="createcoreparams" name="createcoreparams"></a> createCoreParams
 
-▸ **createCoreParams**(`params`): `Promise`<\{ `address`: `string` = params.address; `market`: [`Market`](Market.md) ; `kandel`: `CoreKandel` ; `distributionHelper`: `KandelDistributionHelper` ; `generalKandelDistributionHelper`: `GeneralKandelDistributionHelper` ; `offerLogic`: [`OfferLogic`](OfferLogic.md) ; `configuration`: `KandelConfiguration` ; `seeder`: [`KandelSeeder`](KandelSeeder.md) ; `generalKandelDistributionGenerator`: `GeneralKandelDistributionGenerator`  }\>
+▸ **createCoreParams**(`params`): `Promise`<\{ `address`: `string` = params.address; `market`: [`Market`](Market.md) ; `kandel`: `CoreKandel` ; `distributionHelper`: [`KandelDistributionHelper`](KandelDistributionHelper.md) ; `generalKandelDistributionHelper`: [`GeneralKandelDistributionHelper`](GeneralKandelDistributionHelper.md) ; `offerLogic`: [`OfferLogic`](OfferLogic.md) ; `configuration`: [`KandelConfiguration`](KandelConfiguration.md) ; `seeder`: [`KandelSeeder`](KandelSeeder.md) ; `generalKandelDistributionGenerator`: [`GeneralKandelDistributionGenerator`](GeneralKandelDistributionGenerator.md)  }\>
 
 #### Parameters
 
@@ -145,15 +141,15 @@ Expose logic relevant for all offer logic implementations, including Kandel.
 | `params` | `Object` |
 | `params.address` | `string` |
 | `params.signer` | `Signer` |
-| `params.market` | `MarketOrMarketFactory` |
+| `params.market` | [`MarketOrMarketFactory`](../modules.md#marketormarketfactory) |
 
 #### Returns
 
-`Promise`<\{ `address`: `string` = params.address; `market`: [`Market`](Market.md) ; `kandel`: `CoreKandel` ; `distributionHelper`: `KandelDistributionHelper` ; `generalKandelDistributionHelper`: `GeneralKandelDistributionHelper` ; `offerLogic`: [`OfferLogic`](OfferLogic.md) ; `configuration`: `KandelConfiguration` ; `seeder`: [`KandelSeeder`](KandelSeeder.md) ; `generalKandelDistributionGenerator`: `GeneralKandelDistributionGenerator`  }\>
+`Promise`<\{ `address`: `string` = params.address; `market`: [`Market`](Market.md) ; `kandel`: `CoreKandel` ; `distributionHelper`: [`KandelDistributionHelper`](KandelDistributionHelper.md) ; `generalKandelDistributionHelper`: [`GeneralKandelDistributionHelper`](GeneralKandelDistributionHelper.md) ; `offerLogic`: [`OfferLogic`](OfferLogic.md) ; `configuration`: [`KandelConfiguration`](KandelConfiguration.md) ; `seeder`: [`KandelSeeder`](KandelSeeder.md) ; `generalKandelDistributionGenerator`: [`GeneralKandelDistributionGenerator`](GeneralKandelDistributionGenerator.md)  }\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:68
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:69
 
 ___
 
@@ -169,7 +165,7 @@ Gets the base of the market Kandel is making
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:138
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:139
 
 ___
 
@@ -185,7 +181,7 @@ Gets the quote of the market Kandel is making
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:143
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:144
 
 ___
 
@@ -201,7 +197,7 @@ Gets the tick spacing of the market Kandel is making
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:148
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:149
 
 ___
 
@@ -217,7 +213,7 @@ Retrieves the identifier of this contract's reserve when using a router
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:153
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:154
 
 ___
 
@@ -245,7 +241,7 @@ with liquidity sharing and a router, this will be shared among other Kandel inst
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:162
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:163
 
 ___
 
@@ -273,7 +269,7 @@ with liquidity sharing and a router, the balance will be shared among other Kand
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:172
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:173
 
 ___
 
@@ -297,29 +293,29 @@ The offered volume.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:181
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:182
 
 ___
 
 ### <a id="getparameters" name="getparameters"></a> getParameters
 
-▸ **getParameters**(): `Promise`<`KandelParameters`\>
+▸ **getParameters**(): `Promise`<[`KandelParameters`](../modules.md#kandelparameters)\>
 
 Retrieves the current Kandel parameters
 
 #### Returns
 
-`Promise`<`KandelParameters`\>
+`Promise`<[`KandelParameters`](../modules.md#kandelparameters)\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:187
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:188
 
 ___
 
 ### <a id="getparameterswithoverrides" name="getparameterswithoverrides"></a> getParametersWithOverrides
 
-▸ **getParametersWithOverrides**(`parameters`, `distributionPricePoints?`, `distributionStepSize?`): `Promise`<`KandelParameters`\>
+▸ **getParametersWithOverrides**(`parameters`, `distributionPricePoints?`, `distributionStepSize?`): `Promise`<[`KandelParameters`](../modules.md#kandelparameters)\>
 
 Gets new Kandel parameters based on current and some overrides. If gasprice is not set, the current gasprice and cover factor is used.
 
@@ -327,19 +323,19 @@ Gets new Kandel parameters based on current and some overrides. If gasprice is n
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `parameters` | `KandelParameterOverrides` | The Kandel parameters to override, those left out will keep their current value. |
+| `parameters` | [`KandelParameterOverrides`](../modules.md#kandelparameteroverrides) | The Kandel parameters to override, those left out will keep their current value. |
 | `distributionPricePoints?` | `number` | The number of price points of the Kandel distribution. |
 | `distributionStepSize?` | `number` | The step size for the Kandel distribution. |
 
 #### Returns
 
-`Promise`<`KandelParameters`\>
+`Promise`<[`KandelParameters`](../modules.md#kandelparameters)\>
 
 The new Kandel parameters.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:203
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:204
 
 ___
 
@@ -363,7 +359,7 @@ The outbound token.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:279
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:280
 
 ___
 
@@ -388,7 +384,7 @@ The Mangrove offer id.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:288
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:289
 
 ___
 
@@ -413,7 +409,7 @@ The Kandel index.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:299
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:300
 
 ___
 
@@ -427,7 +423,7 @@ Convert public Kandel distribution to internal representation.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `distribution` | `OfferDistribution` | The Kandel distribution. |
+| `distribution` | [`OfferDistribution`](../modules.md#offerdistribution) | The Kandel distribution. |
 
 #### Returns
 
@@ -437,7 +433,7 @@ The internal representation of the Kandel distribution.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:309
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:310
 
 ___
 
@@ -455,7 +451,7 @@ The Mangrove offer ids for all offers along with their offer type and Kandel ind
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:323
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:324
 
 ___
 
@@ -471,7 +467,7 @@ Retrieves all offers for the Kandel instance by querying the market.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:341
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:342
 
 ___
 
@@ -487,8 +483,8 @@ Creates a distribution based on an explicit set of offers based on the Kandel pa
 | :------ | :------ | :------ |
 | `params` | `Object` | The parameters for the distribution. |
 | `params.explicitOffers` | `Object` | The explicit offers to use. |
-| `params.explicitOffers.bids` | `OffersWithGives` | - |
-| `params.explicitOffers.asks` | `OffersWithGives` | - |
+| `params.explicitOffers.bids` | [`OffersWithGives`](../modules.md#offerswithgives) | - |
+| `params.explicitOffers.asks` | [`OffersWithGives`](../modules.md#offerswithgives) | - |
 
 #### Returns
 
@@ -498,7 +494,7 @@ The new distribution.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:357
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:356
 
 ___
 
@@ -520,15 +516,13 @@ Retrieves the minimum volume for a given offer type.
 
 The minimum volume for the given offer type.
 
-**`Dev`**
-
 **`See`**
 
-seeder.getMinimumVolumeForGasreq for parameterized function.
+[KandelSeeder.getMinimumVolumeForGasreq](KandelSeeder.md#getminimumvolumeforgasreq) for parameterized function.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:378
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:377
 
 ___
 
@@ -554,7 +548,7 @@ The minimum volumes for base and quote, or the provided overrides.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:392
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:391
 
 ___
 
@@ -569,9 +563,9 @@ Calculates a new distribution based on the provided offers and deltas.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `params` | `Object` | The parameters for the new distribution. |
-| `params.explicitOffers` | `Object` | The offers to use. |
-| `params.explicitOffers.bids` | `OffersWithGives` | - |
-| `params.explicitOffers.asks` | `OffersWithGives` | - |
+| `params.explicitOffers` | `Object` | The explicit offers to use. |
+| `params.explicitOffers.bids` | [`OffersWithGives`](../modules.md#offerswithgives) | - |
+| `params.explicitOffers.asks` | [`OffersWithGives`](../modules.md#offerswithgives) | - |
 | `params.baseDelta?` | `BigSource` | The delta to apply to the base token volume. If not provided, then the base token volume is unchanged. |
 | `params.quoteDelta?` | `BigSource` | The delta to apply to the quote token volume. If not provided, then the quote token volume is unchanged. |
 | `params.minimumBasePerOffer?` | `BigSource` | The minimum base token volume per offer. If not provided, then the minimum base token volume is used. |
@@ -589,7 +583,7 @@ The base and quote deltas are applied uniformly to all offers, except during dec
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:418
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:415
 
 ___
 
@@ -603,8 +597,8 @@ Approves the Kandel instance for transferring from signer to itself if allowance
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `baseArgs` | `ApproveArgs` | The arguments for approving the base token. If not provided, then infinite approval is used. |
-| `quoteArgs` | `ApproveArgs` | The arguments for approving the quote token. If not provided, then infinite approval is used. |
+| `baseArgs` | [`ApproveArgs`](../modules.md#approveargs) | The arguments for approving the base token. If not provided, then infinite approval is used. |
+| `quoteArgs` | [`ApproveArgs`](../modules.md#approveargs) | The arguments for approving the quote token. If not provided, then infinite approval is used. |
 
 #### Returns
 
@@ -612,7 +606,7 @@ Approves the Kandel instance for transferring from signer to itself if allowance
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:445
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:442
 
 ___
 
@@ -637,29 +631,29 @@ Deposits the amounts on the Kandel instance to be available for offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:461
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:458
 
 ___
 
 ### <a id="getmostspecificconfig" name="getmostspecificconfig"></a> getMostSpecificConfig
 
-▸ **getMostSpecificConfig**(): `KandelNetworkConfiguration` & `Partial`<`KandelMarketConfiguration`\>
+▸ **getMostSpecificConfig**(): [`KandelNetworkConfiguration`](../modules.md#kandelnetworkconfiguration) & `Partial`<[`KandelMarketConfiguration`](../modules.md#kandelmarketconfiguration)\>
 
 Gets the most specific available default configuration for Kandel instances.
 
 #### Returns
 
-`KandelNetworkConfiguration` & `Partial`<`KandelMarketConfiguration`\>
+[`KandelNetworkConfiguration`](../modules.md#kandelnetworkconfiguration) & `Partial`<[`KandelMarketConfiguration`](../modules.md#kandelmarketconfiguration)\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:476
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:473
 
 ___
 
 ### <a id="getdistributionchunks" name="getdistributionchunks"></a> getDistributionChunks
 
-▸ **getDistributionChunks**(`params`): `Promise`<`OfferDistribution`[]\>
+▸ **getDistributionChunks**(`params`): `Promise`<[`OfferDistribution`](../modules.md#offerdistribution)[]\>
 
 Splits the distribution into chunks
 
@@ -673,13 +667,13 @@ Splits the distribution into chunks
 
 #### Returns
 
-`Promise`<`OfferDistribution`[]\>
+`Promise`<[`OfferDistribution`](../modules.md#offerdistribution)[]\>
 
 The distribution chunks.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:491
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:488
 
 ___
 
@@ -700,7 +694,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:503
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:500
 
 ___
 
@@ -733,7 +727,7 @@ Existing locked provision or balance on Mangrove is not accounted for.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:524
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:521
 
 ___
 
@@ -751,7 +745,7 @@ the locked provision, in ethers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:565
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:562
 
 ___
 
@@ -766,8 +760,8 @@ Calculates the provision locked for a set of offers based on the given parameter
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `existingOffers` | `Object` | the offers to calculate provision for. |
-| `existingOffers.bids` | \{ `gasprice`: `number` ; `gasreq`: `number` ; `gasbase`: `number`  }[] | - |
-| `existingOffers.asks` | \{ `gasprice`: `number` ; `gasreq`: `number` ; `gasbase`: `number`  }[] | - |
+| `existingOffers.bids` | [`OfferProvisionParams`](../namespaces/Mangrove-1.md#offerprovisionparams)[] | - |
+| `existingOffers.asks` | [`OfferProvisionParams`](../namespaces/Mangrove-1.md#offerprovisionparams)[] | - |
 
 #### Returns
 
@@ -777,7 +771,7 @@ the locked provision, in ethers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:580
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:571
 
 ___
 
@@ -810,7 +804,7 @@ If neither params.distribution nor params.offerCount is provided, then the curre
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:599
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:590
 
 ___
 
@@ -830,9 +824,9 @@ Gets the missing provision based on provision already available on Mangrove, pot
 | `params.distribution?` | [`KandelDistribution`](KandelDistribution.md) | The distribution to calculate the provision for. Optional. |
 | `params.bidCount?` | `number` | The number of bids to calculate the provision for. Optional. |
 | `params.askCount?` | `number` | The number of asks to calculate the provision for. Optional. |
-| `existingOffers` | `Object` | - |
-| `existingOffers.bids` | \{ `gasprice`: `number` ; `gasreq`: `number` ; `gasbase`: `number`  }[] | - |
-| `existingOffers.asks` | \{ `gasprice`: `number` ; `gasreq`: `number` ; `gasbase`: `number`  }[] | - |
+| `existingOffers` | `Object` | the offers with potential locked provision. |
+| `existingOffers.bids` | [`OfferProvisionParams`](../namespaces/Mangrove-1.md#offerprovisionparams)[] | - |
+| `existingOffers.asks` | [`OfferProvisionParams`](../namespaces/Mangrove-1.md#offerprovisionparams)[] | - |
 
 #### Returns
 
@@ -846,13 +840,13 @@ If neither distribution nor askCount or bidCount is provided, then the current n
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:624
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:612
 
 ___
 
 ### <a id="getrawparametersforpopulate" name="getrawparametersforpopulate"></a> getRawParametersForPopulate
 
-▸ **getRawParametersForPopulate**(`params`, `overrides?`): `Promise`<\{ `overridesWithFunds`: `PayableOverrides` ; `rawParameters`: `KandelParameters` ; `rawDepositBaseAmount`: `BigNumber` ; `rawDepositQuoteAmount`: `BigNumber`  }\>
+▸ **getRawParametersForPopulate**(`params`, `overrides?`): `Promise`<\{ `overridesWithFunds`: `PayableOverrides` ; `rawParameters`: [`KandelParameters`](../modules.md#kandelparameters) ; `rawDepositBaseAmount`: `BigNumber` ; `rawDepositQuoteAmount`: `BigNumber`  }\>
 
 Gets the raw parameters for invoking populate
 
@@ -862,25 +856,21 @@ Gets the raw parameters for invoking populate
 | :------ | :------ | :------ |
 | `params` | `Object` | The parameters for populating the offers. |
 | `params.distribution?` | [`KandelDistribution`](KandelDistribution.md) | The distribution of offers to populate. |
-| `params.parameters?` | `KandelParameterOverrides` | The parameters to set leave out values to keep their current value. If gasprice is not set, the current gasprice and cover factor is used. |
+| `params.parameters?` | [`KandelParameterOverrides`](../modules.md#kandelparameteroverrides) | The parameters to set leave out values to keep their current value. If gasprice is not set, the current gasprice and cover factor is used. |
 | `params.depositBaseAmount?` | `BigSource` | The amount of base to deposit. If not provided, then no base is deposited. |
 | `params.depositQuoteAmount?` | `BigSource` | The amount of quote to deposit. If not provided, then no quote is deposited. |
-| `params.funds?` | `BigSource` | The amount of funds to provision. If not provided, then the required funds are provisioned according to |
+| `params.funds?` | `BigSource` | The amount of funds to provision. If not provided, then the required funds are provisioned according to [getRequiredProvision](CoreKandelInstance.md#getrequiredprovision). |
 | `overrides` | `Overrides` | The ethers overrides to use when calling the populate and populateChunk functions. |
 
 #### Returns
 
-`Promise`<\{ `overridesWithFunds`: `PayableOverrides` ; `rawParameters`: `KandelParameters` ; `rawDepositBaseAmount`: `BigNumber` ; `rawDepositQuoteAmount`: `BigNumber`  }\>
+`Promise`<\{ `overridesWithFunds`: `PayableOverrides` ; `rawParameters`: [`KandelParameters`](../modules.md#kandelparameters) ; `rawDepositBaseAmount`: `BigNumber` ; `rawDepositQuoteAmount`: `BigNumber`  }\>
 
 The raw parameters.
 
-**`See`**
-
-getRequiredProvision.
-
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:675
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:663
 
 ___
 
@@ -896,10 +886,10 @@ Populates the offers in the distribution for the Kandel instance and sets parame
 | :------ | :------ | :------ |
 | `params` | `Object` | The parameters for populating the offers. |
 | `params.distribution?` | [`GeneralKandelDistribution`](GeneralKandelDistribution.md) | The distribution of offers to populate. Can be undefined to allow setting parameters and depositing in a single transaction. |
-| `params.parameters?` | `KandelParameterOverrides` | The parameters to set leave out values to keep their current value. If gasprice is not set, the current gasprice and cover factor is used. |
+| `params.parameters?` | [`KandelParameterOverrides`](../modules.md#kandelparameteroverrides) | The parameters to set leave out values to keep their current value. If gasprice is not set, the current gasprice and cover factor is used. |
 | `params.depositBaseAmount?` | `BigSource` | The amount of base to deposit. If not provided, then no base is deposited. |
 | `params.depositQuoteAmount?` | `BigSource` | The amount of quote to deposit. If not provided, then no quote is deposited. |
-| `params.funds?` | `BigSource` | The amount of funds to provision. If not provided, then the required funds are provisioned according to |
+| `params.funds?` | `BigSource` | The amount of funds to provision. If not provided, then the required funds are provisioned according to [getRequiredProvision](CoreKandelInstance.md#getrequiredprovision). (if a distribution is provided) |
 | `params.maxOffersInChunk?` | `number` | The maximum number of offers to include in a single populate transaction. If not provided, then KandelConfiguration is used. |
 | `overrides` | `Overrides` | The ethers overrides to use when calling the populate and populateChunk functions. |
 
@@ -909,17 +899,13 @@ Populates the offers in the distribution for the Kandel instance and sets parame
 
 The transaction(s) used to populate the offers.
 
-**`See`**
-
-getRequiredProvision. (if a distribution is provided)
-
 **`Remarks`**
 
 If this function is invoked with a different distribution, e.g., due to new pricePoints, or stepSize, then first retract all offers; otherwise, Kandel will enter an inconsistent state. This function does not set the baseQuoteTickOffset for geometric Kandels.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:731
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:719
 
 ___
 
@@ -936,7 +922,7 @@ Populates the offers in a general distribution for the Kandel instance. To set p
 | `params` | `Object` | The parameters for populating the offers. |
 | `params.distribution?` | [`GeneralKandelDistribution`](GeneralKandelDistribution.md) | The distribution of offers to populate. |
 | `params.maxOffersInChunk?` | `number` | The maximum number of offers to include in a single populate transaction. If not provided, then KandelConfiguration is used. |
-| `params.distributionChunks?` | `OfferDistribution`[] | Home-grown distribution chunks to populate (can be used to populate, e.g., a single offer) - takes precedence over distribution. Take care to ensure duals are included or already populated with correct parameters. |
+| `params.distributionChunks?` | [`OfferDistribution`](../modules.md#offerdistribution)[] | Home-grown distribution chunks to populate (can be used to populate, e.g., a single offer) - takes precedence over distribution. Take care to ensure duals are included or already populated with correct parameters. |
 | `overrides` | `Overrides` | The ethers overrides to use when calling the populateChunk function. |
 
 #### Returns
@@ -947,7 +933,7 @@ The transaction(s) used to populate the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:791
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:779
 
 ___
 
@@ -972,7 +958,7 @@ The transaction(s) used to populate the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:822
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:810
 
 ___
 
@@ -1010,7 +996,7 @@ If offers are retracted over multiple transactions, then the chunks are retracte
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:866
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:854
 
 ___
 
@@ -1045,7 +1031,7 @@ Note that when retracting an offer the dual should also be retracted, else it ca
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:922
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:910
 
 ___
 
@@ -1060,7 +1046,7 @@ Retracts offers
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `params` | `Object` | The parameters. |
-| `params.retractParams` | `Object` | The parameters for retracting offers. |
+| `params.retractParams` | `Object` | The parameters for retracting offers. See [retractOffers](CoreKandelInstance.md#retractoffers) |
 | `params.retractParams.startIndex?` | `number` | - |
 | `params.retractParams.endIndex?` | `number` | - |
 | `params.retractParams.maxOffersInChunk?` | `number` | - |
@@ -1078,7 +1064,7 @@ The transaction(s) used to retract the offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:951
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:935
 
 ___
 
@@ -1110,7 +1096,7 @@ it is up to the caller to make sure there are still enough funds for live offers
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:1013
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:997
 
 ___
 
@@ -1135,7 +1121,7 @@ The transaction used to set the gas price.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:1040
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:1024
 
 ___
 
@@ -1160,4 +1146,4 @@ The transaction used to set the gas requirement.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:1049
+@mangrovedao/mangrove.js/src/kandel/coreKandelInstance.ts:1033

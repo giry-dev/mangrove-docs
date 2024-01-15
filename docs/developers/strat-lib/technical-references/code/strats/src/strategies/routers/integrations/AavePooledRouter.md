@@ -1,5 +1,3 @@
-# Solidity API
-
 ## AavePooledRouter
 
 maker contracts deposit/withdraw their user(s) fund(s) on this router, which maintains an accounting of shares attributed to each depositor

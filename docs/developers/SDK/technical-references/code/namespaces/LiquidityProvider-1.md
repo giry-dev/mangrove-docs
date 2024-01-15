@@ -30,11 +30,15 @@ ___
 
 ### <a id="offerparams" name="offerparams"></a> OfferParams
 
-Ƭ **OfferParams**: \{ `price`: `Bigish` ; `volume`: `Bigish`  } & `OptParams` \| \{ `tick`: `number` ; `gives`: `Bigish`  } & `OptParams` \| \{ `wants`: `Bigish` ; `gives`: `Bigish`  } & `OptParams`
+Ƭ **OfferParams**: \{ `price`: [`Bigish`](../modules.md#bigish) ; `volume`: [`Bigish`](../modules.md#bigish)  } \| \{ `tick`: `number` ; `gives`: [`Bigish`](../modules.md#bigish)  } \| \{ `wants`: [`Bigish`](../modules.md#bigish) ; `gives`: [`Bigish`](../modules.md#bigish)  } & \{ `fund?`: [`Bigish`](../modules.md#bigish)  }
+
+Connect to MangroveOffer.
+ This basic maker contract will relay new/cancel/update
+ offer order.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:34
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:32
 
 ___
 
@@ -56,4 +60,4 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:39
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:38

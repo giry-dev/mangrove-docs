@@ -1,5 +1,3 @@
-# Solidity API
-
 ## IRewardsDistributor
 
 Defines the basic interface for a Rewards Distributor.

@@ -1,5 +1,3 @@
-# Solidity API
-
 ## ReserveConfiguration
 
 Implements the bitmap logic to handle the reserve configuration

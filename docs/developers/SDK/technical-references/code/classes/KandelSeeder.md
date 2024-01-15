@@ -44,7 +44,7 @@ ___
 
 ### <a id="configuration" name="configuration"></a> configuration
 
-• **configuration**: `KandelConfiguration`
+• **configuration**: [`KandelConfiguration`](KandelConfiguration.md)
 
 #### Defined in
 
@@ -54,7 +54,7 @@ ___
 
 ### <a id="tradeeventmanagement" name="tradeeventmanagement"></a> tradeEventManagement
 
-• **tradeEventManagement**: `TradeEventManagement`
+• **tradeEventManagement**: [`TradeEventManagement`](TradeEventManagement.md)
 
 #### Defined in
 
@@ -92,7 +92,7 @@ Create a new Kandel instance.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `seed` | `KandelSeed` | The parameters for sowing the Kandel instance. |
+| `seed` | [`KandelSeed`](../modules.md#kandelseed) | The parameters for sowing the Kandel instance. |
 | `overrides` | `Overrides` | - |
 
 #### Returns
@@ -177,7 +177,7 @@ The gasprice for the Kandel type multiplied by the buffer factor.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:159
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:158
 
 ___
 
@@ -191,7 +191,7 @@ Determines the required provision for the distribution prior to sowing based on 
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `seed` | `KandelSeed` | The parameters for sowing the Kandel instance. |
+| `seed` | [`KandelSeed`](../modules.md#kandelseed) | The parameters for sowing the Kandel instance. |
 | `distribution` | [`KandelDistribution`](KandelDistribution.md) | The distribution to determine the provision for. |
 | `gaspriceFactor?` | `number` | The factor to multiply the gasprice by. This is used to ensure that the Kandel offers do not fail to be reposted even if Mangrove's gasprice increases up to this. If null, then the default gaspriceFactor for the market will be used. |
 | `gasprice?` | `number` | The gasprice (in Mwei) to use for the Kandel (before multiplying with the factor). If null, then Mangrove's global gasprice will be used. |
@@ -209,7 +209,7 @@ This takes into account that each price point can become both an ask and a bid w
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:172
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:171
 
 ___
 
@@ -237,7 +237,7 @@ The minimum recommended volume.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:198
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:197
 
 ___
 
@@ -265,4 +265,4 @@ The minimum recommended volume.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:216
+@mangrovedao/mangrove.js/src/kandel/kandelSeeder.ts:215

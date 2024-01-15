@@ -31,7 +31,7 @@ Constructor
 | `params` | `Object` | - |
 | `params.pricePoints` | `number` | The number of price points in the distribution. |
 | `params.stepSize` | `number` | The step size used when transporting funds from an offer to its dual. Should be >=1. |
-| `params.offers` | `OfferDistribution` | The distribution of bids and asks. |
+| `params.offers` | [`OfferDistribution`](../modules.md#offerdistribution) | The distribution of bids and asks. |
 | `params.market` | [`KeyResolvedForCalculation`](../namespaces/Market-1.md#keyresolvedforcalculation) | The key data about the market. |
 
 #### Returns
@@ -44,13 +44,13 @@ Constructor
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/generalKandelDistribution.ts:17
+@mangrovedao/mangrove.js/src/kandel/generalKandelDistribution.ts:15
 
 ## Properties
 
 ### <a id="offers" name="offers"></a> offers
 
-• **offers**: `OfferDistribution`
+• **offers**: [`OfferDistribution`](../modules.md#offerdistribution)
 
 #### Inherited from
 
@@ -106,7 +106,7 @@ ___
 
 ### <a id="helper" name="helper"></a> helper
 
-• **helper**: `KandelDistributionHelper`
+• **helper**: [`KandelDistributionHelper`](KandelDistributionHelper.md)
 
 #### Inherited from
 
@@ -120,7 +120,7 @@ ___
 
 ### <a id="chunkdistribution" name="chunkdistribution"></a> chunkDistribution
 
-▸ **chunkDistribution**(`maxOffersInChunk`): `OfferDistribution`[]
+▸ **chunkDistribution**(`maxOffersInChunk`): [`OfferDistribution`](../modules.md#offerdistribution)[]
 
 Split a distribution into chunks according to the maximum number of offers in a single chunk.
 
@@ -132,13 +132,13 @@ Split a distribution into chunks according to the maximum number of offers in a 
 
 #### Returns
 
-`OfferDistribution`[]
+[`OfferDistribution`](../modules.md#offerdistribution)[]
 
 The chunks.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/generalKandelDistribution.ts:75
+@mangrovedao/mangrove.js/src/kandel/generalKandelDistribution.ts:73
 
 ___
 
@@ -168,13 +168,13 @@ The amount of base or quote to give for the offer.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:61
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:60
 
 ___
 
 ### <a id="getoffers" name="getoffers"></a> getOffers
 
-▸ **getOffers**(`offerType`): `OfferList`
+▸ **getOffers**(`offerType`): [`OfferList`](../modules.md#offerlist)
 
 Gets all offers of the given type
 
@@ -186,7 +186,7 @@ Gets all offers of the given type
 
 #### Returns
 
-`OfferList`
+[`OfferList`](../modules.md#offerlist)
 
 All offers of the given type.
 
@@ -196,7 +196,7 @@ All offers of the given type.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:89
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:88
 
 ___
 
@@ -224,7 +224,7 @@ All live offers of the given type (offers with non-zero gives)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:97
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:96
 
 ___
 
@@ -252,7 +252,7 @@ All dead offers of the given type (offers with 0 gives)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:105
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:104
 
 ___
 
@@ -281,7 +281,7 @@ The offer at the given index for the given offer type.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:116
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:115
 
 ___
 
@@ -308,7 +308,7 @@ An offer distribution adorned with prices of offers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:123
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:122
 
 ___
 
@@ -342,7 +342,7 @@ The amount of base or quote to give for each offer.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:142
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:141
 
 ___
 
@@ -364,7 +364,7 @@ The index of the first ask in the distribution. If there are no live asks, then 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:167
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:166
 
 ___
 
@@ -386,7 +386,7 @@ The index of the last live ask in the distribution. If there are no live bids, t
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:177
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:176
 
 ___
 
@@ -413,7 +413,7 @@ The offered volume of base and quote for the distribution to be fully provisione
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:188
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:187
 
 ___
 
@@ -439,7 +439,7 @@ The price distribution is not verified, except that the tick of each offer is a 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:200
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:199
 
 ___
 
@@ -474,7 +474,7 @@ This takes into account that each of the offers represent a price point which ca
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:252
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:251
 
 ___
 
@@ -508,7 +508,7 @@ The minimum initial gives for each offer such that all possible gives of fully t
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:269
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:268
 
 ___
 
@@ -544,7 +544,7 @@ Maps bids and asks arrays to a new value using an async function
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:282
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:281
 
 ___
 
@@ -585,4 +585,4 @@ Maps bids and asks arrays to a new value using a function
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:293
+@mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:292

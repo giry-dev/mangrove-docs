@@ -46,7 +46,7 @@ ___
 
 ### <a id="tradeeventmanagement" name="tradeeventmanagement"></a> tradeEventManagement
 
-• **tradeEventManagement**: `TradeEventManagement`
+• **tradeEventManagement**: [`TradeEventManagement`](TradeEventManagement.md)
 
 #### Defined in
 

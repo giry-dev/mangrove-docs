@@ -1,5 +1,3 @@
-# Solidity API
-
 ## Errors
 
 Defines the error messages emitted by the different contracts of the Aave protocol

@@ -20,9 +20,9 @@ Helper for generating geometric Kandel distributions.
 
 | Name | Type |
 | :------ | :------ |
-| `geometricDistributionHelper` | `GeometricKandelDistributionHelper` |
-| `generalDistributionHelper` | `GeneralKandelDistributionHelper` |
-| `geometricKandelLib` | `GeometricKandelLib` |
+| `geometricDistributionHelper` | [`GeometricKandelDistributionHelper`](GeometricKandelDistributionHelper.md) |
+| `generalDistributionHelper` | [`GeneralKandelDistributionHelper`](GeneralKandelDistributionHelper.md) |
+| `geometricKandelLib` | [`GeometricKandelLib`](GeometricKandelLib.md) |
 
 #### Returns
 
@@ -36,7 +36,7 @@ Helper for generating geometric Kandel distributions.
 
 ### <a id="geometricdistributionhelper" name="geometricdistributionhelper"></a> geometricDistributionHelper
 
-• **geometricDistributionHelper**: `GeometricKandelDistributionHelper`
+• **geometricDistributionHelper**: [`GeometricKandelDistributionHelper`](GeometricKandelDistributionHelper.md)
 
 #### Defined in
 
@@ -46,7 +46,7 @@ ___
 
 ### <a id="generaldistributionhelper" name="generaldistributionhelper"></a> generalDistributionHelper
 
-• **generalDistributionHelper**: `GeneralKandelDistributionHelper`
+• **generalDistributionHelper**: [`GeneralKandelDistributionHelper`](GeneralKandelDistributionHelper.md)
 
 #### Defined in
 
@@ -56,7 +56,7 @@ ___
 
 ### <a id="geometrickandellib" name="geometrickandellib"></a> geometricKandelLib
 
-• **geometricKandelLib**: `GeometricKandelLib`
+• **geometricKandelLib**: [`GeometricKandelLib`](GeometricKandelLib.md)
 
 #### Defined in
 
@@ -74,7 +74,7 @@ Generates a geometric price distribution.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `params` | `DistributionParams` | Parameters for the distribution. Exactly three of minPrice (or minBaseQuoteTick), maxPrice (or maxBaseQuoteTick), priceRatio (or baseQuoteTickOffset), and pricePoints must be provided. If tick-based arguments are provided, they take precedence. |
+| `params` | [`DistributionParams`](../modules.md#distributionparams) | Parameters for the distribution. Exactly three of minPrice (or minBaseQuoteTick), maxPrice (or maxBaseQuoteTick), priceRatio (or baseQuoteTickOffset), and pricePoints must be provided. If tick-based arguments are provided, they take precedence. |
 
 #### Returns
 
@@ -143,7 +143,7 @@ Calculates a minimal recommended volume distribution of bids and asks and their 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `params` | `Object` | The parameters for the geometric price distribution. |
-| `params.distributionParams` | `DistributionParams` | The parameters for the geometric price distribution. |
+| `params.distributionParams` | [`DistributionParams`](../modules.md#distributionparams) | The parameters for the geometric price distribution. |
 | `params.constantBase?` | `boolean` | Whether the base amount should be constant for all offers. |
 | `params.constantQuote?` | `boolean` | Whether the quote amount should be constant for all offers. |
 | `params.minimumBasePerOffer` | `BigSource` | The minimum amount of base to give for each offer. Should be at least minimumBasePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market. |
@@ -161,7 +161,7 @@ The price distribution may not match the distributionParams exactly due to limit
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:111
+@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:110
 
 ___
 
@@ -176,7 +176,7 @@ Calculates distribution of bids and asks and their base and quote amounts to mat
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `params` | `Object` | The parameters for the geometric distribution. |
-| `params.distributionParams` | `DistributionParams` | The parameters for the geometric price distribution. |
+| `params.distributionParams` | [`DistributionParams`](../modules.md#distributionparams) | The parameters for the geometric price distribution. |
 | `params.initialAskGives?` | `BigSource` | The initial amount of base to give for all asks. Should be at least minimumBasePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market. If not provided, then initialBidGives is used as quote for asks, and the base the ask gives is set to according to the price. |
 | `params.initialBidGives?` | `BigSource` | The initial amount of quote to give for all bids. Should be at least minimumQuotePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market. If not provided, then initialAskGives is used as base for bids, and the quote the bid gives is set to according to the price. |
 
@@ -192,13 +192,13 @@ The price distribution may not match the priceDistributionParams exactly due to 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:154
+@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:153
 
 ___
 
 ### <a id="calculatedistributionfromgeometricparams" name="calculatedistributionfromgeometricparams"></a> calculateDistributionFromGeometricParams
 
-▸ **calculateDistributionFromGeometricParams**(`params`): `Promise`<[`GeometricKandelDistribution`](GeometricKandelDistribution.md)\>
+▸ **calculateDistributionFromGeometricParams**(`geometricParams`, `initialAskGives?`, `initialBidGives?`): `Promise`<[`GeometricKandelDistribution`](GeometricKandelDistribution.md)\>
 
 Calculates distribution of bids and asks and their base and quote amounts to match the geometric price distribution given by parameters.
 
@@ -206,15 +206,14 @@ Calculates distribution of bids and asks and their base and quote amounts to mat
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `params` | `Object` | The parameters for the geometric distribution. |
-| `params.geometricParams` | `Object` | The parameters for the geometric price distribution. |
-| `params.geometricParams.baseQuoteTickOffset` | `number` | - |
-| `params.geometricParams.pricePoints` | `number` | - |
-| `params.geometricParams.firstAskIndex` | `number` | - |
-| `params.geometricParams.baseQuoteTickIndex0` | `number` | - |
-| `params.geometricParams.stepSize` | `number` | - |
-| `params.initialAskGives?` | `BigSource` | The initial amount of base to give for all asks. Should be at least minimumBasePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market. If not provided, then initialBidGives is used as quote for asks, and the base the ask gives is set to according to the price. |
-| `params.initialBidGives?` | `BigSource` | The initial amount of quote to give for all bids. Should be at least minimumQuotePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market. If not provided, then initialAskGives is used as base for bids, and the quote the bid gives is set to according to the price. |
+| `geometricParams` | `Object` | The parameters for the geometric price distribution. |
+| `geometricParams.baseQuoteTickOffset` | `number` | The number of ticks to jump between two price points. |
+| `geometricParams.pricePoints` | `number` | The number of price points in the distribution. |
+| `geometricParams.firstAskIndex` | `number` | The index of the first live ask. |
+| `geometricParams.baseQuoteTickIndex0` | `number` | The tick of the lowest priced price point. |
+| `geometricParams.stepSize` | `number` | The step size used when transporting funds from an offer to its dual. |
+| `initialAskGives?` | `BigSource` | The initial amount of base to give for all asks. Should be at least minimumBasePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market. If not provided, then initialBidGives is used as quote for asks, and the base the ask gives is set to according to the price. |
+| `initialBidGives?` | `BigSource` | The initial amount of quote to give for all bids. Should be at least minimumQuotePerOfferFactor from KandelConfiguration multiplied with the minimum volume for the market. If not provided, then initialAskGives is used as base for bids, and the quote the bid gives is set to according to the price. |
 
 #### Returns
 
@@ -228,7 +227,7 @@ The price distribution may not match the priceDistributionParams exactly due to 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:183
+@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:181
 
 ___
 
@@ -260,7 +259,7 @@ Note that the resulting offered base volume for each offer should be at least mi
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:217
+@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:215
 
 ___
 
@@ -292,4 +291,4 @@ The minimum volume for the given offer type and the index.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:246
+@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistributionGenerator.ts:244

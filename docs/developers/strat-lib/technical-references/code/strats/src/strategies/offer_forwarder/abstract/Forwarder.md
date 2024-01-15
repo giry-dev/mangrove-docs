@@ -1,5 +1,3 @@
-# Solidity API
-
 ## Forwarder
 
 Each offer posted via this contract are managed by their offer maker, not by this contract's admin.

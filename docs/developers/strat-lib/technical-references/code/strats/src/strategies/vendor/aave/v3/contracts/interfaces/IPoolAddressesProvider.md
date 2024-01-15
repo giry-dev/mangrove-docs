@@ -1,5 +1,3 @@
-# Solidity API
-
 ## IPoolAddressesProvider
 
 Defines the basic interface for a Pool Addresses Provider.
