@@ -1,5 +1,3 @@
-# Solidity API
-
 ## SimpleRouter
 
 _Maker contracts using this router must make sure that the reserve approves the router for all asset that will be pulled (outbound tokens)

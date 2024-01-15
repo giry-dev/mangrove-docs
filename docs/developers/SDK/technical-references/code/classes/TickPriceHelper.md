@@ -62,7 +62,7 @@ Calculates the price at a given raw offer list tick.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `tick` | `number` | tick to calculate price for (is coerced to nearest bin) |
-| `roundingMode` | `RoundingMode` | the rounding mode for coercing tick to a representable tick. See RoundingMode. roundDown is to a lower price, roundUp is to a higher price. |
+| `roundingMode` | [`RoundingMode`](../modules.md#roundingmode) | the rounding mode for coercing tick to a representable tick. See [RoundingMode](../modules.md#roundingmode). roundDown is to a lower price, roundUp is to a higher price. |
 
 #### Returns
 
@@ -87,7 +87,7 @@ Calculates the raw offer list tick (coerced to nearest bin) at a given order boo
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `price` | `BigSource` | price to calculate tick for |
-| `roundingMode` | `RoundingMode` | See RoundingMode roundDown is to a lower tick, roundUp is to a higher tick. |
+| `roundingMode` | [`RoundingMode`](../modules.md#roundingmode) | See [RoundingMode](../modules.md#roundingmode) roundDown is to a lower tick, roundUp is to a higher tick. |
 
 #### Returns
 
@@ -112,7 +112,7 @@ Coerces a price to a representable price on a tick. Note that due to rounding, c
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `price` | `BigSource` | price to coerce |
-| `roundingMode` | `RoundingMode` | See RoundingMode roundUp is to a higher price, roundDown is to a lower price. |
+| `roundingMode` | [`RoundingMode`](../modules.md#roundingmode) | See [RoundingMode](../modules.md#roundingmode) roundUp is to a higher price, roundDown is to a lower price. |
 
 #### Returns
 
@@ -138,7 +138,7 @@ Calculates the inbound amount from an outbound amount at a given tick.
 | :------ | :------ | :------ |
 | `tick` | `number` | tick to calculate the amount for (coerced to nearest bin) |
 | `outboundAmount` | `BigSource` | amount to calculate the inbound amount for |
-| `roundingMode` | `RoundingMode` | See RoundingMode. roundDown is to a lower tick, roundUp is to a higher tick and usage of inboundFromOutboundUp |
+| `roundingMode` | [`RoundingMode`](../modules.md#roundingmode) | See [RoundingMode](../modules.md#roundingmode). roundDown is to a lower tick, roundUp is to a higher tick and usage of inboundFromOutboundUp |
 
 #### Returns
 
@@ -164,7 +164,7 @@ Calculates the outbound amount from an inbound amount at a given tick.
 | :------ | :------ | :------ |
 | `tick` | `number` | tick to calculate the amount for (coerced to nearest bin) |
 | `inboundAmount` | `BigSource` | amount to calculate the outbound amount for |
-| `roundingMode` | `RoundingMode` | See RoundingMode. roundDown is to a lower tick, roundUp is to a higher tick and usage of outboundFromInboundUp |
+| `roundingMode` | [`RoundingMode`](../modules.md#roundingmode) | See [RoundingMode](../modules.md#roundingmode). roundDown is to a lower tick, roundUp is to a higher tick and usage of outboundFromInboundUp |
 
 #### Returns
 
@@ -215,7 +215,7 @@ Calculates the tick (coerced to nearest bin) from inbound and outbound volumes.
 | :------ | :------ | :------ |
 | `inboundVolume` | `BigSource` | inbound amount to calculate the tick for |
 | `outboundVolume` | `BigSource` | outbound amount to calculate the tick for |
-| `roundingMode` | `RoundingMode` | See RoundingMode. roundDown is to a lower tick, roundUp is to a higher tick. |
+| `roundingMode` | [`RoundingMode`](../modules.md#roundingmode) | See [RoundingMode](../modules.md#roundingmode). roundDown is to a lower tick, roundUp is to a higher tick. |
 
 #### Returns
 
@@ -240,7 +240,7 @@ Coerce a tick to its nearest bin
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `tick` | `number` | tick to coerce |
-| `roundingMode` | `RoundingMode` | See RoundingMode. roundDown is to a lower tick, roundUp is to a higher tick. |
+| `roundingMode` | [`RoundingMode`](../modules.md#roundingmode) | See [RoundingMode](../modules.md#roundingmode). roundDown is to a lower tick, roundUp is to a higher tick. |
 
 #### Returns
 
@@ -291,7 +291,7 @@ NB: Raw ratios do not take token decimals into account.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `tick` | `number` | tick to calculate the ratio for (coerced to nearest bin) |
-| `roundingMode` | `RoundingMode` | the rounding mode for coercing tick to a representable tick. See RoundingMode |
+| `roundingMode` | [`RoundingMode`](../modules.md#roundingmode) | the rounding mode for coercing tick to a representable tick. See [RoundingMode](../modules.md#roundingmode) |
 
 #### Returns
 
@@ -319,7 +319,7 @@ NB: This is a lossy conversions since ticks are discrete and ratios are not.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `rawRatio` | `Big` | inbound/outbound ratio to calculate the tick for |
-| `roundingMode` | `RoundingMode` | the rounding mode for coercing tick to a representable tick. See RoundingMode |
+| `roundingMode` | [`RoundingMode`](../modules.md#roundingmode) | the rounding mode for coercing tick to a representable tick. See [RoundingMode](../modules.md#roundingmode) |
 
 #### Returns
 

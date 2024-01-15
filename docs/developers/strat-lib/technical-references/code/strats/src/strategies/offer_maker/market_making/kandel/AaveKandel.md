@@ -1,5 +1,3 @@
-# Solidity API
-
 ## AaveKandel
 
 ### IS_FIRST_PULLER

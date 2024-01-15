@@ -1,5 +1,3 @@
-# Solidity API
-
 ## AaveKandelSeeder
 
 ### NewAaveKandel

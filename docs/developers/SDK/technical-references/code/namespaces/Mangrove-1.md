@@ -14,7 +14,7 @@ custom_edit_url: null
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:41
+@mangrovedao/mangrove.js/src/mangrove.ts:42
 
 ___
 
@@ -28,12 +28,12 @@ ___
 | :------ | :------ |
 | `active` | `boolean` |
 | `fee` | `number` |
-| `density` | `Density` |
+| `density` | [`Density`](../classes/Density.md) |
 | `offer_gasbase` | `number` |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:45
+@mangrovedao/mangrove.js/src/mangrove.ts:46
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:52
+@mangrovedao/mangrove.js/src/mangrove.ts:53
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:62
+@mangrovedao/mangrove.js/src/mangrove.ts:63
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:73
+@mangrovedao/mangrove.js/src/mangrove.ts:74
 
 ___
 
@@ -110,7 +110,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:83
+@mangrovedao/mangrove.js/src/mangrove.ts:84
 
 ___
 
@@ -120,7 +120,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:93
+@mangrovedao/mangrove.js/src/mangrove.ts:94
 
 ___
 
@@ -130,24 +130,56 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:98
+@mangrovedao/mangrove.js/src/mangrove.ts:99
 
 ___
 
 ### <a id="configuration" name="configuration"></a> Configuration
 
-Ƭ **Configuration**: `MangroveJsConfiguration`
+Ƭ **Configuration**: [`Configuration`](../modules.md#configuration)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:105
+@mangrovedao/mangrove.js/src/mangrove.ts:106
 
 ___
 
 ### <a id="partialconfiguration" name="partialconfiguration"></a> PartialConfiguration
 
-Ƭ **PartialConfiguration**: `PartialMangroveJsConfiguration`
+Ƭ **PartialConfiguration**: [`PartialConfiguration`](../modules.md#partialconfiguration)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:107
+@mangrovedao/mangrove.js/src/mangrove.ts:108
+
+___
+
+### <a id="offerprovisionparams" name="offerprovisionparams"></a> OfferProvisionParams
+
+Ƭ **OfferProvisionParams**: `Object`
+
+Parameters used to calculate provision for an offer
+
+**`Param`**
+
+the gas price for the offer in Mwei.
+
+**`Param`**
+
+the gas requirement for the offer
+
+**`Param`**
+
+the offer list's offer_gasbase.
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `gasprice` | `number` |
+| `gasreq` | `number` |
+| `gasbase` | `number` |
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:115

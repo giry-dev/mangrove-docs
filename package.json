@@ -42,7 +42,7 @@
     "@docusaurus/theme-mermaid": "^2.2.0",
     "@mangrovedao/mangrove-core": "^2.0.3",
     "@mangrovedao/mangrove-strats": "^1.0.2",
-    "@mangrovedao/mangrove.js": "^2.0.1",
+    "@mangrovedao/mangrove.js": "^2.0.3",
     "@mdx-js/react": "^1.6.22",
     "@types/big.js": "^6.1.6",
     "@types/node-cleanup": "^2.1.2",

@@ -1,5 +1,3 @@
-# Solidity API
-
 ## IMangrove
 
 ### DOMAIN_SEPARATOR

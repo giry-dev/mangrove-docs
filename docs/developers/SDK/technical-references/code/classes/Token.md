@@ -6,9 +6,11 @@ sidebar_position: 0
 custom_edit_url: null
 ---
 
+Calculates to and from units for a token based on decimals
+
 ## Hierarchy
 
-- `TokenCalculations`
+- [`TokenCalculations`](TokenCalculations.md)
 
   ↳ **`Token`**
 
@@ -22,11 +24,11 @@ Number of decimals used by the token.
 
 #### Inherited from
 
-TokenCalculations.decimals
+[TokenCalculations](TokenCalculations.md).[decimals](TokenCalculations.md#decimals)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:62
+@mangrovedao/mangrove.js/src/token.ts:65
 
 ___
 
@@ -36,11 +38,11 @@ ___
 
 #### Inherited from
 
-TokenCalculations.displayedDecimals
+[TokenCalculations](TokenCalculations.md).[displayedDecimals](TokenCalculations.md#displayeddecimals)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:63
+@mangrovedao/mangrove.js/src/token.ts:66
 
 ___
 
@@ -50,7 +52,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:127
+@mangrovedao/mangrove.js/src/token.ts:130
 
 ___
 
@@ -62,7 +64,7 @@ ID which should be unique within a network, but can be used across networks. Typ
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:141
+@mangrovedao/mangrove.js/src/token.ts:144
 
 ___
 
@@ -74,7 +76,7 @@ Address of the token contract.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:142
+@mangrovedao/mangrove.js/src/token.ts:145
 
 ___
 
@@ -86,7 +88,7 @@ Non-unique and optional symbol cf. ERC20.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:143
+@mangrovedao/mangrove.js/src/token.ts:146
 
 ___
 
@@ -98,7 +100,7 @@ Optional display name for the token.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:145
+@mangrovedao/mangrove.js/src/token.ts:148
 
 ___
 
@@ -110,7 +112,7 @@ Number of decimals to display in the UI when showing a price.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:147
+@mangrovedao/mangrove.js/src/token.ts:150
 
 ___
 
@@ -122,7 +124,7 @@ The Mangrove instance this token is associated with.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:148
+@mangrovedao/mangrove.js/src/token.ts:151
 
 ## Methods
 
@@ -154,11 +156,11 @@ market.fromUnits("1e18") // 1
 
 #### Inherited from
 
-TokenCalculations.fromUnits
+[TokenCalculations](TokenCalculations.md).[fromUnits](TokenCalculations.md#fromunits)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:78
+@mangrovedao/mangrove.js/src/token.ts:81
 
 ___
 
@@ -192,11 +194,11 @@ market.toUnits(1) // 1e18 as ethers.BigNumber
 
 #### Inherited from
 
-TokenCalculations.toUnits
+[TokenCalculations](TokenCalculations.md).[toUnits](TokenCalculations.md#tounits)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:95
+@mangrovedao/mangrove.js/src/token.ts:98
 
 ___
 
@@ -227,11 +229,11 @@ token.toFixed(token.fromUnits("1e7"));
 
 #### Inherited from
 
-TokenCalculations.toFixed
+[TokenCalculations](TokenCalculations.md).[toFixed](TokenCalculations.md#tofixed)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:109
+@mangrovedao/mangrove.js/src/token.ts:112
 
 ___
 
@@ -255,11 +257,11 @@ The rounded amount.
 
 #### Inherited from
 
-TokenCalculations.round
+[TokenCalculations](TokenCalculations.md).[round](TokenCalculations.md#round)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:120
+@mangrovedao/mangrove.js/src/token.ts:123
 
 ___
 
@@ -283,7 +285,7 @@ Create a Token instance, fetching data (decimals) from chain if needed.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:158
+@mangrovedao/mangrove.js/src/token.ts:161
 
 ___
 
@@ -307,7 +309,7 @@ Create a Token instance, fetching data (decimals) from chain if needed.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:171
+@mangrovedao/mangrove.js/src/token.ts:174
 
 ___
 
@@ -331,7 +333,7 @@ Create a Token instance, fetching data (decimals) from chain if needed.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:186
+@mangrovedao/mangrove.js/src/token.ts:189
 
 ___
 
@@ -352,7 +354,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:220
+@mangrovedao/mangrove.js/src/token.ts:223
 
 ___
 
@@ -377,7 +379,7 @@ Note that this reads from the static `Mangrove` address registry which is shared
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:249
+@mangrovedao/mangrove.js/src/token.ts:252
 
 ___
 
@@ -403,7 +405,7 @@ If `spender` is not specified, defaults to Mangrove instance.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:269
+@mangrovedao/mangrove.js/src/token.ts:272
 
 ___
 
@@ -429,7 +431,7 @@ If `spender` is not specified, defaults to Mangrove instance.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:281
+@mangrovedao/mangrove.js/src/token.ts:284
 
 ___
 
@@ -443,7 +445,7 @@ Set approval for Mangrove to `amount`.
 
 | Name | Type |
 | :------ | :------ |
-| `arg` | `ApproveArgs` |
+| `arg` | [`ApproveArgs`](../modules.md#approveargs) |
 
 #### Returns
 
@@ -451,7 +453,7 @@ Set approval for Mangrove to `amount`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:308
+@mangrovedao/mangrove.js/src/token.ts:311
 
 ___
 
@@ -466,7 +468,7 @@ Set approval for `spender` to `amount`.
 | Name | Type |
 | :------ | :------ |
 | `spender` | `string` |
-| `arg` | `ApproveArgs` |
+| `arg` | [`ApproveArgs`](../modules.md#approveargs) |
 
 #### Returns
 
@@ -474,7 +476,7 @@ Set approval for `spender` to `amount`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:315
+@mangrovedao/mangrove.js/src/token.ts:318
 
 ___
 
@@ -489,7 +491,7 @@ Sets the allowance for the spender if it is not infinite. Cannot be used to redu
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `spender` | `string` | The spender to approve |
-| `arg` | `ApproveArgs` | The approval arguments |
+| `arg` | [`ApproveArgs`](../modules.md#approveargs) | The approval arguments |
 
 #### Returns
 
@@ -497,7 +499,7 @@ Sets the allowance for the spender if it is not infinite. Cannot be used to redu
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:340
+@mangrovedao/mangrove.js/src/token.ts:343
 
 ___
 
@@ -512,7 +514,7 @@ Sets the allowance for the spender if it is not already enough.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `spender` | `string` | The spender to approve |
-| `arg` | `ApproveArgs` | The approval arguments |
+| `arg` | [`ApproveArgs`](../modules.md#approveargs) | The approval arguments |
 
 #### Returns
 
@@ -520,7 +522,7 @@ Sets the allowance for the spender if it is not already enough.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:352
+@mangrovedao/mangrove.js/src/token.ts:355
 
 ___
 
@@ -535,7 +537,7 @@ Increases the allowance for the spender unless it is already considered infinite
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `spender` | `string` | The spender to approve |
-| `arg` | `ApproveArgs` | The approval arguments |
+| `arg` | [`ApproveArgs`](../modules.md#approveargs) | The approval arguments |
 
 #### Returns
 
@@ -543,7 +545,7 @@ Increases the allowance for the spender unless it is already considered infinite
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:365
+@mangrovedao/mangrove.js/src/token.ts:368
 
 ___
 
@@ -566,7 +568,7 @@ Returns the balance of `account`.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:382
+@mangrovedao/mangrove.js/src/token.ts:385
 
 ___
 
@@ -590,4 +592,4 @@ Transfers `value` amount of tokens to address `to`
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/token.ts:393
+@mangrovedao/mangrove.js/src/token.ts:396

@@ -1,5 +1,3 @@
-# Solidity API
-
 ## HasIndexedBidsAndAsks
 
 _utilizes the `IHasOfferListOfOfferType` contract._

@@ -1,5 +1,3 @@
-# Solidity API
-
 ## Kandel
 
 ### constructor

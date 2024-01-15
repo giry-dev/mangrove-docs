@@ -70,7 +70,7 @@ ___
 
 ### <a id="configuration" name="configuration"></a> configuration
 
-• **configuration**: `KandelConfiguration`
+• **configuration**: [`KandelConfiguration`](KandelConfiguration.md)
 
 The default configuration values to use for Kandel.
 

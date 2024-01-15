@@ -1,5 +1,3 @@
-# Solidity API
-
 ## AaveV3BorrowerStorage
 
 ### revertWithData

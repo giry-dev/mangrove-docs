@@ -94,9 +94,9 @@ Specification of how much volume to (potentially) trade on the semibook.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `given` | `Bigish` | Amount of token to trade. |
+| `given` | [`Bigish`](../modules.md#bigish) | Amount of token to trade. |
 | `to` | [`BS`](Market-1.md#bs) | Whether `given` is base to be bought or quote to be sold. |
-| `limitPrice?` | `Bigish` | Optional: a max price after which to stop buying/selling. |
+| `limitPrice?` | [`Bigish`](../modules.md#bigish) | Optional: a max price after which to stop buying/selling. |
 
 #### Defined in
 
@@ -106,7 +106,7 @@ ___
 
 ### <a id="cachecontentsoptions" name="cachecontentsoptions"></a> CacheContentsOptions
 
-Ƭ **CacheContentsOptions**: \{ `targetNumberOfTicks?`: `number`  } \| \{ `desiredPrice`: `Bigish`  } \| \{ `desiredVolume`: [`VolumeParams`](Semibook-1.md#volumeparams)  }
+Ƭ **CacheContentsOptions**: \{ `targetNumberOfTicks?`: `number`  } \| \{ `desiredPrice`: [`Bigish`](../modules.md#bigish)  } \| \{ `desiredVolume`: [`VolumeParams`](Semibook-1.md#volumeparams)  }
 
 Options that specify what the cache fetches and retains.
 
@@ -133,7 +133,7 @@ ___
 
 ### <a id="resolvedoptions" name="resolvedoptions"></a> ResolvedOptions
 
-Ƭ **ResolvedOptions**: \{ `targetNumberOfTicks`: `number`  } \| \{ `desiredPrice`: `Bigish`  } \| \{ `desiredVolume`: [`VolumeParams`](Semibook-1.md#volumeparams)  } & \{ `chunkSize`: `number`  }
+Ƭ **ResolvedOptions**: \{ `targetNumberOfTicks`: `number`  } \| \{ `desiredPrice`: [`Bigish`](../modules.md#bigish)  } \| \{ `desiredVolume`: [`VolumeParams`](Semibook-1.md#volumeparams)  } & \{ `chunkSize`: `number`  }
 
 Options with defaults resolved
 

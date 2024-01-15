@@ -6,10 +6,6 @@ sidebar_position: 0
 custom_edit_url: null
 ---
 
-## Namespaces
-
-- [BookReturns](Market-1.BookReturns.md)
-
 ## Type Aliases
 
 ### <a id="key" name="key"></a> Key
@@ -40,7 +36,7 @@ The tick spacing of the market.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:39
+@mangrovedao/mangrove.js/src/market.ts:40
 
 ___
 
@@ -58,13 +54,13 @@ Values needed for converting between ticks/prices/volumes, is a subset of
 
 | Name | Type |
 | :------ | :------ |
-| `base` | `TokenCalculations` |
-| `quote` | `TokenCalculations` |
+| `base` | [`TokenCalculations`](../classes/TokenCalculations.md) |
+| `quote` | [`TokenCalculations`](../classes/TokenCalculations.md) |
 | `tickSpacing` | `number` |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:46
+@mangrovedao/mangrove.js/src/market.ts:47
 
 ___
 
@@ -96,7 +92,7 @@ The tick spacing of the market.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:58
+@mangrovedao/mangrove.js/src/market.ts:59
 
 ___
 
@@ -108,7 +104,7 @@ Identifies the bids or asks offer list.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:67
+@mangrovedao/mangrove.js/src/market.ts:68
 
 ___
 
@@ -120,7 +116,7 @@ Identifies a type of order.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:72
+@mangrovedao/mangrove.js/src/market.ts:73
 
 ___
 
@@ -130,7 +126,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:74
+@mangrovedao/mangrove.js/src/market.ts:75
 
 ___
 
@@ -152,7 +148,7 @@ Result type for trade failures.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:79
+@mangrovedao/mangrove.js/src/market.ts:80
 
 ___
 
@@ -172,7 +168,7 @@ Result type for trade successes.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:90
+@mangrovedao/mangrove.js/src/market.ts:91
 
 ___
 
@@ -202,7 +198,7 @@ A summary of the result of a trade.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:99
+@mangrovedao/mangrove.js/src/market.ts:100
 
 ___
 
@@ -224,7 +220,7 @@ A summary of the result of cleaning.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:118
+@mangrovedao/mangrove.js/src/market.ts:119
 
 ___
 
@@ -250,7 +246,7 @@ Order results, with a summary field that may not be set.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:129
+@mangrovedao/mangrove.js/src/market.ts:130
 
 ___
 
@@ -262,7 +258,7 @@ Order results, with a definite summary.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:144
+@mangrovedao/mangrove.js/src/market.ts:145
 
 ___
 
@@ -274,7 +270,7 @@ Cleaning results, with a definite summary.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:154
+@mangrovedao/mangrove.js/src/market.ts:155
 
 ___
 
@@ -288,7 +284,7 @@ No data is returned, but the transaction may fail.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:166
+@mangrovedao/mangrove.js/src/market.ts:167
 
 ___
 
@@ -302,7 +298,7 @@ No data is returned, but the transaction may fail.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:173
+@mangrovedao/mangrove.js/src/market.ts:174
 
 ___
 
@@ -330,7 +326,7 @@ low-level transaction that has been submitted as well as the result of the marke
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:181
+@mangrovedao/mangrove.js/src/market.ts:182
 
 ___
 
@@ -340,13 +336,13 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:194
+@mangrovedao/mangrove.js/src/market.ts:195
 
 ___
 
 ### <a id="tradeparams" name="tradeparams"></a> TradeParams
 
-Ƭ **TradeParams**: \{ `forceRoutingToMangroveOrder?`: `boolean` ; `slippage?`: `number` ; `fillOrKill?`: `boolean` ; `expiryDate?`: `number` ; `gasLowerBound?`: `ethers.BigNumberish`  } & \{ `restingOrder?`: [`RestingOrderParams`](Market-1.md#restingorderparams)  } & \{ `volume`: `Bigish` ; `limitPrice`: `Bigish`  } \| \{ `total`: `Bigish` ; `limitPrice`: `Bigish`  } \| \{ `maxTick`: `number` ; `fillVolume`: `Bigish` ; `fillWants?`: `boolean`  } \| \{ `gives`: `Bigish` ; `wants`: `Bigish` ; `fillWants?`: `boolean`  }
+Ƭ **TradeParams**: \{ `forceRoutingToMangroveOrder?`: `boolean` ; `slippage?`: `number` ; `fillOrKill?`: `boolean` ; `expiryDate?`: `number` ; `gasLowerBound?`: `ethers.BigNumberish`  } & \{ `restingOrder?`: [`RestingOrderParams`](Market-1.md#restingorderparams)  } & \{ `volume`: [`Bigish`](../modules.md#bigish) ; `limitPrice`: [`Bigish`](../modules.md#bigish)  } \| \{ `total`: [`Bigish`](../modules.md#bigish) ; `limitPrice`: [`Bigish`](../modules.md#bigish)  } \| \{ `maxTick`: `number` ; `fillVolume`: [`Bigish`](../modules.md#bigish) ; `fillWants?`: `boolean`  } \| \{ `gives`: [`Bigish`](../modules.md#bigish) ; `wants`: [`Bigish`](../modules.md#bigish) ; `fillWants?`: `boolean`  }
 
 Parameters for trading on a market.
 
@@ -385,7 +381,7 @@ The remaining parameters specify the kind of trade to be executed in one of the 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:215
+@mangrovedao/mangrove.js/src/market.ts:216
 
 ___
 
@@ -397,26 +393,26 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `provision?` | `Bigish` |
+| `provision?` | [`Bigish`](../modules.md#bigish) |
 | `offerId?` | `number` |
 | `restingOrderGasreq?` | `number` |
 | `restingOrderGaspriceFactor?` | `number` |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:234
+@mangrovedao/mangrove.js/src/market.ts:235
 
 ___
 
 ### <a id="updaterestingorderparams" name="updaterestingorderparams"></a> UpdateRestingOrderParams
 
-Ƭ **UpdateRestingOrderParams**: \{ `offerId`: `number`  } & \{ `gives`: `Bigish`  } \| \{ `tick`: `number`  } \| \{ `gives`: `Bigish` ; `tick`: `number`  } \| \{ `price`: `Bigish`  } \| \{ `volume`: `Bigish`  } \| \{ `total`: `Bigish`  } \| \{ `price`: `Bigish` ; `volume`: `Bigish`  } \| \{ `price`: `Bigish` ; `total`: `Bigish`  } & `Omit`<[`RestingOrderParams`](Market-1.md#restingorderparams), ``"offerId"``\>
+Ƭ **UpdateRestingOrderParams**: \{ `offerId`: `number`  } & \{ `gives`: [`Bigish`](../modules.md#bigish)  } \| \{ `tick`: `number`  } \| \{ `gives`: [`Bigish`](../modules.md#bigish) ; `tick`: `number`  } \| \{ `price`: [`Bigish`](../modules.md#bigish)  } \| \{ `volume`: [`Bigish`](../modules.md#bigish)  } \| \{ `total`: [`Bigish`](../modules.md#bigish)  } \| \{ `price`: [`Bigish`](../modules.md#bigish) ; `volume`: [`Bigish`](../modules.md#bigish)  } \| \{ `price`: [`Bigish`](../modules.md#bigish) ; `total`: [`Bigish`](../modules.md#bigish)  } & `Omit`<[`RestingOrderParams`](Market-1.md#restingorderparams), ``"offerId"``\>
 
 Parameters for updating an existing resting order.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:242
+@mangrovedao/mangrove.js/src/market.ts:243
 
 ___
 
@@ -446,13 +442,13 @@ the taker to impersonate, if not specified, the caller of the function will be u
 
 | Name | Type |
 | :------ | :------ |
-| `targets` | \{ `offerId`: `number` ; `takerWants`: `Bigish` ; `tick`: `number` ; `gasreq`: `number`  }[] |
+| `targets` | \{ `offerId`: `number` ; `takerWants`: [`Bigish`](../modules.md#bigish) ; `tick`: `number` ; `gasreq`: `number`  }[] |
 | `ba` | [`BA`](Market-1.md#ba) |
 | `taker?` | `string` |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:266
+@mangrovedao/mangrove.js/src/market.ts:267
 
 ___
 
@@ -471,7 +467,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:277
+@mangrovedao/mangrove.js/src/market.ts:278
 
 ___
 
@@ -487,7 +483,7 @@ Specification of how much volume to (potentially) trade on the market.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:291
+@mangrovedao/mangrove.js/src/market.ts:292
 
 ___
 
@@ -499,7 +495,7 @@ Specification of how much volume to (potentially) trade on the market, without s
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:299
+@mangrovedao/mangrove.js/src/market.ts:300
 
 ___
 
@@ -518,13 +514,13 @@ Optional parameters for connecting to a Mangrove market - gives optional paramet
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:304
+@mangrovedao/mangrove.js/src/market.ts:305
 
 ___
 
 ### <a id="cachecontentsoptions" name="cachecontentsoptions"></a> CacheContentsOptions
 
-Ƭ **CacheContentsOptions**: \{ `targetNumberOfTicks?`: `number`  } \| \{ `desiredPrice`: `Bigish`  } \| \{ `desiredVolume`: [`VolumeParams`](Market-1.md#volumeparams)  }
+Ƭ **CacheContentsOptions**: \{ `targetNumberOfTicks?`: `number`  } \| \{ `desiredPrice`: [`Bigish`](../modules.md#bigish)  } \| \{ `desiredVolume`: [`VolumeParams`](Market-1.md#volumeparams)  }
 
 Options that specify what the cache fetches and retains.
 
@@ -533,7 +529,7 @@ If none of these are specified, the default is `targetNumberOfTicks` = `Semibook
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:315
+@mangrovedao/mangrove.js/src/market.ts:316
 
 ___
 
@@ -545,7 +541,7 @@ Options that control how the book cache behaves.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:341
+@mangrovedao/mangrove.js/src/market.ts:342
 
 ___
 
@@ -571,7 +567,7 @@ Offers in the book cache.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:351
+@mangrovedao/mangrove.js/src/market.ts:352
 
 ___
 
@@ -585,7 +581,7 @@ offer is first or last at the tick.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:368
+@mangrovedao/mangrove.js/src/market.ts:369
 
 ___
 
@@ -597,19 +593,19 @@ Type for events emitted by the Mangrove market.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:387
+@mangrovedao/mangrove.js/src/market.ts:378
 
 ___
 
 ### <a id="booksubscriptioncbargument" name="booksubscriptioncbargument"></a> BookSubscriptionCbArgument
 
-Ƭ **BookSubscriptionCbArgument**: \{ `ba`: [`BA`](Market-1.md#ba)  } & \{ `type`: ``"SetActive"`` ; `active`: `boolean`  } \| \{ `type`: ``"SetFee"`` ; `fee`: `number`  } \| \{ `type`: ``"SetGasbase"`` ; `offerGasbase`: `number`  } \| \{ `type`: ``"SetDensity96X32"`` ; `density`: `Density`  } \| \{ `offerId?`: `number` ; `offer?`: [`Offer`](Market-1.md#offer)  } & \{ `type`: ``"OfferWrite"``  } \| \{ `type`: ``"OfferFail"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big` ; `mgvData`: `string`  } \| \{ `type`: ``"OfferFailWithPosthookData"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big` ; `mgvData`: `string`  } \| \{ `type`: ``"OfferSuccess"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big`  } \| \{ `type`: ``"OfferSuccessWithPosthookData"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big`  } \| \{ `type`: ``"OfferRetract"``  }
+Ƭ **BookSubscriptionCbArgument**: \{ `ba`: [`BA`](Market-1.md#ba)  } & \{ `type`: ``"SetActive"`` ; `active`: `boolean`  } \| \{ `type`: ``"SetFee"`` ; `fee`: `number`  } \| \{ `type`: ``"SetGasbase"`` ; `offerGasbase`: `number`  } \| \{ `type`: ``"SetDensity96X32"`` ; `density`: [`Density`](../classes/Density.md)  } \| \{ `offerId?`: `number` ; `offer?`: [`Offer`](Market-1.md#offer)  } & \{ `type`: ``"OfferWrite"``  } \| \{ `type`: ``"OfferFail"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big` ; `mgvData`: `string`  } \| \{ `type`: ``"OfferFailWithPosthookData"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big` ; `mgvData`: `string`  } \| \{ `type`: ``"OfferSuccess"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big`  } \| \{ `type`: ``"OfferSuccessWithPosthookData"`` ; `taker`: `string` ; `takerWants`: `Big` ; `takerGives`: `Big`  } \| \{ `type`: ``"OfferRetract"``  }
 
 The arguments passed to a an order book event callback function - see [Market.subscribe](../classes/Market.md#subscribe).
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:402
+@mangrovedao/mangrove.js/src/market.ts:393
 
 ___
 
@@ -643,7 +639,7 @@ A callback function that is called when an order book event occurs.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:459
+@mangrovedao/mangrove.js/src/market.ts:450
 
 ___
 
@@ -655,7 +651,7 @@ A type for [MarketCallback](Market-1.md#marketcallback) that is stored in a map.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:468
+@mangrovedao/mangrove.js/src/market.ts:459
 
 ___
 
@@ -667,7 +663,7 @@ A filter function that can be used to filter order book events.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:473
+@mangrovedao/mangrove.js/src/market.ts:464
 
 ___
 
@@ -679,7 +675,7 @@ A subscription parameter that specifies how a subscription to order book events 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:478
+@mangrovedao/mangrove.js/src/market.ts:469
 
 ___
 
@@ -698,7 +694,7 @@ Order books - an asks semibook and a bids semibook.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:490
+@mangrovedao/mangrove.js/src/market.ts:481
 
 ___
 
@@ -719,4 +715,4 @@ A volume estimate for a trade.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/market.ts:495
+@mangrovedao/mangrove.js/src/market.ts:486

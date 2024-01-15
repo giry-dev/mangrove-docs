@@ -89,7 +89,7 @@ ___
 
 ### <a id="trademanagement" name="trademanagement"></a> tradeManagement
 
-• **tradeManagement**: `Trade`
+• **tradeManagement**: [`Trade`](Trade.md)
 
 #### Defined in
 

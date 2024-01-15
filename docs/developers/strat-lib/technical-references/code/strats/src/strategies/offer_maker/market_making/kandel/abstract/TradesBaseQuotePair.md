@@ -1,5 +1,3 @@
-# Solidity API
-
 ## OfferType
 
 ```solidity
