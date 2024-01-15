@@ -37,7 +37,6 @@ The return values are the number of successfully cleaned offers and the total bo
 
 Note that Mangrove won't attempt to execute an offer if the values in a `CleanTarget` don't match its offer (as desribed above). To distinguish between a non-executed clean and a fail clean (due to the offer itself not failing), you must inspect the log (see `MgvLib.sol`) or check the received bounty.
 
-
 ## Example
 
 You have identified a whale that has 2,000,000 DAI and has approved Mangrove for spending its DAI.
@@ -50,7 +49,6 @@ To clean the offer using funds borrowed from the whale, your cleaning bot trigge
 2. Mangrove will use the whale's DAI to execute offer #708 and revert the offer execution after noticing that the offer fails.
 3. Because the offer failed, Mangrove transfers a bounty to `msg.sender`.
 
-
-# Further reading
+## Further reading
 
 - Background on why cleaning is needed in Mangrove: [The role of cleaning bots in Mangrove](../background/the-role-of-cleaning-bots-in-mangrove.md)

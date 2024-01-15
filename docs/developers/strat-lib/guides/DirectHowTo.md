@@ -4,6 +4,10 @@ sidebar_position: 5
 
 # Creating a Direct contract
 
+:::caution Work in progress
+This page is currently being updated - thank you for your understanding.
+:::
+
 :::info
 
 This section will go through two implementations of a %%maker contract|maker-contract%%, which inherits from the **Direct** contract. If you don't know what the Direct contract is, we recommend reading through both the documentation on [MangroveOffer](../background/offer-maker/mangrove-offer.md) and on [Direct](../background/offer-maker/direct.md) before continuing.

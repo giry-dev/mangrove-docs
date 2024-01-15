@@ -4,6 +4,10 @@ sidebar_position: 6
 
 # Testing a maker contract
 
+:::caution Work in progress
+This page is currently being updated - thank you for your understanding.
+:::
+
 After following the tutorial [Post a Smart Offer](../getting-started/smart-offer.md) or some of the guides in this section, you have created a %%maker contract|maker-contract%% and are ready to test it. Mangrove offers a helper contract, [`MangroveTest`](https://github.com/mangrovedao/mangrove-core/blob/master/test/lib/MangroveTest.sol), that helps setup everything needed for writing a test using the Mangrove core protocol.
 
 We are going to use [Foundry](https://book.getfoundry.sh/) as the test runner - and we are going to use some of the features that Foundry provides for testing. Please refer to [Set Up Your Local Environment](../getting-started/preparation.md) for instructions on how to get and setup Foundry. For this guide, we assume basic knowledge of writing and running tests with Foundry - as can be gained by reading the relevant sections on [Foundry -> Tests](https://book.getfoundry.sh/forge/tests) in the Foundry book.

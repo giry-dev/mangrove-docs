@@ -6,6 +6,10 @@ sidebar_position: 10
 
 # Using `snipes` to take an offer
 
+:::caution Work in progress
+This page is currently being updated - thank you for your understanding.
+:::
+
 You can take specific offers using Mangrove's `snipes` functionality. This could also be handy if you'd like to take your own offer for the sake of testing (and not some other one in the order book), following up on the [smart offer tutorial](../getting-started/smart-offer.md).
 
 ## Approve Mangrove to use Taker's funds
