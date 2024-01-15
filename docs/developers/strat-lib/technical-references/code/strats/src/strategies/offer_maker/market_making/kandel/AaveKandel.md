@@ -1,3 +1,5 @@
+# Solidity API
+
 ## AaveKandel
 
 ### IS_FIRST_PULLER
@@ -43,20 +45,6 @@ Verifies that token is not an official AAVE overlying.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | [0] | bool | true if overlying; otherwise, false. |
-
-### pooledRouter
-
-```solidity
-function pooledRouter() private view returns (contract AavePooledRouter)
-```
-
-returns the router as an Aave router
-
-#### Return Values
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| [0] | contract AavePooledRouter | The aave router. |
 
 ### initialize
 

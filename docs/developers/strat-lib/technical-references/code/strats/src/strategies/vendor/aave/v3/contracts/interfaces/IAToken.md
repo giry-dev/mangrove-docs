@@ -1,3 +1,5 @@
+# Solidity API
+
 ## IAToken
 
 Defines the basic interface for an AToken.

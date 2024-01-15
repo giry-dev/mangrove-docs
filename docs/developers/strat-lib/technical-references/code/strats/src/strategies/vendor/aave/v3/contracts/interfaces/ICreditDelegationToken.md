@@ -1,3 +1,5 @@
+# Solidity API
+
 ## ICreditDelegationToken
 
 Defines the basic interface for a token supporting credit delegation.

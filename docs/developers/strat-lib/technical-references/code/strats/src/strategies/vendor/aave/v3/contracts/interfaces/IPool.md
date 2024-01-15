@@ -1,3 +1,5 @@
+# Solidity API
+
 ## IPool
 
 Defines the basic interface for an Aave Pool.

@@ -9,6 +9,26 @@ custom_edit_url: null
 The LiquidityProvider class connects an offerLogic (or an EOA) to a market.
 It posts onchain offers.
 
+## Constructors
+
+### <a id="constructor" name="constructor"></a> constructor
+
+• **new LiquidityProvider**(`p`): [`LiquidityProvider`](LiquidityProvider.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `p` | [`ConstructionParams`](../namespaces/LiquidityProvider-1.md#constructionparams) |
+
+#### Returns
+
+[`LiquidityProvider`](LiquidityProvider.md)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/liquidityProvider.ts:64
+
 ## Properties
 
 ### <a id="mgv" name="mgv"></a> mgv
@@ -89,27 +109,11 @@ ___
 
 @mangrovedao/mangrove.js/src/liquidityProvider.ts:62
 
-## Constructors
-
-### <a id="constructor" name="constructor"></a> constructor
-
-• **new LiquidityProvider**(`p`)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `p` | [`ConstructionParams`](../namespaces/LiquidityProvider-1.md#constructionparams) |
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/liquidityProvider.ts:64
-
 ## Methods
 
 ### <a id="connect" name="connect"></a> connect
 
-▸ `Static` **connect**(`offerLogic`, `offerGasreq`, `p`): `Promise`<[`LiquidityProvider`](LiquidityProvider.md)\>
+▸ **connect**(`offerLogic`, `offerGasreq`, `p`): `Promise`<[`LiquidityProvider`](LiquidityProvider.md)\>
 
 Connects the logic to a Market in order to pass market orders. This assumes the underlying contract of offer logic is an ILiquidityProvider.
 
@@ -119,7 +123,7 @@ Connects the logic to a Market in order to pass market orders. This assumes the 
 | :------ | :------ | :------ |
 | `offerLogic` | [`OfferLogic`](OfferLogic.md) | The offer logic. |
 | `offerGasreq` | `number` | The gas required for the offer execution on the offer logic. |
-| `p` | [`Market`](Market.md) \| { `base`: `string` ; `quote`: `string` ; `tickSpacing`: `number` ; `bookOptions?`: [`BookOptions`](../namespaces/Market-1.md#bookoptions)  } | The market to connect to. Can be a Market object or a market descriptor. |
+| `p` | [`Market`](Market.md) \| \{ `base`: `string` ; `quote`: `string` ; `tickSpacing`: `number` ; `bookOptions?`: [`BookOptions`](../namespaces/Market-1.md#bookoptions)  } | The market to connect to. Can be a Market object or a market descriptor. |
 
 #### Returns
 
@@ -167,10 +171,6 @@ ___
 
 Gets the missing provision in ethers for a bid using
 
-**`See`**
-
-computeOfferProvision.
-
 #### Parameters
 
 | Name | Type |
@@ -183,6 +183,10 @@ computeOfferProvision.
 #### Returns
 
 `Promise`<`Big`\>
+
+**`See`**
+
+computeOfferProvision.
 
 #### Defined in
 
@@ -196,10 +200,6 @@ ___
 
 Gets the missing provision in ethers for an ask using
 
-**`See`**
-
-computeOfferProvision.
-
 #### Parameters
 
 | Name | Type |
@@ -212,6 +212,10 @@ computeOfferProvision.
 #### Returns
 
 `Promise`<`Big`\>
+
+**`See`**
+
+computeOfferProvision.
 
 #### Defined in
 
@@ -297,7 +301,7 @@ ___
 
 ### <a id="normalizeofferparams" name="normalizeofferparams"></a> normalizeOfferParams
 
-▸ `Static` **normalizeOfferParams**(`p`, `market`): `Object`
+▸ **normalizeOfferParams**(`p`, `market`): `Object`
 
 Given offer params (bids/asks + price info as wants&gives or price&volume),
  return `{tick,gives,fund}`
@@ -306,7 +310,7 @@ Given offer params (bids/asks + price info as wants&gives or price&volume),
 
 | Name | Type |
 | :------ | :------ |
-| `p` | `Object` |
+| `p` | \{ `ba`: [`BA`](../namespaces/Market-1.md#ba)  } & [`OfferParams`](../namespaces/LiquidityProvider-1.md#offerparams) |
 | `market` | [`KeyResolvedForCalculation`](../namespaces/Market-1.md#keyresolvedforcalculation) |
 
 #### Returns
@@ -327,7 +331,7 @@ ___
 
 ### <a id="newask" name="newask"></a> newAsk
 
-▸ **newAsk**(`p`, `overrides?`): `Promise`<{ `id`: `number` ; `event`: `Log`  }\>
+▸ **newAsk**(`p`, `overrides?`): `Promise`<\{ `id`: `number` ; `event`: `Log`  }\>
 
 Post a new ask
 
@@ -340,7 +344,7 @@ Post a new ask
 
 #### Returns
 
-`Promise`<{ `id`: `number` ; `event`: `Log`  }\>
+`Promise`<\{ `id`: `number` ; `event`: `Log`  }\>
 
 #### Defined in
 
@@ -350,7 +354,7 @@ ___
 
 ### <a id="newbid" name="newbid"></a> newBid
 
-▸ **newBid**(`p`, `overrides?`): `Promise`<{ `id`: `number` ; `event`: `Log`  }\>
+▸ **newBid**(`p`, `overrides?`): `Promise`<\{ `id`: `number` ; `event`: `Log`  }\>
 
 Post a new bid
 
@@ -363,7 +367,7 @@ Post a new bid
 
 #### Returns
 
-`Promise`<{ `id`: `number` ; `event`: `Log`  }\>
+`Promise`<\{ `id`: `number` ; `event`: `Log`  }\>
 
 #### Defined in
 
@@ -373,18 +377,18 @@ ___
 
 ### <a id="newoffer" name="newoffer"></a> newOffer
 
-▸ **newOffer**(`p`, `overrides?`): `Promise`<{ `id`: `number` ; `event`: `Log`  }\>
+▸ **newOffer**(`p`, `overrides?`): `Promise`<\{ `id`: `number` ; `event`: `Log`  }\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `p` | `Object` |
+| `p` | \{ `ba`: [`BA`](../namespaces/Market-1.md#ba)  } & [`OfferParams`](../namespaces/LiquidityProvider-1.md#offerparams) |
 | `overrides` | `Overrides` |
 
 #### Returns
 
-`Promise`<{ `id`: `number` ; `event`: `Log`  }\>
+`Promise`<\{ `id`: `number` ; `event`: `Log`  }\>
 
 #### Defined in
 
@@ -394,7 +398,7 @@ ___
 
 ### <a id="updateask" name="updateask"></a> updateAsk
 
-▸ **updateAsk**(`id`, `p`, `overrides?`): `Promise`<{ `event`: `Log`  }\>
+▸ **updateAsk**(`id`, `p`, `overrides?`): `Promise`<\{ `event`: `Log`  }\>
 
 to change volume and price of the offer, and update its gas requirement and fund 0.01 ether to maker balance
 
@@ -408,7 +412,7 @@ to change volume and price of the offer, and update its gas requirement and fund
 
 #### Returns
 
-`Promise`<{ `event`: `Log`  }\>
+`Promise`<\{ `event`: `Log`  }\>
 
 #### Defined in
 
@@ -418,7 +422,7 @@ ___
 
 ### <a id="updatebid" name="updatebid"></a> updateBid
 
-▸ **updateBid**(`id`, `p`, `overrides?`): `Promise`<{ `event`: `Log`  }\>
+▸ **updateBid**(`id`, `p`, `overrides?`): `Promise`<\{ `event`: `Log`  }\>
 
 Update an existing offer
 
@@ -432,7 +436,7 @@ Update an existing offer
 
 #### Returns
 
-`Promise`<{ `event`: `Log`  }\>
+`Promise`<\{ `event`: `Log`  }\>
 
 #### Defined in
 
@@ -442,19 +446,19 @@ ___
 
 ### <a id="updateoffer" name="updateoffer"></a> updateOffer
 
-▸ **updateOffer**(`id`, `p`, `overrides?`): `Promise`<{ `event`: `Log`  }\>
+▸ **updateOffer**(`id`, `p`, `overrides?`): `Promise`<\{ `event`: `Log`  }\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `id` | `number` |
-| `p` | `Object` |
+| `p` | \{ `ba`: [`BA`](../namespaces/Market-1.md#ba)  } & [`OfferParams`](../namespaces/LiquidityProvider-1.md#offerparams) |
 | `overrides` | `PayableOverrides` |
 
 #### Returns
 
-`Promise`<{ `event`: `Log`  }\>
+`Promise`<\{ `event`: `Log`  }\>
 
 #### Defined in
 

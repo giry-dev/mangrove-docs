@@ -1,3 +1,5 @@
+# Solidity API
+
 ## IScaledBalanceToken
 
 Defines the basic interface for a scaled-balance token.

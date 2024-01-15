@@ -6,6 +6,29 @@ sidebar_position: 0
 custom_edit_url: null
 ---
 
+## Constructors
+
+### <a id="constructor" name="constructor"></a> constructor
+
+• **new TickPriceHelper**(`ba`, `market`): [`TickPriceHelper`](TickPriceHelper.md)
+
+Ctor
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `ba` | [`BA`](../namespaces/Market-1.md#ba) | bids or asks |
+| `market` | [`KeyResolvedForCalculation`](../namespaces/Market-1.md#keyresolvedforcalculation) | the decimals for the market |
+
+#### Returns
+
+[`TickPriceHelper`](TickPriceHelper.md)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/util/tickPriceHelper.ts:21
+
 ## Properties
 
 ### <a id="ba" name="ba"></a> ba
@@ -25,25 +48,6 @@ ___
 #### Defined in
 
 @mangrovedao/mangrove.js/src/util/tickPriceHelper.ts:14
-
-## Constructors
-
-### <a id="constructor" name="constructor"></a> constructor
-
-• **new TickPriceHelper**(`ba`, `market`)
-
-Ctor
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `ba` | [`BA`](../namespaces/Market-1.md#ba) | bids or asks |
-| `market` | [`KeyResolvedForCalculation`](../namespaces/Market-1.md#keyresolvedforcalculation) | the decimals for the market |
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/util/tickPriceHelper.ts:21
 
 ## Methods
 
@@ -331,7 +335,7 @@ ___
 
 ### <a id="rawratiotomantissaexponent" name="rawratiotomantissaexponent"></a> rawRatioToMantissaExponent
 
-▸ `Static` **rawRatioToMantissaExponent**(`ratio`): `Object`
+▸ **rawRatioToMantissaExponent**(`ratio`): `Object`
 
 #### Parameters
 

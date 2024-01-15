@@ -16,6 +16,47 @@ A geometric distribution of bids and ask for geometric Kandel.
 
   ↳ **`GeometricKandelInstance`**
 
+## Constructors
+
+### <a id="constructor" name="constructor"></a> constructor
+
+• **new GeometricKandelInstance**(`params`): [`GeometricKandelInstance`](GeometricKandelInstance.md)
+
+Constructor.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | `Object` |
+| `params.address` | `string` |
+| `params.kandel` | `CoreKandel` |
+| `params.market` | [`Market`](Market.md) |
+| `params.distributionHelper` | `KandelDistributionHelper` |
+| `params.offerLogic` | [`OfferLogic`](OfferLogic.md) |
+| `params.configuration` | `KandelConfiguration` |
+| `params.seeder` | [`KandelSeeder`](KandelSeeder.md) |
+| `params.generalKandelDistributionGenerator` | `GeneralKandelDistributionGenerator` |
+| `params.geometricKandel` | `GeometricKandel` |
+| `params.geometricGenerator` | [`GeometricKandelDistributionGenerator`](GeometricKandelDistributionGenerator.md) |
+| `params.kandelStatus` | `GeometricKandelStatus` |
+
+#### Returns
+
+[`GeometricKandelInstance`](GeometricKandelInstance.md)
+
+**`See`**
+
+create
+
+#### Overrides
+
+[CoreKandelInstance](CoreKandelInstance.md).[constructor](CoreKandelInstance.md#constructor)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelInstance.ts:94
+
 ## Properties
 
 ### <a id="kandel" name="kandel"></a> kandel
@@ -164,7 +205,7 @@ ___
 
 ### <a id="createcoreparams" name="createcoreparams"></a> createCoreParams
 
-▸ `Static` `Protected` **createCoreParams**(`params`): `Promise`<{ `address`: `string` = params.address; `market`: [`Market`](Market.md) ; `kandel`: `CoreKandel` ; `distributionHelper`: `KandelDistributionHelper` ; `generalKandelDistributionHelper`: `GeneralKandelDistributionHelper` ; `offerLogic`: [`OfferLogic`](OfferLogic.md) ; `configuration`: `KandelConfiguration` ; `seeder`: [`KandelSeeder`](KandelSeeder.md) ; `generalKandelDistributionGenerator`: `GeneralKandelDistributionGenerator`  }\>
+▸ **createCoreParams**(`params`): `Promise`<\{ `address`: `string` = params.address; `market`: [`Market`](Market.md) ; `kandel`: `CoreKandel` ; `distributionHelper`: `KandelDistributionHelper` ; `generalKandelDistributionHelper`: `GeneralKandelDistributionHelper` ; `offerLogic`: [`OfferLogic`](OfferLogic.md) ; `configuration`: `KandelConfiguration` ; `seeder`: [`KandelSeeder`](KandelSeeder.md) ; `generalKandelDistributionGenerator`: `GeneralKandelDistributionGenerator`  }\>
 
 #### Parameters
 
@@ -177,7 +218,7 @@ ___
 
 #### Returns
 
-`Promise`<{ `address`: `string` = params.address; `market`: [`Market`](Market.md) ; `kandel`: `CoreKandel` ; `distributionHelper`: `KandelDistributionHelper` ; `generalKandelDistributionHelper`: `GeneralKandelDistributionHelper` ; `offerLogic`: [`OfferLogic`](OfferLogic.md) ; `configuration`: `KandelConfiguration` ; `seeder`: [`KandelSeeder`](KandelSeeder.md) ; `generalKandelDistributionGenerator`: `GeneralKandelDistributionGenerator`  }\>
+`Promise`<\{ `address`: `string` = params.address; `market`: [`Market`](Market.md) ; `kandel`: `CoreKandel` ; `distributionHelper`: `KandelDistributionHelper` ; `generalKandelDistributionHelper`: `GeneralKandelDistributionHelper` ; `offerLogic`: [`OfferLogic`](OfferLogic.md) ; `configuration`: `KandelConfiguration` ; `seeder`: [`KandelSeeder`](KandelSeeder.md) ; `generalKandelDistributionGenerator`: `GeneralKandelDistributionGenerator`  }\>
 
 #### Inherited from
 
@@ -275,10 +316,6 @@ ___
 
 Retrieves the total balance available for this Kandel instance of the offered token for the given offer type.
 
-**`Remarks`**
-
-with liquidity sharing and a router, this will be shared among other Kandel instances.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -290,6 +327,10 @@ with liquidity sharing and a router, this will be shared among other Kandel inst
 `Promise`<`Big`\>
 
 The balance of the asset.
+
+**`Remarks`**
+
+with liquidity sharing and a router, this will be shared among other Kandel instances.
 
 #### Inherited from
 
@@ -307,10 +348,6 @@ ___
 
 Retrieves the amount of liquidity that is available for the Kandel instance but not offered by the given offer type.
 
-**`Remarks`**
-
-with liquidity sharing and a router, the balance will be shared among other Kandel instances and the unpublished can be seen as a buffer.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -322,6 +359,10 @@ with liquidity sharing and a router, the balance will be shared among other Kand
 `Promise`<`Big`\>
 
 the unpublished liquidity.
+
+**`Remarks`**
+
+with liquidity sharing and a router, the balance will be shared among other Kandel instances and the unpublished can be seen as a buffer.
 
 #### Inherited from
 
@@ -527,13 +568,13 @@ ___
 
 ### <a id="getofferids" name="getofferids"></a> getOfferIds
 
-▸ **getOfferIds**(): `Promise`<{ `bids`: { `offerId`: `number` ; `index`: `number`  }[] ; `asks`: { `offerId`: `number` ; `index`: `number`  }[]  }\>
+▸ **getOfferIds**(): `Promise`<\{ `bids`: \{ `offerId`: `number` ; `index`: `number`  }[] ; `asks`: \{ `offerId`: `number` ; `index`: `number`  }[]  }\>
 
 Retrieves the Mangrove offer ids for all offers.
 
 #### Returns
 
-`Promise`<{ `bids`: { `offerId`: `number` ; `index`: `number`  }[] ; `asks`: { `offerId`: `number` ; `index`: `number`  }[]  }\>
+`Promise`<\{ `bids`: \{ `offerId`: `number` ; `index`: `number`  }[] ; `asks`: \{ `offerId`: `number` ; `index`: `number`  }[]  }\>
 
 The Mangrove offer ids for all offers along with their offer type and Kandel index.
 
@@ -549,13 +590,13 @@ ___
 
 ### <a id="getoffers" name="getoffers"></a> getOffers
 
-▸ **getOffers**(): `Promise`<{ `bids`: { `index`: `number` = x.index; `live`: `boolean` ; `id`: `number` ; `gasprice`: `number` ; `maker`: `string` ; `gasreq`: `number` ; `tick`: `number` ; `price`: `Big` ; `gives`: `Big` ; `wants`: `Big` ; `volume`: `Big` ; `nextAtTick`: `undefined` \| `number` ; `prevAtTick`: `undefined` \| `number` ; `gasbase`: `number`  }[] ; `asks`: { `index`: `number` = x.index; `live`: `boolean` ; `id`: `number` ; `gasprice`: `number` ; `maker`: `string` ; `gasreq`: `number` ; `tick`: `number` ; `price`: `Big` ; `gives`: `Big` ; `wants`: `Big` ; `volume`: `Big` ; `nextAtTick`: `undefined` \| `number` ; `prevAtTick`: `undefined` \| `number` ; `gasbase`: `number`  }[]  }\>
+▸ **getOffers**(): `Promise`<\{ `bids`: \{ `index`: `number` = x.index; `live`: `boolean` ; `id`: `number` ; `gasprice`: `number` ; `maker`: `string` ; `gasreq`: `number` ; `tick`: `number` ; `price`: `Big` ; `gives`: `Big` ; `wants`: `Big` ; `volume`: `Big` ; `nextAtTick`: `undefined` \| `number` ; `prevAtTick`: `undefined` \| `number` ; `gasbase`: `number`  }[] ; `asks`: \{ `index`: `number` = x.index; `live`: `boolean` ; `id`: `number` ; `gasprice`: `number` ; `maker`: `string` ; `gasreq`: `number` ; `tick`: `number` ; `price`: `Big` ; `gives`: `Big` ; `wants`: `Big` ; `volume`: `Big` ; `nextAtTick`: `undefined` \| `number` ; `prevAtTick`: `undefined` \| `number` ; `gasbase`: `number`  }[]  }\>
 
 Retrieves all offers for the Kandel instance by querying the market.
 
 #### Returns
 
-`Promise`<{ `bids`: { `index`: `number` = x.index; `live`: `boolean` ; `id`: `number` ; `gasprice`: `number` ; `maker`: `string` ; `gasreq`: `number` ; `tick`: `number` ; `price`: `Big` ; `gives`: `Big` ; `wants`: `Big` ; `volume`: `Big` ; `nextAtTick`: `undefined` \| `number` ; `prevAtTick`: `undefined` \| `number` ; `gasbase`: `number`  }[] ; `asks`: { `index`: `number` = x.index; `live`: `boolean` ; `id`: `number` ; `gasprice`: `number` ; `maker`: `string` ; `gasreq`: `number` ; `tick`: `number` ; `price`: `Big` ; `gives`: `Big` ; `wants`: `Big` ; `volume`: `Big` ; `nextAtTick`: `undefined` \| `number` ; `prevAtTick`: `undefined` \| `number` ; `gasbase`: `number`  }[]  }\>
+`Promise`<\{ `bids`: \{ `index`: `number` = x.index; `live`: `boolean` ; `id`: `number` ; `gasprice`: `number` ; `maker`: `string` ; `gasreq`: `number` ; `tick`: `number` ; `price`: `Big` ; `gives`: `Big` ; `wants`: `Big` ; `volume`: `Big` ; `nextAtTick`: `undefined` \| `number` ; `prevAtTick`: `undefined` \| `number` ; `gasbase`: `number`  }[] ; `asks`: \{ `index`: `number` = x.index; `live`: `boolean` ; `id`: `number` ; `gasprice`: `number` ; `maker`: `string` ; `gasreq`: `number` ; `tick`: `number` ; `price`: `Big` ; `gives`: `Big` ; `wants`: `Big` ; `volume`: `Big` ; `nextAtTick`: `undefined` \| `number` ; `prevAtTick`: `undefined` \| `number` ; `gasbase`: `number`  }[]  }\>
 
 #### Inherited from
 
@@ -604,12 +645,6 @@ ___
 
 Retrieves the minimum volume for a given offer type.
 
-**`Dev`**
-
-**`See`**
-
-seeder.getMinimumVolumeForGasreq for parameterized function.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -621,6 +656,12 @@ seeder.getMinimumVolumeForGasreq for parameterized function.
 `Promise`<`Big`\>
 
 The minimum volume for the given offer type.
+
+**`Dev`**
+
+**`See`**
+
+seeder.getMinimumVolumeForGasreq for parameterized function.
 
 #### Inherited from
 
@@ -634,7 +675,7 @@ ___
 
 ### <a id="getminimumoroverrides" name="getminimumoroverrides"></a> getMinimumOrOverrides
 
-▸ `Protected` **getMinimumOrOverrides**(`params`): `Promise`<{ `minimumBasePerOffer`: `Big` ; `minimumQuotePerOffer`: `Big`  }\>
+▸ **getMinimumOrOverrides**(`params`): `Promise`<\{ `minimumBasePerOffer`: `Big` ; `minimumQuotePerOffer`: `Big`  }\>
 
 Retrieves the minimum volumes for base and quote, or the provided overrides.
 
@@ -648,7 +689,7 @@ Retrieves the minimum volumes for base and quote, or the provided overrides.
 
 #### Returns
 
-`Promise`<{ `minimumBasePerOffer`: `Big` ; `minimumQuotePerOffer`: `Big`  }\>
+`Promise`<\{ `minimumBasePerOffer`: `Big` ; `minimumQuotePerOffer`: `Big`  }\>
 
 The minimum volumes for base and quote, or the provided overrides.
 
@@ -664,13 +705,9 @@ ___
 
 ### <a id="calculatedistributionwithuniformlychangedvolume" name="calculatedistributionwithuniformlychangedvolume"></a> calculateDistributionWithUniformlyChangedVolume
 
-▸ **calculateDistributionWithUniformlyChangedVolume**(`params`): `Promise`<{ `distribution`: [`GeneralKandelDistribution`](GeneralKandelDistribution.md) ; `totalBaseChange`: `Big` ; `totalQuoteChange`: `Big`  }\>
+▸ **calculateDistributionWithUniformlyChangedVolume**(`params`): `Promise`<\{ `distribution`: [`GeneralKandelDistribution`](GeneralKandelDistribution.md) ; `totalBaseChange`: `Big` ; `totalQuoteChange`: `Big`  }\>
 
 Calculates a new distribution based on the provided offers and deltas.
-
-**`Remarks`**
-
-The base and quote deltas are applied uniformly to all offers, except during decrease where offers are kept above their minimum volume.
 
 #### Parameters
 
@@ -687,9 +724,13 @@ The base and quote deltas are applied uniformly to all offers, except during dec
 
 #### Returns
 
-`Promise`<{ `distribution`: [`GeneralKandelDistribution`](GeneralKandelDistribution.md) ; `totalBaseChange`: `Big` ; `totalQuoteChange`: `Big`  }\>
+`Promise`<\{ `distribution`: [`GeneralKandelDistribution`](GeneralKandelDistribution.md) ; `totalBaseChange`: `Big` ; `totalQuoteChange`: `Big`  }\>
 
 The new distribution for the live offers, dead offers are not included.
+
+**`Remarks`**
+
+The base and quote deltas are applied uniformly to all offers, except during decrease where offers are kept above their minimum volume.
 
 #### Inherited from
 
@@ -809,7 +850,7 @@ ___
 
 ### <a id="getgasreqandgasprice" name="getgasreqandgasprice"></a> getGasreqAndGasprice
 
-▸ **getGasreqAndGasprice**(`gasreq?`, `gasprice?`): `Promise`<{ `gasreq`: `number` ; `gasprice`: `number`  }\>
+▸ **getGasreqAndGasprice**(`gasreq?`, `gasprice?`): `Promise`<\{ `gasreq`: `number` ; `gasprice`: `number`  }\>
 
 #### Parameters
 
@@ -820,7 +861,7 @@ ___
 
 #### Returns
 
-`Promise`<{ `gasreq`: `number` ; `gasprice`: `number`  }\>
+`Promise`<\{ `gasreq`: `number` ; `gasprice`: `number`  }\>
 
 #### Inherited from
 
@@ -838,10 +879,6 @@ ___
 
 Determines the required provision for the offers in the distribution or the supplied offer count.
 
-**`Remarks`**
-
-Existing locked provision or balance on Mangrove is not accounted for.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -858,6 +895,10 @@ Existing locked provision or balance on Mangrove is not accounted for.
 `Promise`<`Big`\>
 
 The provision required for the number of offers.
+
+**`Remarks`**
+
+Existing locked provision or balance on Mangrove is not accounted for.
 
 #### Inherited from
 
@@ -902,8 +943,8 @@ Calculates the provision locked for a set of offers based on the given parameter
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `existingOffers` | `Object` | the offers to calculate provision for. |
-| `existingOffers.bids` | { `gasprice`: `number` ; `gasreq`: `number` ; `gasbase`: `number`  }[] | - |
-| `existingOffers.asks` | { `gasprice`: `number` ; `gasreq`: `number` ; `gasbase`: `number`  }[] | - |
+| `existingOffers.bids` | \{ `gasprice`: `number` ; `gasreq`: `number` ; `gasbase`: `number`  }[] | - |
+| `existingOffers.asks` | \{ `gasprice`: `number` ; `gasreq`: `number` ; `gasbase`: `number`  }[] | - |
 
 #### Returns
 
@@ -927,10 +968,6 @@ ___
 
 Gets the missing provision based on provision already available on Mangrove, potentially locked by existing offers. It assumes all locked provision will be made available via deprovision or due to offers being replaced.
 
-**`Remarks`**
-
-If neither params.distribution nor params.offerCount is provided, then the current number of price points is used.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -948,6 +985,10 @@ If neither params.distribution nor params.offerCount is provided, then the curre
 
 the additional required provision, in ethers.
 
+**`Remarks`**
+
+If neither params.distribution nor params.offerCount is provided, then the current number of price points is used.
+
 #### Inherited from
 
 [CoreKandelInstance](CoreKandelInstance.md).[getMissingProvision](CoreKandelInstance.md#getmissingprovision)
@@ -964,10 +1005,6 @@ ___
 
 Gets the missing provision based on provision already available on Mangrove, potentially locked by existing offers, and the new distribution requiring provision. It assumes all the provision locked in the existingOffers will be made available via deprovision or due to offers being updated.
 
-**`Remarks`**
-
-If neither distribution nor askCount or bidCount is provided, then the current number of price points less the stepSize is used.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -979,14 +1016,18 @@ If neither distribution nor askCount or bidCount is provided, then the current n
 | `params.bidCount?` | `number` | The number of bids to calculate the provision for. Optional. |
 | `params.askCount?` | `number` | The number of asks to calculate the provision for. Optional. |
 | `existingOffers` | `Object` | - |
-| `existingOffers.bids` | { `gasprice`: `number` ; `gasreq`: `number` ; `gasbase`: `number`  }[] | - |
-| `existingOffers.asks` | { `gasprice`: `number` ; `gasreq`: `number` ; `gasbase`: `number`  }[] | - |
+| `existingOffers.bids` | \{ `gasprice`: `number` ; `gasreq`: `number` ; `gasbase`: `number`  }[] | - |
+| `existingOffers.asks` | \{ `gasprice`: `number` ; `gasreq`: `number` ; `gasbase`: `number`  }[] | - |
 
 #### Returns
 
 `Promise`<`Big`\>
 
 the additional required provision, in ethers.
+
+**`Remarks`**
+
+If neither distribution nor askCount or bidCount is provided, then the current number of price points less the stepSize is used.
 
 #### Inherited from
 
@@ -1000,13 +1041,9 @@ ___
 
 ### <a id="getrawparametersforpopulate" name="getrawparametersforpopulate"></a> getRawParametersForPopulate
 
-▸ **getRawParametersForPopulate**(`params`, `overrides?`): `Promise`<{ `overridesWithFunds`: `PayableOverrides` ; `rawParameters`: `KandelParameters` ; `rawDepositBaseAmount`: `BigNumber` ; `rawDepositQuoteAmount`: `BigNumber`  }\>
+▸ **getRawParametersForPopulate**(`params`, `overrides?`): `Promise`<\{ `overridesWithFunds`: `PayableOverrides` ; `rawParameters`: `KandelParameters` ; `rawDepositBaseAmount`: `BigNumber` ; `rawDepositQuoteAmount`: `BigNumber`  }\>
 
 Gets the raw parameters for invoking populate
-
-**`See`**
-
-getRequiredProvision.
 
 #### Parameters
 
@@ -1022,9 +1059,13 @@ getRequiredProvision.
 
 #### Returns
 
-`Promise`<{ `overridesWithFunds`: `PayableOverrides` ; `rawParameters`: `KandelParameters` ; `rawDepositBaseAmount`: `BigNumber` ; `rawDepositQuoteAmount`: `BigNumber`  }\>
+`Promise`<\{ `overridesWithFunds`: `PayableOverrides` ; `rawParameters`: `KandelParameters` ; `rawDepositBaseAmount`: `BigNumber` ; `rawDepositQuoteAmount`: `BigNumber`  }\>
 
 The raw parameters.
+
+**`See`**
+
+getRequiredProvision.
 
 #### Inherited from
 
@@ -1041,14 +1082,6 @@ ___
 ▸ **populateGeneralDistribution**(`params`, `overrides?`): `Promise`<`ContractTransaction`[]\>
 
 Populates the offers in the distribution for the Kandel instance and sets parameters.
-
-**`See`**
-
-getRequiredProvision. (if a distribution is provided)
-
-**`Remarks`**
-
-If this function is invoked with a different distribution, e.g., due to new pricePoints, or stepSize, then first retract all offers; otherwise, Kandel will enter an inconsistent state. This function does not set the baseQuoteTickOffset for geometric Kandels.
 
 #### Parameters
 
@@ -1068,6 +1101,14 @@ If this function is invoked with a different distribution, e.g., due to new pric
 `Promise`<`ContractTransaction`[]\>
 
 The transaction(s) used to populate the offers.
+
+**`See`**
+
+getRequiredProvision. (if a distribution is provided)
+
+**`Remarks`**
+
+If this function is invoked with a different distribution, e.g., due to new pricePoints, or stepSize, then first retract all offers; otherwise, Kandel will enter an inconsistent state. This function does not set the baseQuoteTickOffset for geometric Kandels.
 
 #### Inherited from
 
@@ -1146,11 +1187,6 @@ ___
 
 Retracts offers and withdraws tokens and provision
 
-**`Remarks`**
-
-This function or retractOffers should be used to retract all offers before changing the baseQuoteTickOffset, pricePoints, or stepSize using populate.
-If offers are retracted over multiple transactions, then the chunks are retracted in opposite order from the populate function.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -1172,6 +1208,11 @@ If offers are retracted over multiple transactions, then the chunks are retracte
 
 The transaction(s) used to retract the offers.
 
+**`Remarks`**
+
+This function or retractOffers should be used to retract all offers before changing the baseQuoteTickOffset, pricePoints, or stepSize using populate.
+If offers are retracted over multiple transactions, then the chunks are retracted in opposite order from the populate function.
+
 #### Inherited from
 
 [CoreKandelInstance](CoreKandelInstance.md).[retractAndWithdraw](CoreKandelInstance.md#retractandwithdraw)
@@ -1187,12 +1228,6 @@ ___
 ▸ **retractOffers**(`params?`, `overrides?`): `Promise`<`ContractTransaction`[]\>
 
 Retracts offers
-
-**`Remarks`**
-
-This function or retractAndWithdraw should be used to retract all offers before changing the baseQuoteTickOffset, pricePoints, or stepSize using populate.
-If offers are retracted over multiple transactions, then the chunks are retracted in opposite order from the populate function.
-Note that when retracting an offer the dual should also be retracted, else it can be resurrected.
 
 #### Parameters
 
@@ -1211,6 +1246,12 @@ Note that when retracting an offer the dual should also be retracted, else it ca
 
 The transaction(s) used to retract the offers.
 
+**`Remarks`**
+
+This function or retractAndWithdraw should be used to retract all offers before changing the baseQuoteTickOffset, pricePoints, or stepSize using populate.
+If offers are retracted over multiple transactions, then the chunks are retracted in opposite order from the populate function.
+Note that when retracting an offer the dual should also be retracted, else it can be resurrected.
+
 #### Inherited from
 
 [CoreKandelInstance](CoreKandelInstance.md).[retractOffers](CoreKandelInstance.md#retractoffers)
@@ -1223,11 +1264,9 @@ ___
 
 ### <a id="retractofferchunks" name="retractofferchunks"></a> retractOfferChunks
 
-▸ **retractOfferChunks**(`params`, `overrides`): `Promise`<{ `txs`: `ContractTransaction`[] ; `lastChunk`: { `from`: `number` ; `to`: `number`  }  }\>
+▸ **retractOfferChunks**(`params`, `overrides`): `Promise`<\{ `txs`: `ContractTransaction`[] ; `lastChunk`: \{ `from`: `number` ; `to`: `number`  }  }\>
 
 Retracts offers
-
-**`Dev`**
 
 #### Parameters
 
@@ -1244,9 +1283,11 @@ Retracts offers
 
 #### Returns
 
-`Promise`<{ `txs`: `ContractTransaction`[] ; `lastChunk`: { `from`: `number` ; `to`: `number`  }  }\>
+`Promise`<\{ `txs`: `ContractTransaction`[] ; `lastChunk`: \{ `from`: `number` ; `to`: `number`  }  }\>
 
 The transaction(s) used to retract the offers.
+
+**`Dev`**
 
 #### Inherited from
 
@@ -1264,10 +1305,6 @@ ___
 
 Withdraws tokens from the Kandel instance.
 
-**`Remarks`**
-
-it is up to the caller to make sure there are still enough funds for live offers.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -1283,6 +1320,10 @@ it is up to the caller to make sure there are still enough funds for live offers
 `Promise`<`ContractTransaction`\>
 
 The transaction used to withdraw the offers.
+
+**`Remarks`**
+
+it is up to the caller to make sure there are still enough funds for live offers.
 
 #### Inherited from
 
@@ -1354,13 +1395,9 @@ ___
 
 ### <a id="create" name="create"></a> create
 
-▸ `Static` **create**(`params`): `Promise`<[`GeometricKandelInstance`](GeometricKandelInstance.md)\>
+▸ **create**(`params`): `Promise`<[`GeometricKandelInstance`](GeometricKandelInstance.md)\>
 
 Creates a GeometricKandelInstance object to interact with a Kandel strategy on Mangrove.
-
-**`Dev`**
-
-If a factory function is provided for the market, then remember to disconnect market when no longer needed.
 
 #### Parameters
 
@@ -1377,6 +1414,10 @@ If a factory function is provided for the market, then remember to disconnect ma
 
 A new GeometricKandelInstance.
 
+**`Dev`**
+
+If a factory function is provided for the market, then remember to disconnect market when no longer needed.
+
 #### Defined in
 
 @mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelInstance.ts:58
@@ -1385,13 +1426,13 @@ ___
 
 ### <a id="getbasequotetickoffset" name="getbasequotetickoffset"></a> getBaseQuoteTickOffset
 
-▸ **getBaseQuoteTickOffset**(): `Promise`<{ `baseQuoteTickOffset`: `number` ; `priceRatio`: `Big`  }\>
+▸ **getBaseQuoteTickOffset**(): `Promise`<\{ `baseQuoteTickOffset`: `number` ; `priceRatio`: `Big`  }\>
 
 Gets the base quote tick offset stored on the contract and the equivalent price ratio.
 
 #### Returns
 
-`Promise`<{ `baseQuoteTickOffset`: `number` ; `priceRatio`: `Big`  }\>
+`Promise`<\{ `baseQuoteTickOffset`: `number` ; `priceRatio`: `Big`  }\>
 
 #### Defined in
 
@@ -1401,13 +1442,9 @@ ___
 
 ### <a id="getgeometricparameterswithoverrides" name="getgeometricparameterswithoverrides"></a> getGeometricParametersWithOverrides
 
-▸ **getGeometricParametersWithOverrides**(`parameters`, `distributionBaseQuoteTickOffset?`): `Promise`<{ `currentBaseQuoteTickOffset`: `number` ; `newBaseQuoteTickOffset`: `number`  }\>
+▸ **getGeometricParametersWithOverrides**(`parameters`, `distributionBaseQuoteTickOffset?`): `Promise`<\{ `currentBaseQuoteTickOffset`: `number` ; `newBaseQuoteTickOffset`: `number`  }\>
 
 Gets new geometric Kandel parameters based on current and some overrides.
-
-**`Remarks`**
-
-base quote tick offset provided in the parameters must match a provided distribution.
 
 #### Parameters
 
@@ -1418,9 +1455,13 @@ base quote tick offset provided in the parameters must match a provided distribu
 
 #### Returns
 
-`Promise`<{ `currentBaseQuoteTickOffset`: `number` ; `newBaseQuoteTickOffset`: `number`  }\>
+`Promise`<\{ `currentBaseQuoteTickOffset`: `number` ; `newBaseQuoteTickOffset`: `number`  }\>
 
 The new and current geometric Kandel parameters.
+
+**`Remarks`**
+
+base quote tick offset provided in the parameters must match a provided distribution.
 
 #### Defined in
 
@@ -1458,12 +1499,6 @@ ___
 
 Determines the status of the Kandel instance based on the passed in offers.
 
-**`Remarks`**
-
-The expected prices is determined by extrapolating from a live offer closest to the mid price.
-Offers are expected to be live bids below the mid price and asks above.
-Offers are expected to be dead near the mid price due to the step size between the live bid and ask.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -1479,6 +1514,12 @@ Offers are expected to be dead near the mid price due to the step size between t
 `Promise`<`Statuses`\>
 
 The status of the Kandel instance.
+
+**`Remarks`**
+
+The expected prices is determined by extrapolating from a live offer closest to the mid price.
+Offers are expected to be live bids below the mid price and asks above.
+Offers are expected to be dead near the mid price due to the step size between the live bid and ask.
 
 #### Defined in
 
@@ -1521,11 +1562,6 @@ ___
 
 Calculates a new uniform distribution based on the available base and quote balance and min price and mid price.
 
-**`See`**
-
- - getOfferStatus or
- - getOfferStatusFromOffers .
-
 #### Parameters
 
 | Name | Type | Description |
@@ -1543,6 +1579,11 @@ Calculates a new uniform distribution based on the available base and quote bala
 
 The new distribution, which can be used to re-populate the Kandel instance with this exact distribution.
 
+**`See`**
+
+ - getOfferStatus or
+ - getOfferStatusFromOffers .
+
 #### Defined in
 
 @mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelInstance.ts:247
@@ -1554,14 +1595,6 @@ ___
 ▸ **populateGeometricDistribution**(`params`, `overrides?`): `Promise`<`ContractTransaction`[]\>
 
 Populates the offers in the distribution for the Kandel instance and sets parameters.
-
-**`See`**
-
-getRequiredProvision.
-
-**`Remarks`**
-
-If this function is invoked with a different distribution, e.g., due to new pricePoints, or stepSize, then first retract all offers; otherwise, Kandel will enter an inconsistent state. This function does not set the baseQuoteTickOffset for geometric Kandels.
 
 #### Parameters
 
@@ -1583,6 +1616,14 @@ If this function is invoked with a different distribution, e.g., due to new pric
 `Promise`<`ContractTransaction`[]\>
 
 The transaction(s) used to populate the offers.
+
+**`See`**
+
+getRequiredProvision.
+
+**`Remarks`**
+
+If this function is invoked with a different distribution, e.g., due to new pricePoints, or stepSize, then first retract all offers; otherwise, Kandel will enter an inconsistent state. This function does not set the baseQuoteTickOffset for geometric Kandels.
 
 #### Defined in
 
@@ -1653,7 +1694,7 @@ Populates the offers in the distribution for the geometric Kandel instance.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `chunks` | { `from`: `number` ; `to`: `number`  }[] | chunks to populate (from is inclusive, to is exclusive). |
+| `chunks` | \{ `from`: `number` ; `to`: `number`  }[] | chunks to populate (from is inclusive, to is exclusive). |
 | `distribution` | [`GeometricKandelDistribution`](GeometricKandelDistribution.md) | The geometric distribution. |
 | `overrides` | `Overrides` | The ethers overrides to use when calling the populateChunkFromOffset function. |
 
@@ -1666,40 +1707,3 @@ The transaction(s) used to populate the offers.
 #### Defined in
 
 @mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelInstance.ts:431
-
-## Constructors
-
-### <a id="constructor" name="constructor"></a> constructor
-
-• `Protected` **new GeometricKandelInstance**(`params`)
-
-Constructor.
-
-**`See`**
-
-create
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `params` | `Object` |
-| `params.address` | `string` |
-| `params.kandel` | `CoreKandel` |
-| `params.market` | [`Market`](Market.md) |
-| `params.distributionHelper` | `KandelDistributionHelper` |
-| `params.offerLogic` | [`OfferLogic`](OfferLogic.md) |
-| `params.configuration` | `KandelConfiguration` |
-| `params.seeder` | [`KandelSeeder`](KandelSeeder.md) |
-| `params.generalKandelDistributionGenerator` | `GeneralKandelDistributionGenerator` |
-| `params.geometricKandel` | `GeometricKandel` |
-| `params.geometricGenerator` | [`GeometricKandelDistributionGenerator`](GeometricKandelDistributionGenerator.md) |
-| `params.kandelStatus` | `GeometricKandelStatus` |
-
-#### Overrides
-
-[CoreKandelInstance](CoreKandelInstance.md).[constructor](CoreKandelInstance.md#constructor)
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelInstance.ts:94

@@ -133,15 +133,6 @@ The Mangrove instance this token is associated with.
 Convert base/quote from internal amount to public amount.
 Uses each token's `decimals` parameter.
 
-**`Example`**
-
-```
-const usdc = await mgv.token("USDC");
-token.fromUnits("1e7") // 10
-const dai = await mgv.token("DAI")
-market.fromUnits("1e18") // 1
-```
-
 #### Parameters
 
 | Name | Type |
@@ -151,6 +142,15 @@ market.fromUnits("1e18") // 1
 #### Returns
 
 `Big`
+
+**`Example`**
+
+```
+const usdc = await mgv.token("USDC");
+token.fromUnits("1e7") // 10
+const dai = await mgv.token("DAI")
+market.fromUnits("1e18") // 1
+```
 
 #### Inherited from
 
@@ -171,15 +171,6 @@ Uses each token's `decimals` parameter.
 
 If `bq` is `"base"`, will convert the base, the quote otherwise.
 
-**`Example`**
-
-```
-const usdc = await mgv.token("USDC");
-token.toUnits(10) // 10e7 as ethers.BigNumber
-const dai = await mgv.token("DAI")
-market.toUnits(1) // 1e18 as ethers.BigNumber
-```
-
 #### Parameters
 
 | Name | Type |
@@ -189,6 +180,15 @@ market.toUnits(1) // 1e18 as ethers.BigNumber
 #### Returns
 
 `BigNumber`
+
+**`Example`**
+
+```
+const usdc = await mgv.token("USDC");
+token.toUnits(10) // 10e7 as ethers.BigNumber
+const dai = await mgv.token("DAI")
+market.toUnits(1) // 1e18 as ethers.BigNumber
+```
 
 #### Inherited from
 
@@ -207,13 +207,6 @@ ___
 Convert human-readable amounts to a string with the given
 number of decimal places. Defaults to the token's decimals places.
 
-**`Example`**
-
-```
-token.toFixed("10.123"); // "10.12"
-token.toFixed(token.fromUnits("1e7"));
-```
-
 #### Parameters
 
 | Name | Type |
@@ -224,6 +217,13 @@ token.toFixed(token.fromUnits("1e7"));
 #### Returns
 
 `string`
+
+**`Example`**
+
+```
+token.toFixed("10.123"); // "10.12"
+token.toFixed(token.fromUnits("1e7"));
+```
 
 #### Inherited from
 
@@ -265,7 +265,7 @@ ___
 
 ### <a id="createtokenfromsymbolorid" name="createtokenfromsymbolorid"></a> createTokenFromSymbolOrId
 
-▸ `Static` **createTokenFromSymbolOrId**(`symbolOrId`, `mgv`, `options?`): `Promise`<[`Token`](Token.md)\>
+▸ **createTokenFromSymbolOrId**(`symbolOrId`, `mgv`, `options?`): `Promise`<[`Token`](Token.md)\>
 
 Create a Token instance, fetching data (decimals) from chain if needed.
 
@@ -289,7 +289,7 @@ ___
 
 ### <a id="createtokenfromsymbol" name="createtokenfromsymbol"></a> createTokenFromSymbol
 
-▸ `Static` **createTokenFromSymbol**(`symbol`, `mgv`, `options?`): `Promise`<[`Token`](Token.md)\>
+▸ **createTokenFromSymbol**(`symbol`, `mgv`, `options?`): `Promise`<[`Token`](Token.md)\>
 
 Create a Token instance, fetching data (decimals) from chain if needed.
 
@@ -313,7 +313,7 @@ ___
 
 ### <a id="createtokenfromid" name="createtokenfromid"></a> createTokenFromId
 
-▸ `Static` **createTokenFromId**(`id`, `mgv`, `options?`): `Promise`<[`Token`](Token.md)\>
+▸ **createTokenFromId**(`id`, `mgv`, `options?`): `Promise`<[`Token`](Token.md)\>
 
 Create a Token instance, fetching data (decimals) from chain if needed.
 
@@ -337,7 +337,7 @@ ___
 
 ### <a id="createtokenfromaddress" name="createtokenfromaddress"></a> createTokenFromAddress
 
-▸ `Static` **createTokenFromAddress**(`address`, `mgv`): `Promise`<[`Token`](Token.md)\>
+▸ **createTokenFromAddress**(`address`, `mgv`): `Promise`<[`Token`](Token.md)\>
 
 #### Parameters
 
@@ -358,7 +358,7 @@ ___
 
 ### <a id="gettokenaddress" name="gettokenaddress"></a> getTokenAddress
 
-▸ `Static` **getTokenAddress**(`symbolOrId`, `network`): `string`
+▸ **getTokenAddress**(`symbolOrId`, `network`): `string`
 
 Read a token address on the current network.
 

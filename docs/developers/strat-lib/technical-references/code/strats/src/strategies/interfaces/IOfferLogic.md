@@ -1,3 +1,5 @@
+# Solidity API
+
 ## IOfferLogic
 
 It is an IMaker for Mangrove.

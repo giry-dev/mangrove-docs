@@ -105,7 +105,7 @@ ___
 
 ### <a id="return" name="return"></a> return
 
-▸ `Optional` **return**(`value?`): `IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
+▸ **return**(`value?`): `IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
 
 #### Parameters
 
@@ -129,7 +129,7 @@ ___
 
 ### <a id="throw" name="throw"></a> throw
 
-▸ `Optional` **throw**(`e?`): `IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
+▸ **throw**(`e?`): `IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
 
 #### Parameters
 
@@ -161,7 +161,7 @@ ___
 
 #### Inherited from
 
-IterableIterator.\_\_@iterator@93
+IterableIterator.[iterator]
 
 #### Defined in
 

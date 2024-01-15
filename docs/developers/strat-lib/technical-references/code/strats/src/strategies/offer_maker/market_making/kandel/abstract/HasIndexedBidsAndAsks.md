@@ -1,3 +1,5 @@
+# Solidity API
+
 ## HasIndexedBidsAndAsks
 
 _utilizes the `IHasOfferListOfOfferType` contract._
@@ -41,38 +43,6 @@ uint256 length
 ```
 
 the length of the map.
-
-### askOfferIdOfIndex
-
-```solidity
-mapping(uint256 => uint256) askOfferIdOfIndex
-```
-
-Mangrove's offer id of an ask at a given index.
-
-### bidOfferIdOfIndex
-
-```solidity
-mapping(uint256 => uint256) bidOfferIdOfIndex
-```
-
-Mangrove's offer id of a bid at a given index.
-
-### indexOfAskOfferId
-
-```solidity
-mapping(uint256 => uint256) indexOfAskOfferId
-```
-
-An inverse mapping of askOfferIdOfIndex. E.g., indexOfAskOfferId[42] is the index in askOfferIdOfIndex at which ask of id #42 on Mangrove is stored.
-
-### indexOfBidOfferId
-
-```solidity
-mapping(uint256 => uint256) indexOfBidOfferId
-```
-
-An inverse mapping of bidOfferIdOfIndex. E.g., indexOfBidOfferId[42] is the index in bidOfferIdOfIndex at which bid of id #42 on Mangrove is stored.
 
 ### offerIdOfIndex
 

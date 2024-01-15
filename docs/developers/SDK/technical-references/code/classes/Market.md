@@ -135,7 +135,7 @@ ___
 
 ### <a id="connect" name="connect"></a> connect
 
-▸ `Static` **connect**(`params`): `Promise`<[`Market`](Market.md)\>
+▸ **connect**(`params`): `Promise`<[`Market`](Market.md)\>
 
 Connect to a market.
 
@@ -143,7 +143,7 @@ Connect to a market.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `params` | { `mgv`: [`Mangrove`](Mangrove.md)  } & [`Key`](../namespaces/Market-1.md#key) & `Partial`<[`OptionalParams`](../namespaces/Market-1.md#optionalparams)\> | A set of parameters identifying the market on Mangrove to connect to. |
+| `params` | \{ `mgv`: [`Mangrove`](Mangrove.md)  } & [`Key`](../namespaces/Market-1.md#key) & `Partial`<[`OptionalParams`](../namespaces/Market-1.md#optionalparams)\> | A set of parameters identifying the market on Mangrove to connect to. |
 
 #### Returns
 
@@ -258,7 +258,7 @@ ___
 
 ### <a id="requestbook" name="requestbook"></a> requestBook
 
-▸ **requestBook**(`opts?`): `Promise`<{ `asks`: [`Offer`](../namespaces/Market-1.md#offer)[] ; `bids`: [`Offer`](../namespaces/Market-1.md#offer)[]  }\>
+▸ **requestBook**(`opts?`): `Promise`<\{ `asks`: [`Offer`](../namespaces/Market-1.md#offer)[] ; `bids`: [`Offer`](../namespaces/Market-1.md#offer)[]  }\>
 
 Return the asks and bids semibook.
 
@@ -270,7 +270,7 @@ Return the asks and bids semibook.
 
 #### Returns
 
-`Promise`<{ `asks`: [`Offer`](../namespaces/Market-1.md#offer)[] ; `bids`: [`Offer`](../namespaces/Market-1.md#offer)[]  }\>
+`Promise`<\{ `asks`: [`Offer`](../namespaces/Market-1.md#offer)[] ; `bids`: [`Offer`](../namespaces/Market-1.md#offer)[]  }\>
 
 The asks and bids semibooks, with the offers that match the options.
 
@@ -282,13 +282,13 @@ ___
 
 ### <a id="spread" name="spread"></a> spread
 
-▸ **spread**(): `Promise`<{ `absoluteSpread`: `undefined` ; `relativeSpread`: `undefined` ; `tickSpread`: `undefined`  } \| { `absoluteSpread`: `Big` ; `relativeSpread`: `Big` ; `tickSpread`: `number`  }\>
+▸ **spread**(): `Promise`<\{ `absoluteSpread`: `undefined` ; `relativeSpread`: `undefined` ; `tickSpread`: `undefined`  } \| \{ `absoluteSpread`: `Big` ; `relativeSpread`: `Big` ; `tickSpread`: `number`  }\>
 
 Gets the absolute, relative, and tick spread between bids and asks on the market.
 
 #### Returns
 
-`Promise`<{ `absoluteSpread`: `undefined` ; `relativeSpread`: `undefined` ; `tickSpread`: `undefined`  } \| { `absoluteSpread`: `Big` ; `relativeSpread`: `Big` ; `tickSpread`: `number`  }\>
+`Promise`<\{ `absoluteSpread`: `undefined` ; `relativeSpread`: `undefined` ; `tickSpread`: `undefined`  } \| \{ `absoluteSpread`: `Big` ; `relativeSpread`: `Big` ; `tickSpread`: `number`  }\>
 
 #### Defined in
 
@@ -298,7 +298,7 @@ ___
 
 ### <a id="spread-1" name="spread-1"></a> spread
 
-▸ `Static` **spread**(`market`, `bestAsk?`, `bestBid?`): { `absoluteSpread`: `undefined` ; `relativeSpread`: `undefined` ; `tickSpread`: `undefined`  } \| { `absoluteSpread`: `Big` ; `relativeSpread`: `Big` ; `tickSpread`: `number`  }
+▸ **spread**(`market`, `bestAsk?`, `bestBid?`): \{ `absoluteSpread`: `undefined` ; `relativeSpread`: `undefined` ; `tickSpread`: `undefined`  } \| \{ `absoluteSpread`: `Big` ; `relativeSpread`: `Big` ; `tickSpread`: `number`  }
 
 Gets the absolute, relative, and tick spread between a bid and an ask on the market.
 
@@ -316,7 +316,7 @@ Gets the absolute, relative, and tick spread between a bid and an ask on the mar
 
 #### Returns
 
-{ `absoluteSpread`: `undefined` ; `relativeSpread`: `undefined` ; `tickSpread`: `undefined`  } \| { `absoluteSpread`: `Big` ; `relativeSpread`: `Big` ; `tickSpread`: `number`  }
+\{ `absoluteSpread`: `undefined` ; `relativeSpread`: `undefined` ; `tickSpread`: `undefined`  } \| \{ `absoluteSpread`: `Big` ; `relativeSpread`: `Big` ; `tickSpread`: `number`  }
 
 #### Defined in
 
@@ -575,10 +575,6 @@ Sign permit data. If action="buy", will permit buying base with spender's
 quote token. If action="sell", will permit buying quote with spender's base
 token.
 
-**`See`**
-
-[permit](Mangrove.md#permit)
-
 #### Parameters
 
 | Name | Type | Description |
@@ -592,6 +588,10 @@ token.
 
 a promise that resolves to the permit signature.
 
+**`See`**
+
+[Mangrove.permit](Mangrove.md#permit)
+
 #### Defined in
 
 @mangrovedao/mangrove.js/src/market.ts:946
@@ -603,6 +603,19 @@ ___
 ▸ **buy**(`params`, `overrides?`): `Promise`<[`Transaction`](../namespaces/Market-1.md#transaction)<[`OrderResult`](../namespaces/Market-1.md#orderresult)\>\>
 
 Market buy order. Will attempt to buy base token using quote tokens.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params` | [`TradeParams`](../namespaces/Market-1.md#tradeparams) | Trade parameters - see [Market.TradeParams](../namespaces/Market-1.md#tradeparams). |
+| `overrides` | `Overrides` | ethers overrides for the transaction. |
+
+#### Returns
+
+`Promise`<[`Transaction`](../namespaces/Market-1.md#transaction)<[`OrderResult`](../namespaces/Market-1.md#orderresult)\>\>
+
+a promise that resolves to the transaction response and the result of the trade.
 
 **`Remarks`**
 
@@ -618,19 +631,6 @@ const market = await mgv.market({base:"USDC",quote:"DAI"};
 market.buy({volume: 100, price: '1.01'}) //use strings to be exact
 ```
 
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `params` | [`TradeParams`](../namespaces/Market-1.md#tradeparams) | Trade parameters - see [TradeParams](../namespaces/Market-1.md#tradeparams). |
-| `overrides` | `Overrides` | ethers overrides for the transaction. |
-
-#### Returns
-
-`Promise`<[`Transaction`](../namespaces/Market-1.md#transaction)<[`OrderResult`](../namespaces/Market-1.md#orderresult)\>\>
-
-a promise that resolves to the transaction response and the result of the trade.
-
 #### Defined in
 
 @mangrovedao/mangrove.js/src/market.ts:988
@@ -642,6 +642,19 @@ ___
 ▸ **sell**(`params`, `overrides?`): `Promise`<[`Transaction`](../namespaces/Market-1.md#transaction)<[`OrderResult`](../namespaces/Market-1.md#orderresult)\>\>
 
 Market sell order. Will attempt to sell base token for quote tokens.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params` | [`TradeParams`](../namespaces/Market-1.md#tradeparams) | Trade parameters - see [Market.TradeParams](../namespaces/Market-1.md#tradeparams). |
+| `overrides` | `Overrides` | ethers overrides for the transaction. |
+
+#### Returns
+
+`Promise`<[`Transaction`](../namespaces/Market-1.md#transaction)<[`OrderResult`](../namespaces/Market-1.md#orderresult)\>\>
+
+a promise that resolves to the transaction response and the result of the trade.
 
 **`Remarks`**
 
@@ -657,19 +670,6 @@ const market = await mgv.market({base:"USDC",quote:"DAI"})
 market.sell({volume: 100, price: 1})
 ```
 
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `params` | [`TradeParams`](../namespaces/Market-1.md#tradeparams) | Trade parameters - see [TradeParams](../namespaces/Market-1.md#tradeparams). |
-| `overrides` | `Overrides` | ethers overrides for the transaction. |
-
-#### Returns
-
-`Promise`<[`Transaction`](../namespaces/Market-1.md#transaction)<[`OrderResult`](../namespaces/Market-1.md#orderresult)\>\>
-
-a promise that resolves to the transaction response and the result of the trade.
-
 #### Defined in
 
 @mangrovedao/mangrove.js/src/market.ts:1015
@@ -682,11 +682,6 @@ ___
 
 Estimate amount of gas for a buy order corresponding to the given trade parameters.
 
-**`See`**
-
- - [buy](Market.md#buy) for the corresponding trade method.
- - [TradeParams](../namespaces/Market-1.md#tradeparams) for a description of trade parameters
-
 #### Parameters
 
 | Name | Type | Description |
@@ -698,6 +693,11 @@ Estimate amount of gas for a buy order corresponding to the given trade paramete
 `Promise`<`BigNumber`\>
 
 a gas estimate for the trade.
+
+**`See`**
+
+ - [buy](Market.md#buy) for the corresponding trade method.
+ - [Market.TradeParams](../namespaces/Market-1.md#tradeparams) for a description of trade parameters
 
 #### Defined in
 
@@ -711,11 +711,6 @@ ___
 
 Estimate amount of gas for a sell order corresponding to the given trade parameters.
 
-**`See`**
-
- - [sell](Market.md#sell) for the corresponding trade method.
- - [TradeParams](../namespaces/Market-1.md#tradeparams) for a description of trade parameters
-
 #### Parameters
 
 | Name | Type | Description |
@@ -727,6 +722,11 @@ Estimate amount of gas for a sell order corresponding to the given trade paramet
 `Promise`<`BigNumber`\>
 
 a gas estimate for the trade.
+
+**`See`**
+
+ - [sell](Market.md#sell) for the corresponding trade method.
+ - [Market.TradeParams](../namespaces/Market-1.md#tradeparams) for a description of trade parameters
 
 #### Defined in
 
@@ -745,7 +745,7 @@ Update a resting order posted by MangroveOrder.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `ba` | [`BA`](../namespaces/Market-1.md#ba) | whether the offer is a bid or ask |
-| `params` | [`UpdateRestingOrderParams`](../namespaces/Market-1.md#updaterestingorderparams) | update parameters - see [UpdateRestingOrderParams](../namespaces/Market-1.md#updaterestingorderparams) |
+| `params` | [`UpdateRestingOrderParams`](../namespaces/Market-1.md#updaterestingorderparams) | update parameters - see [Market.UpdateRestingOrderParams](../namespaces/Market-1.md#updaterestingorderparams) |
 | `overrides` | `Overrides` | overrides for the transaction |
 
 #### Returns
@@ -787,13 +787,9 @@ ___
 
 ### <a id="clean" name="clean"></a> clean
 
-▸ **clean**(`params`, `overrides?`): `Promise`<{ `result`: `Promise`<[`CleanResult`](../namespaces/Market-1.md#cleanresult)\> ; `response`: `Promise`<`ContractTransaction`\>  }\>
+▸ **clean**(`params`, `overrides?`): `Promise`<\{ `result`: `Promise`<[`CleanResult`](../namespaces/Market-1.md#cleanresult)\> ; `response`: `Promise`<`ContractTransaction`\>  }\>
 
 Clean a set of given offers.
-
-**`See`**
-
-[CleanParams](../namespaces/Market-1.md#cleanparams) for a description of params.
 
 #### Parameters
 
@@ -804,9 +800,13 @@ Clean a set of given offers.
 
 #### Returns
 
-`Promise`<{ `result`: `Promise`<[`CleanResult`](../namespaces/Market-1.md#cleanresult)\> ; `response`: `Promise`<`ContractTransaction`\>  }\>
+`Promise`<\{ `result`: `Promise`<[`CleanResult`](../namespaces/Market-1.md#cleanresult)\> ; `response`: `Promise`<`ContractTransaction`\>  }\>
 
 a promise that resolves to the transasction response and the result of the cleaning.
+
+**`See`**
+
+[Market.CleanParams](../namespaces/Market-1.md#cleanparams) for a description of params.
 
 #### Defined in
 
@@ -820,17 +820,6 @@ ___
 
 Gets parameters to send to function `market.mgv.cleanerContract.cleanByImpersonation`.
 
-**`Remarks`**
-
-In more detail, the parameters should be an object with the following fields:
-`targets`: an array of
-   `offerId`: the offer to be cleaned
-   `takerWants`: the amount of base token (for asks) or quote token (for bids) the taker wants
-   `tick`: the of the offer to be cleaned
-   `gasreq`: the maximum gasreq the taker/cleaner, wants to use to clean the offer, has to be at least the same as the gasreq of the offer in order for it be cleaned
-`ba`: whether to clean `asks` or `bids`
-`taker`: specifies what taker to impersonate, if not specified, the caller of the function will be used
-
 #### Parameters
 
 | Name | Type |
@@ -842,6 +831,17 @@ In more detail, the parameters should be an object with the following fields:
 `Promise`<[`RawCleanParams`](../namespaces/Market-1.md#rawcleanparams)\>
 
 a promise that resolves to the raw parameters to send to the cleaner contract
+
+**`Remarks`**
+
+In more detail, the parameters should be an object with the following fields:
+`targets`: an array of
+   `offerId`: the offer to be cleaned
+   `takerWants`: the amount of base token (for asks) or quote token (for bids) the taker wants
+   `tick`: the of the offer to be cleaned
+   `gasreq`: the maximum gasreq the taker/cleaner, wants to use to clean the offer, has to be at least the same as the gasreq of the offer in order for it be cleaned
+`ba`: whether to clean `asks` or `bids`
+`taker`: specifies what taker to impersonate, if not specified, the caller of the function will be used
 
 #### Defined in
 
@@ -878,7 +878,7 @@ ___
 
 ▸ **simulateGas**(`ba`, `maxTick`, `fillVolume`, `fillWants`): `Promise`<`BigNumber`\>
 
-Uses [simulateMarketOrder](Semibook.md#simulatemarketorder) to simulate the gas required for a market order. An overhead of 50% is added to account for changes to the book and failing offers.
+Uses [Semibook.simulateMarketOrder](Semibook.md#simulatemarketorder) to simulate the gas required for a market order. An overhead of 50% is added to account for changes to the book and failing offers.
 
 #### Parameters
 
@@ -917,7 +917,7 @@ an estimate of how much base tokens you'd have to buy in order to spend 10 quote
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `params` | [`VolumeParams`](../namespaces/Market-1.md#volumeparams) | Parameters for the volume estimation - see [VolumeParams](../namespaces/Market-1.md#volumeparams) |
+| `params` | [`VolumeParams`](../namespaces/Market-1.md#volumeparams) | Parameters for the volume estimation - see [Market.VolumeParams](../namespaces/Market-1.md#volumeparams) |
 
 #### Returns
 
@@ -937,21 +937,21 @@ ___
 
 Convenience method: Estimate volume to be received given an amount of base/quote you are ready to spend.
 
-**`See`**
-
-[estimateVolume](Market.md#estimatevolume)
-
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `params` | [`DirectionlessVolumeParams`](../namespaces/Market-1.md#directionlessvolumeparams) | Parameters for the volume estimation - see [DirectionlessVolumeParams](../namespaces/Market-1.md#directionlessvolumeparams) |
+| `params` | [`DirectionlessVolumeParams`](../namespaces/Market-1.md#directionlessvolumeparams) | Parameters for the volume estimation - see [Market.DirectionlessVolumeParams](../namespaces/Market-1.md#directionlessvolumeparams) |
 
 #### Returns
 
 `Promise`<[`VolumeEstimate`](../namespaces/Market-1.md#volumeestimate)\>
 
 a promise that resolves to the volume estimation.
+
+**`See`**
+
+[estimateVolume](Market.md#estimatevolume)
 
 #### Defined in
 
@@ -965,21 +965,21 @@ ___
 
 Convenience method: Estimate volume to be spent given an amount of base/quote you want to receive.
 
-**`See`**
-
-[estimateVolume](Market.md#estimatevolume)
-
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `params` | [`DirectionlessVolumeParams`](../namespaces/Market-1.md#directionlessvolumeparams) | Parameters for the volume estimation - see [DirectionlessVolumeParams](../namespaces/Market-1.md#directionlessvolumeparams) |
+| `params` | [`DirectionlessVolumeParams`](../namespaces/Market-1.md#directionlessvolumeparams) | Parameters for the volume estimation - see [Market.DirectionlessVolumeParams](../namespaces/Market-1.md#directionlessvolumeparams) |
 
 #### Returns
 
 `Promise`<[`VolumeEstimate`](../namespaces/Market-1.md#volumeestimate)\>
 
 a promise that resolves to the volume estimation.
+
+**`See`**
+
+[estimateVolume](Market.md#estimatevolume)
 
 #### Defined in
 
@@ -993,12 +993,6 @@ ___
 
 Return config local to a market.
 
-**`Remarks`**
-
-* Amounts are converted to plain numbers.
-* density is converted to public token units per gas used
-* fee *remains* in basis points of the token being bought
-
 #### Returns
 
 `Object`
@@ -1009,6 +1003,12 @@ The config for the asks and bids side of the market.
 | :------ | :------ |
 | `asks` | [`LocalConfig`](../namespaces/Mangrove-1.md#localconfig) |
 | `bids` | [`LocalConfig`](../namespaces/Mangrove-1.md#localconfig) |
+
+**`Remarks`**
+
+* Amounts are converted to plain numbers.
+* density is converted to public token units per gas used
+* fee *remains* in basis points of the token being bought
 
 #### Defined in
 
@@ -1089,6 +1089,16 @@ ___
 
 Subscribe to order book updates.
 
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `cb` | [`MarketCallback`](../namespaces/Market-1.md#marketcallback)<`void`\> | a callback, which gets called whenever the order book is updated. |
+
+#### Returns
+
+`void`
+
 **`Remarks`**
 
 The first argument of cb, `event`, is a summary of the event.
@@ -1125,16 +1135,6 @@ market.subscribe((event,utils) => console.log(event.type, utils.book()))
 **`Note`**
 
 Only one subscription may be active at a time.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `cb` | [`MarketCallback`](../namespaces/Market-1.md#marketcallback)<`void`\> | a callback, which gets called whenever the order book is updated. |
-
-#### Returns
-
-`void`
 
 #### Defined in
 
@@ -1224,7 +1224,7 @@ ___
 
 ### <a id="getoutboundinbound-1" name="getoutboundinbound-1"></a> getOutboundInbound
 
-▸ `Static` **getOutboundInbound**<`T`\>(`ba`, `base`, `quote`): `Object`
+▸ **getOutboundInbound**<`T`\>(`ba`, `base`, `quote`): `Object`
 
 Determine which token will be Mangrove's outbound/inbound depending on whether you're working with bids or asks.
 
@@ -1261,7 +1261,7 @@ ___
 
 ### <a id="getbasequotevolumes" name="getbasequotevolumes"></a> getBaseQuoteVolumes
 
-▸ `Static` **getBaseQuoteVolumes**(`ba`, `gives`, `wants`): `Object`
+▸ **getBaseQuoteVolumes**(`ba`, `gives`, `wants`): `Object`
 
 Determine whether gives or wants will be baseVolume/quoteVolume depending on whether you're working with bids or asks.
 
@@ -1292,7 +1292,7 @@ ___
 
 ### <a id="getwantsforprice" name="getwantsforprice"></a> getWantsForPrice
 
-▸ `Static` **getWantsForPrice**(`ba`, `gives`, `price`): `Big`
+▸ **getWantsForPrice**(`ba`, `gives`, `price`): `Big`
 
 Determine the wants from gives and price depending on whether you're working with bids or asks.
 
@@ -1316,7 +1316,7 @@ ___
 
 ### <a id="getgivesforprice" name="getgivesforprice"></a> getGivesForPrice
 
-▸ `Static` **getGivesForPrice**(`ba`, `wants`, `price`): `Big`
+▸ **getGivesForPrice**(`ba`, `wants`, `price`): `Big`
 
 Determine the gives from wants and price depending on whether you're working with bids or asks.
 
@@ -1340,7 +1340,7 @@ ___
 
 ### <a id="getgiveswantsforvolumeatprice" name="getgiveswantsforvolumeatprice"></a> getGivesWantsForVolumeAtPrice
 
-▸ `Static` **getGivesWantsForVolumeAtPrice**(`ba`, `volume`, `price`): `Object`
+▸ **getGivesWantsForVolumeAtPrice**(`ba`, `volume`, `price`): `Object`
 
 Determine gives and wants from a volume (in base) and a price depending on whether you're working with bids or asks.
 
@@ -1387,7 +1387,7 @@ ___
 
 ### <a id="getdisplaydecimalsforpricedifferences-1" name="getdisplaydecimalsforpricedifferences-1"></a> getDisplayDecimalsForPriceDifferences
 
-▸ `Static` **getDisplayDecimalsForPriceDifferences**(`offers`): `number`
+▸ **getDisplayDecimalsForPriceDifferences**(`offers`): `number`
 
 Determine the first decimal place where the smallest price difference between neighboring offers is visible.
 

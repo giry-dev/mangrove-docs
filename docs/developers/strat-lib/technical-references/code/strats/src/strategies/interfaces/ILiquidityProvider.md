@@ -1,3 +1,5 @@
+# Solidity API
+
 ## ILiquidityProvider
 
 ### newOffer

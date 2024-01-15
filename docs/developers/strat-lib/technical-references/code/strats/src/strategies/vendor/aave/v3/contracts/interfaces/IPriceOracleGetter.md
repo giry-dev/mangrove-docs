@@ -1,3 +1,5 @@
+# Solidity API
+
 ## IPriceOracleGetter
 
 Interface for the Aave price oracle.

@@ -1,3 +1,5 @@
+# Solidity API
+
 ## WETH
 
 ### deposit
@@ -123,12 +125,6 @@ struct Heap {
   enum CarefulMath.MathError mErr;
   uint256 errCode;
 }
-```
-
-### heapError
-
-```solidity
-function heapError(struct CompoundModule.Heap heap) private pure returns (bool)
 ```
 
 ### maxGettableUnderlying

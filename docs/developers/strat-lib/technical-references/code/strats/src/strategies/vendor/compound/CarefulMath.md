@@ -1,3 +1,5 @@
+# Solidity API
+
 ## CarefulMath
 
 Derived from OpenZeppelin's SafeMath library

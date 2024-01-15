@@ -8,6 +8,28 @@ custom_edit_url: null
 
 Entrypoint for the Kandel strategies. Kandel is an Automated Market Making strategy that uses on-chain order flow to repost offers instantly, without any latency. Within a market and price range you select, Kandel automatically posts bids and asks. Its main goal is to buy low and sell high - profits are made through accumulated spread.
 
+## Constructors
+
+### <a id="constructor" name="constructor"></a> constructor
+
+• **new KandelStrategies**(`mgv`): [`KandelStrategies`](KandelStrategies.md)
+
+Constructor
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `mgv` | [`Mangrove`](Mangrove.md) | The Mangrove to interact with. |
+
+#### Returns
+
+[`KandelStrategies`](KandelStrategies.md)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandelStrategies.ts:34
+
 ## Properties
 
 ### <a id="seeder" name="seeder"></a> seeder
@@ -56,24 +78,6 @@ The default configuration values to use for Kandel.
 
 @mangrovedao/mangrove.js/src/kandelStrategies.ts:29
 
-## Constructors
-
-### <a id="constructor" name="constructor"></a> constructor
-
-• **new KandelStrategies**(`mgv`)
-
-Constructor
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `mgv` | [`Mangrove`](Mangrove.md) | The Mangrove to interact with. |
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/kandelStrategies.ts:34
-
 ## Methods
 
 ### <a id="instance" name="instance"></a> instance
@@ -81,10 +85,6 @@ Constructor
 ▸ **instance**(`params`): `Promise`<[`GeometricKandelInstance`](GeometricKandelInstance.md)\>
 
 Creates a KandelInstance object to interact with a Kandel strategy on Mangrove.
-
-**`Dev`**
-
-If a factory function is provided for the market, then remember to disconnect market when no longer needed.
 
 #### Parameters
 
@@ -99,6 +99,10 @@ If a factory function is provided for the market, then remember to disconnect ma
 `Promise`<[`GeometricKandelInstance`](GeometricKandelInstance.md)\>
 
 A new KandelInstance.
+
+**`Dev`**
+
+If a factory function is provided for the market, then remember to disconnect market when no longer needed.
 
 #### Defined in
 

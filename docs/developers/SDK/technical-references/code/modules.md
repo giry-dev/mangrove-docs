@@ -37,6 +37,12 @@ custom_edit_url: null
 - [Token](classes/Token.md)
 - [TickPriceHelper](classes/TickPriceHelper.md)
 
+## References
+
+### <a id="default" name="default"></a> default
+
+Renames and re-exports [Mangrove](classes/Mangrove.md)
+
 ## Variables
 
 ### <a id="configuration" name="configuration"></a> configuration
@@ -47,12 +53,12 @@ custom_edit_url: null
 
 | Name | Type |
 | :------ | :------ |
-| `addresses` | { `getAllAddresses`: (`network`: `string`) => [`string`, `string`][] ; `getAddress`: (`name`: `string`, `network`: `string`) => `string` ; `watchAddress`: (`network`: `string`, `name`: `string`, `callback`: (`address`: `string`) => `void`) => `void` ; `setAddress`: (`name`: `string`, `address`: `string`, `network`: `string`) => `void`  } |
+| `addresses` | \{ `getAllAddresses`: (`network`: `string`) => [`string`, `string`][] ; `getAddress`: (`name`: `string`, `network`: `string`) => `string` ; `watchAddress`: (`network`: `string`, `name`: `string`, `callback`: (`address`: `string`) => `void`) => `void` ; `setAddress`: (`name`: `string`, `address`: `string`, `network`: `string`) => `void`  } |
 | `addresses.getAllAddresses` | (`network`: `string`) => [`string`, `string`][] |
 | `addresses.getAddress` | (`name`: `string`, `network`: `string`) => `string` |
 | `addresses.watchAddress` | (`network`: `string`, `name`: `string`, `callback`: (`address`: `string`) => `void`) => `void` |
 | `addresses.setAddress` | (`name`: `string`, `address`: `string`, `network`: `string`) => `void` |
-| `tokens` | { `isTokenIdRegistered`: (`tokenId`: `string`) => `boolean` ; `getDefaultIdForSymbolOnNetwork`: (`tokenSymbol`: `string`, `network`: `string`) => `string` ; `getTokenIdFromAddress`: (`address`: `string`, `network`: `string`) => `undefined` \| `string` ; `getDecimals`: (`tokenId`: `string`) => `number` ; `getOrFetchDecimals`: (`tokenId`: `string`, `provider`: `Provider`) => `Promise`<`number`\> ; `fetchDecimals`: (`tokenId`: `string`, `provider`: `Provider`) => `Promise`<`number`\> ; `getSymbol`: (`tokenId`: `string`) => `undefined` \| `string` ; `getOrFetchSymbol`: (`tokenId`: `string`, `provider`: `Provider`) => `Promise`<`string`\> ; `fetchSymbol`: (`tokenId`: `string`, `provider`: `Provider`) => `Promise`<`string`\> ; `fetchSymbolFromAddress`: (`address`: `string`, `provider`: `Provider`) => `Promise`<`string`\> ; `getDisplayName`: (`tokenId`: `string`) => `undefined` \| `string` ; `getDisplayedDecimals`: (`tokenId`: `string`) => `number` ; `getDisplayedPriceDecimals`: (`tokenId`: `string`) => `number` ; `getCashness`: (`tokenId`: `string`) => `undefined` \| `number` ; `setDefaultIdForSymbolOnNetwork`: (`tokenSymbol`: `string`, `network`: `string`, `tokenId`: `string`) => `void` ; `setDecimals`: (`tokenId`: `string`, `dec`: `number`) => `void` ; `setSymbol`: (`tokenId`: `string`, `symbol`: `string`) => `void` ; `setDisplayName`: (`tokenId`: `string`, `displayName`: `string`) => `void` ; `setDisplayedDecimals`: (`tokenId`: `string`, `dec`: `number`) => `void` ; `setDisplayedPriceDecimals`: (`tokenId`: `string`, `dec`: `number`) => `void` ; `setCashness`: (`tokenId`: `string`, `cashness`: `number`) => `void`  } |
+| `tokens` | \{ `isTokenIdRegistered`: (`tokenId`: `string`) => `boolean` ; `getDefaultIdForSymbolOnNetwork`: (`tokenSymbol`: `string`, `network`: `string`) => `string` ; `getTokenIdFromAddress`: (`address`: `string`, `network`: `string`) => `undefined` \| `string` ; `getDecimals`: (`tokenId`: `string`) => `number` ; `getOrFetchDecimals`: (`tokenId`: `string`, `provider`: `Provider`) => `Promise`<`number`\> ; `fetchDecimals`: (`tokenId`: `string`, `provider`: `Provider`) => `Promise`<`number`\> ; `getSymbol`: (`tokenId`: `string`) => `undefined` \| `string` ; `getOrFetchSymbol`: (`tokenId`: `string`, `provider`: `Provider`) => `Promise`<`string`\> ; `fetchSymbol`: (`tokenId`: `string`, `provider`: `Provider`) => `Promise`<`string`\> ; `fetchSymbolFromAddress`: (`address`: `string`, `provider`: `Provider`) => `Promise`<`string`\> ; `getDisplayName`: (`tokenId`: `string`) => `undefined` \| `string` ; `getDisplayedDecimals`: (`tokenId`: `string`) => `number` ; `getDisplayedPriceDecimals`: (`tokenId`: `string`) => `number` ; `getCashness`: (`tokenId`: `string`) => `undefined` \| `number` ; `setDefaultIdForSymbolOnNetwork`: (`tokenSymbol`: `string`, `network`: `string`, `tokenId`: `string`) => `void` ; `setDecimals`: (`tokenId`: `string`, `dec`: `number`) => `void` ; `setSymbol`: (`tokenId`: `string`, `symbol`: `string`) => `void` ; `setDisplayName`: (`tokenId`: `string`, `displayName`: `string`) => `void` ; `setDisplayedDecimals`: (`tokenId`: `string`, `dec`: `number`) => `void` ; `setDisplayedPriceDecimals`: (`tokenId`: `string`, `dec`: `number`) => `void` ; `setCashness`: (`tokenId`: `string`, `cashness`: `number`) => `void`  } |
 | `tokens.isTokenIdRegistered` | [object Object] |
 | `tokens.getDefaultIdForSymbolOnNetwork` | [object Object] |
 | `tokens.getTokenIdFromAddress` | (`address`: `string`, `network`: `string`) => `undefined` \| `string` |
@@ -74,14 +80,14 @@ custom_edit_url: null
 | `tokens.setDisplayedDecimals` | (`tokenId`: `string`, `dec`: `number`) => `void` |
 | `tokens.setDisplayedPriceDecimals` | (`tokenId`: `string`, `dec`: `number`) => `void` |
 | `tokens.setCashness` | (`tokenId`: `string`, `cashness`: `number`) => `void` |
-| `reliableEventSubscriber` | { `getLogsTimeout`: (`network`: `string`) => `number` ; `getBlockManagerOptions`: (`network`: `string`) => `Options` ; `getReliableHttpProviderOptions`: (`network`: `string`) => `Omit`<`Options`, ``"onError"``\> ; `getReliableWebSocketOptions`: (`network`: `string`) => `Omit`<`Options`, ``"wsUrl"``\>  } |
+| `reliableEventSubscriber` | \{ `getLogsTimeout`: (`network`: `string`) => `number` ; `getBlockManagerOptions`: (`network`: `string`) => `Options` ; `getReliableHttpProviderOptions`: (`network`: `string`) => `Omit`<`Options`, ``"onError"``\> ; `getReliableWebSocketOptions`: (`network`: `string`) => `Omit`<`Options`, ``"wsUrl"``\>  } |
 | `reliableEventSubscriber.getLogsTimeout` | (`network`: `string`) => `number` |
 | `reliableEventSubscriber.getBlockManagerOptions` | (`network`: `string`) => `Options` |
 | `reliableEventSubscriber.getReliableHttpProviderOptions` | (`network`: `string`) => `Omit`<`Options`, ``"onError"``\> |
 | `reliableEventSubscriber.getReliableWebSocketOptions` | (`network`: `string`) => `Omit`<`Options`, ``"wsUrl"``\> |
-| `kandel` | { `getRawConfiguration`: () => `PartialKandelConfiguration`  } |
+| `kandel` | \{ `getRawConfiguration`: () => `PartialKandelConfiguration`  } |
 | `kandel.getRawConfiguration` | () => `PartialKandelConfiguration` |
-| `mangroveOrder` | { `getRestingOrderGasreq`: (`network`: `string`) => `number` ; `getRestingOrderGaspriceFactor`: (`network`: `string`) => `number` ; `getTakeGasOverhead`: (`network`: `string`) => `number`  } |
+| `mangroveOrder` | \{ `getRestingOrderGasreq`: (`network`: `string`) => `number` ; `getRestingOrderGaspriceFactor`: (`network`: `string`) => `number` ; `getTakeGasOverhead`: (`network`: `string`) => `number`  } |
 | `mangroveOrder.getRestingOrderGasreq` | (`network`: `string`) => `number` |
 | `mangroveOrder.getRestingOrderGaspriceFactor` | (`network`: `string`) => `number` |
 | `mangroveOrder.getTakeGasOverhead` | (`network`: `string`) => `number` |
@@ -91,12 +97,6 @@ custom_edit_url: null
 #### Defined in
 
 @mangrovedao/mangrove.js/src/configuration.ts:795
-
-## References
-
-### <a id="default" name="default"></a> default
-
-Renames and re-exports [Mangrove](classes/Mangrove.md)
 
 ## Functions
 

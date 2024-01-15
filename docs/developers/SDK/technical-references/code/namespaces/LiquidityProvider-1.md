@@ -30,7 +30,7 @@ ___
 
 ### <a id="offerparams" name="offerparams"></a> OfferParams
 
-Ƭ **OfferParams**: { `price`: `Bigish` ; `volume`: `Bigish`  } & `OptParams` \| { `tick`: `number` ; `gives`: `Bigish`  } & `OptParams` \| { `wants`: `Bigish` ; `gives`: `Bigish`  } & `OptParams`
+Ƭ **OfferParams**: \{ `price`: `Bigish` ; `volume`: `Bigish`  } & `OptParams` \| \{ `tick`: `number` ; `gives`: `Bigish`  } & `OptParams` \| \{ `wants`: `Bigish` ; `gives`: `Bigish`  } & `OptParams`
 
 #### Defined in
 

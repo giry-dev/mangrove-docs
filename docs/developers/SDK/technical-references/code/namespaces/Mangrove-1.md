@@ -39,7 +39,7 @@ ___
 
 ### <a id="localconfigfull" name="localconfigfull"></a> LocalConfigFull
 
-Ƭ **LocalConfigFull**: [`LocalConfig`](Mangrove-1.md#localconfig) & { `lock`: `boolean` ; `last`: `number` \| `undefined` ; `binPosInLeaf`: `number` ; `root`: `number` ; `level1`: `ethers.BigNumber` ; `level2`: `ethers.BigNumber` ; `level3`: `ethers.BigNumber`  }
+Ƭ **LocalConfigFull**: [`LocalConfig`](Mangrove-1.md#localconfig) & \{ `lock`: `boolean` ; `last`: `number` \| `undefined` ; `binPosInLeaf`: `number` ; `root`: `number` ; `level1`: `ethers.BigNumber` ; `level2`: `ethers.BigNumber` ; `level3`: `ethers.BigNumber`  }
 
 #### Defined in
 
@@ -116,7 +116,7 @@ ___
 
 ### <a id="openmarketinfo" name="openmarketinfo"></a> OpenMarketInfo
 
-Ƭ **OpenMarketInfo**: [`KeyResolved`](Market-1.md#keyresolved) & { `asksConfig?`: [`LocalConfig`](Mangrove-1.md#localconfig) ; `bidsConfig?`: [`LocalConfig`](Mangrove-1.md#localconfig)  }
+Ƭ **OpenMarketInfo**: [`KeyResolved`](Market-1.md#keyresolved) & \{ `asksConfig?`: [`LocalConfig`](Mangrove-1.md#localconfig) ; `bidsConfig?`: [`LocalConfig`](Mangrove-1.md#localconfig)  }
 
 #### Defined in
 
@@ -126,7 +126,7 @@ ___
 
 ### <a id="createoptions" name="createoptions"></a> CreateOptions
 
-Ƭ **CreateOptions**: [`CreateSignerOptions`](../interfaces/eth.CreateSignerOptions.md) & { `shouldNotListenToNewEvents?`: `boolean` ; `blockManagerOptions?`: `BlockManager.Options` ; `reliableWebsocketProviderOptions?`: `ReliableWebsocketProvider.Options` ; `reliableHttpProviderOptions?`: `ReliableHttpProvider.Options`  }
+Ƭ **CreateOptions**: [`CreateSignerOptions`](../interfaces/eth.CreateSignerOptions.md) & \{ `shouldNotListenToNewEvents?`: `boolean` ; `blockManagerOptions?`: `BlockManager.Options` ; `reliableWebsocketProviderOptions?`: `ReliableWebsocketProvider.Options` ; `reliableHttpProviderOptions?`: `ReliableHttpProvider.Options`  }
 
 #### Defined in
 

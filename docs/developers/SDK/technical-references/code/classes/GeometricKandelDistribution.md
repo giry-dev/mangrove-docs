@@ -16,6 +16,41 @@ A geometric distribution of bids and ask for a geometric Kandel.
 
   ↳ **`GeometricKandelDistribution`**
 
+## Constructors
+
+### <a id="constructor" name="constructor"></a> constructor
+
+• **new GeometricKandelDistribution**(`geometricHelper`, `baseQuoteTickIndex0`, `baseQuoteTickOffset`, `firstAskIndex`, `bidGives`, `askGives`, `pricePoints`, `stepSize`, `offers`, `market`): [`GeometricKandelDistribution`](GeometricKandelDistribution.md)
+
+Constructor
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `geometricHelper` | `GeometricKandelDistributionHelper` | - |
+| `baseQuoteTickIndex0` | `number` | The base quote tick index of the first price point. |
+| `baseQuoteTickOffset` | `number` | The number of ticks to jump between two price points - this gives the geometric progression. Should be >=1. |
+| `firstAskIndex` | `number` | The index of the first live ask in the distribution. |
+| `bidGives` | `undefined` \| `BigSource` | The amount of quote to give for each bid (undefined means derive from constant ask gives) |
+| `askGives` | `undefined` \| `BigSource` | The amount of base to give for each ask (undefined means derive from constant bid gives) |
+| `pricePoints` | `number` | The number of price points in the distribution. |
+| `stepSize` | `number` | The step size used when transporting funds from an offer to its dual. Should be >=1. |
+| `offers` | `OfferDistribution` | The distribution of bids and asks. |
+| `market` | [`KeyResolvedForCalculation`](../namespaces/Market-1.md#keyresolvedforcalculation) | - |
+
+#### Returns
+
+[`GeometricKandelDistribution`](GeometricKandelDistribution.md)
+
+#### Overrides
+
+[KandelDistribution](KandelDistribution.md).[constructor](KandelDistribution.md#constructor)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistribution.ts:28
+
 ## Properties
 
 ### <a id="basequotetickindex0" name="basequotetickindex0"></a> baseQuoteTickIndex0
@@ -146,37 +181,6 @@ ___
 
 @mangrovedao/mangrove.js/src/kandel/kandelDistribution.ts:31
 
-## Constructors
-
-### <a id="constructor" name="constructor"></a> constructor
-
-• **new GeometricKandelDistribution**(`geometricHelper`, `baseQuoteTickIndex0`, `baseQuoteTickOffset`, `firstAskIndex`, `bidGives`, `askGives`, `pricePoints`, `stepSize`, `offers`, `market`)
-
-Constructor
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `geometricHelper` | `GeometricKandelDistributionHelper` | - |
-| `baseQuoteTickIndex0` | `number` | The base quote tick index of the first price point. |
-| `baseQuoteTickOffset` | `number` | The number of ticks to jump between two price points - this gives the geometric progression. Should be >=1. |
-| `firstAskIndex` | `number` | The index of the first live ask in the distribution. |
-| `bidGives` | `undefined` \| `BigSource` | The amount of quote to give for each bid (undefined means derive from constant ask gives) |
-| `askGives` | `undefined` \| `BigSource` | The amount of base to give for each ask (undefined means derive from constant bid gives) |
-| `pricePoints` | `number` | The number of price points in the distribution. |
-| `stepSize` | `number` | The step size used when transporting funds from an offer to its dual. Should be >=1. |
-| `offers` | `OfferDistribution` | The distribution of bids and asks. |
-| `market` | [`KeyResolvedForCalculation`](../namespaces/Market-1.md#keyresolvedforcalculation) | - |
-
-#### Overrides
-
-[KandelDistribution](KandelDistribution.md).[constructor](KandelDistribution.md#constructor)
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/kandel/geometricKandel/geometricKandelDistribution.ts:28
-
 ## Methods
 
 ### <a id="getpriceratio" name="getpriceratio"></a> getPriceRatio
@@ -197,7 +201,7 @@ ___
 
 ### <a id="chunkgeometricdistribution" name="chunkgeometricdistribution"></a> chunkGeometricDistribution
 
-▸ **chunkGeometricDistribution**(`maxOffersInChunk`): { `from`: `number` ; `to`: `number`  }[]
+▸ **chunkGeometricDistribution**(`maxOffersInChunk`): \{ `from`: `number` ; `to`: `number`  }[]
 
 Split a distribution into chunks according to the maximum number of offers in a single chunk.
 
@@ -209,7 +213,7 @@ Split a distribution into chunks according to the maximum number of offers in a 
 
 #### Returns
 
-{ `from`: `number` ; `to`: `number`  }[]
+\{ `from`: `number` ; `to`: `number`  }[]
 
 The chunks.
 
@@ -225,13 +229,13 @@ ___
 
 Verifies the distribution is valid.
 
-**`Remarks`**
-
-Throws if the distribution is invalid.
-
 #### Returns
 
 `void`
+
+**`Remarks`**
+
+Throws if the distribution is invalid.
 
 #### Overrides
 
@@ -303,7 +307,7 @@ ___
 
 ### <a id="getliveoffers" name="getliveoffers"></a> getLiveOffers
 
-▸ **getLiveOffers**(`offerType`): { `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
+▸ **getLiveOffers**(`offerType`): \{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
 
 Gets all live offers of the given type (offers with non-zero gives)
 
@@ -315,7 +319,7 @@ Gets all live offers of the given type (offers with non-zero gives)
 
 #### Returns
 
-{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
+\{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
 
 All live offers of the given type (offers with non-zero gives)
 
@@ -331,7 +335,7 @@ ___
 
 ### <a id="getdeadoffers" name="getdeadoffers"></a> getDeadOffers
 
-▸ **getDeadOffers**(`offerType`): { `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
+▸ **getDeadOffers**(`offerType`): \{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
 
 Gets all dead offers of the given type (offers with 0 gives)
 
@@ -343,7 +347,7 @@ Gets all dead offers of the given type (offers with 0 gives)
 
 #### Returns
 
-{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
+\{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }[]
 
 All dead offers of the given type (offers with 0 gives)
 
@@ -359,7 +363,7 @@ ___
 
 ### <a id="getofferatindex" name="getofferatindex"></a> getOfferAtIndex
 
-▸ **getOfferAtIndex**(`offerType`, `index`): `undefined` \| { `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }
+▸ **getOfferAtIndex**(`offerType`, `index`): `undefined` \| \{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }
 
 Gets the offer at the given index for the given offer type
 
@@ -372,7 +376,7 @@ Gets the offer at the given index for the given offer type
 
 #### Returns
 
-`undefined` \| { `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }
+`undefined` \| \{ `index`: `number` ; `gives`: `Big` ; `tick`: `number`  }
 
 The offer at the given index for the given offer type.
 
@@ -400,8 +404,8 @@ An offer distribution adorned with prices of offers.
 
 | Name | Type |
 | :------ | :------ |
-| `bids` | { `index`: `number` ; `gives`: `Big` ; `tick`: `number` ; `price`: `Big`  }[] |
-| `asks` | { `index`: `number` ; `gives`: `Big` ; `tick`: `number` ; `price`: `Big`  }[] |
+| `bids` | \{ `index`: `number` ; `gives`: `Big` ; `tick`: `number` ; `price`: `Big`  }[] |
+| `asks` | \{ `index`: `number` ; `gives`: `Big` ; `tick`: `number` ; `price`: `Big`  }[] |
 
 #### Inherited from
 
@@ -524,10 +528,6 @@ ___
 
 Determines the required provision for the price points in the distribution.
 
-**`Remarks`**
-
-This takes into account that each of the offers represent a price point which can become both an ask and a bid which both require provision.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -542,6 +542,10 @@ This takes into account that each of the offers represent a price point which ca
 `Promise`<`Big`\>
 
 The provision required for the number of offers.
+
+**`Remarks`**
+
+This takes into account that each of the offers represent a price point which can become both an ask and a bid which both require provision.
 
 #### Inherited from
 
@@ -589,7 +593,7 @@ ___
 
 ### <a id="mapasyncoffers" name="mapasyncoffers"></a> mapAsyncOffers
 
-▸ `Static` **mapAsyncOffers**<`T`, `R`\>(`offers`, `f`): `Promise`<{ `bids`: `Awaited`<`R`\>[] ; `asks`: `Awaited`<`R`\>[]  }\>
+▸ **mapAsyncOffers**<`T`, `R`\>(`offers`, `f`): `Promise`<\{ `bids`: `Awaited`<`R`\>[] ; `asks`: `Awaited`<`R`\>[]  }\>
 
 Maps bids and asks arrays to a new value using an async function
 
@@ -611,7 +615,7 @@ Maps bids and asks arrays to a new value using an async function
 
 #### Returns
 
-`Promise`<{ `bids`: `Awaited`<`R`\>[] ; `asks`: `Awaited`<`R`\>[]  }\>
+`Promise`<\{ `bids`: `Awaited`<`R`\>[] ; `asks`: `Awaited`<`R`\>[]  }\>
 
 #### Inherited from
 
@@ -625,7 +629,7 @@ ___
 
 ### <a id="mapoffers" name="mapoffers"></a> mapOffers
 
-▸ `Static` **mapOffers**<`T`, `R`\>(`offers`, `f`): `Object`
+▸ **mapOffers**<`T`, `R`\>(`offers`, `f`): `Object`
 
 Maps bids and asks arrays to a new value using a function
 

@@ -1,3 +1,5 @@
+# Solidity API
+
 ## CoreKandel
 
 `CoreKandel` is agnostic to the chosen price distribution.

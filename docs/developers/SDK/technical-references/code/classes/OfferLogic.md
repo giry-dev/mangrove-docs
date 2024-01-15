@@ -10,6 +10,28 @@ custom_edit_url: null
 
 The OfferLogic class connects to a Maker contract implementing the IOfferLogic interface.
 
+## Constructors
+
+### <a id="constructor" name="constructor"></a> constructor
+
+• **new OfferLogic**(`mgv`, `logic`, `signer?`): [`OfferLogic`](OfferLogic.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `mgv` | [`Mangrove`](Mangrove.md) |
+| `logic` | `string` |
+| `signer?` | `SignerOrProvider` |
+
+#### Returns
+
+[`OfferLogic`](OfferLogic.md)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/offerLogic.ts:19
+
 ## Properties
 
 ### <a id="mgv" name="mgv"></a> mgv
@@ -50,39 +72,21 @@ ___
 
 @mangrovedao/mangrove.js/src/offerLogic.ts:17
 
-## Constructors
-
-### <a id="constructor" name="constructor"></a> constructor
-
-• **new OfferLogic**(`mgv`, `logic`, `signer?`)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `mgv` | [`Mangrove`](Mangrove.md) |
-| `logic` | `string` |
-| `signer?` | `SignerOrProvider` |
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/offerLogic.ts:19
-
 ## Methods
 
 ### <a id="router" name="router"></a> router
 
 ▸ **router**(): `Promise`<`undefined` \| `AbstractRouter`\>
 
-**`Note`**
-
-Returns this logic's router. If logic has no router this call will return `undefined`
-
 #### Returns
 
 `Promise`<`undefined` \| `AbstractRouter`\>
 
 the router ethers.js contract responding to the `AbstractRouter` abi.
+
+**`Note`**
+
+Returns this logic's router. If logic has no router this call will return `undefined`
 
 #### Defined in
 
@@ -112,11 +116,6 @@ ___
 
 ▸ **approve**(`tokenId`, `args?`): `Promise`<`ContractTransaction`\>
 
-**`Note`**
-
-logic approves signer or `args.optSpender` to spend a certain token on its behalf
-This has to be done for each token the signer's wishes to ask or bid for.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -130,6 +129,11 @@ This has to be done for each token the signer's wishes to ask or bid for.
 #### Returns
 
 `Promise`<`ContractTransaction`\>
+
+**`Note`**
+
+logic approves signer or `args.optSpender` to spend a certain token on its behalf
+This has to be done for each token the signer's wishes to ask or bid for.
 
 #### Defined in
 
@@ -208,10 +212,6 @@ ___
 
 ▸ **activate**(`tokenSymbolsOrIds`, `overrides?`): `Promise`<`TransactionResponse`\>
 
-**`Note`**
-
-(contract admin action) activates logic
-
 #### Parameters
 
 | Name | Type | Description |
@@ -224,6 +224,10 @@ ___
 `Promise`<`TransactionResponse`\>
 
 The transaction used to activate the OfferLogic.
+
+**`Note`**
+
+(contract admin action) activates logic
 
 #### Defined in
 
@@ -301,10 +305,6 @@ ___
 
 Retrieves amount of provision locked for the offer on the offer logic which can be redeemed if the offer is retracted.
 
-**`Remarks`**
-
-Provision is either locked on Mangrove or for, e.g., a forwarder, on the offer logic itself.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -318,6 +318,10 @@ Provision is either locked on Mangrove or for, e.g., a forwarder, on the offer l
 `Promise`<`Big`\>
 
 the amount of provision locked for the offer on the offer logic.
+
+**`Remarks`**
+
+Provision is either locked on Mangrove or for, e.g., a forwarder, on the offer logic itself.
 
 #### Defined in
 
