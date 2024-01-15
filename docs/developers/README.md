@@ -3,9 +3,9 @@ title: Developers
 sidebar_position: 1
 ---
 
-# Welcome to the Developers doc
+# Welcome to the Developer docs
 
-The purpose of the Mangrove Developers doc is to:
+The Mangrove Developers documentation section exists to help developers:
 
 * learn about Mangrove [core protocol](./contracts/README.md),
 * understand how trading [strategies](./strat-lib/README.md) can be created and plugged in,
