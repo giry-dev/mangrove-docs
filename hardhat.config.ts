@@ -16,7 +16,7 @@ export default {
   solidity: "0.8.20",
   docgen: {
     outputDir: 'docs/developers/strat-lib/technical-references/code',
-    exclude: [ 'core/', 'strats/src/toy_strategies/', 'strats/src/strategies/interfaces/ITesterContract.sol', 'strats/src/strategies/offer_forwarder/ForwarderTester.sol', 'strats/src/strategies/offer_maker/DirectTester.sol'],
+    exclude: [ 'core/lib', 'core/src/core', 'core/src/periphery', 'core/src/preprocessed', 'core/src/toy', 'strats/src/toy_strategies/'],
     templates: './templates',
     pages: 'files',
   }, 

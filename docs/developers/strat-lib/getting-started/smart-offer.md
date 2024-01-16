@@ -25,7 +25,7 @@ Start by creating a new `OfferMakerTutorial.sol` file in the `src` folder, and a
 Add the imports we are going to need, along with a standard solidity preamble.
 
 ```solidity reference title="OfferMakerTutorial.sol - Preamble"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L1-L9
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L1-L9
 ```
 
 ### Constructor
@@ -37,7 +37,7 @@ We will skip some details here, which you can read more about later; %%routers|r
 
 
 ```solidity reference title="OfferMakerTutorial.sol - Contract and constructor"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L13-L26
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L13-L26
 ```
 
 ### Add offer management functions
@@ -51,7 +51,7 @@ The abstract contract `Direct` has internal functions that allows one to manage 
 Add the below code to your contract.
 
 ```solidity reference title="OfferMakerTutorial.sol - Offer management functions"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L30-L70
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L30-L70
 ```
 
 ### Emit in Posthook
@@ -59,7 +59,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ad
 When using our new contract, we can inspect traces and addresses but illustrative purposes, let's insert the following to emit an event in the %%posthook|makerPosthook%% when the offer is successfully taken.
 
 ```solidity reference title="OfferMakerTutorial.sol - Emit in Posthook"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L74-L83
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L74-L83
 ```
 
 There are more hooks to enable the Mangrovian abilities of %%last look|last-look%% and more advanced %%reactive liquidity|reactive-liquidity%%.
@@ -154,7 +154,7 @@ Now that the contract is ready, we can use it to post an offer - note that we ha
 In our example, we are offering 1 WBTC (gives) at tick 50 (tick 50 means the price ratio is `1.0001^50`).
 
 :::info Note
-Later, if you'd like to take your own offer with a [market order](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#market-order) for testing purpose, it would be handy to have your offer at the very top of the book (i.e. with the best price possible). To do this, you could post your offer with the smallest tick (`-887272`), or use the [`MIN_TICK`](https://github.com/mangrovedao/mangrove-core/blob/699762b0f3801151cee1a6b64c5396a4304996b0/lib/core/Constants.sol#L52) constant in your test contract.
+Later, if you'd like to take your own offer with a [market order](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#market-order) for testing purpose, it would be handy to have your offer at the very top of the book (i.e. with the best price possible). To do this, you could post your offer with the smallest tick (`-887272`), or use the [`MIN_TICK`](https://github.com/mangrovedao/mangrove-core/blob/2ae172805fd8b309c30b2dc877dba66245abbb3e/lib/core/Constants.sol#L52) constant in your test contract.
 :::
 
 ```bash

@@ -21,7 +21,7 @@ Recall that `Direct` is an abstract implementation of `MangroveOffer`, which is 
 The Direct constructor looks like this:
 
 ```solidity reference title="Direct contract's constructor"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/strategies/offer_maker/abstract/Direct.sol#L28-L35
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/offer_maker/abstract/Direct.sol#L28-L35
 ```
 Details:
 
@@ -39,7 +39,7 @@ The `router_` argument can be either the address of a deployed %%router|router%%
 We will allow users of `OfferMaker` to supply a %%router|router%%, and use the following constructor for our contract:
 
 ```solidity reference title="Preamble and constructor"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/OfferMaker.sol#L1-L22
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/OfferMaker.sol#L1-L22
 ```
 
 :::caution `gasreq`
@@ -55,7 +55,7 @@ However, `Direct` does not expose any function able to [create new offers](../..
 Our implementation of `newOffer` is simply to expose the internal `_newOffer` provided by Direct making sure the function is admin restricted (`Direct` provides the appropriate modifier `onlyAdmin`):
 
 ```solidity reference title="Offer management functions"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/OfferMaker.sol#L24-L64
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/OfferMaker.sol#L24-L64
 ```
 
 FIXME: Describe the new functions in `OfferMaker`: `newOfferByVolume` and `updateOfferByVolume`
@@ -92,7 +92,7 @@ We modify the simple constructor of `OfferMaker` to take into account the additi
 In the constructor below, we also show how to instantiate and setup a simple %%router|router%% in order to use the deployer's account as fund reserve.
 
 ```solidity reference title="Amplifier - Preamble and constructor"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/Amplifier.sol#L1-L49
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/Amplifier.sol#L1-L49
 ```
 
 Note that as we manually construct and configure `router_` and set it as the router of `Amplifier`, we initially send the constant `NO_ROUTER` as argument to the `Direct` constructor.
@@ -108,7 +108,7 @@ If we specify a `gasprice` of zero when posting the offer, Mangrove will use [it
 This leaves us having to provide the amount that the offer should %%`give`|gives%% in `BASE` token, and the amount of `STABLE1` and `STABLE2`, which the offer %%wants|wants%% - `wants1` and `wants2`. We also need to specify the TODO:%pivot ids|pivot-id% for insertion of the two offers (`pivot1` and `pivot2`) in the relevant %%offer lists|offer-list%%. As for `OfferMaker`, we only want the admin of the contract to able to post offers, so we use the modifier `onlyAdmin` again.
 
 ```solidity reference title="Amplifier - Publishing amplified offers"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/Amplifier.sol#L60-L115
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/Amplifier.sol#L60-L115
 ```
 
 In the implementation of `newAmplifiedOffers` notice the calls to the offer data getter `MGV.offers(address, address, uint)`: This returns a packed data structure `offer` whose fields `f` can be unpacked by doing `offer.f()` (see the documentation for the [offer data structure](../../contracts/technical-references/taking-and-making-offers/views-on-offers.md#views-on-offers)).
@@ -126,7 +126,7 @@ With `newAmplifiedOffers` implemented, we can now post new offers. We hope that 
 The signature and first line of our custom %%hook|hook%% looks like this:
 
 ```solidity reference title="Amplifier - Reposting the residual"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/Amplifier.sol#L120-L126
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/Amplifier.sol#L120-L126
 ```
 
 Notice that we call `super`'s implementation of the hook. This ultimately ends up attempting to repost the offer residual (cf. the documentation of [Post trade hooks for MangroveOffer](../background/offer-maker/mangrove-offer.md#post-trade-hooks) and the reference for [Customizing `makerPosthook`](../technical-references/main-hooks.md#customizing-makerposthook)). The return value captured in `repost_status` tells us whether the offer had a residual (in case of a %%maker partial fill|maker-partial-fill%%).
@@ -140,7 +140,7 @@ Direct offers that are partially filled are automatically reposted during postho
 We continue our implementation of the `__posthookSuccess__` hook by handling case 1:
 
 ```solidity reference title="Amplifier - Reposting case 1: An offer was reposted with a residual"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/Amplifier.sol#L132-L167
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/Amplifier.sol#L132-L167
 ```
 
 Notice the use of the hook [`__residualGives__`](../technical-references/code/strats/src/strategies/MangroveOffer.md#residualgives) in the code snippet above. For the offer currently being executed, it returns the %%give|gives%% at that offer when it is reposted. By default, this is calculated by subtracting what the taker took during %%`makerExecute`|makerExecute%% from what the offer originally gave.
@@ -162,7 +162,7 @@ In all of these cases we wish to retract the other offer from the book.
 We continue our hook by handling case 2 from our [breakdown above](#updating-an-under-collateralized-offer-on-the-fly).
 
 ```solidity reference title="Amplifier - Reposting case 2: Offer was not reposted"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/Amplifier.sol#L168-L172
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/Amplifier.sol#L168-L172
 ```
 
 :::warning Refunding offer automatically
@@ -180,5 +180,5 @@ When writing posthooks, we need to consider all possible outcomes. The first out
 If this happens, this means that the offer that was unsuccessfully taken is no longer live on Mangrove and that some %%bounty|bounty%% has been sent to the taker. However, in this case, we **know** that the *other* offer will also fail if taken. For this reason, in case if a trade fails, rather than waiting for the other offer to fail by itself, we can save some %%provision|provision%% and override [`posthookFallback`](../technical-references/main-hooks.md#posthook-after-trade-failure) to retract the other offer:
 
 ```solidity reference title="Amplifier - Managing offer failure"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/Amplifier.sol#L203-L218
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/Amplifier.sol#L203-L218
 

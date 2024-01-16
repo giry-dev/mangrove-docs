@@ -24,7 +24,7 @@ Routers receive requests from approved %%maker contracts|maker-contract%% (see [
 ### Push request
 
 ```solidity reference title=""
-https://github.com/mangrovedao/mangrove-strats/blob/82d730230ed2457b4f7bcdbaa7efb012db528203/src/strategies/routers/abstract/AbstractRouter.sol#L64-L69
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/routers/abstract/AbstractRouter.sol#L64-L69
 ```
 
 * **Input**: 
@@ -38,7 +38,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/82d730230ed2457b4f7bcdbaa7ef
 ### Pull request
 
 ```solidity reference title=""
-https://github.com/mangrovedao/mangrove-strats/blob/82d730230ed2457b4f7bcdbaa7efb012db528203/src/strategies/routers/abstract/AbstractRouter.sol#L43-L49
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/routers/abstract/AbstractRouter.sol#L43-L49
 ```
 * **Input**: 
   * `token` is the asset the maker contract wishes to pull
@@ -55,15 +55,15 @@ https://github.com/mangrovedao/mangrove-strats/blob/82d730230ed2457b4f7bcdbaa7ef
 ### Binding a router to a maker contract
 
 ```solidity reference title=""
-https://github.com/mangrovedao/mangrove-strats/blob/82d730230ed2457b4f7bcdbaa7efb012db528203/src/strategies/routers/abstract/AbstractRouter.sol#L43-L49
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/routers/abstract/AbstractRouter.sol#L43-L49
 ```
 
-Function approves `makerContract` as a user of the router. The [`unbind`](https://github.com/mangrovedao/mangrove-strats/blob/82d730230ed2457b4f7bcdbaa7efb012db528203/src/strategies/routers/abstract/AbstractRouter.sol#L110-L113) function can be called to revoke the approval. 
+Function approves `makerContract` as a user of the router. The [`unbind`](https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/routers/abstract/AbstractRouter.sol#L110-L113) function can be called to revoke the approval. 
 
 ### Router activation
 
 ```solidity reference title=""
-https://github.com/mangrovedao/mangrove-strats/blob/82d730230ed2457b4f7bcdbaa7efb012db528203/src/strategies/routers/abstract/AbstractRouter.sol#L138-L140
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/routers/abstract/AbstractRouter.sol#L138-L140
 ```
 
 * **Usage**: performs all router centric approvals that are necessary to route `token` liquidity. For instance a router using a lender might need to approve the lender for transferring `token` in deposit calls.
@@ -72,7 +72,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/82d730230ed2457b4f7bcdbaa7ef
 ### Router checklist
 
 ```solidity reference title=""
-https://github.com/mangrovedao/mangrove-strats/blob/82d730230ed2457b4f7bcdbaa7efb012db528203/src/strategies/routers/abstract/AbstractRouter.sol#L121-L125
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/routers/abstract/AbstractRouter.sol#L121-L125
 ```
 * **Usage**: verifies that the router has performed and received all the necessary approvals to route `token` liquidity for offer owner's `reserveId`. The function throws with a reason when the first missing approval is detected.
 * **SimpleRouter behavior**: it verifies that `reserveId` has approved the router for `token` transfer. Does not throw if offer owner's `reserveId` is the router itself.

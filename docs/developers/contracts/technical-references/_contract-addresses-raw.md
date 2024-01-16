@@ -2,11 +2,11 @@
 
 ## Core contract addresses
 
-| Contract | Version | Polygon Testnet - Mumbai |
-| --- | :---: | --- |
-| Mangrove | 2.0.1 | `0x80cd6Ef14c23dD3957FD5629141a9d7028557c39` |
-| MgvOracle | 2.0.1 | `0xC0fB136768e4b7725d674B8Bcd366A5dc2b5F976` |
-| MgvReader | 2.0.1 | `0x26d24Dd4aFcB9D1cD30baf804Fa22aFa643327CD` |
+| Contract | Version | Polygon Testnet - Mumbai | Sepolia Testnet |
+| --- | :---: | --- | --- |
+| Mangrove | 2.0.1 | `0x80cd6Ef14c23dD3957FD5629141a9d7028557c39` | `0x5B2F8058Df0A0b7744FDb4fD0885FbCD2394194C` |
+| MgvOracle | 2.0.1 | `0xC0fB136768e4b7725d674B8Bcd366A5dc2b5F976` | `0xF15A2ada64A9C3C14ca11359c8F1d22B063DB2AD` |
+| MgvReader | 2.0.1 | `0x26d24Dd4aFcB9D1cD30baf804Fa22aFa643327CD` | `0xE9F139F4D31477E71e746a6744e5314F9d6DB382` |
 
 
 ## Strats contract addresses
@@ -15,7 +15,7 @@
 | --- | :---: | --- |
 | AaveKandelSeeder | 1.0.0 | `0xC56CEc2A5912B49AAacEc0F391471Aeb4eb8D9D2` |
 | AavePooledRouter | 1.0.0 | `0xF147995331B1511D5fA7c196fA3466d647142C5e` |
-| KandelLib | 1.0.0 | `0xD68d9707895543244C7C48F0821e445826E12cd1` |
+| KandelLib | 1.0.0 | `0x6733a81A505a15eBd2CAB15eE2F978FF74A18dD4` |
 | KandelSeeder | 1.0.0 | `0x68A1778E4D08D8f6De35323a9040791CE8E9EF4C` |
 | MangroveOrder-Router | 1.0.0 | `0x983d34A6163F00D5DfDCC3f21ff70cECa2a8643D` |
 | MangroveOrder | 1.0.0 | `0x6469064C68B1Bd06861dabD20dF835Fa71Dff695` |
@@ -78,3 +78,11 @@ Mangrove's web app and other tools use the following token addresses which are p
 |  | `WBTC.T/MGV` | `0xf402f6197d979F0A4cba61596921a3d762520570` | Test WBTC deployed by Mangrove DAO |
 | WETH | `WETH.T/MGV` | `0x406bF0fcE108dD8864627EC6816AaFF8336f8231` | Test WETH deployed by Mangrove DAO |
 | WMATIC | `WMATIC.T/MGV` | `0x193163EeFfc795F9d573b171aB12cCDdE10392e8` | Test WMATIC deployed by Mangrove DAO |
+
+
+### Sepolia Testnet
+
+| Symbol | Mangrove ID | Address | Comment |
+| --- | --- | --- | --- |
+| USDC | `USDC.T/unknown1` | `0xf08A50178dfcDe18524640EA6618a1f965821715` | Test USDC deployed by unknown |
+| WETH | `WETH.T/unknown1` | `0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9` | Test WETH deployed by unknown |

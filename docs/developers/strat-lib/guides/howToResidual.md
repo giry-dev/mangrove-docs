@@ -14,7 +14,7 @@ In case an offer is %%partially taken|maker-partial-fill%%, the maker may want t
 In the tutorials the [posthook](../getting-started/smart-offer.md#emit-in-posthook) emitted an event. However, since reposting is such a common action, it is already implemented for the simple cases - if you invoke `super` like below, then the base implementation of [`__posthookSuccess__`](../technical-references/code/strats/src/strategies/MangroveOffer.md#posthooksuccess) will repost the residual.
 
 ```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorialResidual.sol#L92-L101
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorialResidual.sol#L92-L101
 ```
 
 When writing posthooks to repost residuals there are both caveats and points to be aware:
@@ -37,5 +37,5 @@ cast send --rpc-url $LOCAL_URL "$MANGROVE" "snipes(address, address, uint[4][], 
 -->
 
 ```solidity reference title="MangroveOffer.sol"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/strategies/MangroveOffer.sol#L251-L280
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/MangroveOffer.sol#L251-L280
 ```

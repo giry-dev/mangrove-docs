@@ -81,7 +81,7 @@ ___
 
 ### <a id="jsonwallet" name="jsonwallet"></a> jsonWallet
 
-• `Optional` **jsonWallet**: `JsonWalletOptions`
+• `Optional` **jsonWallet**: [`JsonWalletOptions`](JsonWalletOptions.md)
 
 #### Defined in
 

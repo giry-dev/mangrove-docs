@@ -125,12 +125,6 @@ struct Heap {
 }
 ```
 
-### heapError
-
-```solidity
-function heapError(struct CompoundModule.Heap heap) private pure returns (bool)
-```
-
 ### maxGettableUnderlying
 
 ```solidity

@@ -6,13 +6,13 @@ sidebar_position: 0
 custom_edit_url: null
 ---
 
-The Semibook is a data structure for maintaining a cached prefix
+The Semibook is a data structure for maintaining a cache
 of an offer list for one side (asks or bids) of a market.
 
 While offer lists on-chain for a market A-B are symmetric (the offer lists are
 the same for the market B-A), a `Semibook` depends on the market:
 
-- Prices are in terms of quote tokens
+- Prices are in terms of quote tokens per base token
 - Volumes are in terms of base tokens
 
 ## Hierarchy
@@ -27,13 +27,23 @@ the same for the market B-A), a `Semibook` depends on the market:
 
 ## Properties
 
-### <a id="default_max_offers" name="default_max_offers"></a> DEFAULT\_MAX\_OFFERS
+### <a id="default_target_number_of_ticks" name="default_target_number_of_ticks"></a> DEFAULT\_TARGET\_NUMBER\_OF\_TICKS
 
-▪ `Static` `Readonly` **DEFAULT\_MAX\_OFFERS**: ``50``
+▪ `Static` `Readonly` **DEFAULT\_TARGET\_NUMBER\_OF\_TICKS**: ``50``
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:173
+@mangrovedao/mangrove.js/src/semibook.ts:220
+
+___
+
+### <a id="default_chunk_size" name="default_chunk_size"></a> DEFAULT\_CHUNK\_SIZE
+
+▪ `Static` `Readonly` **DEFAULT\_CHUNK\_SIZE**: ``50``
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:221
 
 ___
 
@@ -43,7 +53,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:175
+@mangrovedao/mangrove.js/src/semibook.ts:223
 
 ___
 
@@ -53,7 +63,17 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:176
+@mangrovedao/mangrove.js/src/semibook.ts:224
+
+___
+
+### <a id="tickpricehelper" name="tickpricehelper"></a> tickPriceHelper
+
+• `Readonly` **tickPriceHelper**: [`TickPriceHelper`](TickPriceHelper.md)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:225
 
 ___
 
@@ -63,17 +83,17 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:177
+@mangrovedao/mangrove.js/src/semibook.ts:226
 
 ___
 
 ### <a id="trademanagement" name="trademanagement"></a> tradeManagement
 
-• **tradeManagement**: `Trade`
+• **tradeManagement**: [`Trade`](Trade.md)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:184
+@mangrovedao/mangrove.js/src/semibook.ts:232
 
 ___
 
@@ -83,7 +103,17 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:186
+@mangrovedao/mangrove.js/src/semibook.ts:234
+
+___
+
+### <a id="olkey" name="olkey"></a> olKey
+
+• **olKey**: `OLKeyStruct`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:235
 
 ___
 
@@ -131,7 +161,7 @@ StateLogSubscriber.cacheLock
 
 ### <a id="connect" name="connect"></a> connect
 
-▸ `Static` **connect**(`market`, `ba`, `eventListener`, `options`): `Promise`<[`Semibook`](Semibook.md)\>
+▸ **connect**(`market`, `ba`, `eventListener`, `options`): `Promise`<[`Semibook`](Semibook.md)\>
 
 #### Parameters
 
@@ -148,7 +178,7 @@ StateLogSubscriber.cacheLock
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:188
+@mangrovedao/mangrove.js/src/semibook.ts:237
 
 ___
 
@@ -172,7 +202,7 @@ StateLogSubscriber.copy
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:217
+@mangrovedao/mangrove.js/src/semibook.ts:268
 
 ___
 
@@ -192,7 +222,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:221
+@mangrovedao/mangrove.js/src/semibook.ts:316
 
 ___
 
@@ -212,7 +242,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:225
+@mangrovedao/mangrove.js/src/semibook.ts:320
 
 ___
 
@@ -232,7 +262,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:229
+@mangrovedao/mangrove.js/src/semibook.ts:324
 
 ___
 
@@ -254,53 +284,27 @@ Returns struct containing offer details in the current offer list
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:249
+@mangrovedao/mangrove.js/src/semibook.ts:344
 
 ___
 
-### <a id="getconfig" name="getconfig"></a> getConfig
+### <a id="config" name="config"></a> config
 
-▸ **getConfig**(`blockNumber?`): `Promise`<[`LocalConfig`](../namespaces/Mangrove-1.md#localconfig)\>
+▸ **config**(): [`LocalConfig`](../namespaces/Mangrove-1.md#localconfig)
 
 Return config local to a semibook.
 Notes:
-Amounts are converted to plain numbers.
+Amounts are converted to human readable numbers.
 density is converted to public token units per gas used
 fee *remains* in basis points of the token being bought
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `blockNumber?` | `number` |
-
 #### Returns
 
-`Promise`<[`LocalConfig`](../namespaces/Mangrove-1.md#localconfig)\>
+[`LocalConfig`](../namespaces/Mangrove-1.md#localconfig)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:286
-
-___
-
-### <a id="getrawconfig" name="getrawconfig"></a> getRawConfig
-
-▸ **getRawConfig**(`blockNumber?`): `Promise`<[`GlobalUnpackedStructOutput`, `LocalUnpackedStructOutput`] & {}\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `blockNumber?` | `number` |
-
-#### Returns
-
-`Promise`<[`GlobalUnpackedStructOutput`, `LocalUnpackedStructOutput`] & {}\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/semibook.ts:291
+@mangrovedao/mangrove.js/src/semibook.ts:374
 
 ___
 
@@ -323,7 +327,7 @@ See mangrove.ts.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:306
+@mangrovedao/mangrove.js/src/semibook.ts:396
 
 ___
 
@@ -339,7 +343,7 @@ Returns the number of offers in the cache.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:321
+@mangrovedao/mangrove.js/src/semibook.ts:407
 
 ___
 
@@ -355,7 +359,23 @@ Returns the id of the best offer in the cache
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:327
+@mangrovedao/mangrove.js/src/semibook.ts:413
+
+___
+
+### <a id="getbest" name="getbest"></a> getBest
+
+▸ **getBest**(): `Promise`<`undefined` \| [`Offer`](../namespaces/Market-1.md#offer)\>
+
+Returns the best offer if any
+
+#### Returns
+
+`Promise`<`undefined` \| [`Offer`](../namespaces/Market-1.md#offer)\>
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:419
 
 ___
 
@@ -371,11 +391,11 @@ Returns an iterator over the offers in the cache.
 
 #### Implementation of
 
-Iterable.\_\_@iterator@92
+Iterable.[iterator]
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:333
+@mangrovedao/mangrove.js/src/semibook.ts:443
 
 ___
 
@@ -391,30 +411,7 @@ Convenience method for getting an iterator without having to call `[Symbol.itera
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:340
-
-___
-
-### <a id="getpivotid" name="getpivotid"></a> getPivotId
-
-▸ **getPivotId**(`price`): `Promise`<`undefined` \| `number`\>
-
-Given a price, find the id of the immediately-better offer in the
-semibook. If there is no offer with a better price, `undefined` is returned.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `price` | `undefined` \| `BigSource` |
-
-#### Returns
-
-`Promise`<`undefined` \| `number`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/semibook.ts:347
+@mangrovedao/mangrove.js/src/semibook.ts:454
 
 ___
 
@@ -434,13 +431,13 @@ if you say `estimateVolume({given:10,to:"sell"})`,
 it will given you an estimate of how much base tokens you'd have to buy in
 order to spend 10 quote tokens.
 
-if you add a `boundary` field, it either means
-- the minimum amount you want to receive if you spend all `given` (if to:"sell"), or
-- the maximum amount you are ready to spend if you buy all `given` (if to:"buy")
+if you add a `limitPrice` field, only offers with that price or better will be considered.
 
-So for instance, if you say `{given:10,to:"sell",boundary:"5"}`, estimateVolume will return the volume you will be able to receive if selling up to 10 at a min price of 10/5.
+So for instance, if you say `{given:10,to:"sell",limitPrice:"2"}`, estimateVolume
+will return the volume you will be able to receive if selling up to 10 quote
+at a max. price of 2 quote/base, i.e. a min. "price" of 1/2 = 0.5 base/quote.
 
-The returned `givenResidue` is how much of the given token that cannot be
+The returned `remainingFillVolume` is how much of the given token that cannot be
 traded due to insufficient volume on the book / price becoming bad.
 
 #### Parameters
@@ -455,29 +452,35 @@ traded due to insufficient volume on the book / price becoming bad.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:402
+@mangrovedao/mangrove.js/src/semibook.ts:480
 
 ___
 
 ### <a id="simulatemarketorder" name="simulatemarketorder"></a> simulateMarketOrder
 
-▸ **simulateMarketOrder**(`initialWants`, `initialGives`, `fillWants`): `Promise`<{ `wants`: `Big` ; `gives`: `Big` ; `totalGot`: `Big` ; `totalGave`: `Big` ; `gas`: `BigNumber`  }\>
+▸ **simulateMarketOrder**(`maxTick`, `fillVolume`, `fillWants`): `Promise`<\{ `totalGot`: `Big` ; `totalGave`: `Big` ; `feePaid`: `Big` ; `fillVolume`: `Big` ; `maxTickMatched?`: `number` ; `gas`: `BigNumber`  }\>
+
+Reproduces the logic of Mangrove's generalMarketOrder function faithfully
+with the exception of:
+
+- the overflow protections due to bounds on input sizes.
+- offers are assumed not to fail.
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `initialWants` | `Big` |
-| `initialGives` | `Big` |
+| `maxTick` | `number` |
+| `fillVolume` | `Big` |
 | `fillWants` | `boolean` |
 
 #### Returns
 
-`Promise`<{ `wants`: `Big` ; `gives`: `Big` ; `totalGot`: `Big` ; `totalGave`: `Big` ; `gas`: `BigNumber`  }\>
+`Promise`<\{ `totalGot`: `Big` ; `totalGave`: `Big` ; `feePaid`: `Big` ; `fillVolume`: `Big` ; `maxTickMatched?`: `number` ; `gas`: `BigNumber`  }\>
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:429
+@mangrovedao/mangrove.js/src/semibook.ts:513
 
 ___
 
@@ -500,7 +503,7 @@ Returns `true` if `price` is better than `referencePrice`; Otherwise, `false` is
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:526
+@mangrovedao/mangrove.js/src/semibook.ts:671
 
 ___
 
@@ -523,7 +526,31 @@ Returns `true` if `price` is worse than `referencePrice`; Otherwise, `false` is 
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:535
+@mangrovedao/mangrove.js/src/semibook.ts:680
+
+___
+
+### <a id="getminimumvolume" name="getminimumvolume"></a> getMinimumVolume
+
+▸ **getMinimumVolume**(`gasreq`): `Big`
+
+Determines the minimum volume required to stay above density limit for the given gasreq (with a minimum of 1 unit of outbound, since 0 gives is not allowed).
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `gasreq` | `number` | The gas requirement for the offer. |
+
+#### Returns
+
+`Big`
+
+The minimum volume required to stay above density limit.
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:691
 
 ___
 
@@ -537,7 +564,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:542
+@mangrovedao/mangrove.js/src/semibook.ts:701
 
 ___
 
@@ -561,7 +588,7 @@ StateLogSubscriber.stateInitialize
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:701
+@mangrovedao/mangrove.js/src/semibook.ts:873
 
 ___
 
@@ -587,13 +614,33 @@ StateLogSubscriber.stateHandleLog
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:748
+@mangrovedao/mangrove.js/src/semibook.ts:922
 
 ___
 
 ### <a id="rawlocalconfigtolocalconfig" name="rawlocalconfigtolocalconfig"></a> rawLocalConfigToLocalConfig
 
-▸ `Static` **rawLocalConfigToLocalConfig**(`local`, `outboundDecimals`): [`LocalConfig`](../namespaces/Mangrove-1.md#localconfig)
+▸ **rawLocalConfigToLocalConfig**(`local`): [`LocalConfigFull`](../namespaces/Mangrove-1.md#localconfigfull)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `local` | `LocalUnpackedStructOutput` |
+
+#### Returns
+
+[`LocalConfigFull`](../namespaces/Mangrove-1.md#localconfigfull)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:1363
+
+___
+
+### <a id="rawlocalconfigtolocalconfig-1" name="rawlocalconfigtolocalconfig-1"></a> rawLocalConfigToLocalConfig
+
+▸ **rawLocalConfigToLocalConfig**(`local`, `outboundDecimals`): [`LocalConfigFull`](../namespaces/Mangrove-1.md#localconfigfull)
 
 #### Parameters
 
@@ -604,41 +651,37 @@ ___
 
 #### Returns
 
-[`LocalConfig`](../namespaces/Mangrove-1.md#localconfig)
+[`LocalConfigFull`](../namespaces/Mangrove-1.md#localconfigfull)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1110
+@mangrovedao/mangrove.js/src/semibook.ts:1370
 
 ___
 
-### <a id="getminimumvolume" name="getminimumvolume"></a> getMinimumVolume
+### <a id="rawofferslimtoofferslim" name="rawofferslimtoofferslim"></a> rawOfferSlimToOfferSlim
 
-▸ **getMinimumVolume**(`gasreq`): `Promise`<`Big`\>
-
-Determines the minimum volume required to stay above density limit for the given gasreq (with a minimum of 1 unit of outbound, since 0 gives is not allowed).
+▸ **rawOfferSlimToOfferSlim**(`raw`): [`OfferSlim`](../namespaces/Market-1.md#offerslim)
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `gasreq` | `number` | The gas requirement for the offer. |
+| Name | Type |
+| :------ | :------ |
+| `raw` | [`RawOfferSlim`](../namespaces/Semibook-1.md#rawofferslim) |
 
 #### Returns
 
-`Promise`<`Big`\>
-
-The minimum volume required to stay above density limit.
+[`OfferSlim`](../namespaces/Market-1.md#offerslim)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1129
+@mangrovedao/mangrove.js/src/semibook.ts:1389
 
 ___
 
 ### <a id="rawidtoid" name="rawidtoid"></a> rawIdToId
 
-▸ `Static` **rawIdToId**(`rawId`): `undefined` \| `number`
+▸ **rawIdToId**(`rawId`): `undefined` \| `number`
 
 #### Parameters
 
@@ -652,13 +695,33 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1140
+@mangrovedao/mangrove.js/src/semibook.ts:1412
+
+___
+
+### <a id="idtorawid" name="idtorawid"></a> idToRawId
+
+▸ **idToRawId**(`id`): `BigNumber`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `id` | `undefined` \| `number` |
+
+#### Returns
+
+`BigNumber`
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/semibook.ts:1417
 
 ___
 
 ### <a id="getisvolumedesiredforasks" name="getisvolumedesiredforasks"></a> getIsVolumeDesiredForAsks
 
-▸ `Static` **getIsVolumeDesiredForAsks**(`opts`): `boolean`
+▸ **getIsVolumeDesiredForAsks**(`opts`): `boolean`
 
 #### Parameters
 
@@ -672,13 +735,13 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1187
+@mangrovedao/mangrove.js/src/semibook.ts:1454
 
 ___
 
 ### <a id="getisvolumedesiredforbids" name="getisvolumedesiredforbids"></a> getIsVolumeDesiredForBids
 
-▸ `Static` **getIsVolumeDesiredForBids**(`opts`): `boolean`
+▸ **getIsVolumeDesiredForBids**(`opts`): `boolean`
 
 #### Parameters
 
@@ -692,13 +755,13 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:1197
+@mangrovedao/mangrove.js/src/semibook.ts:1465
 
 ___
 
 ### <a id="checkiflastseeneventblockexists" name="checkiflastseeneventblockexists"></a> checkIfLastSeenEventBlockExists
 
-▸ `Protected` **checkIfLastSeenEventBlockExists**(): `void`
+▸ **checkIfLastSeenEventBlockExists**(): `void`
 
 #### Returns
 

@@ -10,6 +10,28 @@ custom_edit_url: null
 
 The OfferLogic class connects to a Maker contract implementing the IOfferLogic interface.
 
+## Constructors
+
+### <a id="constructor" name="constructor"></a> constructor
+
+• **new OfferLogic**(`mgv`, `logic`, `signer?`): [`OfferLogic`](OfferLogic.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `mgv` | [`Mangrove`](Mangrove.md) |
+| `logic` | `string` |
+| `signer?` | `SignerOrProvider` |
+
+#### Returns
+
+[`OfferLogic`](OfferLogic.md)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/offerLogic.ts:19
+
 ## Properties
 
 ### <a id="mgv" name="mgv"></a> mgv
@@ -50,39 +72,21 @@ ___
 
 @mangrovedao/mangrove.js/src/offerLogic.ts:17
 
-## Constructors
-
-### <a id="constructor" name="constructor"></a> constructor
-
-• **new OfferLogic**(`mgv`, `logic`, `signer?`)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `mgv` | [`Mangrove`](Mangrove.md) |
-| `logic` | `string` |
-| `signer?` | `SignerOrProvider` |
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/offerLogic.ts:19
-
 ## Methods
 
 ### <a id="router" name="router"></a> router
 
 ▸ **router**(): `Promise`<`undefined` \| `AbstractRouter`\>
 
-**`Note`**
-
-Returns this logic's router. If logic has no router this call will return `undefined`
-
 #### Returns
 
 `Promise`<`undefined` \| `AbstractRouter`\>
 
 the router ethers.js contract responding to the `AbstractRouter` abi.
+
+**`Note`**
+
+Returns this logic's router. If logic has no router this call will return `undefined`
 
 #### Defined in
 
@@ -110,18 +114,13 @@ ___
 
 ### <a id="approve" name="approve"></a> approve
 
-▸ **approve**(`tokenName`, `args?`): `Promise`<`ContractTransaction`\>
-
-**`Note`**
-
-logic approves signer or `args.optSpender` to spend a certain token on its behalf
-This has to be done for each token the signer's wishes to ask or bid for.
+▸ **approve**(`tokenId`, `args?`): `Promise`<`ContractTransaction`\>
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `tokenName` | `string` | - |
+| `tokenId` | `string` | - |
 | `args?` | `Object` | optional `arg.amount` can be used if one wishes to approve a finite amount |
 | `args.optSpender?` | `string` | - |
 | `args.optAmount?` | `BigSource` | - |
@@ -130,6 +129,11 @@ This has to be done for each token the signer's wishes to ask or bid for.
 #### Returns
 
 `Promise`<`ContractTransaction`\>
+
+**`Note`**
+
+logic approves signer or `args.optSpender` to spend a certain token on its behalf
+This has to be done for each token the signer's wishes to ask or bid for.
 
 #### Defined in
 
@@ -161,22 +165,6 @@ a new `OfferLogic` object with a different signer or provider.
 
 ___
 
-### <a id="offergasreq" name="offergasreq"></a> offerGasreq
-
-▸ **offerGasreq**(): `Promise`<`number`\>
-
-Retrieves the gasreq necessary for offers of this OfferLogic to execute a trade.
-
-#### Returns
-
-`Promise`<`number`\>
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/offerLogic.ts:89
-
-___
-
 ### <a id="setadmin" name="setadmin"></a> setAdmin
 
 ▸ **setAdmin**(`newAdmin`, `overrides?`): `Promise`<`TransactionResponse`\>
@@ -198,7 +186,7 @@ The transaction used to set the new admin.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:99
+@mangrovedao/mangrove.js/src/offerLogic.ts:93
 
 ___
 
@@ -216,23 +204,19 @@ The address of the current admin.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:113
+@mangrovedao/mangrove.js/src/offerLogic.ts:107
 
 ___
 
 ### <a id="activate" name="activate"></a> activate
 
-▸ **activate**(`tokenNames`, `overrides?`): `Promise`<`TransactionResponse`\>
-
-**`Note`**
-
-(contract admin action) activates logic
+▸ **activate**(`tokenSymbolsOrIds`, `overrides?`): `Promise`<`TransactionResponse`\>
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `tokenNames` | `string`[] | the names of the tokens one wishes the logic to trade |
+| `tokenSymbolsOrIds` | `string`[] | the symbols or IDs of the tokens one wishes the logic to trade |
 | `overrides` | `Overrides` | The ethers overrides to use when calling the activate function. |
 
 #### Returns
@@ -241,9 +225,13 @@ ___
 
 The transaction used to activate the OfferLogic.
 
+**`Note`**
+
+(contract admin action) activates logic
+
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:127
+@mangrovedao/mangrove.js/src/offerLogic.ts:121
 
 ___
 
@@ -259,7 +247,7 @@ Retrieves the provision available on Mangrove for the offer logic, in ethers
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:138
+@mangrovedao/mangrove.js/src/offerLogic.ts:132
 
 ___
 
@@ -284,7 +272,7 @@ The transaction used to fund the offer logic.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:147
+@mangrovedao/mangrove.js/src/offerLogic.ts:141
 
 ___
 
@@ -307,7 +295,7 @@ tx will revert is signer is not the admin of the OfferLogic onchain contract
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:153
+@mangrovedao/mangrove.js/src/offerLogic.ts:147
 
 ___
 
@@ -316,10 +304,6 @@ ___
 ▸ **retrieveLockedProvisionForOffer**(`market`, `ba`, `offerId?`): `Promise`<`Big`\>
 
 Retrieves amount of provision locked for the offer on the offer logic which can be redeemed if the offer is retracted.
-
-**`Remarks`**
-
-Provision is either locked on Mangrove or for, e.g., a forwarder, on the offer logic itself.
 
 #### Parameters
 
@@ -335,15 +319,19 @@ Provision is either locked on Mangrove or for, e.g., a forwarder, on the offer l
 
 the amount of provision locked for the offer on the offer logic.
 
+**`Remarks`**
+
+Provision is either locked on Mangrove or for, e.g., a forwarder, on the offer logic itself.
+
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:171
+@mangrovedao/mangrove.js/src/offerLogic.ts:165
 
 ___
 
 ### <a id="getmissingprovision" name="getmissingprovision"></a> getMissingProvision
 
-▸ **getMissingProvision**(`market`, `ba`, `opts?`): `Promise`<`Big`\>
+▸ **getMissingProvision**(`market`, `ba`, `gasreq`, `opts?`): `Promise`<`Big`\>
 
 Gets the missing provision in ethers for an offer to be posted or updated on the offer logic with the given parameters, while taking already locked provision into account.
 
@@ -353,9 +341,9 @@ Gets the missing provision in ethers for an offer to be posted or updated on the
 | :------ | :------ | :------ |
 | `market` | [`Market`](Market.md) | the market for the offer. |
 | `ba` | [`BA`](../namespaces/Market-1.md#ba) | bids or asks |
+| `gasreq` | `number` | gas required for the offer execution. |
 | `opts` | `Object` | optional parameters for the calculation. |
 | `opts.id?` | `number` | the id of the offer to update. If undefined, then the offer is a new offer and nothing is locked. |
-| `opts.gasreq?` | `number` | gas required for the offer execution. If undefined, the offer logic's gasreq. |
 | `opts.gasprice?` | `number` | gas price to use for the calculation. If undefined, then Mangrove's current gas price is used. |
 
 #### Returns
@@ -366,4 +354,4 @@ the additional required provision, in ethers.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerLogic.ts:200
+@mangrovedao/mangrove.js/src/offerLogic.ts:189

@@ -2859,54 +2859,50 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mangrovedao/context-addresses@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@mangrovedao/context-addresses@npm:1.0.0"
+"@mangrovedao/context-addresses@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@mangrovedao/context-addresses@npm:1.0.1"
   dependencies:
     semver: ^7.5.4
-  checksum: 5936896f7da364458b38b7281f618334fd4d5b09a9df80a56993fddd2d106774d3f47e66401479275afbf18464d34c72642c0c46a513c8790cabe2bb24bba89a
+  checksum: b719e4ff4e071680d34d61deb42481c24de2218a035ecad25492f43458f810b9562e2a6667fba0ecefec5aa57c9c7ce1c2dc9ede8673a8a096fb1042832e3e86
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove-core@npm:1.5.4":
-  version: 1.5.4
-  resolution: "@mangrovedao/mangrove-core@npm:1.5.4"
-  checksum: f3e44124d3cd05a96ecceffe777989adf5acc39a0f02e0b89ad7a33127361c85f5e00937cea609833d00b4ac9a86217b2ad3e23caa4ce75d01727d38ef593514
+"@mangrovedao/mangrove-core@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@mangrovedao/mangrove-core@npm:2.0.3"
+  checksum: 846354cf6ad4a4781fb3b251eaadcfdf5751272edfa97fef1766b9ac6c8071daf1c2e19365d981123565d328baf8c72cb3bb18266ea663bc6c4472507e2efe1b
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove-core@npm:2.0.0-3, @mangrovedao/mangrove-core@npm:next":
-  version: 2.0.0-3
-  resolution: "@mangrovedao/mangrove-core@npm:2.0.0-3"
-  checksum: 7072e48bd78e9e784d4b07d50eb86ae459e63a884c3999ed6d5c0567c95ab6c00d60ba50800feb117c15641eb207026ca59076f15005c0e2ba44ef20b4bbdacb
-  languageName: node
-  linkType: hard
-
-"@mangrovedao/mangrove-deployments@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@mangrovedao/mangrove-deployments@npm:1.0.0"
+"@mangrovedao/mangrove-deployments@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@mangrovedao/mangrove-deployments@npm:1.0.3"
   dependencies:
     semver: ^7.5.4
-  checksum: f14ee79993b4efb9d7b3aea00f858d67d1eaf765f4ef9cf3faa8662a98772c038fcff81b2c0f6631b0785d39cfcf055cb1c02ae0f9c887729a1652f205464866
+  checksum: fa31875a93735309913a3fbb597c1f0546ad71216681a8d947e9d1f6316051a0fd8ca930d50c11e3e002db20c0bb595324b6e71b9bfd16a37d9a6e320267bc59
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove-strats@npm:0.0.2-2":
-  version: 0.0.2-2
-  resolution: "@mangrovedao/mangrove-strats@npm:0.0.2-2"
+"@mangrovedao/mangrove-strats@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@mangrovedao/mangrove-strats@npm:1.0.2"
   dependencies:
-    "@mangrovedao/mangrove-core": next
-  checksum: 2fa3d17b78860eaed0c5d13aa4d89d6df7346ef83680e92f405c397b8eaefd1b655a006f4753c9365c35b80d657e9e48bada6b9c45b13d4be953e8144b716dcc
+    "@mangrovedao/mangrove-core": ^2.0.3
+  checksum: 1a9d679e3bd8838bbcbdcbdf1be5128ff0989589ec055989207f00675c2630986b1299fef5472f442c05eb05e74eac24b7273c85ece2c71e91b616061af0e5b9
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove.js@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "@mangrovedao/mangrove.js@npm:1.4.0"
+"@mangrovedao/mangrove.js@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@mangrovedao/mangrove.js@npm:2.0.3"
   dependencies:
     "@ethersproject/experimental": ^5.7.0
-    "@mangrovedao/mangrove-core": 1.5.4
-    "@mangrovedao/reliable-event-subscriber": 1.1.19
+    "@mangrovedao/context-addresses": ^1.0.1
+    "@mangrovedao/mangrove-core": ^2.0.3
+    "@mangrovedao/mangrove-deployments": ^1.0.3
+    "@mangrovedao/mangrove-strats": ^1.0.2
+    "@mangrovedao/reliable-event-subscriber": 1.1.29
     "@types/object-inspect": ^1.8.1
     "@types/triple-beam": ^1.3.2
     async-mutex: ^0.4.0
@@ -2919,18 +2915,19 @@ __metadata:
     loglevel: ^1.8.1
     node-cleanup: ^2.1.2
     object-inspect: ^1.12.3
+    semver: ^7.5.4
     triple-beam: ^1.3.0
     util: ^0.12.5
     yargs: ^17.3.0
   bin:
     mgv: ./dist/nodejs/cli/mgv.js
-  checksum: a623fea8c0ff2337670a14c1e6d73e15dfaa957764927b427d2caef526411493a6b791309fd8d8ee6c6a025c9f4410e172b8eaa171c460fea126b22f03ddeacf
+  checksum: 9b33c16f5c91a20adb2a313ee63269fe66df202b1d8a0b042d09aa7bf863098e6f8f5b670492035d8807b87dbee29b69a955b8bdddcee991cde879f96c89e59d
   languageName: node
   linkType: hard
 
-"@mangrovedao/reliable-event-subscriber@npm:1.1.19":
-  version: 1.1.19
-  resolution: "@mangrovedao/reliable-event-subscriber@npm:1.1.19"
+"@mangrovedao/reliable-event-subscriber@npm:1.1.29":
+  version: 1.1.29
+  resolution: "@mangrovedao/reliable-event-subscriber@npm:1.1.29"
   dependencies:
     "@ethersproject/providers": ^5.7.2
     async-mutex: ^0.4.0
@@ -2938,7 +2935,7 @@ __metadata:
     ethers: ^5.7.2
     isomorphic-ws: ^5.0.0
     ws: ^8.13.0
-  checksum: 936f39d69bafc5d3e3e325f5f78cdaa4238171072933c7dc80c0c9d07d5cacd3f9fa2cc17493f1661211b2e7502a7b684c1d1bf52e3a7bfdef5b2efc2458c4cc
+  checksum: 94c27e49fd3e1e181821b25f30e74a91a975b05424f647a0aabb2c56c5c8af086b1902a794104142fd6f60f159dc887f5d8a7cd944d383421fe3f7c4ec4b0ae9
   languageName: node
   linkType: hard
 
@@ -4409,6 +4406,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/semver@npm:^7.5.6":
+  version: 7.5.6
+  resolution: "@types/semver@npm:7.5.6"
+  checksum: 563a0120ec0efcc326567db2ed920d5d98346f3638b6324ea6b50222b96f02a8add3c51a916b6897b51523aad8ac227d21d3dcf8913559f1bfc6c15b14d23037
+  languageName: node
+  linkType: hard
+
 "@types/serve-index@npm:^1.9.1":
   version: 1.9.1
   resolution: "@types/serve-index@npm:1.9.1"
@@ -4960,6 +4964,13 @@ __metadata:
   version: 6.0.1
   resolution: "ansi-regex@npm:6.0.1"
   checksum: 1ff8b7667cded1de4fa2c9ae283e979fc87036864317da86a2e546725f96406746411d0d85e87a2d12fa5abd715d90006de7fa4fa0477c92321ad3b4c7d4e169
+  languageName: node
+  linkType: hard
+
+"ansi-sequence-parser@npm:^1.1.0":
+  version: 1.1.1
+  resolution: "ansi-sequence-parser@npm:1.1.1"
+  checksum: ead5b15c596e8e85ca02951a844366c6776769dcc9fd1bd3a0db11bb21364554822c6a439877fb599e7e1ffa0b5f039f1e5501423950457f3dcb2f480c30b188
   languageName: node
   linkType: hard
 
@@ -7901,13 +7912,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"docusaurus-plugin-typedoc@npm:^0.18.0":
-  version: 0.18.0
-  resolution: "docusaurus-plugin-typedoc@npm:0.18.0"
+"docusaurus-plugin-typedoc@npm:^0.22.0":
+  version: 0.22.0
+  resolution: "docusaurus-plugin-typedoc@npm:0.22.0"
   peerDependencies:
-    typedoc: ">=0.23.0"
-    typedoc-plugin-markdown: ">=3.13.0"
-  checksum: e5e8780888ad07e71e9c0a98024f4bee6e3e520c7a3417d6b4951aa91c0fb63caa19d1cd5e0712b75d0add7c1fabe2df36b910e3ecb6e4a914c679c0ff75fc16
+    typedoc: ">=0.24.0"
+    typedoc-plugin-markdown: ">=3.15.0"
+  checksum: b6c3330cff167b1a908a502460d9b2b2afddd066e1b4e1825b1d069ddce25fd721479afbf0a41b48c4ecaf0bbfa90d00721b6b5c9ed6e0c16c3d72ccd6b02684
   languageName: node
   linkType: hard
 
@@ -11252,7 +11263,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsonc-parser@npm:^3.0.0":
+"jsonc-parser@npm:^3.2.0":
   version: 3.2.0
   resolution: "jsonc-parser@npm:3.2.0"
   checksum: 946dd9a5f326b745aa326d48a7257e3f4a4b62c5e98ec8e49fa2bdd8d96cef7e6febf1399f5c7016114fd1f68a1c62c6138826d5d90bc650448e3cf0951c53c7
@@ -11850,11 +11861,11 @@ __metadata:
     "@docusaurus/theme-mermaid": ^2.2.0
     "@ethersproject/abi": ^5.4.7
     "@ethersproject/providers": ^5.4.7
-    "@mangrovedao/context-addresses": ^1.0.0
-    "@mangrovedao/mangrove-core": 2.0.0-3
-    "@mangrovedao/mangrove-deployments": ^1.0.0
-    "@mangrovedao/mangrove-strats": 0.0.2-2
-    "@mangrovedao/mangrove.js": ^1.4.0
+    "@mangrovedao/context-addresses": ^1.0.1
+    "@mangrovedao/mangrove-core": ^2.0.3
+    "@mangrovedao/mangrove-deployments": ^1.0.3
+    "@mangrovedao/mangrove-strats": ^1.0.2
+    "@mangrovedao/mangrove.js": ^2.0.3
     "@mdx-js/react": ^1.6.22
     "@nomicfoundation/hardhat-chai-matchers": ^1.0.0
     "@nomicfoundation/hardhat-network-helpers": ^1.0.0
@@ -11868,12 +11879,13 @@ __metadata:
     "@types/mocha": ^9.1.0
     "@types/node": ">=12.0.0"
     "@types/node-cleanup": ^2.1.2
+    "@types/semver": ^7.5.6
     "@types/shelljs": ^0.8.12
     "@vegaprotocol/docusaurus-theme-github-codeblock": ^0.1.8
     chai: ^4.2.0
     clsx: ^1.2.1
     docusaurus-lunr-search: ^2.3.0
-    docusaurus-plugin-typedoc: ^0.18.0
+    docusaurus-plugin-typedoc: ^0.22.0
     ethers: ^5.4.7
     hardhat: ^2.12.2
     hardhat-gas-reporter: ^1.0.8
@@ -11887,13 +11899,13 @@ __metadata:
     rehype-katex: 5
     remark-math: 3
     solidity-coverage: ^0.8.0
-    solidity-docgen: ^0.6.0-beta.32
+    solidity-docgen: ^0.6.0-beta.36
     transparent-proxy: ^1.9.1
     ts-essentials: ^9.3.0
     ts-node: ">=8.0.0"
     typechain: ^8.1.0
-    typedoc: ^0.23.21
-    typedoc-plugin-markdown: ^3.14.0
+    typedoc: ^0.25.7
+    typedoc-plugin-markdown: ^3.17.1
     typescript: ">=4.5.0"
   languageName: unknown
   linkType: soft
@@ -11912,12 +11924,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"marked@npm:^4.0.19":
-  version: 4.2.2
-  resolution: "marked@npm:4.2.2"
+"marked@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "marked@npm:4.3.0"
   bin:
     marked: bin/marked.js
-  checksum: 1593e0632ff8dee1b9c8b669f26c8ce41e675bcb08ef75052845d4943db2c4d887edacd5b2120cf99a2cc06e9fbffc346ebaf98a7555273fda6a935adbfacf50
+  checksum: 0db6817893952c3ec710eb9ceafb8468bf5ae38cb0f92b7b083baa13d70b19774674be04db5b817681fa7c5c6a088f61300815e4dd75a59696f4716ad69f6260
   languageName: node
   linkType: hard
 
@@ -12201,12 +12213,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^5.0.1, minimatch@npm:^5.1.0":
+"minimatch@npm:^5.0.1":
   version: 5.1.0
   resolution: "minimatch@npm:5.1.0"
   dependencies:
     brace-expansion: ^2.0.1
   checksum: 15ce53d31a06361e8b7a629501b5c75491bc2b59712d53e802b1987121d91b433d73fcc5be92974fde66b2b51d8fb28d75a9ae900d249feb792bb1ba2a4f0a90
+  languageName: node
+  linkType: hard
+
+"minimatch@npm:^9.0.3":
+  version: 9.0.3
+  resolution: "minimatch@npm:9.0.3"
+  dependencies:
+    brace-expansion: ^2.0.1
+  checksum: 253487976bf485b612f16bf57463520a14f512662e592e95c571afdab1442a6a6864b6c88f248ce6fc4ff0b6de04ac7aa6c8bb51e868e99d1d65eb0658a708b5
   languageName: node
   linkType: hard
 
@@ -15424,14 +15445,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shiki@npm:^0.11.1":
-  version: 0.11.1
-  resolution: "shiki@npm:0.11.1"
+"shiki@npm:^0.14.7":
+  version: 0.14.7
+  resolution: "shiki@npm:0.14.7"
   dependencies:
-    jsonc-parser: ^3.0.0
-    vscode-oniguruma: ^1.6.1
-    vscode-textmate: ^6.0.0
-  checksum: 2a4ebc3b466816263fc244ae4f67a4ff96aa74d863b9c5e7e4affc50f37fd6d1a781405de0dbf763b777bc33e49a0d441de7ff3fededb8b01e3b8dbb37e2927d
+    ansi-sequence-parser: ^1.1.0
+    jsonc-parser: ^3.2.0
+    vscode-oniguruma: ^1.7.0
+    vscode-textmate: ^8.0.0
+  checksum: 2aec3b3519df977c4391df9e1825cb496e9a4d7e11395f05a0da77e4fa2f7c3d9d6e6ee94029ac699533017f2b25637ee68f6d39f05f311535c2704d0329b520
   languageName: node
   linkType: hard
 
@@ -15634,15 +15656,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solidity-docgen@npm:^0.6.0-beta.32":
-  version: 0.6.0-beta.32
-  resolution: "solidity-docgen@npm:0.6.0-beta.32"
+"solidity-docgen@npm:^0.6.0-beta.36":
+  version: 0.6.0-beta.36
+  resolution: "solidity-docgen@npm:0.6.0-beta.36"
   dependencies:
     handlebars: ^4.7.7
     solidity-ast: ^0.4.38
   peerDependencies:
     hardhat: ^2.8.0
-  checksum: e81f826de9834b1fc5f5da8fe7ae56efc7a266a79d39f9b94c3220d0688b2cf1c1545c0ee2af9514ee59ad7ada269658863ebe8322432ea1dc5bf3caacf224bd
+  checksum: 658204db9dc73904bf2e556015d36ca5d120c88b10ecd249f5822b75cb5ea259b039081018ad98d6d00423f0e7691c9a1bf515e640bb84fc51d0def9d80eca3a
   languageName: node
   linkType: hard
 
@@ -16602,30 +16624,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc-plugin-markdown@npm:^3.14.0":
-  version: 3.14.0
-  resolution: "typedoc-plugin-markdown@npm:3.14.0"
+"typedoc-plugin-markdown@npm:^3.17.1":
+  version: 3.17.1
+  resolution: "typedoc-plugin-markdown@npm:3.17.1"
   dependencies:
     handlebars: ^4.7.7
   peerDependencies:
-    typedoc: ">=0.23.0"
-  checksum: 6205600052185b4b193ab8a253d9df5ccbc95002c948a07f9024bcd26f0f23fbcc089fda4d6b4c8f4172f4eaca2bf9c32129989f6baaace7261cf4a0e41c976b
+    typedoc: ">=0.24.0"
+  checksum: f12494bfc98ef532be63fb5e7630ff0aa2de17bb22b1d0b6260c416fe8b62cb537ddd3576cadc90c57c4aae2371722994ed873dc3220b23660e149a3eb676c04
   languageName: node
   linkType: hard
 
-"typedoc@npm:^0.23.21":
-  version: 0.23.21
-  resolution: "typedoc@npm:0.23.21"
+"typedoc@npm:^0.25.7":
+  version: 0.25.7
+  resolution: "typedoc@npm:0.25.7"
   dependencies:
     lunr: ^2.3.9
-    marked: ^4.0.19
-    minimatch: ^5.1.0
-    shiki: ^0.11.1
+    marked: ^4.3.0
+    minimatch: ^9.0.3
+    shiki: ^0.14.7
   peerDependencies:
-    typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x
+    typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x || 5.3.x
   bin:
     typedoc: bin/typedoc
-  checksum: 931520b21ae25ba8ea86111ea7c66f474468bb83cbe1d04c0ea19490f130ea44ba58b7ee4d12f7f02368cfe053ed1fa291c8843c466c8af383ef956de177360d
+  checksum: 49c3bf923a3c9401b549e5843f8efaaac8fa28f8ec6bd8617187b5d9ba9932a3fa63dc3863b82389507ffc7d92908af0dce33780fffb4970cd0833274f6fa0cf
   languageName: node
   linkType: hard
 
@@ -17151,17 +17173,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vscode-oniguruma@npm:^1.6.1":
-  version: 1.6.2
-  resolution: "vscode-oniguruma@npm:1.6.2"
-  checksum: 6b754acdafd5b68242ea5938bb00a32effc16c77f471d4f0f337d879d0e8e592622998e2441f42d9a7ff799c1593f31c11f26ca8d9bf9917e3ca881d3c1f3e19
+"vscode-oniguruma@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "vscode-oniguruma@npm:1.7.0"
+  checksum: 53519d91d90593e6fb080260892e87d447e9b200c4964d766772b5053f5699066539d92100f77f1302c91e8fc5d9c772fbe40fe4c90f3d411a96d5a9b1e63f42
   languageName: node
   linkType: hard
 
-"vscode-textmate@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "vscode-textmate@npm:6.0.0"
-  checksum: ff6f17a406c2906586afc14ef01cb122e33acd35312e815abb5c924347a777c6783ce3fe7db8b83f1760ebf843c669843b9390f905b69c433b3395af28e4b483
+"vscode-textmate@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "vscode-textmate@npm:8.0.0"
+  checksum: 127780dfea89559d70b8326df6ec344cfd701312dd7f3f591a718693812b7852c30b6715e3cfc8b3200a4e2515b4c96f0843c0eacc0a3020969b5de262c2a4bb
   languageName: node
   linkType: hard
 

@@ -1,7 +1,7 @@
 ---
 id: tick
 title: Tick
-hoverText: A "price point" corresponding to the ratio $1.0001^{tick}$
+hoverText: A 'price point' corresponding to the ratio $1.0001^{tick}$
 ---
 
 On Mangrove, market prices are discretized into ticks: A $tick \in \Z$ corresponds to the %%ratio|ratio%% $1.0001^{tick}$. The smallest price increment is thus 1 basis point = 0.01%.

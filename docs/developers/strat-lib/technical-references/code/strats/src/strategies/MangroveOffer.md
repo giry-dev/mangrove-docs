@@ -23,14 +23,6 @@ contract AbstractRouter NO_ROUTER
 
 constant for no router
 
-### __router
-
-```solidity
-contract AbstractRouter __router
-```
-
-The router to use for this strategy.
-
 ### REPOST_SUCCESS
 
 ```solidity
@@ -174,7 +166,7 @@ takes care of status for reposting residual offer in case of a partial fill and 
 ### setRouter
 
 ```solidity
-function setRouter(contract AbstractRouter router_) public
+function setRouter(contract AbstractRouter router_) public virtual
 ```
 
 sets a new router to pull outbound tokens from contract's reserve to `this` and push inbound tokens to reserve.

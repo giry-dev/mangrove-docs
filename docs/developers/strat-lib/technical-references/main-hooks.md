@@ -9,7 +9,7 @@ sidebar_position: 1
 ### Last look before trade
 
 ```solidity reference title="Last look before trade"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/strategies/MangroveOffer.sol#L201-L209
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/MangroveOffer.sol#L201-L209
 ```
 
 * **Input**: [taker `order`](../../contracts/technical-references/taking-and-making-offers/reactive-offer/offer-data-structures.md#mgvlibsingleorder)'s recap data.
@@ -20,7 +20,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ad
 ### Managing taker's payment
 
 ```solidity reference title="Managing taker's payment"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/strategies/MangroveOffer.sol#L185-L191
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/MangroveOffer.sol#L185-L191
 ```
 
 * **Input**s: 
@@ -33,7 +33,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ad
 ### Sourcing liquidity
 
 ```solidity reference title="Sourcing liquidity"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/strategies/MangroveOffer.sol#L193-L199
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/MangroveOffer.sol#L193-L199
 ```
 
 * **Input**: 
@@ -48,7 +48,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ad
 ### Posthook after trade success
 
 ```solidity reference title="Posthook after trade success"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/strategies/MangroveOffer.sol#L244-L254
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/MangroveOffer.sol#L244-L254
 ```
 
 * **Input**:
@@ -61,7 +61,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ad
 ### Posthook after trade failure
 
 ```solidity reference title="Posthook after trade failure"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/strategies/MangroveOffer.sol#L211-L221
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/MangroveOffer.sol#L211-L221
 ```
 
 * **Input**:
@@ -72,5 +72,5 @@ https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ad
 * **Usage**: this hook is only reached in the offer logic if trade was not settled correctly by Mangrove. Override this hook to customize what should be done after the maker offer has failed. Note that if this hook is reached during offer logic's execution, maker contract has already emitted the following log:
 
 ```solidity reference title="Offer logic's incident log"
-https://github.com/mangrovedao/mangrove-strats/blob/fc2c2058414ff5fc76dab340a2ada48a95d0f6b2/src/strategies/interfaces/IOfferLogic.sol#L13-L19
+https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/interfaces/IOfferLogic.sol#L13-L19
 ```

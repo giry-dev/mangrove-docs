@@ -44,20 +44,6 @@ Verifies that token is not an official AAVE overlying.
 | ---- | ---- | ----------- |
 | [0] | bool | true if overlying; otherwise, false. |
 
-### pooledRouter
-
-```solidity
-function pooledRouter() private view returns (contract AavePooledRouter)
-```
-
-returns the router as an Aave router
-
-#### Return Values
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| [0] | contract AavePooledRouter | The aave router. |
-
 ### initialize
 
 ```solidity
@@ -72,6 +58,12 @@ Sets the AaveRouter as router and activates router for base and quote
 | ---- | ---- | ----------- |
 | router_ | contract AavePooledRouter | the Aave router to use. |
 | gasreq | uint256 | the gas required to execute an offer of this Kandel strat |
+
+### setRouter
+
+```solidity
+function setRouter(contract AbstractRouter router) public virtual
+```
 
 ### depositFunds
 

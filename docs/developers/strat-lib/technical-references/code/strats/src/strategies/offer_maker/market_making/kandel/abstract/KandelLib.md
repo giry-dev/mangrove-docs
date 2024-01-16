@@ -47,7 +47,7 @@ If type(uint).max is used for `bidGives` or `askGives` then very high or low pri
 | ---- | ---- | ----------- |
 | from | uint256 | populate offers starting from this index (inclusive). Must be at most `pricePoints`. |
 | to | uint256 | populate offers until this index (exclusive). Must be at most `pricePoints`. |
-| baseQuoteTickIndex0 | Tick | the tick of base per quote for the price point at index 0. It is recommended that this is a multiple of tickSpacing for the offer lists to avoid rounding. |
+| baseQuoteTickIndex0 | Tick | the tick for the price point at index 0 given as a tick on the `base, quote` offer list, i.e. corresponding to an ask with a quote/base ratio. It is recommended that this is a multiple of tickSpacing for the offer lists to avoid rounding. |
 | _baseQuoteTickOffset | uint256 | the tick offset used for the geometric progression deployment. Must be at least 1. It is recommended that this is a multiple of tickSpacing for the offer lists to avoid rounding. |
 | firstAskIndex | uint256 | the (inclusive) index after which offer should be an ask. Must be at most `pricePoints`. |
 | bidGives | uint256 | The initial amount of quote to give for all bids. If 0, only book the offer, if type(uint).max then askGives is used as base for bids, and the quote the bid gives is set to according to the price. |
