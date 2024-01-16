@@ -1,0 +1,26 @@
+diff --git a/dist/index.js b/dist/index.js
+index 2d460ee6a5448b178e39e5b310c9957be28bb301..0035eedff256ffead7b9378f39c8c8b6e3778a11 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -90,7 +90,7 @@ var Glossary = function Glossary() {
+       return /*#__PURE__*/React.createElement("p", {
+         key: key
+       }, /*#__PURE__*/React.createElement(Link, {
+-        to: withBaseUrl("".concat(key.replace('/\\/g', '/')))
++        to: withBaseUrl("".concat(key.replace('/\\/g', '/').replace(/^docs/,'')))
+       }, content[key].metadata.title), ": ", /*#__PURE__*/React.createElement("span", {
+         style: {
+           display: 'inline-flex'
+diff --git a/index.js b/index.js
+index 8c3c52418c0119e30f06cab1b21e339c522ae612..aaf5616dbdd32fc6e8158bb69814c8f7d0297092 100644
+--- a/index.js
++++ b/index.js
+@@ -35,7 +35,7 @@ const Glossary = () => {
+               Object.keys(content).map(key => {
+                 return (
+                   <p key={key}>
+-                    <Link to={withBaseUrl(`${key.replace('/\\/g', '/')}`)}>{content[key].metadata.title}</Link>: <span style={{ display: 'inline-flex' }} dangerouslySetInnerHTML={{ __html: content[key].metadata.hoverText }} />
++                    <Link to={withBaseUrl(`${key.replace('/\\/g', '/').replace(/^docs/,'')}`)}>{content[key].metadata.title}</Link>: <span style={{ display: 'inline-flex' }} dangerouslySetInnerHTML={{ __html: content[key].metadata.hoverText }} />
+                   </p>
+                 )
+               })

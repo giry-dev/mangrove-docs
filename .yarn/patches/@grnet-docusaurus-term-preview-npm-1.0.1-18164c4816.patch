@@ -1,0 +1,26 @@
+diff --git a/dist/index.js b/dist/index.js
+index 2ae43e2d6ebe72218bc8f0a34d50d839a8148ddc..bb23bed151a9ca73012f22fa578f1cc46afb5168 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -8171,7 +8171,7 @@ var Tooltip$2 = function Tooltip(props) {
+       })
+     }, /*#__PURE__*/React.createElement("a", {
+       style: link,
+-      href: pathName
++      href: pathName.replace(/^\/docs/,'')
+     }, children));
+   });
+ };
+diff --git a/index.js b/index.js
+index c9586f526f37b58fecd155aa482df20a92cff8be..0cd90fa7f4e07a891d1419989966bbca0c92c30d 100644
+--- a/index.js
++++ b/index.js
+@@ -65,7 +65,7 @@ const Tooltip = (props) => {
+             />
+           }
+         >
+-          <a style={link} href={pathName}>
++          <a style={link} href={pathName.replace(/^\/docs/,'')}>
+             {children}
+           </a>
+         </RcTooltip>

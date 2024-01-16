@@ -2719,6 +2719,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@grnet/docusaurus-glossary-view@patch:@grnet/docusaurus-glossary-view@npm%3A1.0.1#./.yarn/patches/@grnet-docusaurus-glossary-view-npm-1.0.1-d37e03748c.patch::locator=mangrove-docs%40workspace%3A.":
+  version: 1.0.1
+  resolution: "@grnet/docusaurus-glossary-view@patch:@grnet/docusaurus-glossary-view@npm%3A1.0.1#./.yarn/patches/@grnet-docusaurus-glossary-view-npm-1.0.1-d37e03748c.patch::version=1.0.1&hash=c11c85&locator=mangrove-docs%40workspace%3A."
+  peerDependencies:
+    "@docusaurus/core": ^2.0.0
+    react: ^16.8.4 || ^17.0.0
+    react-dom: ^16.8.4 || ^17.0.0
+  checksum: 1e55267edfd683fead11c05904d3e371b47b2e9be558aab77f1c7cfc3f5f91fe9c11c4127bf3d8bb34c7b482f75518161479c9478cf9b55f9f0d8b1248e82f35
+  languageName: node
+  linkType: hard
+
 "@grnet/docusaurus-term-preview@npm:1.0.1":
   version: 1.0.1
   resolution: "@grnet/docusaurus-term-preview@npm:1.0.1"
@@ -2731,6 +2742,21 @@ __metadata:
     react: ^16.8.4 || ^17.0.0
     react-dom: ^16.8.4 || ^17.0.0
   checksum: a8e52709610a3f076ce81a5b2dbae92b9b54405ae2cebcc141f935fa08a30ce36c56a95ab14472777d9817b9dc0331fb8aef7788f993a6e865f58989af2a9356
+  languageName: node
+  linkType: hard
+
+"@grnet/docusaurus-term-preview@patch:@grnet/docusaurus-term-preview@npm%3A1.0.1#./.yarn/patches/@grnet-docusaurus-term-preview-npm-1.0.1-18164c4816.patch::locator=mangrove-docs%40workspace%3A.":
+  version: 1.0.1
+  resolution: "@grnet/docusaurus-term-preview@patch:@grnet/docusaurus-term-preview@npm%3A1.0.1#./.yarn/patches/@grnet-docusaurus-term-preview-npm-1.0.1-18164c4816.patch::version=1.0.1&hash=884e3c&locator=mangrove-docs%40workspace%3A."
+  dependencies:
+    postel: 0.1.4
+    rc-tooltip: 5.0.2
+    rollup: 2.38.5
+  peerDependencies:
+    "@docusaurus/core": ^2.0.0
+    react: ^16.8.4 || ^17.0.0
+    react-dom: ^16.8.4 || ^17.0.0
+  checksum: a3566287c5e096b10f5c1cab2b03b622d3e64064c8f31db6fdbc97443091c8833f76c82f16fd2fbc07e7bb0715cd8cac29f39df27c31bdcb6c2585faeb4e7425
   languageName: node
   linkType: hard
 
