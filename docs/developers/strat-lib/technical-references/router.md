@@ -14,9 +14,17 @@ Maker contracts can be set to utilize a %%router|router%% in order to manage %%o
 Function modifier `onlyMakers` requires that only an approved maker contract can call this functions. Modifier `onlyAdmin` requires function caller to be the admin of the router. Modifier `makerOrAdmin` is a disjunction of both the above requirements.
 :::
 
-:::info `SimpleRouter`
-The [`SimpleRouter` contract](./code/strats/src/strategies/routers/SimpleRouter) provides a (simple) router instance. We illustrate usage of the main router functions through it.
-:::
+## Useful routers
+
+### `SimpleRouter`
+
+The [`SimpleRouter` contract](./code/strats/src/strategies/routers/SimpleRouter) provides a (simple) router instance. We illustrate the usage of the main router functions through it.
+
+### `SmartRouter`
+
+[LINK TO BE EDITED]
+
+The [`SmartRouter` contract](https://github.com/mangrovedao/mangrove-strats/blob/feat/smartRouter/src/strategies/routers/SmartRouter.sol) delegates pull and push logic implementation to arbitrary contracts that implement the [`AbstractRoutingLogic` interface](https://github.com/mangrovedao/mangrove-strats/blob/feat/smartRouter/src/strategies/routing_logic/abstract/AbstractRoutingLogic.sol). It implements `SimpleRouter` as its default route.
 
 ## Liquidity flows
 
