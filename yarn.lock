@@ -2875,12 +2875,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove-deployments@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "@mangrovedao/mangrove-deployments@npm:1.0.3"
+"@mangrovedao/mangrove-deployments@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@mangrovedao/mangrove-deployments@npm:2.0.0"
   dependencies:
     semver: ^7.5.4
-  checksum: fa31875a93735309913a3fbb597c1f0546ad71216681a8d947e9d1f6316051a0fd8ca930d50c11e3e002db20c0bb595324b6e71b9bfd16a37d9a6e320267bc59
+  checksum: d64a06a5986d6c11fb1b0757b7d5488441cc0f450936f7dd32fe359d05577630b54553c8bf305fcd6c0169636dd0701fae0bbaf1b38a8f51516e0a7fb462d062
   languageName: node
   linkType: hard
 
@@ -2893,14 +2893,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mangrovedao/mangrove.js@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "@mangrovedao/mangrove.js@npm:2.0.3"
+"@mangrovedao/mangrove.js@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "@mangrovedao/mangrove.js@npm:2.0.4"
   dependencies:
     "@ethersproject/experimental": ^5.7.0
     "@mangrovedao/context-addresses": ^1.0.1
     "@mangrovedao/mangrove-core": ^2.0.3
-    "@mangrovedao/mangrove-deployments": ^1.0.3
+    "@mangrovedao/mangrove-deployments": ^2.0.0
     "@mangrovedao/mangrove-strats": ^1.0.2
     "@mangrovedao/reliable-event-subscriber": 1.1.29
     "@types/object-inspect": ^1.8.1
@@ -2921,7 +2921,7 @@ __metadata:
     yargs: ^17.3.0
   bin:
     mgv: ./dist/nodejs/cli/mgv.js
-  checksum: 9b33c16f5c91a20adb2a313ee63269fe66df202b1d8a0b042d09aa7bf863098e6f8f5b670492035d8807b87dbee29b69a955b8bdddcee991cde879f96c89e59d
+  checksum: 7f03da42ebd1d91b4b6e28e57c86e1d5820d23237953ca84709921f96a4a0a713481db1da04662a98f660af66e2947fea3e22d058b492e1a92d2ac5ee0010567
   languageName: node
   linkType: hard
 
@@ -11863,9 +11863,9 @@ __metadata:
     "@ethersproject/providers": ^5.4.7
     "@mangrovedao/context-addresses": ^1.0.1
     "@mangrovedao/mangrove-core": ^2.0.3
-    "@mangrovedao/mangrove-deployments": ^1.0.3
+    "@mangrovedao/mangrove-deployments": ^2.0.0
     "@mangrovedao/mangrove-strats": ^1.0.2
-    "@mangrovedao/mangrove.js": ^2.0.3
+    "@mangrovedao/mangrove.js": ^2.0.4
     "@mdx-js/react": ^1.6.22
     "@nomicfoundation/hardhat-chai-matchers": ^1.0.0
     "@nomicfoundation/hardhat-network-helpers": ^1.0.0
