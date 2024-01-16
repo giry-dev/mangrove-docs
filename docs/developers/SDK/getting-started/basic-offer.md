@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Post a simple offer
 
-Posting a simple offer is also referred to as an %%on-the-fly offer|on-the-fly-offer%%.
+Posting a simple offer is also referred to as an [on-the-fly offer](/docs/developers/terms/on-the-fly-offer.md).
 
 ## Prerequisites
 
@@ -77,7 +77,7 @@ After having looked at the market you now know what the prices are and you can n
 
 1. First create a [`LiquidityProvider`](../technical-references/code/classes/LiquidityProvider). This allows for posting new offers.
 2. Then you need to approve your account/wallet. To make sure that the transaction has been made, we do `await tx.wait()`.
-3. Then you need to calculate how much %%provision|provision%% is needed.
+3. Then you need to calculate how much [provision](/docs/developers/terms/provision.md) is needed.
 4. You can then post an offer using, in this case `wants: 100.5` and `gives:100.4`, which gives a price of $$100.5/100.4\approx1.00099$$. And since you saw that the best price was $$\approx1.003$$ you know our offer will be at the top of the list.
 
 ```javascript reference

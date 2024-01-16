@@ -42,7 +42,7 @@ This command generates static content into the `build` directory and can be serv
 $ yarn run docgen
 ```
 
-This command processes glossary terms and replaces (inline) term reference syntax (```%%term|term-id%%```) with references to term-pages as well as `hover` short explanations. Afterwards, it runs a full build (see above).
+This command processes glossary terms and replaces (inline) term reference syntax (```[term](/docs/developers/terms/term-id.md)```) with references to term-pages as well as `hover` short explanations. Afterwards, it runs a full build (see above).
 
 ### Deployment
 

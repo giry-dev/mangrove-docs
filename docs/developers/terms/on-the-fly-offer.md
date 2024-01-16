@@ -4,7 +4,7 @@ title: On-the-fly Offer
 hoverText: An offer posted by an EOA, in contrast with a smart offer, which is posted by a smart contract.
 ---
 
-An *on-the-fly offer* is posted by an EOA (i.e., an Externally-Owned Account, cf. [ethereum.org -> Account Types](https://ethereum.org/en/developers/docs/accounts/#types-of-account)). This is in contrast with a %%smart offer|smart-offer%% that is posted by a smart contract. 
+An *on-the-fly offer* is posted by an EOA (i.e., an Externally-Owned Account, cf. [ethereum.org -> Account Types](https://ethereum.org/en/developers/docs/accounts/#types-of-account)). This is in contrast with a [smart offer](/docs/developers/terms/smart-offer.md) that is posted by a smart contract. 
 
 An on-the-fly offer can be listed on Mangrove but is not equipped with any on-chain [logic](../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md) that executes when the offer is taken.
 

@@ -7,13 +7,13 @@ sidebar_position: 4
 
 ## Intro
 
-In this section we will go through how to reuse an offer, that has been taken or has failed. When an offer is taken, the offer still exists in Mangrove. This means that a previous offer made, can be reused again by the same maker. The same applies for an offer that failed when it was taken. The reason for keeping the offers around, is that cleaning up old/dead offers costs gas and by reusing a existing offer we save gas vs posting a completely new offer. This means that when we post an offer, we should save the %%Offer ID|offer-id%% for that offer, in case we ever want to reuse it.
+In this section we will go through how to reuse an offer, that has been taken or has failed. When an offer is taken, the offer still exists in Mangrove. This means that a previous offer made, can be reused again by the same maker. The same applies for an offer that failed when it was taken. The reason for keeping the offers around, is that cleaning up old/dead offers costs gas and by reusing a existing offer we save gas vs posting a completely new offer. This means that when we post an offer, we should save the [Offer ID](/docs/developers/terms/offer-id.md) for that offer, in case we ever want to reuse it.
 
 ### Update existing offer
 
 In order to update an offer that is no longer live, we need the ID of an offer that has been taken or failed. In this example we are going to use ID 5573. If you do not have an offer that has been taken you can simply post a completely new offer and then snipe it. The [script](https://github.com/mangrovedao/mangrove.js/blob/2eb3f76f120831a48c577d930fcffc7d55d75c51/examples/how-tos/reuse-offer.js) has some commented out sections that helps with creating a dead offer.
 
-When we have a dead offer, then we can figure out how much %%provision|provision%% is needed when reposting it. This is done by using the [`computeAskProvision`](../technical-references/code/classes/LiquidityProvider#-computeaskprovision) given the offer id. The last thing we need is to give a wants and a gives for the offer. In this case we are going to use `wants: 1000.5` and `gives: 1000.4`.
+When we have a dead offer, then we can figure out how much [provision](/docs/developers/terms/provision.md) is needed when reposting it. This is done by using the [`computeAskProvision`](../technical-references/code/classes/LiquidityProvider#-computeaskprovision) given the offer id. The last thing we need is to give a wants and a gives for the offer. In this case we are going to use `wants: 1000.5` and `gives: 1000.4`.
 
 If we look at the asks before and after we have updated the offer, we now see that our offer has been updated and is at the top of the order book.
 

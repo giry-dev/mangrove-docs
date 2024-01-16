@@ -9,7 +9,7 @@ sidebar_position: 4
 
 New offers should mostly be posted by [maker contracts](maker-contract.md) able to source liquidity when asked by Mangrove. 
 
-Offers posted via maker contracts are called %%smart offers|smart-offer%% - as opposed to %%on-the-fly offers|on-the-fly-offer%% made from EOA's.
+Offers posted via maker contracts are called [smart offers](/docs/developers/terms/smart-offer.md) - as opposed to [on-the-fly offers](/docs/developers/terms/on-the-fly-offer.md) made from EOA's.
 
 Similarly to [taking offers](../taker-order/README.md), offers on Mangrove can be posted in two ways:
 * Via the `newOfferByTick` function (preferred way).
@@ -17,7 +17,7 @@ Similarly to [taking offers](../taker-order/README.md), offers on Mangrove can b
 
 :::info 
 
-`newOfferByTick` and `newOfferByVolume` are payable and can be used to credit the maker contract's balance on Mangrove on the fly. A non zero `msg.value` will allow Mangrove to credit the maker contract's balance prior to locking the %%provision|provision%% of the newly posted offer.
+`newOfferByTick` and `newOfferByVolume` are payable and can be used to credit the maker contract's balance on Mangrove on the fly. A non zero `msg.value` will allow Mangrove to credit the maker contract's balance prior to locking the [provision](/docs/developers/terms/provision.md) of the newly posted offer.
 
 :::
 
@@ -192,13 +192,13 @@ await tx.wait();
   * `inbound_tkn` address of the _inbound_ token (that the taker will spend).
   * `tickSpacing` number of ticks that should be jumped between available price points.
 * `tick` is the tick number at which the offer is to be inserted.
-* `gives` is the amount of outbound tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t. to `gasreq` and offer list's %%density|density%% parameter.
-* `gasreq` amount of gas that will be given to the offer's account. **Must** fit in a `uint24` and be lower than [`gasmax`](../../governance-parameters/mangrove-configuration.md#mgvlibmgvstructsglobalunpacked). Should be sufficient to cover all calls to the maker contract's %%offer logic|offer-logic%% (%%`makerExecute`|makerExecute%%) and %%`makerPosthook`|makerPosthook%%). **Must** be compatible with the offered volume `gives` and the offer list's %%density|density%% parameter. (See also %%gasreq|gasreq%%.)
-* `gasprice` gas price override used to compute the order %%provision|provision%% (see also [offer bounties](offer-provision.md)). Any value lower than Mangrove's current %%gasprice|gasprice%% will be ignored (thus 0 means "use Mangrove's current %%gasprice|gasprice%%"). **Must** fit in a `uint16`.
+* `gives` is the amount of outbound tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t. to `gasreq` and offer list's [density](/docs/developers/terms/density.md) parameter.
+* `gasreq` amount of gas that will be given to the offer's account. **Must** fit in a `uint24` and be lower than [`gasmax`](../../governance-parameters/mangrove-configuration.md#mgvlibmgvstructsglobalunpacked). Should be sufficient to cover all calls to the maker contract's [offer logic](/docs/developers/terms/offer-logic.md) ([`makerExecute`](/docs/developers/terms/makerExecute.md)) and [`makerPosthook`](/docs/developers/terms/makerPosthook.md)). **Must** be compatible with the offered volume `gives` and the offer list's [density](/docs/developers/terms/density.md) parameter. (See also [gasreq](/docs/developers/terms/gasreq.md).)
+* `gasprice` gas price override used to compute the order [provision](/docs/developers/terms/provision.md) (see also [offer bounties](offer-provision.md)). Any value lower than Mangrove's current [gasprice](/docs/developers/terms/gasprice.md) will be ignored (thus 0 means "use Mangrove's current [gasprice](/docs/developers/terms/gasprice.md)"). **Must** fit in a `uint16`.
 
 #### Outputs
 
-* `offerId` the %%id|offer-id%% of the newly created offer. Note that offer ids are scoped to %%offer lists|offer-list%%, so many offers can share the same id.
+* `offerId` the [id](/docs/developers/terms/offer-id.md) of the newly created offer. Note that offer ids are scoped to [offer lists](/docs/developers/terms/offer-list.md), so many offers can share the same id.
 
 ### `newOfferByVolume()`
 
@@ -213,7 +213,7 @@ await tx.wait();
 
 :::danger **Provisioning**
 
-Since offers can fail, Mangrove requires each offer to be %%provisioned|provision%% in native token. If an offer fails, part of that provision will be sent to the caller that executed the offer, as compensation.
+Since offers can fail, Mangrove requires each offer to be [provisioned](/docs/developers/terms/provision.md) in native token. If an offer fails, part of that provision will be sent to the caller that executed the offer, as compensation.
 
 Make sure that your offer is [well-provisioned](offer-provision.md#checking-an-account-balance) before calling `newOfferByVolume`, otherwise the call will fail. The easiest way to go is to send a comfortable amount of native token to Mangrove from your offer-posting contract. Mangrove will remember your balance and use it when necessary.
 
@@ -351,7 +351,7 @@ mgv.updateOfferByVolume(
 
 #### Inputs
 
-* `offerId` is the %%offer id|offer-id%% of the offer to be updated.
+* `offerId` is the [offer id](/docs/developers/terms/offer-id.md) of the offer to be updated.
 * All other parameters are the same as `newOfferByTick` and `newOfferByVolume` - see [above](#posting-a-new-offer).
 
 #### Outputs
@@ -366,7 +366,7 @@ An offer can only be updated if `msg.sender` is the account that created the off
 
 :::caution **Reusing offers**
 
-After being executed or [retracted](#retracting-an-offer), an offer is moved out of the %%offer list|offer-list%%. It can still be updated and reinserted in the offer list. It is generally recommended to update offers instead of creating new ones, as it costs much less gas.
+After being executed or [retracted](#retracting-an-offer), an offer is moved out of the [offer list](/docs/developers/terms/offer-list.md). It can still be updated and reinserted in the offer list. It is generally recommended to update offers instead of creating new ones, as it costs much less gas.
 :::
 
 ### Retracting an offer
@@ -443,8 +443,8 @@ function myRetractOffer(OLKEY olkey, uint offerId) external {
 #### Inputs
 
 * `olkey` is the same as above.
-* `offerId` is the %%offer id|offer-id%% of the offer to be retracted.
-* `deprovision` if true, will free the offer's %%provision|provision%% so that you can [withdraw](offer-provision.md#withdrawing) them. Otherwise, will leave the provision in the offer.
+* `offerId` is the [offer id](/docs/developers/terms/offer-id.md) of the offer to be retracted.
+* `deprovision` if true, will free the offer's [provision](/docs/developers/terms/provision.md) so that you can [withdraw](offer-provision.md#withdrawing) them. Otherwise, will leave the provision in the offer.
 
 #### Outputs
 

@@ -6,13 +6,13 @@ sidebar_position: 1
 
 # Unlocking liquidity
 
-In the previous [smart offer tutorial](../getting-started/smart-offer.md), the offer we posted had to receive a transfer liquidity for it to succeed when taken. Now, we want instead to post the offer without transferring tokens from the admin to Mangrove or the `OfferMakerTutorial` (unlocked or %%reactive liquidity|reactive-liquidity%%). This way, the tokens are pulled just-in-time when the offer is taken and can thus be made available for other purposes (ex: generating extra yield in another DeFi protocol).
+In the previous [smart offer tutorial](../getting-started/smart-offer.md), the offer we posted had to receive a transfer liquidity for it to succeed when taken. Now, we want instead to post the offer without transferring tokens from the admin to Mangrove or the `OfferMakerTutorial` (unlocked or [reactive liquidity](/docs/developers/terms/reactive-liquidity.md)). This way, the tokens are pulled just-in-time when the offer is taken and can thus be made available for other purposes (ex: generating extra yield in another DeFi protocol).
 
 :::info Note
 Since you are not committing your liquidity to your smart offer, you can post multiple offers with unlocked liquidity. We call that [liquidity amplification](/developers/terms/amplified-liquidity.md).
 :::
 
-For this to work, we use a so-called %%router|router%%: it is a contract that can be used to route tokens from the admin to the `OfferMakerTutorial` when the offer is taken.<br />
+For this to work, we use a so-called [router](/docs/developers/terms/router.md): it is a contract that can be used to route tokens from the admin to the `OfferMakerTutorial` when the offer is taken.<br />
 
 First add the following import at the top of the file:
 

@@ -7,7 +7,7 @@ sidebar_position: 1
 
 On Mangrove, the price space of a market is discretized into _ticks_: It contains the price 1 `quote/base` and the smallest price increment (and decrement) is 1 basis point = 0.01%.
 
-Formally, a $tick \in \Z$ corresponds to the %%ratio|ratio%% $1.0001^{tick} = wants/gives$ between the amount $gives$ promised by an offer and the amount $wants$ it requests. This corresponds to a %%price|price%% in the following way:
+Formally, a $tick \in \Z$ corresponds to the [ratio](/docs/developers/terms/ratio.md) $1.0001^{tick} = wants/gives$ between the amount $gives$ promised by an offer and the amount $wants$ it requests. This corresponds to a [price](/docs/developers/terms/price.md) in the following way:
 
 $$
 price_{side \in \{asks, bids\}}(tick) = \begin{cases}

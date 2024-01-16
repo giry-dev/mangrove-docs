@@ -42,7 +42,7 @@ Note that Mangrove won't attempt to execute an offer if the values in a `CleanTa
 
 You have identified a whale that has 2,000,000 DAI and has approved Mangrove for spending its DAI.
 
-You're running a cleaning bot and it has detected that offer #708 on a WETH-DAI %%offer list|offer-list%% will fail when fully taken. The offer `gives` 615.3842 WETH at tick 75,171, corresponding to a price of 1,838.53 DAI/WETH. Thus, fully taking it requires 1,131,396.159384 DAI which corresponds to a raw value of `113139615938400000000000000`.
+You're running a cleaning bot and it has detected that offer #708 on a WETH-DAI [offer list](/docs/developers/terms/offer-list.md) will fail when fully taken. The offer `gives` 615.3842 WETH at tick 75,171, corresponding to a price of 1,838.53 DAI/WETH. Thus, fully taking it requires 1,131,396.159384 DAI which corresponds to a raw value of `113139615938400000000000000`.
 
 To clean the offer using funds borrowed from the whale, your cleaning bot triggers the following steps:
 

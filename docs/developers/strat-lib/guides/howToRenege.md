@@ -8,7 +8,7 @@ sidebar_position: 3
 
 ## Example
 
-A maker can %%renege|renege%% on a trade if the market conditions are no longer favorable. This can be done in [multiple ways](../../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md), but the strat lib has made it easy by adding a [`__lastLook__`](../technical-references/code/strats/src/strategies/MangroveOffer.md#lastlook) function which can be overridden.
+A maker can [renege](/docs/developers/terms/renege.md) on a trade if the market conditions are no longer favorable. This can be done in [multiple ways](../../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md), but the strat lib has made it easy by adding a [`__lastLook__`](../technical-references/code/strats/src/strategies/MangroveOffer.md#lastlook) function which can be overridden.
 
 You can follow the [smart offer tutorial](../getting-started/smart-offer.md), and extend it with the following function:
 
@@ -16,13 +16,13 @@ You can follow the [smart offer tutorial](../getting-started/smart-offer.md), an
 https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorialResidual.sol#L77-L80
 ```
 
-This override of the `__lastLook__` will renege if the offer is not fully taken. Note that since the %%provision|provision%% is lost as a %%bounty|bounty%% to the taker, care must be taken to select the right circumstances to renege. This uses the mechanisms for compensating the taker on failure, and therefore the maker should [renege early](../../contracts/background/taker-compensation.md#encouraging-early-renege).
+This override of the `__lastLook__` will renege if the offer is not fully taken. Note that since the [provision](/docs/developers/terms/provision.md) is lost as a [bounty](/docs/developers/terms/bounty.md) to the taker, care must be taken to select the right circumstances to renege. This uses the mechanisms for compensating the taker on failure, and therefore the maker should [renege early](../../contracts/background/taker-compensation.md#encouraging-early-renege).
 
 ## Exercises
 
-1. Try posting an offer with a %%maker contract|maker-contract%% with the above implementation of `__lastlook__` above.
+1. Try posting an offer with a [maker contract](/docs/developers/terms/maker-contract.md) with the above implementation of `__lastlook__` above.
 
-2. Then, try out targeting this offer with a [market order](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#market-order) that takes only _part_ of the tokens that the offer %%gives|gives%%. The result should be a `makerExecute` fail with the reason that the offer must be fully taken. 
+2. Then, try out targeting this offer with a [market order](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#market-order) that takes only _part_ of the tokens that the offer [gives](/docs/developers/terms/gives.md). The result should be a `makerExecute` fail with the reason that the offer must be fully taken. 
 
 :::info Note
 For your offer to be targeted by a market order, it needs to sit at the top of the order book. Make sure to choose a very favorable price (i.e. tick) when posting your offer. For an example of how to calculate a tick from a ratio, check the Solidity snippets of [Posting a new offer](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md).

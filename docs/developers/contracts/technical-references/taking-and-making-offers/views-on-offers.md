@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Views on offers
 
-Mangrove provides a number of getter functions providing views on offers and %%offer lists|offer-list%%.
+Mangrove provides a number of getter functions providing views on offers and [offer lists](/docs/developers/terms/offer-list.md).
 
 ## Public getters
 
@@ -13,7 +13,7 @@ Mangrove provides a number of getter functions providing views on offers and %%o
 
 :::info
 
-Returns the `offerId` of the best offer in the %%offer list|offer-list%%.
+Returns the `offerId` of the best offer in the [offer list](/docs/developers/terms/offer-list.md).
 
 :::
 

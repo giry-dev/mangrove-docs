@@ -10,7 +10,7 @@ On the _asks_ side, this is fairly natural: The price is the ratio $wants/gives$
 
 On the _bids_ side, however, the price is the reciprocal of the $wants/gives$ ratio, i.e. price = $gives/wants$. This is because a bid wants base tokens and offers quote tokens and thus the ratio $wants/gives$ is in `base/quote`.
 
-Thus, a _price_ corresponds the $wants/gives$ %%ratio|ratio%% of an offer in the following way:
+Thus, a _price_ corresponds the $wants/gives$ [ratio](/docs/developers/terms/ratio.md) of an offer in the following way:
 
 * For an _ask_, $price = ratio = wants/gives$
 * For a _bid_, $price = 1/ratio = gives/wants$.

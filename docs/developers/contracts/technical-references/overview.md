@@ -28,12 +28,12 @@ Takers typically operate via a web front-end or with the help of the TypeScript 
 
 ## Makers
 
-Makers own [offers](taking-and-making-offers/reactive-offer/README.md), which live in %%offer lists|offer-list%% in the Mangrove order book. 
+Makers own [offers](taking-and-making-offers/reactive-offer/README.md), which live in [offer lists](/docs/developers/terms/offer-list.md) in the Mangrove order book. 
 
 As a maker you have the choice of posting two kinds of offers:
 
-* %%On-the-fly offers|on-the-fly-offer%% posted directly from an EOA. Such offers have no logic attached, and the promised liquidity should be available on the EOA, when the offer is matched during a trade.
-* %%Smart offers|smart-offer%% posted via a smart contract - called a %%maker contract|maker-contract%%. When a smart offer is matched by a taker order during trade execution, the maker contract will be called and given the opportunity to execute its %%offer logic|offer-logic%%. 
+* [On-the-fly offers](/docs/developers/terms/on-the-fly-offer.md) posted directly from an EOA. Such offers have no logic attached, and the promised liquidity should be available on the EOA, when the offer is matched during a trade.
+* [Smart offers](/docs/developers/terms/smart-offer.md) posted via a smart contract - called a [maker contract](/docs/developers/terms/maker-contract.md). When a smart offer is matched by a taker order during trade execution, the maker contract will be called and given the opportunity to execute its [offer logic](/docs/developers/terms/offer-logic.md). 
 
 ### Smart offers
 
@@ -43,13 +43,13 @@ The offer logic of the maker contract is called twice by the Mangrove protocol d
 
 ### When a smart offer is taken
 
-Mangrove calls the offer logic of the maker contract a [first time](taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution), via the callback function %%`makerExecute`|makerExecute%%, when an offer is matched by a taker order. This happens immediately prior to trade settlement allowing makers to source liquidity %%reactively|reactive-liquidity%% and *just-in-time* for the trade. It also allows makers to %%renege|renege%% on the offer to trade by incorporating defensive code (called %%last look|last-look%%) in the maker contract (e.g., because the market conditions changed).
+Mangrove calls the offer logic of the maker contract a [first time](taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution), via the callback function [`makerExecute`](/docs/developers/terms/makerExecute.md), when an offer is matched by a taker order. This happens immediately prior to trade settlement allowing makers to source liquidity [reactively](/docs/developers/terms/reactive-liquidity.md) and *just-in-time* for the trade. It also allows makers to [renege](/docs/developers/terms/renege.md) on the offer to trade by incorporating defensive code (called [last look](/docs/developers/terms/last-look.md)) in the maker contract (e.g., because the market conditions changed).
 
 This implies that offers posted to Mangrove need not be fully provisioned. As a maker, your liquidity can be shared, borrowed, lent, and, at the same time, be displayed in Mangrove's order book - ready to be sourced when, and only when, your offer is taken.
 
 ### After a smart offer is taken
 
-Mangrove calls the offer logic of the maker contract a [second time](taking-and-making-offers/reactive-offer/maker-contract.md#offer-post-hook), via the callback function %%`makerPosthook`|makerPosthook%% during trade execution immediately *after* the offer has been taken.
+Mangrove calls the offer logic of the maker contract a [second time](taking-and-making-offers/reactive-offer/maker-contract.md#offer-post-hook), via the callback function [`makerPosthook`](/docs/developers/terms/makerPosthook.md) during trade execution immediately *after* the offer has been taken.
 
 This allows makers to, for instance, post another offer to redisplay their liquidity instantly, in a manner similar to [Automated Market Makers (AMMs)](https://coinmarketcap.com/alexandria/glossary/automated-market-maker-amm).
 

@@ -19,7 +19,7 @@ Every Mangrove [offer list](../offer-list.md) can be either [active or inactive]
 
 ## Market order
 
-A **Market Order** is Mangrove's simplest way of buying or selling assets. Such (taker) orders are run against a specific [offer list](../offer-list.md) with its associated %%outbound|outbound%% token and %%inbound|inbound%% token. The liquidity taker specifies how many _outbound_ tokens she %%wants|wants%% and how many _inbound_ tokens she %%gives|gives%%.
+A **Market Order** is Mangrove's simplest way of buying or selling assets. Such (taker) orders are run against a specific [offer list](../offer-list.md) with its associated [outbound](/docs/developers/terms/outbound.md) token and [inbound](/docs/developers/terms/inbound.md) token. The liquidity taker specifies how many _outbound_ tokens she [wants](/docs/developers/terms/wants.md) and how many _inbound_ tokens she [gives](/docs/developers/terms/gives.md).
 
 
 :::info **Mangrove Market Order = TradFi Limit Order**
@@ -259,7 +259,7 @@ await tx.wait();
 * `takerGot` is the net amount of _outbound_ tokens the taker has received (i.e., after applying the offer list [fee](../../governance-parameters/local-variables.md#taker-fees) if any).
 * `takerGave` is the amount of _inbound_ tokens the taker has sent.
 * `bounty` is the amount of native tokens (in units of wei) the taker received in compensation for cleaning failing offers
-* `feePaid` is the amount of `outbound_tkn` that was sent to Mangrove's vault in payment of the potential %%fee|taker-fee%% associated to the `(outbound_tkn, inbound_tkn, tickSpacing)` [offer list](../offer-list.md#general-structure).&#x20;
+* `feePaid` is the amount of `outbound_tkn` that was sent to Mangrove's vault in payment of the potential [fee](/docs/developers/terms/taker-fee.md) associated to the `(outbound_tkn, inbound_tkn, tickSpacing)` [offer list](../offer-list.md#general-structure).&#x20;
 
 
 ### `marketOrderForByVolume()`
@@ -343,6 +343,6 @@ Contrary to [GTC orders](https://www.investopedia.com/terms/g/gtc.asp) on regula
 :::
 
 ## Bounties for taking failing offers
-If an offer fails to deliver, the taker gets a %%bounty|bounty%% in native token to compensate for the gas spent on executing the offer. The bounty is paid by the %%offer owner|offer-owner%% and are taken from the %%provision|provision%% they deposited with Mangrove when posting the offer. 
+If an offer fails to deliver, the taker gets a [bounty](/docs/developers/terms/bounty.md) in native token to compensate for the gas spent on executing the offer. The bounty is paid by the [offer owner](/docs/developers/terms/offer-owner.md) and are taken from the [provision](/docs/developers/terms/provision.md) they deposited with Mangrove when posting the offer. 
 
 Refer to [Offer provisions](../reactive-offer/offer-provision.md) for details on how provisions and bounties work and are calculated.

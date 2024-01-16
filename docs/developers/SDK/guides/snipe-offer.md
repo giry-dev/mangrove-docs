@@ -7,7 +7,7 @@ sidebar_position: 2
 
 ## Intro
 
-This will go through sniping an offer using mangrove.js. In this section we assume that you already know how to connect to Mangrove either on a real chain or on a local chain. When sniping we need to make sure that we actually have the funds. If we do not have the funds the transaction will revert with the error `mgv/takerTransferFail`.  This means that the taker is the cause of the failed transfer and since we are trying to snipe an offer, we are the taker. Another result could be that the transfer failed because of the maker, then we will get this error `mgv/makerTransferFail`. This means that for some reason the makers funds was not transferred and the transfer therefore failed. In this case the taker (us), will be compensated for the gas we just used to make the offer fail. We are compensated in form of a %%bounty|bounty%%.
+This will go through sniping an offer using mangrove.js. In this section we assume that you already know how to connect to Mangrove either on a real chain or on a local chain. When sniping we need to make sure that we actually have the funds. If we do not have the funds the transaction will revert with the error `mgv/takerTransferFail`.  This means that the taker is the cause of the failed transfer and since we are trying to snipe an offer, we are the taker. Another result could be that the transfer failed because of the maker, then we will get this error `mgv/makerTransferFail`. This means that for some reason the makers funds was not transferred and the transfer therefore failed. In this case the taker (us), will be compensated for the gas we just used to make the offer fail. We are compensated in form of a [bounty](/docs/developers/terms/bounty.md).
 
 ### Connect to market (and mint tokens)
 
@@ -47,7 +47,7 @@ We now know that we want to snipe the best offer on the book, which is offer 557
 
 Before sniping the offer with the information we just gathered, we have to [approve](../../strat-lib/guides/approvals.md) Mangrove to be able to take the funds (USDC), from our account. We need to do this, because when taking any offer, the first thing Mangrove does, is to transfer the takers funds to Mangrove and from Mangrove to the maker. If we have not approved this, the transfer will fail with a `mgv/takerTransferFail`.
 
-We can now snipe the offer. Be ware that the information on the offer, is from the makers side. This means that what we, the taker, wants is what the offer (the maker) gives. Similarly with gives; what we, the taker, gives, is what the offer (the maker) wants. When taking a offer we should be aware that if we do not give a %%`gasLimit`|gasLimit%%, mangrove.js will get the `gasLimit` from the offer's %%`gasreq`|gasreq%%. The `gasLimit` sets a limit on how much gas we max want to use, when taking the offer. This way we can control, that if it is very costly to take the offer and it ends up costing more than our `gasLimit`, then the transfer will revert.
+We can now snipe the offer. Be ware that the information on the offer, is from the makers side. This means that what we, the taker, wants is what the offer (the maker) gives. Similarly with gives; what we, the taker, gives, is what the offer (the maker) wants. When taking a offer we should be aware that if we do not give a [`gasLimit`](/docs/developers/terms/gasLimit.md), mangrove.js will get the `gasLimit` from the offer's [`gasreq`](/docs/developers/terms/gasreq.md). The `gasLimit` sets a limit on how much gas we max want to use, when taking the offer. This way we can control, that if it is very costly to take the offer and it ends up costing more than our `gasLimit`, then the transfer will revert.
 
 ```javascript reference
 https://github.com/mangrovedao/mangrove.js/blob/2eb3f76f120831a48c577d930fcffc7d55d75c51/examples/how-tos/snipe-offer.js#L27-L50
@@ -67,7 +67,7 @@ If the transaction was successful then we should see a result like this. In this
   posthookFailures: [],
 ```
 
-If the transaction failed, it is most likely that the account that posted the offer (the maker) couldn't complete the transaction. Because of this we will receive a %%bounty|bounty%% for making an offer fail. If sniped your own offer after following the [Post a simple offer](../getting-started/basic-offer.md) and it failed, then you most likely lack the DAI to fulfil the offer - try minting some.
+If the transaction failed, it is most likely that the account that posted the offer (the maker) couldn't complete the transaction. Because of this we will receive a [bounty](/docs/developers/terms/bounty.md) for making an offer fail. If sniped your own offer after following the [Post a simple offer](../getting-started/basic-offer.md) and it failed, then you most likely lack the DAI to fulfil the offer - try minting some.
 
 ```bash title="Snipe failed because of maker"
     events: [ [Object], [Object], [Object], [Object] ]

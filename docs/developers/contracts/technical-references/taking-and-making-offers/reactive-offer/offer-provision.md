@@ -7,7 +7,7 @@ sidebar_position: 2
 
 ## Summary
 
-When an offer fails, the caller has wasted some gas. To compensate the caller, Mangrove gives them a %%bounty|bounty%% in native tokens. Offers must %%provision|provision%% enough native token to maximize the chances that Mangrove can compensate the caller. In more details:
+When an offer fails, the caller has wasted some gas. To compensate the caller, Mangrove gives them a [bounty](/docs/developers/terms/bounty.md) in native tokens. Offers must [provision](/docs/developers/terms/provision.md) enough native token to maximize the chances that Mangrove can compensate the caller. In more details:
 
 * Every maker contract that posted an offer has a balance in native token held by Mangrove. Funds can be freely added to or withdrawn from the balance.
 * Whenever the contract creates or updates an offer, its balance is adjusted so that enough native tokens are locked as the offer's provision.

@@ -8,27 +8,27 @@ sidebar_position: 8
 
 ### Offer logic should only be called by Mangrove
 
-External functions of an %%offer logic|offer-logic%%, `makerExecute` and `makerPosthook`, should only be callable if `msg.sender` is Mangrove. %%Maker contracts|maker-contract%% implemented with the strat library take care of this by construction.
+External functions of an [offer logic](/docs/developers/terms/offer-logic.md), `makerExecute` and `makerPosthook`, should only be callable if `msg.sender` is Mangrove. [Maker contracts](/docs/developers/terms/maker-contract.md) implemented with the strat library take care of this by construction.
 
 ### Public functions that are called by offer logic
 It is sometimes convenient to define public function that can also be called internally during offer logic's execution. If such function needs to be restricted to privileged access, one cannot simply use `require(msg.sender == admin_address)` as `msg.sender` will be Mangrove when the function is called internally by the offer logic. Using a guard of the form `require(msg.sender == admin_address || msg.sender == mangrove_address)` will work though (notice that internal call preserves `msg.sender` of `makerExecute`).
 
 ## Token amounts
-%%Outbound|outbound%% and %%inbound|inbound%% tokens may have different decimals. Mangrove always use raw amounts, so offer do not have directly a price but a %%wants|wants%% and a %%gives|gives%% both expressed in raw token amounts. 
+[Outbound](/docs/developers/terms/outbound.md) and [inbound](/docs/developers/terms/inbound.md) tokens may have different decimals. Mangrove always use raw amounts, so offer do not have directly a price but a [wants](/docs/developers/terms/wants.md) and a [gives](/docs/developers/terms/gives.md) both expressed in raw token amounts. 
 
-## Which part of your %%Maker contract|maker-contract%% should not be in the %%offer logic|offer-logic%%?
+## Which part of your [Maker contract](/docs/developers/terms/maker-contract.md) should not be in the [offer logic](/docs/developers/terms/offer-logic.md)?
 Functions in offer logic are automatically executed by Mangrove, who is then `msg.sender`. Beware that taker is not necessarily `tx.origin`, as a contract could be acting as a taker. Importantly, make sure that your logic is not exploitable by context manipulation, which could force your offer to fail.
 
-## How to factor your offer logic between %%`makerExecute`|makerExecute%% and %%`makerPosthook`|makerPosthook%%.
+## How to factor your offer logic between [`makerExecute`](/docs/developers/terms/makerExecute.md) and [`makerPosthook`](/docs/developers/terms/makerPosthook.md).
 
 **Must** be in maker execute: 
 * decision to renege on trade
 * every moves that are needed to bring liquidity promised to the taker. 
 
-The offer logic in `makerExecute` **should** be gas bounded since an out-of-gas exception will lead to Mangrove transferring your whole %%provision|provision%% to the taker as a %%bounty|bounty%%.
+The offer logic in `makerExecute` **should** be gas bounded since an out-of-gas exception will lead to Mangrove transferring your whole [provision](/docs/developers/terms/provision.md) to the taker as a [bounty](/docs/developers/terms/bounty.md).
 
 **Must** be in `makerPosthook`:
-* any write action to the %%offer list|offer-list%% to which the currently executed offer belongs.
+* any write action to the [offer list](/docs/developers/terms/offer-list.md) to which the currently executed offer belongs.
 * any logging of a revert reason raised during `makerExecute`. The (truncated to a bytes32) reason is passed to `makerPosthook` in the `makerData` field.
 
 **Should** be in `makerPosthook`:
@@ -48,7 +48,7 @@ __activate__(IERC20 token) internal override {
 }
 ``` 
 
-The [`activate(IERC20[] calldata tokens)`](../technical-references/code/strats/src/strategies/routers/abstract/AbstractRouter.md#activate) function follows the same pattern for custom %%routers|router%% (see router [activation](../technical-references/router.md#router-activation)).
+The [`activate(IERC20[] calldata tokens)`](../technical-references/code/strats/src/strategies/routers/abstract/AbstractRouter.md#activate) function follows the same pattern for custom [routers](/docs/developers/terms/router.md) (see router [activation](../technical-references/router.md#router-activation)).
 
 :::info cascading activation
 The activate function's default behavior is to perform the maker contract's activations and then ask its router (if any) to perform its own.
@@ -67,4 +67,4 @@ The checkList function's default behavior is to perform maker contract's checkLi
 
 
 ## Keepers as offer maintainers
-A failing offer should not be the consequence of a bug in your offer logic, but rather be a feature of it. Raising an exception during `makerExecute` is the proper way to cancel a trade if your logic deems it necessary. You should customize the [last look](../technical-references/main-hooks.md#last-look-before-trade) %%hook|hook%% for this, in order to fail early in the trade and save you money. For instance, if your logic relies on funds being on a lender, and a price oracle as a relative protection against arbitrage, you should check the oracle before redeeming the funds from the lender.
+A failing offer should not be the consequence of a bug in your offer logic, but rather be a feature of it. Raising an exception during `makerExecute` is the proper way to cancel a trade if your logic deems it necessary. You should customize the [last look](../technical-references/main-hooks.md#last-look-before-trade) [hook](/docs/developers/terms/hook.md) for this, in order to fail early in the trade and save you money. For instance, if your logic relies on funds being on a lender, and a price oracle as a relative protection against arbitrage, you should check the oracle before redeeming the funds from the lender.

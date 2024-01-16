@@ -4,7 +4,7 @@ title: Cleaning Bot
 hoverText: An off-chain bot that keeps the order books clean by sniping failing offers.
 ---
 
-A _cleaning bot_ is a %%keeper bot|keeper-bot%% that cleans failing offers on Mangrove's order books. This keeps the order books clean to the benefit of the entire ecosystem. Community members are compensated for running cleaning bots through %%bounties|bounty%%.
+A _cleaning bot_ is a [keeper bot](/docs/developers/terms/keeper-bot.md) that cleans failing offers on Mangrove's order books. This keeps the order books clean to the benefit of the entire ecosystem. Community members are compensated for running cleaning bots through [bounties](/docs/developers/terms/bounty.md).
 
 ## References
 

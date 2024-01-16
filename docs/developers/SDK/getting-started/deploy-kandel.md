@@ -44,7 +44,7 @@ Next, create an instance to manage Kandel strategies (`kandelStrategies`), and l
 https://github.com/mangrovedao/mangrove.js/blob/2eb3f76f120831a48c577d930fcffc7d55d75c51/examples/tutorials/deploy-kandel.js#L25-L29
 ```
 
-With this, you can generate a [distribution](../../../general/kandel/how-does-kandel-work/step-by-step-visual-explanation.md#price-distribution) with the minimum recommended amount of liquidity to avoid %%density|density%% issues by:
+With this, you can generate a [distribution](../../../general/kandel/how-does-kandel-work/step-by-step-visual-explanation.md#price-distribution) with the minimum recommended amount of liquidity to avoid [density](/docs/developers/terms/density.md) issues by:
 
 * Creating a generator
 * Calculating minimums per offer
@@ -112,7 +112,7 @@ If you are running on a testnet, then you can mint test tokens to send to the Ka
 Now that our Kandel instance is deployed, we can [populate the offers](../../../general/kandel/how-does-kandel-work/step-by-step-visual-explanation.md#populating-bids-and-asks) for the distribution.
 This will create offers for the base and quote tokens, and deposit the required amounts of tokens into the Kandel instance.
 
-The offers also need a %%provision|provision%%, hence here the default that we are using can be inspected.
+The offers also need a [provision](/docs/developers/terms/provision.md), hence here the default that we are using can be inspected.
 
 > 💡
 > The population can span multiple transactions due to gas limits. After this step, the Kandel offers are deployed and are ready to be taken!

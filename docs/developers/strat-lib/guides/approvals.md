@@ -22,11 +22,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Maker approvals
 
-As a **maker** you either post %%on-the-fly|on-the-fly-offer%% offers directly from an EOA, or post %%smart offers|smart-offer%% connected to %%maker contracts|maker-contract%%.
+As a **maker** you either post [on-the-fly](/docs/developers/terms/on-the-fly-offer.md) offers directly from an EOA, or post [smart offers](/docs/developers/terms/smart-offer.md) connected to [maker contracts](/docs/developers/terms/maker-contract.md).
 
-As the Mangrove contract handles transfers during trade settlement, this means that either the maker EOA or the maker contract needs to approve Mangrove for an %%outbound|outbound%% token transfer for at least the amount that the offer %%gives|gives%%.
+As the Mangrove contract handles transfers during trade settlement, this means that either the maker EOA or the maker contract needs to approve Mangrove for an [outbound](/docs/developers/terms/outbound.md) token transfer for at least the amount that the offer [gives](/docs/developers/terms/gives.md).
 
-Referring to the [call sequence diagram](#call-sequence-overview) this maker approval is required for the `transferFrom` from the %%Offer Logic(s)|offer-logic%% to Mangrove.
+Referring to the [call sequence diagram](#call-sequence-overview) this maker approval is required for the `transferFrom` from the [Offer Logic(s)](/docs/developers/terms/offer-logic.md) to Mangrove.
 
 ### Maker contracts inheriting from `MangroveOffer`
 
@@ -44,13 +44,13 @@ As drawn, the [call sequence diagram](#call-sequence-overview) depicts a situati
 
 As an outset, the administrator of the maker contract and any other contracts involved in trade settlement initiated by Mangrove must ensure that the proper approvals for liquidity flow is in place before offers are executed. 
 
-For maker contracts that are built using the Strat Lib, the default behavior of the %%offer logic|offer-logic%% is to assume the funds are in the maker contract itself. When this is not the case, additional approvals need to be set up so that liquidity can be brought from there. There are two noteworthy cases we comment below.
+For maker contracts that are built using the Strat Lib, the default behavior of the [offer logic](/docs/developers/terms/offer-logic.md) is to assume the funds are in the maker contract itself. When this is not the case, additional approvals need to be set up so that liquidity can be brought from there. There are two noteworthy cases we comment below.
 
 #### When a Strat Lib router is used to manage the funds of the maker
 
-As described under [Liquidity routing](../technical-references/router.md) the Strat Lib provides building blocks for advanced cash management strategies. The %%router|router%% abstraction is provided for managing transfers of %%outbound|outbound%% and %%inbound|inbound%% token reserves of %%offer owners|offer-owner%%.
+As described under [Liquidity routing](../technical-references/router.md) the Strat Lib provides building blocks for advanced cash management strategies. The [router](/docs/developers/terms/router.md) abstraction is provided for managing transfers of [outbound](/docs/developers/terms/outbound.md) and [inbound](/docs/developers/terms/inbound.md) token reserves of [offer owners](/docs/developers/terms/offer-owner.md).
 
-The maker contract should approve its router for any token it wishes to push to an %%offer owner|offer-owner%%'s reserve. 
+The maker contract should approve its router for any token it wishes to push to an [offer owner](/docs/developers/terms/offer-owner.md)'s reserve. 
 
 Please refer to the section on [Routers](../technical-references/router.md) for more details, and refer to the API Reference for [AbstractRouter](../technical-references/code/strats/src/strategies/routers/abstract/AbstractRouter.md) - the base that Strat Lib routers are implemented on top of.
 
@@ -59,14 +59,14 @@ Please refer to the section on [Routers](../technical-references/router.md) for 
 
 The [Forwarder](../background/offer-maker/forwarder.md) building block provides a base for maker contracts that manage offers belonging to several offer owners.
 
-A basic Forwarder strategy is to assume that the funds of each offer comes from its owner's addres. In such cases, the offer owners need to approve the maker contract's %%router|router%% for outbound token transfer. 
+A basic Forwarder strategy is to assume that the funds of each offer comes from its owner's addres. In such cases, the offer owners need to approve the maker contract's [router](/docs/developers/terms/router.md) for outbound token transfer. 
 
 Please refer to the section on the [Forwarder building block](../background/offer-maker/forwarder.md) and to the API Reference for the [Forwarder](../technical-references/code/strats/src/strategies/offer_forwarder/abstract/Forwarder.md) base for further reading.
 
 
 <!-- #### Example -->
 
-The schematic diagram below illustrates the case, where a maker contract manages offers with a %%router|router%%. Such a maker contract may be implemented with the [Forwarder](../background/offer-maker/forwarder.md) building block combined with a %%router|router%%.
+The schematic diagram below illustrates the case, where a maker contract manages offers with a [router](/docs/developers/terms/router.md). Such a maker contract may be implemented with the [Forwarder](../background/offer-maker/forwarder.md) building block combined with a [router](/docs/developers/terms/router.md).
 
 In this case, 
 * the router needs approval to transfer outbound from the offer owner and needs approval to transfer inbound from the maker contract. 
@@ -99,7 +99,7 @@ sequenceDiagram
 
 ## Taker approvals
 
-While we are mainly focused on the maker-side in this section, it is worth noting that the offer taker (be that an EOA or a contract) needs to approve Mangrove for an %%inbound|inbound%% token transfer for at least the amount of tokens that the taker gives.
+While we are mainly focused on the maker-side in this section, it is worth noting that the offer taker (be that an EOA or a contract) needs to approve Mangrove for an [inbound](/docs/developers/terms/inbound.md) token transfer for at least the amount of tokens that the taker gives.
 
 Looking at the [call sequence diagram](#call-sequence-overview) this taker approval is required for the `transferFrom` from the Taker to Mangrove.
 

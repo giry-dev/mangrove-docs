@@ -21,7 +21,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Based on the selected **price range**, the price grid is constructed using a geometric progression. The Min and Max prices of the user inputs are the limits of the grid. 
 
 The increments are calculated using a key metric called **ratio** (of the geometric progression). Kandel starts from the Min price, all the way up to the Max price.
-By default, the ratio is ~1% (due to %%ticks|tick%% it will not be exactly 1%).
+By default, the ratio is ~1% (due to [ticks](/docs/developers/terms/tick.md) it will not be exactly 1%).
 
 :::info Note
 In this example, the user selected an ETH/USDC trading pair.
@@ -59,7 +59,7 @@ When a **<font color="#5cd19b">bid</font>** is taken, the Kandel strategy contra
 
 <img src={useBaseUrl('img/assets/reposting_liquidity_as_ask.PNG')} width="400px"/><br /><br />
 
-The received amount of **base tokens** (ETH) is used to post a %%dual offer|dual-offer%% at a **step size k=1 above**. This is automatically handled by Kandel, it is part of its trading behaviour.
+The received amount of **base tokens** (ETH) is used to post a [dual offer](/docs/developers/terms/dual-offer.md) at a **step size k=1 above**. This is automatically handled by Kandel, it is part of its trading behaviour.
 
 :::info Note
 Since the volume objective at the relevant index is 1 ETH, all the received liquidity is used to populate corresponding **<font color="#eb525a">ask</font>**. Our Kandel just received 1 ETH (previous Bid), and is using it all to repost an offer, an Ask (called dual offer).
@@ -76,7 +76,7 @@ Inversely to the **<font color="#5cd19b">bid</font>** example, when an ask is ta
 
 <img src={useBaseUrl('img/assets/reposting_liquidity_as_bid.PNG')} width="400px"/><br /><br />
 
-The received amount of **quote tokens** (USDC) is used to post a %%dual offer|dual-offer%% **step size k=1 below**.
+The received amount of **quote tokens** (USDC) is used to post a [dual offer](/docs/developers/terms/dual-offer.md) **step size k=1 below**.
 
 In our example:
 

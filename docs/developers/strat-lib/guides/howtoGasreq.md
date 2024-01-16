@@ -5,11 +5,11 @@ sidebar_position: 4
 
 # Determining gas requirements
 
-Determining %%gas requirements (gasreq)|gasreq%% for your offer logic in a maker contract is important to avoid failures, save on provision, and make offers as attractable as possible. There is a lot that can be said and calculated about gas requirements - we will focus on the essential here, and give you pointers for your own assessments.
+Determining [gas requirements (gasreq)](/docs/developers/terms/gasreq.md) for your offer logic in a maker contract is important to avoid failures, save on provision, and make offers as attractable as possible. There is a lot that can be said and calculated about gas requirements - we will focus on the essential here, and give you pointers for your own assessments.
 
 ## What to test
 
-To determine the `gasreq`, you need to measure the **worst case gas usage **when %%`makerExecute`|makerExecute%% and %%`makerPosthook`|makerPosthook%% are called. There could be exception cases which are very gas costly, where you simply want the offer to fail instead (and you could skip those).
+To determine the `gasreq`, you need to measure the **worst case gas usage **when [`makerExecute`](/docs/developers/terms/makerExecute.md) and [`makerPosthook`](/docs/developers/terms/makerPosthook.md) are called. There could be exception cases which are very gas costly, where you simply want the offer to fail instead (and you could skip those).
 
 As a strat builder, you should **verify your gas usage** in some specific scenarios, and **compare deltas to other scenarios** tested [here](https://github.com/mangrovedao/mangrove-core/blob/2ae172805fd8b309c30b2dc877dba66245abbb3e/test/core/gas/README.md#scenarios). You should then use the results to set a `gasreq` for your strat which covers the desired worst-case scenarios. The gas measurements are for the inner-most operation.
 

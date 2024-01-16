@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Post a Smart Offer
 
-In this tutorial, you will learn how to post a %%smart offer|smart-offer%% managed by your own %%maker contract|maker-contract%% that simply stores %%inbound|inbound%% and %%outbound|outbound%% tokens on its balance.
+In this tutorial, you will learn how to post a [smart offer](/docs/developers/terms/smart-offer.md) managed by your own [maker contract](/docs/developers/terms/maker-contract.md) that simply stores [inbound](/docs/developers/terms/inbound.md) and [outbound](/docs/developers/terms/outbound.md) tokens on its balance.
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ In this tutorial, you will learn how to post a %%smart offer|smart-offer%% manag
 
 ## Simple maker contract (offer logic)
 
-We want to create a new contract `OfferMakerTutorial` to implement %%offer logic|offer-logic%% and utilize the `Direct` contract in our strat-library for this purpose. `Direct` provides a safety harness to make it easier to correctly interact with Mangrove, you can read more about it [here](../background/offer-maker/direct.md).
+We want to create a new contract `OfferMakerTutorial` to implement [offer logic](/docs/developers/terms/offer-logic.md) and utilize the `Direct` contract in our strat-library for this purpose. `Direct` provides a safety harness to make it easier to correctly interact with Mangrove, you can read more about it [here](../background/offer-maker/direct.md).
 
 Start by creating a new `OfferMakerTutorial.sol` file in the `src` folder, and add the following pieces:
 
@@ -32,7 +32,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e4
 
 Next, add the contract and the code for the constructor.
 
-We will skip some details here, which you can read more about later; %%routers|router%%, %%gas requirements|gasreq%%, and [deployment scripts](../guides/HowToDeploy.md).<br />
+We will skip some details here, which you can read more about later; [routers](/docs/developers/terms/router.md), [gas requirements](/docs/developers/terms/gasreq.md), and [deployment scripts](../guides/HowToDeploy.md).<br />
 > Note: we also implement the `ILiquidityProvider` interface which makes the contract compatible with what the [SDK](../../SDK/README.md) expects.
 
 
@@ -46,7 +46,7 @@ The abstract contract `Direct` has internal functions that allows one to manage 
 
 > See [OfferArgs](../technical-references/code/strats/src/strategies/interfaces/IOfferLogic.md#offerargs) for an explanation of the parameters for posting an offer.
 
-> Also see %%provision|provision%%, %%gasreq|gasreq%%, and TODO:%pivotId|pivot-id%, and %%offer list|offer-list%%.
+> Also see [provision](/docs/developers/terms/provision.md), [gasreq](/docs/developers/terms/gasreq.md), and TODO:%pivotId|pivot-id%, and [offer list](/docs/developers/terms/offer-list.md).
 
 Add the below code to your contract.
 
@@ -56,13 +56,13 @@ https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e4
 
 ### Emit in Posthook
 
-When using our new contract, we can inspect traces and addresses but illustrative purposes, let's insert the following to emit an event in the %%posthook|makerPosthook%% when the offer is successfully taken.
+When using our new contract, we can inspect traces and addresses but illustrative purposes, let's insert the following to emit an event in the [posthook](/docs/developers/terms/makerPosthook.md) when the offer is successfully taken.
 
 ```solidity reference title="OfferMakerTutorial.sol - Emit in Posthook"
 https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L74-L83
 ```
 
-There are more hooks to enable the Mangrovian abilities of %%last look|last-look%% and more advanced %%reactive liquidity|reactive-liquidity%%.
+There are more hooks to enable the Mangrovian abilities of [last look](/docs/developers/terms/last-look.md) and more advanced [reactive liquidity](/docs/developers/terms/reactive-liquidity.md).
 
 ## Local test
 
@@ -150,7 +150,7 @@ cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "activate(address[])" "[$WBTC]" --
 
 ### Post an offer
 
-Now that the contract is ready, we can use it to post an offer - note that we have to %%provision|provision%% the offer, and we do that by sending some native tokens to `newOffer`.<br />
+Now that the contract is ready, we can use it to post an offer - note that we have to [provision](/docs/developers/terms/provision.md) the offer, and we do that by sending some native tokens to `newOffer`.<br />
 In our example, we are offering 1 WBTC (gives) at tick 50 (tick 50 means the price ratio is `1.0001^50`).
 
 :::info Note
@@ -197,7 +197,7 @@ One of the big benefits of Mangrove is that **liquidity does not have to be lock
 #### Getting tokens
 
 If the admin (acting as a maker) does not have required WBTC tokens then the smart offer will fail when taken.
-> Note: this true in this particular case where we need to lock liquidity in our contract - that's how we designed it. Using a %%router|router%%, you can [unlock your funds](../guides/howToUnlockLiquidity.md), and your offer **could still be posted** - your smart offer can source liquidity elsewhere on-chain.
+> Note: this true in this particular case where we need to lock liquidity in our contract - that's how we designed it. Using a [router](/docs/developers/terms/router.md), you can [unlock your funds](../guides/howToUnlockLiquidity.md), and your offer **could still be posted** - your smart offer can source liquidity elsewhere on-chain.
 
 If you don't have any WBTC, you can get some by using the following commands (taken from [foundry documentation](https://book.getfoundry.sh/tutorials/forking-mainnet-with-cast-anvil)), or the corresponding faucet. Just look for a token holder with large amounts of WBTC - you can check the list on Polygonscan. Also, remember to add the chosen address under `$LUCKY_USER` in your `.env` file. 
 

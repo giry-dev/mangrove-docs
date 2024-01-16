@@ -71,7 +71,7 @@ We can illustrate this with the following sample DAI-WETH offer list with three 
 * **Gives**: more information on the [Ticks and ratio](../tick-ratio.md#price--wants) page.
 * **Gas required**: the amount of gas needed to cover all calls to the maker contract's [offer logic](./reactive-offer/maker-contract.md).
 * **Maker contract**: the address of the [maker contract](./reactive-offer/README.md) (smart offer).
-* **Offer gas price**: gas price override used to compute the order's %%provision|provision%% (see also [offer bounties](../taking-and-making-offers/reactive-offer/offer-provision.md#bounty-calculation)).
+* **Offer gas price**: gas price override used to compute the order's [provision](/docs/developers/terms/provision.md) (see also [offer bounties](../taking-and-making-offers/reactive-offer/offer-provision.md#bounty-calculation)).
 
 
 #### Offer list #2 - WETH-DAI
@@ -110,7 +110,7 @@ Two offers may have the same ID as long as they belong to different offer lists.
 
 ### Gas required
 
-The maximum amount of gas the %%maker contract|maker-contract%% managing the offer will be allowed to spend if called by Mangrove.
+The maximum amount of gas the [maker contract](/docs/developers/terms/maker-contract.md) managing the offer will be allowed to spend if called by Mangrove.
 
 :::info **Example**
 
@@ -120,13 +120,13 @@ The offer with ID 77 may consume up to 250K gas units.
 
 ### Maker Contract
 
-The address of the %%maker contract|maker-contract%% bound to the offer. The %%makerExecute|makerExecute%% function of this contract's %%offer logic|offer-logic%% will be called when one of its offers is executed, and the corresponding %%makerPosthook|makerPosthook%% will be called immediately after trade settlement.
+The address of the [maker contract](/docs/developers/terms/maker-contract.md) bound to the offer. The [makerExecute](/docs/developers/terms/makerExecute.md) function of this contract's [offer logic](/docs/developers/terms/offer-logic.md) will be called when one of its offers is executed, and the corresponding [makerPosthook](/docs/developers/terms/makerPosthook.md) will be called immediately after trade settlement.
 
-An offer _may_ also be posted from EOA with no logic attached - see %%On-the-fly offers|on-the-fly-offer%%.
+An offer _may_ also be posted from EOA with no logic attached - see [On-the-fly offers](/docs/developers/terms/on-the-fly-offer.md).
 
 ### Gas Price
 
-Gas price that was used to compute the %%offer provision|provision%%. If the offer fails to deliver the promised **outbound tokens**, it will be charged based on this gasprice.
+Gas price that was used to compute the [offer provision](/docs/developers/terms/provision.md). If the offer fails to deliver the promised **outbound tokens**, it will be charged based on this gasprice.
 
 ## Offer list configuration
 

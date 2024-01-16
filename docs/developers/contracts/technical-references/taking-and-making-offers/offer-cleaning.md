@@ -261,6 +261,6 @@ mgv.cleanByImpersonation(olKey, targets, address(this));
 
 
 ## Bounties for taking failing offers
-If an offer fails to deliver, the taker gets a %%bounty|bounty%% in native token to compensate for the gas spent on executing the offer. The bounty is paid by the %%offer owner|offer-owner%% and are taken from the %%provision|provision%% they deposited with Mangrove when posting the offer. 
+If an offer fails to deliver, the taker gets a [bounty](/docs/developers/terms/bounty.md) in native token to compensate for the gas spent on executing the offer. The bounty is paid by the [offer owner](/docs/developers/terms/offer-owner.md) and are taken from the [provision](/docs/developers/terms/provision.md) they deposited with Mangrove when posting the offer. 
 
 Refer to [Offer provisions](./reactive-offer/offer-provision.md) for details on how provisions and bounties work and are calculated.

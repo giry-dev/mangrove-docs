@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 
 # Run a simple cleaning bot
-In this tutorial you'll download, configure, and run a simple %%cleaning bot|cleaning-bot%% on your own machine which cleans Mangrove on the Polygon Mumbai testnet.
+In this tutorial you'll download, configure, and run a simple [cleaning bot](/docs/developers/terms/cleaning-bot.md) on your own machine which cleans Mangrove on the Polygon Mumbai testnet.
 When you're done, you'll have the foundation for developing and operating your own cleaning bot.
 
 The tutorial assumes that you have [Git](https://git-scm.com/), [NodeJS](https://nodejs.org/), and [Yarn 2](https://yarnpkg.com/getting-started/install) installed and feel comfortable on the command line.

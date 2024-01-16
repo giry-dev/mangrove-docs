@@ -4,7 +4,7 @@ description: Description of the main hooks that can be overridden to customize o
 sidebar_position: 1
 ---
 
-## Customizing %%`makerExecute`|makerExecute%%
+## Customizing [`makerExecute`](/docs/developers/terms/makerExecute.md)
 
 ### Last look before trade
 
@@ -13,9 +13,9 @@ https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e4
 ```
 
 * **Input**: [taker `order`](../../contracts/technical-references/taking-and-making-offers/reactive-offer/offer-data-structures.md#mgvlibsingleorder)'s recap data.
-* **Output**: `data` to be passed to %%`makerPosthook`|makerPosthook%% if the call does not throw.
+* **Output**: `data` to be passed to [`makerPosthook`](/docs/developers/terms/makerPosthook.md) if the call does not throw.
 * **Default behavior**: returns `"mgvOffer/proceed"`.
-* **Usage**: override to insert requirements so as to renege on trade prior to transferring funds, as `lastLook` is the first hook being called during an %%offer logic|offer-logic%%'s execution
+* **Usage**: override to insert requirements so as to renege on trade prior to transferring funds, as `lastLook` is the first hook being called during an [offer logic](/docs/developers/terms/offer-logic.md)'s execution
 
 ### Managing taker's payment
 
@@ -24,7 +24,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e4
 ```
 
 * **Input**s: 
-  * `amount` of %%inbound|inbound%% token received by the logic and that can still be relocated at the beginning of this hook.  
+  * `amount` of [inbound](/docs/developers/terms/inbound.md) token received by the logic and that can still be relocated at the beginning of this hook.  
   * [taker `order`](../../contracts/technical-references/taking-and-making-offers/reactive-offer/offer-data-structures.md#mgvlibsingleorder)'s recap data.
 * **Output**: `missingPut` is the amount of inbound tokens whose location are not yet determined at the end of this hook's execution.
 * **Default behavior**: leaves all inbound tokens allocated to the balance of the maker contract and returns 0.
@@ -37,13 +37,13 @@ https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e4
 ```
 
 * **Input**: 
-  * `amount` of %%outbound|outbound%% tokens that needs to be brought to the balance of the maker contract at the beginning of this hook's execution (in order to comply with the taker's order).
+  * `amount` of [outbound](/docs/developers/terms/outbound.md) tokens that needs to be brought to the balance of the maker contract at the beginning of this hook's execution (in order to comply with the taker's order).
   * [taker `order`](../../contracts/technical-references/taking-and-making-offers/reactive-offer/offer-data-structures.md#mgvlibsingleorder)'s recap data.
 * **Output**: `missingGet` is the amount of outbound tokens that still need to be brought to the balance of the maker contract at the end of this hook's execution.
 * **Default behavior**: returns the difference between the outbound token balance of the maker contract and `amount` if positive and 0 otherwise.
-* **Usage**: override this hook to define a more complex strategy for sourcing liquidity (for instance redeem from a lender, transfer outbound token from an EOA etc.). This hook is used to call the logic's %%router|router%% if any.
+* **Usage**: override this hook to define a more complex strategy for sourcing liquidity (for instance redeem from a lender, transfer outbound token from an EOA etc.). This hook is used to call the logic's [router](/docs/developers/terms/router.md) if any.
 
-## Customizing %%`makerPosthook`|makerPosthook%%
+## Customizing [`makerPosthook`](/docs/developers/terms/makerPosthook.md)
 
 ### Posthook after trade success
 

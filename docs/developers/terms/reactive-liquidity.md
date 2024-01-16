@@ -6,7 +6,7 @@ hoverText: Liquidity providers can post offers that are not fully provisioned. I
 
 Liquidity providers can post offers that are not fully provisioned. It is enough that their code brings the promised liquidity when the offer is taken. In the meantime, the liquidity can be put to work elsewhere (e.g., in another offer on Mangrove or earning yield elsewhere). 
 
-If using the [Strat Lib](../strat-lib/README.md), advanced %%routers|router%% can be used to push and pull liquidity from %%reserveId|reserve-id%%.
+If using the [Strat Lib](../strat-lib/README.md), advanced [routers](/docs/developers/terms/router.md) can be used to push and pull liquidity from [reserveId](/docs/developers/terms/reserve-id.md).
 
 # References
-* This concept is different from %%Amplified liquidity|amplified-liquidity%%
+* This concept is different from [Amplified liquidity](/docs/developers/terms/amplified-liquidity.md)

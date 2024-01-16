@@ -4,9 +4,9 @@ title: Ratio
 hoverText: The ratio $wants/gives$ between the amount $gives$ promised by an offer and the amount $wants$ it requests.
 ---
 
-The _ratio_ `inbound_tkn_amount/outbound_tkn_amount` between the amount `outbound_tkn_amount` promised by an offer and the amount `inbound_tkn_amount` it requests. The unit of ratios on an %%offer list|offer-list%% `outbound_tkn-inbound_tkn` is thus `inbound_tkn/outbound_tkn`.
+The _ratio_ `inbound_tkn_amount/outbound_tkn_amount` between the amount `outbound_tkn_amount` promised by an offer and the amount `inbound_tkn_amount` it requests. The unit of ratios on an [offer list](/docs/developers/terms/offer-list.md) `outbound_tkn-inbound_tkn` is thus `inbound_tkn/outbound_tkn`.
 
-A ratio corresponds to a %%price|price%% in the follow way:
+A ratio corresponds to a [price](/docs/developers/terms/price.md) in the follow way:
 
 * For an _ask_, $price = ratio$
 * For a _bid_, $price = 1/ratio$.

@@ -85,7 +85,7 @@ contract MyOffer is IMaker {
 
 #### How to succeed
 
-* To successfully execute, the logic **must** not revert during the call to `makerExecute` and have at least `wants` %%outbound|outbound%% tokens available for Mangrove to transfer by the end of the function's execution.
+* To successfully execute, the logic **must** not revert during the call to `makerExecute` and have at least `wants` [outbound](/docs/developers/terms/outbound.md) tokens available for Mangrove to transfer by the end of the function's execution.
 
 #### How to renege on trade
 
@@ -101,7 +101,7 @@ contract MyOffer is IMaker {
 
 [ADD details about READ not being possible]
 
-The offer list for the outbound / %%inbound|inbound%% token pair is temporarily locked during calls to `makerExecute`. Its offers cannot be modified in any way. The offer logic must use `makerPosthook` to repost/update its offers, since the offer list will unlocked by then.
+The offer list for the outbound / [inbound](/docs/developers/terms/inbound.md) token pair is temporarily locked during calls to `makerExecute`. Its offers cannot be modified in any way. The offer logic must use `makerPosthook` to repost/update its offers, since the offer list will unlocked by then.
 
 :::
 

@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # What is the Strat Library?
 
-The Mangrove strat library is a repository of Solidity code that will help you write a custom %%maker contracts|maker-contract%% able to post %%smart offers|smart-offer%% on Mangrove.
+The Mangrove strat library is a repository of Solidity code that will help you write a custom [maker contracts](/docs/developers/terms/maker-contract.md) able to post [smart offers](/docs/developers/terms/smart-offer.md) on Mangrove.
 
 The strat library provides several good starting points for writing your own custom maker contract for providing liquidity on Mangrove, but the library should be used responsibly.
 
@@ -24,7 +24,7 @@ If you have questions about how to use the Strat library, which are not answered
 
 ### Choosing the right starting point
 
-Depending on the complexity of the %%offer logic|offer-logic%% your contract implements, you need to choose from which building block you will start to build your %%maker contract|maker-contract%% from. At the very least your logic must provide an implementation of the [`IMaker`](https://github.com/mangrovedao/mangrove-core/blob/2ae172805fd8b309c30b2dc877dba66245abbb3e/src/core/MgvLib.sol#L420-L430) interface [required by Mangrove](../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md).
+Depending on the complexity of the [offer logic](/docs/developers/terms/offer-logic.md) your contract implements, you need to choose from which building block you will start to build your [maker contract](/docs/developers/terms/maker-contract.md) from. At the very least your logic must provide an implementation of the [`IMaker`](https://github.com/mangrovedao/mangrove-core/blob/2ae172805fd8b309c30b2dc877dba66245abbb3e/src/core/MgvLib.sol#L420-L430) interface [required by Mangrove](../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md).
 
 However, we suggest utilizing the building blocks in the strat lib. The first design choice is to decide whether owning offers posted by your contract is the sole privilege of the contract's admin or whether your contract's logic wishes to support multiple offer owners, in a permissionless fashion. In the first case, you want your contract to inherit [Direct](./background/offer-maker/direct.md), in the latter you want to start from a [Forwarder](./background/offer-maker/forwarder.md) contract which has a pre-established code infrastructure to handle multiple ownership.
 
@@ -32,11 +32,11 @@ To get an idea of what it is all about, you can try out the [smart offer](./gett
 
 ### Customizing the strat using hooks
 
-Default behavior of maker contracts built on top of Mangrove's strat library can be modified by overriding various %%hooks|hook%%, see [how-to's](./guides/DirectHowTo.md) for some concrete examples.
+Default behavior of maker contracts built on top of Mangrove's strat library can be modified by overriding various [hooks](/docs/developers/terms/hook.md), see [how-to's](./guides/DirectHowTo.md) for some concrete examples.
 
 ### Advanced cash management
 
-The strat library also provides [router building blocks](./technical-references/router.md) and example of %%router|router%% contracts, which are convenient when the offer logic of your maker contract handles multiple offer owners funds or involves some interaction with other DeFi bricks (such as a lender).
+The strat library also provides [router building blocks](./technical-references/router.md) and example of [router](/docs/developers/terms/router.md) contracts, which are convenient when the offer logic of your maker contract handles multiple offer owners funds or involves some interaction with other DeFi bricks (such as a lender).
 
 ### Safety first
 

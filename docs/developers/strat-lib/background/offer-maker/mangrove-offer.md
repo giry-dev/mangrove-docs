@@ -6,13 +6,13 @@ sidebar_position: 1
 
 :::info
 
-The Strat Library offers a partial implementation of IOfferLogic called MangroveOffer. This implementation is an abstract contract, that reposts the residual of the offer if the offer was not fully taken. This is done using the %%hooks|hook%% exposed by MangroveOffer. These hooks are separated in two categories: those whose overriding will change the %%offer logic|offer-logic%%'s execution, and the hooks that may be used to customize the administration and use of the %%maker contract|maker-contract%%. 
+The Strat Library offers a partial implementation of IOfferLogic called MangroveOffer. This implementation is an abstract contract, that reposts the residual of the offer if the offer was not fully taken. This is done using the [hooks](/docs/developers/terms/hook.md) exposed by MangroveOffer. These hooks are separated in two categories: those whose overriding will change the [offer logic](/docs/developers/terms/offer-logic.md)'s execution, and the hooks that may be used to customize the administration and use of the [maker contract](/docs/developers/terms/maker-contract.md). 
 
 :::
 
 ## Offer owner's reserve
 
-The reserve is where an offer logic should deposit %%inbound|inbound%% tokens and where %%outbound|outbound%% tokens will be fetched, depending on the %%offer's owner|offer-owner%%. By default the reserve of an offer owner is the offer owner's address. Advanced %%routers|router%% may use complex protocols, such as AAVE, as reserve. It is possible to change the default reserve of an offer owner (See [Direct](direct.md) or [Forwarder](forwarder.md)).
+The reserve is where an offer logic should deposit [inbound](/docs/developers/terms/inbound.md) tokens and where [outbound](/docs/developers/terms/outbound.md) tokens will be fetched, depending on the [offer's owner](/docs/developers/terms/offer-owner.md). By default the reserve of an offer owner is the offer owner's address. Advanced [routers](/docs/developers/terms/router.md) may use complex protocols, such as AAVE, as reserve. It is possible to change the default reserve of an offer owner (See [Direct](direct.md) or [Forwarder](forwarder.md)).
 
 ## Offer logic's hooks
 

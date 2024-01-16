@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Testing a maker contract
 
-After following the tutorial [Post a Smart Offer](../getting-started/smart-offer.md) or some of the guides in this section, you have created a %%maker contract|maker-contract%% and are ready to test it. Mangrove offers a helper contract, [`MangroveTest`](https://github.com/mangrovedao/mangrove-core/blob/master/test/lib/MangroveTest.sol), that helps setup everything needed for writing a test using the Mangrove core protocol.
+After following the tutorial [Post a Smart Offer](../getting-started/smart-offer.md) or some of the guides in this section, you have created a [maker contract](/docs/developers/terms/maker-contract.md) and are ready to test it. Mangrove offers a helper contract, [`MangroveTest`](https://github.com/mangrovedao/mangrove-core/blob/master/test/lib/MangroveTest.sol), that helps setup everything needed for writing a test using the Mangrove core protocol.
 
 We are going to use [Foundry](https://book.getfoundry.sh/) as the test runner - and we are going to use some of the features that Foundry provides for testing. Please refer to [Set Up Your Local Environment](../getting-started/preparation.md) for instructions on how to get and setup Foundry. For this guide, we assume basic knowledge of writing and running tests with Foundry - as can be gained by reading the relevant sections on [Foundry -> Tests](https://book.getfoundry.sh/forge/tests) in the Foundry book.
 
@@ -75,7 +75,7 @@ Now, of course, we need to implement `deployStrat()` and `execTraderStratWithFil
 
 Deploying a contract on the fork is just calling its constructor of the contract. We give the address of the testing contract(`$(this)`) as the administrator of the `Amplifier` contract to be able to use that directly as the maker. 
 
-After deployment, we use the [`activate()`](../background/offer-maker/mangrove-offer.md#other-maker-contracts-hooks) helper provided by [MangroveOffer](../background/offer-maker/mangrove-offer.md), which helps setup the correct token approvals for Mangrove for our %%maker contract|maker-contract%%.
+After deployment, we use the [`activate()`](../background/offer-maker/mangrove-offer.md#other-maker-contracts-hooks) helper provided by [MangroveOffer](../background/offer-maker/mangrove-offer.md), which helps setup the correct token approvals for Mangrove for our [maker contract](/docs/developers/terms/maker-contract.md).
 
 Before calling `activate()` we also take the opportunity to demonstrate the related helper, [`checkList()`](../background/offer-maker/mangrove-offer.md#other-maker-contracts-hooks), which *checks* whether necessary approvals have been setup, and, if not, reverts (recall that `expectRevert(<message>)` is a [Foundry cheatcode](https://book.getfoundry.sh/forge/cheatcodes])).
 
@@ -101,7 +101,7 @@ Let us continue our divide-and-conquer strategy and write helper methods for the
 
 #### Post and Fund Offers 
 
-Posting offers with `Amplifier` is simply a call to [`newAmplifiedOffers`](./DirectHowTo.md#publishing-amplified-liquidity), sending along funds for the %%provision|provision%%. (And we make a note to ensure in the test body that the testing contract has the funds for the %%provision|provision%%.)
+Posting offers with `Amplifier` is simply a call to [`newAmplifiedOffers`](./DirectHowTo.md#publishing-amplified-liquidity), sending along funds for the [provision](/docs/developers/terms/provision.md). (And we make a note to ensure in the test body that the testing contract has the funds for the [provision](/docs/developers/terms/provision.md).)
 
 
 ```solidity reference title="Amplifier.t.sol - Post and fund offers"
@@ -123,8 +123,8 @@ https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e4
 
 With these helper methods, the test body amounts to the following steps:
 
-* Approve the %%router|router%% of `Amplifier` to access the WETH of the tester contract, which was given as %%reserveId|reserve-id%% when deploying the Amplifier (read more about [Approvals](./approvals.md)).
-* Provide the tester contract with some WETH to be able to successfully %%give|gives%% what the offer promises. (Using another cheatcode from Foundry, [`deal()`](https://book.getfoundry.sh/cheatcodes/deal).)
+* Approve the [router](/docs/developers/terms/router.md) of `Amplifier` to access the WETH of the tester contract, which was given as [reserveId](/docs/developers/terms/reserve-id.md) when deploying the Amplifier (read more about [Approvals](./approvals.md)).
+* Provide the tester contract with some WETH to be able to successfully [give](/docs/developers/terms/gives.md) what the offer promises. (Using another cheatcode from Foundry, [`deal()`](https://book.getfoundry.sh/cheatcodes/deal).)
 * Post and fund offers with [`postAndFundOffers()`](#post-and-fund-offers).
 * Snipe *one* offer with [`takeOffer()`](#taking-a-single-offer).
 * Assert and verify the properties [we listed above](#breaking-down-the-test-specification-further).
@@ -147,7 +147,7 @@ In Foundry tests are run with the Forge tool, typically invoking something like 
 
 ## Adding More Tests - Testing Partial Fills
 
-With our helper functions for posting and sniping offers, we we can easily add more tests. For instance, testing that an offer was correctly handled for a %%partial fill|maker-partial-fill%% looks like this:
+With our helper functions for posting and sniping offers, we we can easily add more tests. For instance, testing that an offer was correctly handled for a [partial fill](/docs/developers/terms/maker-partial-fill.md) looks like this:
 
 ```solidity reference title="Amplifier.t.sol - Testing partial fill"
 https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/toy_strategies/Amplifier.t.sol#L72-L76
@@ -158,4 +158,4 @@ https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e4
 
 A full test file for for the `Amplifier` contract can be found [here](https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/toy_strategies/Amplifier.t.sol).
 
-When you have sufficiently tested your %%maker contract|maker-contract%%, you may want to [deploy your contract](HowToDeploy.md) to a real chain.
+When you have sufficiently tested your [maker contract](/docs/developers/terms/maker-contract.md), you may want to [deploy your contract](HowToDeploy.md) to a real chain.
