@@ -35,11 +35,11 @@ const config = {
   },
   themes: ['@docusaurus/theme-mermaid'],
   plugins: [
-    ['@docusaurus-terminology/parser',
+    ['@grnet/docusaurus-terminology',
     {
-      "termsUrl": "/developers/terms/",
       "termsDir": "./docs/developers/terms/",
-      glossaryFilepath: './docs/developers/glossary.md'
+      "docsDir": './docs/',
+      "glossaryFilepath": './docs/developers/glossary.md'
     }
     ],
     require.resolve('docusaurus-lunr-search'),
