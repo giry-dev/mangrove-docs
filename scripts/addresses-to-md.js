@@ -1,6 +1,6 @@
 const { writeFileSync } = require('fs');
 const { getAllErc20s } = require('@mangrovedao/context-addresses');
-const { getCoreContractsVersionDeployments, getStratsContractsVersionDeployments } = require('@mangrovedao/mangrove-deployments');
+const { getLatestCoreContractsPerNetwork, getLatestStratContractsPerNetwork } = require('@mangrovedao/mangrove-deployments');
 
 const chainNames = {
   1: "Ethereum Mainnet",
@@ -11,41 +11,27 @@ const chainNames = {
   11155111: "Sepolia Testnet",
 };
 
-function contractsVersionDeploymentsToTable(contractsVersionDeployments) {
-  // contract -> versionDeployments
-  const contracts = {};
-
-  const chainIds = new Set();
-  for (const versionDeployments of contractsVersionDeployments) {
-    contracts[versionDeployments.deploymentName ?? versionDeployments.contractName] = versionDeployments;
-    for (const [chainId, addresses] of Object.entries(versionDeployments.networkAddresses)) {
-      if (!chainNames[chainId]) {
-        throw new Error(`Chain ID ${chainId} not found in chainNames`);
-      }
-      chainIds.add(chainId);
+function contractsVersionDeploymentsToTable(contractsNetworkDeplloymentPerNetwork, skipMangrove = false) {
+  let md = "";
+  for (const [chainId, contractsNetworkDeployment] of Object.entries(contractsNetworkDeplloymentPerNetwork)) {
+    if (!chainNames[chainId]) {
+      throw new Error(`Chain ID ${chainId} not found in chainNames`);
     }
-  }
 
-  let headerSeparator = "| --- | :---: ";
-  let md = `| Contract | Version `;
-  for (const chainId of chainIds) {
-    md += `| ${chainNames[chainId]} `;
-    headerSeparator += `| --- `;
-  }
-  md += `|\n`;
-  md += headerSeparator + `|\n`;
-  for (const [contractName, versionDeployments] of Object.entries(contracts)) {
-    md += `| ${contractName} | ${versionDeployments.version} `;
-    for (const chainId of chainIds) {
-      const addresses = versionDeployments.networkAddresses[chainId];
-      if (addresses) {
-        md += `| \`${addresses.primaryAddress}\` `;
-      } else {
-        md += `| `;
+    md += `\n\n### ${chainNames[chainId]}\n\n`;
+
+    md += `| Contract | Deployment name | Version | Address |\n`;
+    md += "| -------- | --------------- |  :---:  | ------- |\n";
+
+    for (const contractNetworkDeployment of Object.values(contractsNetworkDeployment)) {
+      if (contractNetworkDeployment === undefined) {
+        continue;
       }
+      if (skipMangrove && contractNetworkDeployment.contractName === "Mangrove") {
+        continue;
+      }
+      md += `| ${contractNetworkDeployment.contractName} | ${contractNetworkDeployment.deploymentName ?? '-'} | ${contractNetworkDeployment.version} | \`${contractNetworkDeployment.address}\` |\n`;
     }
-    md += `|`;
-    md += "\n";
   }
 
   return md;
@@ -55,10 +41,10 @@ const main = async () => {
   let md = "<!-- GENERATED DO NOT EDIT - see addresses-to-md.js -->";
 
   md += "\n\n## Core contract addresses\n\n";
-  md += contractsVersionDeploymentsToTable(getCoreContractsVersionDeployments());
+  md += contractsVersionDeploymentsToTable(getLatestCoreContractsPerNetwork(), false);
 
   md += "\n\n## Strats contract addresses\n\n";
-  md += contractsVersionDeploymentsToTable(getStratsContractsVersionDeployments());
+  md += contractsVersionDeploymentsToTable(getLatestStratContractsPerNetwork(), true);
 
   md += "\n\n## Token addresses";
   md += "\nMangrove's web app and other tools use the following token addresses which are pulled from `@mangrovedao/context-addresses`.";

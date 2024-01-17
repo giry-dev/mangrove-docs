@@ -14,7 +14,7 @@ The Mangrove contract is depicted in the middle, with the three most important a
 
 * [Offer makers](#makers) add [liquidity promises](../background/offer-maker.md) to Mangrove. 
     
-* [Takers](#takers) use Mangrove to [find liquidity](../background/offer-taker.md) by executing offers published on Mangrove.
+* [Takers](#takers) use Mangrove to [find liquidity](../background/offer-taker.md) by executing market orders and thereby executing offers published on Mangrove.
 
 * Cleaners identify offers that will fail to deliver the promised liquidity and [clean](../../keeper-bots/guides/use-borrowed-funds-for-cleaning) them, i.e. remove them from the book in exchange for a bounty.
 

@@ -2,23 +2,46 @@
 
 ## Core contract addresses
 
-| Contract | Version | Polygon Testnet - Mumbai | Sepolia Testnet |
-| --- | :---: | --- | --- |
-| Mangrove | 2.0.1 | `0x80cd6Ef14c23dD3957FD5629141a9d7028557c39` | `0x5B2F8058Df0A0b7744FDb4fD0885FbCD2394194C` |
-| MgvOracle | 2.0.1 | `0xC0fB136768e4b7725d674B8Bcd366A5dc2b5F976` | `0xF15A2ada64A9C3C14ca11359c8F1d22B063DB2AD` |
-| MgvReader | 2.0.1 | `0x26d24Dd4aFcB9D1cD30baf804Fa22aFa643327CD` | `0xE9F139F4D31477E71e746a6744e5314F9d6DB382` |
+
+
+### Polygon Testnet - Mumbai
+
+| Contract | Deployment name | Version | Address |
+| -------- | --------------- |  :---:  | ------- |
+| Mangrove | - | 2.0.1 | `0x80cd6Ef14c23dD3957FD5629141a9d7028557c39` |
+| MgvOracle | - | 2.0.1 | `0xC0fB136768e4b7725d674B8Bcd366A5dc2b5F976` |
+| MgvReader | - | 2.0.1 | `0x26d24Dd4aFcB9D1cD30baf804Fa22aFa643327CD` |
+
+
+### Sepolia Testnet
+
+| Contract | Deployment name | Version | Address |
+| -------- | --------------- |  :---:  | ------- |
+| Mangrove | - | 2.0.1 | `0x5B2F8058Df0A0b7744FDb4fD0885FbCD2394194C` |
+| MgvOracle | - | 2.0.1 | `0xF15A2ada64A9C3C14ca11359c8F1d22B063DB2AD` |
+| MgvReader | - | 2.0.1 | `0xE9F139F4D31477E71e746a6744e5314F9d6DB382` |
 
 
 ## Strats contract addresses
 
-| Contract | Version | Polygon Testnet - Mumbai |
-| --- | :---: | --- |
-| AaveKandelSeeder | 1.0.0 | `0xC56CEc2A5912B49AAacEc0F391471Aeb4eb8D9D2` |
-| AavePooledRouter | 1.0.0 | `0xF147995331B1511D5fA7c196fA3466d647142C5e` |
-| KandelLib | 1.0.0 | `0x6733a81A505a15eBd2CAB15eE2F978FF74A18dD4` |
-| KandelSeeder | 1.0.0 | `0x68A1778E4D08D8f6De35323a9040791CE8E9EF4C` |
-| MangroveOrder-Router | 1.0.0 | `0x983d34A6163F00D5DfDCC3f21ff70cECa2a8643D` |
-| MangroveOrder | 1.0.0 | `0x6469064C68B1Bd06861dabD20dF835Fa71Dff695` |
+
+
+### Polygon Testnet - Mumbai
+
+| Contract | Deployment name | Version | Address |
+| -------- | --------------- |  :---:  | ------- |
+| AaveKandelSeeder | - | 1.0.0 | `0xC56CEc2A5912B49AAacEc0F391471Aeb4eb8D9D2` |
+| AavePooledRouter | - | 1.0.0 | `0xF147995331B1511D5fA7c196fA3466d647142C5e` |
+| Kandel | KandelLib | 1.0.0 | `0x6733a81A505a15eBd2CAB15eE2F978FF74A18dD4` |
+| KandelSeeder | - | 1.0.0 | `0x68A1778E4D08D8f6De35323a9040791CE8E9EF4C` |
+| SimpleRouter | MangroveOrder-Router | 1.0.0 | `0x983d34A6163F00D5DfDCC3f21ff70cECa2a8643D` |
+| MangroveOrder | - | 1.0.0 | `0x6469064C68B1Bd06861dabD20dF835Fa71Dff695` |
+
+
+### Sepolia Testnet
+
+| Contract | Deployment name | Version | Address |
+| -------- | --------------- |  :---:  | ------- |
 
 
 ## Token addresses
