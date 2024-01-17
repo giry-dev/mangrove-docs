@@ -73,7 +73,7 @@ Renames and re-exports [Mangrove](classes/Mangrove.md)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:26
+@mangrovedao/mangrove.js/src/configuration.ts:25
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:34
+@mangrovedao/mangrove.js/src/configuration.ts:33
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:35
+@mangrovedao/mangrove.js/src/configuration.ts:34
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:36
+@mangrovedao/mangrove.js/src/configuration.ts:35
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:37
+@mangrovedao/mangrove.js/src/configuration.ts:36
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:39
+@mangrovedao/mangrove.js/src/configuration.ts:38
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:40
+@mangrovedao/mangrove.js/src/configuration.ts:39
 
 ___
 
@@ -154,7 +154,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:42
+@mangrovedao/mangrove.js/src/configuration.ts:41
 
 ___
 
@@ -171,7 +171,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:50
+@mangrovedao/mangrove.js/src/configuration.ts:49
 
 ___
 
@@ -192,7 +192,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:55
+@mangrovedao/mangrove.js/src/configuration.ts:54
 
 ___
 
@@ -224,7 +224,7 @@ The maximum number of offers to include in a single retract transaction to avoid
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:81
+@mangrovedao/mangrove.js/src/configuration.ts:80
 
 ___
 
@@ -266,7 +266,7 @@ The default baseQuoteTickOffset number of ticks to jump between two price points
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:94
+@mangrovedao/mangrove.js/src/configuration.ts:93
 
 ___
 
@@ -276,7 +276,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:102
+@mangrovedao/mangrove.js/src/configuration.ts:101
 
 ___
 
@@ -286,7 +286,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:113
+@mangrovedao/mangrove.js/src/configuration.ts:112
 
 ___
 
@@ -296,7 +296,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:116
+@mangrovedao/mangrove.js/src/configuration.ts:115
 
 ___
 
@@ -306,7 +306,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:118
+@mangrovedao/mangrove.js/src/configuration.ts:117
 
 ___
 
@@ -316,7 +316,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:119
+@mangrovedao/mangrove.js/src/configuration.ts:118
 
 ___
 
@@ -326,7 +326,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:126
+@mangrovedao/mangrove.js/src/configuration.ts:125
 
 ___
 
@@ -358,7 +358,7 @@ The overhead of making a market order using the take function on MangroveOrder v
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:135
+@mangrovedao/mangrove.js/src/configuration.ts:134
 
 ___
 
@@ -368,7 +368,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:141
+@mangrovedao/mangrove.js/src/configuration.ts:140
 
 ___
 
@@ -390,7 +390,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:146
+@mangrovedao/mangrove.js/src/configuration.ts:145
 
 ___
 
@@ -400,7 +400,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:158
+@mangrovedao/mangrove.js/src/configuration.ts:157
 
 ___
 
@@ -1040,7 +1040,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/configuration.ts:796
+@mangrovedao/mangrove.js/src/configuration.ts:771
 
 ## Functions
 

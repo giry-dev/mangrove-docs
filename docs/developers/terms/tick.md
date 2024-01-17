@@ -11,4 +11,4 @@ Note that some markets may use bigger increments by setting %%tickSpacing|tickSp
 
 ## References
 
-* Technical reference for [ticks, ratios, and prices](../contracts/technical-references/tick-ratio.md)
+* Technical reference for [ticks, ratios, and prices](../protocol/technical-references/tick-ratio.md)

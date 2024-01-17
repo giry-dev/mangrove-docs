@@ -10,9 +10,9 @@ During trade settlement, Mangrove needs certain approvals for transferring funds
 
 ### Call sequence overview
 
-In the following, we shall refer to the diagram depicting an [overview of the call sequence](../../contracts/technical-references/overview.md#call-sequence-overview) for a successful trade when a maker [offer is taken](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md) with a market order. For easy reference, the diagram is included below. 
+In the following, we shall refer to the diagram depicting an [overview of the call sequence](../../protocol/technical-references/overview.md#call-sequence-overview) for a successful trade when a maker [offer is taken](../../protocol/technical-references/taking-and-making-offers/taker-order/README.md) with a market order. For easy reference, the diagram is included below. 
 
-Refer to [Contracts -> Technical Reference -> Overview](../../contracts/technical-references/overview.md) and the pages linked there for more details on trade execution on Mangrove.
+Refer to [Contracts -> Technical Reference -> Overview](../../protocol/technical-references/overview.md) and the pages linked there for more details on trade execution on Mangrove.
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
