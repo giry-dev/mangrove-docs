@@ -20,7 +20,7 @@ When an offer is taken, Mangrove transfers the funds from the taker to Mangrove 
 
 ### Pre trade hooks
 
-* [Lastlook](../../technical-references/main-hooks.md#last-look-before-trade) is meant for having a lastlook before the funds are transferred to the taker. It then returns a value that `makerPosthook` can use, to get information of how e.g. the markets looked, when `makerExecute` was executed. This can be useful since, `makerPosthook` may be called several orders later. See [Executing offers](../../../contracts/technical-references/taking-and-making-offers/reactive-offer/executing-offers.md) for more information.
+* [Lastlook](../../technical-references/main-hooks.md#last-look-before-trade) is meant for having a lastlook before the funds are transferred to the taker. It then returns a value that `makerPosthook` can use, to get information of how e.g. the markets looked, when `makerExecute` was executed. This can be useful since, `makerPosthook` may be called several orders later. See [Executing offers](../../../protocol/technical-references/taking-and-making-offers/reactive-offer/executing-offers.md) for more information.
 
 * [Put](../../technical-references/main-hooks.md#managing-takers-payment) is meant as an option for the maker to transfer the given funds from the contract to e.g. the reserve. This could be useful if you don't want to leave the funds on the contract.
 

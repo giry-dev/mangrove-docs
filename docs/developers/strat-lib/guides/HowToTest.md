@@ -20,7 +20,7 @@ The first thing to do is to import the relevant contracts. As mentioned, we are 
 
 The Mangrove test library provides other helpers. We import `Polygon` - a helper to fork the polygon chain. We do this because we want to use the real addresses for WETH, USDC and DAI. (This is not strictly necessary - we could just create some test tokens and use those instead.) 
 
-We also import the `Amplifier` contract - the contract that we wish to test. The last thing we import is `MgvStructs`, which contain struct definitions for the [offer views](../../contracts/technical-references/taking-and-making-offers/views-on-offers.md), which we shall need in the test.
+We also import the `Amplifier` contract - the contract that we wish to test. The last thing we import is `MgvStructs`, which contain struct definitions for the [offer views](../../protocol/technical-references/taking-and-making-offers/views-on-offers.md), which we shall need in the test.
 
 The console import is not strictly needed - however, it can be very useful, if we want to log something to the console while we are developing the test. Let us import it for now.
 
@@ -56,7 +56,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e4
 
 With `setUp` done, let us write the first test.
 
-We start by testing that we can take the offer fully without any rejections, and that after [trade execution](../../contracts/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution) both offers are retracted (recall that was how we [decided to implement](DirectHowTo.md#advanced-direct-offer-liquidity-amplification-with-amplifier) `Amplifier`). Let us call the test `test_success_fill` - in line with the naming guidelines of the [Foundry test framework](https://book.getfoundry.sh/forge/tests).
+We start by testing that we can take the offer fully without any rejections, and that after [trade execution](../../protocol/technical-references/taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution) both offers are retracted (recall that was how we [decided to implement](DirectHowTo.md#advanced-direct-offer-liquidity-amplification-with-amplifier) `Amplifier`). Let us call the test `test_success_fill` - in line with the naming guidelines of the [Foundry test framework](https://book.getfoundry.sh/forge/tests).
 
 Breaking the problem down, for this test, we need to
 
@@ -92,7 +92,7 @@ Let us unfold the specification for the test itself.
 For this first test, we want to 
 
 * post and fund a pair of offers using [`Amplifier.newAmplifiedOffers(...)`](./DirectHowTo.md#publishing-amplified-liquidity), 
-* [snipe](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#offer-sniping) *one* of the offers, and,
+* [snipe](../../protocol/technical-references/taking-and-making-offers/taker-order/README.md#offer-sniping) *one* of the offers, and,
 * verify these properties
     * both maker and taker received tokens as expected
     * after trade execution *both* offers are retracted
@@ -111,7 +111,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e4
 
 #### Taking a Single Offer
 
-Mangrove provides [snipe](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md#offer-sniping) exactly for taking a *specific* offer. 
+Mangrove provides [snipe](../../protocol/technical-references/taking-and-making-offers/taker-order/README.md#offer-sniping) exactly for taking a *specific* offer. 
 
 We make sure to impersonate the taker that we setup an address for [above](#test-contract-and-setup). (Recall that Foundry provides [`vm.prank()`](https://book.getfoundry.sh/cheatcodes/prank) for this exact purpose.)
 
@@ -139,7 +139,7 @@ In verifying, we use a few helper functions provided by `MangroveTest`
 * `cash(token, amount)` - that helps us ensure that we use the correct decimals for a specific token,
 * `minusFee(address_outbound, address_inbound, price)` - that calculates the fee for a given market and price,
 
-and a few view functions provided by Mangrove, `offers()` and `isLive()` (see [Views on Offers](../../contracts/technical-references/taking-and-making-offers/views-on-offers.md)).
+and a few view functions provided by Mangrove, `offers()` and `isLive()` (see [Views on Offers](../../protocol/technical-references/taking-and-making-offers/views-on-offers.md)).
 
 ## Running Tests with Foundry
 

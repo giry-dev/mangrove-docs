@@ -38,7 +38,7 @@ mgv = await Mangrove.connect( {
 });
 ```
 
-You can test you are indeed connected to the [deployed Mangrove](../../contracts/technical-references/contract-addresses.md) by asking for the current global configuration of Mangrove:
+You can test you are indeed connected to the [deployed Mangrove](../../protocol/technical-references/contract-addresses.md) by asking for the current global configuration of Mangrove:
 
 `config = await mgv.config()`
 

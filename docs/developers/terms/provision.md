@@ -8,4 +8,4 @@ The _provision_ of an offer is an amount of native tokens that is attached to th
 
 ## References
 
-* Technical reference for [Offer provision](../contracts/technical-references/taking-and-making-offers/reactive-offer/offer-provision.md).
+* Technical reference for [Offer provision](../protocol/technical-references/taking-and-making-offers/reactive-offer/offer-provision.md).

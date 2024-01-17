@@ -13,7 +13,7 @@ To determine the `gasreq`, you need to measure the **worst case gas usage **when
 
 As a strat builder, you should **verify your gas usage** in some specific scenarios, and **compare deltas to other scenarios** tested [here](https://github.com/mangrovedao/mangrove-core/blob/2ae172805fd8b309c30b2dc877dba66245abbb3e/test/core/gas/README.md#scenarios). You should then use the results to set a `gasreq` for your strat which covers the desired worst-case scenarios. The gas measurements are for the inner-most operation.
 
-The gasreq should be taken into account when [provisioning](../../contracts/technical-references/taking-and-making-offers/reactive-offer/offer-provision.md).
+The gasreq should be taken into account when [provisioning](../../protocol/technical-references/taking-and-making-offers/reactive-offer/offer-provision.md).
 
 ## Exisiting strategies
 
