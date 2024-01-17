@@ -50,7 +50,7 @@ We use 30K for default %%`gasreq`|gasreq%% of our strat. This does not leave roo
 
 With this constructor in place we almost have a deployable maker contract. `Direct` already provides the implementation of a default %%offer logic|offer-logic%% as well as internal functions to post, update and retract offers posted by our contract.
 
-However, `Direct` does not expose any function able to [create new offers](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#posting-a-new-offer) on Mangrove, since the [`_newOffer`](../technical-references/code/strats/src/strategies/offer_maker/abstract/Direct.md) function of Direct is internal. The requirement in our constructor to implement `ILiquidityProvider` imposes on us to have a public `newOffer` function. Using `ILiquidityProvider` ensures our contract is compatible with the [Mangrove SDK](../../SDK/README.md), which expects the `ILiquidityProvider` ABI.
+However, `Direct` does not expose any function able to [create new offers](../../protocol/technical-references/taking-and-making-offers/reactive-offer/README.md#posting-a-new-offer) on Mangrove, since the [`_newOffer`](../technical-references/code/strats/src/strategies/offer_maker/abstract/Direct.md) function of Direct is internal. The requirement in our constructor to implement `ILiquidityProvider` imposes on us to have a public `newOffer` function. Using `ILiquidityProvider` ensures our contract is compatible with the [Mangrove SDK](../../SDK/README.md), which expects the `ILiquidityProvider` ABI.
 
 Our implementation of `newOffer` is simply to expose the internal `_newOffer` provided by Direct making sure the function is admin restricted (`Direct` provides the appropriate modifier `onlyAdmin`):
 
@@ -81,7 +81,7 @@ Of course, if we offer `N` tokens *both* on the (`BASE`, `STABLE1`) and the (`BA
 We have a design choice here. Either we
 
 1. let the second offer fail and compensate the taker with our offer's %%bounty|bounty%%, or,
-2. incorporate in our offer logic that we wish to [retract](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#retracting-an-offer) the second offer when the first one is taken. 
+2. incorporate in our offer logic that we wish to [retract](../../protocol/technical-references/taking-and-making-offers/reactive-offer/README.md#retracting-an-offer) the second offer when the first one is taken. 
 
 Let's follow the second design principle as it allows us to illustrate how to use the %%hooks|hook%% provided by `Direct` to update offer prices or to retract offers.
 
@@ -103,7 +103,7 @@ As in the example above, we need to create a way for the maker contract to post 
 
 We already know some of the parameters we need to implement posting new offers, since we gave them in the constructor: We know the %%inbound|inbound%% and the %%outbound|outbound%% tokens of both offers. Also, we do not want the %%offer owner|offer-owner%% to have to specify new offer's %%`gasprice`|gasprice%% and %%`gasreq`|gasreq%% so we just use default values.
 
-If we specify a `gasprice` of zero when posting the offer, Mangrove will use [its own gas price](../../contracts/technical-references/governance-parameters/global-variables.md#gas-price-and-oracle). For `gasreq`, we can use the public getter `offerGasreq()`, which returns the default gas requirement for the contract plus the gas required for the %%router|router%%. 
+If we specify a `gasprice` of zero when posting the offer, Mangrove will use [its own gas price](../../protocol/technical-references/governance-parameters/global-variables.md#gas-price-and-oracle). For `gasreq`, we can use the public getter `offerGasreq()`, which returns the default gas requirement for the contract plus the gas required for the %%router|router%%. 
 
 This leaves us having to provide the amount that the offer should %%`give`|gives%% in `BASE` token, and the amount of `STABLE1` and `STABLE2`, which the offer %%wants|wants%% - `wants1` and `wants2`. We also need to specify the TODO:%pivot ids|pivot-id% for insertion of the two offers (`pivot1` and `pivot2`) in the relevant %%offer lists|offer-list%%. As for `OfferMaker`, we only want the admin of the contract to able to post offers, so we use the modifier `onlyAdmin` again.
 
@@ -111,11 +111,11 @@ This leaves us having to provide the amount that the offer should %%`give`|gives
 https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/Amplifier.sol#L60-L115
 ```
 
-In the implementation of `newAmplifiedOffers` notice the calls to the offer data getter `MGV.offers(address, address, uint)`: This returns a packed data structure `offer` whose fields `f` can be unpacked by doing `offer.f()` (see the documentation for the [offer data structure](../../contracts/technical-references/taking-and-making-offers/views-on-offers.md#views-on-offers)).
+In the implementation of `newAmplifiedOffers` notice the calls to the offer data getter `MGV.offers(address, address, uint)`: This returns a packed data structure `offer` whose fields `f` can be unpacked by doing `offer.f()` (see the documentation for the [offer data structure](../../protocol/technical-references/taking-and-making-offers/views-on-offers.md#views-on-offers)).
 
 :::info possible gas optimization
 
-If both our amplified offers were once live on Mangrove, but are no longer (either after a retract or because one of them was consumed by a taker), it is more gas efficient to [update the offers](../../contracts/technical-references/taking-and-making-offers/reactive-offer/README.md#updating-an-existing-offer) to reinstate them on the %%offer list|offer-list%%, rather than creating new ones as we do in the above code.
+If both our amplified offers were once live on Mangrove, but are no longer (either after a retract or because one of them was consumed by a taker), it is more gas efficient to [update the offers](../../protocol/technical-references/taking-and-making-offers/reactive-offer/README.md#updating-an-existing-offer) to reinstate them on the %%offer list|offer-list%%, rather than creating new ones as we do in the above code.
 
 :::
 
@@ -153,7 +153,7 @@ During the execution of the %%offer logic|offer-logic%% it may occur that the ta
 
 * the offer was completely filled
 * the offer is %%partially filled|maker-partial-fill%% but its residual is below the offer list's %%density|density%%
-* the offer no longer has enough %%provision|provision%%. This last case may occur if one is reposting an offer that has failed (because a part of the %%provision|provision%% was turned into a %%bounty|bounty%%), or because Mangrove's %%gasprice|gasprice%% is now above the offer's gasprice. (This may happen, if Mangrove updated its [own gasprice](../../contracts/technical-references/governance-parameters/global-variables.md#gas-price-and-oracle) after the offer was last posted.)
+* the offer no longer has enough %%provision|provision%%. This last case may occur if one is reposting an offer that has failed (because a part of the %%provision|provision%% was turned into a %%bounty|bounty%%), or because Mangrove's %%gasprice|gasprice%% is now above the offer's gasprice. (This may happen, if Mangrove updated its [own gasprice](../../protocol/technical-references/governance-parameters/global-variables.md#gas-price-and-oracle) after the offer was last posted.)
 
 In all of these cases we wish to retract the other offer from the book.
 

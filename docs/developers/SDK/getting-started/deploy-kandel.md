@@ -11,7 +11,7 @@ This tutorial covers how to deploy a Kandel strategy from a developer standpoint
 
 * The tutorial assumes knowledge of JavaScript
 * Follow [preparation](./preparation.md) to create a new `tutorial` folder.
-* Make sure to use a chain where Mangrove is live - you can find all live addresses for Mangrove [here](../../contracts/technical-references/contract-addresses.md)
+* Make sure to use a chain where Mangrove is live - you can find all live addresses for Mangrove [here](../../protocol/technical-references/contract-addresses.md)
 * For a more simple tutorial to get acquainted with Mangrove, we recommend [Deploy a simple offer](./basic-offer.md)
 
 ### Start local node

@@ -85,7 +85,7 @@ const main = async () => {
     }
   }
   
-  writeFileSync("docs/developers/contracts/technical-references/_contract-addresses-raw.md",md);
+  writeFileSync("docs/developers/protocol/technical-references/_contract-addresses-raw.md",md);
 
 }
 

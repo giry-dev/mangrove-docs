@@ -26,9 +26,9 @@ As always when dealing with ERC-20 tokens, care must be taken to handle decimals
 
 Just as for token *amounts*, ratios and prices have both raw and user representations.
 
-See the [Ticks, ratios, and prices](../contracts/technical-references/tick-ratio.md) page for a detailed explanation, including formulae for converting between these representations.
+See the [Ticks, ratios, and prices](../protocol/technical-references/tick-ratio.md) page for a detailed explanation, including formulae for converting between these representations.
 :::
 
 
 ## References
-* Technical reference for [ticks, ratios, and prices](../contracts/technical-references/tick-ratio.md)
+* Technical reference for [ticks, ratios, and prices](../protocol/technical-references/tick-ratio.md)
