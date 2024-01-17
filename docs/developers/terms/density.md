@@ -19,5 +19,5 @@ _Density_ is the ratio of tokens promised by an offer over the gas it requires t
     * We store the density as a float with 2 bits for the mantissa, 7 for the exponent, and an exponent bias of 32.
 
 ## References
-* [Local variable: density](../contracts/technical-references/governance-parameters/local-variables.md#density)
+* [Local variable: density](../protocol/technical-references/governance-parameters/local-variables.md#density)
 * More information on [DensityLib.sol](pathname:///MgvDoc/#densitylib.sol) in the annotated codebase
