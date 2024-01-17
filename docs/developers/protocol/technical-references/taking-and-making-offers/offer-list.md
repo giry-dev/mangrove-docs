@@ -51,12 +51,12 @@ Here's an example of such an offer list:
 |  Tick   | Ratio (DAI/WETH) | Offer ID | Gives (WETH) | Gas required | Maker Contract | Offer Gas Price |
 | ------- | ---------------- | -------- | -----------  | ------------ | -------------- | --------------- |
 | 75171   | 1838.53          | 42       | 0.7          | 220,000      | `0x2468xyz...` | 160             |
-|         |                  | 96       | 1.3          | 280,000      | `0x1357klm...` | 140             |
+| 75171   | 1838.53          | 96       | 1.3          | 280,000      | `0x1357klm...` | 140             |
 | 75200   | 1843.87          | 7        | 0.6          | 210,000      | `0x3287opq...` | 190             |
 
 #### Understanding the table
 
-* **Tick**: The discrete "price" %%tick|tick%% of the offer which corresponds to a ratio and price. Offers at the same tick are stored in FIFO order and in the table we only show the tick and ratio for the first offer with that tick.
+* **Tick**: The discrete "price" %%tick|tick%% of the offer which corresponds to a ratio and price. Offers at the same tick are stored in FIFO order.
 * **Ratio**: The amount of inbound token to be paid per outbound token. This is not stored on-chain, but is derived from the tick.
 * **Offer ID**: An ID for the offer which is assigned by Mangrove when the offer is first created. The ID is unique only on that offer list.
 * **Gives**: The amount of outbound token offered.
@@ -85,7 +85,7 @@ Here's an example of such an offer list:
 |  Tick   | Ratio (WETH/DAI) | Offer ID | Gives (DAI) | Gas required | Maker Contract | Offer Gas Price |
 | ------- | ---------------- | -------- | ----------- | ------------ | -------------- | --------------- |
 | -75103  | 0.0005476        | 77       | 925.26      | 250,000      | `0x5678def...` | 150             |
-|         |                  | 177      | 916.47      | 270,000      | `0x9101ghi...` | 170             |
+| -75103  | 0.0005476        | 177      | 916.47      | 270,000      | `0x9101ghi...` | 170             |
 | -75041  | 0.0005510        | 42       | 871.76      | 300,000      | `0x1234abc...` | 200             |
 
 ## Some terminology
