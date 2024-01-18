@@ -13,8 +13,9 @@ Mangrove's order book lists promises to trade, instead of locked commitments:
 * Takers go to Mangrove to [find liquidity](./background/offer-maker.md) by executing offers already in Mangrove.
 * [Governance](./technical-references/governance-parameters/README.md) adjusts Mangrove parameters, sets fees, and opens and closes markets.
 
-> 💡
-> For non-technical information about Mangrove, check out the [Concepts](/docs/general/high-level/concepts/smart-offers.md) section.
+:::info
+For non-technical information about Mangrove, check out the [Concepts](/docs/general/high-level/concepts/smart-offers.md) section.
+:::
 
 ## Where do I start?
 
