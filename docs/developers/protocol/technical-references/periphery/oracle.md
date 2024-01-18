@@ -1,9 +1,7 @@
 ---
-title: Oracle
+title: MgvOracle
 sidebar_position: 2
 ---
-
-## Monitor Contract - `MgvOracle`
 
 As described in the section [Governance -> Global Variables](../governance-parameters/global-variables.md#gas-price-and-oracle), Mangrove governance can configure Mangrove to use a separate Monitor Contract as a gas price and density oracle.
 
@@ -23,9 +21,3 @@ function setMutator(address mutator_) external
 ## Source Code
 
 The [`MgvOracle` source](https://github.com/mangrovedao/mangrove-core/blob/2ae172805fd8b309c30b2dc877dba66245abbb3e/src/periphery/MgvOracle.sol) is available.
-
-:::danger Deployment Address
-
-Please refer to [Deployment Addresses](../contract-addresses.md) to verify the address of `MgvOracle` for a particular chain.
-
-:::

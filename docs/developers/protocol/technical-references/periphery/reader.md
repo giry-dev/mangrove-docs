@@ -1,9 +1,7 @@
 ---
-title: Reader
+title: MgvReader
 sidebar_position: 1
 ---
-
-## View Functions - `MgvReader`
 
 The `MgvReader` contract collects a number of view functions that provide convenient views on Mangrove's core state.
 
@@ -176,9 +174,3 @@ function simulateMarketOrderByVolume(
 ## Source Code
 
 The [`MgvReader` source](https://github.com/mangrovedao/mangrove-core/blob/2ae172805fd8b309c30b2dc877dba66245abbb3e/src/periphery/MgvReader.sol) is available.
-
-:::danger Deployment Address
-
-Please refer to [Deployment Addresses](../contract-addresses.md) to verify the address of `MgvReader` for a particular chain.
-
-:::
