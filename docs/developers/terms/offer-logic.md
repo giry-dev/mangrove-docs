@@ -1,7 +1,7 @@
 ---
 id: offer-logic
 title: Offer Logic
-hoverText: The part of a maker contract that is executed as a consequence of a call by Mangrove when processing a taker order.
+hoverText: The part of a maker contract that is executed as a consequence of a call by Mangrove when processing a market order.
 ---
 
 The _offer logic_ is the part of the %%maker contract|maker-contract%% that executes as a consequence of a call by Mangrove. The offer logic is split into [trade execution](../protocol/technical-references/reactive-offer/maker-contract.md#trade-execution) implemented by %%`makerExecute`|makerExecute%%

@@ -41,7 +41,7 @@ contract MyOffer is IMaker {
     IMangrove mgv = IMangrove(payable(mgv));
     address reserve; // token reserve for inbound tokens
     
-    // an example of offer execution that simply verifies that `this` contract has enough outbound tokens to satisfy the taker Order.
+    // an example of offer execution that simply verifies that `this` contract has enough outbound tokens to satisfy the market order.
     function makerExecute(MgvLib.SingleOrder calldata order) external returns (bytes32 makerData) {
         // revert below (in case of insufficient funds) to signal mangrove we renege on trade
         // reverting as soon as early to minimize bounty
@@ -65,7 +65,7 @@ contract MyOffer is IMaker {
 
 ### Inputs
 
-* `sor` is a [data structure](./offer-data-structures.md#public-data-structures) containing a recap of the taker order and Mangrove's current configuration state.
+* `sor` is a [data structure](./offer-data-structures.md#public-data-structures) containing a recap of the market order and Mangrove's current configuration state.
     * It also contains `olKey`, which concerns the entire market order, because it will be sent to the maker, who needs that information.
     * The protocol guarantees that `order.gives/order.wants` will match the price of the offer that is being executed up to a small precision.
 
@@ -134,7 +134,7 @@ abstract contract MakerContract is IMaker {
     IMangrove mgv = IMangrove(payable(mgv));
     
     // Example of post-hook
-    // if taker order was a success, try to repost residual offer at the same price
+    // if market order was a success, try to repost residual offer at the same price
     function makerPosthook(MgvLib.SingleOrder calldata order, MgvLib.OrderResult calldata result) external {
         require (msg.sender == mgv, "posthook/invalid_caller");
         if (result.mgvData == "mgv/tradeSuccess") {

@@ -175,7 +175,7 @@ Suppose that you instrumented your offer logic to do this. Now, if an attacker f
 
 ### Managing offer failure
 
-When writing posthooks, we need to consider all possible outcomes. The first outcome we have handled above assumed that the offer was successful. However, it might also be that the offer failed when it was taken. In this setup, this may happen, for instance, because we opted for using a router that brings liquidity from deployer's account. Nothing prevents this account from being empty when the taker order actually arrives.
+When writing posthooks, we need to consider all possible outcomes. The first outcome we have handled above assumed that the offer was successful. However, it might also be that the offer failed when it was taken. In this setup, this may happen, for instance, because we opted for using a router that brings liquidity from deployer's account. Nothing prevents this account from being empty when the market order actually arrives.
 
 If this happens, this means that the offer that was unsuccessfully taken is no longer live on Mangrove and that some %%bounty|bounty%% has been sent to the taker. However, in this case, we **know** that the *other* offer will also fail if taken. For this reason, in case if a trade fails, rather than waiting for the other offer to fail by itself, we can save some %%provision|provision%% and override [`posthookFallback`](../technical-references/main-hooks.md#posthook-after-trade-failure) to retract the other offer:
 
