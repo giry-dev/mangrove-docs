@@ -72,6 +72,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 * Read about the freely available [Strat Library](../../strat-lib/README.md) - a repository of Solidity code to help write your own custom maker contract.
 * Read about the TypeScript [SDK](../../SDK/README.md) for developing off-chain apps to interact with Mangrove ecosystem.
 
+### Literate source code
+
+The Mangrove core protocol is commented in the tradition of [literate programming](https://en.wikipedia.org/wiki/Literate_programming) where natural language and code is intervowen. Thus, the protocol code itself actually constitutes a very readable and comprehensive technical documentation.
+
+A nicely formatted, single webpage representation of the literate source code can be found [here](pathname:///MgvDoc/).
+
 ## Governance
 
 The Mangrove Governance may set a number of parameters, which governs how Mangrove operates globally or for specific pairs. Refer to the section on [Governance Parameters](./governance-parameters/README.md) for details.
