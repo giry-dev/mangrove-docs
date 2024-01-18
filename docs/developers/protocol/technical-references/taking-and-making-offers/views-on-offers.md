@@ -28,11 +28,9 @@ import {IMangrove} from "@mgv/src/IMangrove.sol";
 // context of the call
 
 // IMangrove mgv = IMangrove(payable(<address of Mangrove>));
-// Mangrove contract
 IMangrove mgv = IMangrove(payable(mgv));
 
 // OLKey olkey = OLKey(<address of outbound token>, <address of inbound token>, <tick spacing>);
-// struct containing outbound_tkn, inbound_tkn and tickSpacing
 OLKey memory olkey = OLKey(address(base), address(quote), 1);
 
 uint best = mgv.best(olkey);
@@ -66,16 +64,17 @@ const best = await mgv.best(outboundTkn, inboundTkn, tickSpacing);
 
 </Tabs>
 
-### `offers()` , `offerDetails()` and `offerData()`
+### `offers()` , `offerDetails()`, `offerData()`, and `offerInfo()`
 
-* `offers(OLKey memory olKey, uint offerId)`: get an offer in packed format.
-* `offerDetails(OLKey memory olKey, uint offerId)`: get an offer detail in packed format.
-* `offerData(OLKey memory olKey, uint offerId)`: get both offer and offer detail in packed format.
+* `Mangrove.offers(OLKey memory olKey, uint offerId)`: get an offer in packed format.
+* `Mangrove.offerDetails(OLKey memory olKey, uint offerId)`: get an offer detail in packed format.
+* `Mangrove.offerData(OLKey memory olKey, uint offerId)`: get both offer and offer detail in packed format.
+* `MgvReader.offerInfo(OLKey memory olKey, uint offerId)`: get both offer and offer detail in unpacked format.
 
 
 :::info
 
-The data pertaining to a particular offer is contained in the [`OfferUnpacked`](#mgvlibmgvstructsofferunpacked) and [`OfferDetailUnpacked`](#mgvlibofferdetailunpacked) structs, which are stored as packed custom types called, respectively, `OfferPacked` and `OfferDetailPacked.` For on-chain calls, Mangrove provides unpacking functions to extract a particular field out of a packed structure. For off-chain calls, Mangrove also provide direct getters for the unpacked structures.&#x20;
+The data pertaining to a particular offer is contained in the [`OfferUnpacked`](#mgvlibmgvstructsofferunpacked) and [`OfferDetailUnpacked`](#mgvlibofferdetailunpacked) structs, which are stored as packed custom types called, respectively, `OfferPacked` and `OfferDetailPacked`. For on-chain calls, Mangrove provides unpacking functions to extract a particular field out of a packed structure. For off-chain calls, Mangrove also provide direct getters for the unpacked structures.
 
 :::
 
@@ -84,38 +83,42 @@ The data pertaining to a particular offer is contained in the [`OfferUnpacked`](
 
 ```solidity
 import {IMangrove} from "@mgv/src/IMangrove.sol";
+import {MgvReader} from "@mgv/src/periphery/MgvReader.sol";
 import "@mgv/src/core/MgvLib.sol";
 
 // context of the call
 
 // IMangrove mgv = IMangrove(payable(<address of Mangrove>));
-// Mangrove contract
 IMangrove mgv = IMangrove(payable(mgv));
 
-// OLKey olkey = OLKey(<address of outbound token>, <address of inbound token>, <tick spacing>);
-// struct containing outbound_tkn, inbound_tkn and tickSpacing
-OLKey memory olkey = OLKey(address(base), address(quote), 1);
+// MgvReader reader = MgvReader(<address of MgvReader>);
+MgvReader reader = MgvReader(readerAddress);
 
-// Tick tick = TickLib.tickFromRatio(mantissa,exponent);
-// ratios are represented as a (mantissa,exponent) pair which represents the number `mantissa * 2**-exponent`
-// calculates the tick from a desired 1.25 ratio (1.25 = 20 * 2^(-4))
-Tick tick = TickLib.tickFromRatio(20, 4);
+// OLKey olKey = OLKey(<address of outbound token>, <address of inbound token>, <tick spacing>);
+OLKey memory olKey = OLKey(address(base), address(quote), 1);
+
+// Tick tick = TickLib.tickFromVolumes(<inbound amount>, <outbound amount>);
+// ratio = <inbound amount> / <outbound amount>
+Tick tick = TickLib.tickFromVolumes(5, 4);  // ratio = 5/4 = 1.25
 
 // creates an offer at `tick` and store its ID in ofrId
-uint ofrId = mgv.newOfferByTick(olKey, tick, 1 ether, 10_000, 0);
+// newOfferByTick(<offer list key>, <tick>, <gives>, <gasreq>, <gasprice>)
+uint ofrId = mgv.newOfferByTick(olKey, tick, 1 ether, 10_000, 20);
 
-// ???if one wishes to get the totally unpacked data (gas costly!):??? To be edited?
-(MgvStructs.OfferUnpacked memory offer, MgvStructs.OfferDetailUnpacked memory offerDetail) = Mangrove(MGV)
-.offerInfo(outTkn, inbTkn, tickSpacing, offerId);
-
-// getting packed (outTkn, inbTkn, tickSpacing) offer list data
+// getting packed offer data
 Offer offer = mgv.offers(olKey, ofrId);
 OfferDetail detail = mgv.offerDetails(olKey, ofrId);
+(offer, detail) = mgv.offerData(olKey, ofrId);
 
 // for all fields f of OfferUnpacked
 // offer.f == offer32.f()
 // for all fields f of OfferDetailUnpacked
 // offerDetail.f == offerDetail32.f()
+
+// getting unpacked offer data
+// MgvReader.offerInfo(<offer list key>, <offer ID>);
+(MgvStructs.OfferUnpacked memory offer, MgvStructs.OfferDetailUnpacked memory offerDetail) =
+  MgvReader.offerInfo(olKey, offerId);
 ```
 
 </TabItem>
@@ -157,7 +160,7 @@ const gasreq = offerDetail.gasreq;
 
 :::info
 
-An offer is **live** in a given [Offer List](offer-list.md) if it can be matched during a [market order](taker-order/). The view function `isLive` can be used to verify whether an identifies as a **live** offer (i.e. `gives` is not zero) in its offer list.
+An offer is **live** in a given [Offer List](offer-list.md) if it can be matched during a [market order](taker-order/). The view function `isLive` can be used to verify whether an ID identifies a **live** offer (i.e. `gives` is not zero) in its offer list.
 
 :::
 
@@ -170,22 +173,20 @@ import {IMangrove} from "@mgv/src/IMangrove.sol";
 // context of the call
 
 // IMangrove mgv = IMangrove(payable(<address of Mangrove>));
-// Mangrove contract
 IMangrove mgv = IMangrove(payable(mgv));
 
 // OLKey olkey = OLKey(<address of outbound token>, <address of inbound token>, <tick spacing>);
-// struct containing outbound_tkn, inbound_tkn and tickSpacing
-OLKey memory olkey = OLKey(address(base), address(quote), 1);
+OLKey memory olKey = OLKey(address(base), address(quote), 1);
 
-// Tick tick = TickLib.tickFromRatio(mantissa,exponent);
-// ratios are represented as a (mantissa,exponent) pair which represents the number `mantissa * 2**-exponent`
-// calculates the tick from a desired 1.25 ratio (1.25 = 20 * 2^(-4))
-Tick tick = TickLib.tickFromRatio(20, 4);
+// Tick tick = TickLib.tickFromVolumes(<inbound amount>, <outbound amount>);
+// ratio = <inbound amount> / <outbound amount>
+Tick tick = TickLib.tickFromVolumes(5, 4);  // ratio = 5/4 = 1.25
 
-// Create an offer using our previous tick and store its ID in ofrId
-uint ofrId = mgv.newOfferByTick(olKey, tick, 1 ether, 10_000, 0);
+// creates an offer at `tick` and store its ID in ofrId
+// newOfferByTick(<offer list key>, <tick>, <gives>, <gasreq>, <gasprice>)
+uint ofrId = mgv.newOfferByTick(olKey, tick, 1 ether, 10_000, 20);
 
-// checking whether the offer is live in the order book.
+// checking whether the offer is live in the offer list
 bool isLive = mgv.offers(olKey, ofrId).isLive();
 ```
 
@@ -222,27 +223,26 @@ const isLive = await Mangrove.isLive(outTkn, outTkn, tickSpacing, offerId);
 
 ## Custom types
 
-:::info 
+:::info
 
-Offer data is split between  [`OfferUnpacked`](#mgvlibmgvstructsofferunpacked) and [`OfferDetailUnpacked`](#mgvlibofferdetailunpacked) for storage read/write optimisation (as both structs can be efficiently packed on storage).
+Offer data is split between  [`OfferUnpacked`](#mgvlibmgvstructsofferunpacked) and [`OfferDetailUnpacked`](#mgvlibofferdetailunpacked) for storage read/write optimisation (as both structs can be efficiently packed in storage).
 
 :::
 
 ### `MgvLib.MgvStructs.OfferUnpacked`
 
-| Type     | Field   | Comments                                                                   |
-| -------- | ------- | -------------------------------------------------------------------------- |
-| `uint` | `prev`  | Predecessor offer id (better price)                                        |
-| `uint` | `next`  | Successor offer id (worst price)                                           |
-| `Tick`   | `tick` | Tick number associated with the offer  |
-| `uint` | `gives` | What the offer gives (in _wei_ units of base token of the offer's market)  |
+| Field   | Type     | Comments                                                                   |
+| ------- | -------- | -------------------------------------------------------------------------- |
+| `prev`  | `uint`   | ID of the preceeding offer with the same tick (if the offer is live)       |
+| `next`  | `uint`   | ID of the next offer with the same tick (if the offer is live)             |
+| `tick`  | `Tick`   | The offer's "price" %%tick|tick%%                                          |
+| `gives` | `uint`   | The amount of outbound token the offer gives                               |
 
 ### `MgvLib.OfferDetailUnpacked`
 
-| Type      | Field           | Comments                                                                                                                                  |
-| --------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `address` | `maker`         | Address of the offer's [Maker Contract](reactive-offer/maker-contract.md)                                                                 |
-| `uint`  | `gasreq`        | Gas required by the offer (in gas units)                                                                                                  |
-| `uint`  | `kilo_offer_gasbase` | Mangrove's [gasbase](../governance-parameters/mangrove-configuration.md#local-parameters) at the time the offer was posted (in gas units) |
-| `uint`  | `gasprice`      | The gas price covered by the offer bounty (in _gwei_ per gas units)                                                                       |
-
+| Field                | Type      | Comments                                                                                                                                                  |
+| -------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `maker`              | `address` | Address of the offer maker, either an EOA or a [Maker contract](reactive-offer/maker-contract.md)                                                         |
+| `gasreq`             | `uint`    | Gas required by the offer (in gas units)                                                                                                                  |
+| `kilo_offer_gasbase` | `uint`    | Mangrove's [`kilo_offer_gasbase`](../governance-parameters/mangrove-configuration.md#local-parameters) at the time the offer was posted (in 1k gas units) |
+| `gasprice`           | `uint`    | The gas price covered by the offer bounty (in _Mwei_ per gas unit)                                                                                        |
