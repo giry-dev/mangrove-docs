@@ -13,5 +13,5 @@ Bounties serve two purposes:
 Bounties are paid by the %%offer owner|offer-owner%% and are taken from the [provision](./provision.md) they deposited with Mangrove when posting the offer.
 
 ## References
-* [Provision and offer bounty](../protocol/technical-references/taking-and-making-offers/reactive-offer/offer-provision.md#provision-and-offer-bounty)
+* [Provision and offer bounty](../protocol/technical-references/reactive-offer/offer-provision.md#provision-and-offer-bounty)
 * [Cleaning offers](../protocol/background/offer-taker#cleaning-offers)

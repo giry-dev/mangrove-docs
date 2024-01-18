@@ -1,6 +1,6 @@
 ---
 description: Introducing Mangrove's Offer Lists a low level representation of (half) an order book.
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Offer Lists
@@ -61,8 +61,8 @@ Here's an example of such an offer list:
 * **Offer ID**: An ID for the offer which is assigned by Mangrove when the offer is first created. The ID is unique only on that offer list.
 * **Gives**: The amount of outbound token offered.
 * **Gas required**: The amount of gas needed to execute the offer and its posthook.
-* **Maker contract**: The address of the make who posted the offer. Either an EOA or a [maker contract](./reactive-offer/README.md) (for smart offers).
-* **Offer gas price**: Gas price used to compute the order's %%provision|provision%% (see also [offer bounties](../taking-and-making-offers/reactive-offer/offer-provision.md#bounty-calculation)). Must be at least Mangrove's gas price when the offer is posted.
+* **Maker contract**: The address of the make who posted the offer. Either an EOA or a [maker contract](../reactive-offer/README.md) (for smart offers).
+* **Offer gas price**: Gas price used to compute the order's %%provision|provision%% (see also [offer bounties](../reactive-offer/offer-provision.md#bounty-calculation)). Must be at least Mangrove's gas price when the offer is posted.
 
 :::caution Beware Decimals
 We display human-readable amounts in the examples for readability, but on-chain Mangrove only works with raw token values and never uses the `decimals` a token.

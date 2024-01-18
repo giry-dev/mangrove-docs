@@ -1,6 +1,6 @@
 ---
 description: Introduction to the concepts of ticks, ratios, and prices
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Ticks, ratios, and prices

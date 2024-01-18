@@ -1,7 +1,7 @@
 ---
 title: Literate Source Code
 description: Source Code and Literate Code
-sidebar_position: 6
+sidebar_position: 9
 ---
 
 ## Open source on GitHub

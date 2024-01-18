@@ -1,6 +1,6 @@
 ---
 description: How to write Mangrovian offers
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Creating & Updating offers
@@ -11,7 +11,7 @@ New offers should mostly be posted by [maker contracts](maker-contract.md) able 
 
 Offers posted via maker contracts are called %%smart offers|smart-offer%% - as opposed to %%on-the-fly offers|on-the-fly-offer%% made from EOA's.
 
-Similarly to [taking offers](../taker-order/README.md), offers on Mangrove can be posted in two ways:
+Similarly to [taking offers](../market-order/README.md), offers on Mangrove can be posted in two ways:
 * Via the `newOfferByTick` function (preferred way).
 * Via the `newOfferByVolume` function.
 
@@ -193,7 +193,7 @@ await tx.wait();
   * `tickSpacing` number of ticks that should be jumped between available price points.
 * `tick` is the tick number at which the offer is to be inserted.
 * `gives` is the amount of outbound tokens promised by the offer. **Must** fit in a `uint96` and be strictly positive. **Must** provide enough volume w.r.t. to `gasreq` and offer list's %%density|density%% parameter.
-* `gasreq` amount of gas that will be given to the offer's account. **Must** fit in a `uint24` and be lower than [`gasmax`](../../governance-parameters/mangrove-configuration.md#mgvlibmgvstructsglobalunpacked). Should be sufficient to cover all calls to the maker contract's %%offer logic|offer-logic%% (%%`makerExecute`|makerExecute%%) and %%`makerPosthook`|makerPosthook%%). **Must** be compatible with the offered volume `gives` and the offer list's %%density|density%% parameter. (See also %%gasreq|gasreq%%.)
+* `gasreq` amount of gas that will be given to the offer's account. **Must** fit in a `uint24` and be lower than [`gasmax`](../governance-parameters/mangrove-configuration.md#mgvlibmgvstructsglobalunpacked). Should be sufficient to cover all calls to the maker contract's %%offer logic|offer-logic%% (%%`makerExecute`|makerExecute%%) and %%`makerPosthook`|makerPosthook%%). **Must** be compatible with the offered volume `gives` and the offer list's %%density|density%% parameter. (See also %%gasreq|gasreq%%.)
 * `gasprice` gas price override used to compute the order %%provision|provision%% (see also [offer bounties](offer-provision.md)). Any value lower than Mangrove's current %%gasprice|gasprice%% will be ignored (thus 0 means "use Mangrove's current %%gasprice|gasprice%%"). **Must** fit in a `uint16`.
 
 #### Outputs
@@ -222,7 +222,7 @@ Make sure that your offer is [well-provisioned](offer-provision.md#checking-an-a
 :::danger **Offer execution**
 
 * If the offer account is a contract, it should implement the [IMaker](maker-contract.md) interface. At the very least, it must have a function with signature [`makerExecute(MgvLib.SingleOrder calldata order)`](maker-contract.md#offer-execution) or it will systematically revert when called by Mangrove.
-* `gives` and `gasreq` are subject to [density](../../governance-parameters/local-variables.md#density) constraints on the amount of _outbound_ token provided per gas spent.
+* `gives` and `gasreq` are subject to [density](../governance-parameters/local-variables.md#density) constraints on the amount of _outbound_ token provided per gas spent.
 * The offer account will need to give Mangrove a high enough allowance in _outbound_ tokens since Mangrove will use the ERC20 standard's `transferFrom` function to source your tokens.
 
 :::

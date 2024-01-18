@@ -1,6 +1,6 @@
 ---
 title: Periphery
-sidebar_position: 4
+sidebar_position: 8
 ---
 # Periphery Contracts
 

@@ -1,6 +1,6 @@
 ---
 description: Mangrove getters for offers and offer lists.
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Views on offers
@@ -160,7 +160,7 @@ const gasreq = offerDetail.gasreq;
 
 :::info
 
-An offer is **live** in a given [Offer List](offer-list.md) if it can be matched during a [market order](taker-order/). The view function `isLive` can be used to verify whether an ID identifies a **live** offer (i.e. `gives` is not zero) in its offer list.
+An offer is **live** in a given [Offer List](./README.md) if it can be matched during a [market order](../market-order/). The view function `isLive` can be used to verify whether an ID identifies a **live** offer (i.e. `gives` is not zero) in its offer list.
 
 :::
 
@@ -242,7 +242,7 @@ Offer data is split between  [`OfferUnpacked`](#mgvlibmgvstructsofferunpacked) a
 
 | Field                | Type      | Comments                                                                                                                                                  |
 | -------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `maker`              | `address` | Address of the offer maker, either an EOA or a [Maker contract](reactive-offer/maker-contract.md)                                                         |
+| `maker`              | `address` | Address of the offer maker, either an EOA or a [Maker contract](../reactive-offer/maker-contract.md)                                                         |
 | `gasreq`             | `uint`    | Gas required by the offer (in gas units)                                                                                                                  |
 | `kilo_offer_gasbase` | `uint`    | Mangrove's [`kilo_offer_gasbase`](../governance-parameters/mangrove-configuration.md#local-parameters) at the time the offer was posted (in 1k gas units) |
 | `gasprice`           | `uint`    | The gas price covered by the offer bounty (in _Mwei_ per gas unit)                                                                                        |

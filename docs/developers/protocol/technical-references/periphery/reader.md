@@ -144,7 +144,7 @@ function global() external view returns (Global _global)
 
 The `marketOrderByTick` and `marketOrderByVolume` functions simulate a market order on Mangrove and returns the cumulative `totalGot`, `totalGave` and `totalGasreq` for each offer traversed. 
 
-Please refer to the section [Market Order in Taking Offers](../taking-and-making-offers/taker-order/README.md) for more information on market orders.
+Please refer to the section [Market orders](../market-order/README.md) for more information on market orders.
 
 It the simulation, it is assumed that offer execution is successful and uses exactly its `gasreq`. 
 

@@ -8,4 +8,4 @@ The _gasprice_ is an estimate of the price of a gas unit, in native token amount
 
 ## References
 * [Global variable: gasprice](../protocol/technical-references/governance-parameters/global-variables.md#gas-price-and-oracle)
-* [Offer gasprice](../protocol/technical-references/taking-and-making-offers/reactive-offer/offer-data-structures.md#mgvlibsingleorder)
+* [Offer gasprice](../protocol/technical-references/reactive-offer/offer-data-structures.md#mgvlibsingleorder)

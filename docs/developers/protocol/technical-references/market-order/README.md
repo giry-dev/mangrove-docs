@@ -1,11 +1,11 @@
 ---
-description: Basic taker side functions
-sidebar_position: 3
+description: Market orders on Mangrove
+sidebar_position: 4
 ---
 
 # Market orders
 
-A **market order** is Mangrove's simplest way of buying or selling assets. Such (taker) orders are run against a specific [offer list](../offer-list.md) with its associated %%outbound|outbound%% token and %%inbound|inbound%% token. The liquidity taker specifies a max %%ratio|ratio%% she's willing to accept and how much she wishes to trade: Either how many _outbound_ tokens she wants or how many _inbound_ tokens she wishes to pay.
+A **market order** is Mangrove's simplest way of buying or selling assets. Such (taker) orders are run against a specific [offer list](../offer-list/README.md) with its associated %%outbound|outbound%% token and %%inbound|inbound%% token. The liquidity taker specifies a max %%ratio|ratio%% she's willing to accept and how much she wishes to trade: Either how many _outbound_ tokens she wants or how many _inbound_ tokens she wishes to pay.
 
 :::info **Mangrove Market Order = TradFi Limit Order**
 
@@ -23,7 +23,7 @@ More precisely, Mangrove ensures that the "price" %%tick|tick%% of the offers ma
 
 ## Market order execution
 
-When a market order is processed by Mangrove's matching engine, it consumes the offers on the selected [offer list](../offer-list.md) one by one, in order, and starting from lowest tick (offers with the same tick are executed in FIFO order).
+When a market order is processed by Mangrove's matching engine, it consumes the offers on the selected [offer list](../offer-list/README.md) one by one, in order, and starting from lowest tick (offers with the same tick are executed in FIFO order).
 
 Offers match if their %%tick|tick%% is below or equal to the specified max tick.
 
@@ -244,10 +244,10 @@ await tx.wait();
 
 #### `marketOrderByTick(olKey, maxTick, fillVolume, fillWants)`
 
-* `olKey`: identifies the [offer list](../offer-list.md) and consists of:
+* `olKey`: identifies the [offer list](../offer-list/README.md) and consists of:
   * `outbound_tkn`: address of the _outbound_ token (that the taker will buy).
   * `inbound_tkn`: address of the _inbound_ token (that the taker will spend).
-  * `tickSpacing`: specifies the space between allowed ticks (see [Ticks, ratios, and prices](../../tick-ratio.md) for details)
+  * `tickSpacing`: specifies the space between allowed ticks (see [Ticks, ratios, and prices](../tick-ratio.md) for details)
 * `maxTick`: specifies the max tick that can be matched with this order
 * `fillVolume`: the desired volume of tokens in either `olKey.outbound_tkn` or `olKey.inbound_tkn`.
   * If `fillWants` is `true`, `fillVolume` is in `olKey.outbound_tkn`. This means the taker specified how much they wish to receive ("buy").
@@ -258,10 +258,10 @@ await tx.wait();
 
 #### `marketOrderByVolume(olKey, takerWants, takerGives, fillWants)`
 
-* `olKey`: identifies the [offer list](../offer-list.md) and consists of:
+* `olKey`: identifies the [offer list](../offer-list/README.md) and consists of:
   * `outbound_tkn`: address of the _outbound_ token (that the taker will buy).
   * `inbound_tkn`: address of the _inbound_ token (that the taker will spend).
-  * `tickSpacing`: specifies the space between allowed ticks (see [Ticks, ratios, and prices](../../tick-ratio.md) for details)
+  * `tickSpacing`: specifies the space between allowed ticks (see [Ticks, ratios, and prices](../tick-ratio.md) for details)
 * `takerWants`: amount of _outbound_ token the taker wants. Must fit on 127 bits.
 * `takerGives`: amount of _inbound_ token the taker gives. Must fit on 127 bits.
   * The ratio `takerGives/takerWants` specifies the max ratio (and thus tick) that can be matched with this order.
@@ -271,10 +271,10 @@ await tx.wait();
 
 ### Outputs
 
-* `takerGot` is the net amount of _outbound_ tokens the taker has received (i.e., after applying the offer list [fee](../../governance-parameters/local-variables.md#taker-fees) if any).
+* `takerGot` is the net amount of _outbound_ tokens the taker has received (i.e., after applying the offer list [fee](../governance-parameters/local-variables.md#taker-fees) if any).
 * `takerGave` is the amount of _inbound_ tokens the taker has sent.
 * `bounty` is the amount of native tokens (in units of wei) the taker received in compensation for cleaning failing offers
-* `feePaid` is the amount of `outbound_tkn` that was sent to Mangrove's vault in payment of the potential %%fee|taker-fee%% configured for the `olKey` [offer list](../offer-list.md#general-structure).
+* `feePaid` is the amount of `outbound_tkn` that was sent to Mangrove's vault in payment of the potential %%fee|taker-fee%% configured for the `olKey` [offer list](../offer-list/README.md#general-structure).
 
 ### Example
 
@@ -361,4 +361,4 @@ ERC20 tokens transfers are initiated by Mangrove using `transferFrom`. If Mangro
 
 ## Active offer lists
 
-Every Mangrove [offer list](../offer-list.md) can be either [active or inactive](../../governance-parameters/local-variables.md#de-activating-an-offer-list), and Mangrove itself can be either [alive or dead](../../governance-parameters/global-variables.md#other-governance-controlled-setters). Taking offers is only possible when Mangrove is alive and on offer lists that are active.
+Every Mangrove [offer list](../offer-list/README.md) can be either [active or inactive](../governance-parameters/local-variables.md#de-activating-an-offer-list), and Mangrove itself can be either [alive or dead](../governance-parameters/global-variables.md#other-governance-controlled-setters). Taking offers is only possible when Mangrove is alive and on offer lists that are active.
