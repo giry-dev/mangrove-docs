@@ -16,7 +16,7 @@ Hence, a full market will always feature **two offer lists**. For instance, a WE
 [Mangrove's SDK](../../../SDK/README.md) offers Market abstractions that allows liquidity providers and takers to interact with Mangrove using standard trading concepts such as _order book_, _base_, and _quote_.
 :::
 
-An offer list is identified by a tuple of (`outbound_tkn`, `inbound_tkn`, `tickSpacing`). For example, for a WETH-DAI offer list, the touple values would be:
+An offer list is identified by a struct `OLKey(outbound_tkn, inbound_tkn, tickSpacing)`. For example, for a WETH-DAI offer list, the struct values would be:
 
 * `outbound_tkn`: the address of the WETH token (i.e., sent by the offer)
 * `inbound_tkn`: the address of the DAI token (i.e., wanted by the offer)
