@@ -3,24 +3,9 @@ description: Basic taker side functions
 sidebar_position: 3
 ---
 
-# Taking offers
+# Market orders
 
-Offers on Mangrove can be taken with a [market order](#market-order).
-
-## General considerations
-
-### Token allowance
-
-ERC20 tokens transfers are initiated by Mangrove using `transferFrom`. If Mangrove's `allowance` on the taker's address (for tokens to be spent) is too low, the order will revert.
-
-### Active offer lists
-
-Every Mangrove [offer list](../offer-list.md) can be either [active or inactive](../../governance-parameters/local-variables.md#de-activating-an-offer-list), and Mangrove itself can be either [alive or dead](../../governance-parameters/global-variables.md#other-governance-controlled-setters). Taking offers is only possible when Mangrove is alive and on offer lists that are active.
-
-## Market order
-
-A **Market Order** is Mangrove's simplest way of buying or selling assets. Such (taker) orders are run against a specific [offer list](../offer-list.md) with its associated %%outbound|outbound%% token and %%inbound|inbound%% token. The liquidity taker specifies how many _outbound_ tokens she %%wants|wants%% and how many _inbound_ tokens she %%gives|gives%%.
-
+A **market order** is Mangrove's simplest way of buying or selling assets. Such (taker) orders are run against a specific [offer list](../offer-list.md) with its associated %%outbound|outbound%% token and %%inbound|inbound%% token. The liquidity taker specifies a max %%ratio|ratio%% she's willing to accept and how much she wishes to trade: Either how many _outbound_ tokens she wants or how many _inbound_ tokens she wishes to pay.
 
 :::info **Mangrove Market Order = TradFi Limit Order**
 
@@ -30,28 +15,45 @@ In TradFi, a market order is an order to buy or sell immediately at the best ava
 
 In DeFi, where transactions can be [front-run](https://www.investopedia.com/terms/f/frontrunning.asp) or [sandwiched](https://coinmarketcap.com/alexandria/article/what-are-sandwich-attacks-in-defi-and-how-can-you-avoid-them), adversaries may manipulate the best available price and thus extract value from a market order as there is no limit on the price. TradFi market orders are therefore unsafe for fully on-chain DEX'es like Mangrove.
 
-To protect the user, Mangrove's market order therefore corresponds to a TradFi [**limit order**](https://www.investopedia.com/terms/l/limitorder.asp): An order to buy or sell at or below a given price.
-More precisely, Mangrove ensures that the price of the offers matched with the order does not exceed the specified price.
+To protect the user, Mangrove's market order therefore corresponds to a TradFi [**limit order**](https://www.investopedia.com/terms/l/limitorder.asp): An order to buy or sell at given price or better.
+
+More precisely, Mangrove ensures that the "price" %%tick|tick%% of the offers matched with the order does not exceed the specified max tick.
 
 :::
 
+## Market order execution
 
-When an order is processed by Mangrove's matching engine, it consumes the offers in the selected [offer list](../offer-list.md), inside the corresponding bin. Offers in a [bin](../offer-list.md#bins-doubly-linked-lists) are executed in order, from the first to the last.
-Execution works as follows:
+When a market order is processed by Mangrove's matching engine, it consumes the offers on the selected [offer list](../offer-list.md) one by one, in order, and starting from lowest tick (offers with the same tick are executed in FIFO order).
 
-1. Mangrove checks that the current offer's [entailed price](../offer-list.md#gives-ratio-and-entailed-price) is at least as good as the taker's price. Otherwise execution stops there.
-2. Mangrove sends _inbound_ tokens to the current offer's associated [logic](../reactive-offer/maker-contract.md).
-3. Mangrove then executes the offer logic.
-4. If the call is successful, Mangrove sends _outbound_ tokens to the taker. If the call or the transfer fail, Mangrove reverts the effects of steps 2. and 3.
-5. The taker's _wants_ and _gives_ are reduced.
-6. If the taker's _wants_ has not been completely fulfilled, Mangrove moves back to step 1.
+Offers match if their %%tick|tick%% is below or equal to the specified max tick.
+
+The market order stops when one of these conditions are met:
+
+* only offers with tick > max tick are left,
+* the end of the offer list has been reached, or
+* the taker has received or paid the amount they specified.
+
+For each matched offer, Mangrove takes the following steps:
+
+1. Mangrove determines the amount of _outbound_ tokens the offer should deliver and how much _inbound_ token it should be paid:
+   * _outbound amount_: Either all of what the offer gives or, if that exceeds what the taker wants, the residual amount needed to fill the market order.
+   * _inbound amount_: Determined by the offer's tick: $inboundAmount = outboundAmount * 1.0001^{tick}$.
+2. Mangrove sends _inbound_ tokens to the offer maker (EOA or [maker contract](../reactive-offer/maker-contract.md)).
+3. Mangrove then executes the offer logic's `makerExecute` function (a no-op for an EOA).
+4. If the `makerExecute` call is successful, Mangrove sends _outbound_ tokens to the taker. If the call or the transfer fail, Mangrove reverts the effects of steps 2. and 3.
 
 Any failed [offer](../reactive-offer/) execution results in a [bounty](../reactive-offer/offer-provision.md#computing-the-provision-and-offer-bounty) being sent to the caller as compensation for the wasted gas.
 
-Market orders come in two versions:
-* `marketOrderByTick` includes the concept of ticks (the preferred way to use market orders)
-* `marketOrderByVolume` mimics a previous version of Mangrove's API
+## Market order functions
 
+Mangrove provides two functions for executing market orders which differ in how the "price" limit is specified:
+
+* `marketOrderByTick`: The limit is specified as a `maxTick` which matched offers should not exceed.
+* `marketOrderByVolume`: The limit is specified as the ratio between two volumes, `takerGives/takerWants`, which offers should not exceed.
+
+The `*ByVolume` variant is a convenience wrapper for the `*ByTick` variant: The provided volumes are converted to a corresponding `maxTick`, rounding down to the nearest tick allowed on the offer list, such that the taker does not pay more than specified.
+
+The output from the two functions is the same.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -238,103 +240,108 @@ await tx.wait();
 
 </Tabs>
 
-### `marketOrderForByTick()`
+### Inputs
 
-#### Inputs
+#### `marketOrderByTick(olKey, maxTick, fillVolume, fillWants)`
 
-* `olkey` struct containing:
-  * `outbound_tkn` address of the _outbound_ token (that the taker will buy).
-  * `inbound_tkn` address of the _inbound_ token (that the taker will spend).
-  * `tickSpacing` number of ticks that should be jumped between available price points.
-* `maxTick` is the limit price the market order is ready to pay (the log base 1.0001 of the price)
-* `fillvolume` volume of tokens based on `fillWants` (see below)
-* `fillWants`
-  * If `true`, `fillVolume` is the amount of `olKey.outbound_tkn` the taker wants to buy. 
-  * If `false`, `fillVolume` is the amount of `olKey.inbound_tkn` the taker wants to sell.
-  * Note that market orders can stop for other reasons, such as the price being too high.
+* `olKey`: identifies the [offer list](../offer-list.md) and consists of:
+  * `outbound_tkn`: address of the _outbound_ token (that the taker will buy).
+  * `inbound_tkn`: address of the _inbound_ token (that the taker will spend).
+  * `tickSpacing`: specifies the space between allowed ticks (see [Ticks, ratios, and prices](../../tick-ratio.md) for details)
+* `maxTick`: specifies the max tick that can be matched with this order
+* `fillVolume`: the desired volume of tokens in either `olKey.outbound_tkn` or `olKey.inbound_tkn`.
+  * If `fillWants` is `true`, `fillVolume` is in `olKey.outbound_tkn`. This means the taker specified how much they wish to receive ("buy").
+  * If `fillWants` is `false`, `fillVolume` is in `olKey.inbound_tkn`. This means the taker specified how much they wish to send ("sell").
+* `fillWants`: Whether to stop when the taker has received or spent a specified amount:
+  * If `true`, the order is full when taker has received `fillVolume` of `olKey.outbound_tkn`.
+  * If `false`, the order is full when taker has sent `fillVolume` of `olKey.inbound_tkn`.
 
+#### `marketOrderByVolume(olKey, takerWants, takerGives, fillWants)`
 
-#### Outputs
+* `olKey`: identifies the [offer list](../offer-list.md) and consists of:
+  * `outbound_tkn`: address of the _outbound_ token (that the taker will buy).
+  * `inbound_tkn`: address of the _inbound_ token (that the taker will spend).
+  * `tickSpacing`: specifies the space between allowed ticks (see [Ticks, ratios, and prices](../../tick-ratio.md) for details)
+* `takerWants`: amount of _outbound_ token the taker wants. Must fit on 127 bits.
+* `takerGives`: amount of _inbound_ token the taker gives. Must fit on 127 bits.
+  * The ratio `takerGives/takerWants` specifies the max ratio (and thus tick) that can be matched with this order.
+* `fillWants`: Whether to stop when the taker has received `takerWants` or spent `takerGives`:
+  * If `true`, the order is full when taker has received `takerWants` of `olKey.outbound_tkn`.
+  * If `false`, the order is full when taker has sent `takerGives` of `olKey.inbound_tkn`.
+
+### Outputs
 
 * `takerGot` is the net amount of _outbound_ tokens the taker has received (i.e., after applying the offer list [fee](../../governance-parameters/local-variables.md#taker-fees) if any).
 * `takerGave` is the amount of _inbound_ tokens the taker has sent.
 * `bounty` is the amount of native tokens (in units of wei) the taker received in compensation for cleaning failing offers
-* `feePaid` is the amount of `outbound_tkn` that was sent to Mangrove's vault in payment of the potential %%fee|taker-fee%% associated to the `(outbound_tkn, inbound_tkn, tickSpacing)` [offer list](../offer-list.md#general-structure).&#x20;
-
-
-### `marketOrderForByVolume()`
-
-#### Inputs
-
-* `olkey` same as previously.
-* `takerWants` raw amount of _outbound_ token the taker wants. Must fit on 160 bits. The market order will stop as soon as `takerWants` _outbound_ tokens have been bought. It is conceptually similar to a _buy order_.
-* `takerGives` raw amount of _inbound_ token the taker gives. Must fit on 160 bits. The market order will continue until `takerGives` _inbound_ tokens have been spent. It is conceptually similar to _sell order_.
-* `fillWants` same as previously.
-
-#### Outputs
-
-* Same as previously.
-
-:::tip **Specification**
-
-* The market order stops when the price exceeds (an approximation of) 1.0001^`maxTick`, or when the end of the book has been reached, or:
-  * If `fillWants` is true, the market order stops when `fillVolume` units of `olKey.outbound_tkn` have been obtained.
-  * If `fillWants` is false, the market order stops when `fillVolume` units of `olKey.inbound_tkn` have been paid.
-* At the end of a Market Order, the taker will not spend more than `takerGives`.
-
-:::
+* `feePaid` is the amount of `outbound_tkn` that was sent to Mangrove's vault in payment of the potential %%fee|taker-fee%% configured for the `olKey` [offer list](../offer-list.md#general-structure).
 
 ### Example
 
-Let's consider the following WETH-DAI offer list below (with no fee), and the following two examples:
-
-#### WETH-DAI
+Let's consider the following DAI-WETH offer list with no fee:
 
 | Tick    | Ratio (WETH/DAI) | Offer ID | Gives (DAI)  |
 | ------- | ---------------- | -------- |------------- |
-| -79815  | 0.0003419        | 77       | 925.26       |
-|         |                  | 177      | 916.47       |
-| -79748  | 0.0003442        | 42       | 871.76       |
+| -75103  | 0.0005476        | 77       | 925.26       |
+| -75103  | 0.0005476        | 177      | 916.47       |
+| -75041  | 0.0005510        | 42       | 871.76       |
 
-:::info **Example**
+The following two examples illustrate the difference between `fillWants = true` or `false`:
 
-**Example 1**
-* A taker calls `marketOrderByTick` on the offer list with:
-  * `fillWants` = true
-  * `fillVolume` = 2,918 DAI (`olKey.outbound_tkn`)
-  * `maxTick` = -79790
-  * max ratio (WETH/DAI) = 0.0003427
-  * That taker is ready to give up to 1 WETH in order to get 2,918 DAI.
-* Since `fillWants = true`, the market order **will ask for 2,918 DAI** as follows:
-  * Got 925.26 DAI for `925.26 * 0.0003419 = 0.3163` WETH from offer #77 (which is now empty)
-  * Got 916.47 DAI for `916.47 * 0.0003419 = 0.3133` WETH from offer #177 (which is now empty as well)
-  * The order stops here since the taker's limit price (max ratio) is reached. The next available offer's tick/ratio is greater than the order's (0.0003427 < 0.0003442).
-  * The taker got `925.26 + 916.47 = 1,841.73` DAI out of the 2,918 DAI that were asked.
+:::info Example 1
+A taker calls `marketOrderByTick` on the offer list with:
 
+* `maxTick` = -75000
+  * corresponds to a max ratio of 0.0005539
+* `fillVolume` = 2,500 * 10**18
+* `fillWants` = `true`
 
-**Example 2**
-* Same as above, except that `fillWants = false`:
-  * `fillVolume` = 1 WETH (`olKey.inbound_tkn`)
-  * `maxTick` = -79790
-  * max ratio (WETH/DAI) = 0.0003427
-  * Same taker, willing to give up to 1 WETH in order to get 2,918 DAI.
-* Since `fillWants = false`, the market order **will pay 1 WETH** as follows:
-  * Paid 0.3163 WETH for 925.26 DAI from offer #77 (which is now empty)
-  * Paid 0.3133 WETH for 916.47 DAI from offer #177 (which is now empty as well)
-  * The order stops here since the taker's limit price (max ratio) is reached. The next available offer's tick/ratio is greater than the order's (0.0003427 < 0.0003442).
-  * Taker got `925.26 + 916.47 = 1,841.73` DAI out of the 2,918 DAI that were asked.
+Since `fillWants = true`, we have:
 
+* `fillVolume` is in `olKey.outbound_tkn` and corresponds to 2,500 DAI
+* the market order will be considered filled once 2,500 DAI has been received.
+
+In summary, this corresponds to a **buy** order for 2,500 DAI and the taker is willing to pay up to `2,500 * 0.0005539 = 1.3832` WETH.
+
+The market order will execute as follows:
+
+1. Get 925.26 DAI for `925.26 * 0.0005476 = 0.5067` WETH from offer #77
+2. Get 916.47 DAI for `916.47 * 0.0005476 = 0.5019` WETH from offer #177
+3. Get the remaining `2500 - 925.26 - 916.47 = 658.27` DAI for `658.27 * 0.0005510 = 0.3627` WETH from offer #42.
+
+In total, the taker gets 2,500 DAI and sends `0.5067 + 0.5019 + 0.3627 = 1.3713` WETH.
 :::
 
+:::info Example 2
+A taker calls `marketOrderByTick` on the offer list with:
+
+* `maxTick` = -75000
+  * corresponds to a max ratio of 0.0005539
+* `fillVolume` = 1.2 * 10**18
+* `fillWants` = `false`
+
+Since `fillWants = false`, we have:
+
+* `fillVolume` is in `olKey.inbound_tkn` and corresponds to 1.2 WETH
+* the market order will be considered filled once 1.2 WETH has been sent.
+
+In summary, this corresponds to a **sell** order of 1.2 WETH and the taker wants to receive at least `1.2 / 0.0005539 = 2168.84` DAI.
+
+1. Sell `925.26 * 0.0005476 = 0.5067` WETH for 925.26 DAI to offer #77
+2. Sell `916.47 * 0.0005476 = 0.5019` WETH for 916.47 DAI to offer #177
+3. Sell the remaining `1.2 - 0.5067 - 0.5019 = 0.1914` WETH for `0.1914 / 0.0005510 = 347.37` DAI to offer #42.
+
+In total, the taker gets `925.26 + 916.47 + 347.37 = 2,189.10` DAI and sends 1.2 WETH.
+:::
 
 ### More on market order behaviour
 
-Mangrove's market orders are configurable using the parameters `olkey`, `maxTick`, `fillVolume` and `fillWants.` 
+Suppose one wants to buy or sell some token `B` (base), using token `Q` (quote) as payment, on a market with tick spacing `T`.
 
-Suppose one wants to buy or sell some token `B` (base), using token `Q` (quote) as payment.
+* **Market buy:** A limit **buy** order for `x` `B` tokens, corresponds to a `marketOrderByTick` on the (`B`,`Q`,`T`) offer list with `fillWants` set to `true`, `fillVolume = x` (the volume one wishes to buy), and `maxTick` = $⌊log_{1.0001}(price\ limit)⌋$.
+* **Market sell:** A limit **sell** order for `x` `B` tokens, corresponds to a `marketOrderByTick` on the (`Q`,`B`,`T`) offer list with
+ `fillWants` set to `false`, `fillVolume = x` (the volume one wishes to sell), and `maxTick` = $⌊-log_{1.0001}(price\ limit)⌋$.
 
-* **Market buy:** A limit **buy** order for x tokens B, corresponds to a `marketOrderByTick` on the (`B`,`Q`) offer list with `fillVolume = olKey.outbound_tkn` (the volume one wishes to buy), with `maxTick` such that the max ratio is the limit price cap, and setting `fillWants` to `true`.
-* **Market sell:** A limit **sell** order for x tokens B, corresponds to a `marketOrderByTick` on the (`Q`, `B`) offer list with `fillVolume = olKey.inbound_tkn` (the volume one wishes to sell), with `maxTick` such that the max ratio is the limit price cap, and setting `fillWants` to `false`.
 
 :::caution **On order residuals**
 
@@ -343,6 +350,15 @@ Contrary to [GTC orders](https://www.investopedia.com/terms/g/gtc.asp) on regula
 :::
 
 ## Bounties for taking failing offers
-If an offer fails to deliver, the taker gets a %%bounty|bounty%% in native token to compensate for the gas spent on executing the offer. The bounty is paid by the %%offer owner|offer-owner%% and are taken from the %%provision|provision%% they deposited with Mangrove when posting the offer. 
+
+If an offer fails to deliver, the taker gets a %%bounty|bounty%% in native token to compensate for the gas spent on executing the offer. The bounty is paid by the %%offer owner|offer-owner%% and is taken from the %%provision|provision%% they deposited with Mangrove when posting the offer.
 
 Refer to [Offer provisions](../reactive-offer/offer-provision.md) for details on how provisions and bounties work and are calculated.
+
+## Token allowance
+
+ERC20 tokens transfers are initiated by Mangrove using `transferFrom`. If Mangrove's `allowance` on the taker's address (for tokens to be spent) is too low, the order will revert.
+
+## Active offer lists
+
+Every Mangrove [offer list](../offer-list.md) can be either [active or inactive](../../governance-parameters/local-variables.md#de-activating-an-offer-list), and Mangrove itself can be either [alive or dead](../../governance-parameters/global-variables.md#other-governance-controlled-setters). Taking offers is only possible when Mangrove is alive and on offer lists that are active.
