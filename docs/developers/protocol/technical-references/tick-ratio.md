@@ -143,6 +143,11 @@ The supported ranges for ticks, ratios, and prices in Mangrove are:
 | Price | 2.9e-39 | 3.4e38 |
 
 
+## The TickLib library
+The [`TickLib`](https://github.com/mangrovedao/mangrove-core/blob/2ae172805fd8b309c30b2dc877dba66245abbb3e/lib/core/TickLib.sol) library contains utility functions for converting between ticks and ratios.
+
+It also contains functions for calculations involving ticks and ratios, such as computing the inbound volume corresponding to a tick and outbound volume.
+
 
 ## Comparison to Uniswap ticks
 Mangrove's ticks are inspired by Uniswap’s tick, with the following notable differences:
