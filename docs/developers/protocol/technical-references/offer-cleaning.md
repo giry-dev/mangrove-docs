@@ -141,7 +141,7 @@ import "@mgv/src/core/MgvLib.sol";
 
 // IMangrove mgv = IMangrove(payable(<address of Mangrove>));
 // Mangrove contract
-IMangrove mgv = IMangrove(payable(mgv));
+IMangrove mgv = IMangrove(payable(mangroveAddress));
 
 // OLKey olkey = OLKey(<address of outbound token>, <address of inbound token>, <tick spacing>);
 // struct containing outbound_tkn, inbound_tkn and tickSpacing

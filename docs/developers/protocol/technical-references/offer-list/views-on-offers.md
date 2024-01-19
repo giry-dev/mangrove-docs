@@ -74,7 +74,7 @@ const best = await mgv.best(outboundTkn, inboundTkn, tickSpacing);
 
 :::info
 
-The data pertaining to a particular offer is contained in the [`OfferUnpacked`](#mgvlibmgvstructsofferunpacked) and [`OfferDetailUnpacked`](#mgvlibofferdetailunpacked) structs, which are stored as packed custom types called, respectively, `OfferPacked` and `OfferDetailPacked`. For on-chain calls, Mangrove provides unpacking functions to extract a particular field out of a packed structure. For off-chain calls, Mangrove also provide direct getters for the unpacked structures.
+The data pertaining to a particular offer is contained in the [`OfferUnpacked`](#offerunpacked) and [`OfferDetailUnpacked`](#offerdetailunpacked) structs, which are stored as packed custom types called, respectively, `OfferPacked` and `OfferDetailPacked`. For on-chain calls, Mangrove provides unpacking functions to extract a particular field out of a packed structure. For off-chain calls, Mangrove also provide direct getters for the unpacked structures.
 
 :::
 
@@ -89,7 +89,7 @@ import "@mgv/src/core/MgvLib.sol";
 // context of the call
 
 // IMangrove mgv = IMangrove(payable(<address of Mangrove>));
-IMangrove mgv = IMangrove(payable(mgv));
+IMangrove mgv = IMangrove(payable(mangroveAddress));
 
 // MgvReader reader = MgvReader(<address of MgvReader>);
 MgvReader reader = MgvReader(readerAddress);
@@ -117,8 +117,8 @@ OfferDetail detail = mgv.offerDetails(olKey, ofrId);
 
 // getting unpacked offer data
 // MgvReader.offerInfo(<offer list key>, <offer ID>);
-(MgvStructs.OfferUnpacked memory offer, MgvStructs.OfferDetailUnpacked memory offerDetail) =
-  MgvReader.offerInfo(olKey, offerId);
+(OfferUnpacked memory offer, OfferDetailUnpacked memory offerDetail) =
+  reader.offerInfo(olKey, offerId);
 ```
 
 </TabItem>
@@ -225,11 +225,11 @@ const isLive = await Mangrove.isLive(outTkn, outTkn, tickSpacing, offerId);
 
 :::info
 
-Offer data is split between  [`OfferUnpacked`](#mgvlibmgvstructsofferunpacked) and [`OfferDetailUnpacked`](#mgvlibofferdetailunpacked) for storage read/write optimisation (as both structs can be efficiently packed in storage).
+Offer data is split between  [`OfferUnpacked`](#offerunpacked) and [`OfferDetailUnpacked`](#offerdetailunpacked) for storage read/write optimisation (as both structs can be efficiently packed in storage).
 
 :::
 
-### `MgvLib.MgvStructs.OfferUnpacked`
+### `OfferUnpacked`
 
 | Field   | Type     | Comments                                                                   |
 | ------- | -------- | -------------------------------------------------------------------------- |
@@ -238,7 +238,7 @@ Offer data is split between  [`OfferUnpacked`](#mgvlibmgvstructsofferunpacked) a
 | `tick`  | `Tick`   | The offer's "price" %%tick|tick%%                                          |
 | `gives` | `uint`   | The amount of outbound token the offer gives                               |
 
-### `MgvLib.OfferDetailUnpacked`
+### `OfferDetailUnpacked`
 
 | Field                | Type      | Comments                                                                                                                                                  |
 | -------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
