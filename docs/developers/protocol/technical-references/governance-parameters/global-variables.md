@@ -7,7 +7,7 @@ description: Protocol wide governance parameters.
 ### Gas price and oracle
 
 :::info **Gas price**
-**Gas price** (given is GWEI units) is a key parameter of Mangrove that [determines the remuneration](../taking-and-making-offers/reactive-offer/offer-provision.md#bounty) of takers for removing a failing offer from a list. In order to make sure takers are consistently over-compensated for the gas used, it should be kept well above average `tx.gasprice`.
+**Gas price** (given is GWEI units) is a key parameter of Mangrove that [determines the remuneration](../reactive-offer/offer-provision.md#bounty) of takers for removing a failing offer from a list. In order to make sure takers are consistently over-compensated for the gas used, it should be kept well above average `tx.gasprice`.
 
 :::
 

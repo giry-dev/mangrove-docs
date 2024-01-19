@@ -7,7 +7,7 @@ sidebar_position: 1
 
 :::info 
 A maker contract is a smart contract that is bound to an offer posted on Mangrove. 
-It is the contract that is called by Mangrove should the offer be matched during a [taker order](../taker-order/README.md). 
+It is the contract that is called by Mangrove should the offer be matched during a [market order](../market-order/README.md). 
 The offer logic is the part of the maker contract that executes as a consequence of a call by Mangrove. The offer logic is split into [trade execution](#trade-execution) 
 and [trade posthook](#trade-posthook).
 :::
@@ -41,7 +41,7 @@ contract MyOffer is IMaker {
     IMangrove mgv = IMangrove(payable(mgv));
     address reserve; // token reserve for inbound tokens
     
-    // an example of offer execution that simply verifies that `this` contract has enough outbound tokens to satisfy the taker Order.
+    // an example of offer execution that simply verifies that `this` contract has enough outbound tokens to satisfy the market order.
     function makerExecute(MgvLib.SingleOrder calldata order) external returns (bytes32 makerData) {
         // revert below (in case of insufficient funds) to signal mangrove we renege on trade
         // reverting as soon as early to minimize bounty
@@ -65,7 +65,7 @@ contract MyOffer is IMaker {
 
 ### Inputs
 
-* `sor` is a [data structure](../../taking-and-making-offers/reactive-offer/offer-data-structures.md#public-data-structures) containing a recap of the taker order and Mangrove's current configuration state.
+* `sor` is a [data structure](./offer-data-structures.md#public-data-structures) containing a recap of the market order and Mangrove's current configuration state.
     * It also contains `olKey`, which concerns the entire market order, because it will be sent to the maker, who needs that information.
     * The protocol guarantees that `order.gives/order.wants` will match the price of the offer that is being executed up to a small precision.
 
@@ -81,7 +81,7 @@ contract MyOffer is IMaker {
 #### Security concerns
 
 * Your contract should ensure that **only Mangrove** can call `makerExecute` to avoid unwanted state change.
-* The prev/next pointers from an offer are removed before sending it to the maker. This ensures that the maker has no information about the state of the book when it gets called. More information in the [data structure](../../taking-and-making-offers/reactive-offer/offer-data-structures.md#public-data-structures) table.
+* The prev/next pointers from an offer are removed before sending it to the maker. This ensures that the maker has no information about the state of the book when it gets called. More information in the [data structure](./offer-data-structures.md#public-data-structures) table.
 
 #### How to succeed
 
@@ -107,7 +107,7 @@ The offer list for the outbound / %%inbound|inbound%% token pair is temporarily 
 
 ## Trade posthook
 
-The logic associated with an offer may include a `makerPosthook` callback function. Its intended use is to update offers in the [offer list](../offer-list.md) containing the [offer](./) that was just executed.
+The logic associated with an offer may include a `makerPosthook` callback function. Its intended use is to update offers in the [offer list](../offer-list/README.md) containing the [offer](./) that was just executed.
 
 !!![code Offer Logic TBD]!!!
 
@@ -134,7 +134,7 @@ abstract contract MakerContract is IMaker {
     IMangrove mgv = IMangrove(payable(mgv));
     
     // Example of post-hook
-    // if taker order was a success, try to repost residual offer at the same price
+    // if market order was a success, try to repost residual offer at the same price
     function makerPosthook(MgvLib.SingleOrder calldata order, MgvLib.OrderResult calldata result) external {
         require (msg.sender == mgv, "posthook/invalid_caller");
         if (result.mgvData == "mgv/tradeSuccess") {

@@ -40,7 +40,7 @@ The parameter is offer list specific since the costs of calling outbound and inb
 
 :::warning **offer gas base update**
 Offer gas base needs to be updated when ERC20 contracts managing inbound or outbound tokens change or when opcode prices are updated.  
-This parameter may aslo be used to increase/decrease [bounty](../taking-and-making-offers/reactive-offer/offer-provision.md#bounty) of failing offers in a specific offer list. 
+This parameter may aslo be used to increase/decrease [bounty](../reactive-offer/offer-provision.md#bounty) of failing offers in a specific offer list. 
 :::
 
 <Tabs>
@@ -67,7 +67,7 @@ event SetGasbase(bytes32 indexed olKeyHash, uint offer_gasbase); // Emitted when
 The offer list's **density** corresponds to a "dust" parameter, which constraints the volume of outbound tokens an offer must deliver w.r.t the gas it requires to be executed. 
 An offer cannot be posted on an offer list if its density is below the offer list's density.
 :::
-The **density** of an offer in an (`outbound`, `inbound` and `tickspacing`, contained in `olkey`) [offer list](../taking-and-making-offers/offer-list.md)  with an [offer gasbase](./local-variables#offer-gas-base) set to $\beta$ is defined as:
+The **density** of an offer in an (`outbound`, `inbound` and `tickspacing`, contained in `olkey`) [offer list](../offer-list/README.md)  with an [offer gasbase](./local-variables#offer-gas-base) set to $\beta$ is defined as:
 $$
 \delta = \frac{V}{\beta + \gamma}
 $$

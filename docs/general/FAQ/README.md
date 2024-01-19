@@ -83,7 +83,7 @@ There are subtle differences between the various limit orders available on our T
 ### Who pays the gas on Mangrove?
 </summary>
 
-If the offer succeeds, the gas costs for the [execution of the trade](../../developers/protocol/technical-references/taking-and-making-offers/reactive-offer/executing-offers.md) are paid by the offer taker. If the offer fails the taker is compensated for these gas costs - see [What happens when an offer fails?](#what-happens-when-an-offer-fails)
+If the offer succeeds, the gas costs for the [execution of the trade](../../developers/protocol/technical-references/reactive-offer/executing-offers.md) are paid by the offer taker. If the offer fails the taker is compensated for these gas costs - see [What happens when an offer fails?](#what-happens-when-an-offer-fails)
 </details>
 
 <details><summary>
@@ -91,7 +91,7 @@ If the offer succeeds, the gas costs for the [execution of the trade](../../deve
 ### What happens when an offer fails?
 </summary>
 
-Offers in the order book may fail when taken, either because the maker consciously chose to [renege on the offer to trade](../../developers/protocol/background/taker-compensation.md), or because the maker contract reverted for other reasons. In that case, the taker has wasted some gas and will be compensated using the [offer provision](../../developers/protocol/technical-references/taking-and-making-offers/reactive-offer/offer-provision.md) (in native token) that the maker has deposited in Mangrove.
+Offers in the order book may fail when taken, either because the maker consciously chose to [renege on the offer to trade](../../developers/protocol/background/taker-compensation.md), or because the maker contract reverted for other reasons. In that case, the taker has wasted some gas and will be compensated using the [offer provision](../../developers/protocol/technical-references/reactive-offer/offer-provision.md) (in native token) that the maker has deposited in Mangrove.
 </details>
 
 <details><summary>
@@ -99,7 +99,7 @@ Offers in the order book may fail when taken, either because the maker conscious
 ### Are Mangrove market orders the same as traditional market orders?
 </summary>
 
-Mangrove's [market orders](../../developers/protocol/technical-references/taking-and-making-offers/taker-order/README.md) are DeFi market orders - which are different from market orders in TradFi:
+Mangrove's [market orders](../../developers/protocol/technical-references/market-order/README.md) are DeFi market orders - which are different from market orders in TradFi:
 
 In TradFi, a market order is an order to buy or sell immediately at the best available price.
 

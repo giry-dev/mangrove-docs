@@ -22,18 +22,18 @@ The Mangrove contract is depicted in the middle, with the three most important a
 
 ## Takers
 
-As a taker on Mangrove you take offers published by makers as liquidity promises. Offers are taken using [market orders](taking-and-making-offers/taker-order/README.md#market-order).
+As a taker on Mangrove you take offers published by makers as liquidity promises. Offers are taken using [market orders](market-order/README.md#market-order).
 
 Takers typically operate via a web front-end or with the help of the TypeScript [SDK](../../SDK/README.md) for developing off-chain apps to interact with the Mangrove ecosystem.
 
 ## Makers
 
-Makers own [offers](taking-and-making-offers/reactive-offer/README.md), which live in %%offer lists|offer-list%% in the Mangrove order book. 
+Makers own [offers](reactive-offer/README.md), which live in %%offer lists|offer-list%% in the Mangrove order book. 
 
 As a maker you have the choice of posting two kinds of offers:
 
 * %%On-the-fly offers|on-the-fly-offer%% posted directly from an EOA. Such offers have no logic attached, and the promised liquidity should be available on the EOA, when the offer is matched during a trade.
-* %%Smart offers|smart-offer%% posted via a smart contract - called a %%maker contract|maker-contract%%. When a smart offer is matched by a taker order during trade execution, the maker contract will be called and given the opportunity to execute its %%offer logic|offer-logic%%. 
+* %%Smart offers|smart-offer%% posted via a smart contract - called a %%maker contract|maker-contract%%. When a smart offer is matched by a market order during trade execution, the maker contract will be called and given the opportunity to execute its %%offer logic|offer-logic%%. 
 
 ### Smart offers
 
@@ -43,19 +43,19 @@ The offer logic of the maker contract is called twice by the Mangrove protocol d
 
 ### When a smart offer is taken
 
-Mangrove calls the offer logic of the maker contract a [first time](taking-and-making-offers/reactive-offer/maker-contract.md#trade-execution), via the callback function %%`makerExecute`|makerExecute%%, when an offer is matched by a taker order. This happens immediately prior to trade settlement allowing makers to source liquidity %%reactively|reactive-liquidity%% and *just-in-time* for the trade. It also allows makers to %%renege|renege%% on the offer to trade by incorporating defensive code (called %%last look|last-look%%) in the maker contract (e.g., because the market conditions changed).
+Mangrove calls the offer logic of the maker contract a [first time](reactive-offer/maker-contract.md#trade-execution), via the callback function %%`makerExecute`|makerExecute%%, when an offer is matched by a market order. This happens immediately prior to trade settlement allowing makers to source liquidity %%reactively|reactive-liquidity%% and *just-in-time* for the trade. It also allows makers to %%renege|renege%% on the offer to trade by incorporating defensive code (called %%last look|last-look%%) in the maker contract (e.g., because the market conditions changed).
 
 This implies that offers posted to Mangrove need not be fully provisioned. As a maker, your liquidity can be shared, borrowed, lent, and, at the same time, be displayed in Mangrove's order book - ready to be sourced when, and only when, your offer is taken.
 
 ### After a smart offer is taken
 
-Mangrove calls the offer logic of the maker contract a [second time](taking-and-making-offers/reactive-offer/maker-contract.md#offer-post-hook), via the callback function %%`makerPosthook`|makerPosthook%% during trade execution immediately *after* the offer has been taken.
+Mangrove calls the offer logic of the maker contract a [second time](reactive-offer/maker-contract.md#offer-post-hook), via the callback function %%`makerPosthook`|makerPosthook%% during trade execution immediately *after* the offer has been taken.
 
 This allows makers to, for instance, post another offer to redisplay their liquidity instantly, in a manner similar to [Automated Market Makers (AMMs)](https://coinmarketcap.com/alexandria/glossary/automated-market-maker-amm).
 
 ## Call sequence overview
 
-The diagram below summarizes the call sequence induced by a taker order. Notice that first the `makerExecute` functions is executed for all offers, and only subsequently are the `makerPosthook` functions of the offers executed.
+The diagram below summarizes the call sequence induced by a market order. Notice that first the `makerExecute` functions is executed for all offers, and only subsequently are the `makerPosthook` functions of the offers executed.
 
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -67,10 +67,16 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 ## Where can I read more?
 
 * The concepts of ticks and ratio are crucial in Mangrove - you'll want to [get familiar with them](./tick-ratio.md) first.
-* Refer to the section on [Creating and Updating Offers](taking-and-making-offers/reactive-offer/README.md).
-* Read more about [Offer Execution](taking-and-making-offers/reactive-offer/executing-offers.md) on Mangrove.
+* Refer to the section on [Creating and Updating Offers](reactive-offer/README.md).
+* Read more about [Offer Execution](reactive-offer/executing-offers.md) on Mangrove.
 * Read about the freely available [Strat Library](../../strat-lib/README.md) - a repository of Solidity code to help write your own custom maker contract.
 * Read about the TypeScript [SDK](../../SDK/README.md) for developing off-chain apps to interact with Mangrove ecosystem.
+
+### Literate source code
+
+The Mangrove core protocol is commented in the tradition of [literate programming](https://en.wikipedia.org/wiki/Literate_programming) where natural language and code is intervowen. Thus, the protocol code itself actually constitutes a very readable and comprehensive technical documentation.
+
+A nicely formatted, single webpage representation of the literate source code can be found [here](pathname:///MgvDoc/).
 
 ## Governance
 

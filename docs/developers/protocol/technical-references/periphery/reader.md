@@ -1,9 +1,7 @@
 ---
-title: Reader
+title: MgvReader
 sidebar_position: 1
 ---
-
-## View Functions - `MgvReader`
 
 The `MgvReader` contract collects a number of view functions that provide convenient views on Mangrove's core state.
 
@@ -144,7 +142,7 @@ function global() external view returns (Global _global)
 
 The `marketOrderByTick` and `marketOrderByVolume` functions simulate a market order on Mangrove and returns the cumulative `totalGot`, `totalGave` and `totalGasreq` for each offer traversed. 
 
-Please refer to the section [Market Order in Taking Offers](../taking-and-making-offers/taker-order/README.md) for more information on market orders.
+Please refer to the section [Market orders](../market-order/README.md) for more information on market orders.
 
 It the simulation, it is assumed that offer execution is successful and uses exactly its `gasreq`. 
 
@@ -176,9 +174,3 @@ function simulateMarketOrderByVolume(
 ## Source Code
 
 The [`MgvReader` source](https://github.com/mangrovedao/mangrove-core/blob/2ae172805fd8b309c30b2dc877dba66245abbb3e/src/periphery/MgvReader.sol) is available.
-
-:::danger Deployment Address
-
-Please refer to [Deployment Addresses](../contract-addresses.md) to verify the address of `MgvReader` for a particular chain.
-
-:::

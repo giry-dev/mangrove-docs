@@ -182,10 +182,10 @@ The provision is calculated with the following formula (in wei):
 
 $$\textrm{provision} = \max(\textrm{gasprice}_{\textrm{mgv}},\textrm{gasprice}_{\textrm{ofr}}) \times (\textrm{gasreq} + \textrm{gasbase}_{\textrm{mgv}}) \times 10^9$$​
 
-* $$\textrm{gasprice}_{\textrm{mgv}}$$ is the `gasprice` [global governance parameter](../../governance-parameters/global-variables.md#gas-price-and-oracle) (in gwei per gas units)
+* $$\textrm{gasprice}_{\textrm{mgv}}$$ is the `gasprice` [global governance parameter](../governance-parameters/global-variables.md#gas-price-and-oracle) (in gwei per gas units)
 * $$\textrm{gasprice}_{\textrm{ofr}}$$ is the `gasprice` argument of the function being called ([`newOffer`](./#posting-a-new-offer) or [`updateOffer`](./#updating-an-existing-offer)) also in gwei per gas units.
 * $$\textrm{gasreq}$$ is the `gasreq` amount of gas units required to execute the offer.
-* $$\textrm{gasbase}_{\rm mgv}$$ is the `offer_gasbase` [local governance parameter](../../governance-parameters/local-variables.md#offer-gas-base).
+* $$\textrm{gasbase}_{\rm mgv}$$ is the `offer_gasbase` [local governance parameter](../governance-parameters/local-variables.md#offer-gas-base).
 
 ## Balance adjustment when creating/updating offers
 
@@ -214,7 +214,7 @@ $$\textrm{bounty} = \min(\textrm{offer.provision},(\textrm{gasused} + \textrm{ga
 
 * $$\textrm{offer.provision}$$ is the [provision amount](./offer-provision.md#balance-adjustment-when-creatingupdating-offers) calculated when the offer was posted.
 * $$\textrm{gasused}$$ is the `gasused` amount of gas units actually used when executing the offer.
-* $$\textrm{gasbase}_{\textrm{mgv}}$$ is the `offer_gasbase` [local governance parameter](../../governance-parameters/local-variables.md#offer-gas-base). 
+* $$\textrm{gasbase}_{\textrm{mgv}}$$ is the `offer_gasbase` [local governance parameter](../governance-parameters/local-variables.md#offer-gas-base). 
 * $$\textrm{gasprice}_{\textrm{mgv}}$$ is Mangrove's global gasprice at the time of offer execution.
 
 Thus the bounty is capped at the offer's original provision.
