@@ -65,7 +65,7 @@ Read more about fees [here](../web-app/trade/taker-fee.md), and also [here](../.
 ### Where can I get Mangrove’s addresses?
 </summary>
 
-The deployment addresses for the core contract for Mangrove, as well as the most important periphery contracts are available at [Protocol → Deployment Addresses](../../developers/protocol/technical-references/contract-addresses.md).
+The deployment addresses for the core contract for Mangrove, as well as the most important periphery contracts are available at [Developers → Deployment Addresses](../../developers/addresses/contract-addresses.md).
 </details>
 
 <details><summary>

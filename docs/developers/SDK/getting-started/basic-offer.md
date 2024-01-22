@@ -11,7 +11,7 @@ Posting a simple offer is also referred to as an %%on-the-fly offer|on-the-fly-o
 
 The tutorial assumes knowledge of JavaScript. Follow [preparation](./preparation.md) to create a new `tutorial` folder.
 
-Make sure to use a chain where Mangrove is live. You can find all live addresses for Mangrove [here](../../protocol/technical-references/contract-addresses.md).
+Make sure to use a chain where Mangrove is live. You can find all live addresses for Mangrove [here](../../addresses/contract-addresses.md).
 
 :::info
 
