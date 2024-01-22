@@ -4,8 +4,6 @@ sidebar_position: 4
 
 # Executing offers
 
-## Offer execution
-
 Offers are created with an associated account (a %%maker contract|maker-contract%% or EOA) and listed on Mangrove [offer lists](../offer-list/README.md#offer-lists).
 
 * If the account is an EOA, no logic will be associated to the offer. These %%on-the-fly|on-the-fly-offer%% offers should have the promised liquidity on the EOA when the offer is matched during a market order.
@@ -15,7 +13,7 @@ Here is the offer lifecycle, with the parts addressed in this section bolded:
 
 1. A contract `maker.eth` creates an offer.
 2. Mangrove stores the offer info, including the address `maker.eth`.
-3. Account `user.eth` sends a market order to mangrove which matches that offer.
+3. Account `user.eth` sends a market order to Mangrove which matches that offer.
 4. Mangrove transfers tokens from `user.eth` to `maker.eth`.
 5. **Mangrove calls the function **[**`makerExecute`**](maker-contract.md#offer-execution)** of `maker.eth`**.
 6. Mangrove transfers tokens from `maker.eth` to `user.eth`.
@@ -29,7 +27,7 @@ An account can post more than one offer. When it gets called through `makerExecu
 
 :::
 
-:::info **Example scenario** 
+:::info **Example scenario**
 Suppose that an [offer](README.md) managed by a contract promises 100,000 DAI in exchange for 100,000 USDC.
 
 Upon being called, the contract has 100,000 USDC available (just given to it by Mangrove) and may source DAI from anywhere on the chain. It needs to end execution with 100,000 DAI available and ready to be transferred by Mangrove through `transferFrom`.

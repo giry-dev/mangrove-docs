@@ -5,8 +5,27 @@ sidebar_position: 6
 
 # Cleaning offers
 
-It is also possible to target specific offer IDs in the [offer list](./offer-list/README.md). This is called **Offer Cleaning**. This [section](../../keeper-bots/guides/use-borrowed-funds-for-cleaning.md) provides details on how to safely trigger failing offers and make a profit doing so.
+Offers on Mangrove may fail during a market order. When they do, the taker is compensated for the gas wasted on making the offer fail in the form of a %%bounty|bounty%% in native tokens paid from the failing offer's %%provision|provision%% which the %%offer owner|offer-owner%% deposited with Mangrove when posting the offer. Refer to [Offer provisions](./reactive-offer/offer-provision.md) for details on how provisions and bounties work and are calculated.
 
+From the taker's perspective, failing offers are a nuisance: They consume gas when running limit orders and they pollute the price and depth information of the market. It's important to note, that failing offers are only a nuisance, not a risk: Users are compensated for gas spent on making the offer fail and the limit avg. price will never be exceeded.
+
+Therefore Mangrove provides a facility for removing specific failing offers and receiving the bounty without running a market order. This is called **Offer Cleaning**.
+
+:::info
+You can read more about [the role of cleaning here](../../keeper-bots/background/the-role-of-cleaning-bots-in-mangrove.md).
+:::
+
+Mangrove's `cleanByImpersonation` function allows anyone to clean a failing offer, by providing the execution parameters that will make it fail. The function will execute the specified offers, including token transfers, and (1) reward the cleaner and remove the offer from the book if the offer fails or (2) revert the offer execution if it succeeds and keep the offer in the book; in both cases, all token transfers are reverted.
+
+Since this cleaning involves actual token transfers (though they will be reverted) Mangrove requires the caller to specify a taker account from which the inbound tokens will be transferred. In effect, this taker account will be impersonated during cleaning, hence `*ByImpersonation`.
+
+The taker must of course have approved Mangrove for transferring the inbound token on their behalf. And cleaners are free to specify _any_ account, including accounts they do not control.
+
+:::info Impersonated takers are unaffected
+The takers that are impersonated during cleaning are unaffected: All token transfers made inside `cleanByImpersonation` will be reverted.
+:::
+
+## `cleanByImpersonation(olKey, targets, taker)`
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -20,6 +39,13 @@ function cleanByImpersonation(
   MgvLib.CleanTarget[] calldata targets, 
   address taker
   ) external returns (uint successes, uint bounty);
+
+struct CleanTarget {
+  uint offerId;
+  Tick tick;
+  uint gasreq;
+  uint takerWants;
+}
 ```
 
 </TabItem>
@@ -115,7 +141,7 @@ import "@mgv/src/core/MgvLib.sol";
 
 // IMangrove mgv = IMangrove(payable(<address of Mangrove>));
 // Mangrove contract
-IMangrove mgv = IMangrove(payable(mgv));
+IMangrove mgv = IMangrove(payable(mangroveAddress));
 
 // OLKey olkey = OLKey(<address of outbound token>, <address of inbound token>, <tick spacing>);
 // struct containing outbound_tkn, inbound_tkn and tickSpacing
@@ -124,7 +150,7 @@ OLKey memory olkey = OLKey(address(base), address(quote), 1);
 // if Mangrove is not approved yet for inbound token transfer.
 IERC20(inbTkn).approve(MGV, type(uint).max);
 
-MgvLib.CleanTarget[] memory targets = new MgvLib.CleanTarget[](1);
+MgvLib.CleanTarget[] memory targets = new MgvLib.CleanTarget[](2);
 targets[0] = MgvLib.CleanTarget(77, -79815, 250_000, 0.3163);
 targets[1] = MgvLib.CleanTarget(42, -79748, 300_000, 0.3000);
 
@@ -201,15 +227,25 @@ await Mangrove.connect(signer).snipes(
   </TabItem> -->
 </Tabs>
 
+### Prerequisites
+
+The prerequisites and steps needed to use the `Mangrove.cleanByImpersonation` function are:
+
+- `taker` must have approved Mangrove for spending `inbound_tkn` on the offer list you want to clean.
+- `taker` must have sufficient `inbound_tkn` funds for the execute arguments
 
 ### Inputs
 
-* `olkey` struct containing:
-  * `outbound_tkn` is the address of the outbound token (that the taker will buy).
-  * `inbound_tkn` is the address of the inbound token (that the taker will spend).
-  * `tickSpacing` is the number of ticks that should be jumped between available price points.
-* `targets` is a `CleanTarget[]` with each `CleanTarget` identifying an offer to clean and the execution parameters that will make it fail.
-* `taker` is the address of the taker placing the order
+- `olKey`: identifies the [offer list](./offer-list/README.md) and consists of:
+  - `outbound_tkn`: address of the _outbound_ token (that the taker will buy).
+  - `inbound_tkn`: address of the _inbound_ token (that the taker will spend).
+  - `tickSpacing`: specifies the space between allowed ticks (see [Ticks, ratios, and prices](./tick-ratio.md) for details)
+- `targets`: an array of where each `CleanTarget` identifies an offer to clean and the execution parameters that will make it fail:
+  - `offerId`: the ID of the offer to clean.
+  - `tick`: the offer's expected tick. If this doesn't match when the tx is executed, cleaning of the offer will not be attempted to avoid wasting gas since the cleaning assumptions have changed.
+  - `gasreq`: the offer's expected gasreq. If this is lower than the offer's actual gasreq when the tx is executed, cleaning of the offer will not be attempted to avoid wasting gas since the cleaning assumptions have changed.
+  - `takerWants`: the amount to request from the offer.
+- `taker`: the address of the taker to impersonate.
 
 :::caution **Protection against malicious offer updates**
 
@@ -217,50 +253,43 @@ Offers can be updated, so if `targets` was just an array of `offerId`s, there wo
 
 If you only want to take offers without any checks on the offer contents, you can simply:
 
-* Set `gasreq` to `type(uint).max`, and
-* Set `tick` to `maxTick`.
+- Set `gasreq` to `type(uint).max`, and
+- Set `tick` to `maxTick`.
 
 :::
 
 ### Outputs
 
-* `successes` is the number of successfully cleaned offers.
-* `bounty` is the total bounty received.
+- `successes` is the number of successfully cleaned offers.
+- `bounty` is the total bounty received and transferred to `msg.sender`.
 
-#### Example
+### Example
+
+Consider the offers on this DAI-WETH offer list and let's construct a `cleanByImpersonation` call.
 
 | Tick    | Ratio (WETH/DAI) | Offer ID | Gives (DAI)  | Gas required |
 | ------- | ---------------- | -------- |------------- | ------------ |
 | -79815  | 0.0003419        | 77       | 925.26       | 250,000      |
-|         |                  | 177      | 916.47       | 270,000      |
+| -79815  | 0.0003419        | 177      | 916.47       | 270,000      |
 | -79748  | 0.0003442        | 42       | 871.76       | 300,000      |
 
-:::info **Example**
+Let's say we've detected that offers 77 and 42 will fail. We can now construct the following `targets` array:
 
-Consider the offers above on the DAI-WETH offer list. Let's construct a `clean` call. 
+- `targets[0] = [77, -79815, 250_000, 925.26]`
+- `targets[1] = [42, -79748, 300_000, 871.76]`.
 
-First, we'll construct the following `targets` array. As a reminder, `targets` is an array of `CleanTarget[]`. The `CleanTarget` struct holds the following:
-  * `uint offerId`
-  * `Tick tick`
-  * `uint gasreq`
-  * `uint takerWants` // can be retrieved using Gives and the Ratio.
+We also know the address of a `taker` who has approved Mangrove to transfer a sufficient amount of WETH on their behalf, such that it could pay for executing the most expensive of the offers. Remember, the transfers will be reverted after each cleaning, so the `taker` need only have sufficient funds for the most expensive offer, not the total of the offers cleaned.
 
-Declaring some `targets` using the above table:
-* `targets[0] = [77, -79815, 250_000, 0.3163]`
-* `targets[1] = [42, -79748, 300_000, 0.3000]`
+Putting it together, the call to `cleanByImpersonation` would look like this (assuming `mgv` is ):
 
-Here, `mgv` is the core Mangrove contract and `olkey` is the struct containing the token addresses and `tickSPacing` parameters corresponding to an offer list. Putting it together, the call to `cleanByImpersonation` would look like this:
+```solidity
+IMangrove mgv = IMangrove(payable(<address of Mangrove>));
 
-```
-MgvLib.CleanTarget[] memory targets = new MgvLib.CleanTarget[](1);
+OLKey memory olkey = OLKey(<address of DAI>, <address of WETH>, 1);
+
+MgvLib.CleanTarget[] memory targets = new MgvLib.CleanTarget[](2);
 targets[0] = MgvLib.CleanTarget(77, -79815, 250_000, 0.3163);
 targets[1] = MgvLib.CleanTarget(42, -79748, 300,000, 0.3000);
-mgv.cleanByImpersonation(olKey, targets, address(this));
+
+mgv.cleanByImpersonation(olKey, targets, taker);
 ```
-:::
-
-
-## Bounties for taking failing offers
-If an offer fails to deliver, the taker gets a %%bounty|bounty%% in native token to compensate for the gas spent on executing the offer. The bounty is paid by the %%offer owner|offer-owner%% and are taken from the %%provision|provision%% they deposited with Mangrove when posting the offer. 
-
-Refer to [Offer provisions](./reactive-offer/offer-provision.md) for details on how provisions and bounties work and are calculated.

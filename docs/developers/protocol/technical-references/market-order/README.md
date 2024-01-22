@@ -67,7 +67,7 @@ function marketOrderByTick(
   Tick maxTick,
   uint fillVolume,
   bool fillWants,
-  ) public returns (uint takerGot, uint takerGave, uint bounty, uint feePaid);
+  ) external returns (uint takerGot, uint takerGave, uint bounty, uint feePaid);
 
 function marketOrderByVolume(
     OLKey memory olKey,
