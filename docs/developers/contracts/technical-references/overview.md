@@ -57,7 +57,6 @@ This allows makers to, for instance, post another offer to redisplay their liqui
 
 The diagram below summarizes the call sequence induced by a taker order. Notice that first the `makerExecute` functions is executed for all offers, and only subsequently are the `makerPosthook` functions of the offers executed.
 
-
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="text--center">
