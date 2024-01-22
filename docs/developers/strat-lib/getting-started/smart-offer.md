@@ -100,7 +100,7 @@ Start another terminal and import environment variables again
 source .env
 ```
 
-Now, create the `OfferMakerTutorial` contract on the `anvil` node with your private key by pointing to its local `rpc-url`, and supplying the parameters for Mangrove core contract (get it from [Addresses](../../protocol/technical-references/contract-addresses.md) for the network you have forked).
+Now, create the `OfferMakerTutorial` contract on the `anvil` node with your private key by pointing to its local `rpc-url`, and supplying the parameters for Mangrove core contract (get it from [Addresses](../../addresses/contract-addresses.md) for the network you have forked).
 You can also add it to your `.env` file.
 
 ```bash
