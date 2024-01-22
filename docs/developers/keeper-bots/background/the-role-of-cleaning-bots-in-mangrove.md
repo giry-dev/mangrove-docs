@@ -37,5 +37,5 @@ Mangrove provides learning materials, SDK functions, and an example cleaning bot
   * A tutorial that walks you through all the steps needed to run an example cleaning bot.
 * SDK: [`mangrove.js`](../../SDK/README.md)
   * The `mangrove.js` SDK makes it easy to monitor order books and to send clean transactions.
-* [Cleaning offers](../../contracts/technical-references/taking-and-making-offers/offer-cleaning.md)
-  * The `cleanByImpersonation` function can be used to clean failing offers. Details in [this section](../guides/use-cleanbyimpersonation-to-clean-offers.md) as well.
+* [Cleaning offers](../../protocol/technical-references/offer-cleaning.md)
+  * The `cleanByImpersonation` function can be used to clean failing offers. Details in [this section](../guides/use-borrowed-funds-for-cleaning.md) as well.
