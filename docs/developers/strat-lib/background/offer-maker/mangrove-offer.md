@@ -72,5 +72,3 @@ Besides MangroveOffer contract giving approvals, the offer makers reserve needs 
 * [routers](../../technical-references/router.md) are contracts, which can handle more comprehensive transfers. E.g. if you want to lend the money, when the offer is taken, then a router would be able to handle this. A more comprehensive description of Routers can be found here LINK.
 
 Mangrove has 2 default implementations of MangroveOffer, they can be found here, [Direct](direct.md) and [Forwarder](forwarder.md).
-
-![Flow of taking a offer made by MangroveOffer](/img/assets/MangroveOffer.png)

@@ -22,9 +22,18 @@ The [`SimpleRouter` contract](./code/strats/src/strategies/routers/SimpleRouter)
 
 ### `SmartRouter`
 
-[LINK TO BE EDITED]
+The [`SmartRouter` contract](https://github.com/mangrovedao/mangrove-strats/blob/feat/smartRouter/src/strategies/routers/SmartRouter.sol) is an implementation, and does not need to be called directly. It delegates pull and push logic implementation to arbitrary contracts that implement the [`AbstractRoutingLogic` interface](https://github.com/mangrovedao/mangrove-strats/blob/feat/smartRouter/src/strategies/routing_logic/abstract/AbstractRoutingLogic.sol). It implements `SimpleRouter` as its default route.
 
-The [`SmartRouter` contract](https://github.com/mangrovedao/mangrove-strats/blob/feat/smartRouter/src/strategies/routers/SmartRouter.sol) delegates pull and push logic implementation to arbitrary contracts that implement the [`AbstractRoutingLogic` interface](https://github.com/mangrovedao/mangrove-strats/blob/feat/smartRouter/src/strategies/routing_logic/abstract/AbstractRoutingLogic.sol). It implements `SimpleRouter` as its default route.
+Every time someone calls the [ProxyFactory](https://github.com/mangrovedao/mangrove-strats/blob/develop/src/strategies/routers/RouterProxyFactory.sol), a dedicated RouterProxy is created for the caller that will forward all the push/pull calls to the SmartRouter, which forward those to the corresponding routing logic (ex: AaveLogic).
+
+Thefore, the push/pull functions are delegated from the *Proxy > SmartRouter > RoutingLogic*.
+The Proxy contract basically works like an intelligent router.
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="text--center">
+<img src={useBaseUrl('/img/assets/routers_workflow.png')} width="100%"/>
+</div>
 
 ## Liquidity flows
 
@@ -67,7 +76,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e4
 https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/routers/abstract/AbstractRouter.sol#L43-L49
 ```
 
-Function approves `makerContract` as a user of the router. The [`unbind`](https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/routers/abstract/AbstractRouter.sol#L110-L113) function can be called to revoke the approval. 
+Function approves `makerContract` as a user of the router. The [`unbind`](https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/routers/abstract/AbstractRouter.sol#L110-L113) function can be called to revoke the approval.
 
 ### Router activation
 
