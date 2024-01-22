@@ -11,7 +11,7 @@ Posting a simple offer is also referred to as an %%on-the-fly offer|on-the-fly-o
 
 The tutorial assumes knowledge of JavaScript. Follow [preparation](./preparation.md) to create a new `tutorial` folder.
 
-Make sure to use a chain where Mangrove is live. You can find all live addresses for Mangrove [here](../../protocol/technical-references/contract-addresses.md)
+Make sure to use a chain where Mangrove is live. You can find all live addresses for Mangrove [here](../../protocol/technical-references/contract-addresses.md).
 
 :::info
 
@@ -112,7 +112,5 @@ undefined
 Another way to check your offer is to go to [testnet](https://testnet.mangrove.exchange/trade) and look at the asks for the pair. Here you will be able to see your offer. This can only be done if you didn't use a local chain, but actually ran on a real chain.
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
-
-<img src={useBaseUrl('img/assets/basic-offer-on-testnet.png')} width="50%"/>
 
 The full script can be found on [github](https://github.com/mangrovedao/mangrove.js/blob/19a856720d39a124ae8e1e47b2685002bd87f9ff/examples/tutorials/on-the-fly-offer.js).
