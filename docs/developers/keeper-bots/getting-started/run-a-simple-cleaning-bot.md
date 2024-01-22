@@ -3,13 +3,18 @@ sidebar_position: 1
 ---
 
 # Run a simple cleaning bot
+
+:::caution Work in progress
+This page is currently being updated - thank you for your understanding.
+:::
+
 In this tutorial you'll download, configure, and run a simple %%cleaning bot|cleaning-bot%% on your own machine which cleans Mangrove on the Polygon Mumbai testnet.
 When you're done, you'll have the foundation for developing and operating your own cleaning bot.
 
 The tutorial assumes that you have [Git](https://git-scm.com/), [NodeJS](https://nodejs.org/), and [Yarn 2](https://yarnpkg.com/getting-started/install) installed and feel comfortable on the command line.
 
+## Step 1: Clone the repo containing the example cleaning bot
 
-# Step 1: Clone the repo containing the example cleaning bot
 First, clone the `mangrove-bots` monorepo which contains the example cleaning bot we'll be using:
 
 ```shell
@@ -29,8 +34,7 @@ Finally, go into the folder containing the cleaning bot and we're ready to confi
 cd packages/bot-cleaning
 ```
 
-
-# Step 2: Configure the bot
+## Step 2: Configure the bot
 
 Before we start the bot, it must be told which account to use for signing transactions, which node provider to use, and the markets to clean.
 This is done via two files:
@@ -62,7 +66,6 @@ The repo's `.gitignore` file contains `.env.local` in order to prevent accidenta
 
 :::
 
-
 Then open `config/default.json` and replace its contents with the following JSON:
 
 ```json
@@ -77,7 +80,7 @@ Then open `config/default.json` and replace its contents with the following JSON
 
 This tells the bot to log debug information, clean just the WETH/DAI market, and to clean twice per minute.
 
-# Step 3: Build and Run the bot
+## Step 3: Build and Run the bot
 
 Building and running the bot is as simple as:
 
@@ -102,8 +105,7 @@ The bot is quite chatty in `debug` mode, so you'll probably quickly want to turn
 
 Congratulations, you're now a Mangrove Keeper Bot Operator 🤠🧹
 
-
-# Next steps
+## Next steps
 
 The example cleaning bot we used in this tutorial is fully functional, but rather naive. For example, it tries to snipe offers without paying anything and only the simplest of offers will fail in this scenario. So you'll probably want to implement more advanced sniping techniques, e.g., by looking into more advanced ways offers may fail.
 
