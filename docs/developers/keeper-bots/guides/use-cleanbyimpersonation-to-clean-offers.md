@@ -5,7 +5,7 @@ sidebar_label: Using the `cleanByImpersonation` contract to clean failing offers
 
 # Using the `cleanByImpersonation` function to clean failing offers
 
-Mangrove provides a cleaner function accessible with `Mangrove.cleanByImpersonation` to ease [cleaning](../../contracts/technical-references/taking-and-making-offers/offer-cleaning.md).
+Mangrove provides a cleaner function accessible with `Mangrove.cleanByImpersonation` to ease [cleaning](../../protocol/technical-references/offer-cleaning.md).
 
 It can be used to clean multiple offers, i.e. executes them and removes them from the book if they fail, transferring the failure penalty as bounty to the caller.
 
