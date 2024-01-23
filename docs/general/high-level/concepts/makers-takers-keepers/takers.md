@@ -15,13 +15,3 @@ When the Taker sends an order, Mangrove executes the offer logic (i.e. code) of 
 * If the first order is successful and the liquidity promise is fulfilled, it is removed from the book. Mangrove moves on to the next offer until the entirety of the Taker's order is filled (whether it's a limit or market order).
 
 * If during the execution, a Maker backs out on his offer (see previous [last look](../smart-offers.md)), and the liquidity is not matched, a penalty ([bounty](../../../../developers/terms/bounty.md))  is paid to the Taker and Mangrove executes the next offer logic from the orderbook, until the desired volume or limit price is hit.
-
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
-## Workflow of a Taker "snipe" case scenario
-
-<img src={useBaseUrl('img/assets/taker-order-book.PNG')} width="500px"/>
-
-<br /><br />
-
-While the above workflow showcases the "snipe" mechanism, it is easy to see how the offers would be sequentially triggered in the case that several are needed to fill the Taker's order or if an offer fails (as explained above).

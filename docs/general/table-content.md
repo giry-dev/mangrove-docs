@@ -5,9 +5,14 @@ sidebar_position: 0
 
 # Table of Content
 
-🏗️ **Developers section** → [over here](../developers/README.md)
+### FAQ
+Check the frequently asked questions as an introduction to Mangrove, how to use it  and troubleshooting advice.
+
+* [Link to FAQ](./FAQ/README.md)
 
 ### Concepts
+
+Learn about the key features of Mangrove and the new possibilities it opens.
 
 * [Smart offers](./high-level/concepts/smart-offers.md)
 * [Bounty](./high-level/concepts/bounty.md)
@@ -16,38 +21,27 @@ sidebar_position: 0
     * [Takers](./high-level/concepts/makers-takers-keepers/takers.md)
     * [Keepers](./high-level/concepts/makers-takers-keepers/keepers.md)
 
-
-### FAQ
-
-* [Link to FAQ](./FAQ/README.md)
-
-
 ### Audits
+
+Mangrove has been thoroughly audited. You will find here official reports of the audits we passed.
 
 * [Link to audits](./audits.md)
 
 ### App Guide
 
+An extensive guide on how to use our dApp to place orders as well as to create ytour own strategies.
+
 * [Who is the Mangrove DEX for?](./web-app/README.md)
 * [How to connect your wallet](./web-app/how-to-connect-wallet/how-to-connect-wallet.md)
 * [Trade](./web-app/trade/trade.md)
-    * [Approvals](./web-app/trade/approve-buy.md)
-    * [Revoke tokens approval](./web-app/trade/revoke.md)
-    * [Taker's fee](./web-app/trade/taker-fee.md)
-    * [How to place a market order](./web-app/trade/how-to-market-order.md)
-    * [How to place a limit order](./web-app/trade/how-to-limit-order.md)
-    * [How to track open and past orders](./web-app/trade/how-to-track-open-orders.md)
-    * [More on order types](./web-app/trade/approve-buy.md)
 * [Strategies](./web-app/strategies/README.md)
     * [Create a strategy](./web-app/strategies/create-strat.md)
     * [Manage a strategy](./web-app/strategies/manage-strat/README.md)
-        * [Statuses and alerts](./web-app/strategies/manage-strat/statuses-and-alerts.md)
-        * [Overview tab](./web-app/strategies/manage-strat/overview-tab.md)
-        * [Parameters tab](./web-app/strategies/manage-strat/parameters-tab.md)
-        * [History tab](./web-app/strategies/manage-strat/history-tab.md)
     * [Key Actions/Questions](./web-app/strategies/key-actions-questions/README.md)
 
 ### Strategies
+
+An in-depth coverage of our Kandel strategy.
 
 #### Kandel
 
@@ -78,3 +72,4 @@ sidebar_position: 0
 * [Assets](https://www.mangrove.exchange/brand-assets)
 * [Contact](https://docs.google.com/forms/d/e/1FAIpQLSewVLx1AcOwK0DOvMOCIb7hSEfHGwMzB0P4yeH-Aeq65ctlKg/viewform)
 
+🏗️ **Developers section** → [over here](../developers/README.md)
