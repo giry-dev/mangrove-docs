@@ -58,7 +58,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: '⚖️ T&C',
+          label: '⚖️ Terms and Conditions',
           items: [
             {
               type: 'link',

@@ -36,7 +36,7 @@ An extensive guide on how to use our dApp to place orders as well as to create y
     * [Manage a strategy](./web-app/strategies/manage-strat/README.md)
     * [Key Actions/Questions](./web-app/strategies/key-actions-questions/README.md)
 
-### T&C
+### Terms and Conditions
 
 Legal disclaimers regarding the terms and the risks associated with the usage of Mangrove products.
 
