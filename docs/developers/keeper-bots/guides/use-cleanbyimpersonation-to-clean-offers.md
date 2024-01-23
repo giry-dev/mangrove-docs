@@ -26,5 +26,5 @@ Any `taker` can be impersonated when cleaning because:
 
 ## Further reading
 
-- Borrowing funds for cleaning: [Using borrowed funds for cleaning via Mangrove's delegation mechanism](./use-delegation-to-borrow-funds-for-cleaning)
+- Borrowing funds for cleaning: [Using borrowed funds for cleaning via Mangrove's delegation mechanism](./use-borrowed-funds-for-cleaning.md)
 - Background on why cleaning is needed in Mangrove: [The role of cleaning bots in Mangrove](../background/the-role-of-cleaning-bots-in-mangrove.md)
