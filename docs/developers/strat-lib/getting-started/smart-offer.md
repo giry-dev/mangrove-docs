@@ -100,7 +100,7 @@ Start another terminal and import environment variables again
 source .env
 ```
 
-Now, create the `OfferMakerTutorial` contract on the `anvil` node with your private key by pointing to its local `rpc-url`, and supplying the parameters for Mangrove core contract (get it from [Addresses](../../protocol/technical-references/contract-addresses.md) for the network you have forked).
+Now, create the `OfferMakerTutorial` contract on the `anvil` node with your private key by pointing to its local `rpc-url`, and supplying the parameters for Mangrove core contract (get it from [Addresses](../../addresses/contract-addresses.md) for the network you have forked).
 You can also add it to your `.env` file.
 
 ```bash
@@ -154,7 +154,7 @@ Now that the contract is ready, we can use it to post an offer - note that we ha
 In our example, we are offering 1 WBTC (gives) at tick 50 (tick 50 means the price ratio is `1.0001^50`).
 
 :::info Note
-Later, if you'd like to take your own offer with a [market order](../../protocol/technical-references/taking-and-making-offers/taker-order/README.md#market-order) for testing purpose, it would be handy to have your offer at the very top of the book (i.e. with the best price possible). To do this, you could post your offer with the smallest tick (`-887272`), or use the [`MIN_TICK`](https://github.com/mangrovedao/mangrove-core/blob/2ae172805fd8b309c30b2dc877dba66245abbb3e/lib/core/Constants.sol#L52) constant in your test contract.
+Later, if you'd like to take your own offer with a [market order](../../protocol/technical-references/market-order/README.md) for testing purpose, it would be handy to have your offer at the very top of the book (i.e. with the best price possible). To do this, you could post your offer with the smallest tick (`-887272`), or use the [`MIN_TICK`](https://github.com/mangrovedao/mangrove-core/blob/2ae172805fd8b309c30b2dc877dba66245abbb3e/lib/core/Constants.sol#L52) constant in your test contract.
 :::
 
 ```bash

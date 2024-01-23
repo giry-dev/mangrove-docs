@@ -11,12 +11,16 @@ When an offer fails, the caller has wasted some gas. To compensate the caller, M
 
 * Every maker contract that posted an offer has a balance in native token held by Mangrove. Funds can be freely added to or withdrawn from the balance.
 * Whenever the contract creates or updates an offer, its balance is adjusted so that enough native tokens are locked as the offer's provision.
-  * If the offer is retracted that provision is credited back to the logic's account balance.
-  * If the offer logic is executed and fails, part or all of the provision is sent as compensation, to the caller. We call that the bounty. The rest of the provision is credited back to the maker contract's account balance.
+  * If the offer is retracted that provision can either stay on the offer or the logic can choose to have it credited back to the logic's account balance.
+  * If the offer logic is executed and fails, part or all of the provision is sent as compensation, to the caller. We call that the **bounty**. The rest of the provision is credited back to the maker contract's account balance.
 
 ## Funding an offer
 
-There are three ways a maker contract can credit its balance on Mangrove. (1) The contract may either call the `fund` function, or (2) make a call to the fallback function with some value, or (3) pay on the fly when a [new offer is posted](./#posting-a-new-offer).&#x20;
+There are three ways a maker contract can credit its balance on Mangrove:
+
+1. the contract may either call the `fund` function,
+2. make a call to the fallback function with some value, or
+3. pay on the fly when a [new offer is posted or updated](./).
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -95,10 +99,10 @@ await Mangrove["fund(address)"](maker_contract_address, overrides);
 
 ### Inputs
 
-* `maker` the maker contract's balance on Mangrove to credit
+* `maker`: the maker who will be credited with `msg.value` on Mangrove
 
-:::danger 
-**Do not use `send` or `transfer` to credit Mangrove**&#x20;
+:::danger
+**Do not use `send` or `transfer` to credit Mangrove**
 
 Upon receiving funds, Mangrove will credit the amount sent to `maker` (or `msg.sender` if the `receive` function was called). This involves writing to storage, which consumes more gas than the amount given by `send` and `transfer`.
 
@@ -120,7 +124,7 @@ function balanceOf(address maker) external view returns (uint balance);
 
 ## Withdrawing
 
-At any time, your available balance can be withdrawn. It may be less than what you deposited: your balance adjusts every time you create/update an offer.
+At any time, your available balance can be withdrawn. It may be less than what you deposited: Your balance adjusts every time you create/update/retract an offer.
 
 <Tabs>
 <TabItem value="signature" label="Signature" default>
@@ -180,12 +184,12 @@ require(mgv.withdraw(wei_balance), "Mangrove failed to transfer funds");
 
 The provision is calculated with the following formula (in wei):
 
-$$\textrm{provision} = \max(\textrm{gasprice}_{\textrm{mgv}},\textrm{gasprice}_{\textrm{ofr}}) \times (\textrm{gasreq} + \textrm{gasbase}_{\textrm{mgv}}) \times 10^9$$​
+$$\textrm{provision} = \max(\textrm{gasprice}_{\textrm{mgv}},\textrm{gasprice}_{\textrm{ofr}}) \times (\textrm{gasreq} + \textrm{gasbase}_{\textrm{mgv}}) \times 10^6$$​
 
-* $$\textrm{gasprice}_{\textrm{mgv}}$$ is the `gasprice` [global governance parameter](../../governance-parameters/global-variables.md#gas-price-and-oracle) (in gwei per gas units)
-* $$\textrm{gasprice}_{\textrm{ofr}}$$ is the `gasprice` argument of the function being called ([`newOffer`](./#posting-a-new-offer) or [`updateOffer`](./#updating-an-existing-offer)) also in gwei per gas units.
+* $$\textrm{gasprice}_{\textrm{mgv}}$$ is the `gasprice` [global governance parameter](../governance-parameters/global-variables.md#gas-price-and-oracle) (in Mwei per gas unit)
+* $$\textrm{gasprice}_{\textrm{ofr}}$$ is the `gasprice` argument of the function being called ([`newOffer`](./#posting-a-new-offer) or [`updateOffer`](./#updating-an-existing-offer)) also in Mwei per gas unit.
 * $$\textrm{gasreq}$$ is the `gasreq` amount of gas units required to execute the offer.
-* $$\textrm{gasbase}_{\rm mgv}$$ is the `offer_gasbase` [local governance parameter](../../governance-parameters/local-variables.md#offer-gas-base).
+* $$\textrm{gasbase}_{\rm mgv}$$ is the `offer_gasbase` [local governance parameter](../governance-parameters/local-variables.md#offer-gas-base).
 
 ## Balance adjustment when creating/updating offers
 
@@ -210,11 +214,11 @@ If you frequently update your offers, we recommend using a consistent, high `gas
 The bounty is paid to the taker **as compensation for spent gas**. It depends on how much gas the offer uses before failing.
 It is calculated with the following formula, based on the provision [previously calculated](./offer-provision.md#provision-calculation):
 
-$$\textrm{bounty} = \min(\textrm{offer.provision},(\textrm{gasused} + \textrm{gasbase}_{\textrm{mgv}}) \times \textrm{gasprice}_{\textrm{mgv}} \times 10^9)$$
+$$\textrm{bounty} = \min(\textrm{offer.provision},(\textrm{gasused} + \textrm{gasbase}_{\textrm{mgv}}) \times \textrm{gasprice}_{\textrm{mgv}} \times 10^6)$$
 
 * $$\textrm{offer.provision}$$ is the [provision amount](./offer-provision.md#balance-adjustment-when-creatingupdating-offers) calculated when the offer was posted.
 * $$\textrm{gasused}$$ is the `gasused` amount of gas units actually used when executing the offer.
-* $$\textrm{gasbase}_{\textrm{mgv}}$$ is the `offer_gasbase` [local governance parameter](../../governance-parameters/local-variables.md#offer-gas-base). 
+* $$\textrm{gasbase}_{\textrm{mgv}}$$ is the `offer_gasbase` [local governance parameter](../governance-parameters/local-variables.md#offer-gas-base). 
 * $$\textrm{gasprice}_{\textrm{mgv}}$$ is Mangrove's global gasprice at the time of offer execution.
 
 Thus the bounty is capped at the offer's original provision.

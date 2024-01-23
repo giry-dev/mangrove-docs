@@ -50,7 +50,7 @@ We use 30K for default %%`gasreq`|gasreq%% of our strat. This does not leave roo
 
 With this constructor in place we almost have a deployable maker contract. `Direct` already provides the implementation of a default %%offer logic|offer-logic%% as well as internal functions to post, update and retract offers posted by our contract.
 
-However, `Direct` does not expose any function able to [create new offers](../../protocol/technical-references/taking-and-making-offers/reactive-offer/README.md#posting-a-new-offer) on Mangrove, since the [`_newOffer`](../technical-references/code/strats/src/strategies/offer_maker/abstract/Direct.md) function of Direct is internal. The requirement in our constructor to implement `ILiquidityProvider` imposes on us to have a public `newOffer` function. Using `ILiquidityProvider` ensures our contract is compatible with the [Mangrove SDK](../../SDK/README.md), which expects the `ILiquidityProvider` ABI.
+However, `Direct` does not expose any function able to [create new offers](../../protocol/technical-references/reactive-offer/README.md#posting-a-new-offer) on Mangrove, since the [`_newOffer`](../technical-references/code/strats/src/strategies/offer_maker/abstract/Direct.md) function of Direct is internal. The requirement in our constructor to implement `ILiquidityProvider` imposes on us to have a public `newOffer` function. Using `ILiquidityProvider` ensures our contract is compatible with the [Mangrove SDK](../../SDK/README.md), which expects the `ILiquidityProvider` ABI.
 
 Our implementation of `newOffer` is simply to expose the internal `_newOffer` provided by Direct making sure the function is admin restricted (`Direct` provides the appropriate modifier `onlyAdmin`):
 
@@ -81,7 +81,7 @@ Of course, if we offer `N` tokens *both* on the (`BASE`, `STABLE1`) and the (`BA
 We have a design choice here. Either we
 
 1. let the second offer fail and compensate the taker with our offer's %%bounty|bounty%%, or,
-2. incorporate in our offer logic that we wish to [retract](../../protocol/technical-references/taking-and-making-offers/reactive-offer/README.md#retracting-an-offer) the second offer when the first one is taken. 
+2. incorporate in our offer logic that we wish to [retract](../../protocol/technical-references/reactive-offer/README.md#retracting-an-offer) the second offer when the first one is taken. 
 
 Let's follow the second design principle as it allows us to illustrate how to use the %%hooks|hook%% provided by `Direct` to update offer prices or to retract offers.
 
@@ -111,11 +111,11 @@ This leaves us having to provide the amount that the offer should %%`give`|gives
 https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/Amplifier.sol#L60-L115
 ```
 
-In the implementation of `newAmplifiedOffers` notice the calls to the offer data getter `MGV.offers(address, address, uint)`: This returns a packed data structure `offer` whose fields `f` can be unpacked by doing `offer.f()` (see the documentation for the [offer data structure](../../protocol/technical-references/taking-and-making-offers/views-on-offers.md#views-on-offers)).
+In the implementation of `newAmplifiedOffers` notice the calls to the offer data getter `MGV.offers(address, address, uint)`: This returns a packed data structure `offer` whose fields `f` can be unpacked by doing `offer.f()` (see the documentation for the [offer data structure](../../protocol/technical-references/offer-list/views-on-offers.md#views-on-offers)).
 
 :::info possible gas optimization
 
-If both our amplified offers were once live on Mangrove, but are no longer (either after a retract or because one of them was consumed by a taker), it is more gas efficient to [update the offers](../../protocol/technical-references/taking-and-making-offers/reactive-offer/README.md#updating-an-existing-offer) to reinstate them on the %%offer list|offer-list%%, rather than creating new ones as we do in the above code.
+If both our amplified offers were once live on Mangrove, but are no longer (either after a retract or because one of them was consumed by a taker), it is more gas efficient to [update the offers](../../protocol/technical-references/reactive-offer/README.md#updating-an-existing-offer) to reinstate them on the %%offer list|offer-list%%, rather than creating new ones as we do in the above code.
 
 :::
 
@@ -175,7 +175,7 @@ Suppose that you instrumented your offer logic to do this. Now, if an attacker f
 
 ### Managing offer failure
 
-When writing posthooks, we need to consider all possible outcomes. The first outcome we have handled above assumed that the offer was successful. However, it might also be that the offer failed when it was taken. In this setup, this may happen, for instance, because we opted for using a router that brings liquidity from deployer's account. Nothing prevents this account from being empty when the taker order actually arrives.
+When writing posthooks, we need to consider all possible outcomes. The first outcome we have handled above assumed that the offer was successful. However, it might also be that the offer failed when it was taken. In this setup, this may happen, for instance, because we opted for using a router that brings liquidity from deployer's account. Nothing prevents this account from being empty when the market order actually arrives.
 
 If this happens, this means that the offer that was unsuccessfully taken is no longer live on Mangrove and that some %%bounty|bounty%% has been sent to the taker. However, in this case, we **know** that the *other* offer will also fail if taken. For this reason, in case if a trade fails, rather than waiting for the other offer to fail by itself, we can save some %%provision|provision%% and override [`posthookFallback`](../technical-references/main-hooks.md#posthook-after-trade-failure) to retract the other offer:
 

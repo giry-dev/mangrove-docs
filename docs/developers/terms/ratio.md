@@ -1,7 +1,7 @@
 ---
 id: ratio
 title: Ratio
-hoverText: The ratio $wants/gives$ between the amount $gives$ promised by an offer and the amount $wants$ it requests.
+hoverText: The ratio 'wants/gives' between the amount an offer 'gives' and the amount it 'wants'.
 ---
 
 The _ratio_ `inbound_tkn_amount/outbound_tkn_amount` between the amount `outbound_tkn_amount` promised by an offer and the amount `inbound_tkn_amount` it requests. The unit of ratios on an %%offer list|offer-list%% `outbound_tkn-inbound_tkn` is thus `inbound_tkn/outbound_tkn`.

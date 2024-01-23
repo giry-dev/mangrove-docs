@@ -15,7 +15,7 @@ This section explains the reasons why some offers might fail using Kandel.
 When we talk about an offer "failing", we mean that it could not execute. An offer can also fail to update itself. While we won't go into details in this part of the documentation, it is important to mention and differentiate those cases to further understand Kandel strategy's behavior.
 
 * [`makerExecute()`](../../../developers/strat-lib/technical-references/code/strats/src/strategies/MangroveOffer/#makerexecute): it is the callback function that is called when an offer is matched. Its role is to execute all offers that were posted on Mangrove by a given contract.
-    * A failure in `makerExecute()` means the trade is canceled, and the [bounty](../../../developers/terms/bounty) is given to the Taker as a [compensation](../../../developers/protocol/technical-references/taking-and-making-offers/taker-order/#bounties-for-taking-failing-offers). The offer is removed from the book.
+    * A failure in `makerExecute()` means the trade is canceled, and the [bounty](../../../developers/terms/bounty) is given to the Taker as a [compensation](../../../developers/protocol/technical-references/market-order/#bounties-for-taking-failing-offers). The offer is removed from the book.
 
 
 * [`makerPosthook()`](../../../developers/strat-lib/technical-references/code/strats/src/strategies/MangroveOffer/#makerposthook): it is the callback function that is called after the offer execution (i.e. after a successful execution of `makerExecute()`).
@@ -49,7 +49,7 @@ Non-reposted liquidity will be placed into the [Unallocated liquidity](./strateg
 Reposting offers is handled with [`makerPosthook()`](../../../developers/strat-lib/technical-references/code/strats/src/strategies/MangroveOffer/#makerposthook), and failure could happen if:
 
 * The residual of a partially taken offer is too small with regard to [density](../../../developers/terms/density):
-    * A partially taken offer is the result of a Taker either partially [sniping](../../../developers/protocol/technical-references/taking-and-making-offers/taker-order/#offer-sniping) an offer, or placing a Market order
+    * A partially taken offer is the result of a Taker placing a Market order
     * If an offer is almost entirely taken, the remainder (dust) could be too small to pass the density check, leading to a failure to repost itself
 
 

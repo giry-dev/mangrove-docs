@@ -16,7 +16,7 @@ export LOCAL_URL=http://127.0.0.1:8545 # Url for the local chain that anvil star
 
 ## Local chain
 
-The tutorials can be run directly on networks where Mangrove is deployed (see [Addresses](../../protocol/technical-references/contract-addresses.md)). However on a real network you will spend real tokens, so we recommend starting on test networks with a test account.
+The tutorials can be run directly on networks where Mangrove is deployed (see [Addresses](../../addresses/contract-addresses.md)). However on a real network you will spend real tokens, so we recommend starting on test networks with a test account.
 
 To further speed things up we run tutorials on a local fork of a chain using Foundry's `anvil` tool.
 

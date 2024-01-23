@@ -11,7 +11,7 @@ Posting a simple offer is also referred to as an %%on-the-fly offer|on-the-fly-o
 
 The tutorial assumes knowledge of JavaScript. Follow [preparation](./preparation.md) to create a new `tutorial` folder.
 
-Make sure to use a chain where Mangrove is live. You can find all live addresses for Mangrove [here](../../protocol/technical-references/contract-addresses.md)
+Make sure to use a chain where Mangrove is live. You can find all live addresses for Mangrove [here](../../addresses/contract-addresses.md).
 
 :::info
 
@@ -44,7 +44,7 @@ Start up `node` in a new terminal and issue the following code which performs th
 5. Once you have connected your wallet, you can connect to the Mangrove protocol using your wallet.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove.js/blob/2eb3f76f120831a48c577d930fcffc7d55d75c51/examples/tutorials/on-the-fly-offer.js#L1-L12
+https://github.com/mangrovedao/mangrove.js/blob/19a856720d39a124ae8e1e47b2685002bd87f9ff/examples/tutorials/on-the-fly-offer.js#L1-L12
 ```
 
 ### Check existing market
@@ -56,7 +56,7 @@ Next you need to connect to a market, in order to see the existing offers. This 
 3. Console log bids. This outputs table of the 50 best bids.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove.js/blob/2eb3f76f120831a48c577d930fcffc7d55d75c51/examples/tutorials/on-the-fly-offer.js#L14-L19
+https://github.com/mangrovedao/mangrove.js/blob/19a856720d39a124ae8e1e47b2685002bd87f9ff/examples/tutorials/on-the-fly-offer.js#L14-L23
 ```
 
 ``` bash
@@ -81,7 +81,7 @@ After having looked at the market you now know what the prices are and you can n
 4. You can then post an offer using, in this case `wants: 100.5` and `gives:100.4`, which gives a price of $$100.5/100.4\approx1.00099$$. And since you saw that the best price was $$\approx1.003$$ you know our offer will be at the top of the list.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove.js/blob/2eb3f76f120831a48c577d930fcffc7d55d75c51/examples/tutorials/on-the-fly-offer.js#L21-L38
+https://github.com/mangrovedao/mangrove.js/blob/19a856720d39a124ae8e1e47b2685002bd87f9ff/examples/tutorials/on-the-fly-offer.js#L25-L42
 ```
 
 ### Check market after new offer
@@ -92,7 +92,7 @@ We can then check if our offer has best been posted and is on the top of the lis
 2. Then log the asks for the market. You will then see that your offer is on top of the list.
 
 ```javascript reference
-https://github.com/mangrovedao/mangrove.js/blob/2eb3f76f120831a48c577d930fcffc7d55d75c51/examples/tutorials/on-the-fly-offer.js#L40-L42
+https://github.com/mangrovedao/mangrove.js/blob/19a856720d39a124ae8e1e47b2685002bd87f9ff/examples/tutorials/on-the-fly-offer.js#L44-L46
 ```
 
 ```js
@@ -109,10 +109,8 @@ undefined
 │    3    │ 1829 │ '0x4326Ab97823d7509C1f0CB3bF68151081B26c970' │ 50.674948479792484 │ 1.00337923422410191358 │
 ```
 
-Another way to check your offer is to go to [testnet](https://testnet.mangrove.exchange/trade) and look at the asks for DAI-USDC. Here you will be able to see your offer. This can only be done if you didn't use a local chain, but actually ran on a real chain.
+Another way to check your offer is to go to [testnet](https://testnet.mangrove.exchange/trade) and look at the asks for the pair. Here you will be able to see your offer. This can only be done if you didn't use a local chain, but actually ran on a real chain.
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/basic-offer-on-testnet.png')} width="50%"/>
-
-The full script can be found on [github](https://github.com/mangrovedao/mangrove.js/blob/2eb3f76f120831a48c577d930fcffc7d55d75c51/examples/tutorials/on-the-fly-offer.js).
+The full script can be found on [github](https://github.com/mangrovedao/mangrove.js/blob/19a856720d39a124ae8e1e47b2685002bd87f9ff/examples/tutorials/on-the-fly-offer.js).

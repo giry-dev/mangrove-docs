@@ -6,7 +6,7 @@ sidebar_position: 2
 
 # Takers
 
-Just like a classical orderbook, the Taker can buy or sell assets on Mangrove, with [market](../../../web-app/trade/how-to-market-order.md) or [limit orders](../../../web-app/trade/how-to-limit-order.md).
+Just like a classical orderbook, the Taker can buy or sell assets on Mangrove, with [market](../../../web-app/trade/how-to-market-order.md) or [limit orders](../../../web-app/trade/how-to-limit-order.md). Offers can be taken using market orders or "[cleaned](../../../../developers/protocol/technical-references/offer-cleaning.md)", as part of the strategies enabled by Mangrove's platform design. 🧿
 
 Takers may typically operate via a web front-end or with the help of our [SDK](../../../../developers/SDK/README.md) to develop off-chain apps that interact with Mangrove ecosystem.
 

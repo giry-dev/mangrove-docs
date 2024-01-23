@@ -1,25 +1,15 @@
 ---
-title: Annotated Codebase
-description: Source Code and Annotated Code
-sidebar_position: 6
+title: Literate Source Code
+description: Source Code and Literate Code
+sidebar_position: 9
 ---
 
-## Source Code
+## Open source on GitHub
 
-The Solidity source code for the [Mangrove Core](https://github.com/mangrovedao/mangrove-core) is available.
+The Solidity source code for the Mangrove protocol is available [on GitHub](https://github.com/mangrovedao/mangrove-core).
 
-## Annotated Code
+## Literate source code
 
-:::info
+The Mangrove protocol is commented in the tradition of [literate programming](https://en.wikipedia.org/wiki/Literate_programming) where natural language and code is intervowen. Thus, the protocol code itself actually constitutes a very readable and comprehensive technical documentation.
 
-The [annotated code](pathname:///MgvDoc/) provides a comprehensive overview of the Mangrove contract.
-
-This overview is generated directly from annotation in comments in the Mangrove core code, and is currently *provided as a single separate webpage*. It can be generated manually from a clone of the codebase, and is provided as-is on this site for convenience.
-
-:::
-
-:::danger Deployment Address
-
-Please refer to [Deployment Addresses](./contract-addresses.md) to verify the address of Mangrove core contract for a particular chain.
-
-:::
+A nicely formatted, single webpage representation of the literate source code can be found [here](pathname:///MgvDoc/).
