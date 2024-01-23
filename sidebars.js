@@ -56,6 +56,22 @@ const sidebars = {
             },
           ]
         },
+        {
+          type: 'category',
+          label: '⚖️ T&C',
+          items: [
+            {
+              type: 'link',
+              label: 'Terms of use', // The link label
+              href: 'https://www.mangrove.exchange/terms-of-use',
+            },
+            {
+              type: 'doc',
+              id: 'general/kandel/potential-risks/potential-risks',
+              label: 'Risks',
+            },
+          ]
+        },
       ],
     },
   {

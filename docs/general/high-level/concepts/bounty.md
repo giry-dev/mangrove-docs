@@ -10,4 +10,4 @@ What if everyone makes empty promises, and the offers in the book are all meant 
 
 At first, **this might appear to favor Makers**. However, with advanced market-making features that allow them to accept or cancel offers, **Makers can mitigate their risk** and offer better prices. Ultimately, both Makers and Takers benefit: the risk of offer failure is essential for the effectiveness of smart offers.
 
-Let's spend more time understanding [Makers](./makers-takers-keepers/makers.md), [Takers](./makers-takers-keepers/takers.md), and [Keepers](./makers-takers-keepers/keepers.md) (yes, that last one is a new term), shall we? 🤓
+Let's spend more time understanding [Makers](./makers-takers-keepers/README.md#makers), [Takers](./makers-takers-keepers/README.md#takers), and [Keepers](./makers-takers-keepers/README.md#keepers) (yes, that last one is a new term), shall we? 🤓
