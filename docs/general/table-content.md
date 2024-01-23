@@ -1,9 +1,9 @@
 ---
-title: Table of content
+title: Table of contents
 sidebar_position: 0
 ---
 
-# Table of Content
+# Table of Contents
 
 ### FAQ
 Check the frequently asked questions as an introduction to Mangrove, how to use it  and troubleshooting advice.

@@ -24,7 +24,7 @@ const sidebars = {
         {
           type: 'doc',
           id: 'general/table-content',
-          label: '🌿 Table of Content',
+          label: '🌿 Table of Contents',
         },
         {
           type: 'category',
