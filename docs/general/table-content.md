@@ -1,9 +1,9 @@
 ---
-title: Table of content
+title: Table of contents
 sidebar_position: 0
 ---
 
-# Table of Content
+# Table of Contents
 
 ### FAQ
 Check the frequently asked questions as an introduction to Mangrove, how to use it  and troubleshooting advice.
@@ -17,9 +17,6 @@ Learn about the key features of Mangrove and the new possibilities it opens.
 * [Smart offers](./high-level/concepts/smart-offers.md)
 * [Bounty](./high-level/concepts/bounty.md)
 * [Makers, Takers, Keepers](./high-level/concepts/makers-takers-keepers/README.md)
-    * [Makers](./high-level/concepts/makers-takers-keepers/makers.md)
-    * [Takers](./high-level/concepts/makers-takers-keepers/takers.md)
-    * [Keepers](./high-level/concepts/makers-takers-keepers/keepers.md)
 
 ### Audits
 
@@ -38,6 +35,13 @@ An extensive guide on how to use our dApp to place orders as well as to create y
     * [Create a strategy](./web-app/strategies/create-strat.md)
     * [Manage a strategy](./web-app/strategies/manage-strat/README.md)
     * [Key Actions/Questions](./web-app/strategies/key-actions-questions/README.md)
+
+### Terms and Conditions
+
+Legal disclaimers regarding the terms and the risks associated with the usage of Mangrove products.
+
+* [Terms of use](https://www.mangrove.exchange/terms-of-use)
+* [Risks](./kandel/potential-risks/potential-risks.md)
 
 ### Strategies
 

@@ -19,7 +19,7 @@ This translates into several disruptive mechanisms:
     * Code helps make zero-latency trading decisions, with as much information as available on-chain at the time the trade occurs
 
 * **Persistence** 🔁<br />
-    Through the executed code, the **offer can automatically repost itself** on the order book. For someone who is posting offers (we call them [Makers](./makers-takers-keepers/makers.md), or Market Makers), this is very handy because they can immediately update the amount of tokens they are offering after some of it has been taken. People that take offers are called [Takers](./makers-takers-keepers/takers.md).
+    Through the executed code, the **offer can automatically repost itself** on the order book. For someone who is posting offers (we call them [Makers](./makers-takers-keepers/README.md#makers), or Market Makers), this is very handy because they can immediately update the amount of tokens they are offering after some of it has been taken. People that take offers are called [Takers](./makers-takers-keepers/README.md#takers).
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
