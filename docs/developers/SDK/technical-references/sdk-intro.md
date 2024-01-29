@@ -54,40 +54,54 @@ will execute the `ethers.js` call to the function `f` on the Mangrove contract (
 This class provides easy means to interact with a deployed contract on the standard [EIP-20](https://eips.ethereum.org/EIPS/eip-20). To obtain an instance use:
 
 ```typescript
-mgvTkn = await mgv.token("<tokenSymbol>"); // e.g "DAI", "WETH", "amDAI", etc.
+tkn = await mgv.token("<symbolOrId>"); // e.g "DAI", "WETH", "amDAI", etc.
 ```
 
-with this `MgvTkn` object you have access to standard calls using human readable input/outputs. For instance:
+using the symbol or id's defined for ERC-20's in the Mangrove `context-addresses` repo. The relevant specifications are in [`ERC-20.json`](https://github.com/mangrovedao/context-addresses/blob/master/src/assets/ERC-20.json)). This is also the source of the token addresses given here: [Token addresses](../../addresses/contract-addresses#token-addresses).
+
+A token object can also be obtained directly via an address:
 
 ```typescript
-await mgvTkn.approve("<spender>"); // gives infinite approval to spender
-await mgvTkn.approve("<spender>",0.5); // gives allowance to spend 0.5 token units to spender
-await mgvTkn.contract.approve("<spender>", mgvTkn.toUnits(0.5)); // ethers.js call
+tkn = await mgv.tokenFromAddress("<tokenAddress>");
 ```
 
-Note that Mangrove's API deals with token decimals automatically (using the ERC-20 definitions in the `context-addresses` repo - the relevant specifications are in [`ERC-20.json`](https://github.com/mangrovedao/context-addresses/blob/master/src/assets/ERC-20.json)). This is the source of the token addresses given here: [Token addresses](../../addresses/contract-addresses#token-addresses).
+With this `tkn` object you have access to standard calls using human readable input/outputs. For instance:
+
+```typescript
+await tkn.approve("<spender>"); // gives infinite approval to spender
+await tkn.approve("<spender>",0.5); // gives allowance to spend 0.5 token units to spender
+await tkn.contract.approve("<spender>", tkn.toUnits(0.5)); // ethers.js call
+```
+
+Note that Mangrove's API deals with token decimals automatically (using the definitions given in the `context-addresses` repo).
 
 :::info
 
-`MgvToken.contract` gives access to the `ethers.js` contract allowing one to interact with the deployed contract using low level calls (for instance if the token has functions that are do not belong to the ERC20 standard).
+`Token.contract` gives access to the `ethers.js` contract allowing one to interact with the deployed contract using low level calls (for instance if the token has functions that are do not belong to the ERC20 standard).
 
 :::
 
 ## Market
 
-The `Market` class is an abstraction layer to interact with Mangrove as a liquidity taker, using standard market [buy and sell orders](../guides/sell-and-buy-orders.md). To obtain one instance use:
+The `Market` class is an abstraction layer to interact with Mangrove markets. 
+
+Working as a liquidity taker, it provides access standard market [buy and sell orders](../guides/sell-and-buy-orders.md). The `Market` methods also provides access, through the `buy` and `sell` methods, to post and interact with markets providing liquidity through resting orders. Please refer to the documentation for the [TradeParams](./code/namespaces/Market-1#tradeparams) parameter of the [buy](./code/classes/Market#-buy) and [sell](./code/classes/Market#-sell) methods, for more details.
+
+To obtain an instance of `Market` use:
 
 ```typescript
 //connect to a (base,quote) market with default options
-mgvMarket = await mgv.connect({base:"<base_symbol>", quote:"<quote_symbol>"});
+mgvMarket = await mgv.market({base:"<symbolOrId> | Token", quote:"<symbolOrId> | Token", tickSpacing: number});
 
-// connect to the market, caching the first 50 best bids and asks
-mgvMarket = await mgv.connect({base:"<base_symbol>", quote:"<quote_symbol>", targetNumberOfTicks: 50});
+// connect to the market, caching at least the specified number of ticks
+mgvMarket = await mgv.market({base:"<symbolOrId> | Token", quote:"<symbolOrId> | Token", tickSpacing: number, targetNumberOfTicks: 50});
 ```
+
+where %%tickspacing|tickspacing%% is defined as explained on the page about [Ticks, ratios, and prices](../../protocol/technical-references/tick-ratio#tickspacing-markets-with-bigger-price-increments) for the core Mangrove protocol.
 
 :::info
 
-Upon connection to a market, the API subscribes to events emanating from Mangrove in order to maintain a local cache of the order book. One may increase the size of the cache by using `mgv.connect({..., targetNumberOfTicks:<number of ticks to cache>})`.
+Upon connection to a market, the API subscribes to events emanating from Mangrove in order to maintain a local cache of the order book. One may increase the size of the cache by using `mgv.market({..., targetNumberOfTicks:<number of ticks to cache>})`. It is guaranteed that if at least one offer with a tick is in the cache, then all offers with that tick are in the cache. For more on ticks, please refer to the page on [Ticks, ratios, and prices](../../protocol/technical-references/tick-ratio).
 
 :::
 
@@ -102,7 +116,7 @@ await mgvMarket.consoleAsks(["id", "gives", "price"]);
 
 ```javascript
 const f (event) => ...; // what you want to do when receiving the event 
-mgvMarket.subscribe (f);
+mgvMarket.subscribe(f);
 ```
 
 To unsubscribe `f` from market events simply use `mgvMarket.unsubscribe(f)`.
