@@ -97,7 +97,7 @@ mgvMarket = await mgv.market({base:"<symbolOrId> | Token", quote:"<symbolOrId> |
 mgvMarket = await mgv.market({base:"<symbolOrId> | Token", quote:"<symbolOrId> | Token", tickSpacing: number, targetNumberOfTicks: 50});
 ```
 
-where %%tickspacing|tickspacing%% is defined as explained on the page about [Ticks, ratios, and prices](../../protocol/technical-references/tick-ratio#tickspacing-markets-with-bigger-price-increments) for the core Mangrove protocol.
+where %%tickSpacing|tickSpacing%% is defined as explained on the page about [Ticks, ratios, and prices](../../protocol/technical-references/tick-ratio#tickspacing-markets-with-bigger-price-increments) for the core Mangrove protocol.
 
 :::info
 
