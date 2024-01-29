@@ -94,7 +94,7 @@ To obtain an instance of `Market` use:
 mgvMarket = await mgv.market({base:"<symbolOrId>" | Token, quote:"<symbolOrId>" | Token, tickSpacing: number});
 
 // connect to the market, caching at least the specified number of ticks
-mgvMarket = await mgv.market({base:"<symbolOrId> | Token", quote:"<symbolOrId> | Token", tickSpacing: number, targetNumberOfTicks: 50});
+mgvMarket = await mgv.market({base:"<symbolOrId>" | Token, quote:"<symbolOrId>" | Token, tickSpacing: number, targetNumberOfTicks: 50});
 ```
 
 where %%tickSpacing|tickSpacing%% is defined as explained on the page about [Ticks, ratios, and prices](../../protocol/technical-references/tick-ratio#tickspacing-markets-with-bigger-price-increments) for the core Mangrove protocol.
