@@ -91,7 +91,7 @@ To obtain an instance of `Market` use:
 
 ```typescript
 //connect to a (base,quote) market with default options
-mgvMarket = await mgv.market({base:"<symbolOrId> | Token", quote:"<symbolOrId> | Token", tickSpacing: number});
+mgvMarket = await mgv.market({base:"<symbolOrId>" | Token, quote:"<symbolOrId>" | Token, tickSpacing: number});
 
 // connect to the market, caching at least the specified number of ticks
 mgvMarket = await mgv.market({base:"<symbolOrId> | Token", quote:"<symbolOrId> | Token", tickSpacing: number, targetNumberOfTicks: 50});
