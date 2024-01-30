@@ -22,9 +22,9 @@ The [`SimpleRouter` contract](./code/strats/src/strategies/routers/SimpleRouter)
 
 ### `SmartRouter`
 
-The [`SmartRouter` contract](https://github.com/mangrovedao/mangrove-strats/blob/feat/smartRouter/src/strategies/routers/SmartRouter.sol) is an implementation, and does not need to be called directly. It delegates pull and push logic implementation to arbitrary contracts that implement the [`AbstractRoutingLogic` interface](https://github.com/mangrovedao/mangrove-strats/blob/feat/smartRouter/src/strategies/routing_logic/abstract/AbstractRoutingLogic.sol). It implements `SimpleRouter` as its default route.
+The [`SmartRouter` contract](https://github.com/mangrovedao/mangrove-strats/blob/feat/smartRouter/src/strategies/routers/SmartRouter.sol) is an implementation, and must not be called directly. It delegates pull and push logic implementation to arbitrary contracts that implement the [`AbstractRoutingLogic` interface](https://github.com/mangrovedao/mangrove-strats/blob/feat/smartRouter/src/strategies/routing_logic/abstract/AbstractRoutingLogic.sol). It implements `SimpleRouter` as its default route.
 
-Every time someone calls the [ProxyFactory](https://github.com/mangrovedao/mangrove-strats/blob/develop/src/strategies/routers/RouterProxyFactory.sol), a dedicated RouterProxy is created for the caller that will forward all the push/pull calls to the SmartRouter, which forward those to the corresponding routing logic (ex: AaveLogic).
+When requested to do so, the [ProxyFactory](https://github.com/mangrovedao/mangrove-strats/blob/develop/src/strategies/routers/RouterProxyFactory.sol) deploys a RouterProxy. It is created specifically for the caller, and will forward all the push/pull calls to the SmartRouter, which forward those to the corresponding routing logic (ex: AaveLogic).
 
 Thefore, the push/pull functions are delegated from the *Proxy > SmartRouter > RoutingLogic*.
 The Proxy contract basically works like an intelligent router.

@@ -13,18 +13,6 @@ Useful things to note:
 
 For each user, a `RouterProxy` is created. To do this, we use Ethereum's `CREATE2` opcode to deploying contracts with predictable addresses. The Forwarder uses the corresponding `RouterProxy` address to operate.
 
-## How inbound tokens are handled (from the taker)
-
-After the funds have been transferred from the taker to the Forwarder contract, it transfers the funds to the reserve of the offer owner. The reason for this, is that it cannot leave the funds on the contract, since the inbound tokens need to be distributed to each offer owners. When the offer has been successfully taken, it has no funds on the contract itself (vs. Direct where the funds are still on the contract). It therefore has no extra actions and just uses the default implementation of MangroveOffer.
-
-## How outbound tokens are handled (to the taker)
-
-Since the contract cannot be used as the reserve for a Forwarder contract, this means that is also has to transfer the funds from the reserve to the Forwarder contract. This is again because multiple users can use the contract.
-
-## Reserve
-
-When setting the reserve using a Forwarder contract it first checks if the maker is trying to set an empty address. This is allowed and the makers address will be used as the reserve. If the address is not empty, then it checks whether the address has approved the maker to use it as its reserve. This is different than Direct, since Forwarder has multiple makers, it has to keep track on which makers can use a reserve. The reserve needs to call the Forwarder contract to approve a maker. The reserve can also revoke the approval.
-
 ## Provision tracking
 
 If the offer fails, then this means that the taker was given a bounty for using gas trying to take a failing offer. But the bounty for the taker, is not necessarily the same amount as the amount that was provisioned for the offer. If there is still some provision left on the offer, Forwarder keeps track of the remaining provision that is no longer locked to the offer. The same way it keeps track of who owns an offer, it also tracks how much free provision is left on the offer.
