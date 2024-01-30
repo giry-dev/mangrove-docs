@@ -7,7 +7,7 @@ sidebar_position: 3
 
 Forwarder should be seen as an implementation the can be used by multiple offer makers. This means that anyone can manage offers using the contract. Because of this, Forwarder needs to keep track of who owns which offer and what the reserve is for the caller. It does so by using a [`RouterProxyFactory`](https://github.com/mangrovedao/mangrove-strats/blob/feat/smartRouter/src/strategies/routers/RouterProxyFactory.sol), which creates a dedicated proxy router for each user of the Forwarder. This is the key difference between Direct and Forwarder.
 
-Useful things to note:
+The following sections explain some key aspects of Forwarder.
 
 ## Using `RouterProxyFactory` to create `RouterProxy` instances
 
