@@ -13,10 +13,10 @@ const getRemappings = () => {
 };
 
 export default {
-  solidity: "0.8.14",
+  solidity: "0.8.20",
   docgen: {
-    outputDir: 'docs/strat-lib/technical-references/code',
-    exclude: [ 'preprocessed/', 'periphery/', 'toy_strategies/', 'strategies/interfaces/ITesterContract.sol', 'strategies/offer_forwarder/ForwarderTester.sol', 'strategies/offer_maker/DirectTester.sol', 'IMangrove.sol', 'MgvLib.sol', 'MgvRoot.sol', 'MgvHasOffers.sol', 'MgvOfferMaking.sol', 'MgvOfferTaking.sol', 'MgvOfferTakingWithPermit.sol', 'MgvGovernable.sol', 'AbstractMangrove.sol', 'Mangrove.sol', 'InvertedMangrove.sol'],
+    outputDir: 'docs/developers/strat-lib/technical-references/code',
+    exclude: [ 'core/lib', 'core/src/core', 'core/src/periphery', 'core/src/preprocessed', 'core/src/toy', 'strats/src/toy_strategies/'],
     templates: './templates',
     pages: 'files',
   }, 

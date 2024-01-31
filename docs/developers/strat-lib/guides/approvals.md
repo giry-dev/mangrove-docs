@@ -10,11 +10,15 @@ During trade settlement, Mangrove needs certain approvals for transferring funds
 
 ### Call sequence overview
 
-In the following, we shall refer to the diagram depicting an [overview of the call sequence](../../contracts/technical-references/overview.md#call-sequence-overview) for a successful trade when a maker [offer is taken](../../contracts/technical-references/taking-and-making-offers/taker-order/README.md) with a market order. For easy reference, the diagram is included below. 
+In the following, we shall refer to the diagram depicting an [overview of the call sequence](../../protocol/technical-references/overview.md#call-sequence-overview) for a successful trade when a maker [offer is taken](../../protocol/technical-references/market-order/README.md) with a market order. For easy reference, the diagram is included below. 
 
-Refer to [Contracts -> Technical Reference -> Overview](../../contracts/technical-references/overview.md) and the pages linked there for more details on trade execution on Mangrove.
+Refer to [Protocol -> Technical Reference -> Overview](../../protocol/technical-references/overview.md) and the pages linked there for more details on trade execution on Mangrove.
 
-![Mangrove call sequence induced by a taker order](/img/assets/execution.png)
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="text--center">
+<img src={useBaseUrl('/img/assets/execution.png')} width="75%"/>
+</div>
 
 ## Maker approvals
 
@@ -28,8 +32,8 @@ Referring to the [call sequence diagram](#call-sequence-overview) this maker app
 
 Maker contracts inheriting from [MangroveOffer](../background/offer-maker/mangrove-offer.md) provide two methods to assist with approvals: 
 
-* [`activate`](../technical-references/code/strategies/MangroveOffer.md#activate) performs the required approvals so as to allow the contract itself to interact with Mangrove on a set of assets. 
-* [`checklist`](../technical-references/code/strategies/MangroveOffer.md#checklist) verifies that this contract's current state is ready to be used to post offers on Mangrove.
+* [`activate`](../technical-references/code/strats/src/strategies/MangroveOffer.md#activate) performs the required approvals so as to allow the contract itself to interact with Mangrove on a set of assets. 
+* [`checklist`](../technical-references/code/strats/src/strategies/MangroveOffer.md#checklist) verifies that this contract's current state is ready to be used to post offers on Mangrove.
 
 Both `activate` and `checklist` functions can be customized by hooks to adapt them to a particular strat built on top of the strat library.
 
@@ -48,7 +52,7 @@ As described under [Liquidity routing](../technical-references/router.md) the St
 
 The maker contract should approve its router for any token it wishes to push to an %%offer owner|offer-owner%%'s reserve. 
 
-Please refer to the section on [Routers](../technical-references/router.md) for more details, and refer to the API Reference for [AbstractRouter](../technical-references/code/strategies/routers/AbstractRouter.md) - the base that Strat Lib routers are implemented on top of.
+Please refer to the section on [Routers](../technical-references/router.md) for more details, and refer to the API Reference for [AbstractRouter](../technical-references/code/strats/src/strategies/routers/abstract/AbstractRouter.md) - the base that Strat Lib routers are implemented on top of.
 
 
 #### When a Forwarder-based contract manages offers belonging to several offer owners
@@ -57,7 +61,7 @@ The [Forwarder](../background/offer-maker/forwarder.md) building block provides 
 
 A basic Forwarder strategy is to assume that the funds of each offer comes from its owner's addres. In such cases, the offer owners need to approve the maker contract's %%router|router%% for outbound token transfer. 
 
-Please refer to the section on the [Forwarder building block](../background/offer-maker/forwarder.md) and to the API Reference for the [Forwarder](../technical-references/code/strategies/offer_forwarder/abstract/Forwarder.md) base for further reading.
+Please refer to the section on the [Forwarder building block](../background/offer-maker/forwarder.md) and to the API Reference for the [Forwarder](../technical-references/code/strats/src/strategies/offer_forwarder/abstract/Forwarder.md) base for further reading.
 
 
 <!-- #### Example -->

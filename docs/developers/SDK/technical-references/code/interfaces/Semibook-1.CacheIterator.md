@@ -35,7 +35,7 @@ Filter the offers in the cache using a predicate.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:130
+@mangrovedao/mangrove.js/src/semibook.ts:138
 
 ___
 
@@ -59,7 +59,7 @@ satisfies the provided predicate. If no values satisfy the testing function,
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:140
+@mangrovedao/mangrove.js/src/semibook.ts:148
 
 ___
 
@@ -75,7 +75,7 @@ Returns the elements in an array.
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/semibook.ts:143
+@mangrovedao/mangrove.js/src/semibook.ts:151
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 ### <a id="return" name="return"></a> return
 
-▸ `Optional` **return**(`value?`): `IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
+▸ **return**(`value?`): `IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
 
 #### Parameters
 
@@ -129,7 +129,7 @@ ___
 
 ### <a id="throw" name="throw"></a> throw
 
-▸ `Optional` **throw**(`e?`): `IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
+▸ **throw**(`e?`): `IteratorResult`<[`Offer`](../namespaces/Market-1.md#offer), `any`\>
 
 #### Parameters
 
@@ -161,7 +161,7 @@ ___
 
 #### Inherited from
 
-IterableIterator.\_\_@iterator@92
+IterableIterator.[iterator]
 
 #### Defined in
 

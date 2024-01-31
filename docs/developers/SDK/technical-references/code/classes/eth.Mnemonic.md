@@ -7,6 +7,27 @@ custom_edit_url: null
 
 [eth](../namespaces/eth.md).Mnemonic
 
+## Constructors
+
+### <a id="constructor" name="constructor"></a> constructor
+
+• **new Mnemonic**(`mnemonic`, `iterateOn?`): [`Mnemonic`](eth.Mnemonic.md)
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `mnemonic` | `string` | `undefined` |
+| `iterateOn` | ``"index"`` \| ``"change"`` \| ``"account"`` | `"index"` |
+
+#### Returns
+
+[`Mnemonic`](eth.Mnemonic.md)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/eth.ts:58
+
 ## Properties
 
 ### <a id="mnemonic" name="mnemonic"></a> mnemonic
@@ -31,7 +52,7 @@ ___
 
 ### <a id="path" name="path"></a> path
 
-▸ `Static` **path**(`iterator`, `iterateOn`): `string`
+▸ **path**(`iterator`, `iterateOn`): `string`
 
 #### Parameters
 
@@ -107,20 +128,3 @@ ___
 #### Defined in
 
 @mangrovedao/mangrove.js/src/eth.ts:75
-
-## Constructors
-
-### <a id="constructor" name="constructor"></a> constructor
-
-• **new Mnemonic**(`mnemonic`, `iterateOn?`)
-
-#### Parameters
-
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `mnemonic` | `string` | `undefined` |
-| `iterateOn` | ``"index"`` \| ``"change"`` \| ``"account"`` | `"index"` |
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/eth.ts:58

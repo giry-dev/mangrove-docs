@@ -10,7 +10,7 @@ custom_edit_url: null
 
 ### <a id="rawconfig" name="rawconfig"></a> RawConfig
 
-Ƭ **RawConfig**: `Awaited`<`ReturnType`<`typechain.Mangrove`[``"functions"``][``"configInfo"``]\>\>
+Ƭ **RawConfig**: `Awaited`<`ReturnType`<`typechain.MgvReader`[``"functions"``][``"configInfo"``]\>\>
 
 #### Defined in
 
@@ -28,15 +28,22 @@ ___
 | :------ | :------ |
 | `active` | `boolean` |
 | `fee` | `number` |
-| `density` | `Big` |
+| `density` | [`Density`](../classes/Density.md) |
 | `offer_gasbase` | `number` |
-| `lock` | `boolean` |
-| `best` | `number` \| `undefined` |
-| `last` | `number` \| `undefined` |
 
 #### Defined in
 
 @mangrovedao/mangrove.js/src/mangrove.ts:46
+
+___
+
+### <a id="localconfigfull" name="localconfigfull"></a> LocalConfigFull
+
+Ƭ **LocalConfigFull**: [`LocalConfig`](Mangrove-1.md#localconfig) & \{ `lock`: `boolean` ; `last`: `number` \| `undefined` ; `binPosInLeaf`: `number` ; `root`: `number` ; `level1`: `ethers.BigNumber` ; `level2`: `ethers.BigNumber` ; `level3`: `ethers.BigNumber`  }
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:53
 
 ___
 
@@ -54,10 +61,12 @@ ___
 | `gasprice` | `number` |
 | `gasmax` | `number` |
 | `dead` | `boolean` |
+| `maxRecursionDepth` | `number` |
+| `maxGasreqForFailingOffers` | `number` |
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:56
+@mangrovedao/mangrove.js/src/mangrove.ts:63
 
 ___
 
@@ -79,7 +88,7 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:65
+@mangrovedao/mangrove.js/src/mangrove.ts:74
 
 ___
 
@@ -101,61 +110,76 @@ ___
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:75
+@mangrovedao/mangrove.js/src/mangrove.ts:84
 
 ___
 
 ### <a id="openmarketinfo" name="openmarketinfo"></a> OpenMarketInfo
 
-Ƭ **OpenMarketInfo**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `base` | { `name`: `string` ; `address`: `string` ; `symbol`: `string` ; `decimals`: `number`  } |
-| `base.name` | `string` |
-| `base.address` | `string` |
-| `base.symbol` | `string` |
-| `base.decimals` | `number` |
-| `quote` | { `name`: `string` ; `address`: `string` ; `symbol`: `string` ; `decimals`: `number`  } |
-| `quote.name` | `string` |
-| `quote.address` | `string` |
-| `quote.symbol` | `string` |
-| `quote.decimals` | `number` |
-| `asksConfig?` | [`LocalConfig`](Mangrove-1.md#localconfig) |
-| `bidsConfig?` | [`LocalConfig`](Mangrove-1.md#localconfig) |
+Ƭ **OpenMarketInfo**: [`KeyResolved`](Market-1.md#keyresolved) & \{ `asksConfig?`: [`LocalConfig`](Mangrove-1.md#localconfig) ; `bidsConfig?`: [`LocalConfig`](Mangrove-1.md#localconfig)  }
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:85
+@mangrovedao/mangrove.js/src/mangrove.ts:94
 
 ___
 
 ### <a id="createoptions" name="createoptions"></a> CreateOptions
 
-Ƭ **CreateOptions**: [`CreateSignerOptions`](../interfaces/eth.CreateSignerOptions.md) & { `blockManagerOptions?`: `BlockManager.Options` ; `reliableWebsocketProviderOptions?`: `ReliableWebsocketProvider.Options` ; `reliableHttpProviderOptions?`: `ReliableHttpProvider.Options`  }
+Ƭ **CreateOptions**: [`CreateSignerOptions`](../interfaces/eth.CreateSignerOptions.md) & \{ `shouldNotListenToNewEvents?`: `boolean` ; `blockManagerOptions?`: `BlockManager.Options` ; `reliableWebsocketProviderOptions?`: `ReliableWebsocketProvider.Options` ; `reliableHttpProviderOptions?`: `ReliableHttpProvider.Options`  }
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:92
+@mangrovedao/mangrove.js/src/mangrove.ts:99
 
 ___
 
 ### <a id="configuration" name="configuration"></a> Configuration
 
-Ƭ **Configuration**: `MangroveJsConfiguration`
+Ƭ **Configuration**: [`Configuration`](../modules.md#configuration)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:98
+@mangrovedao/mangrove.js/src/mangrove.ts:106
 
 ___
 
 ### <a id="partialconfiguration" name="partialconfiguration"></a> PartialConfiguration
 
-Ƭ **PartialConfiguration**: `PartialMangroveJsConfiguration`
+Ƭ **PartialConfiguration**: [`PartialConfiguration`](../modules.md#partialconfiguration)
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/mangrove.ts:100
+@mangrovedao/mangrove.js/src/mangrove.ts:108
+
+___
+
+### <a id="offerprovisionparams" name="offerprovisionparams"></a> OfferProvisionParams
+
+Ƭ **OfferProvisionParams**: `Object`
+
+Parameters used to calculate provision for an offer
+
+**`Param`**
+
+the gas price for the offer in Mwei.
+
+**`Param`**
+
+the gas requirement for the offer
+
+**`Param`**
+
+the offer list's offer_gasbase.
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `gasprice` | `number` |
+| `gasreq` | `number` |
+| `gasbase` | `number` |
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/mangrove.ts:115

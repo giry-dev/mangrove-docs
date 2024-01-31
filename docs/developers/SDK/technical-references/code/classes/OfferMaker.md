@@ -8,18 +8,28 @@ custom_edit_url: null
 
 The OfferMaker class connects to a simple OfferMaker contract
 
+## Constructors
+
+### <a id="constructor" name="constructor"></a> constructor
+
+• **new OfferMaker**(): [`OfferMaker`](OfferMaker.md)
+
+#### Returns
+
+[`OfferMaker`](OfferMaker.md)
+
 ## Methods
 
 ### <a id="deploy" name="deploy"></a> deploy
 
-▸ `Static` **deploy**(`mgv`, `gasreq?`): `Promise`<`string`\>
+▸ **deploy**(`mgvAddress`, `signer`): `Promise`<`string`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `mgv` | [`Mangrove`](Mangrove.md) |
-| `gasreq?` | `number` |
+| `mgvAddress` | `string` |
+| `signer` | `Signer` |
 
 #### Returns
 
@@ -27,10 +37,4 @@ The OfferMaker class connects to a simple OfferMaker contract
 
 #### Defined in
 
-@mangrovedao/mangrove.js/src/offerMaker.ts:11
-
-## Constructors
-
-### <a id="constructor" name="constructor"></a> constructor
-
-• **new OfferMaker**()
+@mangrovedao/mangrove.js/src/offerMaker.ts:8

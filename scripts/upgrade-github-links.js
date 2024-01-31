@@ -1,6 +1,7 @@
 const newHeads = {
-    "mangrovedao/mangrove-core": "d6a2aae336a7ea89abe2479ab797b5ffcd5abb02",
-    "mangrovedao/mangrove.js": "2753b3148231a2541d0055a77a169f8f1381dcd1"
+    "mangrovedao/mangrove-core": "2ae172805fd8b309c30b2dc877dba66245abbb3e",
+    "mangrovedao/mangrove-strats": "a265abeb96a053e386d346c7c9e431878382749c",
+    "mangrovedao/mangrove.js": "2eb3f76f120831a48c577d930fcffc7d55d75c51"
 }
 
 
@@ -85,7 +86,7 @@ async function compareAll() {
         const newHead = newHeads[ref.org+"/"+ref.repo];
         if (ref.toLine == Infinity) {
             // entire file
-            if (ref.branch && newHead && newHead != ref.branch && ref.branch.length > 6) {
+            if (ref.branch && newHead && newHead != ref.branch && ref.branch.length > 9) {
                 console.log(`SAFE: ${ref.branch} -> ${newHead}`);
             }
         } else {

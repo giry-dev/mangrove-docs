@@ -10,6 +10,28 @@ custom_edit_url: null
 
 Repository for Kandel instances.
 
+## Constructors
+
+### <a id="constructor" name="constructor"></a> constructor
+
+• **new KandelFarm**(`mgv`): [`KandelFarm`](KandelFarm.md)
+
+Constructor
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `mgv` | [`Mangrove`](Mangrove.md) | The Mangrove to get kandels for. |
+
+#### Returns
+
+[`KandelFarm`](KandelFarm.md)
+
+#### Defined in
+
+@mangrovedao/mangrove.js/src/kandel/kandelFarm.ts:20
+
 ## Properties
 
 ### <a id="mgv" name="mgv"></a> mgv
@@ -24,7 +46,7 @@ ___
 
 ### <a id="tradeeventmanagement" name="tradeeventmanagement"></a> tradeEventManagement
 
-• **tradeEventManagement**: `TradeEventManagement`
+• **tradeEventManagement**: [`TradeEventManagement`](TradeEventManagement.md)
 
 #### Defined in
 
@@ -50,29 +72,11 @@ ___
 
 @mangrovedao/mangrove.js/src/kandel/kandelFarm.ts:15
 
-## Constructors
-
-### <a id="constructor" name="constructor"></a> constructor
-
-• **new KandelFarm**(`mgv`)
-
-Constructor
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `mgv` | [`Mangrove`](Mangrove.md) | The Mangrove to get kandels for. |
-
-#### Defined in
-
-@mangrovedao/mangrove.js/src/kandel/kandelFarm.ts:20
-
 ## Methods
 
 ### <a id="getkandels" name="getkandels"></a> getKandels
 
-▸ **getKandels**(`filter?`): `Promise`<{ `kandelAddress`: `string` = x.args.kandel; `ownerAddress`: `string` = x.args.owner; `onAave`: `boolean` = false; `baseAddress`: `string` = baseToken.address; `base`: `undefined` \| [`MgvToken`](MgvToken.md) = baseToken.token; `quoteAddress`: `string` = quoteToken.address; `quote`: `undefined` \| [`MgvToken`](MgvToken.md) = quoteToken.token }[]\>
+▸ **getKandels**(`filter?`): `Promise`<\{ `kandelAddress`: `string` = x.args.kandel; `ownerAddress`: `string` = x.args.owner; `onAave`: `boolean` = false; `baseAddress`: `string` = baseToken.address; `base`: [`Token`](Token.md) = baseToken; `quoteAddress`: `string` = quoteToken.address; `quote`: [`Token`](Token.md) = quoteToken }[]\>
 
 Gets all Kandels matching a given filter.
 
@@ -81,14 +85,14 @@ Gets all Kandels matching a given filter.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `filter?` | `Object` | The filter to apply. |
-| `filter.owner?` | ``null`` \| `PromiseOrValue`<`string`\> | The Kandel instance owner - the one who invoked sow. |
-| `filter.base?` | ``null`` \| `PromiseOrValue`<`string`\> | The base token for the Kandel instance. |
-| `filter.quote?` | ``null`` \| `PromiseOrValue`<`string`\> | The quote token for the Kandel instance. |
+| `filter.owner?` | ``null`` \| `string` | The Kandel instance owner - the one who invoked sow. |
+| `filter.baseQuoteOlKey?` | ``null`` \| `OLKeyStruct` | The low-level identifier of the market for the Kandel instance. Takes precedence over baseQuoteOfferList if both are provided. |
+| `filter.baseQuoteOfferList?` | ``null`` \| \{ `base`: `string` ; `quote`: `string` ; `tickSpacing`: `number`  } | The identifier of the market for the Kandel instance using Mangrove token identifiers. |
 | `filter.onAave?` | `boolean` | Whether the Kandel instance uses the Aave router. |
 
 #### Returns
 
-`Promise`<{ `kandelAddress`: `string` = x.args.kandel; `ownerAddress`: `string` = x.args.owner; `onAave`: `boolean` = false; `baseAddress`: `string` = baseToken.address; `base`: `undefined` \| [`MgvToken`](MgvToken.md) = baseToken.token; `quoteAddress`: `string` = quoteToken.address; `quote`: `undefined` \| [`MgvToken`](MgvToken.md) = quoteToken.token }[]\>
+`Promise`<\{ `kandelAddress`: `string` = x.args.kandel; `ownerAddress`: `string` = x.args.owner; `onAave`: `boolean` = false; `baseAddress`: `string` = baseToken.address; `base`: [`Token`](Token.md) = baseToken; `quoteAddress`: `string` = quoteToken.address; `quote`: [`Token`](Token.md) = quoteToken }[]\>
 
 All kandels matching the filter.
 

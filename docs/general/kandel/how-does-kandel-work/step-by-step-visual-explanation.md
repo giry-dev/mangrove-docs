@@ -16,12 +16,12 @@ Before launching your customized Kandel strategy, you will be asked to set speci
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/price_distribution.PNG')} width="400px"/><br /><br />
+<img src={useBaseUrl('img/assets/price_distribution.PNG')} width="500px"/><br /><br />
 
 Based on the selected **price range**, the price grid is constructed using a geometric progression. The Min and Max prices of the user inputs are the limits of the grid. 
 
 The increments are calculated using a key metric called **ratio** (of the geometric progression). Kandel starts from the Min price, all the way up to the Max price.
-By default, the ratio is 1%. 
+By default, the ratio is ~1% (due to %%ticks|tick%% it will not be exactly 1%).
 
 :::info Note
 In this example, the user selected an ETH/USDC trading pair.
@@ -29,7 +29,7 @@ In this example, the user selected an ETH/USDC trading pair.
 
 ## Volume distribution
 
-<img src={useBaseUrl('img/assets/volume_distribution.PNG')} width="400px"/><br /><br />
+<img src={useBaseUrl('img/assets/volume_distribution.PNG')} width="500px"/><br /><br />
 
 Based on the selected amount of initial liquidity to be deposited, Kandel draws the **volume distribution** (i.e. the initial volume at each price point).
 In the example of a uniform volume distribution, the user's liquidity is spread evenly throughout the price grid.<br />
@@ -82,9 +82,8 @@ In our example:
 
 * We just received 1,300 USDC for sending 1 ETH through our **<font color="#eb525a">ask</font>**
 * Previously, we sent 1,287 USDC and received 1 ETH through our **<font color="#5cd19b">bid</font>**
-* The [compounding rate](./parameters.md) is 100%
 
-Therefore, 100% of the spread (or 13 USDC) is reinvested into the strategy. A new **<font color="#5cd19b">bid</font>** at k=1 steps below is reposted, and offers 1,300 USDC for 1.01 ETH.
+Therefore, 13 USDC is reinvested into the strategy. A new **<font color="#5cd19b">bid</font>** at k=1 steps below is reposted, and offers 1,300 USDC for 1.01 ETH.
 
 :::info Calculation
 * _Profit = 1,300 USDC - 1,287 USDC = 13 USDC_

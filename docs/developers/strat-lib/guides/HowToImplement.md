@@ -32,7 +32,7 @@ The offer logic in `makerExecute` **should** be gas bounded since an out-of-gas 
 * any logging of a revert reason raised during `makerExecute`. The (truncated to a bytes32) reason is passed to `makerPosthook` in the `makerData` field.
 
 **Should** be in `makerPosthook`:
-* actions that are not gas bounded, such as posting or updating an offer on Mangrove (unless you have a clear %%pivotId|pivot-id%%).
+* actions that are not gas bounded, such as posting or updating an offer on Mangrove.
 * in general, calls which may raise an exception that should not cause the current trade execution to fail.
 * offer logic that revert during `makerPosthook` do not abort trade and Mangrove will emit a `PosthookFail` log.
 
@@ -40,7 +40,7 @@ The offer logic in `makerExecute` **should** be gas bounded since an out-of-gas 
 
 ### Activate functions
 
-The [`activate(IERC20[] calldata tokens)`](../technical-references/code/strategies/MangroveOffer.md#activate) public function of all strat library based maker contracts, enables one to perform all maker contract centric approvals, for the provided token list, in a single transaction. If your implementation requires more approval from the maker contract you **should** add them by overriding the `__activate__` hook. For instance assume your offer logic requires depositing asset on a lender's pool and the corresponding function requires an approval from the depositor, either you should approve the lender each time your logic deposits, or if you would rather approve once for all (with infinite approval), then you should add the approval to activate using:
+The [`activate(IERC20[] calldata tokens)`](../technical-references/code/strats/src/strategies/MangroveOffer.md#activate) public function of all strat library based maker contracts, enables one to perform all maker contract centric approvals, for the provided token list, in a single transaction. If your implementation requires more approval from the maker contract you **should** add them by overriding the `__activate__` hook. For instance assume your offer logic requires depositing asset on a lender's pool and the corresponding function requires an approval from the depositor, either you should approve the lender each time your logic deposits, or if you would rather approve once for all (with infinite approval), then you should add the approval to activate using:
 ```solidity
 __activate__(IERC20 token) internal override {
     super.__activate__(token); // perform all pre defined approvals
@@ -48,7 +48,7 @@ __activate__(IERC20 token) internal override {
 }
 ``` 
 
-The [`activate(IERC20[] calldata tokens)`](../technical-references/code/strategies/routers/AbstractRouter.md#activate) function follows the same pattern for custom %%routers|router%% (see router [activation](../technical-references/router.md#router-activation)).
+The [`activate(IERC20[] calldata tokens)`](../technical-references/code/strats/src/strategies/routers/abstract/AbstractRouter.md#activate) function follows the same pattern for custom %%routers|router%% (see router [activation](../technical-references/router.md#router-activation)).
 
 :::info cascading activation
 The activate function's default behavior is to perform the maker contract's activations and then ask its router (if any) to perform its own.
@@ -56,9 +56,9 @@ The activate function's default behavior is to perform the maker contract's acti
 
 ### Checklist functions
 
-[`checkList(IERC20[] calldata tokens)`](../technical-references/code/strategies/MangroveOffer.md#checklist) is a dev friendly view function that reverts whenever the `tokens` list contains an ERC20 token that `msg.sender` cannot yet use to trade using the maker contract, typically because it requires an approval from `msg.sender`. The revert reason should be documented or as self contained as possible. Following the `activate` pattern, this function can be augmented with additional checks, using the `__checkList__` hook.
+[`checkList(IERC20[] calldata tokens)`](../technical-references/code/strats/src/strategies/MangroveOffer.md#checklist) is a dev friendly view function that reverts whenever the `tokens` list contains an ERC20 token that `msg.sender` cannot yet use to trade using the maker contract, typically because it requires an approval from `msg.sender`. The revert reason should be documented or as self contained as possible. Following the `activate` pattern, this function can be augmented with additional checks, using the `__checkList__` hook.
 
-Router use a similar [function](../technical-references/code/strategies/routers/AbstractRouter.md#checklist) to verify that maker contract can source tokens via the router (see router [checklist](../technical-references/router.md#router-checklist)).
+Router use a similar [function](../technical-references/code/strats/src/strategies/routers/abstract/AbstractRouter.md#checklist) to verify that maker contract can source tokens via the router (see router [checklist](../technical-references/router.md#router-checklist)).
 
 :::info cascading checkList
 The checkList function's default behavior is to perform maker contract's checkList and then ask its router (if any) to perform its own.

@@ -7,23 +7,21 @@ sidebar_position: 0
 
 <div class="text--justify">
 
-Mangrove is an on-chain order book DEX that allows liquidity providers to post arbitrary smart contracts as offers.
+Mangrove revolutionizes asset swaps by offering a platform where your liquidity isn't idle; it can actively earn yields while being ready for complex condition-based exchanges. As an on-chain order book DEX, Mangrove empowers liquidity providers with the ability to create offers at a specified price using arbitrary smart contracts. This innovative method unlocks extraordinary capabilities for managing and optimizing your liquidity which you can now reLP.
 
 </div>
-
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img src={useBaseUrl('img/assets/home_page.png')} width="100%"/>
 
-## Total control over your offers
+## Unlock your liquidity
 
 <div class="text--justify">
 
-Mangrove's order book-based DEX [lists promises instead of locked commitments](./general/high-level/concepts/makers-takers-keepers/README.md). Liquidity can be shared, borrowed, lent somewhere and at the same time displayed on Mangrove, ready to be sourced when (and only when) an offer is taken.
+Mangrove's order book-based DEX lists promises instead of locked commitments. Liquidity can be re Liquidity Provided on Mangrove, meaning it can be deployed, lent, ready to be borrowed somewhere and at the same time displayed on Mangrove. Its not locked in Mangrove, but rather ready to be sourced when (and only when) an offer is taken.
 
 </div>
-
 
 ## Smart offers
 
@@ -60,7 +58,6 @@ Smart contracts [can be attached to offers](./general/high-level/concepts/smart-
 Mangrove enables liquidity providers to incorporate defensive code, post unprovisioned offers, and redisplay liquidity after their offers are taken.
 </div>
 
-
 #### Full control over your strategy parameters
 
 <div class="text--justify">
@@ -94,7 +91,7 @@ Mangrove enables liquidity providers to incorporate defensive code, post unprovi
 
 * **<font color="#47d77d">Profit from the spread:</font>** Kandel follows your configuration parameters to populate Bids and Asks offers. When those are taken, the profits are generated from the difference between the two, known as the spread.”
 
-* **<font color="#47d77d">Compounding:</font>** you have the opportunity to accumulate profits generated from spreads and reinvest them back into your offers, a process commonly known as compounding. On Kandel strategy, you can set the compounding rate.
+* **<font color="#47d77d">Compounding:</font>** you have the opportunity to accumulate profits generated from spreads and reinvest them back into your offers, a process commonly known as compounding.
 
 * **<font color="#47d77d">Price range:</font>** since Kandel is an automated market-making strategy, the price range needs to be set. It consists of the lowest and highest prices in the price grid at which the market maker is willing to post its bids and asks on Mangrove DEX.
 
@@ -110,6 +107,6 @@ Mangrove enables liquidity providers to incorporate defensive code, post unprovi
 
 <div class="text--justify">
 
-Mangrove is an open-source protocol that has been rigorously [audited](./general/high-level/audits.md) by the highly reputable and expert firm, ChainSec, ensuring the utmost security and reliability.
+Mangrove is an open-source protocol that has been rigorously [audited](./general/audits.md) by the highly reputable and expert firm, ChainSec, ensuring the utmost security and reliability.
 
 </div>
