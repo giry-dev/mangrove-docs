@@ -12,11 +12,11 @@ In this tutorial, you will learn how to post a %%smart offer|smart-offer%% manag
 * The tutorial assumes knowledge of solidity development.
 * Follow [preparation](./preparation.md) to create a new `tutorial` folder.
 * Open your favorite solidity editor inside that folder.
-* It is assumed that the `ADMIN_ADDRESS` has enough native tokens to complete the steps.
+* It is assumed that the `ADMIN_ADDRESS` has enough native tokens to complete the steps. (If you're using the foundry setup in [Set Up Your Local Environment](./preparation.md) then the `ADMIN_ADDRESS` is set to one of the Foundry test addresses with some native tokens.)
 
 ## Simple maker contract (offer logic)
 
-We want to create a new contract `OfferMakerTutorial` to implement %%offer logic|offer-logic%% and utilize the `Direct` contract in our strat-library for this purpose. `Direct` provides a safety harness to make it easier to correctly interact with Mangrove, you can read more about it [here](../background/offer-maker/direct.md).
+We want to create a new contract `OfferMakerTutorial` to implement an %%offer logic|offer-logic%% and utilize the `Direct` contract in our strat-library for this purpose. `Direct` provides a safety harness to make it easier to correctly interact with Mangrove, you can read more about it [here](../background/offer-maker/direct.md).
 
 Start by creating a new `OfferMakerTutorial.sol` file in the `src` folder, and add the following pieces:
 
@@ -25,7 +25,7 @@ Start by creating a new `OfferMakerTutorial.sol` file in the `src` folder, and a
 Add the imports we are going to need, along with a standard solidity preamble.
 
 ```solidity reference title="OfferMakerTutorial.sol - Preamble"
-https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L1-L9
+https://github.com/mangrovedao/mangrove-strats/blob/508bc8ace7f1d2ab54397611875306dc1ec31754/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L1-L9
 ```
 
 ### Constructor
@@ -37,7 +37,7 @@ We will skip some details here, which you can read more about later; %%routers|r
 
 
 ```solidity reference title="OfferMakerTutorial.sol - Contract and constructor"
-https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L13-L26
+https://github.com/mangrovedao/mangrove-strats/blob/508bc8ace7f1d2ab54397611875306dc1ec31754/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L13-L26
 ```
 
 ### Add offer management functions
@@ -51,7 +51,7 @@ The abstract contract `Direct` has internal functions that allows one to manage 
 Add the below code to your contract.
 
 ```solidity reference title="OfferMakerTutorial.sol - Offer management functions"
-https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L30-L70
+https://github.com/mangrovedao/mangrove-strats/blob/508bc8ace7f1d2ab54397611875306dc1ec31754/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L29-L69
 ```
 
 ### Emit in Posthook
@@ -59,7 +59,7 @@ https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e4
 When using our new contract, we can inspect traces and addresses but illustrative purposes, let's insert the following to emit an event in the %%posthook|makerPosthook%% when the offer is successfully taken.
 
 ```solidity reference title="OfferMakerTutorial.sol - Emit in Posthook"
-https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L74-L83
+https://github.com/mangrovedao/mangrove-strats/blob/508bc8ace7f1d2ab54397611875306dc1ec31754/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorial.sol#L72-L83
 ```
 
 There are more hooks to enable the Mangrovian abilities of %%last look|last-look%% and more advanced %%reactive liquidity|reactive-liquidity%%.
@@ -120,7 +120,7 @@ The output should look like:
 [⠒] Compiling...
 No files changed, compilation skipped
 Deployer: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
-Deployed to: 0x5deA11A74e15BBfD6F29fd54F0b6F251F4774556
+Deployed to: <contract address>
 Transaction hash: 0xcfbe7503081ba9a749ee30fac8c40bfe19e0a5da665578ed00f40ce72694ca06
 ```
 
@@ -145,7 +145,7 @@ export DAI=0xc8c0Cf9436F4862a8F60Ce680Ca5a9f0f99b5ded
 We have to let Mangrove pull the outbound token from our new contract - we can use the `activate` function for that.
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "activate(address[])" "[$WBTC]" --private-key "$PRIVATE_KEY"
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "activate(address)" "$WBTC" --private-key "$PRIVATE_KEY"
 ```
 
 ### Post an offer
@@ -188,7 +188,7 @@ If the offer was now taken, it will fail to deliver the promised liquidity. It p
 cast send --rpc-url $LOCAL_URL "$WBTC" "transfer(address,uint)" "$OFFER_MAKER" 100000000 --private-key "$PRIVATE_KEY"
 ```
 
-If you do not have the liquidity, check [Getting tokens](#getting-tokens) below, and come back to this step afterwards.
+If you do not have the liquidity in your wallet, check [Getting tokens](#getting-tokens) below, and come back to this step afterwards.
 
 :::info Note
 One of the big benefits of Mangrove is that **liquidity does not have to be locked in** - we will have a look at that in the [Unlocking Liquidity](../guides/howToUnlockLiquidity.md) guide.
@@ -241,7 +241,7 @@ To update an offer, here's something to keep in mind:
 We can also remove our offer from the book, using `retractOffer`. Note that we don't need to provide a provision in this case, since we are pulling the offer off the market. We will actually get back our provision with that configuration.
 
 ```bash
-cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "retractOffer((address, address, uint), uint, bool)(uint)" "($WBTC,$DAI,1)" "$OFFER_ID" 1 --private-key "$PRIVATE_KEY"
+cast send --rpc-url $LOCAL_URL "$OFFER_MAKER" "retractOffer((address, address, uint), uint, bool)(uint)" "($WBTC,$DAI,1)" "$OFFER_ID" true --private-key "$PRIVATE_KEY"
 ```
 
 
