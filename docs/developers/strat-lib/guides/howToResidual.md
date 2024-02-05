@@ -11,10 +11,10 @@ In case an offer is %%partially taken|maker-partial-fill%%, the maker may want t
 
 ## Repost in posthook
 
-In the tutorials the [posthook](../getting-started/smart-offer.md#emit-in-posthook) emitted an event. However, since reposting is such a common action, it is already implemented for the simple cases - if you invoke `super` like below, then the base implementation of [`__posthookSuccess__`](../technical-references/code/strats/src/strategies/MangroveOffer.md#posthooksuccess) will repost the residual.
+In the tutorial, the [posthook](../getting-started/smart-offer.md#emit-in-posthook) emitted an event. However, since reposting is such a common action, it is already implemented for the simple cases - if you invoke `super` like below, then the base implementation of [`__posthookSuccess__`](../technical-references/code/strats/src/strategies/MangroveOffer.md#posthooksuccess) will repost the residual.
 
 ```solidity reference title="OfferMakerTutorial.sol"
-https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorialResidual.sol#L92-L101
+https://github.com/mangrovedao/mangrove-strats/blob/508bc8ace7f1d2ab54397611875306dc1ec31754/src/toy_strategies/offer_maker/tutorial/OfferMakerTutorialResidual.sol#L90-L100
 ```
 
 When writing posthooks to repost residuals there are both caveats and points to be aware:
@@ -26,16 +26,8 @@ When writing posthooks to repost residuals there are both caveats and points to 
 * Note that the parameters to `__posthookSuccess__` already point out the old offer. This can save storage since we do not have to store %%IDs|offer-id%% of posted offers.
 * Beware of gas usage changes on different code paths. As an example, the [gas requirements](./howtoGasreq.md) for the tutorial increases to 80,000 to be able to repost.
 
-If you need to write a custom hook, for instance, for reposting multiple offers, then it can be a good idea to look at the base implementation below. A good exercise is to change the code above to emit the value returned from `super` and trigger the `reposted` and `dust` (see %%density|density%%) scenarios.
-
-<!-- 
-
-cast send --rpc-url $LOCAL_URL "$MANGROVE" "snipes(address, address, uint[4][], bool)" "$WETH" "$DAI" "[[$OFFER_ID,999999999999999999,1700000000000000000000,100000000000000000]]" 1 --private-key "$PRIVATE_KEY"
-
-cast send --rpc-url $LOCAL_URL "$MANGROVE" "snipes(address, address, uint[4][], bool)" "$WETH" "$DAI" "[[$OFFER_ID,500000000000000000,1700000000000000000000,100000000000000000]]" 1 --private-key "$PRIVATE_KEY"
-
--->
+If you need to write a custom hook, for instance, for reposting multiple offers, then it can be a good idea to look at the base implementation of `__posthookSuccess__`  (from `MangroveOffer`) below. A good exercise is to change the code above to emit the value returned from `super` and trigger the `reposted` and `dust` (see %%density|density%%) scenarios.
 
 ```solidity reference title="MangroveOffer.sol"
-https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/src/strategies/MangroveOffer.sol#L251-L280
+https://github.com/mangrovedao/mangrove-strats/blob/508bc8ace7f1d2ab54397611875306dc1ec31754/src/strategies/MangroveOffer.sol#L205-L234
 ```
