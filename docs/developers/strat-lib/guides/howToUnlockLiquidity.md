@@ -6,13 +6,13 @@ sidebar_position: 1
 
 # Unlocking liquidity
 
-In the previous [smart offer tutorial](../getting-started/smart-offer.md), the offer we posted had to receive a transfer liquidity for it to succeed when taken. Now, we want instead to post the offer without transferring tokens from the admin to Mangrove or the `OfferMakerTutorial` (unlocked or %%reactive liquidity|reactive-liquidity%%). This way, the tokens are pulled just-in-time when the offer is taken and can thus be made available for other purposes (ex: generating extra yield in another DeFi protocol).
+In the previous [smart offer tutorial](../getting-started/smart-offer.md), the offer we posted had to receive a transfer liquidity for it to succeed when taken. Now, we want instead to post the offer without transferring tokens from the admin to Mangrove or the `OfferMakerTutorial` (we call this unlocked or %%reactive liquidity|reactive-liquidity%%). This way, the tokens are pulled just-in-time when the offer is taken and can thus be made available for other purposes (e.g., for generating extra yield in another DeFi protocol).
 
 :::info Note
-Since you are not committing your liquidity to your smart offer, you can post multiple offers with unlocked liquidity. We call that [liquidity amplification](/developers/terms/amplified-liquidity.md).
+Since you are not committing your liquidity to your smart offer, you can post multiple offers with unlocked liquidity. We call that %%liquidity amplification|amplified-liquidity%%.
 :::
 
-For this to work, we use a so-called %%router|router%%: it is a contract that can be used to route tokens from the admin to the `OfferMakerTutorial` when the offer is taken.<br />
+For this to work, we use a so-called %%router|router%% - a smart contract that can be used to route tokens from the admin to the `OfferMakerTutorial` contract when the offer is taken.<br />
 
 First add the following import at the top of the file:
 
@@ -20,7 +20,13 @@ First add the following import at the top of the file:
 import {SimpleRouter} from "@mgv-strats/src/strategies/routers/SimpleRouter.sol";
 ```
 
-Then, replace the `NO_ROUTER` with `new SimpleRouter()` in the constructor definition and insert the following to the constructor body:
+Then, replace the `noRouter()` with a `SimpleRouter()` (specified as part of `Direct.RouterParams`) in the constructor definition:
+
+```solidity
+      Direct.RouterParams({routerImplementation: new SimpleRouter(), fundOwner: deployer, strict: true})
+```
+
+and insert the following to the constructor body:
 
 ```solidity
     router().bind(address(this));
@@ -45,9 +51,7 @@ contract OfferMakerTutorial is Direct, ILiquidityProvider {
     Direct(
       mgv,
       // Use a router - i.e., transfer tokens to and from deployer
-      new SimpleRouter(),
-      // Store total gas requirement of this strategy
-      deployer
+      Direct.RouterParams({routerImplementation: new SimpleRouter(), fundOwner: deployer, strict: true})
     )
   {
     router().bind(address(this));
@@ -84,12 +88,12 @@ cast call $WBTC "balanceOf(address)(uint256)" $ADMIN_ADDRESS
 
 #### Approving the contract to pull the funds
 
-The router needs to be able to pull funds from the admin. First we need to get the address of the router:
+The router needs to be able to pull funds from the admin. First, we need to get the address of the router. We can do this like so (you did remember to update the `$OFFER_MAKER` variable, right?):
 
 ```bash
 cast call --rpc-url $LOCAL_URL "$OFFER_MAKER" "router()(address)"
 ```
-Let's put it in an environment variable:
+Let's put the address in an environment variable:
 
 ```bash
 export ROUTER=<contract address> # 0xabcd..., the address of the router returned by the previous command
