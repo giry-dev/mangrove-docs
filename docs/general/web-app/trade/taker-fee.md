@@ -24,11 +24,13 @@ WETH/USDC | 0.05%
 * Taker receives 2 WETH minus paid fee = 1.999 WETH
 :::
 
-Here is what it looks like on [Mangrove app](http://app.mangrove.exchange):
+You can find the taker fee of the selected market:
+* By clicking "Market details" before hitting the Buy or Sell button
+* By clicking "Market details" on the pop-up after you click these buttons
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/protofol-fee.png')} width="300px"/><br />
+<img src={useBaseUrl('img/assets/protofol-fee.png')} width="350px"/><br />
 
 ## Fees for GTT resting limit orders
 
