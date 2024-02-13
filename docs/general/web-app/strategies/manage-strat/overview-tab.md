@@ -3,12 +3,11 @@ description: Overview tab
 sidebar_position: 3
 ---
 
-
 # Overview tab
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/overview_tab.png')} width="70%"/><br /><br />
+<img src={useBaseUrl('img/assets/overview_tab.png')} width="80%"/><br /><br />
 
 ## Information cards
 
@@ -20,7 +19,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 * **Unrealized PnL**: potential profit or loss that you would earn if you were to close your strategy right now. It is calculated by comparing the USD value of your average entry price to the current index price. The difference between these two values determines the size and direction of your unrealized gain or loss.
 
 * **Total "token A/B" inventory**: amount of base tokens and quote tokens that must be deposited into the strategy.
-
 
 ## Offers
 
@@ -34,8 +32,7 @@ The strategy management page showcases a dynamic market depth chart for a specif
 * <font color="#eb525a">Red dots</font>: active asks
 * <font color="#a7adcd">Grey dots</font>: empty offers
 
-
-<img src={useBaseUrl('img/assets/kandel_depth_chart.png')} width="70%"/>
+<img src={useBaseUrl('img/assets/kandel_depth_chart.png')} width="80%"/>
 
 ### List of active offers
 
@@ -48,8 +45,7 @@ Beneath the chart, you'll find your strategy's orders list, displaying:
 
 In the screenshot below, Token A is WETH and Token B is USDC (WETH/USDC market).
 
-<img src={useBaseUrl('img/assets/kandel_offers_list.png')} width="70%"/><br /><br />
-
+<img src={useBaseUrl('img/assets/kandel_offers_list.png')} width="80%"/><br /><br />
 
 :::info 👉 **More about <font color="#5cd19b">green</font> / <font color="#eb525a">red</font> / <font color="#a7adcd">grey</font> dots:**
 

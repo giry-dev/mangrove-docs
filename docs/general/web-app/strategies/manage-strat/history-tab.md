@@ -8,12 +8,11 @@ sidebar_position: 5
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/history_tab.png')} width="70%"/>
+<img src={useBaseUrl('img/assets/history_tab.png')} width="80%"/>
 
 ## Deposit/withdraw
 
 This section contains the breakdown of all your deposits and withdrawals.
-
 
 ## Parameters
 
