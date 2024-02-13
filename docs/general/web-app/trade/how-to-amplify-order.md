@@ -47,7 +47,7 @@ Here is a diagram generalizing this concept:
     * **Good 'til time (GTT)**: Set an expiration date for your order (ex: active for 3 days, then canceled).
     * [**Fill or Kill (FOK)**](../../../developers/SDK/guides/fill-or-kill.md): Your order is either executed fully or not executed at all (ex: you place an order for 1 ETH at $9,500; if only 0.8 ETH can be filled, it's canceled; if fully filled, it's executed).
 
-<img src={useBaseUrl('img/assets/limit_order_advanced.png')} width="500px"/><br /><br />
+<img src={useBaseUrl('img/assets/limit_order_advanced.png')} width="350px"/><br /><br />
 
 :::info Note
 If a "Good 'til time" limit order is [partially filled](./how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transaction details, and the remainder will be reposted automatically.
