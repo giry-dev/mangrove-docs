@@ -31,10 +31,6 @@ An extensive guide on how to use our dApp to place orders as well as to create y
 * [Who is the Mangrove DEX for?](./web-app/README.md)
 * [How to connect your wallet](./web-app/how-to-connect-wallet/how-to-connect-wallet.md)
 * [Trade](./web-app/trade/trade.md)
-* [Strategies](./web-app/strategies/README.md)
-    * [Create a strategy](./web-app/strategies/create-strat.md)
-    * [Manage a strategy](./web-app/strategies/manage-strat/README.md)
-    * [Key Actions/Questions](./web-app/strategies/key-actions-questions/README.md)
 
 ### Terms and Conditions
 
