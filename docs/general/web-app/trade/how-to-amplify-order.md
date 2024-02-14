@@ -34,15 +34,17 @@ Here is a diagram generalizing this concept:
 
 <img src={useBaseUrl('img/assets/amplified_sourcing_amount.png')} width="300px"/><br /><br />
 
-5. Select which assets (i.e. on wHich markets) you'd like to post your amplified order for. You can click "Add market" below to add more if you wish.
-
-[TO CONTINUE FROM HERE]
+5. Select which assets (i.e. on which markets) you'd like to post your amplified order for. You can click "Add market" below to add more if you wish.
 
 6. Choose a limit average price for each target asset of your amplified order.
     * For an amplified buy order, this is the highest price you are willing to pay for the tokens, and the order will only execute if the market price is at or below your specified limit.
     * For an amplified sell order, this is the lowest price you are willing to accept for the tokens, and the order will only execute if the market price is at or above your specified limit.
 
-7. In the "Advanced" section, you can choose from 3 types of limit orders.
+7. Select the destination for each target asset, i.e. where you would like them to be sent after the trade is executed.
+
+<img src={useBaseUrl('img/assets/amplified_order_receiveto.png')} width="350px"/><br /><br />
+
+8. In the "Advanced" section, you can choose from 3 types of limit orders.
     * **Immediate or Cancel (IOC)**: Your order attempts to execute immediately at the desired price. If successful, it's executed; if not, it's canceled.
     * **Good 'til time (GTT)**: Set an expiration date for your order (ex: active for 3 days, then canceled).
     * [**Fill or Kill (FOK)**](../../../developers/SDK/guides/fill-or-kill.md): Your order is either executed fully or not executed at all (ex: you place an order for 1 ETH at $9,500; if only 0.8 ETH can be filled, it's canceled; if fully filled, it's executed).
@@ -62,13 +64,13 @@ USDC/USDT | 21 USDC / 21 USDT
 WETH/USDC | 0.010 WETH / 18 USDC
 :::
 
-6. Click on "Buy" or "Sell" button (depending on your earlier choice). A card will appear, click on "Proceed" then "Approve", and confirm the transaction on your wallet. More information on approval in [this previous section](./approve-buy.md).
+9. Click on "Buy" or "Sell" button (depending on your earlier choice). A card will appear, click on "Proceed" then "Approve", and confirm the transaction on your wallet. More information on approval in [this previous section](./approve-buy.md).
 
-7. The pop-up updates itself - click "Proceed" to finalize your order (it will open Metamask once again).
+10. The pop-up updates itself - click "Proceed" to finalize your order (it will open Metamask once again).
 
-8. Confirm the transaction on your wallet.
+11. Confirm the transaction on your wallet.
 
-9. A confirmation pop-up will appear, along with a notification card below that will tell you when your order has been filled.
+12. A confirmation pop-up will appear, along with a notification card below that will tell you when your order has been filled.
 
 <br />
 Congratulations, you have successfully completed your limit order! 🤓<br />
