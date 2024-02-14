@@ -38,8 +38,3 @@ You understands that even though the strategy has been implemented by an experie
 * Lack of transparency in crypto asset management and markets;
 
 That being said, please note that the **Kandel strategy has been thoroughly audited** by ChainSecurity.
-
-
-## AAVE
-
-Kandel on AAVE exposes users to potential risks associated with AAVE protocol. More details can be found on [AAVE documentation](https://docs.aave.com/risk/asset-risk/methodology).
