@@ -51,5 +51,11 @@ In the screenshot below, Token A is WETH and Token B is USDC (WETH/USDC market).
 
 1. If you navigate on a green/red dot, the relevant offer is highlighted on the list. You can check the price at which an offer is posted, as well as the base and quote amounts.
 
-2. You are also able to refill empty offers (grey dots) by hovering over them and selecting "Refill offer".
+2. You are also able to refill empty offers (grey dots) by hovering over them and selecting "Refill offer" (see below).
 :::
+
+### Refill offers
+
+Empty offers can be easily replenished by clicking the "Re-fill" button in the list of offers.
+
+<img src={useBaseUrl('img/assets/empty_offers.png')} width="80%"/>

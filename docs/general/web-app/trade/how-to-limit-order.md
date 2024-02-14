@@ -45,13 +45,17 @@ USDC/USDT | 21 USDC / 21 USDT
 WETH/USDC | 0.010 WETH / 18 USDC
 :::
 
-6. Click on "Buy" or "Sell" button (depending on your earlier choice). A card will appear, click on "Proceed" then "Approve", and confirm the transaction on your wallet. More information on approval in [this previous section](./approve-buy.md).
+7. In the "Advanced" area, you can also select where you'd like to source your liquidity from. You can use liquidity your liquidity sitting on other protocols and post limit orders with it. When your offer is matched, the funds will be sourced from your "Send from" selection. Post trade execution, the received assets are moved to your chosen "Receive to" location.
 
-7. The pop-up updates itself - click "Proceed" to finalize your order (it will open Metamask once again).
+<img src={useBaseUrl('img/assets/limit_order_sourcing.png')} width="300px"/><br /><br />
 
-8. Confirm the transaction on your wallet.
+8. Click on "Buy" or "Sell" button (depending on your earlier choice). A card will appear, click on "Proceed" then "Approve", and confirm the transaction on your wallet. More information on approval in [this previous section](./approve-buy.md).
 
-9. A confirmation pop-up will appear, along with a notification card below that will tell you when your order has been filled.
+9. The pop-up updates itself - click "Proceed" to finalize your order (it will open Metamask once again).
+
+10. Confirm the transaction on your wallet.
+
+11. A confirmation pop-up will appear, along with a notification card below that will tell you when your order has been filled.
 
 <br />
 Congratulations, you have successfully completed your limit order! 🤓<br />
