@@ -8,18 +8,21 @@ sidebar_position: 5
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/market-order.gif')} width="70%"/><br /><br />
-
-
 ## Steps
 
-1. Choose whether to "Buy" or "Sell" and click on the "Market" button.
+1. At the top left of the menu, choose "Market" and either "Buy" or "Sell".
 
-2. Select the token pair you want to trade.
+<img src={useBaseUrl('img/assets/select_market_order.png')} width="350px"/><br /><br />
+
+2. Above that, you can select the token pair you want to trade.
+
+<img src={useBaseUrl('img/assets/select_token_pair.png')} width="350px"/><br /><br />
 
 3. Type in the amount of tokens you want to buy/sell. The amount to be sent will automatically appear.
 
-4. Choose your slippage tolerance.
+4. Scroll down and choose your slippage tolerance.
+
+<img src={useBaseUrl('img/assets/choose_slippage.png')} width="350px"/><br /><br />
 
 :::info Note
 Slippage is the difference between expected and actual trade prices.
@@ -29,15 +32,17 @@ Slippage is the difference between expected and actual trade prices.
 * Find the right balance for your trade.
 :::
 
-5. Click on "Approve and buy/sell". A card will appear, tick the infinite approval box, click on "Allow 'token'" and confirm the transaction on your wallet.
+5. Click on "Buy" or "Sell" button (depending on your earlier choice). A card will appear, click on "Proceed" then "Approve", and confirm the transaction on your wallet. More information on approval in [this previous section](./approve-buy.md).
 
-6. Click "Done" to close the pop-up.
+6. The pop-up updates itself - click "Proceed" to finalize your order (it will open Metamask once again).
 
-7. Another card appears: verify the information, click on "Confirm buy/sell" and confirm the transaction on your wallet.
+7. Confirm the transaction on your wallet.
 
-8. Click on "Done".
+8. A confirmation pop-up will appear, along with a notification card below that will tell you when your order has been filled.
 
-9. Wait for the notification card to appear, stating that your order has been filled.
+<img src={useBaseUrl('img/assets/market_order_confirmation.png')} width="100%"/><br /><br />
+
+9. Click "Close" to wrap it up.
 
 <br />
 Congratulations, you have successfully completed your market order! 🤓
