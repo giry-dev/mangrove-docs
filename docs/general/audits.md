@@ -17,6 +17,7 @@ Mangrove has been thoroughly audited. You will find here official reports of the
 
 * <a target="\_blank" href={require('/static/img/assets/ChainSecurity_Mangrove_Association_ADDMA_MangroveOrder_audit.pdf').default}>Audit #1</a>
 * <a target="\_blank" href={require('/static/img/assets/ChainSecurity_Mangrove_Association_Mangrove_Strategies_audit.pdf').default}>Audit #2</a>
+* <a target="\_blank" href={require('/static/img/assets/2024-02-14-NM-0162-Nethermind_SmartRouter_MangroveOrder_MangroveAmplifier_audit.pdf').default}>Audit #3</a>
 
 #### Kandel
 
