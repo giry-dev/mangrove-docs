@@ -56,7 +56,6 @@ An in-depth coverage of our Kandel strategy.
     * [Choose the right parameters](./kandel/how-does-kandel-work/choosing-parameters.md)
     * [Strategy reserve](./kandel/how-does-kandel-work/strategy-reserve.md)
     * [More on failing offers](./kandel/how-does-kandel-work/more-on-failing-offers.md)
-* [Kandel-Aave](./kandel/kandel-aave/kandel-aave.md)
 * [Potential risks](./kandel/potential-risks/potential-risks.md)
 
 ### Quick links

@@ -6,9 +6,7 @@ sidebar_position: 2
 
 # Statuses and alerts
 
-
 Your strategy can have one of three statuses: active, inactive, or closed. Depending on the status, alerts may be displayed for your price range or gas.
-
 
 ## Status <font color="#5cd19b">● Active</font>
 
@@ -20,16 +18,17 @@ Your trategy will soon run out of [bounty](/developers/terms/bounty.md) to pay f
 * **"About to be out of price range" button**<br />
 Your strategy's price range is close to being out of range.
 
-## Status <font color="#eb525a">● Inactive</font> 
+## Status <font color="#eb525a">● Inactive</font>
 
 It means that your strategy is switched off. There are two reasons why your strategy may be inactive:
 
-* **Out of range**: strategy is out of the price range
+* **Out of range**: the strategy is out of the price range
+
+* **All offers are empty**: you need to update the price range and publish inventoryu to re-activate the strategy.
 
 * **Insufficient bounty**: strategy's bounty is insufficient
 
 * **Out of range AND insufficient bounty**: combination of the above
-
 
 ## Status <font color="#a7adcd">● Closed</font>
 

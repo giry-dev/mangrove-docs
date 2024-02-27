@@ -6,29 +6,29 @@ sidebar_position: 2
 
 # How to connect your wallet
 
-We suggest using Metamask as it's currently considered a highly reliable and stable wallet option.
+We suggest using Metamask as it's currently considered a highly reliable and stable wallet option. You're free to choose others if you wish.
 Down below, you will find detailed steps to:
+
 * [Connect to Mangrove mainnet](./how-to-connect-wallet.md#steps-to-connect-to-mangrove-mainnet-and-testnet) (and testnet)
 * [Get some test tokens](./how-to-connect-wallet.md#steps-to-get-some-test-tokens-testnet) to spend on Mangrove testnet
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl('img/assets/connect-metamask.gif')} width="70%"/>
-
-
 ## Steps to connect to Mangrove mainnet and testnet
 
-1. Go to our [testnet app](https://testnet.mangrove.exchange/), and connect your wallet by clicking on "Connect my wallet" - choose Metamask.
+1. Go to the Mangrove [app](https://app.mangrove.exchange/trade) (or [testnet app](https://testnet.mangrove.exchange/)), and connect your wallet by clicking on "Connect my wallet" - choose Metamask.
 
-<img src={useBaseUrl('img/assets/connect-wallet-metamask.png')} width="500px"/><br /><br />
+<img src={useBaseUrl('img/assets/connect-wallet-metamask.png')} width="100%"/><br /><br />
 
 2. Select which account(s) you'd like to connect. Click "Next", and then "Connect".
 
-<img src={useBaseUrl('img/assets/connect-wallet-account.png')} width="500px"/><br /><br />
+<img src={useBaseUrl('img/assets/connect-wallet-account.png')} width="100%"/><br /><br />
 
-3. Mangrove is live on both Polygon mainnet, and Polygon Mumbai testnet.
+3. Mangrove app is live on both Arbitrum and Polygon mainnet.
+
+* **Arbitrum**: you need to be connected to the Arbitrum network. If you see a "Unsupported Network" pop-up, click "Switch network".
 * **Polygon mainnet**: you need to be connected to the Polygon mainnet. If you see a "Unsupported Network" pop-up, click "Switch network".
-* **Polygon Mumbai testnet**: you need to be connected to the Polygon Mumbai test network.
+* **Polygon Mumbai testnet**: you need to be connected to the Polygon Mumbai test network ([testnet app](https://testnet.mangrove.exchange/) only).
 
 :::info Note
  If you see a "Unsupported Network" pop-up, click "Switch network".
@@ -70,23 +70,21 @@ In case you do get a Chain ID error, you'll need to add the network manually. Re
 
     * You're done! You can now head back to Mangrove app.
 
-
 ## Steps to get some test tokens (testnet)
 
-1. Click on the three dots on the top right corner, and click 'Faucet".
-<img src={useBaseUrl('img/assets/test-tokens-faucet-list.png')} width="500px"/>
+1. Click on your connected account at the top right corner, and then choose 'Faucet".
+<img src={useBaseUrl('img/assets/test-tokens-faucet-list.png')} width="100%"/>
 
-2. A pop-up opens; you will need to get some natic tokens for gas fees (in MATIC), as well as one of the three available currencies available on Mangrove testnet at the moment (WETH, USDC, DAI).
+2. A new page will open, giving you options to grab various tokens. Feel free to click them out on the right, and get test tokens for yourselve. Remember that you will also need to get some natic tokens for gas fees (in MATIC), as well as one of the three available currencies available on Mangrove testnet at the moment (WETH, USDC, DAI).
 
 3. To add MATIC tokens:
-    * Click "Go to Mumbai MATIC faucet"
-    * A new tab opens - key in your account address to receive the tokens.
-    <img src={useBaseUrl('img/assets/test-tokens-matic.png')} width="500px"/>
+    * Head over this [page](https://faucet.polygon.technology/)
+    * Key in your account address to receive the tokens.
+    <img src={useBaseUrl('img/assets/test-tokens-matic.png')} width="100%"/>
 
     * Make sure the "Mumbai" testnet is selected, as well as "MATIC" tokens
     * Click "Submit", and "Confirm"
     * Done - a message displays, telling you you should receive your MATIC tokens within 1-2min
-
 
 4. To add WBTC, WMATIC or USDT:
     * Click on "WBTC", "WMATIC", or "USDT" on the faucet pop-up

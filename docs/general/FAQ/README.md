@@ -16,20 +16,9 @@ Here are a few reasons as to why your transactions are failing on Mangrove excha
 * The [density](../../developers/terms/density.md) for your Limit order is too low - if you're trying to place a Limit order with a small amount, your order will fail and will not be executed. Mangrove requires that you provide a token amount greater than the amount of gas the triggered offer requires to be executed (called density).
     * You can check the minimum volume required to post a limit order [here](../web-app/trade/how-to-limit-order.md).
 
-💡 Note: if you still want to place a limit order with a small amount (ex: 10 USDC), you can avoid the density check by using [IOC (Immediate Or Cancel)](../web-app/trade/more-on-order-types.md#immediate-or-cancel-ioc) orders. 
+💡 Note: if you still want to place a limit order with a small amount (ex: 10 USDC), you can avoid the density check by using [IOC (Immediate Or Cancel)](../web-app/trade/more-on-order-types.md#immediate-or-cancel-ioc) orders.
 
 </details>
-
-
-<details><summary>
-
-### Who pays the fees on Mangrove?
-</summary>
-Fees on Mangrove are paid by the taker: The fee is taken from the tokens that the taker has bought.
-
-Read more about fees [here](../web-app/trade/taker-fee.md), and also [here](../../developers/protocol/technical-references/governance-parameters/local-variables.md#taker-fees)
-</details>
-
 
 <details><summary>
 

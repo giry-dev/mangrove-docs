@@ -29,8 +29,6 @@ It's worth mentioning as well that there is a slightly more expensive path going
 
 The difference between the two is just above `3000`, hence we add that and round up to get an optimum `gasreq` of `82000` for MangroveOrder.
 
-
-
 ### Kandel
 
 #### Standard Kandel
@@ -48,11 +46,3 @@ Similarly for the primary offer:
 * `19675` is the comparable case for core (see [here](https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/strategies/kandel/Kandel.gasreq.t.sol#L27))
 * `22841` is the more expensive path, if an offer existed in the same bin as the reposted offer (see [here](https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/strategies/kandel/Kandel.gasreq.t.sol#L28))
 * The difference is just above `3000`, so we add both (`4000`) and round it up to get `126000`.
-
-#### Kandel-Aave
-
-With [Kandel-Aave](/docs/general/kandel/kandel-aave/kandel-aave.md), the Strategy reserve (Unallocated and Published liquidity) is deposited on Aave:
-
-* The most expensive case is `624677` (see [here](https://github.com/mangrovedao/mangrove-strats/blob/a265abeb96a053e386d346c7c9e431878382749c/test/strategies/kandel/Kandel.gasreq.t.sol#L33-L34))
-* However, that is with a specific pair of tokens, so it's not an upper bound.
-* With the additional `4000` previously calculated and some rounding up, we amount to `629000`.
