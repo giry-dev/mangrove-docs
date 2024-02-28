@@ -1,9 +1,9 @@
 ---
-description: How to place a limit order
-sidebar_position: 6
+description: Limit Order
+sidebar_position: 2
 ---
 
-# How to place a limit order
+# Limit Order
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -28,30 +28,30 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 5. In the "Advanced" section, you can choose from 3 types of limit orders.
     * **Immediate or Cancel (IOC)**: Your order attempts to execute immediately at the desired price. If successful, it's executed; if not, it's canceled.
     * **Good 'til time (GTT)**: Set an expiration date for your order (ex: active for 3 days, then canceled).
-    * [**Fill or Kill (FOK)**](../../../developers/SDK/guides/fill-or-kill.md): Your order is either executed fully or not executed at all (ex: you place an order for 1 ETH at $9,500; if only 0.8 ETH can be filled, it's canceled; if fully filled, it's executed).
+    * [**Fill or Kill (FOK)**](../../../../developers/SDK/guides/fill-or-kill.md): Your order is either executed fully or not executed at all (ex: you place an order for 1 ETH at $9,500; if only 0.8 ETH can be filled, it's canceled; if fully filled, it's executed).
 
 <img src={useBaseUrl('img/assets/limit_order_advanced.png')} width="350px"/><br /><br />
 
 :::info Note
-If a "Good 'til time" limit order is [partially filled](./how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transaction details, and the remainder will be reposted automatically.
+If a "Good 'til time" limit order is [partially filled](../how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transaction details, and the remainder will be reposted automatically.
 :::
 
 :::info Important
-Due to the [density](../../../developers/terms/density.md) on each market, there is a minimum token requirement when placing limit orders (except for [IOC orders](./more-on-order-types.md#immediate-or-cancel-ioc)). You can read more about why your transactions might be failing in the [FAQ](../../FAQ/README.md#why-do-my-transactions-keep-failing).
+Due to the [density](../../../../developers/terms/density.md) on each market, there is a minimum token requirement when placing limit orders (except for [IOC orders](../more-on-order-types.md#immediate-or-cancel-ioc)). You can read more about why your transactions might be failing in the [FAQ](../../../FAQ/README.md#why-do-my-transactions-keep-failing).
 
-Market | Minimum volume
----|---
-USDC/USDT | 21 USDC / 21 USDT
-WETH/USDC | 0.010 WETH / 18 USDC
+| Market    | Minimum volume            |
+| --------- | ------------------------- |
+| WETH/USDB | 0.00060 WETH / 1.278 USDB |
+| WBTC/USDB | 0.00003 WBTC / 1.542 USDB |
 :::
 
-6. In the "Advanced" area, you can also select where you'd like to source your liquidity from. You can use liquidity your liquidity sitting on other protocols and post limit orders with it. When your offer is matched, the funds will be sourced from your "Send from" selection. Post trade execution, the received assets are moved to your chosen "Receive to" location.
+1. In the "Advanced" area, you can also select where you'd like to source your liquidity from. You can use liquidity your liquidity sitting on other protocols and post limit orders with it. When your offer is matched, the funds will be sourced from your "Send from" selection. Post trade execution, the received assets are moved to your chosen "Receive to" location.
 
 <img src={useBaseUrl('img/assets/limit_order_sourcing.png')} width="300px"/><br /><br />
 
-7. Click on "Buy" or "Sell" button (depending on your earlier choice). A card will appear, click on "Proceed" then "Approve", and confirm the transaction on your wallet. More information on approval in [this previous section](./approve-buy.md).
+7. Click on "Buy" or "Sell" button (depending on your earlier choice). A card will appear, click on "Proceed" then "Approve", and confirm the transaction on your wallet. More information on approval in [this previous section](../approve-buy.md).
 
-8. The pop-up updates itself - click "Proceed" to finalize your order (it will open Metamask once again).
+8. The pop-up updates itself - click "Proceed" to finalize your order (it will open your wallet once again).
 
 9. Confirm the transaction on your wallet.
 

@@ -62,7 +62,7 @@ Mangrove enables liquidity providers to incorporate defensive code, post unprovi
 
 <div class="text--justify">
 
-* [**Amplified liquidity:**](./developers/terms/amplified-liquidity.md) optimize your trading potential by leveraging your liquidity across multiple pairs. For instance, you can create offers on WETH/USDC, WMATIC/USDC and WBTC/USDC pairs with an equal amount of USDC liquidity.
+* [**Amplified liquidity:**](./developers/terms/amplified-liquidity.md) optimize your trading potential by leveraging your liquidity across multiple pairs. For instance, you can create offers on WETH/USDB and WBTC/USDB pairs with an equal amount of USDB liquidity.
 
 * [**Multi-liquidity sourcing:**](./developers/terms/reactive-liquidity.md) your smart offer on Mangrove can take advantage of liquidity sourcing from other sources and offering it to the taker, allowing for profitable arbitrage opportunities.
 

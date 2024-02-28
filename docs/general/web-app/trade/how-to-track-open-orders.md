@@ -1,8 +1,7 @@
 ---
 description: How to track open and filled orders
-sidebar_position: 7
+sidebar_position: 3
 ---
-
 
 # How to track open/filled orders
 
@@ -28,6 +27,10 @@ A limit order consists of two parts:
 If your Good 'til time limit order could not be immediately filled (fully or partially), an entry in "Open" will show up, as well as an empty line (set at "0") in the "Fills" tab.
 :::
 
+### Amplified order
+
+An amplified order consists of multiple limit orders, so there will be one slot for the bundle, and when you click on it you can see the details of the full bundle
+
 ## Open and filled orders are market-specific
 
 The "Open" and "Fills" tabs are market-specific. You will only see transactions for a specific market. If you change the selected market, other transactions will be displayed (or none, if you haven't executed any yet).
@@ -36,7 +39,7 @@ The "Open" and "Fills" tabs are market-specific. You will only see transactions 
 
 <img src={useBaseUrl('img/assets/partial-fill.png')} width="300px"/><br /><br />
 
-If a "[Good 'til time](./how-to-limit-order.md#steps)" limit order is partially filled, a green message will display the transaction details, and the remainder will be reposted automatically.
+If a "[Good 'til time](./how-to-make-an-order/limit-order.md#steps)" limit order is partially filled, a green message will display the transaction details, and the remainder will be reposted automatically.
 
 ## Your order hasn't been filled
 
