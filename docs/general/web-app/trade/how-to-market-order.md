@@ -1,9 +1,10 @@
 ---
-description: Market Order
-sidebar_position: 1
+description: How to place a market order
+sidebar_position: 5
 ---
 
-# Market order
+
+# How to place a market order
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -31,9 +32,9 @@ Slippage is the difference between expected and actual trade prices.
 * Find the right balance for your trade.
 :::
 
-5. Click on "Buy" or "Sell" button (depending on your earlier choice). A card will appear, click on "Proceed" then "Approve", and confirm the transaction on your wallet. More information on approval in [this previous section](../approve-buy.md).
+5. Click on "Buy" or "Sell" button (depending on your earlier choice). A card will appear, click on "Proceed" then "Approve", and confirm the transaction on your wallet. More information on approval in [this previous section](./approve-buy.md).
 
-6. The pop-up updates itself - click "Proceed" to finalize your order (it will open your wallet once again).
+6. The pop-up updates itself - click "Proceed" to finalize your order (it will open Metamask once again).
 
 7. Confirm the transaction on your wallet.
 

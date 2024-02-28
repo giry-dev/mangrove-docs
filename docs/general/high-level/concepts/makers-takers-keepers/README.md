@@ -32,7 +32,7 @@ The role of Takers is crucial in completing transactions within the Mangrove mar
 
 Takers provide the necessary demand and liquidity in the marketplace, ensuring that the offers created by Makers are fulfilled. Their actions complete the cycle of trading activity within the Mangrove ecosystem, making it a dynamic and interactive platform for exchanges.
 
-Takers have the ability to buy or sell assets on Mangrove, using either [market](../../../web-app/trade/how-to-make-an-order/market-order.md) or [limit orders](../../../web-app/trade/how-to-make-an-order/limit-order.md), akin to a traditional orderbook. They can execute these offers through general orders or choose to [clean](../../../../developers/protocol/technical-references/offer-cleaning.md) them individually.
+Takers have the ability to buy or sell assets on Mangrove, using either [market](../../../web-app/trade/how-to-market-order.md) or [limit orders](../../../web-app/trade/how-to-limit-order.md), akin to a traditional orderbook. They can execute these offers through general orders or choose to [clean](../../../../developers/protocol/technical-references/offer-cleaning.md) them individually.
 
 This interaction between Takers and Makers completes the trading cycle in the Mangrove ecosystem, enhancing its interactivity and liquidity.
 

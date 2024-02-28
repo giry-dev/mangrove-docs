@@ -3,79 +3,92 @@ description: How to connect your wallet
 sidebar_position: 2
 ---
 
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # How to connect your wallet
 
-We suggest using Metamask as it's currently considered a highly reliable and stable wallet option. You're free to choose others if you wish. Down below, you will find detailed steps to:
+We suggest using Metamask as it's currently considered a highly reliable and stable wallet option. You're free to choose others if you wish.
+Down below, you will find detailed steps to:
 
-- [Connect to Mangrove mainnet](#steps-to-connect-to-mangrove-mainnet-and-testnet) (and testnet)
-- [Get some test tokens](#steps-to-get-some-testnet-tokens) to spend on Mangrove testnet
- 
+* [Connect to Mangrove mainnet](./how-to-connect-wallet.md#steps-to-connect-to-mangrove-mainnet-and-testnet) (and testnet)
+* [Get some test tokens](./how-to-connect-wallet.md#steps-to-get-some-test-tokens-testnet) to spend on Mangrove testnet
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 ## Steps to connect to Mangrove mainnet and testnet
 
-1. Go to the [Mangrove app](https://app.mangrove.exchange/) (or [Mangrove testnet app](https://testnet.mangrove.exchange/)), and connect your wallet by clicking on "Connect my wallet" - choose Metamask.
+1. Go to the Mangrove [app](https://app.mangrove.exchange/trade) (or [testnet app](https://testnet.mangrove.exchange/)), and connect your wallet by clicking on "Connect my wallet" - choose Metamask.
 
-<!-- TODO: Update this image -->
 <img src={useBaseUrl('img/assets/connect-wallet-metamask.png')} width="100%"/><br /><br />
 
 2. Select which account(s) you'd like to connect. Click "Next", and then "Connect".
 
-<!-- TODO: Update this image -->
 <img src={useBaseUrl('img/assets/connect-wallet-account.png')} width="100%"/><br /><br />
 
-## Supported networks
+3. Mangrove app is live on both Arbitrum and Polygon mainnet.
 
-- **Blast**: You need to be connected to the Blast network.
-- **Blast testnet**: You need to be connected to the Blast sepolia network.
+* **Arbitrum**: you need to be connected to the Arbitrum network. If you see a "Unsupported Network" pop-up, click "Switch network".
+* **Polygon mainnet**: you need to be connected to the Polygon mainnet. If you see a "Unsupported Network" pop-up, click "Switch network".
+* **Polygon Mumbai testnet**: you need to be connected to the Polygon Mumbai test network ([testnet app](https://testnet.mangrove.exchange/) only).
 
 :::info Note
-If you see a "Unsupported Network" pop-up, click "Change network".
+ If you see a "Unsupported Network" pop-up, click "Switch network".
 :::
-<!-- TODO: Update this image -->
+
 <img src={useBaseUrl('img/assets/connect-wallet-switch-network.png')} width="500px"/><br /><br />
 
 4. Once connected, the offers in the order book will appear - you can now start using Mangrove app!
 
 ### Adding the networks manually
 
+1. If you do not yet have the Mumbai test network registered, a pop-up asking you to approve its addition will show up. Click "Approve".
+
+<img src={useBaseUrl('img/assets/connect-wallet-switch-approve-network.png')} width="300px"/><br /><br />
+
 :::info
-If you do not yet have the networks registered, a pop-up will appear asking you to approve adding it. Click "Approve". If this fails, please follow the [guide that metamask wrote here](https://support.metamask.io/hc/en-us/articles/360043227612-How-to-add-a-custom-network-RPC).
+In case you do get a Chain ID error, you'll need to add the network manually. Rest assured, it's super easy - just follow the below steps.
 :::
 
-If you do need to add the networks, you can find most of them on chainlist.org, but we have supplied the important ones here to make sure:
+2. Add Mumbai testnet manually
+    * First, click "Cancel".
+    * Then, open Metamask again.
+    * Click on your current network at the top, then on "Add network" at the bottom.
+    <img src={useBaseUrl('img/assets/connect-wallet-switch-add-network.png')} width="300px"/>
 
-| Network Name  | RPC URL                  | Chain ID  | Currency Symbol | Block Explorer                |
-| ------------- | ------------------------ | --------- | --------------- | ----------------------------- |
-| Blast Sepolia | https://sepolia.blast.io | 168587773 | ETH             | https://testnet.blastscan.io/ |
-| Blast         | https://blast.io         | 81457     | ETH             | https://blastscan.io/         |
+    * A new web browser tab will open - click on "Add a network manually".
+    <img src={useBaseUrl('img/assets/connect-wallet-switch-add-manually.png')} width="500px"/>
 
-## Steps to get some testnet tokens
+    * Key in the following information, and hit "Save":<br />
+    *Network Name: Mumbai Testnet*<br />
+    *New RPC URL: https://rpc-mumbai.maticvigil.com/*<br />
+    *Chain ID: 80001*<br />
+    *Currency Symbol: MATIC*<br />
+    *Block Explorer URL: https://polygonscan.com/*<br />
+    <img src={useBaseUrl('img/assets/connect-wallet-switch-add-manually-save.png')} width="500px"/>
+
+    * A few confirmation pop-ups will appear - click "Got it" and "Switch to Mumbai testnet".
+    <img src={useBaseUrl('img/assets/connect-wallet-confirmation.png')} width="300px"/>
+
+    * You're done! You can now head back to Mangrove app.
+
+## Steps to get some test tokens (testnet)
 
 1. Click on your connected account at the top right corner, and then choose 'Faucet".
- <!-- TODO: Update this image -->
-   <img src={useBaseUrl('img/assets/test-tokens-faucet-list.png')} width="100%"/>
+<img src={useBaseUrl('img/assets/test-tokens-faucet-list.png')} width="100%"/>
 
-2. A new page will open, giving you options to grab various tokens. Feel free to click them out on the right, and get test tokens for yourself. Remember that you will also need to get some native tokens for gas fees (this depends on the network you are using!), as well as one of the three available currencies available on Mangrove testnet at the moment (WBTC, WETH, USDB).
+2. A new page will open, giving you options to grab various tokens. Feel free to click them out on the right, and get test tokens for yourselve. Remember that you will also need to get some natic tokens for gas fees (in MATIC), as well as one of the three available currencies available on Mangrove testnet at the moment (WETH, USDC, DAI).
 
-3. To add native tokens:
-   :::info
-   This example is for Blast testnet, but there will be a slightly different process for other networks!
-   :::
-   - Head over this [page](https://www.alchemy.com/faucets/ethereum-sepolia)
-   - Key in your account address to receive the tokens, this will give you Sepolia ETH.
-   <!-- TODO: Update this image -->
-     <img src={useBaseUrl('img/assets/test-tokens-matic.png')} width="100%"/>
-   - Click "Send me ETH"
-   - You should see a transaction in "Your transactions" which you can use to track the deposit of your tokens!
+3. To add MATIC tokens:
+    * Head over this [page](https://faucet.polygon.technology/)
+    * Key in your account address to receive the tokens.
+    <img src={useBaseUrl('img/assets/test-tokens-matic.png')} width="100%"/>
 
-<!-- TODO: Make sure WBTC still behaves this way -->
+    * Make sure the "Mumbai" testnet is selected, as well as "MATIC" tokens
+    * Click "Submit", and "Confirm"
+    * Done - a message displays, telling you you should receive your MATIC tokens within 1-2min
 
-4. To add WBTC:
-   - Click "Mint".
-   - Once again, your wallet opens - click "Confirm".
-   - After a few seconds, a pop-up green success pop-up will appear at the bottom of your screen.
-   - Done - you can now head back to the Trade page and start trading!
-
-5. To add USDB or WETH:
-   - Please follow the documentation provided by Blast
+4. To add WBTC, WMATIC or USDT:
+    * Click on "WBTC", "WMATIC", or "USDT" on the faucet pop-up
+    * A field appears - type in an amount (or hit "Max"), and click "Mint".
+    * Once again, Metamask opens - click "Confirm".
+    * After a few seconds, a pop-up green success pop-up will appear at the bottom of your screen.
+    * Done - you can now head back to the Trade page and start trading!
