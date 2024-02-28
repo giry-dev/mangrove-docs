@@ -1,6 +1,6 @@
 ---
 description: More on order types
-sidebar_position: 9
+sidebar_position: 4
 ---
 
 

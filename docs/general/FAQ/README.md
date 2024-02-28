@@ -14,7 +14,7 @@ sidebar_position: 2
 Here are a few reasons as to why your transactions are failing on Mangrove exchange:
 * The amount of gas or slippage you selected is too low - we encourage you to tweak those values and find out what works best for your trades.
 * The [density](../../developers/terms/density.md) for your Limit order is too low - if you're trying to place a Limit order with a small amount, your order will fail and will not be executed. Mangrove requires that you provide a token amount greater than the amount of gas the triggered offer requires to be executed (called density).
-    * You can check the minimum volume required to post a limit order [here](../web-app/trade/how-to-limit-order.md).
+* You can check the minimum volume required to post a limit order [here](../web-app/trade/how-to-make-an-order/limit-order.md).
 
 💡 Note: if you still want to place a limit order with a small amount (ex: 10 USDC), you can avoid the density check by using [IOC (Immediate Or Cancel)](../web-app/trade/more-on-order-types.md#immediate-or-cancel-ioc) orders.
 
@@ -28,10 +28,10 @@ Here are a few reasons as to why your transactions are failing on Mangrove excha
 
 **TL;DR**
 * A rule of thumb for limit orders to avoid order failure due to lack of approval is to make sure you approve at least double the amount you target (or infinite approval).
-* The easy way to do this is to use the "Use default" option on Metamask when executing an approval.
+* The easy way to do this is to use the "Use default" option on your wallet when executing an approval.
 
 
-**Let's now clarify the difference between the "Max" and "Use default" approval values offered by Metamask.**
+**Let's now clarify the difference between the "Max" and "Use default" approval values offered by your wallet.**
 * "Max" will give you the maximum amount available in your wallet.
 
 * If you have ticked the "allow infinite approval" on Mangrove app, "Use default" will give you an "infinite approval" amount.
