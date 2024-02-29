@@ -20,6 +20,7 @@ Here's how the boost levels are structured:
     
 
 This tiered system ensures that the more a participant trades or generates volume, the higher the boost they can achieve, incentivizing consistent and increased trading activity.
+
 **Example**: In the WETH/USDB Market:
 
 * If $1 million is traded in one day on this market, takers earn 1 million points (since $1 = 1 point).

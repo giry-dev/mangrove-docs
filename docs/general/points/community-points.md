@@ -18,11 +18,15 @@ During the testnet, participants were able to claim 3 different NFTs on Galxe. D
 * [Mangrove Tree](https://opensea.io/collection/mangrove-tree-nft): Level 1 (x1.75 boost) and 10,000 Community points (equivalent to $20,000 volume traded)
 * [Mangrove Forest](https://opensea.io/collection/mangrove-forest-nft): Level 2 (x2.5 boost) and 60,000 Community points (equivalent to $60,000 volume traded)
 
-:::warning
-WARNING: We do not encourage to buy a NFT on the secondary market, because we have to take a snapshot on the Blast Mainnet Day. If you buy afterwards, you are not eligible for any bonus or rewards.
+**These rewards are going to be implemented in the days following the Blast Mainnet launch.**
+
+:::caution
+We do not encourage that you buy an NFT on the secondary market, because we have to take a snapshot on the Blast Mainnet Day. If you buy afterwards, you will not be eligible for any bonus or rewards.
 :::
 
 ### Beta Mainnet Participants Benefits
 Wallet addresses that participated in the Beta Mainnet are rewarded with a special Boost Level for a period of 4 weeks and a points allocation based on their trading volume. This includes:
 * Level 3 (x3 boost)
 * Community points depending on volume generated and volume traded, to be distributed later.
+
+**These rewards are going to be implemented in the days following the Blast Mainnet launch.**

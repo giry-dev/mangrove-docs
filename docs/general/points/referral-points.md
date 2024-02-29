@@ -6,7 +6,7 @@ sidebar_position: 4
 # Referral Points
 The Referral Program is designed to reward DeFi users who introduce active traders and liquidity providers to Mangrove.
 
-## How does it work?
+## How does it work?
 
 1. You refer a new participant
 2. They trade/provide liquidity on Mangrove
@@ -18,7 +18,7 @@ The Referral Program is designed to reward DeFi users who introduce active trade
 * No limit on the number of referrals.
 * Works on top of the boost system, which means that you receive your referral points after the bonus is allocated, your boost level doesn’t affect your referral points.
 
-## Example
+### Example
 
 1. Bob refers Alice to Mangrove.
 2. Alice earns 50 Trading points and 50 LP points = 100 points.
