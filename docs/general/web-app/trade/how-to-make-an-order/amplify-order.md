@@ -6,7 +6,7 @@ sidebar_position: 3
 # Amplified order
 
 :::caution
-On Mangrove, Limit Orders have a requirement of a minimum amount per order which depends on the market. This requirement ensures that the gas cost of consuming the offers is not too high. You can find minimum amount required per order in the market details on the dApp or read about the [exact values here](#minimum-volume)
+On Mangrove, Amplified Orders have a requirement of a minimum amount per order which depends on the market. This requirement ensures that the gas cost of consuming the offers is not too high. You can find minimum amount required per order in the market details on the dApp or read about the [exact values here](#minimum-volume)
 :::
 
 
