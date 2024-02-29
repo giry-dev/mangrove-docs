@@ -6,8 +6,9 @@ sidebar_position: 3
 # Amplified order
 
 :::caution
-Due to the special magic of Mangrove, Limit Orders (and therefore Amplified Orders) have a minimum volume that is required to prevent wasting gas taking lots of small orders when you want to spend your life savings on BTC to show your friends. You can read about the [exact values here](#minimum-volume)
+On Mangrove, Limit Orders have a requirement of a minimum amount per order which depends on the market. This requirement ensures that the gas cost of consuming the offers is not too high. You can find minimum amount required per order in the market details on the dApp or read about the [exact values here](#minimum-volume)
 :::
+
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
