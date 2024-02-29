@@ -19,7 +19,7 @@ Learn about the key features of Mangrove and the new possibilities it opens.
 * [Makers, Takers, Keepers](./high-level/concepts/makers-takers-keepers/README.md)
 
 ### MS1 Points Program
-[Learn about our points program](./points/README.md)
+[Learn about our points program](./points/points.md)
 
 ### Audits
 
