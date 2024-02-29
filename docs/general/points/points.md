@@ -16,8 +16,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 * [Community Points](./community-points.md)
 * [Disclaimer](./disclaimer.md)
 
-<img src={useBaseUrl('img/assets/points.webp')} width="100%"/>
-
 ## TL;DR
 The Mangrove Season 1 Points Program is designed to reward active participants, known as 'Takers' (traders) and 'Makers' (liquidity providers), in the Mangrove ecosystem. Points are allocated based on specific rules and individual performance in trading and liquidity provision. Participants can also earn points through referrals and community engagement.
 
