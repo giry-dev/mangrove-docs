@@ -6,6 +6,8 @@ sidebar_position: 2
 
 # Trading & LP Points
 
+**At launch, there may be up to a 7-day wait to see your points and boost multiplier. Our team is working to speed this up. Thanks for your patience! :heart:**
+
 ## Trading Points
 
 Trading points are awarded to takers on a daily basis, depending on the volume traded by takers and a predetermined weight for each market.
