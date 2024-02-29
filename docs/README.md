@@ -7,7 +7,7 @@ sidebar_position: 0
 
 <div class="text--justify">
 
-Mangrove revolutionizes asset swaps by offering a platform where your liquidity isn't idle; it can actively earn yields while being ready for complex condition-based exchanges. As an on-chain order book DEX, Mangrove empowers liquidity providers with the ability to create offers at a specified price using arbitrary smart contracts. This innovative method unlocks extraordinary capabilities for managing and optimizing your liquidity which you can now reLP.
+Mangrove is an order book DEX that allows liquidity providers to post arbitrary smart contracts (hooks) as offers. This enables features such as re-staking of liquidity held on other protocols, liquidity amplification and liquidity provision via custom strategies.
 
 </div>
 
@@ -19,7 +19,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="text--justify">
 
-Mangrove's order book DEX lists promises instead of locked commitments. Liquidity can be re Liquidity Provided on Mangrove, meaning it can be deployed, lent, ready to be borrowed somewhere and at the same time displayed on Mangrove. Its not locked in Mangrove, but rather ready to be sourced when (and only when) an offer is taken.
+Mangrove's order book DEX lists promises instead of locked commitments (liquidity is not locked on Mangrove). It can be employed elsewhere until the offer is matched. For example, you can provide liquidity (LP) on another exchange and use this LPed liquidity on Mangrove at the same time to trade or run strategies. This way, you can earn from up to 6 sources of yields, points and spread.
 
 </div>
 
