@@ -7,6 +7,11 @@ sidebar_position: 2
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+
+:::caution
+Due to the special magic of Mangrove, Limit Orders have a minimum volume that is required to prevent wasting gas taking lots of small orders when you want to spend your life savings on BTC to show your friends. You can read about the [exact values here](#minimum-volume)
+:::
+
 ## Steps
 
 1. At the top left of the menu, choose "Limit" and either "Buy" or "Sell".
@@ -36,6 +41,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 If a "Good 'til time" limit order is [partially filled](../how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transaction details, and the remainder will be reposted automatically.
 :::
 
+## Minimum Volume
 :::info Important
 Due to the [density](../../../../developers/terms/density.md) on each market, there is a minimum token requirement when placing limit orders (except for [IOC orders](../more-on-order-types.md#immediate-or-cancel-ioc)). You can read more about why your transactions might be failing in the [FAQ](../../../FAQ/README.md#why-do-my-transactions-keep-failing).
 

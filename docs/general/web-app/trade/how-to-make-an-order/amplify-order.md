@@ -5,6 +5,10 @@ sidebar_position: 3
 
 # Amplified order
 
+:::caution
+Due to the special magic of Mangrove, Limit Orders (and therefore Amplified Orders) have a minimum volume that is required to prevent wasting gas taking lots of small orders when you want to spend your life savings on BTC to show your friends. You can read about the [exact values here](#minimum-volume)
+:::
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## What is an amplified order?
@@ -41,7 +45,7 @@ Here is a diagram generalizing this concept:
 
 <img src={useBaseUrl('img/assets/amplified_order_receiveto.png')} width="350px"/><br /><br />
 
-8. In the "Advanced" section, you can choose from 3 types of amplified orders.
+7. In the "Advanced" section, you can choose from 3 types of amplified orders.
     * **Immediate or Cancel (IOC)**: Your order attempts to execute immediately at the desired price. If successful, it's executed; if not, it's canceled.
     * **Good 'til time (GTT)**: Set an expiration date for your order (ex: active for 3 days, then canceled).
     * [**Fill or Kill (FOK)**](../../../../developers/SDK/guides/fill-or-kill.md): Your order is either executed fully or not executed at all (ex: you place an order for 1 ETH at $9,500; if only 0.8 ETH can be filled, it's canceled; if fully filled, it's executed).
@@ -51,6 +55,8 @@ Here is a diagram generalizing this concept:
 :::info Note
 If a "Good 'til time" limit order is [partially filled](../how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transaction details, and the remainder will be reposted automatically.
 :::
+
+## Minimum Volume
 
 :::info Important
 Due to the [density](../../../../developers/terms/density.md) on each market, there is a minimum token requirement when placing limit/amplified orders (except for [IOC orders](../more-on-order-types.md#immediate-or-cancel-ioc)). You can read more about why your transactions might be failing in the [FAQ](../../../FAQ/README.md#why-do-my-transactions-keep-failing).
