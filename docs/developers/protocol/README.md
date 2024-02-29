@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Introduction
 
-Mangrove is an [EVM-compatible](https://ethereum.org/en/developers/docs/scaling/sidechains/#evm-compatibility) order book-based exchange protocol (a [DEX](https://ethereum.org/en/defi/)), in which offers can be bound to a [smart contract](https://ethereum.org/en/smart-contracts/). In the order book, offers exist in [offer lists](./technical-references/offer-list/README.md), on the "asks" side or the "bids" side.
+Mangrove is an [EVM-compatible](https://ethereum.org/en/developers/docs/scaling/sidechains/#evm-compatibility) order book [DEX](https://ethereum.org/en/defi/), in which offers can be bound to a [smart contract](https://ethereum.org/en/smart-contracts/). In the order book, offers exist in [offer lists](./technical-references/offer-list/README.md), on the "asks" side or the "bids" side.
 
 Mangrove's order book lists promises to trade, instead of locked commitments:
 

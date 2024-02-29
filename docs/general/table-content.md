@@ -18,6 +18,9 @@ Learn about the key features of Mangrove and the new possibilities it opens.
 * [Bounty](./high-level/concepts/bounty.md)
 * [Makers, Takers, Keepers](./high-level/concepts/makers-takers-keepers/README.md)
 
+### MS1 Points Program
+[Learn about our points program](./points/points.md)
+
 ### Audits
 
 Mangrove has been thoroughly audited. You will find here official reports of the audits we passed.
