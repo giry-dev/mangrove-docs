@@ -6,7 +6,7 @@ sidebar_position: 2
 
 # Trading & LP Points
 
-**At launch, there may be up to a 7-day wait to see your points and boost multiplier. Our team is working to speed this up. Thanks for your patience! :heart:**
+**At launch, the Points page will not be available on the dApp. However, your points and boosts are being recorded and will be visible within a week. Our team is working diligently to expedite this process. Thank you for your patience! :heart:**
 
 ## Trading Points
 
