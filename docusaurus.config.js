@@ -12,7 +12,7 @@ const config = {
   
   title: 'Mangrove',
   tagline: 'Developer documentation for all things Mangrove',
-  url: 'https://app.mangrove.exchange',
+  url: 'https://docs.mangrove.exchange',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
