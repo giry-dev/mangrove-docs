@@ -19,7 +19,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="text--justify">
 
-Mangrove's order book-based DEX lists promises instead of locked commitments. Liquidity can be re Liquidity Provided on Mangrove, meaning it can be deployed, lent, ready to be borrowed somewhere and at the same time displayed on Mangrove. Its not locked in Mangrove, but rather ready to be sourced when (and only when) an offer is taken.
+Mangrove's order book DEX lists promises instead of locked commitments. Liquidity can be re Liquidity Provided on Mangrove, meaning it can be deployed, lent, ready to be borrowed somewhere and at the same time displayed on Mangrove. Its not locked in Mangrove, but rather ready to be sourced when (and only when) an offer is taken.
 
 </div>
 
