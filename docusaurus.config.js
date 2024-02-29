@@ -108,6 +108,7 @@ const config = {
 
   themeConfig:
     ({
+      image: 'img/assets/mangrove_avatar_brightgreen.png',
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: false,
