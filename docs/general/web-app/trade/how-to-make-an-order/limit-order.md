@@ -7,9 +7,8 @@ sidebar_position: 2
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-
 :::caution
-On Mangrove, Limit Orders have a requirement of a minimum amount per order which depends on the market. This requirement ensures that the gas cost of consuming the offers is not too high. You can find minimum amount required per order in the market details on the dApp or read about the [exact values here](#minimum-volume)
+On Mangrove, Limit Orders have a requirement of a minimum amount per order which depends on the market. You can read about this [here](./minimum-volume.md).
 :::
 
 ## Steps
@@ -39,16 +38,6 @@ On Mangrove, Limit Orders have a requirement of a minimum amount per order which
 
 :::info Note
 If a "Good 'til time" limit order is [partially filled](../how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transaction details, and the remainder will be reposted automatically.
-:::
-
-## Minimum Volume
-:::info Important
-Due to the [density](../../../../developers/terms/density.md) on each market, there is a minimum token requirement when placing limit orders (except for [IOC orders](../more-on-order-types.md#immediate-or-cancel-ioc)). You can read more about why your transactions might be failing in the [FAQ](../../../FAQ/README.md#why-do-my-transactions-keep-failing).
-
-| Market    | Minimum volume            |
-| --------- | ------------------------- |
-| WETH/USDB | 0.00060 WETH / 1.278 USDB |
-| WBTC/USDB | 0.00003 WBTC / 1.542 USDB |
 :::
 
 1. In the "Advanced" area, you can also select where you'd like to source your liquidity from. You can use liquidity your liquidity sitting on other protocols and post limit orders with it. When your offer is matched, the funds will be sourced from your "Send from" selection. Post trade execution, the received assets are moved to your chosen "Receive to" location.

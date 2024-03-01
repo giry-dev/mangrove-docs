@@ -6,9 +6,8 @@ sidebar_position: 3
 # Amplified order
 
 :::caution
-On Mangrove, Amplified Orders have a requirement of a minimum amount per order which depends on the market. This requirement ensures that the gas cost of consuming the offers is not too high. You can find minimum amount required per order in the market details on the dApp or read about the [exact values here](#minimum-volume)
+On Mangrove, Amplified Orders have a requirement of a minimum amount per order which depends on the market. You can read about this [here](./minimum-volume.md).
 :::
-
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -57,16 +56,7 @@ Here is a diagram generalizing this concept:
 If a "Good 'til time" limit order is [partially filled](../how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transaction details, and the remainder will be reposted automatically.
 :::
 
-## Minimum Volume
 
-:::info Important
-Due to the [density](../../../../developers/terms/density.md) on each market, there is a minimum token requirement when placing limit/amplified orders (except for [IOC orders](../more-on-order-types.md#immediate-or-cancel-ioc)). You can read more about why your transactions might be failing in the [FAQ](../../../FAQ/README.md#why-do-my-transactions-keep-failing).
-
-| Market    | Minimum volume            |
-| --------- | ------------------------- |
-| WETH/USDB | 0.00060 WETH / 1.278 USDB |
-| WBTC/USDB | 0.00003 WBTC / 1.542 USDB |
-:::
 
 1. Click on "Buy". A card will appear, click on "Proceed" then "Approve", and confirm the transaction on your wallet. More information on approval in [this previous section](../approve-buy.md).
 
