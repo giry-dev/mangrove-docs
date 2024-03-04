@@ -40,7 +40,7 @@ On Mangrove, Limit Orders have a requirement of a minimum amount per order which
 If a "Good 'til time" limit order is [partially filled](../how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transaction details, and the remainder will be reposted automatically.
 :::
 
-1. In the "Advanced" area, you can also select where you'd like to source your liquidity from. You can use liquidity your liquidity sitting on other protocols and post limit orders with it. When your offer is matched, the funds will be sourced from your "Send from" selection. Post trade execution, the received assets are moved to your chosen "Receive to" location.
+6. In the "Advanced" area, you can also select where you'd like to source your liquidity from. You can use liquidity your liquidity sitting on other protocols and post limit orders with it. When your offer is matched, the funds will be sourced from your "Send from" selection. Post trade execution, the received assets are moved to your chosen "Receive to" location.
 
 <img src={useBaseUrl('img/assets/limit_order_sourcing.png')} width="300px"/><br /><br />
 
