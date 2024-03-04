@@ -56,15 +56,15 @@ Here is a diagram generalizing this concept:
 If a "Good 'til time" limit order is [partially filled](../how-to-track-open-orders.md#order-is-partially-filled), a green message will display the transaction details, and the remainder will be reposted automatically.
 :::
 
-1. Click on "Buy". A card will appear, click on "Proceed" then "Approve", and confirm the transaction on your wallet. More information on approval in [this previous section](../approve-buy.md).
+8. Click on "Buy". A card will appear, click on "Proceed" then "Approve", and confirm the transaction on your wallet. More information on approval in [this previous section](../approve-buy.md).
 
-2. You will be asked to confirm activation of your Smart Router, this is a step you only need to take once. You also will not need to do this if you have done any limit orders before!  
+9. You will be asked to confirm activation of your Smart Router, this is a step you only need to take once. You also will not need to do this if you have done any limit orders before!  
 
-3.   The pop-up updates itself - click "Proceed" to finalize your order (it will open your wallet once again).
+10.   The pop-up updates itself - click "Proceed" to finalize your order (it will open your wallet once again).
 
-4.   Confirm the transaction on your wallet.
+11.   Confirm the transaction on your wallet.
 
-5.   A confirmation pop-up will appear, along with a notification card below that will tell you when your order has been filled.
+12.   A confirmation pop-up will appear, along with a notification card below that will tell you when your order has been filled.
 
 <br />
 Congratulations, you have successfully completed your amplified order! 🤓<br />
