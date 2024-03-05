@@ -18,7 +18,7 @@ Guardians are responsible for implementing specific DAO decisions, notably those
 
 Guardians are highly respected individuals within the community, known for their integrity and reputation. Their selection, initially facilitated by the Mangrove Association, emphasizes independence and trustworthiness. Each Guardian acts as a signer on a 5/9 multisig Safe, dedicated solely to executing Mangrove DAO decisions.
 
-**The current Guardians are:**
+The current Guardians are:
 - Adli Takkal Bataille, le Cercle du Coin (Co-founder)
 - Astrid Woollard, SMAPE Capital (Co-founder)
 - Clara Gromaches, dOrg (Operations)
@@ -28,6 +28,7 @@ Guardians are highly respected individuals within the community, known for their
 - Pierre Laurent, Atka (Co-founder)
 - Romain Figuereo, Paladin (Founder)
 - Tamara Helenius, Commons Stack (Co-founder)
+- 
 The general governance renews Guardians on a regular basis.
 
 #### Operation and Governance
