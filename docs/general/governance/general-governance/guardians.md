@@ -28,7 +28,7 @@ The current Guardians are:
 - Pierre Laurent, Atka (Co-founder)
 - Romain Figuereo, Paladin (Founder)
 - Tamara Helenius, Commons Stack (Co-founder)
-- 
+
 The general governance renews Guardians on a regular basis.
 
 #### Operation and Governance
