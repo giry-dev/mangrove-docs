@@ -6,9 +6,8 @@ sidebar_position: 3
 # Amplified order
 
 :::caution
-On Mangrove, Amplified Orders have a requirement of a minimum amount per order which depends on the market. This requirement ensures that the gas cost of consuming the offers is not too high. You can find minimum amount required per order in the market details on the dApp or read about the [exact values here](#minimum-volume)
+On Mangrove, Amplified Orders have a requirement of a minimum amount per order which depends on the market. You can read about this [here](./minimum-volume.md).
 :::
-
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -61,11 +60,11 @@ If a "Good 'til time" limit order is [partially filled](../how-to-track-open-ord
 
 9. You will be asked to confirm activation of your Smart Router, this is a step you only need to take once. You also will not need to do this if you have done any limit orders before!  
 
-10.  The pop-up updates itself - click "Proceed" to finalize your order (it will open your wallet once again).
+10.   The pop-up updates itself - click "Proceed" to finalize your order (it will open your wallet once again).
 
-11.  Confirm the transaction on your wallet.
+11.   Confirm the transaction on your wallet.
 
-12.  A confirmation pop-up will appear, along with a notification card below that will tell you when your order has been filled.
+12.   A confirmation pop-up will appear, along with a notification card below that will tell you when your order has been filled.
 
 <br />
 Congratulations, you have successfully completed your amplified order! 🤓<br />
