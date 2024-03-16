@@ -15,7 +15,7 @@ To facilitate the testing of Mangrove Exchange, the Mangrove Testnet was launche
 During the testnet, participants were able to claim 3 different NFTs on Galxe. Depending on the highest NFT, these participants’ wallet addresses will have access to a specific Boost Level for a period of 4 weeks and a points allocation, to reward their early contribution to the protocol.
 
 * [Mangrove Seed](https://opensea.io/collection/mangrove-seed-nft): 5,000 Community points (equivalent to $5,000 volume traded)
-* [Mangrove Tree](https://opensea.io/collection/mangrove-tree-nft): Level 1 (x1.75 boost) and 10,000 Community points (equivalent to $20,000 volume traded)
+* [Mangrove Tree](https://opensea.io/collection/mangrove-tree-nft): Level 1 (x1.75 boost) and 10,000 Community points (equivalent to $10,000 volume traded)
 * [Mangrove Forest](https://opensea.io/collection/mangrove-forest-nft): Level 2 (x2.5 boost) and 60,000 Community points (equivalent to $60,000 volume traded)
 
 **These rewards are going to be implemented in the days following the Blast Mainnet launch.**
