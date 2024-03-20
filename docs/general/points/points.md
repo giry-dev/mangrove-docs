@@ -14,6 +14,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 * [Boosts](./boosts.md)
 * [Referral Points](./referral-points.md)
 * [Community Points](./community-points.md)
+* [Blast Points](./blast-points.md)
 * [Disclaimer](./disclaimer.md)
 
 ## TL;DR
