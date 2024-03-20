@@ -5,7 +5,7 @@ sidebar_position: 6
 ---
 # Blast Points
 
-Apart from earning Blast points by trading on Mangrove, users will also get Blast points that will be redistributed to users by Mangrove!
+Apart from earning Blast points by trading on Mangrove, users will also get Blast Gold and Blast developer points that will be redistributed to users by Mangrove!
 
 - 0xb1a49C54192Ea59B233200eA38aB56650Dfb448C: Smart contract that will receive Blast Gold
 - 0x441f6a3d415708f89e4adbb6b995371554aa909e:  Points operator for the above contract
