@@ -1,8 +1,8 @@
 ## MangroveOrder
 
 A GTC order is a buy (sell) limit order complemented by a bid (ask) limit order, called a resting order, that occurs when the buy (sell) order was partially filled.
-If the GTC is for some amount $a_goal$ at a price $p$, and the corresponding limit order was partially filled for $a_now < a_goal$,
-the resting order should be posted for an amount $a_later = a_goal - a_now$ at price $p$.
+If the GTC is for some amount $a_{goal}$ at a price $p$, and the corresponding limit order was partially filled for $a_{now} < a_{goal}$,
+the resting order should be posted for an amount $a_{later} = a_{goal} - a_{now}$ at price $p$.
 A FOK order is simply a buy or sell limit order that is either completely filled or cancelled. No resting order is posted.
 
 _requiring no partial fill *and* a resting order is interpreted here as an instruction to revert if the resting order fails to be posted (e.g., if below density)._
@@ -96,7 +96,7 @@ Calling this function, with the `deprovision` flag, on an offer that is already 
 | ---- | ---- | ----------- |
 | freeWei | uint256 | the amount of native tokens (in WEI) that have been retrieved by retracting the offer. |
 
-### __lastLook__
+### \_\_lastLook\_\_
 
 ```solidity
 function __lastLook__(struct MgvLib.SingleOrder order) internal virtual returns (bytes32)
@@ -104,7 +104,7 @@ function __lastLook__(struct MgvLib.SingleOrder order) internal virtual returns 
 
 Checks the current timestamps and reneges on trade (by reverting) if the offer has expired.
 
-___lastLook__ should revert if trade is to be reneged on. If not, returned `bytes32` are passed to `makerPosthook` in the `makerData` field._
+_ \_\_lastLook\_\_ should revert if trade is to be reneged on. If not, returned `bytes32` are passed to `makerPosthook` in the `makerData` field. _
 
 #### Parameters
 
@@ -183,10 +183,12 @@ function postRestingOrder(struct IOrderLogic.TakerOrder tko, struct OLKey olKey,
 
 posts a maker order on the (`olKey`) offer list.
 
-_if relative limit price of taker order is `ratio` in the (outbound_tkn, inbound_tkn) offer list (represented by `tick=log_{1.0001}(ratio)` )
-then entailed relative price for resting order must be `1/ratio` (relative price on the (inbound_tkn, outbound_tkn) offer list)
-so with ticks that is `-log(ratio)`, or -tick.
-the price of the resting order should be the same as for the max price for the market order._
+:::info
+If relative limit price of taker order is $\text{ratio}$ in the (outbound*tkn, inbound_tkn) offer list (represented by $\text{tick}=log*{1.0001}(\text{ratio})$ )
+then entailed relative price for resting order must be $\frac{1}{\text{ratio}}$ (relative price on the (inbound_tkn, outbound_tkn) offer list)
+so with ticks that is $-log(\text{ratio})$, or $-\text{tick}$.
+the price of the resting order should be the same as for the max price for the market order.
+:::
 
 #### Parameters
 
