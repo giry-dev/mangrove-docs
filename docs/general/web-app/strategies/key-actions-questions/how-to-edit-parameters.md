@@ -1,5 +1,5 @@
 ---
-description: How to edit your strategy price range?
+description: How to edit your strategy parameters?
 sidebar_position: 2
 ---
 
