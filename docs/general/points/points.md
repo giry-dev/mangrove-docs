@@ -29,7 +29,7 @@ $$
 * **Liquidity Provision (LP) Points**: Also market-weighted, calculated from uptime, liquidity's proximity to mid-price, and generated volume. Includes limit orders, amplified orders and strategies.
 * **Boosts**: A tiered level system increasing LP and trading points, determined by trading volume and volume generated.
 * **Referral Points**: Gives a 10% bonus in points for both referee and referrer, based on the referee's LP and trading points.
-* **Community Points**: Gives points to past and future active participants in ADDMA-organised campaigns.
+* **Community Points**: Gives points to past and future active participants in MangroveDAO-organised campaigns.
 
 
 Stay updated with these opportunities by following [@MangroveDAO on X](http://x.com/MangroveDAO) and joining the [MangroveDAO Discord](https://discord.com/invite/rk9Qthz5YE) community.

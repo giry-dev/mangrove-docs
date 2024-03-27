@@ -5,7 +5,7 @@ sidebar_position: 5
 ---
 # Community Points
 
-The ADDMA, a French association contributing to the MangroveDAO, may launch campaigns during the MS1 Points Program to reward past or current active traders. These campaigns are designed to assist in the growth of Mangrove and can provide participants with benefits.
+The MangroveDAO may launch campaigns during the MS1 Points Program to reward past or current active traders. These campaigns are designed to assist in the growth of Mangrove and can provide participants with benefits.
 
 ## Testnet & Beta Mainnet Participants Benefits
 To facilitate the testing of Mangrove Exchange, the Mangrove Testnet was launched in March 2023 on the Polygon testnet. Following this, the Mangrove Beta Mainnet began in July 2023 on the Polygon Mainnet.
