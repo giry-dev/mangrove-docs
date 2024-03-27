@@ -33,13 +33,13 @@ Next, you should try to anticipate how much the market/price will vary during th
 I will look at the market volatility for the past 24h, and decide on the price range for my new Kandel.
 :::
 
-## Ratio
+## Number of Offers / Ratio 
 
-This is the ratio of the progression used to calculate the price grid. You would logically bet on intra-day volatility (few min or hours). If the volatility is increasing, you might want to increase the grid size (space between price points). You will find more information about its calculation in the [previous table](./parameters.md).
+This is the number of offers / ratio of the progression used to calculate the price grid. You would logically bet on intra-day volatility (few min or hours). If the volatility is increasing, you might want to increase the grid size (space between the offers). You will find more information about its calculation in the [previous table](./parameters.md).
 
 :::info Note 
-* High volatility: spaced out price points (less price points in the chosen range) -> higher ratio
-* Low volatility: narrow price points (more price points in the chosen range) -> smaller ratio
+* High volatility: spaced out offers (less offers in the chosen range) -> higher ratio
+* Low volatility: narrow offers (more offers in the chosen range) -> smaller ratio
 :::
 
 ## Step size
@@ -48,10 +48,10 @@ The general idea to configure your step size, is that a bigger volatility would 
 
 
 ## Simple use case
-Let's say you want to have a continuous Kandel, and maybe your current paramaters allow you only 2 price points:
+Let's say you want to have a continuous Kandel, and maybe your current paramaters allow you only 2 offers:
 
-* The solution to this is instead of having 2 points with a step size = 1, you can configure 16 points with a step size of 8
-* That gives you continuity (more price points for a similar interval)
+* The solution to this is instead of having 2 offers with a step size = 1, you can configure 16 offers with a step size of 8
+* That gives you continuity (more offers for a similar interval)
 * When your offers are taken, Kandel will be able to "grab" lower prices
 
 
