@@ -15,5 +15,5 @@ There are certain actions you can take by clicking the edit/manage button of you
 
 * See [your active offers](./overview-tab.md#list-of-active-offers) and their [statuses](statuses-and-alerts.md)
 * Change your [strategy parameters](parameters-tab.md)
-* [Deposit/withdraw](./parameters-tab.md#unallocated-inventory) into your strategy
-* See your [transaction history](./history-tab.md)
+* [Publish/unpublish](./parameters-tab.md) the inventory of your strategy
+* See your [parameter history](./history-tab.md)
