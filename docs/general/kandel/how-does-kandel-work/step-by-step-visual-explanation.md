@@ -18,9 +18,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img src={useBaseUrl('img/assets/price_distribution.PNG')} width="500px"/><br /><br />
 
-Based on the selected **price range**, the price grid is constructed using a geometric progression. The Min and Max prices of the user inputs are the limits of the grid. 
+Based on the selected **price range** and either the `number of offers` or `ratio`, the price grid is constructed using a geometric progression. The `min` and `max` prices of the user inputs are the limits of the grid. 
 
-The increments are calculated using a key metric called **ratio** (of the geometric progression). Kandel starts from the Min price, all the way up to the Max price.
+The increments are calculated using a key metric called **ratio** (of the geometric progression). Kandel starts from the `min` price, all the way up to the `max` price.
 By default, the ratio is ~1% (due to %%ticks|tick%% it will not be exactly 1%).
 
 :::info Note
