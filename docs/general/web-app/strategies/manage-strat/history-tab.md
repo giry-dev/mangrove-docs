@@ -10,10 +10,4 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img src={useBaseUrl('img/assets/history_tab.png')} width="80%"/>
 
-## Deposit/withdraw
-
-This section contains the breakdown of all your deposits and withdrawals.
-
-## Parameters
-
-This sub-tab tracks the parameters changes you made to your Kandel strategy.
+On the history tab you can see all changes you have made to your strategy.
