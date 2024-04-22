@@ -16,7 +16,7 @@ sidebar_position: 9
 
 - I have proceeded to >$10k of transactions, how come I have no boost?
 
-  Boosts are computed along a period of roughly one week and only applied to the following epoch, so there will be a delay between the moment you generate volume, and when you receive boosted points. More details on the @boost section
+  Boosts are computed along a period of roughly one week and only applied to the following epoch, so there will be a delay between the moment you generate volume, and when you receive boosted points. More details on the [boost section](./boosts.md)
 
 - I have traded $500k but received few points?
 

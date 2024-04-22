@@ -1,5 +1,5 @@
 ---
-title: Technical Insights & Defence Mechanisms
+title: Technical Insights & Defences
 description: Technical Insights & Defence Mechanisms
 sidebar_position: 8
 ---
@@ -20,4 +20,4 @@ The program employs detailed mechanisms to ensure that splitting liquidity does 
 
 ### Bounties for whistleblowers
 
-If a user provides proof of washtrading which is banned, they will receive 10% of the points of the banned wallets as a bounty in the form of community points.
+If a user provides proof (not suspicions) of washtrading which is banned, they will receive a bounty in the form of community points. We define washtrading as transactions where the maker and taker wallets are the same entity.
