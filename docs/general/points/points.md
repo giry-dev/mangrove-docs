@@ -25,12 +25,18 @@ The Mangrove Season 1 Points Program rewards active participants, known as 'Make
 
 
 $$
-Total\ points = (Trading\ Points + LP\ Points) * Boosts + Referral\ Points + Community\ Points
+Total\ points = (Trading\ Points + LP\ Points) * Boosts + Referral\ Points
 $$
+
+=======
+:::note
+Community Points do not contribute to Total Points for Leaderboard Rankings. They will be allocated specifically after the MS1 program concludes
+:::
 
 * **Trading Points**: Calculated based on trade volume, with different weightings for each market. Includes market, limit and amplified orders,where the limit order is partially filled with market order
 * **Liquidity Provision (LP) Points**: Derived from uptime, liquidity's proximity to mid-price, and generated volume and also market weighted. Includes limit orders, amplified orders and strategies.
 * **Boosts**: A tiered level system increasing LP and trading points, determined by consistent activity and volume levels.
+
 * **Referral Points**: Gives a 10% bonus in points for both referee and referrer, based on the referee's LP and trading points.
 * **Community Points**: Gives points to past and future active participants in MangroveDAO-organised campaigns.
 
